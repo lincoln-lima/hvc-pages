@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+:root {
+    --amarelo: #FFB61C;
+    --ciano: #00A8AC;
+    --azul: #2129FF;
+    --roxo: #8D49FF;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: #000000;
+}

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HV - Inicial</title>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
                 <li>
                     <img src="img/gaveta.png" alt="ícone de gaveta">
-                    <span>HV COMP</span>
+                    <span>HVC</span>
                 </li>
                 <li><a href="#instale">Instale</a></li>
                 <li><a href="#aprenda">Aprenda</a></li>
@@ -21,113 +23,222 @@
             </ul>
         </nav>
     </header>
+    <section>
+        <h1>HV Compiler</h1>
+        <p>
+            O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
+            HV Script e Assembly HV, voltadas para um computador hipotético.
+        </p>
+        <p>
+            Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
+        </p>
+        <button>
+            <a href="#main" target="_top">COMECE AQUI</a>
+        </button>
+        <img src="img/mlk-do-grau.png" alt="menino que programa">
+    </section>
     <main>
-        <section>
-            <h1>HVC</h1>
-            <p>
-                O HVC é um interpretador que permite a compilação e execução de código em duas linguagens, 
-                HV Script e Assembly HV, voltadas para um computador hipotético.
-            </p>
-            <p>
-                Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
-            </p>
-            <img src="img/mlk-do-grau.png" alt="menino que programa">
-        </section>
         <section>
             <h2>INSTALE</h2>
             <article>
+                <img src="img/windows.png" alt="">
                 <h3>Windows</h3>
+                <dl>
+                    <dt>Baixar instalador do compilador</dt>
+                    <dd>Faça download e execute o arquivo <mark>hvc.exe</mark></dd>
+                    <dt>Teste o compilador no terminal</dt>
+                    <dd>
+                        Faça um teste para conferir se o HVC foi instalado corretamente
+                        <code>hvc --help</code>
+                    </dd>
+                </dl>
             </article>
             <article>
+                <img src="img/linux.png" alt="">
                 <h3>Linux e Mac</h3>
+                <dl>
+                    <dt>Instale ferramentas de compilação</dt>
+                    <dd>
+                        Para realizar a compilação do projeto é necessário ter instalado um compilador
+                        de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
+                        compilação.
+                    </dd>
+                    <dt>Clone o repositório</dt>
+                    <dd>
+                        Com o terminal aberto, execute o seguinte comando:
+                        <code>
+                            git clone https://github.com/Wilker-Sebastian/HV-Compiler.git
+                        </code>
+                    </dd>
+                    <dt>Acesse o diretório do projeto</dt>
+                    <dd>
+                        Mude para pasta gerada
+                        <code>
+                            cd ./HV-Compiler
+                        </code>
+                    </dd>
+                    <dt>Compile o código</dt>
+                    <dd>
+                        Execute o comando <mark>make</mark> para compilar o código usando clang++
+                        <code>
+                            make
+                        </code>
+                    </dd>
+                    <dt>Adicione o HVC ao PATH do seu sistema</dt>
+                    <dd>
+                        Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
+                        que você execute o compilador de qualquer diretório do seu sistema
+                        <code>
+                            echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc
+                        </code>
+                    </dd>
+                    <dt>Teste o compilador no terminal</dt>
+                    <dd>
+                        Faça um teste para conferir se o HVC foi instalado corretamente
+                        <code>hvc --help</code>
+                    </dd>
+                </dl>
             </article>
         </section>
         <section>
             <h2>Aprenda</h2>
             <article>
-                <h3>O que é HV-2?</h3>
+                <img src="img/compiuter.png" alt="">
+                <h3>O que é HV?</h3>
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Assumenda recusandae animi facilis laborum blanditiis vel 
-                    fugiat doloremque aliquam, id a iste, expedita quisquam repellat, 
-                    exercitationem quidem enim neque? Molestias, ducimus!
+                    Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
+                    ensino
+                    de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
+                    conta com instruções simples
+                    mas engenhosas, capazes de construir algoritmos complexos e refinados.
+                </p>
+                <p>
+                    Em sua construção, um computador HV possui:
+                </p>
+                <ul>
+                    <li>100 gavetas</li>
+                    <li>Calculadora, mostrador e teclado</li>
+                    <li>Quadro Negro (EPI)</li>
+                    <li>Porta-cartões</li>
+                    <li>Folha de saída</li>
+                    <li>Operador de sistema (CHICO)</li>
+                </ul>
+                <p>
+                    A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
+                    programação, e ainda adquirir noções
+                    intuitivas de arquitetura de computadores.
+                </p>
+                <p>
+                    O material completo acerca está disponível no link <a href="files/computadro_hv1_hv2_.pdf"
+                        target="_blank">AQUI</a>
                 </p>
             </article>
             <article>
-                <h3>Assembly</h3>
+                <h3>Assembly HV</h3>
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Assumenda recusandae animi facilis laborum blanditiis vel 
-                    fugiat doloremque aliquam, id a iste, expedita quisquam repellat, 
-                    exercitationem quidem enim neque? Molestias, ducimus!
+                    Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
+                    entendimento na introdução ao
+                    universo de resolução de problemas e criação de algoritmos.
+                </p>
+                <p>
+                    Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
+                    gaveta.
                 </p>
                 <table>
                     <thead>
                         <tr>
                             <th scope="col">Comando</th>
                             <th scope="col">Descrição</th>
-                            <th scope="colgroup" colspan="3">Assembler</th>
+                            <th scope="colgroup" colspan="5">Assembler</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>0EE</td>
                             <td>Copie valor da gaveta EE (cEE) para AC</td>
-                            <td>AC</td><td>cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
                             <td>1EE</td>
                             <td>Some cEE ao AC</td>
-                            <td>AC</td><td>cAC</td><td>cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cAC</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
                             <td>2EE</td>
                             <td>some cEE ao AC</td>
-                            <td>AC</td><td>cAC</td><td>+cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cAC</td>
+                            <td>+</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
-                            <td>3EE</td>	
-                            <td>subtraia de AC o cEE</td>	
-                            <td>AC</td><td>cAC</td><td>cEE</td>
+                            <td>3EE</td>
+                            <td>subtraia de AC o cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cAC</td>
+                            <td>-</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
-                            <td>4EE</td>	
-                            <td>multiplique o cAC por cEE</td>	
-                            <td>AC</td><td>cAC</td><td>cEE</td>
+                            <td>4EE</td>
+                            <td>multiplique o cAC por cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cAC</td>
+                            <td>*</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
-                            <td>5EE</td>	
-                            <td>divida o cAC por cEE</td>	
-                            <td>AC</td><td>cAC</td><td>cEE</td>
+                            <td>5EE</td>
+                            <td>divida o cAC por cEE</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>cAC</td>
+                            <td>/</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
-                            <td>6EE</td>	
-                            <td>se cAC > 0, vá para EE</td>	
-                            <td>se cAC>0, então</td><td>EPI←EE</td>
+                            <td>6EE</td>
+                            <td>se cAC > 0, vá para EE</td>
+                            <td>se cAC>0, então</td>
+                            <td>EPI</td>                            
+                            <td>&#2190;</td>
+                            <td>EE</td>
                         </tr>
                         <tr>
-                            <td>7EE</td>	
-                            <td>leia um valor e guarda na gaveta EE</td>	
+                            <td>7EE</td>
+                            <td>leia um valor e guarda na gaveta EE</td>
                             <td>leia(EE)</td>
                         </tr>
                         <tr>
-                            <td>8EE</td>	
-                            <td>escreva cEE no dispositivo de saída</td>	
+                            <td>8EE</td>
+                            <td>escreva cEE no dispositivo de saída</td>
                             <td>escreva(cEE)</td>
                         </tr>
                         <tr>
-                            <td>9EE</td>	
-                            <td>vá para cEE</td>	
-                            <td>EPI</td><td>cEE</td>
+                            <td>9EE</td>
+                            <td>vá para cEE</td>
+                            <td>EPI</td>
+                            <td>&#2190;</td>
+                            <td>cEE</td>
                         </tr>
                         <tr>
-                            <td>0-N</td>	
-                            <td>AC recebe uma constante (truque)</td>	
-                            <td>AC</td><td>N</td>
+                            <td>0-N</td>
+                            <td>AC recebe uma constante (truque)</td>
+                            <td>AC</td>
+                            <td>&#2190;</td>
+                            <td>N</td>
                         </tr>
                         <tr>
-                            <td>000</td>	
-                            <td>fim do programa</td>	
+                            <td>000</td>
+                            <td>encerra execução</td>
                             <td>fim</td>
                         </tr>
                     </tbody>
@@ -136,8 +247,9 @@
             <article>
                 <h3>Como usar o compilador</h3>
                 <p>
-                    Crie um arquivo de extensão .ahv neve ficara seu código. No exemplo abaixo 
-                    está um exemplo de código que irá calcular a soma de dois inputs.
+                    Crie um arquivo de extensão .ahv, nele ficará seu código.
+                    <br>
+                    Este exemplo abaixo demonstra um código calcula a soma de dois números.
                 </p>
                 <code>
                     <pre>
@@ -154,20 +266,21 @@
             <article>
                 <h3>Playground</h3>
                 <p>
-                    Um playground de linguagem de programação é uma ferramenta interativa fornecida 
-                    por um ambiente de desenvolvimento integrado ou plataforma online que permite aos 
+                    Um playground de linguagem de programação é uma ferramenta interativa fornecida
+                    por um ambiente de desenvolvimento integrado ou plataforma online que permite aos
                     programadores escrever e testar códigos em uma determinada linguagem de programação em tempo real.
                 </p>
                 <p>
-                    Essa ferramenta é útil para prototipar soluções, experimentar códigos e aprender 
-                    novas linguagens de programação. Oferece recursos como realce de sintaxe, sugestões 
-                    de código e depuração para ajudar os desenvolvedores a escreverem códigos eficientes 
+                    Essa ferramenta é útil para prototipar soluções, experimentar códigos e aprender
+                    novas linguagens de programação. Oferece recursos como realce de sintaxe, sugestões
+                    de código e depuração para ajudar os desenvolvedores a escreverem códigos eficientes
                     e livres de erros sem a necessidade de configurar um ambiente de desenvolvimento completo.
                 </p>
                 <img src="img/mlk-boiadeiro.png" alt="menino montando">
-                <a href="">ir para o play</a>
+                <a href="" title="Só se souber brincar">descer para o play</a>
             </article>
         </section>
-    </main>    
+    </main>
 </body>
+
 </html>
