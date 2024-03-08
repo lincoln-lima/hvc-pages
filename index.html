@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HV - Inicial</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -12,33 +13,35 @@
         <nav>
             <ul>
                 <li>
-                    <img src="img/gaveta.png" alt="ícone de gaveta">
-                    <span>HVC</span>
+                    <a href="index.html">
+                        <img id="logo-gaveta" src="img/gaveta-logo-pq.png" alt="ícone de gaveta">
+                        <span>HVC</span>
+                    </a>
                 </li>
-                <li><a href="#instale">Instale</a></li>
-                <li><a href="#aprenda">Aprenda</a></li>
-                <li><a href="#playground">Playground</a></li>
-                <li><a href="#documentacao">Documentação</a></li>
-                <li><a href="https://github.com/WilkerSebastian/HV-Compiler">GitHub</a></li>
+                <li><a id="link-nav-instale" href="#instale" target="_self">Instale</a></li>
+                <li><a id="link-nav-aprenda" href="#aprenda" target="_self">Aprenda</a></li>
+                <li><a id="link-nav-playground" href="#playground" target="_self">Playground</a></li>
+                <li><a id="link-nav-doc" href="#documentacao" target="_blank">Documentação</a></li>
+                <li><a id="link-nav-git" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
-    <section>
-        <h1>HV Compiler</h1>
-        <p>
-            O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
-            HV Script e Assembly HV, voltadas para um computador hipotético.
-        </p>
-        <p>
-            Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
-        </p>
-        <button>
-            <a href="#main" target="_top">COMECE AQUI</a>
-        </button>
-        <img src="img/mlk-do-grau.png" alt="menino que programa">
-    </section>
     <main>
         <section>
+            <h1>HV Compiler</h1>
+            <p>
+                O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
+                HV Script e Assembly HV, voltadas para um computador hipotético.
+            </p>
+            <p>
+                Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
+            </p>
+            <button>
+                <a href="#main" target="_top">COMECE AQUI</a>
+            </button>
+            <img src="img/mlk-do-grau.png" alt="menino que programa">
+        </section>
+        <section id="instale">
             <h2>INSTALE</h2>
             <article>
                 <img src="img/windows.png" alt="">
@@ -100,7 +103,7 @@
                 </dl>
             </article>
         </section>
-        <section>
+        <section id="aprenda">
             <h2>Aprenda</h2>
             <article>
                 <img src="img/compiuter.png" alt="">
@@ -208,7 +211,7 @@
                             <td>6EE</td>
                             <td>se cAC > 0, vá para EE</td>
                             <td>se cAC>0, então</td>
-                            <td>EPI</td>                            
+                            <td>EPI</td>
                             <td>&#2190;</td>
                             <td>EE</td>
                         </tr>
@@ -263,15 +266,17 @@
                     </pre>
                 </code>
             </article>
-            <article>
+            <article id="playground">
                 <h3>Playground</h3>
                 <p>
-                    Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas 
-                    funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem HV, 
+                    Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
+                    funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
+                    HV,
                     permitindo sua testagem em tempo real.
                 </p>
                 <p>
-                    Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie a compreensão 
+                    Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
+                    a compreensão
                     do desenvolvedor
                 </p>
                 <img src="img/mlk-boiadeiro.png" alt="menino montando">

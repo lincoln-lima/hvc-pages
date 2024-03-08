@@ -13,3 +13,59 @@
     text-decoration: none;
     color: #000000;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    padding: 25px 0;
+    box-shadow: 1px 1px 9px #00000067;
+}
+
+nav {
+    max-width: 1300px;
+    margin: auto;
+}
+
+header > nav > ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    list-style-type: none;
+}
+
+nav > ul > li > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 150px; */
+    text-align: center;
+}
+
+a#link-nav-instale {
+    background-color: var(--roxo);
+}
+
+a#link-nav-aprenda {
+    background-color: var(--amarelo);
+}
+
+a#link-nav-playground {
+    background-color: var(--ciano);
+}
+
+a#link-nav-doc {
+    background-color: var(--azul);
+}
+
+a#link-nav-git {
+    background-color: var(--azul);
+}
+
+
+main {
+    max-width: 1300px;
+    margin: auto;
+}
