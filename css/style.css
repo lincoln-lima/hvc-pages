@@ -12,6 +12,7 @@
     margin: 0;
     text-decoration: none;
     color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -36,12 +37,29 @@ header > nav > ul {
     list-style-type: none;
 }
 
+nav > ul > li > a#home {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 nav > ul > li > a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 150px; */
-    text-align: center;
+    padding: 1px 5px;
+    color: #ffffff;
+}
+
+nav > ul > li > a > span {
+    font-size: 30px;
+    font-weight: bolder;
+
+    /* Configuração para deixar texto gradiente */
+    background-image: linear-gradient(to right, var(--azul) 28%, var(--amarelo) 40%, var(--roxo) 90%);
+    background-clip: text;
+    color: transparent;
 }
 
 a#link-nav-instale {
@@ -64,8 +82,30 @@ a#link-nav-git {
     background-color: var(--azul);
 }
 
-
 main {
     max-width: 1300px;
-    margin: auto;
+    margin: 100px 20px 10px 20px;
+}
+
+main p {
+    text-align: justify;
+}
+
+section#descricao-hv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section#descricao-hv > * {
+    width: 400px;
+}
+
+section#descricao-hv > article > button {
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
 }
