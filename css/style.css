@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Setando famílias de fonte padrão importadas para uso no site */
+/* --- Setando famílias de fonte padrão importadas para uso no site --- */
 @font-face {
     font-family: 'Archivo Black';
     src: url(../fonts/Archivo_Black/ArchivoBlack-Regular.ttf);
@@ -20,6 +20,7 @@
     font-family: 'IBM Plex Mono';
     src: url(../fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
 }
+/* -------------------------------------------------------------------- */
 
 /* Estabelecendo variáveis de cor */
 :root {
@@ -28,14 +29,16 @@
     --azul: #2129FF;
     --roxo: #8D49FF;
 }
+/* -------------------------------------------------------------------- */
 
-/* Resetando propriedades padrões do navegador */
+/* ----------- Resetando propriedades padrões do navegador ------------ */
 * {
     padding: 0;
     margin: 0;
     text-decoration: none;
     color: #000000;
 }
+/* -------------------------------------------------------------------- */
 
 /* Rolagem suave para links na própria página */
 html {
@@ -49,6 +52,7 @@ html {
 
 .subtitulo {
     font-family: "Archivo Narrow";
+    font-weight: 700;
 }
 
 .texto {
@@ -61,7 +65,7 @@ html {
 
 /* Cabeçalho */
 header {
-    padding: 25px 0;
+    padding: 25px 20px;
     box-shadow: 1px 1px 9px #00000067;
 }
 
@@ -71,7 +75,7 @@ nav {
     margin: auto;
 }
 
-header > nav > ul {
+nav > ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,9 +83,20 @@ header > nav > ul {
     list-style-type: none;
 }
 
+nav > ul > li:first-child {
+    min-width: 300px;
+}
+
 nav > ul > li > a {
     padding: 1px 5px;
     color: #ffffff;
+    border-radius: 3px;
+
+    font-size: 18px;
+}
+
+nav > ul > li > a:hover {
+    text-decoration: underline #ffffff 2px;
 }
 
 nav > ul > li > a#home {
@@ -92,7 +107,7 @@ nav > ul > li > a#home {
 }
 
 nav > ul > li > a > h1 > span {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 nav > ul > li > a > h1 > span:nth-child(1) {
@@ -126,13 +141,14 @@ a#link-nav-git {
 /* Conteúdo principal */
 main {
     max-width: 1300px;
-    margin: 0 20px;
+    margin: auto;
+    padding: 0 20px;
 }
 
 /* Títulos principais */
 h1#titulo-principal, h2 {
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
 
     margin-bottom: 35px;
 
@@ -147,62 +163,108 @@ main p {
     text-align: justify;
 }
 
-section.secoes {
+/* Todas as seções dentro da main */
+main section {
     margin: auto;
 }
 
-/* Conteúdos da seção de descrição do site */
+/* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 
     min-height: 90vh;
-
-    /* margin-bottom: 150px; */
+    max-width: 1000px;
 }
 
 section#descricao-hv > * {
-    max-width: 400px;
+    max-width: 450px;
+}
+
+section#descricao-hv > article > p {
+    font-size: 22px;
 }
 
 section#descricao-hv > article > button {
     border-radius: 15px;
     border-width: 0;
-    padding: 2px 20px;
+    padding: 3px 20px;
     background: linear-gradient(90deg, #0D77CC 5.85%, #00A8AC 73%, #0F6ED2 149.38%);
 
+    /* Configurações de centralizam e espaçamento */
+    display: block;
     margin: 40px auto 0 auto;
 }
 
 section#descricao-hv > article > button > a {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     color: #ffffff;
 }
+/* -------------------------------------------------------------------- */
 
+/* Conteúdos da seção de instalação do compilador --------------------- */
 section#instale {
     max-width: 60vw;
 }
 
 section#instale > article > h3 {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    align-items: center;
     color: var(--amarelo);
-    font-size: 30px;
+    font-size: 35px;
 }
 
-section#instale > article > dl > dt > span {
+section#instale > article > ol {
+    margin: 40px 0 130px 20px;
+}
+
+section#instale > article > ol > li {
+    position: relative;
+    list-style-position: inside;
+
+    margin-bottom: 10px;
+}
+
+section#instale > article > ol > li::marker {
     font-family: "Archivo Black";
-    display: inline-block;
     color: #ffffff;
+    content: counter(list-item);
+}
+
+section#instale > article > ol > li::before {    
+    content: "";
+
+    /* centralizando posicionamento */
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    top: 3px;
+    left: -7px;
+
+    /* configurando formato e fundo */
     background-color: var(--ciano);
-    width: 18px;
-    height: 18px;
-    /* padding: 7px; */
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
 }
 
-section#instale > article > dl > dd > code {
+section#instale > article > ol > li > span {
+    font-size: 20px;
+    color: var(--ciano);
+
+    margin-left: 20px;
+}
+
+section#instale > article > ol > li > p {
+    font-weight: 400;
+    margin-left: 35px;
+}
+
+section#instale > article > ol > li > p > code {
     display: block;
     background-color: #FFC958;
     border-radius: 5px;
@@ -210,3 +272,4 @@ section#instale > article > dl > dd > code {
 
     color: var(--roxo);
 }
+/* -------------------------------------------------------------------- */

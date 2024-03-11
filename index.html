@@ -12,7 +12,7 @@
     <header>
         <nav>
             <ul>
-                <li>
+                <li id="item-nav-home">
                     <a id="home" href="index.html">
                         <img id="logo-gaveta" src="img/gaveta-logo-pq.png" alt="ícone de gaveta">
                         <h1 class="titulo">
@@ -29,7 +29,7 @@
         </nav>
     </header>
     <main>
-        <section id="descricao-hv" class="secoes">
+        <section id="descricao-hv">
             <article>
                 <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
                 <p class="texto">
@@ -47,84 +47,98 @@
                 <img src="img/mlk-do-grau.png" alt="menino que programa">
             </figure>
         </section>
-        <section id="instale" class="secoes">
-            <h2 class="titulo">INSTALE</h2>
+        <section id="instale">
+            <h2 class="titulo">Instale</h2>
             <article>
-                <img class="icones-so" src="img/windows.png" alt="">
-                <h3 class="subtitulo">Windows</h3>
-                <dl>
-                    <dt class="subtitulo">
-                        <span>1</span>
-                        Baixar instalador do compilador
-                    </dt>
-                    <dd class="texto">
-                        Faça download e execute o arquivo 
-                        <mark>
-                            <a href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe">
-                                hvc.exe
-                            </a>
-                        </mark>
-                    </dd>
-                    <dt class="subtitulo">
-                        <span>2</span>
-                        Teste o compilador no terminal
-                    </dt>
-                    <dd class="texto">
-                        Faça um teste para conferir se o HVC foi instalado corretamente
-                        <code class="codigo">
-                            hvc --help
-                        </code>
-                    </dd>
-                </dl>
+                <h3 class="subtitulo">
+                    <img class="icones-so" src="img/windows.png" alt="">
+                    Windows
+                </h3>
+                <ol>
+                    <li class="subtitulo">
+                        <span>Baixar instalador do compilador</span>
+                        <p class="texto">
+                            Faça download e execute o arquivo 
+                            <mark>
+                                <a href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe">
+                                    hvc.exe
+                                </a>
+                            </mark>
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Teste o compilador no terminal</span>
+                        <p class="texto">
+                            Faça um teste para conferir se o HVC foi instalado corretamente
+                            <code class="codigo">
+                                hvc --help
+                            </code>
+                        </p>
+                    </li>
+                </ol>
             </article>
             <article>
-                <img class="icones-so" src="img/linux.png" alt="">
-                <h3 class="subtitulo">Linux e Mac</h3>
-                <dl>
-                    <dt class="subtitulo">Instale ferramentas de compilação</dt>
-                    <dd class="texto">
-                        Para realizar a compilação do projeto é necessário ter instalado um compilador
-                        de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
-                        compilação.
-                    </dd>
-                    <dt class="subtitulo">Clone o repositório</dt>
-                    <dd class="texto">
-                        Com o terminal aberto, execute o seguinte comando:
-                        <code class="codigo">
-                            git clone https://github.com/Wilker-Sebastian/HV-Compiler.git
-                        </code>
-                    </dd>
-                    <dt class="subtitulo">Acesse o diretório do projeto</dt>
-                    <dd class="texto">
-                        Mude para pasta gerada
-                        <code class="codigo">
-                            cd ./HV-Compiler
-                        </code>
-                    </dd>
-                    <dt class="subtitulo">Compile o código</dt>
-                    <dd class="texto">
-                        Execute o comando <mark>make</mark> para compilar o código usando clang++
-                        <code class="codigo">
-                            make
-                        </code>
-                    </dd>
-                    <dt class="subtitulo">Adicione o HVC ao PATH do seu sistema</dt>
-                    <dd class="texto">
-                        Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
-                        que você execute o compilador de qualquer diretório do seu sistema
-                        <code class="codigo">
-                            echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc
-                        </code>
-                    </dd>
-                    <dt class="subtitulo">Teste o compilador no terminal</dt>
-                    <dd class="texto">
-                        Faça um teste para conferir se o HVC foi instalado corretamente
-                        <code class="codigo">hvc --help</code>
-                    </dd>
-                </dl>
+                <h3 class="subtitulo">
+                    <img class="icones-so" src="img/linux.png" alt="">
+                    Linux e Mac
+                </h3>
+                <ol>
+                    <li class="subtitulo">
+                        <span>Instale ferramentas de compilação</span>
+                        <p class="texto">
+                            Para realizar a compilação do projeto é necessário ter instalado um compilador
+                            de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
+                            compilação.
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Clone o repositório</span>
+                        <p class="texto">
+                            Com o terminal aberto, execute o seguinte comando:
+                            <code class="codigo">
+                                git clone https://github.com/Wilker-Sebastian/HV-Compiler.git
+                            </code>
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Acesse o diretório do projeto</span>
+                        <p class="texto">
+                            Mude para pasta gerada
+                            <code class="codigo">
+                                cd ./HV-Compiler
+                            </code>
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Compile o código</span>
+                        <p class="texto">
+                            Execute o comando <mark>make</mark> para compilar o código usando clang++
+                            <code class="codigo">
+                                make
+                            </code>
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Adicione o HVC ao PATH do seu sistema</span>
+                        <p class="texto">
+                            Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
+                            que você execute o compilador de qualquer diretório do seu sistema
+                            <code class="codigo">
+                                echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc
+                            </code>
+                        </p>
+                    </li>
+                    <li class="subtitulo">
+                        <span>Teste o compilador no terminal</span>
+                        <p class="texto">
+                            Faça um teste para conferir se o HVC foi instalado corretamente
+                            <code class="codigo">hvc --help</code>
+                        </p>
+                    </li>
+                </ol>
             </article>
         </section>
-        <section id="aprenda" class="secoes">
+        <section id="aprenda">
             <h2 class="titulo">Aprenda</h2>
             <article>
                 <img src="img/compiuter.png" alt="">
