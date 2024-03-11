@@ -1,5 +1,27 @@
 @charset "UTF-8";
 
+/* Setando famílias de fonte padrão importadas para uso no site */
+@font-face {
+    font-family: 'Archivo Black';
+    src: url(../fonts/Archivo_Black/ArchivoBlack-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Archivo Narrow';
+    src: url(../fonts/Archivo_Narrow/ArchivoNarrow-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito/Nunito-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'IBM Plex Mono';
+    src: url(../fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
+}
+
+/* Estabelecendo variáveis de cor */
 :root {
     --amarelo: #FFB61C;
     --ciano: #00A8AC;
@@ -7,23 +29,43 @@
     --roxo: #8D49FF;
 }
 
+/* Resetando propriedades padrões do navegador */
 * {
     padding: 0;
     margin: 0;
     text-decoration: none;
     color: #000000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Rolagem suave para links na própria página */
 html {
     scroll-behavior: smooth;
 }
 
+/* Definindo fontes para cada tipo de texto */
+.titulo {
+    font-family: "Archivo Black";
+}
+
+.subtitulo {
+    font-family: "Archivo Narrow";
+}
+
+.texto {
+    font-family: "Nunito";
+}
+
+.codigo {
+    font-family: "IBM Plex Mono";
+}
+
+/* Cabeçalho */
 header {
     padding: 25px 0;
     box-shadow: 1px 1px 9px #00000067;
 }
 
+/* Barra de navegação */
 nav {
     max-width: 1300px;
     margin: auto;
@@ -37,6 +79,11 @@ header > nav > ul {
     list-style-type: none;
 }
 
+nav > ul > li > a {
+    padding: 1px 5px;
+    color: #ffffff;
+}
+
 nav > ul > li > a#home {
     width: 150px;
     display: flex;
@@ -44,22 +91,16 @@ nav > ul > li > a#home {
     justify-content: space-between;
 }
 
-nav > ul > li > a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1px 5px;
-    color: #ffffff;
+nav > ul > li > a > h1 > span {
+    font-size: 30px;
 }
 
-nav > ul > li > a > span {
-    font-size: 30px;
-    font-weight: bolder;
+nav > ul > li > a > h1 > span:nth-child(1) {
+    color: var(--ciano);
+}
 
-    /* Configuração para deixar texto gradiente */
-    background-image: linear-gradient(to right, var(--azul) 28%, var(--amarelo) 40%, var(--roxo) 90%);
-    background-clip: text;
-    color: transparent;
+nav > ul > li > a > h1 > span:nth-child(2) {
+    color: var(--amarelo);
 }
 
 a#link-nav-instale {
@@ -82,30 +123,90 @@ a#link-nav-git {
     background-color: var(--azul);
 }
 
+/* Conteúdo principal */
 main {
     max-width: 1300px;
-    margin: 100px 20px 10px 20px;
+    margin: 0 20px;
 }
 
+/* Títulos principais */
+h1#titulo-principal, h2 {
+    text-align: center;
+    font-size: 50px;
+
+    margin-bottom: 35px;
+
+    /* Configuração para deixar texto gradiente */
+    background-image: linear-gradient(to right, var(--ciano), var(--roxo));
+    background-clip: text;
+    color: transparent;
+}
+
+/* Todos os parágrafos dentro do conteúdo principal */
 main p {
     text-align: justify;
 }
 
+section.secoes {
+    margin: auto;
+}
+
+/* Conteúdos da seção de descrição do site */
 section#descricao-hv {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    min-height: 90vh;
+
+    /* margin-bottom: 150px; */
 }
 
 section#descricao-hv > * {
-    width: 400px;
+    max-width: 400px;
 }
 
 section#descricao-hv > article > button {
-    margin: 0 auto;
+    border-radius: 15px;
+    border-width: 0;
+    padding: 2px 20px;
+    background: linear-gradient(90deg, #0D77CC 5.85%, #00A8AC 73%, #0F6ED2 149.38%);
+
+    margin: 40px auto 0 auto;
 }
 
-h1 {
-    text-align: center;
-    font-size: 50px;
+section#descricao-hv > article > button > a {
+    font-weight: 700;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+section#instale {
+    max-width: 60vw;
+}
+
+section#instale > article > h3 {
+    display: inline-block;
+    color: var(--amarelo);
+    font-size: 30px;
+}
+
+section#instale > article > dl > dt > span {
+    font-family: "Archivo Black";
+    display: inline-block;
+    color: #ffffff;
+    background-color: var(--ciano);
+    width: 18px;
+    height: 18px;
+    /* padding: 7px; */
+    border-radius: 50%;
+}
+
+section#instale > article > dl > dd > code {
+    display: block;
+    background-color: #FFC958;
+    border-radius: 5px;
+    padding: 7px 10px;
+
+    color: var(--roxo);
 }

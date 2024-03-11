@@ -15,111 +15,128 @@
                 <li>
                     <a id="home" href="index.html">
                         <img id="logo-gaveta" src="img/gaveta-logo-pq.png" alt="ícone de gaveta">
-                        <span>HVC</span>
+                        <h1 class="titulo">
+                            <span>HV</span><span>C</span>
+                        </h1>
                     </a>
                 </li>
-                <li><a id="link-nav-instale" href="#instale" target="_self">Instale</a></li>
-                <li><a id="link-nav-aprenda" href="#aprenda" target="_self">Aprenda</a></li>
-                <li><a id="link-nav-playground" href="#playground" target="_self">Playground</a></li>
-                <li><a id="link-nav-doc" href="#documentacao" target="_blank">Documentação</a></li>
-                <li><a id="link-nav-git" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
+                <li><a id="link-nav-instale" class="texto" href="#instale" target="_self">Instale</a></li>
+                <li><a id="link-nav-aprenda" class="texto" href="#aprenda" target="_self">Aprenda</a></li>
+                <li><a id="link-nav-playground" class="texto" href="#playground" target="_self">Playground</a></li>
+                <li><a id="link-nav-doc" class="texto" href="#documentacao" target="_blank">Documentação</a></li>
+                <li><a id="link-nav-git" class="texto" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="descricao-hv">
+        <section id="descricao-hv" class="secoes">
             <article>
-                <h1>HV Compiler</h1>
-                <p>
+                <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
+                <p class="texto">
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
                     HV Script e Assembly HV, voltadas para um computador hipotético.
                 </p>
-                <p>
+                <p class="texto">
                     Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
                 <button>
-                    <a href="#main" target="_top">COMECE AQUI</a>
+                    <a class="texto" href="#instale" target="_top">COMECE AQUI</a>
                 </button>
             </article>
             <figure>
                 <img src="img/mlk-do-grau.png" alt="menino que programa">
             </figure>
         </section>
-        <section id="instale">
-            <h2>INSTALE</h2>
+        <section id="instale" class="secoes">
+            <h2 class="titulo">INSTALE</h2>
             <article>
-                <img src="img/windows.png" alt="">
-                <h3>Windows</h3>
+                <img class="icones-so" src="img/windows.png" alt="">
+                <h3 class="subtitulo">Windows</h3>
                 <dl>
-                    <dt>Baixar instalador do compilador</dt>
-                    <dd>Faça download e execute o arquivo <mark>hvc.exe</mark></dd>
-                    <dt>Teste o compilador no terminal</dt>
-                    <dd>
+                    <dt class="subtitulo">
+                        <span>1</span>
+                        Baixar instalador do compilador
+                    </dt>
+                    <dd class="texto">
+                        Faça download e execute o arquivo 
+                        <mark>
+                            <a href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe">
+                                hvc.exe
+                            </a>
+                        </mark>
+                    </dd>
+                    <dt class="subtitulo">
+                        <span>2</span>
+                        Teste o compilador no terminal
+                    </dt>
+                    <dd class="texto">
                         Faça um teste para conferir se o HVC foi instalado corretamente
-                        <code>hvc --help</code>
+                        <code class="codigo">
+                            hvc --help
+                        </code>
                     </dd>
                 </dl>
             </article>
             <article>
-                <img src="img/linux.png" alt="">
-                <h3>Linux e Mac</h3>
+                <img class="icones-so" src="img/linux.png" alt="">
+                <h3 class="subtitulo">Linux e Mac</h3>
                 <dl>
-                    <dt>Instale ferramentas de compilação</dt>
-                    <dd>
+                    <dt class="subtitulo">Instale ferramentas de compilação</dt>
+                    <dd class="texto">
                         Para realizar a compilação do projeto é necessário ter instalado um compilador
                         de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
                         compilação.
                     </dd>
-                    <dt>Clone o repositório</dt>
-                    <dd>
+                    <dt class="subtitulo">Clone o repositório</dt>
+                    <dd class="texto">
                         Com o terminal aberto, execute o seguinte comando:
-                        <code>
+                        <code class="codigo">
                             git clone https://github.com/Wilker-Sebastian/HV-Compiler.git
                         </code>
                     </dd>
-                    <dt>Acesse o diretório do projeto</dt>
-                    <dd>
+                    <dt class="subtitulo">Acesse o diretório do projeto</dt>
+                    <dd class="texto">
                         Mude para pasta gerada
-                        <code>
+                        <code class="codigo">
                             cd ./HV-Compiler
                         </code>
                     </dd>
-                    <dt>Compile o código</dt>
-                    <dd>
+                    <dt class="subtitulo">Compile o código</dt>
+                    <dd class="texto">
                         Execute o comando <mark>make</mark> para compilar o código usando clang++
-                        <code>
+                        <code class="codigo">
                             make
                         </code>
                     </dd>
-                    <dt>Adicione o HVC ao PATH do seu sistema</dt>
-                    <dd>
+                    <dt class="subtitulo">Adicione o HVC ao PATH do seu sistema</dt>
+                    <dd class="texto">
                         Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
                         que você execute o compilador de qualquer diretório do seu sistema
-                        <code>
+                        <code class="codigo">
                             echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc
                         </code>
                     </dd>
-                    <dt>Teste o compilador no terminal</dt>
-                    <dd>
+                    <dt class="subtitulo">Teste o compilador no terminal</dt>
+                    <dd class="texto">
                         Faça um teste para conferir se o HVC foi instalado corretamente
-                        <code>hvc --help</code>
+                        <code class="codigo">hvc --help</code>
                     </dd>
                 </dl>
             </article>
         </section>
-        <section id="aprenda">
-            <h2>Aprenda</h2>
+        <section id="aprenda" class="secoes">
+            <h2 class="titulo">Aprenda</h2>
             <article>
                 <img src="img/compiuter.png" alt="">
-                <h3>O que é HV?</h3>
-                <p>
+                <h3 class="subtitulo">O que é HV?</h3>
+                <p class="texto">
                     Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
                     ensino
                     de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
                     conta com instruções simples
                     mas engenhosas, capazes de construir algoritmos complexos e refinados.
                 </p>
-                <p>
+                <p class="texto">
                     Em sua construção, um computador HV possui:
                 </p>
                 <ul>
@@ -130,24 +147,24 @@
                     <li>Folha de saída</li>
                     <li>Operador de sistema (CHICO)</li>
                 </ul>
-                <p>
+                <p class="texto">
                     A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
                     programação, e ainda adquirir noções
                     intuitivas de arquitetura de computadores.
                 </p>
-                <p>
+                <p class="texto">
                     O material completo acerca está disponível no link <a href="files/computadro_hv1_hv2_.pdf"
                         target="_blank">AQUI</a>
                 </p>
             </article>
             <article>
-                <h3>Assembly HV</h3>
-                <p>
+                <h3 class="subtitulo">Assembly HV</h3>
+                <p class="texto">
                     Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
                     entendimento na introdução ao
                     universo de resolução de problemas e criação de algoritmos.
                 </p>
-                <p>
+                <p class="texto">
                     Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
                     gaveta.
                 </p>
@@ -252,14 +269,14 @@
                 </table>
             </article>
             <article>
-                <h3>Como usar o compilador</h3>
-                <p>
+                <h3 class="subtitulo">Como usar o compilador</h3>
+                <p class="texto">
                     Crie um arquivo de extensão .ahv, nele ficará seu código.
                     <br>
                     Este exemplo abaixo demonstra um código calcula a soma de dois números.
                 </p>
-                <code>
-                    <pre>
+                <code class="codigo">
+                    <p class="texto"re>
                         750
                         751
                         050
@@ -271,20 +288,20 @@
                 </code>
             </article>
             <article id="playground">
-                <h3>Playground</h3>
-                <p>
+                <h3 class="subtitulo">Playground</h3>
+                <p class="texto">
                     Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
                     funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
                     HV,
                     permitindo sua testagem em tempo real.
                 </p>
-                <p>
+                <p class="texto">
                     Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
                     a compreensão
                     do desenvolvedor
                 </p>
                 <img src="img/mlk-boiadeiro.png" alt="menino montando">
-                <a href="" title="Só se souber brincar">
+                <a class="texto" href="" title="Só se souber brincar">
                     <button>descer para o play</button>
                 </a>
             </article>
