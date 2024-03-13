@@ -27,7 +27,8 @@
     --amarelo: #FFB61C;
     --ciano: #00A8AC;
     --azul: #2129FF;
-    --roxo: #8D49FF;
+    --roxo: #5427A0;
+    ;
 }
 /* -------------------------------------------------------------------- */
 
@@ -168,17 +169,24 @@ main section {
     margin: auto;
 }
 
+/* Todas as marcações dentro da main */
+main mark {
+    background-color: #FFB61C;
+}
+
 /* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: space-between;
 
     min-height: 90vh;
-    max-width: 1000px;
+    max-width: 1400px;
 }
 
 section#descricao-hv > * {
+    margin: auto;
     max-width: 450px;
 }
 
@@ -212,21 +220,21 @@ section#instale {
 section#instale > article > h3 {
     display: flex;
     justify-content: space-between;
-    width: 200px;
+    width: 220px;
     align-items: center;
     color: var(--amarelo);
-    font-size: 35px;
+    font-size: 40px;
 }
 
 section#instale > article > ol {
-    margin: 40px 0 130px 20px;
+    margin: 40px 0 130px 30px;
 }
 
 section#instale > article > ol > li {
     position: relative;
     list-style-position: inside;
 
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 section#instale > article > ol > li::marker {
@@ -242,7 +250,7 @@ section#instale > article > ol > li::before {
     position: absolute;
     display: inline-block;
     z-index: -1;
-    top: 3px;
+    top: 5px;
     left: -7px;
 
     /* configurando formato e fundo */
@@ -253,23 +261,61 @@ section#instale > article > ol > li::before {
 }
 
 section#instale > article > ol > li > span {
-    font-size: 20px;
     color: var(--ciano);
+    font-size: 22px;
 
     margin-left: 20px;
 }
 
 section#instale > article > ol > li > p {
     font-weight: 400;
+    font-size: 20px;
     margin-left: 35px;
+}
+
+section#instale > article > ol > li > p > mark > a {
+    text-decoration: underline #000000 1.5px;
 }
 
 section#instale > article > ol > li > p > code {
     display: block;
     background-color: #FFC958;
     border-radius: 5px;
-    padding: 7px 10px;
+    padding: 7px 20px;
+    text-align: left;
+    margin: 15px 0;
+
+    overflow-x: auto;
 
     color: var(--roxo);
 }
 /* -------------------------------------------------------------------- */
+
+/* Conteúdos da seção aprenda  */
+section#aprenda {
+    max-width: 75vw;
+}
+
+section#aprenda > article > h3 {
+    text-transform: uppercase;
+    font-size: 35px;
+
+    font-family: 'Archivo Black';
+}
+
+section#aprenda > article#hv > h3 {
+    color: var(--roxo);
+}
+
+section#aprenda > article > p {
+
+}
+
+section#aprenda > article#hv > img {
+    float: left;
+    margin: 0 40px 20px 0;
+}
+
+section#aprenda > article#hv > ul {
+    list-style-position: inside;
+}
