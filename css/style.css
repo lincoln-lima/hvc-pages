@@ -24,15 +24,34 @@
 
 /* Estabelecendo variáveis de cor */
 :root {
-    --amarelo: #FFB61C;
-    --ciano: #00A8AC;
+    --cor1: #5427A0;
+    --cor2: #00A8AC;
+    --cor3: #FFB61C;
     --azul: #2129FF;
-    --roxo: #5427A0;
-    ;
 }
+
+@property --cor1-botao {
+    syntax: '<color>';
+    initial-value: #0D77CC;
+    inherits: false;
+}
+
+@property --cor2-botao {
+    syntax: '<color>';
+    initial-value: #00A8AC;
+    inherits: false;
+}
+
+@property --cor3-botao {
+    syntax: '<color>';
+    initial-value: #0F6ED2;
+    inherits: false;
+}
+
 /* -------------------------------------------------------------------- */
 
 /* ----------- Resetando propriedades padrões do navegador ------------ */
+
 * {
     padding: 0;
     margin: 0;
@@ -58,37 +77,79 @@ html {
 
 .texto {
     font-family: "Nunito";
+    font-size: 20px;
 }
 
 .codigo {
-    font-family: "IBM Plex Mono";
+    font-family: "IBM Plex Mono";   
+    display: block;
+    background-color: #FFC958;
+    border-radius: 5px;
+    padding: 7px 20px;
+    text-align: left;
+    margin: 15px 0;
+
+    color: var(--cor1);
 }
 
-/* Cabeçalho */
+.botao {
+    border-radius: 15px;
+    border-width: 0;
+    padding: 3px 20px;
+    background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
+    border: 0.01rem solid transparent;
+
+    /* Configurações de centralizam e espaçamento */
+    display: block;
+    margin: auto;
+
+    transition: --cor1-botao 0.5s, --cor2-botao 0.5s, --cor3-botao 0.5s;
+}
+
+.botao:hover {
+    --cor1-botao: #8D49FF;
+    --cor2-botao: #00A8AC;
+    --cor3-botao: #8C4AFF;
+    
+    border: 0.01rem solid black;
+}
+
+.link-botao {
+    font-weight: 700;
+    font-size: 22px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.link-marcado {
+    text-decoration: underline #000000 0.01rem;
+}
+
+.link-marcado:hover {
+    text-decoration: underline #000000 0.1rem;
+}
+
+.flex-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* -------------------------------------------------------------------- */
+
+/* cabeçalho */
 header {
     padding: 25px 20px;
     box-shadow: 1px 1px 9px #00000067;
 }
 
-/* Barra de navegação */
+/* barra de navegação */
 nav {
-    max-width: 1300px;
+    max-width: 80vw;
     margin: auto;
 }
 
-nav > ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    list-style-type: none;
-}
-
-nav > ul > li:first-child {
-    min-width: 300px;
-}
-
-nav > ul > li > a {
+/* todos os links da barra de navegação */
+nav a {
     padding: 1px 5px;
     color: #ffffff;
     border-radius: 3px;
@@ -96,48 +157,52 @@ nav > ul > li > a {
     font-size: 18px;
 }
 
-nav > ul > li > a:hover {
+nav > ul {
+    width: 500px;
+    list-style-type: none;
+}
+
+/* links da lista */
+nav > ul a:hover {
     text-decoration: underline #ffffff 2px;
 }
 
-nav > ul > li > a#home {
+nav > a#home {
     width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
-nav > ul > li > a > h1 > span {
+nav > a#home > h1 > span {
     font-size: 35px;
 }
 
-nav > ul > li > a > h1 > span:nth-child(1) {
-    color: var(--ciano);
+nav > a#home > h1 > span:nth-child(1) {
+    color: var(--cor3);
 }
 
-nav > ul > li > a > h1 > span:nth-child(2) {
-    color: var(--amarelo);
+nav > a#home > h1 > span:nth-child(2) {
+    color: var(--cor2);
 }
 
-a#link-nav-instale {
-    background-color: var(--roxo);
+/* a#link-nav-instale {
+    background-color: var(--cor1);
 }
 
 a#link-nav-aprenda {
-    background-color: var(--amarelo);
-}
+    background-color: var(--cor3);
+} */
 
 a#link-nav-playground {
-    background-color: var(--ciano);
+    background-color: var(--cor2);
 }
 
 a#link-nav-doc {
-    background-color: var(--azul);
+    background-color: var(--cor3);
 }
 
 a#link-nav-git {
-    background-color: var(--azul);
+    background-color: var(--cor1);
 }
+/* -------------------------------------------------------------------- */
 
 /* Conteúdo principal */
 main {
@@ -151,10 +216,8 @@ h1#titulo-principal, h2 {
     text-align: center;
     font-size: 60px;
 
-    margin-bottom: 35px;
-
     /* Configuração para deixar texto gradiente */
-    background-image: linear-gradient(to right, var(--ciano), var(--roxo));
+    background-image: linear-gradient(to right, var(--cor2), var(--cor1));
     background-clip: text;
     color: transparent;
 }
@@ -176,10 +239,7 @@ main mark {
 
 /* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
-    display: flex;
     flex-wrap: wrap-reverse;
-    align-items: center;
-    justify-content: space-between;
 
     min-height: 90vh;
     max-width: 1400px;
@@ -192,29 +252,14 @@ section#descricao-hv > * {
 
 section#descricao-hv > article > p {
     font-size: 22px;
-}
-
-section#descricao-hv > article > button {
-    border-radius: 15px;
-    border-width: 0;
-    padding: 3px 20px;
-    background: linear-gradient(90deg, #0D77CC 5.85%, #00A8AC 73%, #0F6ED2 149.38%);
-
-    /* Configurações de centralizam e espaçamento */
-    display: block;
-    margin: 40px auto 0 auto;
-}
-
-section#descricao-hv > article > button > a {
-    font-weight: 700;
-    font-size: 22px;
-    color: #ffffff;
+    margin: 60px 0;
 }
 /* -------------------------------------------------------------------- */
 
 /* Conteúdos da seção de instalação do compilador --------------------- */
 section#instale {
     max-width: 60vw;
+    min-width: 40vw;
 }
 
 section#instale > article > h3 {
@@ -222,7 +267,7 @@ section#instale > article > h3 {
     justify-content: space-between;
     width: 220px;
     align-items: center;
-    color: var(--amarelo);
+    color: var(--cor3);
     font-size: 40px;
 }
 
@@ -254,14 +299,14 @@ section#instale > article > ol > li::before {
     left: -7px;
 
     /* configurando formato e fundo */
-    background-color: var(--ciano);
+    background-color: var(--cor2);
     width: 25px;
     height: 25px;
     border-radius: 50%;
 }
 
 section#instale > article > ol > li > span {
-    color: var(--ciano);
+    color: var(--cor2);
     font-size: 22px;
 
     margin-left: 20px;
@@ -269,15 +314,10 @@ section#instale > article > ol > li > span {
 
 section#instale > article > ol > li > p {
     font-weight: 400;
-    font-size: 20px;
     margin-left: 35px;
 }
 
-section#instale > article > ol > li > p > mark > a {
-    text-decoration: underline #000000 1.5px;
-}
-
-section#instale > article > ol > li > p > code {
+/* section#instale > article > ol > li > p > code {
     display: block;
     background-color: #FFC958;
     border-radius: 5px;
@@ -285,9 +325,12 @@ section#instale > article > ol > li > p > code {
     text-align: left;
     margin: 15px 0;
 
-    overflow-x: auto;
+    color: var(--cor1);
+} */
 
-    color: var(--roxo);
+section#instale > article > ol > li > p > code > pre {
+    overflow-x: auto;
+    white-space: nowrap;
 }
 /* -------------------------------------------------------------------- */
 
@@ -296,26 +339,99 @@ section#aprenda {
     max-width: 75vw;
 }
 
+section#aprenda img {
+    max-width: 350px;
+}
+
+section#aprenda > article {
+    margin-bottom: 70px;
+}
+
 section#aprenda > article > h3 {
     text-transform: uppercase;
-    font-size: 35px;
+    font-size: 45px;
 
     font-family: 'Archivo Black';
+    margin-bottom: 15px;
 }
 
+/* configurando usando filhos impares e pares */
+/* section#aprenda > article > h3:nth-child(even) {
+    color: var(--cor1);
+}
+
+section#aprenda > article > h3:nth-child(odd) {
+    color: var(--cor2);
+} */
+
+/* artigo de contextualização do HV */
 section#aprenda > article#hv > h3 {
-    color: var(--roxo);
-}
-
-section#aprenda > article > p {
-
+    color: var(--cor1);
 }
 
 section#aprenda > article#hv > img {
     float: left;
-    margin: 0 40px 20px 0;
+    padding: 0 40px 40px 0;
 }
 
 section#aprenda > article#hv > ul {
     list-style-position: inside;
+}
+/* ------------------------------- */
+
+/* artigo de tabela de comandos */
+section#aprenda > article#assembly > h3 {
+    color: var(--cor2);
+}
+
+section#aprenda > article#assembly > table {
+    width: 100%;
+    border-spacing: 20px 10px;
+    overflow-x: auto;
+}
+
+section#aprenda > article#assembly > table th, td {
+    color: #ffffff;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+section#aprenda > article#assembly > table > thead > tr > th {
+    background-color: var(--cor1);
+    border-radius: 5px 5px 0 0;
+}
+
+section#aprenda > article#assembly > table > tbody > tr > td {
+    background-color: var(--cor2);
+    font-weight: 500;
+    border-radius: 5px 0 5px 0;
+}
+
+section#aprenda > article#assembly > table > tbody > tr > td {
+    text-align: center;
+}
+
+section#aprenda > article#assembly > table > tbody > tr > td.descricao {
+    text-align: left;
+    border-radius: 0;
+    max-width: 500px;
+}
+/* ------------------------------- */
+
+/* artigo de sintaxe da linguagem */
+section#aprenda > article#como > h3 {
+    color: var(--cor1);
+}
+
+/* artigo do playground */
+section#aprenda > article#playground > h3 {
+    color: var(--cor2);
+}
+
+section#aprenda > article#playground > div > div {
+    max-width: 50vw;
+}
+
+section#aprenda > article#playground > div > div > p {
+    margin-bottom: 60px;
 }

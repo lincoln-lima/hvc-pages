@@ -11,18 +11,17 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li id="item-nav-home">
-                    <a id="home" href="index.html">
-                        <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
-                        <h1 class="titulo">
-                            <span>HV</span><span>C</span>
-                        </h1>
-                    </a>
-                </li>
+        <nav class="flex-between-center">
+            <a id="home" class="flex-between-center" href="index.html">
+                <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
+                <h1 class="titulo">
+                    <span>HV</span><span>C</span>
+                </h1>
+            </a>
+            <ul class="flex-between-center">
+                <!-- 
                 <li><a id="link-nav-instale" class="texto" href="#instale" target="_self">Instale</a></li>
-                <li><a id="link-nav-aprenda" class="texto" href="#aprenda" target="_self">Aprenda</a></li>
+                <li><a id="link-nav-aprenda" class="texto" href="#aprenda" target="_self">Aprenda</a></li> -->
                 <li><a id="link-nav-playground" class="texto" href="#playground" target="_self">Playground</a></li>
                 <li><a id="link-nav-doc" class="texto" href="#documentacao" target="_blank">Documentação</a></li>
                 <li><a id="link-nav-git" class="texto" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
@@ -30,18 +29,17 @@
         </nav>
     </header>
     <main>
-        <section id="descricao-hv">
+        <section id="descricao-hv" class="flex-between-center">
             <article>
                 <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
                 <p class="texto">
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
                     HV Script e Assembly HV, voltadas para um computador hipotético.
-                </p>
-                <p class="texto">
+                    <br>
                     Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
-                <button>
-                    <a class="texto" href="#instale" target="_top">COMECE AQUI</a>
+                <button class="botao">
+                    <a class="texto link-botao" href="#instale" target="_top">COMECE AQUI</a>
                 </button>
             </article>
             <figure>
@@ -51,7 +49,7 @@
         <section id="instale">
             <h2 class="titulo">Instale</h2>
             <article>
-                <h3 class="subtitulo">
+                <h3 class="subtitulo flex-between-center">
                     <img class="icones-so" src="img/windows.png" alt="">
                     Windows
                 </h3>
@@ -61,7 +59,7 @@
                         <p class="texto">
                             Faça download e execute o arquivo 
                             <mark>
-                                <a href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe">
+                                <a class="link-marcado" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável">
                                     hvc.exe
                                 </a>
                             </mark>
@@ -79,7 +77,7 @@
                 </ol>
             </article>
             <article>
-                <h3 class="subtitulo">
+                <h3 class="subtitulo flex-between-center">
                     <img class="icones-so" src="img/linux.png" alt="">
                     Linux e Mac
                 </h3>
@@ -151,10 +149,11 @@
                     conta com instruções simples
                     mas engenhosas, capazes de construir algoritmos complexos e refinados.
                 </p>
+                <br>
                 <p class="texto">
                     Em sua construção, um computador HV possui:
                 </p>
-                <ul>
+                <ul class="texto">
                     <li>100 gavetas</li>
                     <li>Calculadora, mostrador e teclado</li>
                     <li>Quadro Negro (EPI)</li>
@@ -162,28 +161,33 @@
                     <li>Folha de saída</li>
                     <li>Operador de sistema (CHICO)</li>
                 </ul>
+                <br>
                 <p class="texto">
                     A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
                     programação, e ainda adquirir noções
                     intuitivas de arquitetura de computadores.
                 </p>
+                <br>
                 <p class="texto">
-                    O material completo acerca está disponível no link <a href="files/computadro_hv1_hv2_.pdf"
-                        target="_blank">AQUI</a>
+                    O material completo acerca está disponível no link 
+                    <mark><a class="link-marcado" href="files/computadro_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>
+                    .
                 </p>
             </article>
-            <article>
+            <article id="assembly">
                 <h3>Assembly HV</h3>
                 <p class="texto">
                     Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
                     entendimento na introdução ao
                     universo de resolução de problemas e criação de algoritmos.
                 </p>
+                <br>
                 <p class="texto">
                     Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
                     gaveta.
                 </p>
-                <table>
+                <br>
+                <table class="texto">
                     <thead>
                         <tr>
                             <th scope="col">Comando</th>
@@ -194,14 +198,14 @@
                     <tbody>
                         <tr>
                             <td>0EE</td>
-                            <td>Copie valor da gaveta EE (cEE) para AC</td>
+                            <td class="descricao">Copie valor da gaveta EE (cEE) para AC</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cEE</td>
                         </tr>
                         <tr>
                             <td>1EE</td>
-                            <td>Some cEE ao AC</td>
+                            <td class="descricao">Some cEE ao AC</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cAC</td>
@@ -209,7 +213,7 @@
                         </tr>
                         <tr>
                             <td>2EE</td>
-                            <td>some cEE ao AC</td>
+                            <td class="descricao">some cEE ao AC</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cAC</td>
@@ -218,7 +222,7 @@
                         </tr>
                         <tr>
                             <td>3EE</td>
-                            <td>subtraia de AC o cEE</td>
+                            <td class="descricao">subtraia de AC o cEE</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cAC</td>
@@ -227,7 +231,7 @@
                         </tr>
                         <tr>
                             <td>4EE</td>
-                            <td>multiplique o cAC por cEE</td>
+                            <td class="descricao">multiplique o cAC por cEE</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cAC</td>
@@ -236,7 +240,7 @@
                         </tr>
                         <tr>
                             <td>5EE</td>
-                            <td>divida o cAC por cEE</td>
+                            <td class="descricao">divida o cAC por cEE</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>cAC</td>
@@ -245,7 +249,7 @@
                         </tr>
                         <tr>
                             <td>6EE</td>
-                            <td>se cAC > 0, vá para EE</td>
+                            <td class="descricao">se cAC > 0, vá para EE</td>
                             <td>se cAC>0, então</td>
                             <td>EPI</td>
                             <td>&#2190;</td>
@@ -253,72 +257,73 @@
                         </tr>
                         <tr>
                             <td>7EE</td>
-                            <td>leia um valor e guarda na gaveta EE</td>
+                            <td class="descricao">leia um valor e guarda na gaveta EE</td>
                             <td>leia(EE)</td>
                         </tr>
                         <tr>
                             <td>8EE</td>
-                            <td>escreva cEE no dispositivo de saída</td>
+                            <td class="descricao">escreva cEE no dispositivo de saída</td>
                             <td>escreva(cEE)</td>
                         </tr>
                         <tr>
                             <td>9EE</td>
-                            <td>vá para cEE</td>
+                            <td class="descricao">vá para cEE</td>
                             <td>EPI</td>
                             <td>&#2190;</td>
                             <td>cEE</td>
                         </tr>
                         <tr>
                             <td>0-N</td>
-                            <td>AC recebe uma constante (truque)</td>
+                            <td class="descricao">AC recebe uma constante (truque)</td>
                             <td>AC</td>
                             <td>&#2190;</td>
                             <td>N</td>
                         </tr>
                         <tr>
                             <td>000</td>
-                            <td>encerra execução</td>
+                            <td class="descricao">encerra execução</td>
                             <td>fim</td>
                         </tr>
                     </tbody>
                 </table>
             </article>
-            <article>
+            <article id="como">
                 <h3>Como usar o compilador</h3>
-                <p class="texto">
-                    Crie um arquivo de extensão .ahv, nele ficará seu código.
-                    <br>
-                    Este exemplo abaixo demonstra um código calcula a soma de dois números.
-                </p>
+                <p class="texto">Crie um arquivo de extensão .ahv, nele ficará seu código.</p>
+                <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
+                <br>
                 <code class="codigo">
-                    <p class="texto"re>
-                        750
-                        751
-                        050
-                        251
-                        160
-                        860
-                        000
-                    </pre>
+                    750<br>
+                    751<br>
+                    050<br>
+                    251<br>
+                    160<br>
+                    860<br>
+                    000
                 </code>
             </article>
             <article id="playground">
                 <h3>Playground</h3>
-                <p class="texto">
-                    Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
-                    funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
-                    HV,
-                    permitindo sua testagem em tempo real.
-                </p>
-                <p class="texto">
-                    Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
-                    a compreensão
-                    do desenvolvedor
-                </p>
-                <img src="img/mlk-boiadeiro.png" alt="menino montando">
-                <a class="texto" href="" title="Só se souber brincar">
-                    <button>descer para o play</button>
-                </a>
+                <div class="flex-between-center">
+                    <div>
+                        <p class="texto">
+                            Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
+                            funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
+                            HV,
+                            permitindo sua testagem em tempo real.
+                            <br>
+                            Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
+                            a compreensão
+                            do desenvolvedor
+                        </p>
+                        <button class="botao">
+                            <a class="texto link-botao" href="" title="Só se souber brincar">
+                                descer para o play
+                            </a>
+                        </button>
+                    </div>
+                    <img src="img/brinks.png" alt="menino montando">
+                </div>
             </article>
         </section>
     </main>
