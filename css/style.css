@@ -129,10 +129,15 @@ html {
     text-decoration: underline #000000 0.1rem;
 }
 
+/* configurações de css amplas */
 .flex-between-center {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.centralizar {
+    margin: auto;
 }
 /* -------------------------------------------------------------------- */
 
@@ -220,6 +225,10 @@ h1#titulo-principal, h2 {
     background-image: linear-gradient(to right, var(--cor2), var(--cor1));
     background-clip: text;
     color: transparent;
+}
+
+h2 {
+    margin-bottom: 100px;
 }
 
 /* Todos os parágrafos dentro do conteúdo principal */
@@ -347,7 +356,7 @@ section#aprenda > article {
     margin-bottom: 70px;
 }
 
-section#aprenda > article > h3 {
+section#aprenda > article h3 {
     text-transform: uppercase;
     font-size: 45px;
 
@@ -365,16 +374,19 @@ section#aprenda > article > h3:nth-child(odd) {
 } */
 
 /* artigo de contextualização do HV */
-section#aprenda > article#hv > h3 {
+section#aprenda > article#hv h3 {
     color: var(--cor1);
 }
 
-section#aprenda > article#hv > img {
-    float: left;
-    padding: 0 40px 40px 0;
+section#aprenda > article#hv > div {
+    flex-wrap: wrap;
 }
 
-section#aprenda > article#hv > ul {
+section#aprenda > article#hv > div > div {
+    max-width: 50vw;
+}
+
+section#aprenda > article#hv ul {
     list-style-position: inside;
 }
 /* ------------------------------- */
@@ -384,37 +396,47 @@ section#aprenda > article#assembly > h3 {
     color: var(--cor2);
 }
 
-section#aprenda > article#assembly > table {
-    width: 100%;
-    border-spacing: 20px 10px;
+section#aprenda > article#assembly > div#tabela-scroll {
     overflow-x: auto;
 }
 
-section#aprenda > article#assembly > table th, td {
+section#aprenda > article#assembly > div#tabela-scroll > table {
+    width: 100%;
+    border-spacing: 10px 10px;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table th, td {
     color: #ffffff;
     padding: 3px 10px;
     white-space: nowrap;
 }
 
-section#aprenda > article#assembly > table > thead > tr > th {
+section#aprenda > article#assembly > div#tabela-scroll > table > thead > tr > th {
     background-color: var(--cor1);
     border-radius: 5px 5px 0 0;
 }
 
-section#aprenda > article#assembly > table > tbody > tr > td {
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
     background-color: var(--cor2);
     font-weight: 500;
     border-radius: 5px 0 5px 0;
 }
 
-section#aprenda > article#assembly > table > tbody > tr > td {
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
     text-align: center;
 }
 
-section#aprenda > article#assembly > table > tbody > tr > td.descricao {
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.descricao {
     text-align: left;
     border-radius: 0;
     max-width: 500px;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.icone {
+    background-color: transparent;
+    padding: 0;
+    color: var(--cor1);
+    width: 10px;
 }
 /* ------------------------------- */
 

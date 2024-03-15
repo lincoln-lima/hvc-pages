@@ -140,27 +140,31 @@
         <section id="aprenda">
             <h2 class="titulo">Aprenda</h2>
             <article id="hv">
-                <img src="img/compiuter.png" alt="computador">
-                <h3>O que é HV?</h3>
-                <p class="texto">
-                    Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
-                    ensino
-                    de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
-                    conta com instruções simples
-                    mas engenhosas, capazes de construir algoritmos complexos e refinados.
-                </p>
-                <br>
-                <p class="texto">
-                    Em sua construção, um computador HV possui:
-                </p>
-                <ul class="texto">
-                    <li>100 gavetas</li>
-                    <li>Calculadora, mostrador e teclado</li>
-                    <li>Quadro Negro (EPI)</li>
-                    <li>Porta-cartões</li>
-                    <li>Folha de saída</li>
-                    <li>Operador de sistema (CHICO)</li>
-                </ul>
+                <div class="flex-between-center">
+                    <img class="centralizar" src="img/compiuter.png" alt="computador">
+                    <div class="centralizar">
+                        <h3>O que é HV?</h3>
+                        <p class="texto">
+                            Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
+                            ensino
+                            de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
+                            conta com instruções simples
+                            mas engenhosas, capazes de construir algoritmos complexos e refinados.
+                        </p>
+                        <br>
+                        <p class="texto">
+                            Em sua construção, um computador HV possui:
+                        </p>
+                        <ul class="texto">
+                            <li>100 gavetas</li>
+                            <li>Calculadora, mostrador e teclado</li>
+                            <li>Quadro Negro (EPI)</li>
+                            <li>Porta-cartões</li>
+                            <li>Folha de saída</li>
+                            <li>Operador de sistema (CHICO)</li>
+                        </ul>
+                    </div>
+                </div>
                 <br>
                 <p class="texto">
                     A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
@@ -187,105 +191,105 @@
                     gaveta.
                 </p>
                 <br>
-                <table class="texto">
-                    <thead>
-                        <tr>
-                            <th scope="col">Comando</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="colgroup" colspan="5">Assembler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0EE</td>
-                            <td class="descricao">Copie valor da gaveta EE (cEE) para AC</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>1EE</td>
-                            <td class="descricao">Some cEE ao AC</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cAC</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>2EE</td>
-                            <td class="descricao">some cEE ao AC</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cAC</td>
-                            <td>+</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>3EE</td>
-                            <td class="descricao">subtraia de AC o cEE</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cAC</td>
-                            <td>-</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>4EE</td>
-                            <td class="descricao">multiplique o cAC por cEE</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cAC</td>
-                            <td>*</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>5EE</td>
-                            <td class="descricao">divida o cAC por cEE</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>cAC</td>
-                            <td>/</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>6EE</td>
-                            <td class="descricao">se cAC > 0, vá para EE</td>
-                            <td>se cAC>0, então</td>
-                            <td>EPI</td>
-                            <td>&#2190;</td>
-                            <td>EE</td>
-                        </tr>
-                        <tr>
-                            <td>7EE</td>
-                            <td class="descricao">leia um valor e guarda na gaveta EE</td>
-                            <td>leia(EE)</td>
-                        </tr>
-                        <tr>
-                            <td>8EE</td>
-                            <td class="descricao">escreva cEE no dispositivo de saída</td>
-                            <td>escreva(cEE)</td>
-                        </tr>
-                        <tr>
-                            <td>9EE</td>
-                            <td class="descricao">vá para cEE</td>
-                            <td>EPI</td>
-                            <td>&#2190;</td>
-                            <td>cEE</td>
-                        </tr>
-                        <tr>
-                            <td>0-N</td>
-                            <td class="descricao">AC recebe uma constante (truque)</td>
-                            <td>AC</td>
-                            <td>&#2190;</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>000</td>
-                            <td class="descricao">encerra execução</td>
-                            <td>fim</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="tabela-scroll">
+                    <table class="texto centralizar">
+                        <thead>
+                            <tr>
+                                <th scope="col">Comando</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="colgroup" colspan="5">Assembler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0EE</td>
+                                <td class="descricao">copie valor da gaveta EE (cEE) para AC</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>1EE</td>
+                                <td class="descricao">copie valor do AC (cAC) para gaveta EE</td>
+                                <td>EE</td>
+                                <td>cAC</td>
+                            </tr>
+                            <tr>
+                                <td>2EE</td>
+                                <td class="descricao">some cEE ao AC</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cAC</td>
+                                <td>+</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>3EE</td>
+                                <td class="descricao">subtraia de AC o cEE</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cAC</td>
+                                <td>-</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>4EE</td>
+                                <td class="descricao">multiplique o cAC por cEE</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cAC</td>
+                                <td>*</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>5EE</td>
+                                <td class="descricao">divida o cAC por cEE</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cAC</td>
+                                <td>/</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>6EE</td>
+                                <td class="descricao">se cAC > 0, vá para EE</td>
+                                <td>se cAC>0, então</td>
+                                <td>EPI</td>
+                                <td class="icone">&#8592;</td>
+                                <td>EE</td>
+                            </tr>
+                            <tr>
+                                <td>7EE</td>
+                                <td class="descricao">leia um valor e guarda na gaveta EE</td>
+                                <td>leia(EE)</td>
+                            </tr>
+                            <tr>
+                                <td>8EE</td>
+                                <td class="descricao">escreva cEE no dispositivo de saída</td>
+                                <td>escreva(cEE)</td>
+                            </tr>
+                            <tr>
+                                <td>9EE</td>
+                                <td class="descricao">vá para cEE</td>
+                                <td>EPI</td>
+                                <td class="icone">&#8592;</td>
+                                <td>cEE</td>
+                            </tr>
+                            <tr>
+                                <td>0-N</td>
+                                <td class="descricao">AC recebe uma constante (truque)</td>
+                                <td>AC</td>
+                                <td class="icone">&#8592;</td>
+                                <td>N</td>
+                            </tr>
+                            <tr>
+                                <td>000</td>
+                                <td class="descricao">encerra execução</td>
+                                <td>fim</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </article>
             <article id="como">
                 <h3>Como usar o compilador</h3>
