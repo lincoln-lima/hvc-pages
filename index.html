@@ -23,8 +23,8 @@
                 <li><a id="link-nav-instale" class="texto" href="#instale" target="_self">Instale</a></li>
                 <li><a id="link-nav-aprenda" class="texto" href="#aprenda" target="_self">Aprenda</a></li> -->
                 <li><a id="link-nav-playground" class="texto" href="#playground" target="_self">Playground</a></li>
-                <li><a id="link-nav-doc" class="texto" href="#documentacao" target="_blank">Documentação</a></li>
-                <li><a id="link-nav-git" class="texto" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
+                <li><a id="link-nav-doc" class="texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
+                <li><a id="link-nav-git" class="texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
@@ -38,9 +38,9 @@
                     <br>
                     Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
-                <button class="botao">
-                    <a class="texto link-botao" href="#instale" target="_top">COMECE AQUI</a>
-                </button>
+                <a href="#instale" target="_top">
+                    <button class="texto botao">COMECE AQUI</button>
+                </a>
             </article>
             <figure>
                 <img src="img/mlk-do-grau.png" alt="menino que programa">
@@ -69,10 +69,8 @@
                         <span>Teste o compilador no terminal</span>
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
-                            <code class="codigo">
-                                hvc --help
-                            </code>
                         </p>
+                        <pre class="scroll"><code class="codigo">hvc --help</code></pre>
                     </li>
                 </ol>
             </article>
@@ -94,45 +92,37 @@
                         <span>Clone o repositório</span>
                         <p class="texto">
                             Com o terminal aberto, execute o seguinte comando:
-                            <code class="codigo">
-                                git clone https://github.com/Wilker-Sebastian/HV-Compiler.git
-                            </code>
                         </p>
+                        <pre class="scroll comando"><code class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Acesse o diretório do projeto</span>
                         <p class="texto">
                             Mude para pasta gerada
-                            <code class="codigo">
-                                cd ./HV-Compiler
-                            </code>
                         </p>
+                        <pre class="scroll"><code class="codigo">cd ./HV-Compiler</code></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Compile o código</span>
                         <p class="texto">
                             Execute o comando <mark>make</mark> para compilar o código usando clang++
-                            <code class="codigo">
-                                make
-                            </code>
                         </p>
+                        <pre class="scroll"><code class="codigo">make</code></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Adicione o HVC ao PATH do seu sistema</span>
                         <p class="texto">
                             Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
-                            <code class="codigo">
-                                echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc
-                            </code>
                         </p>
+                        <pre class="scroll"><code class="codigo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Teste o compilador no terminal</span>
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
-                            <code class="codigo">hvc --help</code>
                         </p>
+                        <pre class="scroll"><code class="codigo">hvc --help</code></pre>
                     </li>
                 </ol>
             </article>
@@ -191,7 +181,7 @@
                     gaveta.
                 </p>
                 <br>
-                <div id="tabela-scroll">
+                <div id="tabela-scroll" class="scroll">
                     <table class="texto centralizar">
                         <thead>
                             <tr>
@@ -205,57 +195,59 @@
                                 <td>0EE</td>
                                 <td class="descricao">copie valor da gaveta EE (cEE) para AC</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>1EE</td>
                                 <td class="descricao">copie valor do AC (cAC) para gaveta EE</td>
                                 <td>EE</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cAC</td>
                             </tr>
                             <tr>
                                 <td>2EE</td>
                                 <td class="descricao">some cEE ao AC</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cAC</td>
-                                <td>+</td>
+                                <td class="operacao">+</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>3EE</td>
                                 <td class="descricao">subtraia de AC o cEE</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cAC</td>
-                                <td>-</td>
+                                <td class="operacao">-</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>4EE</td>
                                 <td class="descricao">multiplique o cAC por cEE</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cAC</td>
-                                <td>*</td>
+                                <td class="operacao">*</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>5EE</td>
                                 <td class="descricao">divida o cAC por cEE</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cAC</td>
-                                <td>/</td>
+                                <td class="operacao">/</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>6EE</td>
                                 <td class="descricao">se cAC > 0, vá para EE</td>
-                                <td>se cAC>0, então</td>
+                                <td>se cAC>0</td>
+                                <td class="operacao">então</td>
                                 <td>EPI</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>EE</td>
                             </tr>
                             <tr>
@@ -272,14 +264,14 @@
                                 <td>9EE</td>
                                 <td class="descricao">vá para cEE</td>
                                 <td>EPI</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>0-N</td>
                                 <td class="descricao">AC recebe uma constante (truque)</td>
                                 <td>AC</td>
-                                <td class="icone">&#8592;</td>
+                                <td class="operacao">&#8592;</td>
                                 <td>N</td>
                             </tr>
                             <tr>
@@ -296,15 +288,14 @@
                 <p class="texto">Crie um arquivo de extensão .ahv, nele ficará seu código.</p>
                 <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <br>
-                <code class="codigo">
-                    750<br>
-                    751<br>
-                    050<br>
-                    251<br>
-                    160<br>
-                    860<br>
-                    000
-                </code>
+                <pre class="scroll"><code class="codigo">750
+751
+050
+251
+160
+860
+000
+</code></pre>
             </article>
             <article id="playground">
                 <h3>Playground</h3>
@@ -320,11 +311,9 @@
                             a compreensão
                             do desenvolvedor
                         </p>
-                        <button class="botao">
-                            <a class="texto link-botao" href="" title="Só se souber brincar">
-                                descer para o play
-                            </a>
-                        </button>
+                        <a href="" title="Só se souber brincar">
+                            <button class="texto botao">descer para o play</button>
+                        </a>
                     </div>
                     <img src="img/brinks.png" alt="menino montando">
                 </div>

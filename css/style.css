@@ -66,44 +66,50 @@ html {
 }
 
 /* Definindo fontes para cada tipo de texto */
+/* h1, h2 */
 .titulo {
     font-family: "Archivo Black";
 }
 
+/* h3 */
 .subtitulo {
     font-family: "Archivo Narrow";
     font-weight: 700;
 }
 
+/* p, li */
 .texto {
     font-family: "Nunito";
     font-size: 20px;
 }
 
-.codigo {
-    font-family: "IBM Plex Mono";   
-    display: block;
-    background-color: #FFC958;
-    border-radius: 5px;
-    padding: 7px 20px;
-    text-align: left;
-    margin: 15px 0;
-
+code.codigo {
+    font-family: "IBM Plex Mono";
     color: var(--cor1);
+    text-align: left;
+    display: block;
 }
 
-.botao {
+button.botao {
     border-radius: 15px;
     border-width: 0;
     padding: 3px 20px;
     background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
     border: 0.01rem solid transparent;
 
-    /* Configurações de centralizam e espaçamento */
+    /* centralização e espaçamento */
     display: block;
     margin: auto;
 
     transition: --cor1-botao 0.5s, --cor2-botao 0.5s, --cor3-botao 0.5s;
+    
+    /* texto */
+    font-weight: 700;
+    font-size: 22px;
+    color: #ffffff;
+    text-transform: uppercase;
+
+    cursor: pointer;
 }
 
 .botao:hover {
@@ -114,21 +120,20 @@ html {
     border: 0.01rem solid black;
 }
 
-.link-botao {
-    font-weight: 700;
-    font-size: 22px;
-    color: #ffffff;
-    text-transform: uppercase;
-}
-
-.link-marcado {
+/* mark > a */
+a.link-marcado {
     text-decoration: underline #000000 0.01rem;
 }
 
-.link-marcado:hover {
+a.link-marcado:hover {
     text-decoration: underline #000000 0.1rem;
 }
 
+a.link-externo {
+    cursor: alias;
+}
+
+/* -------------------------------------------------------------------- */
 /* configurações de css amplas */
 .flex-between-center {
     display: flex;
@@ -138,6 +143,10 @@ html {
 
 .centralizar {
     margin: auto;
+}
+
+.scroll {
+    overflow-x: auto;
 }
 /* -------------------------------------------------------------------- */
 
@@ -227,10 +236,6 @@ h1#titulo-principal, h2 {
     color: transparent;
 }
 
-h2 {
-    margin-bottom: 100px;
-}
-
 /* Todos os parágrafos dentro do conteúdo principal */
 main p {
     text-align: justify;
@@ -238,7 +243,18 @@ main p {
 
 /* Todas as seções dentro da main */
 main section {
-    margin: auto;
+    margin: 0 auto 100px auto;
+}
+
+main section > article {
+    margin: 70px 0;
+}
+
+/* Todo pre dentro da main */
+main pre {
+    background-color: #FFC958;
+    border-radius: 5px;
+    padding: 7px 20px;
 }
 
 /* Todas as marcações dentro da main */
@@ -281,7 +297,7 @@ section#instale > article > h3 {
 }
 
 section#instale > article > ol {
-    margin: 40px 0 130px 30px;
+    margin: 40px 0 0 30px;
 }
 
 section#instale > article > ol > li {
@@ -326,20 +342,8 @@ section#instale > article > ol > li > p {
     margin-left: 35px;
 }
 
-/* section#instale > article > ol > li > p > code {
-    display: block;
-    background-color: #FFC958;
-    border-radius: 5px;
-    padding: 7px 20px;
-    text-align: left;
-    margin: 15px 0;
-
-    color: var(--cor1);
-} */
-
-section#instale > article > ol > li > p > code > pre {
-    overflow-x: auto;
-    white-space: nowrap;
+section#instale pre {
+    margin: 20px 0 0 35px;
 }
 /* -------------------------------------------------------------------- */
 
@@ -350,10 +354,6 @@ section#aprenda {
 
 section#aprenda img {
     max-width: 350px;
-}
-
-section#aprenda > article {
-    margin-bottom: 70px;
 }
 
 section#aprenda > article h3 {
@@ -396,10 +396,6 @@ section#aprenda > article#assembly > h3 {
     color: var(--cor2);
 }
 
-section#aprenda > article#assembly > div#tabela-scroll {
-    overflow-x: auto;
-}
-
 section#aprenda > article#assembly > div#tabela-scroll > table {
     width: 100%;
     border-spacing: 10px 10px;
@@ -432,7 +428,7 @@ section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td
     max-width: 500px;
 }
 
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.icone {
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
     background-color: transparent;
     padding: 0;
     color: var(--cor1);
