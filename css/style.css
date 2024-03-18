@@ -47,7 +47,6 @@
     initial-value: #0F6ED2;
     inherits: false;
 }
-
 /* -------------------------------------------------------------------- */
 
 /* ----------- Resetando propriedades padrões do navegador ------------ */
@@ -88,6 +87,10 @@ code.codigo {
     color: var(--cor1);
     text-align: left;
     display: block;
+    
+    background-color: #FFC958;
+    border-radius: 5px;
+    padding: 7px 20px;
 }
 
 button.botao {
@@ -112,7 +115,7 @@ button.botao {
     cursor: pointer;
 }
 
-.botao:hover {
+button.botao:hover {
     --cor1-botao: #8D49FF;
     --cor2-botao: #00A8AC;
     --cor3-botao: #8C4AFF;
@@ -250,13 +253,6 @@ main section > article {
     margin: 70px 0;
 }
 
-/* Todo pre dentro da main */
-main pre {
-    background-color: #FFC958;
-    border-radius: 5px;
-    padding: 7px 20px;
-}
-
 /* Todas as marcações dentro da main */
 main mark {
     background-color: #FFB61C;
@@ -344,6 +340,28 @@ section#instale > article > ol > li > p {
 
 section#instale pre {
     margin: 20px 0 0 35px;
+    position: relative;
+}
+
+section#instale pre > button.copiar {
+    display: none;
+}
+
+section#instale p:hover + button.copiar {
+    display: block;
+
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border: 0;
+
+    width: 25px;
+    height: 25px;
+
+    background-color: transparent;
+    background-image: url('../img/clipboard.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* -------------------------------------------------------------------- */
 
