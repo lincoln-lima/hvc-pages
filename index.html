@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <nav class="flex-between-center">
+        <nav class="flex-between-center centralizar">
             <a id="home" class="flex-between-center" href="index.html">
                 <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
                 <h1 class="titulo">
@@ -28,9 +28,9 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section id="descricao-hv" class="flex-between-center">
-            <article>
+    <main class="centralizar">
+        <section id="descricao-hv" class="flex-between-center centralizar">
+            <article class="centralizar">
                 <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
                 <p class="texto">
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
@@ -42,11 +42,11 @@
                     <button class="texto botao">COMECE AQUI</button>
                 </a>
             </article>
-            <figure>
+            <figure class="centralizar">
                 <img src="img/mlk-do-grau.png" alt="menino que programa">
             </figure>
         </section>
-        <section id="instale">
+        <section id="instale" class="centralizar">
             <h2 class="titulo">Instale</h2>
             <article>
                 <h3 class="subtitulo flex-between-center">
@@ -70,7 +70,7 @@
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="scroll"><code id="help" class="codigo">hvc --help</code><button onclick="copiarComando('help')" class="copiar"></button></pre>
+                        <pre class="codigo-pre scroll"><code id="help" class="codigo">hvc --help</code><button onclick="copiarComando('help')" class="copiar"></button></pre>
                     </li>
                 </ol>
             </article>
@@ -93,21 +93,21 @@
                         <p class="texto">
                             Com o terminal aberto, execute o seguinte comando:
                         </p>
-                        <pre class="scroll comando"><code id="clonar-repo" class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre scroll comando"><code id="clonar-repo" class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Acesse o diretório do projeto</span>
                         <p class="texto">
                             Mude para pasta gerada
                         </p>
-                        <pre class="scroll"><code class="codigo">cd ./HV-Compiler</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre scroll"><code class="codigo">cd ./HV-Compiler</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Compile o código</span>
                         <p class="texto">
                             Execute o comando <mark>make</mark> para compilar o código usando clang++
                         </p>
-                        <pre class="scroll"><code class="codigo">make</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre scroll"><code class="codigo">make</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Adicione o HVC ao PATH do seu sistema</span>
@@ -115,19 +115,19 @@
                             Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
                         </p>
-                        <pre class="scroll"><code class="codigo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre scroll"><code class="codigo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Teste o compilador no terminal</span>
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="scroll"><code class="codigo">hvc --help</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre scroll"><code class="codigo">hvc --help</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
                     </li>
                 </ol>
             </article>
         </section>
-        <section id="aprenda">
+        <section id="aprenda" class="centralizar">
             <h2 class="titulo">Aprenda</h2>
             <article id="hv">
                 <div class="flex-between-center">
@@ -288,14 +288,14 @@
                 <p class="texto">Crie um arquivo de extensão .ahv, nele ficará seu código.</p>
                 <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <br>
-                <pre class="scroll"><code class="codigo">750
+                <pre class="codigo-pre scroll"><code class="codigo">750
 751
 050
 251
 160
 860
 000
-</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+</code></pre>
             </article>
             <article id="playground">
                 <h3>Playground</h3>
@@ -320,7 +320,33 @@
             </article>
         </section>
     </main>
-
+    <aside class="texto font-w-700">
+        <blockquote>
+            <em>
+                <p>"Nós só podemos ver um pouco do futuro, mas o suficiente para perceber que há muito a fazer."</p>
+            </em>
+            <p><cite>Alan Turing</cite></p>
+        </blockquote>
+    </aside>
+    <footer class="texto font-w-700 flex-between-center">
+        <article class="centralizar">
+            <p>Sob coordenação de:</p>
+            <p class="font-w-600">Amaury Antônio de Castro Júnior</p>
+        </article>
+        <article class="centralizar">
+            <p>Projeto desenvolvido por:</p>
+            <ul class="font-w-600">
+                <li>Lincoln César Gomes Lima</li>
+                <li>Luiz Felipe Xavier</li>
+                <li>Samuel Vieira da Cunha Nahas</li>
+                <li>Wilker Sebastian Afonso Pereira</li>
+            </ul>
+        </article>
+        <article class="centralizar">
+            <p>Design composto por:</p>
+            <p class="font-w-600">Gabrielly de Souza Ferreira</p>
+        </article>
+    </footer>
     <script src="js/script.js"></script>
 </body>
 

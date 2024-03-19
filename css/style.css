@@ -82,12 +82,22 @@ html {
     font-size: 20px;
 }
 
+.font-w-700 {
+    font-weight: 700;
+}
+
+.font-w-600 {
+    font-weight: 600;
+}
+
 code.codigo {
     font-family: "IBM Plex Mono";
     color: var(--cor1);
     text-align: left;
     display: block;
-    
+}
+
+pre.codigo-pre {
     background-color: #FFC958;
     border-radius: 5px;
     padding: 7px 20px;
@@ -162,7 +172,7 @@ header {
 /* barra de navegação */
 nav {
     max-width: 80vw;
-    margin: auto;
+    /* margin: auto; */
 }
 
 /* todos os links da barra de navegação */
@@ -224,7 +234,7 @@ a#link-nav-git {
 /* Conteúdo principal */
 main {
     max-width: 1300px;
-    margin: auto;
+    /* margin: auto; */
     padding: 0 20px;
 }
 
@@ -246,7 +256,8 @@ main p {
 
 /* Todas as seções dentro da main */
 main section {
-    margin: 0 auto 100px auto;
+    margin-bottom: 100px;
+    /* margin: 0 auto 100px auto; */
 }
 
 main section > article {
@@ -267,7 +278,7 @@ section#descricao-hv {
 }
 
 section#descricao-hv > * {
-    margin: auto;
+    /* margin: auto; */
     max-width: 450px;
 }
 
@@ -470,4 +481,42 @@ section#aprenda > article#playground > div > div {
 
 section#aprenda > article#playground > div > div > p {
     margin-bottom: 60px;
+}
+/* ------------------------------- */
+/* conteúdo complementar */
+aside {
+    padding: 100px 0;
+    text-align: center;
+}
+
+aside blockquote > * > * {
+    font-size: 22px;
+    display: inline;
+    padding: 3px;
+    box-shadow: 0px 0px 3px black;
+
+    background-color: var(--cor3);
+}
+
+/* rodapé */
+footer {
+    background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
+
+    padding: 30px 50px;
+    color: #ffffff;
+
+    flex-wrap: wrap-reverse;
+}
+
+footer blockquote {
+    max-width: 300px;
+}
+
+footer * {
+    color: #ffffff;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
 }
