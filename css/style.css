@@ -20,6 +20,11 @@
     font-family: 'IBM Plex Mono';
     src: url(../fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
 }
+
+@font-face {
+    font-family: 'Parisienne';
+    src: url(../fonts/Parisienne/Parisienne-Regular.ttf);
+}
 /* -------------------------------------------------------------------- */
 
 /* Estabelecendo variáveis de cor */
@@ -82,6 +87,11 @@ html {
     font-size: 20px;
 }
 
+/* blockquote */
+.citacao {
+    font-family: "Parisienne";
+}
+
 .font-w-700 {
     font-weight: 700;
 }
@@ -112,7 +122,6 @@ button.botao {
 
     /* centralização e espaçamento */
     display: block;
-    margin: auto;
 
     transition: --cor1-botao 0.5s, --cor2-botao 0.5s, --cor3-botao 0.5s;
     
@@ -172,7 +181,6 @@ header {
 /* barra de navegação */
 nav {
     max-width: 80vw;
-    /* margin: auto; */
 }
 
 /* todos os links da barra de navegação */
@@ -233,8 +241,7 @@ a#link-nav-git {
 
 /* Conteúdo principal */
 main {
-    max-width: 1300px;
-    /* margin: auto; */
+    max-width: 75vw;
     padding: 0 20px;
 }
 
@@ -274,12 +281,12 @@ section#descricao-hv {
     flex-wrap: wrap-reverse;
 
     min-height: 90vh;
-    max-width: 1400px;
+    max-width: 70vw;
 }
 
 section#descricao-hv > * {
-    /* margin: auto; */
-    max-width: 450px;
+    
+    max-width: 25vw;
 }
 
 section#descricao-hv > article > p {
@@ -454,7 +461,6 @@ section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td
 section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.descricao {
     text-align: left;
     border-radius: 0;
-    max-width: 500px;
 }
 
 section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
@@ -468,6 +474,10 @@ section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td
 /* artigo de sintaxe da linguagem */
 section#aprenda > article#como > h3 {
     color: var(--cor1);
+}
+
+section#aprenda article#como pre {
+    padding: 15px 20px;
 }
 
 /* artigo do playground */
@@ -489,27 +499,28 @@ aside {
     text-align: center;
 }
 
-aside blockquote > * > * {
-    font-size: 22px;
-    display: inline;
-    padding: 3px;
-    box-shadow: 0px 0px 3px black;
+aside blockquote {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.409);
+    border-radius: 20px 0;
+    display: inline-block;
+    padding: 10px;
 
     background-color: var(--cor3);
+}
+
+aside blockquote > * > * {
+    font-size: 35px;
+    padding: 3px;
 }
 
 /* rodapé */
 footer {
     background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
 
-    padding: 30px 50px;
+    padding: 40px 50px;
     color: #ffffff;
 
     flex-wrap: wrap-reverse;
-}
-
-footer blockquote {
-    max-width: 300px;
 }
 
 footer * {
@@ -519,4 +530,8 @@ footer * {
 
 footer ul {
     list-style-type: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
