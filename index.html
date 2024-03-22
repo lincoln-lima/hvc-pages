@@ -5,23 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HV - Inicial</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
+
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
 
 <body>
     <header>
         <nav class="flex-between-center centralizar">
-            <a id="home" class="flex-between-center" href="index.html">
+            <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
                 <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
                 <h1 class="titulo">
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
             <ul class="flex-between-center">
-                <!-- 
-                <li><a id="link-nav-instale" class="texto" href="#instale" target="_self">Instale</a></li>
-                <li><a id="link-nav-aprenda" class="texto" href="#aprenda" target="_self">Aprenda</a></li> -->
                 <li><a id="link-nav-playground" class="texto" href="#playground" target="_self">Playground</a></li>
                 <li><a id="link-nav-doc" class="texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
                 <li><a id="link-nav-git" class="texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
@@ -38,7 +39,7 @@
                     <br>
                     Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
-                <a href="#instale" target="_top">
+                <a href="#instale" rel="author" target="_top">
                     <button class="texto botao centralizar">COMECE AQUI</button>
                 </a>
             </article>
@@ -59,7 +60,7 @@
                         <p class="texto">
                             Faça download e execute o arquivo 
                             <mark>
-                                <a class="link-marcado" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável">
+                                <a class="link-marcado" rel="author" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável" download>
                                     hvc.exe
                                 </a>
                             </mark>
@@ -164,7 +165,7 @@
                 <br>
                 <p class="texto">
                     O material completo acerca está disponível no link 
-                    <mark><a class="link-marcado" href="files/computadro_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>
+                    <mark><a class="link-marcado" rel="help" href="files/computadro_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>
                     .
                 </p>
             </article>
@@ -311,7 +312,7 @@
                             a compreensão
                             do desenvolvedor
                         </p>
-                        <a href="" title="só se souber brincar">
+                        <a href="playground.html" rel="author" title="só se souber brincar" target="_parent">
                             <button class="texto botao centralizar">descer para o play</button>
                         </a>
                     </div>
@@ -331,15 +332,15 @@
     <footer class="texto font-w-700 flex-between-center">
         <article class="centralizar">
             <p>Sob coordenação de:</p>
-            <p class="font-w-600"><a href="http://lattes.cnpq.br/6311632162541654" target="_blank">Amaury Antônio de Castro Júnior</a></p>
+            <p class="font-w-600"><a href="http://lattes.cnpq.br/6311632162541654" rel="external" target="_blank">Amaury Antônio de Castro Júnior</a></p>
         </article>
         <article class="centralizar">
             <p>Projeto desenvolvido por:</p>
             <ul class="font-w-600">
-                <li><a href="https://github.com/lincoln-lima" target="_blank">Lincoln César Gomes Lima</a></li>
-                <li><a href="https://github.com/LuizFXavier" target="_blank">Luiz Felipe Xavier</a></li>
-                <li><a href="https://github.com/SamuelNahas" target="_blank">Samuel Vieira da Cunha Nahas</a></li>
-                <li><a href="https://github.com/WilkerSebastian" target="_blank">Wilker Sebastian Afonso Pereira</a></li>
+                <li><a href="https://github.com/lincoln-lima" rel="external" target="_blank">Lincoln César Gomes Lima</a></li>
+                <li><a href="https://github.com/LuizFXavier" rel="external" target="_blank">Luiz Felipe Xavier</a></li>
+                <li><a href="https://github.com/SamuelNahas" rel="external" target="_blank">Samuel Vieira da Cunha Nahas</a></li>
+                <li><a href="https://github.com/WilkerSebastian" rel="external" target="_blank">Wilker Sebastian Afonso Pereira</a></li>
             </ul>
         </article>
         <article class="centralizar">

@@ -1,0 +1,298 @@
+/* -------------------------------------------------------------------- */
+
+/* Conteúdo principal */
+main {
+    max-width: 75vw;
+    padding: 0 20px;
+}
+
+/* Títulos principais */
+h1#titulo-principal, h2 {
+    text-align: center;
+    font-size: 60px;
+
+    /* Configuração para deixar texto gradiente */
+    background-image: linear-gradient(to right, var(--cor2), var(--cor1));
+    background-clip: text;
+    color: transparent;
+}
+
+/* Todos os parágrafos dentro do conteúdo principal */
+main p {
+    text-align: justify;
+}
+
+/* Todas as seções dentro da main */
+main section {
+    margin-bottom: 100px;
+    /* margin: 0 auto 100px auto; */
+}
+
+main section > article {
+    margin: 70px 0;
+}
+
+/* Todas as marcações dentro da main */
+main mark {
+    background-color: #FFB61C;
+}
+
+/* Conteúdos da seção de descrição do site ------------------------------*/
+section#descricao-hv {
+    flex-wrap: wrap-reverse;
+
+    min-height: 90vh;
+    max-width: 70vw;
+}
+
+section#descricao-hv > * {
+    
+    max-width: 25vw;
+}
+
+section#descricao-hv > article > p {
+    font-size: 22px;
+    margin: 60px 0;
+}
+/* -------------------------------------------------------------------- */
+
+/* Conteúdos da seção de instalação do compilador --------------------- */
+section#instale {
+    max-width: 60vw;
+    min-width: 40vw;
+}
+
+section#instale > article > h3 {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    align-items: center;
+    color: var(--cor3);
+    font-size: 40px;
+}
+
+section#instale > article > ol {
+    margin: 40px 0 0 30px;
+}
+
+section#instale > article > ol > li {
+    position: relative;
+    list-style-position: inside;
+
+    margin-bottom: 40px;
+}
+
+section#instale > article > ol > li::marker {
+    font-family: "Archivo Black";
+    color: #ffffff;
+    content: counter(list-item);
+}
+
+section#instale > article > ol > li::before {    
+    content: "";
+
+    /* centralizando posicionamento */
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    top: 5px;
+    left: -7px;
+
+    /* configurando formato e fundo */
+    background-color: var(--cor2);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+section#instale > article > ol > li > span {
+    color: var(--cor2);
+    font-size: 22px;
+
+    margin-left: 20px;
+}
+
+section#instale > article > ol > li > p {
+    font-weight: 400;
+    margin-left: 35px;
+}
+
+section#instale pre {
+    margin: 20px 0 0 35px;
+    position: relative;
+}
+
+section#instale pre > button.copiar {
+    display: none;
+}
+
+section#instale p:hover + button.copiar {
+    display: block;
+
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border: 0;
+
+    width: 25px;
+    height: 25px;
+
+    background-color: transparent;
+    background-image: url('../img/clipboard.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* -------------------------------------------------------------------- */
+
+/* Conteúdos da seção aprenda  */
+section#aprenda {
+    max-width: 75vw;
+}
+
+section#aprenda img {
+    max-width: 350px;
+}
+
+section#aprenda > article h3 {
+    text-transform: uppercase;
+    font-size: 45px;
+
+    font-family: 'Archivo Black';
+    margin-bottom: 15px;
+}
+
+/* configurando usando filhos impares e pares */
+/* section#aprenda > article > h3:nth-child(even) {
+    color: var(--cor1);
+}
+
+section#aprenda > article > h3:nth-child(odd) {
+    color: var(--cor2);
+} */
+
+/* artigo de contextualização do HV */
+section#aprenda > article#hv h3 {
+    color: var(--cor1);
+}
+
+section#aprenda > article#hv > div {
+    flex-wrap: wrap;
+}
+
+section#aprenda > article#hv > div > div {
+    max-width: 50vw;
+}
+
+section#aprenda > article#hv ul {
+    list-style-position: inside;
+}
+/* ------------------------------- */
+
+/* artigo de tabela de comandos */
+section#aprenda > article#assembly > h3 {
+    color: var(--cor2);
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table {
+    width: 100%;
+    border-spacing: 10px 10px;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table th, td {
+    color: #ffffff;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > thead > tr > th {
+    background-color: var(--cor1);
+    border-radius: 5px 5px 0 0;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
+    background-color: var(--cor2);
+    font-weight: 500;
+    border-radius: 5px 0 5px 0;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
+    text-align: center;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.descricao {
+    text-align: left;
+    border-radius: 0;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
+    background-color: transparent;
+    padding: 0;
+    color: var(--cor1);
+    width: 10px;
+}
+/* ------------------------------- */
+
+/* artigo de sintaxe da linguagem */
+section#aprenda > article#como > h3 {
+    color: var(--cor1);
+}
+
+section#aprenda article#como pre {
+    padding: 15px 20px;
+}
+
+/* artigo do playground */
+section#aprenda > article#playground > h3 {
+    color: var(--cor2);
+}
+
+section#aprenda > article#playground > div > div {
+    max-width: 50vw;
+}
+
+section#aprenda > article#playground > div > div > p {
+    margin-bottom: 60px;
+}
+/* ------------------------------- */
+/* conteúdo complementar */
+aside {
+    padding: 100px 0;
+    text-align: center;
+}
+
+aside blockquote {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.265);
+    border-radius: 20px 0;
+    display: inline-block;
+    padding: 10px;
+
+    background-color: rgb(241, 239, 239);
+}
+
+aside blockquote > * > * {
+    font-size: 35px;
+    padding: 3px;
+}
+
+/* rodapé */
+footer {
+    background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
+
+    padding: 40px 50px;
+    color: #ffffff;
+
+    flex-wrap: wrap-reverse;
+}
+
+footer * {
+    color: #ffffff;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,67 @@
+/* -------------------------------------------------------------------- */
+
+/* cabeçalho */
+header {
+    padding: 25px 20px;
+    box-shadow: 1px 1px 9px #00000067;
+}
+
+/* barra de navegação */
+nav {
+    max-width: 80vw;
+}
+
+/* todos os links da barra de navegação */
+nav a {
+    padding: 1px 5px;
+    color: #ffffff;
+    border-radius: 3px;
+
+    font-size: 18px;
+}
+
+nav > ul {
+    width: 500px;
+    list-style-type: none;
+}
+
+/* links da lista */
+nav > ul a:hover {
+    text-decoration: underline #ffffff 2px;
+}
+
+nav > a#home {
+    width: 150px;
+}
+
+nav > a#home > h1 > span {
+    font-size: 35px;
+}
+
+nav > a#home > h1 > span:nth-child(1) {
+    color: var(--cor3);
+}
+
+nav > a#home > h1 > span:nth-child(2) {
+    color: var(--cor2);
+}
+
+/* a#link-nav-instale {
+    background-color: var(--cor1);
+}
+
+a#link-nav-aprenda {
+    background-color: var(--cor3);
+} */
+
+a#link-nav-playground {
+    background-color: var(--cor2);
+}
+
+a#link-nav-doc {
+    background-color: var(--cor3);
+}
+
+a#link-nav-git {
+    background-color: var(--cor1);
+}
