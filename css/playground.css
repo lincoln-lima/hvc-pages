@@ -1,0 +1,94 @@
+/* cabecalho exclusivo */
+header#header-play {
+    padding: 10px 0;
+}
+
+nav#nav-play {
+    max-width: 95vw;
+}
+
+nav#nav-play > ul > li > a {
+    padding: 3px 5px;
+}
+
+nav#nav-play > ul > li > a > img {
+    margin-right: 10px;
+}
+
+/* conteúdo principal */
+main {
+    max-width: 95vw;
+    height: 78vh;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    display: grid;
+    grid-template-areas: 
+        'porta-cartoes folha-de-saida folha-de-saida gaveteiro'
+        'porta-cartoes epi acumulador gaveteiro';
+    grid-template-columns: 35vw 18vw 18vw 12vw;
+    grid-template-rows: 40vh auto;
+    column-gap: 4vw;
+    row-gap: 2vw;
+}
+
+section {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
+}
+
+section.visores {
+    position: relative;
+}
+
+section.visores span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* porta-cartoes */
+section#porta-cartoes {
+    background-color: var(--cor1);
+    grid-area: porta-cartoes;
+}
+
+/* folha-de-saida */
+section#folha-de-saida {
+    background-color: var(--cor2);
+
+    grid-area: folha-de-saida;
+}
+
+/* epi */
+section#epi {
+    background-color: #1d3825;
+
+    grid-area: epi;
+}
+
+section#epi span {
+    font-size: 70px;
+    height: 85px;
+}
+
+/* acumulador */
+section#acumulador {
+    background-color: #93A28D;
+
+    grid-area: acumulador;
+}
+
+section#acumulador span {
+    font-size: 110px;
+}
+
+/* gaveteiro */
+section#gaveteiro {
+    grid-area: gaveteiro;
+
+    max-height: 78vh;
+
+    background-color: var(--cor3);
+}

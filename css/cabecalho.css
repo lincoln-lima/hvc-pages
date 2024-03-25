@@ -3,7 +3,7 @@
 /* cabeçalho */
 header {
     padding: 25px 20px;
-    box-shadow: 1px 1px 9px #00000067;
+    box-shadow: 1px 1px 9px hsla(0, 0%, 0%, 0.2);
 }
 
 /* barra de navegação */
@@ -14,24 +14,32 @@ nav {
 /* todos os links da barra de navegação */
 nav a {
     padding: 1px 5px;
-    color: #ffffff;
     border-radius: 3px;
 
     font-size: 18px;
 }
 
+nav a, nav p {
+    color: #ffffff;
+}
+
 nav > ul {
-    width: 500px;
+    min-width: 600px;
     list-style-type: none;
 }
 
 /* links da lista */
-nav > ul a:hover {
+nav a:hover {
     text-decoration: underline #ffffff 2px;
 }
 
 nav > a#home {
     width: 150px;
+}
+
+nav > a#home:hover {
+
+    background-color: #00000015;
 }
 
 nav > a#home > h1 > span {
@@ -46,22 +54,26 @@ nav > a#home > h1 > span:nth-child(2) {
     color: var(--cor2);
 }
 
-/* a#link-nav-instale {
-    background-color: var(--cor1);
-}
-
-a#link-nav-aprenda {
-    background-color: var(--cor3);
-} */
-
-a#link-nav-playground {
+a.link-nav-1 {
     background-color: var(--cor2);
 }
 
-a#link-nav-doc {
+a.link-nav-1:hover {
+    background-color: var(--cor2-escura);
+}
+
+a.link-nav-2 {
     background-color: var(--cor3);
 }
 
-a#link-nav-git {
+a.link-nav-2:hover {
+    background-color: var(--cor3-escura);
+}
+
+a.link-nav-3 {
     background-color: var(--cor1);
+}
+
+a.link-nav-3:hover {
+    background-color: var(--cor1-escura);
 }

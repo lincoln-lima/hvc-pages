@@ -25,6 +25,16 @@
     font-family: 'Parisienne';
     src: url(../fonts/Parisienne/Parisienne-Regular.ttf);
 }
+
+@font-face {
+    font-family: 'SqueakyChalkSound';
+    src: url(../fonts/squeaky-chalk-sound/SqueakyChalkSound.ttf);
+}
+
+@font-face {
+    font-family: 'Seven Segment';
+    src: url(../fonts/seven_segment/Seven\ Segment.ttf)
+}
 /* -------------------------------------------------------------------- */
 
 /* Estabelecendo variáveis de cor */
@@ -32,6 +42,11 @@
     --cor1: #5427A0;
     --cor2: #00A8AC;
     --cor3: #FFB61C;
+
+    --cor1-escura: #42207e;
+    --cor2-escura: #019699;
+    --cor3-escura: #e4a419;
+
     --azul: #2129FF;
 }
 
@@ -90,6 +105,15 @@ html {
 /* blockquote */
 .citacao {
     font-family: "Parisienne";
+}
+
+.segmento {
+    font-family: "Seven Segment";
+}
+
+.giz {
+    font-family: "SqueakyChalkSound";
+    color: #ffffff;
 }
 
 .font-w-700 {
@@ -163,10 +187,25 @@ a.link-externo {
     align-items: center;
 }
 
+/* .flex-center-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+
 .centralizar {
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.scroll {
+.scroll-y {
+    overflow-y: auto;
+}
+
+.scroll-x {
     overflow-x: auto;
+}
+
+.texto-centro {
+    text-align: center;
 }
