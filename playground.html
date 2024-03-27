@@ -13,7 +13,7 @@
 </head>
 <body>
     <header id="header-play">
-        <nav id="nav-play" class="flex-between-center centralizar">
+        <nav id="nav-play" class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
                 <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
                 <h1 class="titulo">
@@ -42,7 +42,7 @@
             </ul>
         </nav>
     </header>
-    <main class="centralizar">
+    <main class="centralizar-x">
         <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
             <!-- <textarea name="cartoes" id="" cols="25" rows="10"></textarea> -->
@@ -50,25 +50,28 @@
         <section id="folha-de-saida" class="texto-centro">
             <h2 class="subtitulo">Folha de Saída</h2>
         </section>
-        <section id="epi" class="visores">
-            <h2 class="titulo texto-centro">EPI</h2>
-            <span class="giz">99</span>
+        <section id="epi" class="visores texto-centro">
+            <article class="centralizar-y">
+                <h2 class="giz">EPI</h2>
+                <span class="giz">99</span>
+            </article>
         </section>
-        <section id="acumulador" class="visores">
-            <h2 class="titulo texto-centro">Acumulador</h2>
-            <span class="segmento">99</span>
+        <section id="acumulador" class="visores texto-centro">
+            <article class="centralizar-y">
+                <h2 class="segmento">Acumulador</h2>
+                <span class="segmento">999</span>
+            </article>
         </section>
         <section id="gaveteiro" class="texto-centro scroll-y">
             <h2 class="subtitulo">Gaveteiro</h2>
-            <article>
-                <img src="img/gaveteiro.png" alt="">
-                <img src="img/gaveteiro.png" alt="">
-                <img src="img/gaveteiro.png" alt="">
-                <img src="img/gaveteiro.png" alt="">
-                <img src="img/gaveteiro.png" alt="">
-                <img src="img/gaveteiro.png" alt="">
+            <article id="article-gaveteiro">
+                <!-- <div id="div-article-gaveteiro">
+                    <img src="img/gaveteiro.png" alt="">
+                    <span>00</span>
+                </div> -->
             </article>
         </section>
     </main>
+    <script src="js/repetir.js"></script>
 </body>
 </html>
