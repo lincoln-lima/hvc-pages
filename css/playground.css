@@ -117,6 +117,8 @@ section#gaveteiro div.div-article-gaveteiro {
 }
 
 section#gaveteiro div.div-article-gaveteiro span {
+    color: #ffffff;
+
     position: absolute;
     top: 40px;
     left: 35px;
