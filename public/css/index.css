@@ -3,7 +3,6 @@
 /* Conteúdo principal */
 main {
     max-width: 75vw;
-    padding: 0 20px;
 }
 
 /* Títulos principais */
@@ -250,6 +249,10 @@ section#aprenda article#como pre {
 /* artigo do playground */
 section#aprenda > article#playground > h3 {
     color: var(--cor2);
+}
+
+section#aprenda > article#playground > div {
+    flex-wrap: wrap-reverse;
 }
 
 section#aprenda > article#playground > div > div {
