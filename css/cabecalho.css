@@ -77,3 +77,9 @@ a.link-nav-3 {
 a.link-nav-3:hover {
     background-color: var(--cor1-escura);
 }
+
+button#botao-menu {
+    border-width: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
