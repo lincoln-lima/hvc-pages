@@ -129,24 +129,14 @@ section#instale pre {
 }
 
 section#instale pre > button.copiar {
-    display: none;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
 }
 
-section#instale p:hover + button.copiar {
-    display: block;
-
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    border: 0;
-
-    width: 25px;
-    height: 25px;
-
-    background-color: transparent;
-    background-image: url('../img/clipboard.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+section#instale pre > button.copiar:hover {
+    border: 1px solid var(--cor1);
+    border-radius: 5px;
 }
 /* -------------------------------------------------------------------- */
 

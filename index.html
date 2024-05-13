@@ -72,7 +72,7 @@
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="codigo-pre scroll-x"><code id="help" class="codigo">hvc --help</code><button onclick="copiarComando('help')" class="copiar"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code id="help" class="codigo">hvc --help</code><button onclick="copiarComando('help')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                 </ol>
             </article>
@@ -95,21 +95,21 @@
                         <p class="texto">
                             Com o terminal aberto, execute o seguinte comando:
                         </p>
-                        <pre class="codigo-pre scroll-x"><code id="clonar-repo" class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code id="clonar-repo" class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button onclick="copiarComando('clonar-repo')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Acesse o diretório do projeto</span>
                         <p class="texto">
                             Mude para pasta gerada
                         </p>
-                        <pre class="codigo-pre scroll-x"><code class="codigo">cd ./HV-Compiler</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo" id="cd-dir">cd ./HV-Compiler</code><button onclick="copiarComando('cd-dir')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Compile o código</span>
                         <p class="texto">
                             Execute o comando <mark>make</mark> para compilar o código usando clang++
                         </p>
-                        <pre class="codigo-pre scroll-x"><code class="codigo">make</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo" id="make">make</code><button onclick="copiarComando('make')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Adicione o HVC ao PATH do seu sistema</span>
@@ -117,14 +117,14 @@
                             Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
                         </p>
-                        <pre class="codigo-pre scroll-x"><code class="codigo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo" id="echo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button onclick="copiarComando('echo')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Teste o compilador no terminal</span>
                         <p class="texto">
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="codigo-pre scroll-x"><code class="codigo">hvc --help</code><button class="copiar" onclick="copiarComando('id')"></button></pre>
+                        <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo">hvc --help</code><button onclick="copiarComando('help')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                 </ol>
             </article>
@@ -290,7 +290,7 @@
                 <p class="texto">Crie um arquivo de extensão <mark>.ahv</mark>, nele ficará seu código.</p>
                 <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <br>
-                <pre class="codigo-pre scroll-x"><code class="codigo">750
+                <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo">750
 751
 050
 251
@@ -349,7 +349,7 @@
             <p class="font-w-600">Gabrielly de Souza Ferreira</p>
         </article>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/copiar.js"></script>
     <script src="js/menu.js"></script>
 </body>
 

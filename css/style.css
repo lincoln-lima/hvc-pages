@@ -128,7 +128,6 @@ code.codigo {
     font-family: "IBM Plex Mono";
     color: var(--cor1);
     text-align: left;
-    display: block;
 }
 
 pre.codigo-pre {
