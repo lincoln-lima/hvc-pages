@@ -24,7 +24,8 @@ nav a, nav p {
 }
 
 nav > ul {
-    min-width: 600px;
+    /* min-width: 600px; */
+    min-width: 45vw;
     list-style-type: none;
 }
 
@@ -38,7 +39,6 @@ nav > a#home {
 }
 
 nav > a#home:hover {
-
     background-color: #00000015;
 }
 
@@ -54,27 +54,31 @@ nav > a#home > h1 > span:nth-child(2) {
     color: var(--cor2);
 }
 
-a.link-nav-1 {
+a.link-nav {
+    padding: 0 15px;
+}
+
+a#link-nav-1 {
     background-color: var(--cor2);
 }
 
-a.link-nav-1:hover {
+a#link-nav-1:hover {
     background-color: var(--cor2-escura);
 }
 
-a.link-nav-2 {
+a#link-nav-2 {
     background-color: var(--cor3);
 }
 
-a.link-nav-2:hover {
+a#link-nav-2:hover {
     background-color: var(--cor3-escura);
 }
 
-a.link-nav-3 {
+a#link-nav-3 {
     background-color: var(--cor1);
 }
 
-a.link-nav-3:hover {
+a#link-nav-3:hover {
     background-color: var(--cor1-escura);
 }
 

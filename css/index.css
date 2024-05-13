@@ -2,8 +2,7 @@
 
 /* Conteúdo principal */
 main {
-    max-width: 75vw;
-    padding: 0 20px;
+    max-width: 80vw;
 }
 
 /* Títulos principais */
@@ -33,11 +32,6 @@ main section > article {
     margin-bottom: 70px;
 }
 
-/* Todas as marcações dentro da main */
-main mark {
-    background-color: #FFB61C;
-}
-
 /* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
     flex-wrap: wrap-reverse;
@@ -63,7 +57,8 @@ section#descricao-hv > figure {
 
 /* Conteúdos da seção de instalação do compilador --------------------- */
 section#instale {
-    max-width: 60vw;
+    /* max-width: 60vw; */
+    max-width: 1200px;
     min-width: 40vw;
 }
 
@@ -78,7 +73,7 @@ section#instale > article > h3 {
 }
 
 section#instale > article > ol {
-    margin: 40px 0 0 30px;
+    margin: 40px 0 0 22px;
 }
 
 section#instale > article > ol > li {
@@ -113,7 +108,7 @@ section#instale > article > ol > li::before {
 
 section#instale > article > ol > li > span {
     color: var(--cor2);
-    font-size: 22px;
+    font-size: 24px;
 
     margin-left: 20px;
 }
@@ -142,7 +137,8 @@ section#instale pre > button.copiar:hover {
 
 /* Conteúdos da seção aprenda  */
 section#aprenda {
-    max-width: 75vw;
+    /* max-width: 75vw; */
+    max-width: 1400px;
 }
 
 section#aprenda img {
@@ -175,9 +171,10 @@ section#aprenda > article#hv > div {
     flex-wrap: wrap;
 }
 
-section#aprenda > article#hv > div > div {
+/* section#aprenda > article#hv > div > div {
     max-width: 50vw;
-}
+    max-width: 1400px;
+} */
 
 section#aprenda > article#hv ul {
     list-style-position: inside;
@@ -242,18 +239,25 @@ section#aprenda > article#playground > h3 {
     color: var(--cor2);
 }
 
-section#aprenda > article#playground > div > div {
-    max-width: 50vw;
+section#aprenda > article#playground > div {
+    flex-wrap: wrap-reverse;
+    margin-bottom: 70px;
 }
 
-section#aprenda > article#playground > div > div > p {
+/* section#aprenda > article#playground > div > div {
+    max-width: 58.5vw;
+} */
+
+/* section#aprenda > article#playground > div > div > p {
     margin-bottom: 60px;
-}
+} */
 /* ------------------------------- */
 /* conteúdo complementar */
 aside {
     padding: 100px 0;
     text-align: center;
+
+    max-width: 80vw;
 }
 
 aside blockquote {
@@ -277,7 +281,7 @@ footer {
     padding: 40px 50px;
     color: #ffffff;
 
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
 }
 
 footer * {
