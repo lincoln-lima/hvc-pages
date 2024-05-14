@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/cabecalho.css">
-    <link rel="stylesheet" href="css/cabecalho-mobile.css">
+    <link rel="stylesheet" href="css/mobile.css">
 
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
@@ -23,12 +23,17 @@
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <ul id="menu" class="flex-between-center">
+            <ul id="links-menu" class="flex-between-center">
                 <li><a id="link-nav-1" class="link-nav texto" href="#playground" target="_self">Playground</a></li>
                 <li><a id="link-nav-2" class="link-nav texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
                 <li><a id="link-nav-3" class="link-nav texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </ul>
             <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
+            <menu id="menu">
+                <li><a id="link-nav-1" class="link-nav texto" href="#playground" target="_self">Playground</a></li>
+                <li><a id="link-nav-2" class="link-nav texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
+                <li><a id="link-nav-3" class="link-nav texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
+            </menu>
         </nav>
     </header>
     <main class="centralizar-x">
@@ -133,7 +138,7 @@
         <section id="aprenda" class="centralizar-x">
             <h2 class="titulo">Aprenda</h2>
             <article id="hv">
-                <div class="flex-between-center">
+                <div class="aprenda-div-texto-imagem flex-between-center">
                     <img class="centralizar-x" src="img/compiuter.png" alt="computador">
                     <div>
                         <h3>O que é HV?</h3>
@@ -301,8 +306,8 @@
             </article>
             <article id="playground">
                 <h3>Playground</h3>
-                <div class="flex-between-center">
-                    <div class="centralizar-x">
+                <div class="aprenda-div-texto-imagem flex-between-center">
+                    <div>
                         <p class="texto">
                             Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
                             funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
@@ -330,7 +335,7 @@
             <p><cite>Alan Turing</cite></p>
         </blockquote>
     </aside>
-    <footer class="texto font-w-700 flex-between-center">
+    <footer class="texto font-w-700">
         <article class="centralizar-x">
             <p>Projeto desenvolvido por:</p>
             <ul class="font-w-600">
