@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 815px) {
+    footer {
+        height: 36vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    /* cabeçalho */
+    nav > ul {
+        display: none !important;
+    }
+
+    nav menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    section#aprenda div.aprenda-div-texto-imagem > div {
+        max-width: none;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    nav button, nav menu {
+        display: none;
+    }
+}
