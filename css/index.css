@@ -34,10 +34,13 @@ main section > article {
 
 /* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     flex-wrap: wrap-reverse;
 
     min-height: 90vh;
-    max-width: 70vw;
 }
 
 section#descricao-hv > * {    
@@ -45,7 +48,6 @@ section#descricao-hv > * {
 }
 
 section#descricao-hv > article > p {
-    font-size: 22px;
     margin: 60px 0;
 }
 
@@ -222,8 +224,14 @@ section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td
 section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
     background-color: transparent;
     padding: 0;
-    color: var(--cor1);
     width: 10px;
+
+    color: var(--cor1);
+    font-weight: 700;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.seta-tabela {
+    font-size: 30px;
 }
 /* ------------------------------- */
 
