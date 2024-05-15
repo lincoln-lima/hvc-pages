@@ -84,6 +84,12 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Todas as marcações */
+mark {
+    background-color: #FFB61C;
+    padding: 0 5px;
+}
+
 /* Definindo fontes para cada tipo de texto */
 /* h1, h2 */
 .titulo {
@@ -99,7 +105,7 @@ html {
 /* p, li */
 .texto {
     font-family: "Nunito";
-    font-size: 20px;
+    font-size: 22px;
 }
 
 /* blockquote */
@@ -128,7 +134,9 @@ code.codigo {
     font-family: "IBM Plex Mono";
     color: var(--cor1);
     text-align: left;
-    display: block;
+
+    font-size: 18px;
+    font-weight: 700;
 }
 
 pre.codigo-pre {
@@ -140,7 +148,7 @@ pre.codigo-pre {
 button.botao {
     border-radius: 15px;
     border-width: 0;
-    padding: 3px 20px;
+    padding: 5px 30px;
     background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
     border: 0.01rem solid transparent;
 
@@ -151,7 +159,7 @@ button.botao {
     
     /* texto */
     font-weight: 700;
-    font-size: 22px;
+    font-size: 24px;
     color: #ffffff;
     text-transform: uppercase;
 

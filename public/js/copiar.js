@@ -1,10 +1,7 @@
 function copiarComando(id) {
-    var texto = document.getElementById(id);
+    var copyText = document.getElementById(id).innerHTML;
 
-    texto.select();
-    texto.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText);
 
-    navigator.clipboard.write(texto.value);
-
-    alert("Copiado para área de transferência");
+    alert("Copiado para área de transferência:\n" + copyText);
 }
