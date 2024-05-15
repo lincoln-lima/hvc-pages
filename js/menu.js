@@ -1,4 +1,4 @@
 function mostraMenu() {
-    if (menu.style.display != "none") menu.style.display = 'none';
-    else menu.style.display = 'flex';
+    menu.style.transition = "opacity 0.5s";
+    menu.style.opacity = menu.style.opacity == 0 ? 1 : 0;
 }

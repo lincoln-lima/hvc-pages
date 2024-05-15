@@ -7,13 +7,24 @@
 }
 
 @media screen and (max-width: 1000px) {
-    /* cabeçalho */
-    nav > ul {
-        display: none !important;
+    nav {
+        flex-direction: row-reverse;
     }
 
-    nav menu {
-        display: none;
+    /* cabeçalho */
+    nav > menu {
+        position: absolute;
+        top: 80px;
+        left: 0;
+    
+        text-align: left;
+    
+        align-items: normal !important;
+        flex-direction: column;
+    
+        height: 120px;
+
+        opacity: 0;
     }
 }
 
@@ -25,7 +36,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-    nav button, nav menu {
+    nav button {
         display: none;
     }
 }
