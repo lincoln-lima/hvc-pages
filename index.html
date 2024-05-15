@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
 
-<body>
+<body onresize="monitoraTela()">
     <header>
         <nav class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
@@ -23,21 +23,16 @@
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <ul id="links-menu" class="flex-between-center">
-                <li><a id="link-nav-1" class="link-nav texto" href="#playground" target="_self">Playground</a></li>
-                <li><a id="link-nav-2" class="link-nav texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
-                <li><a id="link-nav-3" class="link-nav texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
-            </ul>
-            <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
-            <menu id="menu">
+            <menu id="menu" class="flex-between-center">
                 <li><a id="link-nav-1" class="link-nav texto" href="#playground" target="_self">Playground</a></li>
                 <li><a id="link-nav-2" class="link-nav texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
                 <li><a id="link-nav-3" class="link-nav texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </menu>
+            <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
         </nav>
     </header>
     <main class="centralizar-x">
-        <section id="descricao-hv" class="flex-between-center centralizar-x">
+        <section id="descricao-hv" class="centralizar-x">
             <article class="centralizar-x">
                 <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
                 <p class="texto">
@@ -202,21 +197,21 @@
                                 <td>0EE</td>
                                 <td class="descricao">copie valor da gaveta EE (cEE) para AC</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>1EE</td>
                                 <td class="descricao">copie valor do AC (cAC) para gaveta EE</td>
                                 <td>EE</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cAC</td>
                             </tr>
                             <tr>
                                 <td>2EE</td>
                                 <td class="descricao">some cEE ao AC</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cAC</td>
                                 <td class="operacao">+</td>
                                 <td>cEE</td>
@@ -225,7 +220,7 @@
                                 <td>3EE</td>
                                 <td class="descricao">subtraia de AC o cEE</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cAC</td>
                                 <td class="operacao">-</td>
                                 <td>cEE</td>
@@ -234,7 +229,7 @@
                                 <td>4EE</td>
                                 <td class="descricao">multiplique o cAC por cEE</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cAC</td>
                                 <td class="operacao">*</td>
                                 <td>cEE</td>
@@ -243,7 +238,7 @@
                                 <td>5EE</td>
                                 <td class="descricao">divida o cAC por cEE</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cAC</td>
                                 <td class="operacao">/</td>
                                 <td>cEE</td>
@@ -254,7 +249,7 @@
                                 <td>se cAC>0</td>
                                 <td class="operacao">então</td>
                                 <td>EPI</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>EE</td>
                             </tr>
                             <tr>
@@ -271,14 +266,14 @@
                                 <td>9EE</td>
                                 <td class="descricao">vá para cEE</td>
                                 <td>EPI</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>cEE</td>
                             </tr>
                             <tr>
                                 <td>0-N</td>
                                 <td class="descricao">AC recebe uma constante (truque)</td>
                                 <td>AC</td>
-                                <td class="operacao">&#8592;</td>
+                                <td class="operacao seta-tabela">&#8592;</td>
                                 <td>N</td>
                             </tr>
                             <tr>
@@ -355,6 +350,7 @@
     </footer>
     <script src="js/copiar.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/tela.js"></script>
 </body>
 
 </html>
