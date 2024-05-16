@@ -6,12 +6,16 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1064px) {
+    /* Cabeçalho --------------------*/
+    header {
+        margin-bottom: 10px;
+    }
+
     nav {
         flex-direction: row-reverse;
     }
-
-    /* cabeçalho */
+    
     nav > menu {
         position: absolute;
         top: 80px;
@@ -24,7 +28,19 @@
     
         height: 120px;
 
+        visibility: hidden;
         opacity: 0;
+
+        transition: opacity 0.3s linear;
+
+        min-width: auto;
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+        background-color: #00000020;
+    }
+
+    section#descricao-hv > img {
+        margin: 0;
     }
 }
 
@@ -35,7 +51,7 @@
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1065px) {
     nav button {
         display: none;
     }
