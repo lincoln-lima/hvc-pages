@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
 
-<body onresize="monitoraTela()">
+<body onresize="monitoraTela()" onload="monitoraTela()">
     <header>
         <nav class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
@@ -33,7 +33,7 @@
     </header>
     <main class="centralizar-x">
         <section id="descricao-hv" class="centralizar-x">
-            <article class="centralizar-x">
+            <article>
                 <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
                 <p class="texto">
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
@@ -45,9 +45,7 @@
                     <button class="texto botao centralizar-x">COMECE AQUI</button>
                 </a>
             </article>
-            <figure class="centralizar-x">
-                <img src="img/mlk-do-grau.png" alt="menino que programa">
-            </figure>
+            <img src="img/mlk-do-grau.png" alt="menino que programa">
         </section>
         <section id="instale" class="centralizar-x">
             <h2 class="titulo">Instale</h2>
@@ -108,14 +106,14 @@
                     <li class="subtitulo">
                         <span>Compile o código</span>
                         <p class="texto">
-                            Execute o comando <mark>make</mark> para compilar o código usando clang++
+                            Execute o comando <mark><em>make</em></mark> para compilar o código usando clang++
                         </p>
                         <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo" id="make">make</code><button onclick="copiarComando('make')" class="copiar"><img src="img/clipboard.png"></button></pre>
                     </li>
                     <li class="subtitulo">
                         <span>Adicione o HVC ao PATH do seu sistema</span>
                         <p class="texto">
-                            Este comando adicionará o diretório <mark>./bin</mark> ao PATH do seu sistema. Isso permitirá
+                            Este comando adicionará o diretório <mark><em>./bin</em></mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
                         </p>
                         <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo" id="echo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button onclick="copiarComando('echo')" class="copiar"><img src="img/clipboard.png"></button></pre>
@@ -134,7 +132,7 @@
             <h2 class="titulo">Aprenda</h2>
             <article id="hv">
                 <div class="aprenda-div-texto-imagem flex-between-center">
-                    <img class="centralizar-x" src="img/compiuter.png" alt="computador">
+                    <img src="img/compiuter.png" alt="computador">
                     <div>
                         <h3>O que é HV?</h3>
                         <p class="texto">
@@ -246,7 +244,7 @@
                             <tr>
                                 <td>6EE</td>
                                 <td class="descricao">se cAC > 0, vá para EE</td>
-                                <td>se cAC>0</td>
+                                <td>se cAC > 0</td>
                                 <td class="operacao">então</td>
                                 <td>EPI</td>
                                 <td class="operacao seta-tabela">&#8592;</td>
@@ -287,7 +285,7 @@
             </article>
             <article id="como">
                 <h3>Como usar o compilador</h3>
-                <p class="texto">Crie um arquivo de extensão <mark>.ahv</mark>, nele ficará seu código.</p>
+                <p class="texto">Crie um arquivo de extensão <mark title="formato de arquivo">.ahv</mark>, nele ficará seu código.</p>
                 <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <br>
                 <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo">750
