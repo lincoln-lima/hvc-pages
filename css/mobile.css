@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-@media screen and (max-width: 815px) {
-    footer {
-        height: 36vh;
-    }
-}
-
 @media screen and (max-width: 1064px) {
     /* Cabeçalho --------------------*/
     header {
@@ -42,9 +36,11 @@
     section#descricao-hv > img {
         margin: 0;
     }
-}
 
-@media screen and (max-width: 1150px) {
+    section#aprenda div.aprenda-div-texto-imagem {
+        justify-content: center;
+    }
+
     section#aprenda div.aprenda-div-texto-imagem > div {
         max-width: none;
         margin-top: 40px;
