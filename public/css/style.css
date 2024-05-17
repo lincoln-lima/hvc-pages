@@ -105,7 +105,8 @@ mark {
 /* p, li */
 .texto {
     font-family: "Nunito";
-    font-size: 22px;
+    /* font-size: 22px; */
+    font-size: 1.4em;
 }
 
 /* blockquote */
@@ -135,7 +136,8 @@ code.codigo {
     color: var(--cor1);
     text-align: left;
 
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 1.15em;
     font-weight: 700;
 }
 
@@ -159,7 +161,8 @@ button.botao {
     
     /* texto */
     font-weight: 700;
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: 1.5em;
     color: #ffffff;
     text-transform: uppercase;
 

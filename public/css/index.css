@@ -8,7 +8,8 @@ main {
 /* Títulos principais */
 h1#titulo-principal, h2 {
     text-align: center;
-    font-size: 60px;
+    /* font-size: 60px; */
+    font-size: 3.8em;
 
     /* Configuração para deixar texto gradiente */
     background-image: linear-gradient(to right, var(--cor2), var(--cor1));
@@ -34,24 +35,26 @@ main section > article {
 
 /* Conteúdos da seção de descrição do site ------------------------------*/
 section#descricao-hv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     flex-wrap: wrap-reverse;
 
     min-height: 90vh;
-    max-width: 70vw;
 }
 
-section#descricao-hv > * {    
+section#descricao-hv > article {    
     max-width: 450px;
 }
 
 section#descricao-hv > article > p {
-    font-size: 22px;
     margin: 60px 0;
 }
 
-section#descricao-hv > figure {
-    margin-top: 70px;
-    margin-bottom: 70px;
+section#descricao-hv > img {
+    max-width: 100%;
+    margin: 0 15px;
 }
 /* -------------------------------------------------------------------- */
 
@@ -69,7 +72,8 @@ section#instale > article > img {
 
 section#instale > article > h3 {
     color: var(--cor3);
-    font-size: 40px;
+    /* font-size: 40px; */
+    font-size: 2.6em;
 }
 
 section#instale > article > ol {
@@ -87,6 +91,8 @@ section#instale > article > ol > li::marker {
     font-family: "Archivo Black";
     color: #ffffff;
     content: counter(list-item);
+
+    font-size: 1.1em;
 }
 
 section#instale > article > ol > li::before {    
@@ -97,18 +103,19 @@ section#instale > article > ol > li::before {
     display: inline-block;
     z-index: -1;
     top: 5px;
-    left: -7px;
+    left: -9px;
 
     /* configurando formato e fundo */
     background-color: var(--cor2);
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
 section#instale > article > ol > li > span {
     color: var(--cor2);
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: 1.6em;
 
     margin-left: 20px;
 }
@@ -149,7 +156,8 @@ section#aprenda div.aprenda-div-texto-imagem > div{
 
 section#aprenda > article h3 {
     text-transform: uppercase;
-    font-size: 45px;
+    /* font-size: 45px; */
+    font-size: 2.9em;
 
     font-family: 'Archivo Black';
     margin-bottom: 15px;
@@ -222,8 +230,15 @@ section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td
 section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
     background-color: transparent;
     padding: 0;
-    color: var(--cor1);
     width: 10px;
+
+    color: var(--cor1);
+    font-weight: 700;
+}
+
+section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.seta-tabela {
+    /* font-size: 30px; */
+    font-size: 1.5em;
 }
 /* ------------------------------- */
 
@@ -234,6 +249,7 @@ section#aprenda > article#como > h3 {
 
 section#aprenda article#como pre {
     padding: 15px 20px;
+    max-width: 645px;
 }
 
 /* artigo do playground */
@@ -272,7 +288,8 @@ aside blockquote {
 }
 
 aside blockquote > * > * {
-    font-size: 35px;
+    /* font-size: 35px; */
+    font-size: 2.2em;
     padding: 3px;
 }
 
@@ -280,18 +297,34 @@ aside blockquote > * > * {
 footer {
     background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
 
-    padding: 30px 50px;
+    padding: 30px 0;
     color: #ffffff;
+}
 
+footer > section {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+
+    max-width: 90vw;
 }
 
 footer article {
-    min-width: 350px;
+    width: 350px;
+    height: 160px;
 }
+
+footer article:nth-child(2) {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* footer article {
+    min-width: 350px;
+} */
 
 footer * {
     color: #ffffff;
