@@ -7,11 +7,11 @@ nav#nav-play {
     max-width: 95vw;
 }
 
-nav#nav-play > ul > li > a {
+nav#nav-play > menu > li > a {
     padding: 5px 7.5px;
 }
 
-nav#nav-play > ul > li > a > img {
+nav#nav-play > menu > li > a > img {
     margin-right: 10px;
 }
 /* -------------------------------------------------------------------- */

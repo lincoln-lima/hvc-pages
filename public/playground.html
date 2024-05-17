@@ -20,32 +20,33 @@
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <ul class="flex-between-center">
+            <menu id="menu" class="flex-between-center">
                 <li>
-                    <a class="link-nav-1 link-nav-play texto flex-between-center" href="" target="_self">
+                    <a id="link-nav-1" class="link-nav texto flex-between-center" href="" target="_self">
                         <img src="img/debug.png" alt="">
-                        <p class="texto">Executar/Depurar</p>
+                        <p>Executar/Depurar</p>
                     </a>
                 </li>
                 <li>
-                    <a class="link-nav-2 link-nav-play texto flex-between-center" href="" target="_self">
+                    <a id="link-nav-2" class="link-nav texto flex-between-center" href="" target="_self">
                         <img src="img/import-export.png" alt="">
                         <p>Exportar/Importar</p>
                     </a>
                 </li>
                 <li>
-                    <a class="link-nav-3 link-nav-play texto flex-between-center" href="" target="_self">
+                    <a id="link-nav-3" class="link-nav texto flex-between-center" href="" target="_self">
                         <img src="img/config.png" alt="">
                         <p>Configurar</p>
                     </a>
                 </li>
-            </ul>
+            </menu>
         </nav>
     </header>
     <main class="centralizar-x">
         <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
-            <!-- <textarea name="cartoes" id="" cols="25" rows="10"></textarea> -->
+            <div id="editor-area"></div>
+            <!-- <textarea name="cartoes" id="editor-area" cols="80" rows="40"></textarea> -->
         </section>
         <section id="folha-de-saida" class="texto-centro">
             <h2 class="subtitulo">Folha de Saída</h2>
@@ -73,6 +74,7 @@
         </section>
     </main>
     <script src="js/repetir.js"></script>
-    <script src="../src/main.ts" type="module"></script>
+    <script src="../src/hvc.ts" type="module"></script>
+    <script src="../src/codemirror.ts" type="module"></script>
 </body>
 </html>
