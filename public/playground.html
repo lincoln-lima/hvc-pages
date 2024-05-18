@@ -22,22 +22,22 @@
             </a>
             <menu id="menu" class="flex-between-center">
                 <li>
-                    <a id="link-nav-1" class="link-nav texto flex-between-center" href="" target="_self">
+                    <button id="run" class="link-nav link-nav-1 texto flex-between-center" href="" target="_self">
                         <img src="img/debug.png" alt="">
                         <p>Executar/Depurar</p>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a id="link-nav-2" class="link-nav texto flex-between-center" href="" target="_self">
+                    <button id="exp-imp" class="link-nav link-nav-2 texto flex-between-center" href="" target="_self">
                         <img src="img/import-export.png" alt="">
                         <p>Exportar/Importar</p>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a id="link-nav-3" class="link-nav texto flex-between-center" href="" target="_self">
+                    <button id="config" class="link-nav link-nav-3 texto flex-between-center" href="" target="_self">
                         <img src="img/config.png" alt="">
                         <p>Configurar</p>
-                    </a>
+                    </button>
                 </li>
             </menu>
         </nav>
@@ -45,11 +45,15 @@
     <main class="centralizar-x">
         <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
-            <div id="editor-area"></div>
-            <!-- <textarea name="cartoes" id="editor-area" cols="80" rows="40"></textarea> -->
+            <!-- <div id="editor-area"></div> -->
+            <textarea id="area-texto" name="area-texto" cols="50" rows="30">740
+840
+000
+20</textarea>
         </section>
         <section id="folha-de-saida" class="texto-centro">
             <h2 class="subtitulo">Folha de Saída</h2>
+            <span id="saida"></span>
         </section>
         <section id="epi" class="visores texto-centro">
             <article class="centralizar-y">
@@ -76,5 +80,12 @@
     <script src="js/repetir.js"></script>
     <script src="../src/hvc.ts" type="module"></script>
     <script src="../src/codemirror.ts" type="module"></script>
+    <script>
+        function testeConsole(event) {
+            event.preventDefault();
+            var dados = document.getElementById("area-texto");
+            console.log(dados.value);
+        }
+    </script>
 </body>
 </html>
