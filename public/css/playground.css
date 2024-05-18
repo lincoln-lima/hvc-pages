@@ -7,11 +7,15 @@ nav#nav-play {
     max-width: 95vw;
 }
 
-nav#nav-play > menu > li > a {
+nav#nav-play > menu {
+    min-width: 50vw;
+}
+
+nav#nav-play > menu > li > button {
     padding: 5px 7.5px;
 }
 
-nav#nav-play > menu > li > a > img {
+nav#nav-play > menu > li > button > img {
     margin-right: 10px;
 }
 /* -------------------------------------------------------------------- */
@@ -50,6 +54,10 @@ section.visores {
 section#porta-cartoes {
     background-color: var(--cor1);
     grid-area: porta-cartoes;
+}
+
+section#porta-cartoes > div > * {
+    height: 100%;
 }
 /* -------------------------------------------------------------------- */
 

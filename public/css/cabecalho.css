@@ -5,7 +5,7 @@ header {
     height: 55px;
 
     padding: 25px 0;
-    box-shadow: 1px 1px 9px hsla(0, 0%, 0%, 0.2);
+    box-shadow: 1px 1px 9px #00000033;
 }
 
 /* barra de navegação */
@@ -15,7 +15,7 @@ nav {
 }
 
 /* todos os links da barra de navegação */
-nav a {
+nav a, nav button {
     padding: 1px 5px;
     border-radius: 3px;
 
@@ -61,31 +61,33 @@ nav > a#home > h1 > span:nth-child(2) {
     color: var(--cor2);
 }
 
-a.link-nav {
+.link-nav {
     padding: 0 15px;
+
+    border: none;
 }
 
-a#link-nav-1 {
+.link-nav-1 {
     background-color: var(--cor2);
 }
 
-a#link-nav-1:hover {
+.link-nav-1:hover {
     background-color: var(--cor2-escura);
 }
 
-a#link-nav-2 {
+.link-nav-2 {
     background-color: var(--cor3);
 }
 
-a#link-nav-2:hover {
+.link-nav-2:hover {
     background-color: var(--cor3-escura);
 }
 
-a#link-nav-3 {
+.link-nav-3 {
     background-color: var(--cor1);
 }
 
-a#link-nav-3:hover {
+.link-nav-3:hover {
     background-color: var(--cor1-escura);
 }
 
