@@ -1,11 +1,11 @@
-/* definindo elemento article */
-const article = document.getElementById("article-secs-gaveteiro");
+/* definindo elemento seção*/
+const secs = document.getElementById("secs-gaveteiro");
 
 for (let i = 0; i < 100; i++) {
     /* adicionando elemento div para agrupar imagem e span */
-    const container = document.createElement("div");
-    container.className = "div-article-secs-gaveteiro";
-    article.appendChild(container);
+    const article = document.createElement("article");
+    article.className = "article-secs-gaveteiro";
+    secs.appendChild(article);
 
     /* criando gaveta */
     const imagem = document.createElement("img");
@@ -17,8 +17,15 @@ for (let i = 0; i < 100; i++) {
     /* passando para string e descobrir a quantidade de dígitos */
     /* caso tamanho seja 1, adicionar o 0 */
     num_gaveta.innerText = i.toString().length === 1 ? '0' + i : i;
-    num_gaveta.className = "texto"
+    num_gaveta.id = "num-gaveta-" + i;
+    num_gaveta.className = "num-gaveta texto";
 
-    container.appendChild(imagem);
-    container.appendChild(num_gaveta);
+    const cont_gaveta = document.createElement("span");
+    cont_gaveta.innerText = "---";
+    cont_gaveta.id = "cont-gaveta-" + i;
+    cont_gaveta.className = "cont-gaveta texto";
+
+    article.appendChild(imagem);
+    article.appendChild(num_gaveta);
+    article.appendChild(cont_gaveta);
 }
