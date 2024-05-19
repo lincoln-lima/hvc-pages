@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "codemirror": "^6.0.1",
-    "hvcjs": "^1.1.0",
+    "hvcjs": "^1.1.1",
     "thememirror": "^2.0.1"
   }
 }
