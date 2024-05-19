@@ -120,16 +120,27 @@ section#secs-gaveteiro {
     background-color: var(--cor3);
 }
 
-section#secs-gaveteiro div.div-article-secs-gaveteiro {
+section#secs-gaveteiro > article.article-secs-gaveteiro {
     position: relative;
 }
 
-section#secs-gaveteiro div.div-article-secs-gaveteiro span {
+section#secs-gaveteiro > article.article-secs-gaveteiro > span.num-gaveta {
     color: #ffffff;
+    font-weight: bold;
 
     position: absolute;
     top: 40px;
-    left: 35px;
+    left: 34px;
 
     transform: skewY(12deg);
+}
+
+section#secs-gaveteiro > article.article-secs-gaveteiro > span.cont-gaveta {
+    color: #ffffff;
+
+    position: absolute;
+    top: 35px;
+    right: 18px;
+
+    transform: skewY(-25deg);
 }
