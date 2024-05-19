@@ -30,8 +30,8 @@ main {
 
     display: grid;
     grid-template-areas: 
-        'porta-cartoes folha-de-saida folha-de-saida gaveteiro'
-        'porta-cartoes epi acumulador gaveteiro';
+        'secs-porta-cartoes secs-folha-de-saida secs-folha-de-saida secs-gaveteiro'
+        'secs-porta-cartoes secs-epi secs-acumulador secs-gaveteiro';
     /* grid-template-columns: 36vw 18vw 18vw 150px; */
     grid-template-columns: auto 18vw 18vw 150px;
     grid-template-rows: 40vh auto;
@@ -50,27 +50,27 @@ section.visores {
 }
 /* -------------------------------------------------------------------- */
 
-/* porta-cartoes */
-section#porta-cartoes {
+/* secs-porta-cartoes */
+section#secs-porta-cartoes {
     background-color: var(--cor1);
-    grid-area: porta-cartoes;
+    grid-area: secs-porta-cartoes;
 }
 
-section#porta-cartoes > div > * {
+section#secs-porta-cartoes > div > * {
     height: 100%;
 }
 /* -------------------------------------------------------------------- */
 
-/* folha-de-saida */
-section#folha-de-saida {
+/* secs-folha-de-saida */
+section#secs-folha-de-saida {
     background-color: var(--cor2);
 
-    grid-area: folha-de-saida;
+    grid-area: secs-folha-de-saida;
 }
 /* -------------------------------------------------------------------- */
 
-/* epi */
-section#epi {
+/* secs-epi */
+section#secs-epi {
     background-color: #915901;
     background-image: url(../img/madeirado.png);
     background-repeat: no-repeat;
@@ -79,10 +79,10 @@ section#epi {
 
     border-radius: 2px;
 
-    grid-area: epi;
+    grid-area: secs-epi;
 }
 
-section#epi > article {
+section#secs-epi > article {
     height: 83%;
     width: 83%;
 
@@ -91,40 +91,40 @@ section#epi > article {
     background-color: #1d3825;
 }
 
-section#epi span {
+section#secs-epi span {
     font-size: 7.5vw;
 }
 /* -------------------------------------------------------------------- */
 
-/* acumulador */
-section#acumulador {
+/* secs-acumulador */
+section#secs-acumulador {
     background-color: #93A28D;
 
     border: 10px solid black;
     border-radius: 5px;
 
-    grid-area: acumulador;
+    grid-area: secs-acumulador;
 }
 
-section#acumulador span {
+section#secs-acumulador span {
     font-size: 10vw;
 }
 /* -------------------------------------------------------------------- */
 
-/* gaveteiro */
-section#gaveteiro {
-    grid-area: gaveteiro;
+/* secs-gaveteiro */
+section#secs-gaveteiro {
+    grid-area: secs-gaveteiro;
 
     max-height: 78vh;
 
     background-color: var(--cor3);
 }
 
-section#gaveteiro div.div-article-gaveteiro {
+section#secs-gaveteiro div.div-article-secs-gaveteiro {
     position: relative;
 }
 
-section#gaveteiro div.div-article-gaveteiro span {
+section#secs-gaveteiro div.div-article-secs-gaveteiro span {
     color: #ffffff;
 
     position: absolute;

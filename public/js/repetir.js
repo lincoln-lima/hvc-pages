@@ -1,10 +1,10 @@
 /* definindo elemento article */
-const article = document.getElementById("article-gaveteiro");
+const article = document.getElementById("article-secs-gaveteiro");
 
 for (let i = 0; i < 100; i++) {
     /* adicionando elemento div para agrupar imagem e span */
     const container = document.createElement("div");
-    container.className = "div-article-gaveteiro";
+    container.className = "div-article-secs-gaveteiro";
     article.appendChild(container);
 
     /* criando gaveta */
