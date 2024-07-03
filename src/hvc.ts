@@ -5,9 +5,9 @@ const hvc = new HVC();
 /* seções da página */
 
 // áreas de texto
-const saida = document.getElementById("saida")!;
-const acumulador = document.getElementById("acumulador")!;
-const epi = document.getElementById("epi")!;
+const saida = document.getElementById("saida-span")!;
+const acumulador = document.getElementById("acumulador-span")!;
+const epi = document.getElementById("epi-span")!;
 
 /* 
 // seções com itens
