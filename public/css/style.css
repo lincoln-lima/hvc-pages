@@ -27,13 +27,18 @@
 }
 
 @font-face {
-    font-family: 'SqueakyChalkSound';
-    src: url(../fonts/squeaky-chalk-sound/SqueakyChalkSound.ttf);
+    font-family: 'Eraser';
+    src: url(../fonts/Eraser/eraser.regular.ttf);
 }
 
 @font-face {
     font-family: 'Seven Segment';
     src: url(../fonts/seven_segment/Seven\ Segment.ttf)
+}
+
+@font-face {
+    font-family: 'Cursive';
+    src: url(../fonts/cursive/great-vibes.regular.ttf);
 }
 /* -------------------------------------------------------------------- */
 
@@ -119,8 +124,12 @@ mark {
 }
 
 .giz {
-    font-family: "SqueakyChalkSound";
+    font-family: "Eraser";
     color: #ffffff;
+}
+
+.cursiva {
+    font-family: "Cursive";
 }
 
 .font-w-700 {
