@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
 
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
+
 <body>
     <header id="header-play">
         <nav id="nav-play" class="flex-between-center centralizar-x">
@@ -43,7 +45,7 @@
         </nav>
     </header>
     <main class="centralizar-x">
-        <section id="secs-porta-cartoes" class="texto-centro">
+        <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
             <!-- <div id="editor-area"></div> -->
             <textarea id="area-texto" name="area-texto" cols="50" rows="30">750
@@ -56,23 +58,25 @@
 20
 35</textarea>
         </section>
-        <section id="secs-folha-de-saida" class="texto-centro">
-            <h2 class="subtitulo">Folha de Saída</h2>
-            <span id="saida"></span>
-        </section>
-        <section id="secs-epi" class="visores texto-centro">
-            <article class="centralizar-y">
-                <h2 class="giz">EPI</h2>
-                <span id="epi" class="giz">--</span>
+        <section id="visores" class="texto-centro">
+            <article id="folha-de-saida">
+                <h2 class="subtitulo cursiva">Folha de Saída</h2>
+                <span id="saida-span" class="cursiva centralizar-y">-</span>
             </article>
+            <div id="div-epi-acumulador">
+                <article id="contorno-epi">
+                    <div id="epi" class="centralizar-y">
+                        <h2 class="giz">EPI</h2>
+                        <span id="epi-span" class="giz centralizar-y">-</span>
+                    </div>
+                </article>
+                <article id="acumulador">
+                    <h2 class="segmento">Acumulador</h2>
+                    <span id="acumulador-span" class="segmento centralizar-y">-</span>
+                </article>
+            </div>
         </section>
-        <section id="secs-acumulador" class="visores texto-centro">
-            <article class="centralizar-y">
-                <h2 class="segmento">Acumulador</h2>
-                <span id="acumulador" class="segmento">--</span>
-            </article>
-        </section>
-        <section id="secs-gaveteiro" class="texto-centro scroll-y">
+        <section id="gaveteiro" class="texto-centro scroll-y">
             <h2 class="subtitulo">Gaveteiro</h2>
             <!--
             <article id="article-secs-gaveteiro">
@@ -85,15 +89,6 @@
     </main>
     <script src="js/repetir.js"></script>
     <script src="../src/hvc.ts" type="module"></script>
-    <!-- <script src="../src/codemirror.ts" type="module"></script> -->
-    <!-- 
-    <script>
-        function testeConsole(event) {
-            event.preventDefault();
-            var dados = document.getElementById("area-texto");
-            console.log(dados.value);
-        }
-    </script>
-    -->
 </body>
+
 </html>

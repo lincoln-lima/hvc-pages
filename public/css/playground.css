@@ -23,124 +23,158 @@ nav#nav-play > menu > li > button > img {
 /* conteúdo principal */
 main {
     max-width: 95vw;
-    height: 78vh;
+    min-height: 91vh;
+    max-height: 91vh;
 
-    margin-top: 30px;
-    margin-bottom: 30px;
-
-    display: grid;
-    grid-template-areas: 
-        'secs-porta-cartoes secs-folha-de-saida secs-folha-de-saida secs-gaveteiro'
-        'secs-porta-cartoes secs-epi secs-acumulador secs-gaveteiro';
-    /* grid-template-columns: 36vw 18vw 18vw 150px; */
-    grid-template-columns: auto 18vw 18vw 150px;
-    grid-template-rows: 40vh auto;
-    column-gap: 4vw;
-    row-gap: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-/* -------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------- */
 section {
+    min-height: 80vh;
+    max-height: 80vh;
+}
+
+section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumulador, section#gaveteiro {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
+    border-radius: 15px;
+    padding: 15px;
 }
 /* -------------------------------------------------------------------- */
-
-section.visores {
-    position: relative;
-}
-/* -------------------------------------------------------------------- */
-
-/* secs-porta-cartoes */
-section#secs-porta-cartoes {
+/* porta-cartoes */
+section#porta-cartoes {
     background-color: var(--cor1);
-    grid-area: secs-porta-cartoes;
-}
-
-section#secs-porta-cartoes > div > * {
-    height: 100%;
 }
 /* -------------------------------------------------------------------- */
+section#visores {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
+    align-items: center;
+
+    width: 40vw;
+    
+    min-height: 83vh;
+    max-height: 83vh;
+}
+
+section#visores > * {
+    height: 30vh;
+}
+
+div#div-epi-acumulador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+/* -------------------------------------------------------------------- */
 /* secs-folha-de-saida */
-section#secs-folha-de-saida {
+article#folha-de-saida {
     background-color: var(--cor2);
 
-    grid-area: secs-folha-de-saida;
+    width: 94%;
+
+    position: relative;
+}
+
+article#folha-de-saida > h2 {
+    font-size: 2em;
+}
+
+article#folha-de-saida > span {
+    font-size: 7em;
 }
 /* -------------------------------------------------------------------- */
 
-/* secs-epi */
-section#secs-epi {
+/* epi */
+article#contorno-epi {
     background-color: #915901;
     background-image: url(../img/madeirado.png);
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center center; */
 
     border-radius: 2px;
 
-    grid-area: secs-epi;
+    height: 100%;
+    width: 45%;
+
+    position: relative;
 }
 
-section#secs-epi > article {
-    height: 83%;
-    width: 83%;
-
+div#epi {
     border-radius: 2px;
+    height: 90%;
+    width: 90%;
 
     background-color: #1d3825;
+    position: relative;
 }
 
-section#secs-epi span {
-    font-size: 7.5vw;
+div#epi > h2 {
+    font-size: 2em;
+}
+
+div#epi > span {
+    font-size: 8em;
 }
 /* -------------------------------------------------------------------- */
 
 /* secs-acumulador */
-section#secs-acumulador {
+article#acumulador {
     background-color: #93A28D;
 
     border: 10px solid black;
     border-radius: 5px;
 
-    grid-area: secs-acumulador;
+    height: 83%;
+    width: 37%;
+
+    position: relative;
 }
 
-section#secs-acumulador span {
-    font-size: 10vw;
+article#acumulador > h2 {
+    font-size: 2em;
+}
+
+article#acumulador > span {
+    font-size: 8em;
 }
 /* -------------------------------------------------------------------- */
 
 /* secs-gaveteiro */
-section#secs-gaveteiro {
-    grid-area: secs-gaveteiro;
-
-    max-height: 78vh;
+section#gaveteiro {
+    max-height: 80vh;
 
     background-color: var(--cor3);
 }
 
-section#secs-gaveteiro > article.article-secs-gaveteiro {
+article.gaveta {
     position: relative;
 }
 
-section#secs-gaveteiro > article.article-secs-gaveteiro > span.num-gaveta {
+span.num-gaveta {
     color: #ffffff;
     font-weight: bold;
 
     position: absolute;
     top: 40px;
-    left: 34px;
+    left: 18px;
 
     transform: skewY(12deg);
 }
 
-section#secs-gaveteiro > article.article-secs-gaveteiro > span.cont-gaveta {
+span.cont-gaveta {
+    font-size: 1.1em;
     color: #ffffff;
 
     position: absolute;
     top: 35px;
-    right: 18px;
+    right: 2px;
 
     transform: skewY(-25deg);
 }
