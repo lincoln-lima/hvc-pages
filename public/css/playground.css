@@ -8,7 +8,7 @@ nav#nav-play {
 }
 
 nav#nav-play > menu {
-    min-width: 50vw;
+    width: 700px;
 }
 
 nav#nav-play > menu > li > button {
@@ -23,18 +23,16 @@ nav#nav-play > menu > li > button > img {
 /* conteúdo principal */
 main {
     max-width: 95vw;
-    min-height: 91vh;
-    max-height: 91vh;
+    /* height: 91vh; */
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 4vh 0;
+
+    flex-wrap: wrap;
 }
 
 /* -------------------------------------------------------------------- */
 section {
-    min-height: 80vh;
-    max-height: 80vh;
+    height: 80vh;
 }
 
 section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumulador, section#gaveteiro {
@@ -57,8 +55,7 @@ section#visores {
 
     width: 40vw;
     
-    min-height: 83vh;
-    max-height: 83vh;
+    height: 83vh;
 }
 
 section#visores > * {
@@ -66,10 +63,6 @@ section#visores > * {
 }
 
 div#div-epi-acumulador {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     width: 100%;
 }
 /* -------------------------------------------------------------------- */
@@ -148,7 +141,7 @@ article#acumulador > span {
 
 /* secs-gaveteiro */
 section#gaveteiro {
-    max-height: 80vh;
+    height: 80vh;
 
     background-color: var(--cor3);
 }

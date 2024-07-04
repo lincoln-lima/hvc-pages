@@ -2,7 +2,7 @@
 
 /* cabeçalho */
 header {
-    height: 55px;
+    height: 6vh;
 
     padding: 25px 0;
     box-shadow: 1px 1px 9px #00000033;
@@ -23,7 +23,7 @@ nav a, nav button {
     font-size: 1.5em !important;
 }
 
-nav a, nav p {
+nav a, nav span {
     color: #ffffff;
 }
 

@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/playground.css">
     <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/mobile-playground.css">
 
     <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
 </head>
 
-<body>
+<body onresize="monitoraTelaPlayground()" onload="monitoraTelaPlayground()">
     <header id="header-play">
         <nav id="nav-play" class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
@@ -24,27 +25,28 @@
             </a>
             <menu id="menu" class="flex-between-center">
                 <li>
-                    <button id="run" class="link-nav link-nav-1 texto flex-between-center" href="" target="_self">
-                        <img src="img/debug.png" alt="">
-                        <p>Executar/Depurar</p>
+                    <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self">
+                        <img src="img/debug.png" alt="" srcset="">
+                        <span>Executar/Depurar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="exp-imp" class="link-nav link-nav-2 texto flex-between-center" href="" target="_self">
-                        <img src="img/import-export.png" alt="">
-                        <p>Exportar/Importar</p>
+                    <button id="exp-imp" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                        <img src="img/import-export.png" alt="" srcset="">
+                        <span>Exportar/Importar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="config" class="link-nav link-nav-3 texto flex-between-center" href="" target="_self">
-                        <img src="img/config.png" alt="">
-                        <p>Configurar</p>
+                    <button id="config" class="flex-between-center link-nav link-nav-3 texto" target="_self">
+                        <img src="img/config.png" alt="" srcset="">
+                        <span>Configurar</span>
                     </button>
                 </li>
             </menu>
+            <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
         </nav>
     </header>
-    <main class="centralizar-x">
+    <main class="flex-between-center centralizar-x">
         <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
             <!-- <div id="editor-area"></div> -->
@@ -63,7 +65,7 @@
                 <h2 class="subtitulo cursiva">Folha de Saída</h2>
                 <span id="saida-span" class="cursiva centralizar-y">-</span>
             </article>
-            <div id="div-epi-acumulador">
+            <div id="div-epi-acumulador" class="flex-between-center">
                 <article id="contorno-epi">
                     <div id="epi" class="centralizar-y">
                         <h2 class="giz">EPI</h2>
@@ -88,7 +90,9 @@
         </section>
     </main>
     <script src="js/repetir.js"></script>
-    <script src="../src/hvc.ts" type="module"></script>
+    <script src="js/tela.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="src/hvc.ts" type="module"></script>
 </body>
 
 </html>

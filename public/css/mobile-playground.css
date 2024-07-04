@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 940px) {
+    nav button#botao-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 939px) {
+    /* Cabeçalho --------------------*/
+    header {
+        margin-bottom: 10px;
+    }
+
+    /* nav {
+        flex-direction: row-reverse;
+    } */
+    
+    nav > menu {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        z-index: 99;
+        
+        align-items: normal !important;
+        flex-direction: column;
+    
+        height: 150px;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition: opacity 0.3s linear;
+
+        width: fit-content !important;
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+        background-color: #00000020;
+    }
+    
+    main {
+        height: 250% !important;
+    }
+
+    section {
+        margin: auto;
+    }
+
+    section#porta-cartoes {
+        width: 80% !important;
+    }
+
+    section#visores {
+        width: 85% !important;
+    }
+}
+
+@media screen and (max-width: 1119px) {
+    main {
+        height: calc(100% + 1vh);
+    }
+
+    section#porta-cartoes, section#visores {
+        width: 42%;
+    }
+
+    section#visores > * {
+        height: 35vh;
+    }
+
+    section#gaveteiro {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: fit-content !important;
+    }
+
+    article.gaveta {
+        margin: 0 1vw;
+    }
+}
