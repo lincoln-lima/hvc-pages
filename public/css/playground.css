@@ -19,7 +19,6 @@ nav#nav-play > menu > li > button > img {
     margin-right: 10px;
 }
 /* -------------------------------------------------------------------- */
-
 /* conteúdo principal */
 main {
     max-width: 95vw;
@@ -29,7 +28,6 @@ main {
 
     flex-wrap: wrap;
 }
-
 /* -------------------------------------------------------------------- */
 section {
     height: 80vh;
@@ -47,14 +45,9 @@ section#porta-cartoes {
 }
 /* -------------------------------------------------------------------- */
 section#visores {
-    display: flex;
-    justify-content: space-between;
     flex-direction: column;
 
-    align-items: center;
-
     width: 40vw;
-    
     height: 83vh;
 }
 
@@ -70,7 +63,7 @@ div#div-epi-acumulador {
 article#folha-de-saida {
     background-color: var(--cor2);
 
-    width: 94%;
+    width: 96%;
 
     position: relative;
 }

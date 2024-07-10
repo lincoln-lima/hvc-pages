@@ -1,5 +1,4 @@
 /* -------------------------------------------------------------------- */
-
 /* cabeçalho */
 header {
     height: 6vh;
@@ -11,13 +10,14 @@ header {
 /* barra de navegação */
 nav {
     max-width: 80vw;
+    height: 54px;
     position: relative;
 }
 
 /* todos os links da barra de navegação */
 nav a, nav button {
     padding: 1px 5px;
-    border-radius: 3px;
+/*     border-radius: 3px; */
 
     /* font-size: 18px; */
     font-size: 1.5em !important;
@@ -40,12 +40,11 @@ nav a:hover {
 
 nav > a#home {
     width: 170px;
-    border: 2px solid transparent;
+    height: 49px; /* tamanho da imagem */
 }
 
 nav > a#home:hover {
     background-color: #00000015;
-    /* border-color: #00000010; */
 }
 
 nav > a#home > h1 > span {
@@ -92,13 +91,15 @@ nav > a#home > h1 > span:nth-child(2) {
 }
 
 button#botao-menu {
-    border-width: 0;
+    height: 50px; /* tamanho da imagem */
+
     background-color: transparent;
     cursor: pointer;
 
     padding: 5px;
 
-    border: 2px solid transparent;
+    border-width: 0;
+    border-color: transparent;
     border-radius: 3px;
 
     transition: 0.3s;

@@ -11,18 +11,13 @@
     header {
         margin-bottom: 10px;
     }
-
-    /* nav {
-        flex-direction: row-reverse;
-    } */
     
     nav > menu {
         position: absolute;
         top: 8vh;
         right: 0;
-        z-index: 99;
         
-        align-items: normal !important;
+        align-items: end !important;
         flex-direction: column;
     
         height: 150px;
@@ -33,35 +28,30 @@
         transition: opacity 0.3s linear;
 
         width: fit-content !important;
+        min-width: fit-content !important;
+
         padding: 15px;
         border-radius: 0 0 5px 5px;
         background-color: #00000020;
     }
     
     main {
-        height: 250% !important;
+        max-width: 85vw;
+        /* flex-direction: column; */
     }
 
     section {
-        margin: auto;
+        width: 100% !important;
     }
 
     section#porta-cartoes {
-        width: 80% !important;
-    }
-
-    section#visores {
-        width: 85% !important;
+        margin-bottom: 10vh;
     }
 }
 
 @media screen and (max-width: 1119px) {
-    main {
-        height: calc(100% + 1vh);
-    }
-
     section#porta-cartoes, section#visores {
-        width: 42%;
+        width: 45%;
     }
 
     section#visores > * {
@@ -74,6 +64,8 @@
         align-items: center;
 
         height: fit-content !important;
+
+        margin-top: 5vh;
     }
 
     article.gaveta {
