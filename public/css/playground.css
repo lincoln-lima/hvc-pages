@@ -33,9 +33,9 @@ section {
     height: 80vh;
 }
 
-section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumulador, section#gaveteiro {
+section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumulador {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px;
     padding: 15px;
 }
 /* -------------------------------------------------------------------- */
@@ -61,7 +61,9 @@ div#div-epi-acumulador {
 /* -------------------------------------------------------------------- */
 /* secs-folha-de-saida */
 article#folha-de-saida {
-    background-color: var(--cor2);
+    background-image: url(../img/notepad.png);
+    background-size: contain;
+    background-repeat: repeat;
 
     width: 96%;
 
@@ -73,7 +75,7 @@ article#folha-de-saida > h2 {
 }
 
 article#folha-de-saida > span {
-    font-size: 7em;
+    font-size: 10em;
 }
 /* -------------------------------------------------------------------- */
 
@@ -102,6 +104,7 @@ div#epi {
 }
 
 div#epi > h2 {
+    padding-top: 5%;
     font-size: 2em;
 }
 
@@ -125,18 +128,26 @@ article#acumulador {
 
 article#acumulador > h2 {
     font-size: 2em;
+    text-transform: uppercase;
 }
 
 article#acumulador > span {
     font-size: 8em;
 }
+
+span#acumulador-span-visor {
+    color: #00000020;
+}
+
 /* -------------------------------------------------------------------- */
 
 /* secs-gaveteiro */
 section#gaveteiro {
-    height: 80vh;
+    /* height: 80vh; */
 
-    background-color: var(--cor3);
+    padding-right: 15px;
+
+    /* background-color: var(--cor3); */
 }
 
 article.gaveta {
@@ -144,23 +155,24 @@ article.gaveta {
 }
 
 span.num-gaveta {
-    color: #ffffff;
+    font-size: 2em;
     font-weight: bold;
+    color: #ffffff;
 
     position: absolute;
-    top: 40px;
-    left: 18px;
+    top: 50px;
+    left: 24px;
 
     transform: skewY(12deg);
 }
 
 span.cont-gaveta {
-    font-size: 1.1em;
+    font-size: 1.5em;
     color: #ffffff;
 
     position: absolute;
-    top: 35px;
-    right: 2px;
+    top: 55px;
+    right: 4px;
 
     transform: skewY(-25deg);
 }

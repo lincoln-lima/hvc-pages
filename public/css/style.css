@@ -32,13 +32,13 @@
 }
 
 @font-face {
-    font-family: 'Seven Segment';
-    src: url(../fonts/seven_segment/Seven\ Segment.ttf)
+    font-family: 'Segment';
+    src: url(../fonts/14-segmented-display/14-segmented-display.otf);
 }
 
 @font-face {
-    font-family: 'Cursive';
-    src: url(../fonts/cursive/great-vibes.regular.ttf);
+    font-family: 'Kindergarten';
+    src: url(../fonts/kindergarten/kindergarten.ttf);
 }
 /* -------------------------------------------------------------------- */
 
@@ -120,7 +120,7 @@ mark {
 }
 
 .segmento {
-    font-family: "Seven Segment";
+    font-family: "Segment";
 }
 
 .giz {
@@ -129,7 +129,7 @@ mark {
 }
 
 .cursiva {
-    font-family: "Cursive";
+    font-family: "Kindergarten";
 }
 
 .font-w-700 {
@@ -206,12 +206,6 @@ a.link-externo {
     justify-content: space-between;
     align-items: center;
 }
-
-/* .flex-center-column {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
 
 .centralizar-x {
     margin-right: auto;

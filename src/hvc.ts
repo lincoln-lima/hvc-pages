@@ -6,7 +6,7 @@ const hvc = new HVC();
 
 // áreas de texto
 const saida = document.getElementById("saida-span")!;
-const acumulador = document.getElementById("acumulador-span")!;
+const acumulador = document.getElementById("acumulador-span-valor")!;
 const epi = document.getElementById("epi-span")!;
 
 /* 
@@ -45,9 +45,24 @@ hvc.addEventOutput((out:string) => {
 hvc.addEventClock(HVMState => {
     const hvm = hvc.getHVM();
 
-    const val_acumulador = hvm.calculadora.getAcumulador().toString();
+    let val_acumulador = hvm.calculadora.getAcumulador().toString();
     const val_epi = hvm.epi.lerRegistro().toString();
     const val_gaveta = hvm.gaveteiro.getGavetas();
+
+    let aux;
+    switch(val_acumulador.length) {
+        case 1:
+            aux = '00';
+            break
+        case 2:
+            aux = '0';
+            break
+        case 3:
+            aux = '';
+            break
+    }
+
+    val_acumulador = aux + val_acumulador;
 
     acumulador.innerText = val_acumulador;
     epi.innerText = val_epi;
