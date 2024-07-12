@@ -30,11 +30,11 @@ main {
 }
 /* -------------------------------------------------------------------- */
 section {
-    height: 80vh;
+    /* height: 80vh; */
 }
 
-section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumulador {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
+section#porta-cartoes, section#folha-de-saida, div#contorno-epi, section#acumulador {
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200); */
     border-radius: 0 0 15px 15px;
     padding: 15px;
 }
@@ -42,45 +42,47 @@ section#porta-cartoes, article#folha-de-saida, div#contorno-epi, article#acumula
 /* porta-cartoes */
 section#porta-cartoes {
     background-color: var(--cor1);
+
+    width: 30vw;
+    height: 80vh;
 }
 /* -------------------------------------------------------------------- */
-section#visores {
+div#visores-gaveteiro {
+    width: 60vw;
+    height: 80vh;
+
+    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-
-    width: 40vw;
-    height: 83vh;
 }
 
-section#visores > * {
-    height: 30vh;
-}
-
-div#div-epi-acumulador {
-    width: 100%;
+section#folha-de-saida, div#contorno-epi, section#acumulador {
+    height: 15vw;
+    width: 15vw;
 }
 /* -------------------------------------------------------------------- */
 /* secs-folha-de-saida */
-article#folha-de-saida {
+section#folha-de-saida {
     background-image: url(../img/notepad.png);
     background-size: contain;
-    background-repeat: repeat;
+    background-repeat: repeat-x;
 
-    width: 96%;
+    /* width: 96%; */
 
     position: relative;
 }
 
-article#folha-de-saida > h2 {
+section#folha-de-saida > h2 {
     font-size: 2em;
 }
 
-article#folha-de-saida > span {
+section#folha-de-saida > span {
     font-size: 10em;
 }
 /* -------------------------------------------------------------------- */
 
 /* epi */
-article#contorno-epi {
+div#contorno-epi {
     background-color: #915901;
     background-image: url(../img/madeirado.png);
     background-repeat: no-repeat;
@@ -88,13 +90,10 @@ article#contorno-epi {
 
     border-radius: 2px;
 
-    height: 100%;
-    width: 45%;
-
     position: relative;
 }
 
-div#epi {
+section#epi {
     border-radius: 2px;
     height: 90%;
     width: 90%;
@@ -103,35 +102,32 @@ div#epi {
     position: relative;
 }
 
-div#epi > h2 {
+section#epi > h2 {
     padding-top: 5%;
     font-size: 2em;
 }
 
-div#epi > span {
+section#epi > span {
     font-size: 8em;
 }
 /* -------------------------------------------------------------------- */
 
 /* secs-acumulador */
-article#acumulador {
+section#acumulador {
     background-color: #93A28D;
 
     border: 10px solid black;
     border-radius: 5px;
 
-    height: 83%;
-    width: 37%;
-
     position: relative;
 }
 
-article#acumulador > h2 {
+section#acumulador > h2 {
     font-size: 2em;
     text-transform: uppercase;
 }
 
-article#acumulador > span {
+section#acumulador > span {
     font-size: 8em;
 }
 
@@ -144,14 +140,25 @@ span#acumulador-span-visor {
 /* secs-gaveteiro */
 section#gaveteiro {
     /* height: 80vh; */
-
-    padding-right: 15px;
-
     /* background-color: var(--cor3); */
+    height: fit-content;
 }
 
 article.gaveta {
     position: relative;
+}
+
+article.gaveta:nth-child(even) {
+    margin: 0 1vw;
+}
+
+article > div {
+    width: 146px;
+    height: 122px;
+
+    background-image: url(../img/gaveteiro.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 span.num-gaveta {

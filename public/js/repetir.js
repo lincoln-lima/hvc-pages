@@ -7,9 +7,9 @@ for (let i = 0; i < 100; i++) {
     article.className = "gaveta";
     secs.appendChild(article);
 
-    /* criando gaveta */
+/*     /* criando gaveta 
     const imagem = document.createElement("img");
-    imagem.src = "img/gaveteiro.png";
+    imagem.src = "img/gaveteiro.png"; */
 
     /* criando número da gaveta */
     const num_gaveta = document.createElement("span");
@@ -25,7 +25,8 @@ for (let i = 0; i < 100; i++) {
     cont_gaveta.id = "cont-gaveta-" + i;
     cont_gaveta.className = "cont-gaveta texto";
 
-    article.appendChild(imagem);
+    // article.appendChild(imagem);
+    article.appendChild(document.createElement("div"));
     article.appendChild(num_gaveta);
     article.appendChild(cont_gaveta);
 }
