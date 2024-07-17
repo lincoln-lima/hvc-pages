@@ -45,6 +45,11 @@
     font-family: 'Space';
     src: url(../fonts/SpaceMono/SpaceMono-Regular.ttf);
 }
+
+@font-face {
+    font-family: "Dots";
+    src: url(../fonts/Dots/led_counter-7.ttf);
+}
 /* -------------------------------------------------------------------- */
 
 /* Estabelecendo variáveis de cor */
@@ -139,6 +144,10 @@ mark {
 
 .cursiva {
     font-family: "Kindergarten";
+}
+
+.pontilhada {
+    font-family: 'Dots';
 }
 
 .font-w-700 {

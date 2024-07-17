@@ -39,19 +39,51 @@
         max-width: 85vw;
         /* flex-direction: column; */
     }
+}
 
-    section {
-        width: 100% !important;
+@media screen and (max-width: 1449px) {
+    :root {
+        --visor-r-xy: calc(var(--visor-xy) - 5vh);
+        --visor-ac-r-xy: calc(var(--visor-r-xy) - 20px);
     }
 
     section#porta-cartoes {
-        /* margin-bottom: 10vh; */
+        width: 40vw;
     }
-}
 
-@media screen and (max-width: 1299px) {
+    div#visores-gaveteiro {
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 43vw;
+    }
+
     div#visores {
         flex-direction: column;
     }
 
+    div#visores > * {
+        width: var(--visor-r-xy);
+        height: var(--visor-r-xy);
+    }
+
+    section#acumulador {
+        width: var(--visor-ac-r-xy);
+        height: var(--visor-ac-r-xy);
+    }
+    
+    section#acumulador > span {
+        font-size: 6em;
+    }
+
+    section#gaveteiro {
+        flex-direction: column;
+        
+        overflow-x: hidden;
+        scrollbar-color: var(--cor1);
+
+        padding: 0;
+
+        height: 100%;
+    }
 }
