@@ -18,6 +18,9 @@ const gaveteiro = document.getElementById("secs-gaveteiro")!;
 const executar = document.getElementById("run")!;
 
 function rodarCodigo() {
+    saida.innerText = '-';
+    epi.innerText = '-';
+
     /* recuperando código da área de texto */
     let codigo = document.getElementById("area-texto")!;
     hvc.setCode(codigo.innerHTML);
@@ -62,9 +65,8 @@ hvc.addEventClock(HVMState => {
             break
     }
 
-    val_acumulador = aux + val_acumulador;
+    acumulador.innerText = aux + val_acumulador;
 
-    acumulador.innerText = val_acumulador;
     epi.innerText = val_epi;
 
     for(let i = 0; i < 100; i++) {

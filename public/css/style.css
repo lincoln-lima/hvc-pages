@@ -40,6 +40,11 @@
     font-family: 'Kindergarten';
     src: url(../fonts/kindergarten/kindergarten.ttf);
 }
+
+@font-face {
+    font-family: 'Space';
+    src: url(../fonts/SpaceMono/SpaceMono-Regular.ttf);
+}
 /* -------------------------------------------------------------------- */
 
 /* Estabelecendo variáveis de cor */
@@ -112,6 +117,10 @@ mark {
     font-family: "Nunito";
     /* font-size: 22px; */
     font-size: 1.4em;
+}
+
+.mono {
+    font-family: "Space";
 }
 
 /* blockquote */

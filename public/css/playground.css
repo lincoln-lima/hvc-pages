@@ -52,7 +52,7 @@ div#visores-gaveteiro {
     height: 80vh;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
 }
 
@@ -109,6 +109,7 @@ section#epi > h2 {
 
 section#epi > span {
     font-size: 8em;
+    padding-top: 10%;
 }
 /* -------------------------------------------------------------------- */
 
@@ -128,7 +129,7 @@ section#acumulador > h2 {
 }
 
 section#acumulador > span {
-    font-size: 8em;
+    font-size: 7em;
 }
 
 span#acumulador-span-visor {
@@ -139,8 +140,6 @@ span#acumulador-span-visor {
 
 /* secs-gaveteiro */
 section#gaveteiro {
-    /* height: 80vh; */
-    /* background-color: var(--cor3); */
     height: fit-content;
 }
 
@@ -178,8 +177,8 @@ span.cont-gaveta {
     color: #ffffff;
 
     position: absolute;
-    top: 55px;
-    right: 4px;
+    top: 50px;
+    right: 3px;
 
     transform: skewY(-25deg);
 }

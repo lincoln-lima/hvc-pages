@@ -45,29 +45,13 @@
     }
 
     section#porta-cartoes {
-        margin-bottom: 10vh;
+        /* margin-bottom: 10vh; */
     }
 }
 
-@media screen and (max-width: 1119px) {
-    section#porta-cartoes, section#visores {
-        width: 45%;
+@media screen and (max-width: 1299px) {
+    div#visores {
+        flex-direction: column;
     }
 
-    section#visores > * {
-        height: 35vh;
-    }
-
-    section#gaveteiro {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        height: fit-content !important;
-
-    }
-
-    article.gaveta {
-        margin: 0 1vw;
-    }
 }

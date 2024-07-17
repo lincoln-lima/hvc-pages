@@ -1,8 +1,6 @@
 /* -------------------------------------------------------------------- */
 /* cabeçalho */
 header {
-    height: 6vh;
-
     padding: 25px 0;
     box-shadow: 1px 1px 9px #00000033;
 }
@@ -10,16 +8,12 @@ header {
 /* barra de navegação */
 nav {
     max-width: 80vw;
-    height: 54px;
     position: relative;
 }
 
 /* todos os links da barra de navegação */
 nav a, nav button {
     padding: 1px 5px;
-/*     border-radius: 3px; */
-
-    /* font-size: 18px; */
     font-size: 1.5em !important;
 }
 
@@ -28,7 +22,6 @@ nav a, nav span {
 }
 
 nav > menu {
-    /* min-width: 600px; */
     min-width: 45vw;
     list-style-type: none;
 }
