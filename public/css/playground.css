@@ -155,9 +155,13 @@ span#acumulador-span-visor {
     color: #00000020;
 }
 /* -------------------------------------------------------------------- */
-section#gaveteiro {
+section#gaveteiro1 {
     height: fit-content;
     padding-bottom: 5px;
+}
+
+section#gaveteiro2 {
+    display: none;
 }
 
 article.gaveta {

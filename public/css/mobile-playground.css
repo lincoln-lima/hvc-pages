@@ -76,7 +76,7 @@
         font-size: 6em;
     }
 
-    section#gaveteiro {
+    section#gaveteiro1 {
         flex-direction: column;
         
         overflow-x: hidden;
@@ -85,5 +85,15 @@
         padding: 0;
 
         height: 100%;
+    }
+}
+
+@media screen and (max-width: 1080px) and (min-width: 939px) {
+    section#gaveteiro1 {
+        display: none;
+    }
+
+    section#gaveteiro2 {
+        display: flex;
     }
 }

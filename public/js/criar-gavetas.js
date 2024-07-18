@@ -1,11 +1,14 @@
 /* definindo elemento seção*/
-const secs = document.getElementById("gaveteiro");
+const gav1 = document.getElementById('gaveteiro1');
+// const gav2 = document.getElementById('gaveteiro2');
 
 for (let i = 0; i < 100; i++) {
     /* adicionando elemento div para agrupar imagem e span */
     const article = document.createElement("article");
     article.className = "gaveta";
-    secs.appendChild(article);
+
+    gav1.appendChild(article);
+    // gav2.appendChild(article);
 
     /* criando número da gaveta */
     const num_gaveta = document.createElement("span");
@@ -17,7 +20,7 @@ for (let i = 0; i < 100; i++) {
     num_gaveta.className = "num-gaveta mono";
 
     const cont_gaveta = document.createElement("span");
-    /* cont_gaveta.innerText = "---"; */
+
     cont_gaveta.id = "cont-gaveta-" + i;
     cont_gaveta.className = "cont-gaveta mono";
 
