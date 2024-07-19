@@ -1,49 +1,9 @@
 @charset "UTF-8";
 
-@media screen and (min-width: 940px) {
-    nav button#botao-menu {
-        display: none;
-    }
-}
 
-@media screen and (max-width: 939px) {
-    /* Cabeçalho --------------------*/
-    header {
-        margin-bottom: 10px;
-    }
-    
-    nav > menu {
-        position: absolute;
-        top: 8vh;
-        right: 0;
-        
-        align-items: end !important;
-        flex-direction: column;
-    
-        height: 150px;
-
-        visibility: hidden;
-        opacity: 0;
-
-        transition: opacity 0.3s linear;
-
-        width: fit-content !important;
-        min-width: fit-content !important;
-
-        padding: 15px;
-        border-radius: 0 0 5px 5px;
-        background-color: #00000020;
-    }
-    
-    main {
-        max-width: 85vw;
-        /* flex-direction: column; */
-    }
-}
-
-@media screen and (max-width: 1449px) {
+@media screen and (max-width: 1449px) and (min-width: 940px) {
     :root {
-        --visor-r-xy: calc(var(--visor-xy) - 5vh);
+        --visor-r-xy: calc(var(--visor-xy) * 0.9);
         --visor-ac-r-xy: calc(var(--visor-r-xy) - 20px);
     }
 
@@ -71,16 +31,12 @@
         width: var(--visor-ac-r-xy);
         height: var(--visor-ac-r-xy);
     }
-    
-    section#acumulador > span {
-        font-size: 6em;
-    }
 
-    section#gaveteiro1 {
+    section#gaveteiro {
         flex-direction: column;
         
         overflow-x: hidden;
-        scrollbar-color: var(--cor1);
+        /* scrollbar-color: var(--cor1); */
 
         padding: 0;
 
@@ -88,12 +44,70 @@
     }
 }
 
-@media screen and (max-width: 1080px) and (min-width: 939px) {
-    section#gaveteiro1 {
+@media screen and (max-width: 1080px) and (min-width: 940px) {
+    section#porta-cartoes, div#visores-gaveteiro {
+        width: 46vw;
+    }
+}
+
+@media screen and (min-width: 940px) {
+    nav button#botao-menu {
         display: none;
     }
+}
 
-    section#gaveteiro2 {
-        display: flex;
+@media screen and (max-width: 939px) {
+    :root {
+        --visor-r-xy: 28vw;
+        --visor-ac-r-xy: calc(var(--visor-r-xy) - 20px);
+
+        --secoes-r-h: calc(var(--secoes-h) * 0.8);
+    }
+    
+    nav > menu {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        
+        align-items: end !important;
+        flex-direction: column;
+    
+        height: 150px;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition: opacity 0.3s linear;
+
+        width: fit-content !important;
+        min-width: fit-content !important;
+
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+        background-color: #00000020;
+    }
+    
+    main {
+        max-width: 90vw;
+    }
+
+    section#porta-cartoes, div#visores-gaveteiro {
+        width: 100%;
+        height: var(--secoes-r-h);
+    }
+
+    section#porta-cartoes > textarea {
+        max-height: var(--secoes-r-h) * 0.9;
+        min-height: var(--secoes-r-h) * 0.9;
+    }
+
+    div#visores > * {
+        width: var(--visor-r-xy);
+        height: var(--visor-r-xy);
+    }
+
+    section#acumulador {
+        width: var(--visor-ac-r-xy);
+        height: var(--visor-ac-r-xy);
     }
 }

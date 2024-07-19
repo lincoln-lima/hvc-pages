@@ -2,20 +2,22 @@ import { HVC } from "hvcjs"
 
 const hvc = new HVC();
 
-/* seções da página */
-
-// áreas de texto
+/* áreas de texto */
 const saida = document.getElementById("saida-span")!;
 const acumulador = document.getElementById("acumulador-span-valor")!;
 const epi = document.getElementById("epi-span")!;
 
-/* 
-// seções com itens
-const gaveteiro = document.getElementById("secs-gaveteiro")!;
-*/
-
 /* botões da página - ações de clique */
 const executar = document.getElementById("run")!;
+
+/* evento de click para executar código */
+executar.addEventListener('click', rodarCodigo);
+
+/* evento de atalho */
+document.addEventListener('keydown', e => {
+    if(e.key.toLocaleLowerCase() === "f9") rodarCodigo();
+    // console.log(e);
+});
 
 function rodarCodigo() {
     saida.innerText = '-';
@@ -28,22 +30,11 @@ function rodarCodigo() {
     hvc.debug(700);
 }
 
-/* evento de click para executar código */
-executar.addEventListener('click', () => {
-    rodarCodigo();
-});
-
-/* evento de atalho */
-document.addEventListener('keydown', e => {
-    if(e.key.toLocaleLowerCase() === "f9") rodarCodigo();
-    // console.log(e);
-})
-
 /* evento de saída do HVC */
 hvc.addEventOutput((out:string) => {
     saida.innerText = out;
     // console.log(out);
-})
+});
 
 hvc.addEventClock(HVMState => {
     const hvm = hvc.getHVM();
@@ -82,4 +73,4 @@ hvc.addEventClock(HVMState => {
     // console.log(val_gaveta);
     // console.log("Acumulador: " + val_acumulador);
     // console.log("EPI: " + val_epi);
-})
+});

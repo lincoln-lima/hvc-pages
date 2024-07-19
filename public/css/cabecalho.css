@@ -24,6 +24,8 @@ nav a, nav span {
 nav > menu {
     min-width: 45vw;
     list-style-type: none;
+
+    transition: opacity 0.5s, visibility 0.5s;
 }
 
 /* links da lista */
@@ -100,4 +102,15 @@ button#botao-menu {
 
 button#botao-menu:hover {
     background-color: #00000015;
+}
+
+@media screen and (max-width: 939px) {
+    header {
+        position: sticky;
+        top: 0;
+
+        background-color: white;
+
+        z-index: 1;
+    }
 }

@@ -20,6 +20,8 @@ nav#nav-play > menu {
 
 nav#nav-play > menu > li > button {
     padding: 5px 7.5px;
+
+    cursor: pointer;
 }
 
 nav#nav-play > menu > li > button > img {
@@ -55,8 +57,10 @@ section#porta-cartoes > h2 {
 }
 
 section#porta-cartoes > textarea {
-    /* font-weight: bold; */
     font-size: 2em;
+
+    min-height: calc(var(--secoes-h) * 0.8);
+    max-height: calc(var(--secoes-h) * 0.8);
 }
 /* -------------------------------------------------------------------- */
 div#visores-gaveteiro {
@@ -146,7 +150,7 @@ section#acumulador > h2 {
 }
 
 section#acumulador > span {
-    font-size: 7em;
+    font-size: 6em;
 
     margin-top: 5%;
 }
@@ -155,13 +159,9 @@ span#acumulador-span-visor {
     color: #00000020;
 }
 /* -------------------------------------------------------------------- */
-section#gaveteiro1 {
+section#gaveteiro {
     height: fit-content;
     padding-bottom: 5px;
-}
-
-section#gaveteiro2 {
-    display: none;
 }
 
 article.gaveta {
@@ -202,4 +202,25 @@ span.cont-gaveta {
     right: 2px;
 
     transform: skewY(-25deg);
+}
+/* -------------------------------------------------------------------- */
+div#config-modal {
+    display: none;
+
+    background-color: #00000030;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+div#itens-config {
+    width: 50vh;
+    height: 50vh;
+
+    background-color: white;
 }

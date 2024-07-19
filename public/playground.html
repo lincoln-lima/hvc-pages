@@ -37,7 +37,7 @@
                     </button>
                 </li>
                 <li>
-                    <button id="config" class="flex-between-center link-nav link-nav-3 texto" target="_self">
+                    <button id="config-btn" class="flex-between-center link-nav link-nav-3 texto" target="_self">
                         <img src="img/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
@@ -50,7 +50,7 @@
         <section id="porta-cartoes" class="texto-centro">
             <h2 class="subtitulo">Porta-Cartões</h2>
             <!-- <div id="editor-area"></div> -->
-            <textarea id="area-texto" class="pontilhada" name="area-texto" cols="25" rows="18">750
+            <textarea id="area-texto" class="pontilhada" name="area-texto" cols="25" rows="10">750
 751
 050
 251
@@ -78,15 +78,19 @@
                     <span id="acumulador-span-valor" class="segmento centralizar-y"></span>
                 </section>
             </div>
-            <section id="gaveteiro1" class="flex-between-center scroll-y">
+            <section id="gaveteiro" class="flex-between-center scroll-y">
             </section>
         </div>
-        <section id="gaveteiro2" class="flex-between-center scroll-y">
-        </section>
+        <div id="config-modal">
+            <div id="itens-config" class="centralizar-y">
+                <button id="close">&times;</button>
+            </div>
+        </div>
     </main>
     <script src="js/criar-gavetas.js"></script>
     <script src="js/tela.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/configs.js"></script>
     <script src="src/hvc.ts" type="module"></script>
 </body>
 

@@ -1,14 +1,12 @@
 /* definindo elemento seção*/
-const gav1 = document.getElementById('gaveteiro1');
-// const gav2 = document.getElementById('gaveteiro2');
+const gav = document.getElementById('gaveteiro');
 
 for (let i = 0; i < 100; i++) {
     /* adicionando elemento div para agrupar imagem e span */
     const article = document.createElement("article");
     article.className = "gaveta";
 
-    gav1.appendChild(article);
-    // gav2.appendChild(article);
+    gav.appendChild(article);
 
     /* criando número da gaveta */
     const num_gaveta = document.createElement("span");
