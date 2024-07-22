@@ -81,11 +81,21 @@
             <section id="gaveteiro" class="flex-between-center scroll-y">
             </section>
         </div>
-        <div id="config-modal">
-            <div id="itens-config" class="centralizar-y">
-                <button id="close">&times;</button>
-            </div>
-        </div>
+        <section id="config-modal">
+            <article id="configs" class="centralizar-y texto">
+                <div class="config-cabecalho-rodape flex-between-center">
+                    <h2>Configurações</h2>
+                    <button id="close" class="botao">&times;</button>
+                </div>
+                <div id="config-corpo">
+                    <label for="delay">Delay (s)</label>
+                    <input type="number" name="delay" id="delay" min="0.1">
+                </div>
+                <div class="config-cabecalho-rodape">
+                    <button id="salvar" type="submit" class="botao centralizar-y texto">Salvar</button>
+                </div>
+            </article>
+        </section>
     </main>
     <script src="js/criar-gavetas.js"></script>
     <script src="js/tela.js"></script>

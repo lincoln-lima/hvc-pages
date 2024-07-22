@@ -172,7 +172,7 @@ article.gaveta:nth-child(even) {
     margin: 0 1vw;
 }
 
-article > div {
+article.gaveta > div {
     width: 146px;
     height: 122px;
 
@@ -204,8 +204,8 @@ span.cont-gaveta {
     transform: skewY(-25deg);
 }
 /* -------------------------------------------------------------------- */
-div#config-modal {
-    display: none;
+section#config-modal {
+    /* display: none; */
 
     background-color: #00000030;
 
@@ -218,9 +218,50 @@ div#config-modal {
     height: 100vh;
 }
 
-div#itens-config {
-    width: 50vh;
-    height: 50vh;
+article#configs {
+    width: 60vh;
+    height: 60vh;
 
     background-color: white;
+
+    padding: 15px 10px;
+    border-radius: 30px;
+}
+
+article#configs > * {
+    padding: 0 15px; 
+
+    /* border-radius: 50px; */
+}
+
+article#configs h2 {
+    color: white;
+}
+
+button#close {
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    border-radius: 50%;
+}
+
+div.config-cabecalho-rodape {
+    height: 10%;
+
+    position: relative;
+
+    background-color: var(--cor3);
+}
+
+div#config-corpo {
+    height: 80%;
+}
+
+button#salvar {
+    padding: 0;
+
+    font-size: 1.3em;
+    width: 5em;
 }
