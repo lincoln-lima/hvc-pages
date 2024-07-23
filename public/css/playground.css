@@ -3,6 +3,8 @@
     --cabecalho-h: calc(10px * 2 + 51px); /* padding + altura da nav */
     --visor-xy: 30vh;
     --secoes-h: calc(100vh - var(--cabecalho-h) - 8vh); /* altura baseada com o cabecalho e os paddings */
+
+    --borda-modal: 1em;
 }
 
 /* cabecalho exclusivo */
@@ -204,7 +206,7 @@ span.cont-gaveta {
     transform: skewY(-25deg);
 }
 /* -------------------------------------------------------------------- */
-section#config-modal {
+section.mymodal {
     /* display: none; */
 
     background-color: #00000030;
@@ -218,27 +220,27 @@ section#config-modal {
     height: 100vh;
 }
 
-article#configs {
+article.conteudo-modal {
     width: 60vh;
     height: 60vh;
 
     background-color: white;
 
-    padding: 15px 10px;
-    border-radius: 30px;
+    /* padding: 15px 10px; */
+    border-radius: var(--borda-modal);
 }
 
-article#configs > * {
+article.conteudo-modal > * {
     padding: 0 15px; 
 
     /* border-radius: 50px; */
 }
 
-article#configs h2 {
+article.conteudo-modal h2 {
     color: white;
 }
 
-button#close {
+button.close {
     width: 40px;
     height: 40px;
 
@@ -247,21 +249,47 @@ button#close {
     border-radius: 50%;
 }
 
-div.config-cabecalho-rodape {
+div.modal-cabecalho-rodape {
     height: 10%;
 
     position: relative;
 
-    background-color: var(--cor3);
+    background: var(--degrade-azul);
 }
 
-div#config-corpo {
+div.modal-header {
+    border-top-left-radius: var(--borda-modal);
+    border-top-right-radius: var(--borda-modal);
+}
+
+div.modal-corpo {
     height: 80%;
 }
 
-button#salvar {
+div.campo {
+    flex-direction: column;
+
+    /* height: 2.5em; */
+}
+
+div.campo > label {
+    font-weight: bold;
+}
+
+div.campo > input {
+    width: 3em;
+
+    font-size: 1em;
+}
+
+button#save {
     padding: 0;
 
     font-size: 1.3em;
     width: 5em;
+}
+
+div.modal-footer {
+    border-bottom-left-radius: var(--borda-modal);
+    border-bottom-right-radius: var(--borda-modal);
 }

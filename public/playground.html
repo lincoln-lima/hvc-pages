@@ -81,18 +81,40 @@
             <section id="gaveteiro" class="flex-between-center scroll-y">
             </section>
         </div>
-        <section id="config-modal">
-            <article id="configs" class="centralizar-y texto">
-                <div class="config-cabecalho-rodape flex-between-center">
+        <section id="config-modal" class="mymodal">
+            <article id="configs" class="conteudo-modal centralizar-y texto">
+                <div id="config-header" class="modal-cabecalho-rodape modal-header flex-between-center">
                     <h2>Configurações</h2>
                     <button id="close" class="botao">&times;</button>
                 </div>
-                <div id="config-corpo">
-                    <label for="delay">Delay (s)</label>
-                    <input type="number" name="delay" id="delay" min="0.1">
+                <div class="modal-corpo">
+                    <div class="flex-between-center campo">
+                        <label for="delay">Delay (ms)</label>
+                        <input type="number" name="delay" id="delay" min="100" value="700">
+                    </div>
                 </div>
-                <div class="config-cabecalho-rodape">
-                    <button id="salvar" type="submit" class="botao centralizar-y texto">Salvar</button>
+                <div class="modal-cabecalho-rodape modal-footer">
+                    <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button>
+                </div>
+            </article>
+        </section>
+        <section id="exp-imp-modal" class="mymodal">
+            <article id="exp-imps" class="conteudo-modal centralizar-y texto">
+                <div id="exp-imp-header" class="modal-cabecalho-rodape modal-header flex-between-center">
+                    <h2>Arquivo</h2>
+                    <button id="close" class="botao">&times;</button>
+                </div>
+                <div class="modal-corpo">
+                    <div class="campo">
+                        <input type="file" name="imp" id="imp">
+                    </div>
+                    <hr>
+                    <div>
+                        <button id="exp-btn">Exportar</button>
+                    </div>
+                </div>
+                <div id="exp-imp-footer" class="modal-cabecalho-rodape modal-footer">
+                    <!-- <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button> -->
                 </div>
             </article>
         </section>

@@ -63,6 +63,8 @@
     --cor3-escura: #e4a419;
 
     --azul: #2129FF;
+
+    --degrade-azul: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
 }
 
 @property --cor1-botao {

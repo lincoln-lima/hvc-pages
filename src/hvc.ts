@@ -9,9 +9,16 @@ const epi = document.getElementById("epi-span")!;
 
 /* botões da página - ações de clique */
 const executar = document.getElementById("run")!;
+// const export = document.getElementById("exp-imp")!;
+const salvar = document.getElementById("save")!;
+
+/* campos de configuração */
+let delay = document.getElementById("delay")!.value;
 
 /* evento de click para executar código */
 executar.addEventListener('click', rodarCodigo);
+
+salvar.addEventListener('click', salvarConfigs);
 
 /* evento de atalho */
 document.addEventListener('keydown', e => {
@@ -27,7 +34,12 @@ function rodarCodigo() {
     let codigo = document.getElementById("area-texto")!;
     hvc.setCode(codigo.innerHTML);
 
-    hvc.debug(700);
+    hvc.debug(delay);
+}
+
+function salvarConfigs() {
+    delay = document.getElementById("delay")!.value;
+    // console.log(delay);
 }
 
 /* evento de saída do HVC */
