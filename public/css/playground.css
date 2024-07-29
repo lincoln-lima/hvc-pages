@@ -293,3 +293,7 @@ div.modal-footer {
     border-bottom-left-radius: var(--borda-modal);
     border-bottom-right-radius: var(--borda-modal);
 }
+
+section#exp-imp-modal, section#config-modal {
+    display: none;
+}

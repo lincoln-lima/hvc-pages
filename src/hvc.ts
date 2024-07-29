@@ -1,8 +1,13 @@
-import { HVC } from "hvcjs"
+import {EditorState} from "@codemirror/state";
+import {EditorView, keymap} from "@codemirror/view";
+import {defaultKeymap} from "@codemirror/commands";
+import { noctisLilac } from "thememirror";
+import { HVC } from "hvcjs";
 
 const hvc = new HVC();
 
 /* áreas de texto */
+const editor = document.getElementById("editor-area")!;
 const saida = document.getElementById("saida-span")!;
 const acumulador = document.getElementById("acumulador-span-valor")!;
 const epi = document.getElementById("epi-span")!;
@@ -31,8 +36,11 @@ function rodarCodigo() {
     epi.innerText = '-';
 
     /* recuperando código da área de texto */
-    let codigo = document.getElementById("area-texto")!;
-    hvc.setCode(codigo.innerHTML);
+    // let codigo = document.getElementById("area-texto")!.innerHTML;
+
+    console.log(state.doc.toString());
+    let codigo = state.doc.toString();
+    hvc.setCode(codigo);
 
     hvc.debug(delay);
 }
@@ -85,4 +93,17 @@ hvc.addEventClock(HVMState => {
     // console.log(val_gaveta);
     // console.log("Acumulador: " + val_acumulador);
     // console.log("EPI: " + val_epi);
+});
+
+let state = EditorState.create({
+    doc: "750\n751\n050\n251\n160\n860\n000\n20\n35",
+    extensions: [
+        keymap.of(defaultKeymap),
+        noctisLilac 
+    ]
+});
+  
+let view = new EditorView({
+    state: state,
+    parent: editor
 });
