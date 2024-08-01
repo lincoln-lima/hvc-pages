@@ -47,23 +47,23 @@ section#porta-cartoes, section#folha-de-saida, div#contorno-epi, section#acumula
 /* -------------------------------------------------------------------- */
 /* porta-cartoes */
 section#porta-cartoes {
-    background-color: var(--cor1);
+    /* background-color: var(--cor1); */
 
     width: 30vw;
     height: var(--secoes-h);
     /* height: 80vh; */
 }
 
-section#porta-cartoes > h2 {
+/* section#porta-cartoes > h2 {
     margin-top: 5%;
-}
+} */
 
-section#porta-cartoes > textarea {
+/* section#porta-cartoes > div {
     font-size: 2em;
 
     min-height: calc(var(--secoes-h) * 0.8);
     max-height: calc(var(--secoes-h) * 0.8);
-}
+} */
 /* -------------------------------------------------------------------- */
 div#visores-gaveteiro {
     width: 60vw;
@@ -95,7 +95,7 @@ section#folha-de-saida > h2 {
 section#folha-de-saida > span {
     font-size: 10em;
     
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
 /* -------------------------------------------------------------------- */
 
@@ -154,7 +154,7 @@ section#acumulador > h2 {
 section#acumulador > span {
     font-size: 6em;
 
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 
 span#acumulador-span-visor {
@@ -266,17 +266,17 @@ div.modal-corpo {
     height: 80%;
 }
 
-div.campo {
+form.campo {
     flex-direction: column;
 
     /* height: 2.5em; */
 }
 
-div.campo > label {
+form.campo > label {
     font-weight: bold;
 }
 
-div.campo > input {
+form.campo > input {
     width: 3em;
 
     font-size: 1em;

@@ -47,10 +47,9 @@
         </nav>
     </header>
     <main class="flex-between-center centralizar-x">
-        <section id="porta-cartoes" class="texto-centro">
-            <h2 class="subtitulo">Porta-Cartões</h2>
-            <div id="editor-area"></div>
-<!--             <textarea id="area-texto" class="pontilhada" name="area-texto" cols="25" rows="10">750
+        <section id="porta-cartoes" class="texto-centro" title="Porta Cartões">
+            <!-- <h2 class="subtitulo">Porta-Cartões</h2> -->
+            <!--             <textarea id="area-texto" class="pontilhada" name="area-texto" cols="25" rows="10">750
 751
 050
 251
@@ -62,23 +61,23 @@
         </section>
         <div id="visores-gaveteiro">
             <div id="visores" class="texto-centro flex-between-center">
-                <section id="folha-de-saida">
+                <section id="folha-de-saida" title="Folha de Saída">
                     <!-- <h2 class="subtitulo cursiva">Folha de Saída</h2> -->
                     <span id="saida-span" class="cursiva centralizar-y"></span>
                 </section>
                 <div id="contorno-epi">
-                    <section id="epi" class="centralizar-y">
-                        <h2 class="giz">EPI</h2>
+                    <section id="epi" class="centralizar-y" title="EPI">
+                        <!-- <h2 class="giz">EPI</h2> -->
                         <span id="epi-span" class="giz centralizar-y"></span>
                     </section>
                 </div>
-                <section id="acumulador">
-                    <h2 class="segmento">Acumulador</h2>
+                <section id="acumulador" title="Acumulador">
+                    <!-- <h2 class="segmento">Acumulador</h2> -->
                     <span id="acumulador-span-visor" class="segmento centralizar-y">000</span>
                     <span id="acumulador-span-valor" class="segmento centralizar-y"></span>
                 </section>
             </div>
-            <section id="gaveteiro" class="flex-between-center scroll-y">
+            <section id="gaveteiro" class="flex-between-center scroll-y" title="Gaveteiro">
             </section>
         </div>
         <section id="config-modal" class="mymodal">
@@ -88,10 +87,10 @@
                     <button id="close" class="botao">&times;</button>
                 </div>
                 <div class="modal-corpo">
-                    <div class="flex-between-center campo">
+                    <form name="configs-form" class="flex-between-center campo">
                         <label for="delay">Delay (ms)</label>
                         <input type="number" name="delay" id="delay" min="100" value="700">
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-cabecalho-rodape modal-footer">
                     <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button>
