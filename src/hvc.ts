@@ -4,43 +4,45 @@ import { view } from "./codemirror";
 
 const hvc = new HVC();
 
-let codigo;
-
-/* campos de configuração */
-let delay = document.getElementById("delay")!.value;
-
-/* evento de click para executar código */
-globals.executar.addEventListener('click', rodarCodigo);
-
-globals.salvar.addEventListener('click', salvarConfigs);
-
-/* evento de atalho */
-document.addEventListener('keydown', e => {
-    if (e.key.toLocaleLowerCase() === "f9") rodarCodigo();
+/* eventos para executar código */
+globals.run.addEventListener('click', function(){
+    exec(true);
 });
 
-async function rodarCodigo() {
-    globals.saida.innerText = '-';
-    globals.epi.innerText = '-';
+/* globals.debug.addEventListener('click', function(){
+    exec(true);
+}) */
 
-    codigo = view.state.doc.toString();
+document.addEventListener('keydown', e => {
+    let key = e.key.toLocaleLowerCase();
 
-    hvc.setCode(codigo);
+    if(key === "f9") exec(true);
+    else if(key === "f8") exec(false);
+});
+
+async function exec(quick:boolean) {
+    preparaExecucao();
 
     try {
-        await hvc.run();
+        if (quick) await hvc.run();
+        else await hvc.debug(+globals.delay);
     }
-    catch(e) {
+    catch (e) {
         console.log((e as Error).message);
     }
 }
 
-function salvarConfigs() {
-    delay = document.getElementById("delay")!.value;
-    // console.log(delay.innerText);
-    // console.log(delay);
-}
+function preparaExecucao() {
+    hvc.setCode(view.state.doc.toString());
 
+    globals.saida.innerText = '-';
+    globals.epi.innerText = '-';
+}
+// ------------------------------------------------------------------------------- 
+globals.salvar.addEventListener('click', function() {
+    globals.delay = (document.getElementById("delay")! as HTMLInputElement).value;
+});
+// ------------------------------------------------------------------------------- 
 /* evento de saída do HVC */
 hvc.addEventOutput((out: string) => {
     globals.saida.innerText = out;

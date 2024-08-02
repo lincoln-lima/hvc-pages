@@ -6,7 +6,12 @@ export const globals = {
     editor: document.getElementById("porta-cartoes")!,
 
     /* botões da página - ações de clique */
-    executar: document.getElementById("run")!,
+    // execs: document.getElementsByClassName("exec"),
+    run: document.getElementById("run")!,
+    // debug: document.getElementById("debug")!,
     // export: document.getElementById("exp-imp")!,
-    salvar: document.getElementById("save")!
+    salvar: document.getElementById("save")!,
+
+    /* área de configurações */
+    delay: (document.getElementById("delay")! as HTMLInputElement).value
 }
