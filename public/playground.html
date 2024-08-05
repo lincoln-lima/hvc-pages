@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <title>HVC - Playground</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -25,15 +26,27 @@
             </a>
             <menu id="menu" class="flex-between-center">
                 <li>
-                    <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self">
-                        <img src="img/debug.png" alt="" srcset="">
-                        <span>Executar/Depurar</span>
+                    <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F9">
+                        <img src="img/run.png" alt="" srcset="">
+                        <span>Executar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="exp-imp" class="flex-between-center link-nav link-nav-2 texto" target="_self">
-                        <img src="img/import-export.png" alt="" srcset="">
-                        <span>Exportar/Importar</span>
+                    <button id="debug" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F8">
+                        <img src="img/debug.png" alt="" srcset="">
+                        <span>Depurar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="import" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                        <img src="img/folder.png" alt="" srcset="">
+                        <span>Importar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="export" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                        <img src="img/download.png" alt="" srcset="">
+                        <span>Exportar</span>
                     </button>
                 </li>
                 <li>
@@ -47,7 +60,7 @@
         </nav>
     </header>
     <main class="flex-between-center centralizar-x">
-        <section id="porta-cartoes" class="texto-centro" title="Porta Cartões">
+        <section id="porta-cartoes" class="pontilhada texto-centro" title="Porta Cartões">
             <!-- <h2 class="subtitulo">Porta-Cartões</h2> -->
             <!--             <textarea id="area-texto" class="pontilhada" name="area-texto" cols="25" rows="10">750
 751
@@ -123,6 +136,7 @@
     <script src="js/menu.js"></script>
     <script src="js/configs.js"></script>
     <script src="src/hvc.ts" type="module"></script>
+    <script src="src/ahv.ts" type="module"></script>
 </body>
 
 </html>

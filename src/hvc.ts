@@ -1,30 +1,29 @@
 import { globals } from "./global";
 import { HVC } from "hvcjs";
-import { view } from "./codemirror";
 
 const hvc = new HVC();
 
 /* eventos para executar código */
-globals.run.addEventListener('click', function(){
+globals.run.addEventListener('click', function () {
     exec(true);
 });
 
-/* globals.debug.addEventListener('click', function(){
-    exec(true);
-}) */
+globals.debug.addEventListener('click', function () {
+    exec(false);
+})
 
 document.addEventListener('keydown', e => {
     let key = e.key.toLocaleLowerCase();
 
-    if(key === "f9") exec(true);
-    else if(key === "f8") exec(false);
+    if (key === "f9") exec(true);
+    else if (key === "f8") exec(false);
 });
 
-async function exec(quick:boolean) {
+async function exec(isquick: boolean) {
     preparaExecucao();
 
     try {
-        if (quick) await hvc.run();
+        if (isquick) await hvc.run();
         else await hvc.debug(+globals.delay);
     }
     catch (e) {
@@ -33,13 +32,13 @@ async function exec(quick:boolean) {
 }
 
 function preparaExecucao() {
-    hvc.setCode(view.state.doc.toString());
+    hvc.setCode(globals.getCode());
 
     globals.saida.innerText = '-';
     globals.epi.innerText = '-';
 }
 // ------------------------------------------------------------------------------- 
-globals.salvar.addEventListener('click', function() {
+globals.salvar.addEventListener('click', function () {
     globals.delay = (document.getElementById("delay")! as HTMLInputElement).value;
 });
 // ------------------------------------------------------------------------------- 

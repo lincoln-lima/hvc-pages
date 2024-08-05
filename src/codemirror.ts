@@ -1,4 +1,3 @@
-import { globals } from "./global";
 import { EditorState } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
@@ -11,20 +10,37 @@ const fixedHeightEditor = EditorView.theme({
     "&": {height: "100%", fontSize: "2em"}
 });
 
+const pointFont = EditorView.theme({
+    "&": {fontFamily: "Dots"}
+});
+
 /* const myHighlightStyle = HighlightStyle.define([
     {tag: }
 ]) */
 
-let state = EditorState.create({
+let startstate = EditorState.create({
     doc: "750\n751\n050\n251\n160\n860\n000\n20\n35",
     extensions: [
         keymap.of(defaultKeymap),
         noctisLilac,
-        fixedHeightEditor
+        fixedHeightEditor,
+        pointFont
     ]
 });
 
-export let view = new EditorView({
-    state: state,
-    parent: globals.editor
+let view = new EditorView({
+    state: startstate,
+    parent: document.getElementById("porta-cartoes")!
 });
+
+export function getDoc() {
+    return view.state.doc.toString();
+}
+
+export function setDoc(text: string) {
+    view.dispatch({changes: {
+        from: 0,
+        to: view.state.doc.length,
+        insert: text
+    }})
+}
