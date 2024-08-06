@@ -7,19 +7,19 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <title>HVC - Playground</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/playground.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
-    <link rel="stylesheet" href="css/mobile-playground.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/playground.css">
+    <link rel="stylesheet" href="/css/cabecalho.css">
+    <link rel="stylesheet" href="/css/mobile-playground.css">
 
-    <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
 
 <body onresize="monitoraTelaPlayground()" onload="monitoraTelaPlayground()">
     <header id="header-play">
         <nav id="nav-play" class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
-                <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
+                <img id="logo-gaveta" src="/img/gaveta-logo.png" alt="ícone de gaveta">
                 <h1 class="titulo">
                     <span>HV</span><span>C</span>
                 </h1>
@@ -27,36 +27,36 @@
             <menu id="menu" class="flex-between-center">
                 <li>
                     <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F9">
-                        <img src="img/run.png" alt="" srcset="">
+                        <img src="/img/run.png" alt="" srcset="">
                         <span>Executar</span>
                     </button>
                 </li>
                 <li>
                     <button id="debug" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F8">
-                        <img src="img/debug.png" alt="" srcset="">
+                        <img src="/img/debug.png" alt="" srcset="">
                         <span>Depurar</span>
                     </button>
                 </li>
                 <li>
                     <button id="import" class="flex-between-center link-nav link-nav-2 texto" target="_self">
-                        <img src="img/folder.png" alt="" srcset="">
+                        <img src="/img/folder.png" alt="" srcset="">
                         <span>Importar</span>
                     </button>
                 </li>
                 <li>
                     <button id="export" class="flex-between-center link-nav link-nav-2 texto" target="_self">
-                        <img src="img/download.png" alt="" srcset="">
+                        <img src="/img/download.png" alt="" srcset="">
                         <span>Exportar</span>
                     </button>
                 </li>
                 <li>
                     <button id="config-btn" class="flex-between-center link-nav link-nav-3 texto" target="_self">
-                        <img src="img/config.png" alt="" srcset="">
+                        <img src="/img/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
                 </li>
             </menu>
-            <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
+            <button id="botao-menu" onclick="mostraMenu()"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
     <main class="flex-between-center centralizar-x">
@@ -101,33 +101,14 @@
                 </div>
             </article>
         </section>
-        <section id="exp-imp-modal" class="mymodal">
-            <article id="exp-imps" class="conteudo-modal centralizar-y texto">
-                <div id="exp-imp-header" class="modal-cabecalho-rodape modal-header flex-between-center">
-                    <h2>Arquivo</h2>
-                    <button id="close" class="botao">&times;</button>
-                </div>
-                <div class="modal-corpo">
-                    <div class="campo">
-                        <input type="file" name="imp" id="imp">
-                    </div>
-                    <hr>
-                    <div>
-                        <button id="exp-btn">Exportar</button>
-                    </div>
-                </div>
-                <div id="exp-imp-footer" class="modal-cabecalho-rodape modal-footer">
-                    <!-- <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button> -->
-                </div>
-            </article>
-        </section>
     </main>
-    <script src="js/criar-gavetas.js"></script>
-    <script src="js/tela.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/configs.js"></script>
-    <script src="src/hvc.ts" type="module"></script>
-    <script src="src/ahv.ts" type="module"></script>
+
+    <script src="/js/criar-gavetas.js"></script>
+    <script src="/js/tela.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/configs.js"></script>
+    <script src="/src/hvc.ts" type="module"></script>
+    <script src="/src/ahv.ts" type="module"></script>
 </body>
 
 </html>
