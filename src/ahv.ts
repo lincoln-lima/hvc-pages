@@ -8,7 +8,7 @@ function exportahv() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
 
-    link.download = "main.ahv";
+    link.download = "main";
     link.href = url;
 
     document.body.appendChild(link);
@@ -18,33 +18,23 @@ function exportahv() {
     URL.revokeObjectURL(url);
 }
 
-async function importahv() {
+function importahv() {
     const inputElement = document.createElement('input');
     inputElement.id = 'file';
     inputElement.type = 'file';
     inputElement.style.display = 'none';
 
     document.body.appendChild(inputElement);
+    inputElement.click();
 
-    document.getElementById('file')!.addEventListener('change', (e) => {
-        const input = (e.target as HTMLInputElement)!;
-        const file = input.files![0];
-        const reader = new FileReader();
+    inputElement.addEventListener("change", async () => {
+        const [file] = inputElement.files!;
 
-        reader.onload = (event) => {
-            const fileContent = event.target!.result!.toString();
-
-            if (RegExp("[^.ahv]").test(file.name)) {
-                globals.setCode(fileContent);
-
-                // HVC.editor.rename(file.name)
-            } else alert("Só é permitido o envio de scripts no formato .ahv");
-        
-            document.getElementById('file')!.remove();
-        };
-
-        reader.readAsText(file);
+        if(file) {
+            if (file.size <= 1024) globals.setCode(await file.text());
+            else alert("Os scripts deverão possuir no máximo 1KB");
+        }
     });
 
-    document.getElementById("file")!.dispatchEvent(new Event("click"));
+    document.body.removeChild(inputElement);
 }

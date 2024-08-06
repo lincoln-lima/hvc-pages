@@ -10,9 +10,7 @@ const fixedHeightEditor = EditorView.theme({
     "&": {height: "100%", fontSize: "2em"}
 });
 
-const pointFont = EditorView.theme({
-    "&": {fontFamily: "Dots"}
-});
+const myFont = EditorView.contentAttributes.of({class: "pontilhada"});
 
 /* const myHighlightStyle = HighlightStyle.define([
     {tag: }
@@ -24,7 +22,7 @@ let startstate = EditorState.create({
         keymap.of(defaultKeymap),
         noctisLilac,
         fixedHeightEditor,
-        pointFont
+        myFont
     ]
 });
 
