@@ -1,0 +1,299 @@
+/* -------------------------------------------------------------------- */
+:root {
+    --cabecalho-h: calc(10px * 2 + 51px); /* padding + altura da nav */
+    --visor-xy: 30vh;
+    --secoes-h: calc(100vh - var(--cabecalho-h) - 8vh); /* altura baseada com o cabecalho e os paddings */
+
+    --borda-modal: 1em;
+}
+
+/* cabecalho exclusivo */
+header#header-play {
+    padding: 10px 0;
+}
+
+nav#nav-play {
+    max-width: 95vw;
+}
+
+nav#nav-play > menu {
+    width: 700px;
+}
+
+nav#nav-play > menu > li > button {
+    padding: 5px 7.5px;
+
+    cursor: pointer;
+}
+
+nav#nav-play > menu > li > button > img {
+    margin-right: 10px;
+}
+/* -------------------------------------------------------------------- */
+/* conteúdo principal */
+main {
+    max-width: 95vw;
+    /* height: 91vh; */
+
+    margin: 4vh 0;
+
+    flex-wrap: wrap;
+}
+/* -------------------------------------------------------------------- */
+section#porta-cartoes, section#folha-de-saida, div#contorno-epi, section#acumulador {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
+    /* border-radius: 0 0 15px 15px; */
+}
+/* -------------------------------------------------------------------- */
+/* porta-cartoes */
+section#porta-cartoes {
+    /* background-color: var(--cor1); */
+
+    width: 30vw;
+    height: var(--secoes-h);
+    /* height: 80vh; */
+}
+
+/* section#porta-cartoes > h2 {
+    margin-top: 5%;
+} */
+
+/* section#porta-cartoes > div {
+    font-size: 2em;
+
+    min-height: calc(var(--secoes-h) * 0.8);
+    max-height: calc(var(--secoes-h) * 0.8);
+} */
+/* -------------------------------------------------------------------- */
+div#visores-gaveteiro {
+    width: 60vw;
+    height: var(--secoes-h);
+    /* height: 80vh; */
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+div#visores > * {
+    height: var(--visor-xy);
+    width: var(--visor-xy);
+}
+/* -------------------------------------------------------------------- */
+section#folha-de-saida {
+    background-image: url(../img/notepad.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+
+    position: relative;
+}
+
+section#folha-de-saida > h2 {
+    font-size: 2em;
+}
+
+section#folha-de-saida > span {
+    font-size: 10em;
+    
+    /* margin-top: 10%; */
+}
+/* -------------------------------------------------------------------- */
+
+/* epi */
+div#contorno-epi {
+    background-color: #915901;
+    background-image: url(../img/madeirado.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-radius: 2px;
+
+    position: relative;
+}
+
+section#epi {
+    border-radius: 2px;
+    height: 90%;
+    width: 90%;
+
+    background-color: #1d3825;
+    position: relative;
+}
+
+section#epi > h2 {
+    padding-top: 5%;
+    font-size: 2em;
+}
+
+section#epi > span {
+    font-size: 8em;
+    /* padding-top: 10%; */
+}
+/* -------------------------------------------------------------------- */
+
+/* secs-acumulador */
+section#acumulador {
+    background-color: #93A28D;
+
+    border: 10px solid black;
+    border-radius: 5px;
+
+    width: calc(var(--visor-xy) - 20px);
+    height: calc(var(--visor-xy) - 20px);
+
+    position: relative;
+}
+
+section#acumulador > h2 {
+    font-size: 2em;
+    text-transform: uppercase;
+
+    margin-top: 5%;
+}
+
+section#acumulador > span {
+    font-size: 6em;
+
+    /* margin-top: 5%; */
+}
+
+span#acumulador-span-visor {
+    color: #00000020;
+}
+/* -------------------------------------------------------------------- */
+section#gaveteiro {
+    height: fit-content;
+    padding-bottom: 5px;
+}
+
+article.gaveta {
+    position: relative;
+}
+
+article.gaveta:nth-child(even) {
+    margin: 0 1vw;
+}
+
+article.gaveta > div {
+    width: 146px;
+    height: 122px;
+
+    background-image: url(../img/gaveteiro.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+span.num-gaveta {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+
+    position: absolute;
+    top: 50px;
+    left: 24px;
+
+    transform: skewY(12deg);
+}
+
+span.cont-gaveta {
+    font-size: 1.5em;
+    color: #ffffff;
+
+    position: absolute;
+    top: 50px;
+    right: 2px;
+
+    transform: skewY(-25deg);
+}
+/* -------------------------------------------------------------------- */
+section.mymodal {
+    /* display: none; */
+
+    background-color: #00000030;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+article.conteudo-modal {
+    width: 60vh;
+    height: 60vh;
+
+    background-color: white;
+
+    /* padding: 15px 10px; */
+    border-radius: var(--borda-modal);
+}
+
+article.conteudo-modal > * {
+    padding: 0 15px; 
+
+    /* border-radius: 50px; */
+}
+
+article.conteudo-modal h2 {
+    color: white;
+}
+
+button.close {
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    border-radius: 50%;
+}
+
+div.modal-cabecalho-rodape {
+    height: 10%;
+
+    position: relative;
+
+    background: var(--degrade-azul);
+}
+
+div.modal-header {
+    border-top-left-radius: var(--borda-modal);
+    border-top-right-radius: var(--borda-modal);
+}
+
+div.modal-corpo {
+    height: 80%;
+}
+
+form.campo {
+    flex-direction: column;
+
+    /* height: 2.5em; */
+}
+
+form.campo > label {
+    font-weight: bold;
+}
+
+form.campo > input {
+    width: 3em;
+
+    font-size: 1em;
+}
+
+button#save {
+    padding: 0;
+
+    font-size: 1.3em;
+    width: 5em;
+}
+
+div.modal-footer {
+    border-bottom-left-radius: var(--borda-modal);
+    border-bottom-right-radius: var(--borda-modal);
+}
+
+section#exp-imp-modal, section#config-modal {
+    display: none;
+}

@@ -27,13 +27,28 @@
 }
 
 @font-face {
-    font-family: 'SqueakyChalkSound';
-    src: url(../fonts/squeaky-chalk-sound/SqueakyChalkSound.ttf);
+    font-family: 'Eraser';
+    src: url(../fonts/Eraser/eraser.regular.ttf);
 }
 
 @font-face {
-    font-family: 'Seven Segment';
-    src: url(../fonts/seven_segment/Seven\ Segment.ttf)
+    font-family: 'Segment';
+    src: url(../fonts/14-segmented-display/14-segmented-display.otf);
+}
+
+@font-face {
+    font-family: 'Kindergarten';
+    src: url(../fonts/kindergarten/kindergarten.ttf);
+}
+
+@font-face {
+    font-family: 'Space';
+    src: url(../fonts/SpaceMono/SpaceMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Dots";
+    src: url(../fonts/Dots/led_counter-7.ttf);
 }
 /* -------------------------------------------------------------------- */
 
@@ -48,6 +63,8 @@
     --cor3-escura: #e4a419;
 
     --azul: #2129FF;
+
+    --degrade-azul: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
 }
 
 @property --cor1-botao {
@@ -107,6 +124,13 @@ mark {
     font-family: "Nunito";
     /* font-size: 22px; */
     font-size: 1.4em;
+<<<<<<< HEAD:public/css/style.css
+}
+
+.mono {
+    font-family: "Space";
+=======
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/style.css
 }
 
 /* blockquote */
@@ -115,12 +139,20 @@ mark {
 }
 
 .segmento {
-    font-family: "Seven Segment";
+    font-family: "Segment";
 }
 
 .giz {
-    font-family: "SqueakyChalkSound";
+    font-family: "Eraser";
     color: #ffffff;
+}
+
+.cursiva {
+    font-family: "Kindergarten";
+}
+
+.pontilhada {
+    font-family: 'Dots';
 }
 
 .font-w-700 {
@@ -197,12 +229,6 @@ a.link-externo {
     justify-content: space-between;
     align-items: center;
 }
-
-/* .flex-center-column {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
 
 .centralizar-x {
     margin-right: auto;

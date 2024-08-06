@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <title>HVC - Playground</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/playground.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/mobile-playground.css">
+
+    <link rel="shortcut icon" href="img/gavetinha.ico" type="image/x-icon">
+</head>
+
+<body onresize="monitoraTelaPlayground()" onload="monitoraTelaPlayground()">
+    <header id="header-play">
+        <nav id="nav-play" class="flex-between-center centralizar-x">
+            <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
+                <img id="logo-gaveta" src="img/gaveta-logo.png" alt="ícone de gaveta">
+                <h1 class="titulo">
+                    <span>HV</span><span>C</span>
+                </h1>
+            </a>
+            <menu id="menu" class="flex-between-center">
+                <li>
+                    <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F9">
+                        <img src="img/run.png" alt="" srcset="">
+                        <span>Executar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="debug" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F8">
+                        <img src="img/debug.png" alt="" srcset="">
+                        <span>Depurar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="import" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                        <img src="img/folder.png" alt="" srcset="">
+                        <span>Importar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="export" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                        <img src="img/download.png" alt="" srcset="">
+                        <span>Exportar</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="config-btn" class="flex-between-center link-nav link-nav-3 texto" target="_self">
+                        <img src="img/config.png" alt="" srcset="">
+                        <span>Configurar</span>
+                    </button>
+                </li>
+            </menu>
+            <button id="botao-menu" onclick="mostraMenu()"><img src="img/menu.png" alt=""></button>
+        </nav>
+    </header>
+    <main class="flex-between-center centralizar-x">
+        <section id="porta-cartoes" class="texto-centro" title="Porta Cartões">
+            <!-- <h2 class="subtitulo">Porta-Cartões</h2> -->
+        </section>
+        <div id="visores-gaveteiro">
+            <div id="visores" class="texto-centro flex-between-center">
+                <section id="folha-de-saida" title="Folha de Saída">
+                    <!-- <h2 class="subtitulo cursiva">Folha de Saída</h2> -->
+                    <span id="saida-span" class="cursiva centralizar-y"></span>
+                </section>
+                <div id="contorno-epi">
+                    <section id="epi" class="centralizar-y" title="EPI">
+                        <!-- <h2 class="giz">EPI</h2> -->
+                        <span id="epi-span" class="giz centralizar-y"></span>
+                    </section>
+                </div>
+                <section id="acumulador" title="Acumulador">
+                    <!-- <h2 class="segmento">Acumulador</h2> -->
+                    <span id="acumulador-span-visor" class="segmento centralizar-y">000</span>
+                    <span id="acumulador-span-valor" class="segmento centralizar-y"></span>
+                </section>
+            </div>
+            <section id="gaveteiro" class="flex-between-center scroll-y" title="Gaveteiro">
+            </section>
+        </div>
+        <section id="config-modal" class="mymodal">
+            <article id="configs" class="conteudo-modal centralizar-y texto">
+                <div id="config-header" class="modal-cabecalho-rodape modal-header flex-between-center">
+                    <h2>Configurações</h2>
+                    <button id="close" class="botao">&times;</button>
+                </div>
+                <div class="modal-corpo">
+                    <form name="configs-form" class="flex-between-center campo">
+                        <label for="delay">Delay (ms)</label>
+                        <input type="number" name="delay" id="delay" min="100" value="700">
+                    </form>
+                </div>
+                <div class="modal-cabecalho-rodape modal-footer">
+                    <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button>
+                </div>
+            </article>
+        </section>
+        <section id="exp-imp-modal" class="mymodal">
+            <article id="exp-imps" class="conteudo-modal centralizar-y texto">
+                <div id="exp-imp-header" class="modal-cabecalho-rodape modal-header flex-between-center">
+                    <h2>Arquivo</h2>
+                    <button id="close" class="botao">&times;</button>
+                </div>
+                <div class="modal-corpo">
+                    <div class="campo">
+                        <input type="file" name="imp" id="imp">
+                    </div>
+                    <hr>
+                    <div>
+                        <button id="exp-btn">Exportar</button>
+                    </div>
+                </div>
+                <div id="exp-imp-footer" class="modal-cabecalho-rodape modal-footer">
+                    <!-- <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button> -->
+                </div>
+            </article>
+        </section>
+    </main>
+    <script src="js/criar-gavetas.js"></script>
+    <script src="js/tela.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/configs.js"></script>
+    <script src="src/hvc.ts" type="module"></script>
+    <script src="src/ahv.ts" type="module"></script>
+</body>
+
+</html>

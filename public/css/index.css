@@ -295,7 +295,7 @@ aside blockquote > * > * {
 
 /* rodapé */
 footer {
-    background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
+    background: var(--degrade-azul);
 
     padding: 30px 0;
     color: #ffffff;

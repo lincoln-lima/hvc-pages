@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 1065px) {
+    nav button#botao-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    /* Cabeçalho --------------------*/
+    header {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-direction: row-reverse;
+    }
+    
+    nav > menu {
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        
+        align-items: normal !important;
+        flex-direction: column;
+    
+        height: 120px;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition: opacity 0.3s linear;
+
+        min-width: fit-content !important;
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+        background-color: #00000020;
+    }
+    
+    section#descricao-hv > img {
+        margin: 0;
+    }
+
+    section#aprenda div.aprenda-div-texto-imagem {
+        justify-content: center;
+    }
+
+    section#aprenda div.aprenda-div-texto-imagem > div {
+        max-width: none;
+        margin-top: 40px;
+    }
+
+}
