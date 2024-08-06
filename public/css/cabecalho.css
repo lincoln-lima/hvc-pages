@@ -1,8 +1,15 @@
 /* -------------------------------------------------------------------- */
 /* cabeçalho */
 header {
+<<<<<<< HEAD:public/css/cabecalho.css
     padding: 25px 0;
     box-shadow: 1px 1px 9px #00000033;
+=======
+    height: 55px;
+
+    padding: 25px 0;
+    box-shadow: 1px 1px 9px hsla(0, 0%, 0%, 0.2);
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
 }
 
 /* barra de navegação */
@@ -14,6 +21,12 @@ nav {
 /* todos os links da barra de navegação */
 nav a, nav button {
     padding: 1px 5px;
+<<<<<<< HEAD:public/css/cabecalho.css
+=======
+    border-radius: 3px;
+
+    /* font-size: 18px; */
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
     font-size: 1.5em !important;
 }
 
@@ -22,6 +35,10 @@ nav a, nav span {
 }
 
 nav > menu {
+<<<<<<< HEAD:public/css/cabecalho.css
+=======
+    /* min-width: 600px; */
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
     min-width: 45vw;
     list-style-type: none;
 
@@ -35,11 +52,16 @@ nav a:hover {
 
 nav > a#home {
     width: 170px;
+<<<<<<< HEAD:public/css/cabecalho.css
     height: 49px; /* tamanho da imagem */
+=======
+    border: 2px solid transparent;
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
 }
 
 nav > a#home:hover {
     background-color: #00000015;
+    /* border-color: #00000010; */
 }
 
 nav > a#home > h1 > span {
@@ -55,6 +77,7 @@ nav > a#home > h1 > span:nth-child(2) {
     color: var(--cor2);
 }
 
+<<<<<<< HEAD:public/css/cabecalho.css
 .link-nav {
     padding: 0 15px;
 
@@ -82,6 +105,33 @@ nav > a#home > h1 > span:nth-child(2) {
 }
 
 .link-nav-3:hover {
+=======
+a.link-nav {
+    padding: 0 15px;
+}
+
+a#link-nav-1 {
+    background-color: var(--cor2);
+}
+
+a#link-nav-1:hover {
+    background-color: var(--cor2-escura);
+}
+
+a#link-nav-2 {
+    background-color: var(--cor3);
+}
+
+a#link-nav-2:hover {
+    background-color: var(--cor3-escura);
+}
+
+a#link-nav-3 {
+    background-color: var(--cor1);
+}
+
+a#link-nav-3:hover {
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
     background-color: var(--cor1-escura);
 }
 
@@ -93,13 +143,18 @@ button#botao-menu {
 
     padding: 5px;
 
+<<<<<<< HEAD:public/css/cabecalho.css
     border-width: 0;
     border-color: transparent;
+=======
+    border: 2px solid transparent;
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
     border-radius: 3px;
 
     transition: 0.3s;
 }
 
+<<<<<<< HEAD:public/css/cabecalho.css
 button#botao-menu:hover {
     background-color: #00000015;
 }
@@ -113,4 +168,12 @@ button#botao-menu:hover {
 
         z-index: 1;
     }
+=======
+/* button#botao-menu:focus {
+    border: 2px solid black;
+} */
+
+button#botao-menu:hover {
+    background-color: #00000015;
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/cabecalho.css
 }

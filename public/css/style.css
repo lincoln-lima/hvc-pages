@@ -124,10 +124,13 @@ mark {
     font-family: "Nunito";
     /* font-size: 22px; */
     font-size: 1.4em;
+<<<<<<< HEAD:public/css/style.css
 }
 
 .mono {
     font-family: "Space";
+=======
+>>>>>>> de919b461be733bf0560fe94fac0e8ecf77d53b6:css/style.css
 }
 
 /* blockquote */
