@@ -1,6 +1,10 @@
 import { getDoc, setDoc } from "./codemirror"
 
 export const globals = {
+    /* elementos da página */
+    menu: document.getElementById("menu")!,
+    botao_menu: document.getElementsByClassName("botao-menu")[0]! as HTMLElement,
+
     /* áreas de texto */
     saida: document.getElementById("saida-span")!,
     acumulador: document.getElementById("acumulador-span-valor")!,
@@ -14,8 +18,12 @@ export const globals = {
     export: document.getElementById("export")!,
     salvar: document.getElementById("save")!,
 
+    /* armazena gavetas */
+    gaveteiro: document.getElementById("gaveteiro")!,
+    numgavs: 100,
+
     /* área de configuração */
-    delay: (document.getElementById("delay")! as HTMLInputElement).value,
+    delay: (document.getElementById("delay")! as HTMLInputElement)!.value,
 
     /* código */
     getCode: () => {

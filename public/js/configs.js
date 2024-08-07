@@ -15,8 +15,10 @@ function ocultaConfig() {
 }
 
 /* evento de click para abrir configurações */
-document.addEventListener("keydown", e => {
-    if(e.key.toLocaleLowerCase() === "f10") {
+document.addEventListener("keydown", (e) => {
+    if(e.key.toLocaleLowerCase() === "f12") {
+        e.preventDefault();
+
         if(!(configs.style.display) || configs.style.display === "none") mostraConfig();
         else ocultaConfig();
     }

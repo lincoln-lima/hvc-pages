@@ -1,22 +1,16 @@
 import { globals } from "./global";
 
-globals.export.addEventListener('click', exportahv);
 globals.import.addEventListener('click', importahv);
+globals.export.addEventListener('click', exportahv);
 
-function exportahv() {
-    const blob = new Blob([globals.getCode()], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+document.addEventListener('keydown', (e) => {
+    let key = e.key.toLocaleLowerCase();
 
-    link.download = "main";
-    link.href = url;
-
-    document.body.appendChild(link);
-    link.click();
-
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
+    if(key === "s" && e.ctrlKey) {
+        e.preventDefault();
+        exportahv();
+    }
+})
 
 function importahv() {
     const inputElement = document.createElement('input');
@@ -37,4 +31,19 @@ function importahv() {
     });
 
     document.body.removeChild(inputElement);
+}
+
+function exportahv() {
+    const blob = new Blob([globals.getCode()], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.download = "main";
+    link.href = url;
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 }

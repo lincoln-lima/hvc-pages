@@ -1,19 +1,17 @@
-/* definindo elemento seção*/
-const gav = document.getElementById('gaveteiro');
+import { globals } from "./global";
 
-for (let i = 0; i < 100; i++) {
+/* definindo elemento seção*/
+for (let i = 0; i < globals.numgavs; i++) {
     /* adicionando elemento div para agrupar imagem e span */
     const article = document.createElement("article");
     article.className = "gaveta";
-
-    gav.appendChild(article);
 
     /* criando número da gaveta */
     const num_gaveta = document.createElement("span");
 
     /* passando para string e descobrir a quantidade de dígitos */
     /* caso tamanho seja 1, adicionar o 0 */
-    num_gaveta.innerText = i.toString().length === 1 ? '0' + i : i;
+    num_gaveta.innerText = i.toString().length === 1 ? '0' + i.toString() : i.toString();
     num_gaveta.id = "num-gaveta-" + i;
     num_gaveta.className = "num-gaveta mono";
 
@@ -25,4 +23,6 @@ for (let i = 0; i < 100; i++) {
     article.appendChild(document.createElement("div"));
     article.appendChild(num_gaveta);
     article.appendChild(cont_gaveta);
+
+    globals.gaveteiro.appendChild(article);
 }
