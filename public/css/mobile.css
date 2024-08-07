@@ -20,7 +20,7 @@
         align-items: normal !important;
         flex-direction: column;
     
-        height: 120px;
+        height: var(--menu-height);
 
         visibility: hidden;
         opacity: 0;

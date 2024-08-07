@@ -66,13 +66,13 @@
     
     nav > menu {
         position: absolute;
-        top: 8vh;
+        top: var(--cabecalho-h);
         right: 0;
         
         align-items: end !important;
         flex-direction: column;
     
-        height: 150px;
+        height: calc(var(--menu-height) * 1.3);
 
         visibility: hidden;
         opacity: 0;
@@ -85,6 +85,14 @@
         padding: 15px;
         border-radius: 0 0 5px 5px;
         background-color: #00000020;
+    }
+    
+    nav > menu button {
+        flex-direction: row-reverse;
+    }
+
+    nav > menu button img {
+        margin: 0 0 0 0.6em !important;
     }
     
     main {

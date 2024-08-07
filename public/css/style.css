@@ -181,7 +181,6 @@ button.botao {
     border-width: 0;
     padding: 5px 30px;
     background: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
-    border: 0.01rem solid transparent;
 
     /* centralização e espaçamento */
     display: block;
@@ -190,7 +189,6 @@ button.botao {
     
     /* texto */
     font-weight: 700;
-    /* font-size: 24px; */
     font-size: 1.5em;
     color: #ffffff;
     text-transform: uppercase;
@@ -203,7 +201,7 @@ button.botao:hover {
     --cor2-botao: #00A8AC;
     --cor3-botao: #8C4AFF;
     
-    border: 0.01rem solid black;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.373);
 }
 
 /* mark > a */

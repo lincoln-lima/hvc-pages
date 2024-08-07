@@ -7,15 +7,16 @@
     <title>HVC - Inicial</title>
 
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/mobile-index.css">
     <link rel="stylesheet" href="/css/cabecalho.css">
     <link rel="stylesheet" href="/css/mobile.css">
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/mobile-index.css">
 
     <link rel="shortcut icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
 
-<body onresize="monitoraTelaIndex()" onload="monitoraTelaIndex()">
+<body>
     <header>
         <nav class="flex-between-center centralizar-x">
             <a id="home" class="flex-between-center" rel="author" target="_top" href="index.html">
@@ -29,7 +30,7 @@
                 <li><a class="link-nav link-nav-2 texto link-externo" href="#documentacao" target="_blank">Documentação</a></li>
                 <li><a class="link-nav link-nav-3 texto link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </menu>
-            <button id="botao-menu" onclick="mostraMenu()"><img src="/img/menu.png" alt=""></button>
+            <button class="botao-menu"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
     <main class="centralizar-x">
@@ -352,9 +353,10 @@
             </article>
         </section>
     </footer>
+
     <script src="/js/copiar-texto.js"></script>
     <script src="/js/menu.js"></script>
-    <script src="/js/tela.js"></script>
+    <script src="/js/screen.js"></script>
 </body>
 
 </html>

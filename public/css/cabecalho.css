@@ -86,7 +86,9 @@ nav > a#home > h1 > span:nth-child(2) {
     background-color: var(--cor1-escura);
 }
 
-button#botao-menu {
+button.botao-menu {
+    display: none;
+
     height: 50px; /* tamanho da imagem */
 
     background-color: transparent;
@@ -101,7 +103,7 @@ button#botao-menu {
     transition: 0.3s;
 }
 
-button#botao-menu:hover {
+button.botao-menu:hover {
     background-color: #00000015;
 }
 
