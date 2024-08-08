@@ -54,11 +54,18 @@ section#porta-cartoes, section#folha-de-saida, div#contorno-epi, section#acumula
 /* -------------------------------------------------------------------- */
 /* porta-cartoes */
 section#porta-cartoes {
-    /* background-color: var(--cor1); */
-
     width: 30vw;
     height: var(--secoes-h);
-    /* height: 80vh; */
+}
+
+.editor {
+    height: 100%;
+    font-size: 2em;
+}
+
+.cm-lineNumbers > * {
+    font-family: "IBM Plex Mono";
+    font-size: 0.9em;
 }
 
 /* section#porta-cartoes > h2 {
@@ -175,8 +182,16 @@ article.gaveta {
     position: relative;
 }
 
-article.gaveta:nth-child(even) {
-    margin: 0 1vw;
+article.gaveta {
+    margin: 0 0.5vw;
+}
+
+article.gaveta:first-child {
+    margin: 0 0.5vw 0 0;
+}
+
+article.gaveta:last-child {
+    margin: 0 0 0 0.5vw;
 }
 
 article.gaveta > div {

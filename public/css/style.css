@@ -126,6 +126,10 @@ mark {
     font-size: 1.4em;
 }
 
+.codigo {
+    font-family: "IBM Plex Mono";
+}
+
 .mono {
     font-family: "Space";
 }
@@ -160,8 +164,7 @@ mark {
     font-weight: 600;
 }
 
-code.codigo {
-    font-family: "IBM Plex Mono";
+code {
     color: var(--cor1);
     text-align: left;
 
@@ -247,4 +250,28 @@ a.link-externo {
 
 .texto-centro {
     text-align: center;
+}
+
+/* definindo estilo da barra de rolagem */
+::-webkit-scrollbar {
+    height: 0.8em;
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: var(--cor1-escura); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor2-escura); 
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--cor3-escura); 
 }

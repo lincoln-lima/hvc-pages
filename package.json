@@ -9,12 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
   },
   "dependencies": {
     "codemirror": "^6.0.1",
-    "hvcjs": "^1.1.1",
+    "hvcjs": "^1.2.1",
     "thememirror": "^2.0.1"
   }
 }
