@@ -2,6 +2,7 @@ import { EditorState } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
 import { noctisLilac } from "thememirror";
+
 // import { tags } from "@lezer/highlight";
 // import { HighlightStyle } from "@codemirror/language";
 
@@ -9,26 +10,24 @@ import { noctisLilac } from "thememirror";
     {tag: }
 ]) */
 
-/* definindo área de código com codemirror */
-/* const fixedHeightEditor = EditorView.theme({
-    "&": {height: "100%", fontSize: "2em"}
-}); */
+const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n150\n850\n000";
 
-const editorClass = EditorView.editorAttributes.of({ class: "editor" });
-const myFont = EditorView.contentAttributes.of({ class: "pontilhada" });
+const editorclass = EditorView.editorAttributes.of({ class: "editor" });
+const myfont = EditorView.contentAttributes.of({ class: "pontilhada" });
 
-// const codeChange = EditorView.updateListener.of(() => {
-
-// })
+const codechange = EditorView.updateListener.of(update => {
+    if(update.docChanged) localStorage.setItem("code", getDoc());
+})
 
 let startstate = EditorState.create({
-    doc: "750\n751\n050\n251\n160\n860\n000\n20\n35",
+    doc: initialcode!,
     extensions: [
         keymap.of(defaultKeymap),
         lineNumbers(),
+        codechange,
         noctisLilac,
-        editorClass,
-        myFont
+        editorclass,
+        myfont
     ]
 });
 
@@ -42,9 +41,11 @@ export function getDoc() {
 }
 
 export function setDoc(text: string) {
-    view.dispatch({changes: {
-        from: 0,
-        to: view.state.doc.length,
-        insert: text
-    }})
+    view.dispatch({
+        changes: {
+            from: 0,
+            to: view.state.doc.length,
+            insert: text
+        }
+    })
 }

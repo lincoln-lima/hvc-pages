@@ -14,16 +14,16 @@ export default () => {
     })
 
     function importahv() {
-        const inputElement = document.createElement('input');
-        inputElement.id = 'file';
-        inputElement.type = 'file';
-        inputElement.style.display = 'none';
+        const inputelement = document.createElement('input');
+        inputelement.id = 'file';
+        inputelement.type = 'file';
+        inputelement.style.display = 'none';
 
-        document.body.appendChild(inputElement);
-        inputElement.click();
+        document.body.appendChild(inputelement);
+        inputelement.click();
 
-        inputElement.addEventListener("change", async () => {
-            const [file] = inputElement.files!;
+        inputelement.addEventListener("change", async () => {
+            const [file] = inputelement.files!;
 
             if (file) {
                 if (file.size <= 1024) globals.setCode(await file.text());
@@ -31,7 +31,7 @@ export default () => {
             }
         });
 
-        document.body.removeChild(inputElement);
+        document.body.removeChild(inputelement);
     }
 
     function exportahv() {

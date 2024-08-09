@@ -52,6 +52,7 @@ hvc.addEventOutput((out: string) => {
     globals.saida.innerText = out;
 });
 
+/* evento de cada ciclo clock */
 hvc.addEventClock(_HVMState => {
     const hvm = hvc.getHVM();
 
