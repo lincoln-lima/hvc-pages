@@ -1,5 +1,10 @@
 import { globals } from "./global";
+import ahv from "./ahv";
+import drawers from "./drawers";
 import { HVC } from "hvcjs";
+
+drawers();
+ahv();
 
 const hvc = new HVC();
 

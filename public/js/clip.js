@@ -1,5 +1,5 @@
-function copiarComando(id) {
-    var copyText = document.getElementById(id).innerHTML;
+function copyCode(id) {
+    let copyText = document.getElementById(id).innerHTML;
 
     navigator.clipboard.writeText(copyText);
 
