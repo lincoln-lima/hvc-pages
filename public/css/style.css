@@ -1,57 +1,3 @@
-@charset "UTF-8";
-
-/* --- Setando famílias de fonte padrão importadas para uso no site --- */
-@font-face {
-    font-family: 'Archivo Black';
-    src: url(../fonts/Archivo_Black/ArchivoBlack-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'Archivo Narrow';
-    src: url(../fonts/Archivo_Narrow/ArchivoNarrow-VariableFont_wght.ttf);
-}
-
-@font-face {
-    font-family: 'Nunito';
-    src: url(../fonts/Nunito/Nunito-VariableFont_wght.ttf);
-}
-
-@font-face {
-    font-family: 'IBM Plex Mono';
-    src: url(../fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'Parisienne';
-    src: url(../fonts/Parisienne/Parisienne-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'Eraser';
-    src: url(../fonts/Eraser/eraser.regular.ttf);
-}
-
-@font-face {
-    font-family: 'Segment';
-    src: url(../fonts/14-segmented-display/14-segmented-display.otf);
-}
-
-@font-face {
-    font-family: 'Kindergarten';
-    src: url(../fonts/kindergarten/kindergarten.ttf);
-}
-
-@font-face {
-    font-family: 'Space';
-    src: url(../fonts/SpaceMono/SpaceMono-Regular.ttf);
-}
-
-@font-face {
-    font-family: "Dots";
-    src: url(../fonts/Dots/led_counter-7.ttf);
-}
-/* -------------------------------------------------------------------- */
-
 /* Estabelecendo variáveis de cor */
 :root {
     --cor1: #5427A0;
@@ -62,7 +8,7 @@
     --cor2-escura: #019699;
     --cor3-escura: #e4a419;
 
-    --azul: #2129FF;
+    /* --azul: #2129ff; */
 
     --degrade-azul: linear-gradient(90deg, var(--cor1-botao) 5.85%, var(--cor2-botao) 73%, var(--cor3-botao) 149.38%);
 }
