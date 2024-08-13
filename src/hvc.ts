@@ -47,10 +47,17 @@ globals.salvar.addEventListener('click', function () {
     globals.delay = (document.getElementById("delay")! as HTMLInputElement).value;
 });
 // ------------------------------------------------------------------------------- 
-/* evento de saída do HVC */
+/* resultado da execução */
 hvc.addEventOutput((out: string) => {
     globals.saida.innerText = out;
 });
+
+// hvc.addEventInput(async() => {
+//     while(e.key) {
+
+//     }
+//     return await (globals.cartao as HTMLInputElement).value;
+// });
 
 /* evento de cada ciclo clock */
 hvc.addEventClock(_HVMState => {

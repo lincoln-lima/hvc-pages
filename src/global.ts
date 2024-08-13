@@ -9,6 +9,7 @@ export const globals = {
     saida: document.getElementById("saida-span")!,
     acumulador: document.getElementById("acumulador-span-valor")!,
     epi: document.getElementById("epi-span")!,
+    cartao: document.getElementById("cartao")!,
     // editor: document.getElementById("porta-cartoes")!,
 
     /* botões da página - ações de clique */

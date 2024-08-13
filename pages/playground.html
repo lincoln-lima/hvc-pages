@@ -7,9 +7,11 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <title>HVC - Playground</title>
 
+    <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/playground.css">
     <link rel="stylesheet" href="/css/cabecalho.css">
+
+    <link rel="stylesheet" href="/css/playground.css">
     <link rel="stylesheet" href="/css/mobile-playground.css">
 
     <link rel="shortcut icon" href="/img/gavetinha.ico" type="image/x-icon">
@@ -85,8 +87,8 @@
             </section>
         </div>
         <section id="config-modal" class="mymodal">
-            <article id="configs" class="conteudo-modal centralizar-y texto">
-                <div id="config-header" class="modal-cabecalho-rodape modal-header flex-between-center">
+            <article class="conteudo-modal centralizar-y texto">
+                <div id="config-header" class="modal-header flex-between-center">
                     <h2>Configurações</h2>
                     <button id="close" class="botao">&times;</button>
                 </div>
@@ -96,8 +98,19 @@
                         <input type="number" name="delay" id="delay" min="100" value="700">
                     </form>
                 </div>
-                <div class="modal-cabecalho-rodape modal-footer">
+                <div class="modal-footer">
                     <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button>
+                </div>
+            </article>
+        </section>
+        <section id="cartao-modal" class="mymodal">
+            <article class="conteudo-modal centralizar-y texto">
+                <div class="modal-corpo flex-between-center">
+                    <form name="cartaos-form" class="flex-between-center campo">
+                        <!-- <label for="cartao">Valor:</label> -->
+                        <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
+                    </form>
+                    <button id="submit" class="botao"><img src="/img/check.png"></button>
                 </div>
             </article>
         </section>
@@ -107,7 +120,7 @@
     <script src="/js/configs.js"></script>
     <script src="/js/screen.js"></script>
 
-    <script src="/src/styles/playground.ts" type="module"></script>
+    <script src="/src/playground.ts" type="module"></script>
     <script src="/src/hvc.ts" type="module"></script>
 </body>
 
