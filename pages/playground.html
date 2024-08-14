@@ -26,7 +26,7 @@
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <menu id="menu" class="flex-between-center">
+            <menu class="flex-between-center">
                 <li>
                     <button id="debug" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F8">
                         <img src="/img/debug.png" alt="" srcset="">
@@ -52,7 +52,7 @@
                     </button>
                 </li>
                 <li>
-                    <button id="config-btn" class="flex-between-center link-nav link-nav-3 texto" target="_self" title="F12">
+                    <button id="config" class="flex-between-center link-nav link-nav-3 texto" target="_self" title="F12">
                         <img src="/img/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
@@ -90,7 +90,7 @@
             <article class="conteudo-modal centralizar-y texto">
                 <div id="config-header" class="modal-header flex-between-center">
                     <h2>Configurações</h2>
-                    <button id="close" class="botao">&times;</button>
+                    <button id="close-configs" class="botao close">&times;</button>
                 </div>
                 <div class="modal-corpo">
                     <form name="configs-form" class="flex-between-center campo">
@@ -99,7 +99,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="save" type="submit" class="botao centralizar-y texto">Salvar</button>
+                    <button id="save-configs" type="submit" class="botao centralizar-y texto">Salvar</button>
                 </div>
             </article>
         </section>
@@ -110,16 +110,13 @@
                         <!-- <label for="cartao">Valor:</label> -->
                         <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
                     </form>
-                    <button id="submit" class="botao"><img src="/img/check.png"></button>
+                    <button id="submit-card" class="botao"><img src="/img/check.png"></button>
                 </div>
             </article>
         </section>
     </main>
 
-    <script src="/js/menu.js"></script>
-    <script src="/js/configs.js"></script>
-    <script src="/js/screen.js"></script>
-
+    <script src="/src/default.ts" type="module"></script>
     <script src="/src/playground.ts" type="module"></script>
     <script src="/src/hvc.ts" type="module"></script>
 </body>
