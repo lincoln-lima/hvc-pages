@@ -29,7 +29,7 @@ async function exec(isquick: boolean) {
 
     try {
         if (isquick) await hvc.run();
-        else await hvc.debug(+globals.delay);
+        else await hvc.debug(+globals.delay.value);
     }
     catch (e) {
         console.log((e as Error).message);
@@ -43,8 +43,12 @@ function preparaExecucao() {
     globals.epi.innerText = '-';
 }
 // ------------------------------------------------------------------------------- 
-globals.salvar.addEventListener('click', function () {
-    globals.delay = (document.getElementById("delay")! as HTMLInputElement).value;
+globals.saveconfigs.addEventListener('click', function () {
+    localStorage.setItem("delay", globals.delay.value);
+
+    globals.undisplayElement(globals.configmodal);
+
+    alert("As configurações salvas!");
 });
 // ------------------------------------------------------------------------------- 
 /* resultado da execução */
@@ -52,12 +56,27 @@ hvc.addEventOutput((out: string) => {
     globals.saida.innerText = out;
 });
 
-// hvc.addEventInput(async() => {
-//     while(e.key) {
+/* hvc.addEventInput(async() => {
+    let input = '';
 
-//     }
-//     return await (globals.cartao as HTMLInputElement).value;
-// });
+    globals.displayElement(globals.cardmodal);
+
+    while(input === '') {
+        globals.card.addEventListener('keydown', e => {
+            if (e.key.toLowerCase() === "enter") setValue();
+        });
+
+        globals.submitcard.addEventListener('click', setValue);
+    }
+
+    function setValue() {
+        input = globals.card.value;
+    }
+    
+    globals.undisplayElement(globals.cardmodal);
+
+    return await input;
+}); */
 
 /* evento de cada ciclo clock */
 hvc.addEventClock(_HVMState => {
@@ -84,7 +103,7 @@ hvc.addEventClock(_HVMState => {
 
     globals.epi.innerText = val_epi;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < globals.numgavs; i++) {
         let cont_gaveta = document.getElementById("cont-gaveta-" + i)!;
 
         cont_gaveta.innerText = val_gaveta[i] ? val_gaveta[i].toString() : "---";
