@@ -43,7 +43,7 @@ button.close {
 
 	position: relative;
 
-	background: global.$fade;
+	background: global.$fade-default;
 
 	border-top-left-radius: $border-top;
 	border-top-right-radius: $border-top;
@@ -95,7 +95,7 @@ section#config-modal {
 section#cartao-modal {
     $height-content: 15vh;
 
-	display: block;
+	display: none;
 
 	article {
 		width: 30vw;
