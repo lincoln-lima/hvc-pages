@@ -4,7 +4,7 @@ export const globals = {
     /* áreas da página */
     menumodal: document.getElementsByTagName("menu")[0]!,
     configmodal: document.getElementById("config-modal")!,
-    cardmodal: document.getElementById("card-modal")!,
+    cardmodal: document.getElementById("cartao-modal")!,
 
     /* áreas de texto */
     saida: document.getElementById("saida-span")!,
@@ -28,6 +28,7 @@ export const globals = {
 
     /* armazena gavetas */
     gaveteiro: document.getElementById("gaveteiro")!,
+    contentgavetas: document.getElementsByClassName("cont-gaveta")!, 
     numgavs: 100,
 
     /* área de configuração */
@@ -51,6 +52,7 @@ export const globals = {
         element.style.display = "none";
     },
 
+    /* monitora comportamento do menu */
     monitoreMenu: (size: number) => {
         if (window.innerWidth > size) {
             globals.menumodal.style.opacity = '1';
