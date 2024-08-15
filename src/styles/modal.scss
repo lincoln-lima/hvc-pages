@@ -93,12 +93,13 @@ section#config-modal {
 }
 /* -------------------------------------------------------------------- */
 section#cartao-modal {
-    $height-content: 15vh;
+	$width-content: 600px;
+    $height-content: 150px;
 
-	display: none;
+	// display: block;
 
 	article {
-		width: 30vw;
+		width: $width-content;
 		height: $height-content;
 	}
 

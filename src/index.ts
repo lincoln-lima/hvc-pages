@@ -1,7 +1,14 @@
 import { globals } from "./global";
+import { table } from "./templates";
+// ------------------------------------------------------------------------------- 
+import "/src/styles/table.scss";
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(1064));
 window.addEventListener('load', () => globals.monitoreMenu(1064));
+// ------------------------------------------------------------------------------- 
+(async () => {
+    document.getElementById("table")!.innerHTML = await table();
+})();
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copiar")!;
 

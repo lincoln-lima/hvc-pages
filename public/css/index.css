@@ -198,51 +198,6 @@ section#aprenda > article#hv ul {
 section#aprenda > article#assembly > h3 {
     color: var(--cor2);
 }
-
-section#aprenda > article#assembly > div#tabela-scroll > table {
-    width: 100%;
-    border-spacing: 10px 10px;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table th, td {
-    color: #ffffff;
-    padding: 3px 10px;
-    white-space: nowrap;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > thead > tr > th {
-    background-color: var(--cor1);
-    border-radius: 5px 5px 0 0;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
-    background-color: var(--cor2);
-    font-weight: 500;
-    border-radius: 5px 0 5px 0;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td {
-    text-align: center;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.descricao {
-    text-align: left;
-    border-radius: 0;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.operacao {
-    background-color: transparent;
-    padding: 0;
-    width: 10px;
-
-    color: var(--cor1);
-    font-weight: 700;
-}
-
-section#aprenda > article#assembly > div#tabela-scroll > table > tbody > tr > td.seta-tabela {
-    /* font-size: 30px; */
-    font-size: 1.5em;
-}
 /* ------------------------------- */
 
 /* artigo de sintaxe da linguagem */
