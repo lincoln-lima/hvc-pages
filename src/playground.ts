@@ -1,6 +1,15 @@
 import { globals } from "./global";
+// import { configs, card } from "./templates";
+import drawers from "./drawers";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/modal.scss";
+// ------------------------------------------------------------------------------- 
+drawers();
+
+/* (async () => {
+    document.body.appendChild(await configs());
+    document.body.appendChild(await card());
+})(); */
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(939));
 window.addEventListener('load', () => globals.monitoreMenu(939));

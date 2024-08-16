@@ -1,0 +1,35 @@
+@use 'globals' as global;
+
+/* -------------------------------------------------------------------- */
+$max-width-view: 95vw; /* ocupação máxima para espaçar laterais */
+
+$header-padding: 0.3em;
+$cabecalho-h: calc(var(--header-padding) * 2 + 51px); /* padding + altura da nav */
+
+$menu-width: calc(5 * 140px); /* aproximadamente o tamanho de cada botão */
+$menu-height: calc(5 * 32px);
+
+$visor-xy: 30vh;
+$secoes-h: calc(100vh - var(--cabecalho-h) - 8vh); /* altura baseada com o cabecalho e os paddings */
+
+header#header-play {
+    padding: $header-padding 0;
+
+    nav {
+        max-width: $max-width-view;
+
+        menu {
+            width: calc($menu-width * 1.2);
+
+            button {
+                padding: 0 0.4em;
+
+                cursor: pointer;
+
+                img {
+                    margin: 0 0.6em 0 0;
+                }
+            }
+        }
+    }
+}

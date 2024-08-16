@@ -12,3 +12,49 @@ $color3-button: #0F6ED2;
 
 $fade-default: linear-gradient(90deg, $color1 5.85%, $color2 73%, $color3 149.38%);
 $fade-button: linear-gradient(90deg, $color1-button 5.85%, $color2-button 73%, $color3-button 149.38%);
+/* -------------------------------------------------------------------- */
+$fonts:
+    (
+    title: 'Archivo Narrow',
+    subtitle: 'Archivo Narrow',
+    text: 'Nunito',
+    code: 'IBM Plex Mono',
+    mono: 'Space',
+    quote: 'Parisienne',
+    segment: 'Segment',
+    chalk: 'Eraser',
+    cursive: 'Kindergarten',
+    dotted: 'Dots'
+    );
+/* -------------------------------------------------------------------- */
+// @function findFont($type) {
+//     @each $
+// }
+// @mixin fontfamily($type) {
+//     @while 
+// }
+/* -------------------------------------------------------------------- */
+@mixin flex(
+    $justify-content: space-between,
+    $align-items: center,
+    $flex-direction: row,
+    $flex-wrap: wrap
+    ) {
+
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+}
+
+@mixin border($color, $width, $radius) {
+    border-color: $color;
+    border-width: $width;
+    border-style: solid;
+    border-radius: $radius;
+}
+
+@mixin weight($weight) {
+    font-weight: $weight;
+}

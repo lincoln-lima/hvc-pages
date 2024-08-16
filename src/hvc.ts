@@ -1,11 +1,9 @@
 import { globals } from "./global";
 import { HVC } from "hvcjs";
-import drawers from "./drawers";
 import ahv from "./ahv";
 // ------------------------------------------------------------------------------- 
 const hvc = new HVC();
 
-drawers();
 ahv();
 // ------------------------------------------------------------------------------- 
 globals.run.addEventListener('click', () => exec(true));

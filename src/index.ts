@@ -1,13 +1,15 @@
 import { globals } from "./global";
-import { table } from "./templates";
+import { table, footer } from "./templates";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/table.scss";
+import "/src/styles/footer.scss";
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(1064));
 window.addEventListener('load', () => globals.monitoreMenu(1064));
 // ------------------------------------------------------------------------------- 
 (async () => {
-    document.getElementById("table")!.innerHTML = await table();
+    document.getElementById("table")!.appendChild(await table());
+    document.body.appendChild(await footer()); 
 })();
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copiar")!;
@@ -17,10 +19,10 @@ Array.from(copies).forEach(copy =>
 );
 
 function copyCode(id: string) {
-    let copyid = (id.split('-').shift()! + '-cmd');
-    let copytext = document.getElementById(copyid)!.innerHTML;
+    const copyid = (id.split('-').shift()! + '-cmd');
+    const copytext = document.getElementById(copyid)!.innerHTML;
 
     navigator.clipboard.writeText(copytext);
 
-    alert("Copiado para área de transferência:\n" + copytext);
+    alert("Texto copiado para área de transferência:\n" + copytext);
 }

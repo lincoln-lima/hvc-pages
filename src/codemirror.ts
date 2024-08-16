@@ -36,11 +36,11 @@ let view = new EditorView({
     parent: document.getElementById("porta-cartoes")!
 });
 
-export function getDoc() {
+export const getDoc = () => {
     return view.state.doc.toString();
 }
 
-export function setDoc(text: string) {
+export const setDoc = (text: string) => {
     view.dispatch({
         changes: {
             from: 0,

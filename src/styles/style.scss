@@ -1,0 +1,114 @@
+@use 'globals' as global;
+/* -------------------------------------------------------------------- */
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: #000000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+mark {
+    background-color: #FFB61C;
+    padding: 0 5px;
+}
+/* -------------------------------------------------------------------- */
+@mixin titulo {
+    font-family: "Archivo Black";
+}
+
+@mixin subtitulo {
+    font-family: "Archivo Narrow";
+    font-weight: 700;
+}
+
+@mixin texto {
+    font-family: "Nunito";
+    font-size: 1.4em;
+}
+
+@mixin codigo {
+    font-family: "IBM Plex Mono";
+}
+
+@mixin mono {
+    font-family: "Space";
+}
+
+@mixin citacao {
+    font-family: "Parisienne";
+}
+
+@mixin segmento {
+    font-family: "Segment";
+}
+
+@mixin giz {
+    font-family: "Eraser";
+    color: #ffffff;
+}
+
+@mixin cursiva {
+    font-family: "Kindergarten";
+}
+
+@mixin pontilhada {
+    font-family: 'Dots';
+}
+/* -------------------------------------------------------------------- */
+code {
+    color: global.$color1;
+    text-align: left;
+
+    font-size: 1.15em;
+    font-weight: 700;
+}
+
+pre.codigo-pre {
+    background-color: #FFC958;
+    border-radius: 5px;
+    padding: 7px 20px;
+}
+/* -------------------------------------------------------------------- */
+button.botao {
+    border-radius: 15px;
+    border-width: 0;
+    padding: 5px 30px;
+    background: global.$fade-button;
+
+    /* centralização e espaçamento */
+    display: block;
+
+    transition: --cor1-botao 0.5s, --cor2-botao 0.5s, --cor3-botao 0.5s, box-shadow 0.5s;
+    
+    /* texto */
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #ffffff;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+button.botao:hover {
+    --cor1-botao: #8D49FF;
+    --cor2-botao: #00A8AC;
+    --cor3-botao: #8C4AFF;
+    
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.373);
+}
+
+a.link-marcado {
+    text-decoration: underline #000000 0.01em;
+
+    &:hover {
+        text-decoration-thickness: 0.1em;
+    }
+}
+
+a.link-externo {
+    cursor: alias;
+}
