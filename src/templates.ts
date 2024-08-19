@@ -4,7 +4,6 @@ export const table = async () => {
 
     const table = document.createElement("table");
     table.innerHTML = html;
-    table.className = "texto centralizar-x";
 
     return table;
 }
@@ -15,7 +14,6 @@ export const footer = async () => {
 
     const footer = document.createElement("footer");
     footer.innerHTML = html;
-    footer.className = "texto";
 
     return footer;
 }

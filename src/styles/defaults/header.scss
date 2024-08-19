@@ -1,0 +1,126 @@
+@use '../globals' as global;
+/* -------------------------------------------------------------------- */
+@mixin actions {
+    padding: 1px 5px;
+    font-size: 1.5em !important;
+}
+/* -------------------------------------------------------------------- */
+header {
+    padding: 25px 0;
+    box-shadow: 1px 1px 9px #00000033;
+    
+    nav {
+        @include global.flex();
+        @include global.center;
+
+        max-width: 80vw;
+        position: relative;
+
+        a {
+            @include actions;
+
+            color: white;
+
+            &:hover {
+                text-decoration: underline #ffffff 2px;
+            }
+
+            &#home {
+                @include global.flex($wrap: nowrap);
+
+                width: 170px;
+                height: 49px;
+
+                &:hover {
+                    background-color: #00000015;
+                }
+
+                h1 {
+                    span {
+                        font-size: 1.2em;
+
+                        &:nth-child(1) {
+                            color: global.$color2;
+                        }
+
+                        &:nth-child(2) {
+                            color: global.$color1;
+                        }
+                    }
+                }
+            }
+        }
+
+        menu {
+            @include global.flex;
+
+            min-width: 45vw;
+            list-style-type: none;
+
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        button {
+            @include actions;
+        }
+
+        span {
+            color: white;
+        }
+
+        @mixin navlinksbynum($color, $colorhover) {
+            @include global.setFont(text);
+
+            padding: 0 15px;
+            border: none;
+
+            background-color: $color;
+            
+            :hover {
+                background-color: $colorhover;
+            }
+
+        }
+
+        .link-nav-1 {
+            @include navlinksbynum(global.$color1, global.$color1-dark);
+        }
+
+        .link-nav-2 {
+            @include navlinksbynum(global.$color2, global.$color2-dark);
+        }
+
+        .link-nav-3 {
+            @include navlinksbynum(global.$color3, global.$color3-dark);
+        }
+        
+        button.botao-menu {
+            @include global.border(transparent, 0, 3px);
+
+            display: none;
+    
+            height: 50px;
+            background-color: transparent;
+            cursor: pointer;
+    
+            padding: 5px;
+    
+            transition: 0.3s;
+            
+            &:hover {
+                background-color: #00000015;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 939px) {
+    header {
+        position: sticky;
+        top: 0;
+
+        background-color: white;
+
+        z-index: 1;
+    }
+}

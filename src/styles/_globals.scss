@@ -1,17 +1,23 @@
-$color1: #5427A0;
-$color2: #00A8AC;
-$color3: #FFB61C;
+$color1: #00A8AC;
+$color2: #FFB61C;
+$color3: #5427A0;
 
-$color1-dark: #42207e;
-$color2-dark: #019699;
-$color3-dark: #e4a419;
+$color1-dark: #019699;
+$color2-dark: #e4a419;
+$color3-dark: #42207e;
 
 $color1-button: #0D77CC;
 $color2-button: #00A8AC;
 $color3-button: #0F6ED2;
 
-$fade-default: linear-gradient(90deg, $color1 5.85%, $color2 73%, $color3 149.38%);
+$color1-hover: #8D49FF;
+$color2-hover: #00A8AC;
+$color3-hover: #8C4AFF;
+
+$fade-default: linear-gradient(90deg, $color3 5.85%, $color1 73%, $color2 149.38%);
+
 $fade-button: linear-gradient(90deg, $color1-button 5.85%, $color2-button 73%, $color3-button 149.38%);
+$fade-hover: linear-gradient(90deg, $color1-hover 5.85%, $color2-hover 73%, $color3-hover 149.38%);
 /* -------------------------------------------------------------------- */
 $fonts:
     (
@@ -26,35 +32,73 @@ $fonts:
     cursive: 'Kindergarten',
     dotted: 'Dots'
     );
-/* -------------------------------------------------------------------- */
-// @function findFont($type) {
-//     @each $
-// }
-// @mixin fontfamily($type) {
-//     @while 
-// }
+
+@function findFont($req) {
+    @each $type, $font in $fonts {
+        @if $type == $req {
+            @return $font;
+        }
+    }
+}
+
+@mixin setFont($type) {
+    font-family: findFont($type);
+}
+
+@mixin fontWeight($weight) {
+    font-weight: $weight;
+}
+
+@mixin fontSize($size) {
+    font-size: $size;
+}
+
+@mixin textAlign($align: center) {
+    text-align: $align;
+}
 /* -------------------------------------------------------------------- */
 @mixin flex(
-    $justify-content: space-between,
-    $align-items: center,
-    $flex-direction: row,
-    $flex-wrap: wrap
+    $justify: space-between,
+    $align: center,
+    $direction: row,
+    $wrap: wrap
     ) {
 
     display: flex;
-    justify-content: $justify-content;
-    align-items: $align-items;
-    flex-direction: $flex-direction;
-    flex-wrap: $flex-wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
 }
 
-@mixin border($color, $width, $radius) {
+@mixin border($color: black, $width, $radius) {
     border-color: $color;
     border-width: $width;
     border-style: solid;
     border-radius: $radius;
 }
 
-@mixin weight($weight) {
-    font-weight: $weight;
+@mixin size($width, $heigth: $width) {
+    width: $width;
+    height: $heigth;
+}
+/* -------------------------------------------------------------------- */
+@mixin center {
+    margin: auto;
+}
+
+@mixin middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin scroll {
+    overflow: auto;
+}
+
+@mixin defaultText {
+    @include setFont(text);
+    @include fontSize(1.4em);
 }

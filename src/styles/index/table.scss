@@ -1,0 +1,50 @@
+@use '../globals' as global;
+/* -------------------------------------------------------------------- */
+@mixin datas {
+    color: white;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+/* -------------------------------------------------------------------- */
+table {
+    @include global.setFont(text);
+    @include global.fontSize(1.4em);
+    @include global.center;
+
+    width: 100%;
+    border-spacing: 10px 10px;
+
+    th {
+        @include datas;
+
+        background-color: global.$color3;
+        border-radius: 5px 5px 0 0;
+    }
+
+    td {
+        @include datas;
+        @include global.textAlign;
+        @include global.fontWeight(500);
+
+        background-color: global.$color1;
+        border-radius: 5px 0 5px 0;
+        
+        &.description {
+            @include global.textAlign(left);
+            border-radius: 0;
+        }
+        
+        &.operation {
+            @include global.fontWeight(700);
+            background-color: transparent;
+            padding: 0;
+            width: 10px;
+            
+            color: global.$color3;
+        }
+        
+        &.arrow {
+            @include global.fontSize(1.5em);
+        }
+    }
+}

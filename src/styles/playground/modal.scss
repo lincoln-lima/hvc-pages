@@ -1,0 +1,117 @@
+@use '../globals' as global;
+/* -------------------------------------------------------------------- */
+$modal-border: 1em;
+/* -------------------------------------------------------------------- */
+@mixin header-footer($border-top, $border-bottom) {
+	height: 10%;
+
+	position: relative;
+
+	background: global.$fade-default;
+
+	border-top-left-radius: $border-top;
+	border-top-right-radius: $border-top;
+
+	border-bottom-left-radius: $border-bottom;
+	border-bottom-right-radius: $border-bottom;
+}
+/* -------------------------------------------------------------------- */
+section.mymodal {
+	@include global.size(100vw, 100vh);
+
+	display: none;
+ 
+	background-color: #00000030;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+
+	article {
+		@include global.middle;
+		@include global.defaultText;
+
+		background-color: white;
+		border-radius: $modal-border;
+
+		> * {
+			padding: 0 15px;
+		}
+
+		div.modal-header {
+			@include header-footer($modal-border, 0);
+		}
+
+		div.modal-footer {
+			@include header-footer(0, $modal-border);
+		}
+
+		h2 {
+			color: white;
+		}
+
+		form {
+			flex-direction: column;
+			
+			label {
+				font-weight: bold;
+			}
+			
+			input {
+				width: 3em;
+				font-size: 1em;
+			}
+		}
+	}
+
+	button.close {
+		@include global.size(40px);
+
+		padding: 0;
+		
+		border-radius: 50%;
+	}
+}
+
+/* -------------------------------------------------------------------- */
+section#config-modal {
+	article {
+		@include global.size(60vh);
+		
+		div.modal-corpo {
+			height: 80%;
+		}
+		
+		button#save-configs {
+			@include global.fontSize(1.3em);
+			
+			padding: 0;
+			width: 5em;
+		}
+	}
+}
+/* -------------------------------------------------------------------- */
+section#cartao-modal {
+	$width-content: 600px;
+    $height-content: 150px;
+
+	// display: block;
+
+	article {
+		@include global.size($width-content, $height-content);
+		
+		div.modal-corpo {
+			height: 100%;
+			
+			form {
+				width: 75%;
+				
+				input {
+					width: 100%;
+					font-size: calc($height-content * 0.5);
+				}
+			}
+		}
+	}
+}

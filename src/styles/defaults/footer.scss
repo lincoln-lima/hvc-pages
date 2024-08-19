@@ -1,0 +1,40 @@
+@use '../globals' as global;
+/* -------------------------------------------------------------------- */
+footer {
+    @include global.setFont(text);
+    @include global.fontSize(1.4em);
+
+    background: global.$fade-default;
+
+    padding: 30px 0;
+    font-weight: 700;
+
+    * {
+        color: #ffffff;
+        text-align: center;
+    }
+
+    section {
+        @include global.flex($justify: space-around);
+        @include global.center;
+
+        max-width: 90vw;
+        
+        article {
+            @include global.size(350px, 160px);
+            
+            &:nth-child(2) {
+                @include global.flex($justify: space-evenly, $direction: column);
+            }
+            
+            ul, div {
+                font-weight: 600;
+                list-style-type: none;
+            }
+            
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

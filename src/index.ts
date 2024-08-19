@@ -1,8 +1,10 @@
 import { globals } from "./global";
 import { table, footer } from "./templates";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/table.scss";
-import "/src/styles/footer.scss";
+import "/src/styles/defaults/header.scss";
+import "/src/styles/defaults/footer.scss";
+
+import "/src/styles/index/table.scss";
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(1064));
 window.addEventListener('load', () => globals.monitoreMenu(1064));
