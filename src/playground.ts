@@ -3,6 +3,7 @@ import { globals } from "./global";
 import drawers from "./drawers";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/header.scss";
+import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
 // ------------------------------------------------------------------------------- 
 drawers();

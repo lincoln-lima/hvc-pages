@@ -1,25 +1,32 @@
-@use 'globals' as global;
-
+@use '../globals' as global;
 /* -------------------------------------------------------------------- */
-$max-width-view: 95vw; /* ocupação máxima para espaçar laterais */
-
 $header-padding: 0.3em;
-$cabecalho-h: calc(var(--header-padding) * 2 + 51px); /* padding + altura da nav */
+$header-height: calc($header-padding * 2 + 51px); //tornar tamanho do link home global
 
-$menu-width: calc(5 * 140px); /* aproximadamente o tamanho de cada botão */
-$menu-height: calc(5 * 32px);
+$nav-width: calc(5 * 140px); //definir globalmente
+$nav-height: calc(5 * 32px); //definir globalmente
 
-$visor-xy: 30vh;
-$secoes-h: calc(100vh - var(--cabecalho-h) - 8vh); /* altura baseada com o cabecalho e os paddings */
+$width-view: 95vw;
+$heigth-view: calc(100vh - $header-height);
+$margin-top-bottom-view: 4vh;
 
+$playground-height: calc($heigth-view - $margin-top-bottom-view * 2);
+
+$viewers-size: 30vh;
+$font-viewers: calc($viewers-size * 0.5);
+
+$brown-wood: #915901;
+$green-board: #1d3825;
+$lightgreen-display: #93a28d;
+/* -------------------------------------------------------------------- */
 header#header-play {
     padding: $header-padding 0;
 
     nav {
-        max-width: $max-width-view;
+        max-width: $width-view;
 
         menu {
-            width: calc($menu-width * 1.2);
+            width: calc($nav-width * 1.2);
 
             button {
                 padding: 0 0.4em;
@@ -31,5 +38,103 @@ header#header-play {
                 }
             }
         }
+    }
+}
+/* -------------------------------------------------------------------- */
+main {
+    @include global.middle;
+    @include global.center;
+    @include global.size($width-view, $heigth-view);
+
+    @mixin portacartoes-viewers {
+        @include global.shadow($length1: 5px, $blur: 5px, $transparency: 0.2);
+    }
+    
+    #playground {
+        @include global.flex;
+        @include global.size(100%, $playground-height);
+        
+        #porta-cartoes {
+            @include portacartoes-viewers;
+            
+            $initial-width: 30vw;
+            
+            @include global.size($initial-width, 100%);
+
+            text-align: center;
+
+            .editor {
+                height: 100%;
+                font-size: 2em;
+
+                .cm-lineNumbers > * {
+                    @include global.setFont(code);
+                    font-size: 0.9em;
+                }
+            }
+        }
+        
+        .viewers {
+            @include global.size($viewers-size);
+            @include portacartoes-viewers;
+
+            span {
+                font-size: $font-viewers;
+            }
+        }
+
+        #folha-de-saida {
+            @include global.middle;
+            @include global.background($image: notepad, $size: contain);
+
+            span {
+                @include global.setFont(cursive);
+            }
+        }
+
+        #contorno-epi {
+            @include global.middle;
+            @include global.background($color: $brown-wood, $image: madeirado, $size: cover);
+
+            $border: 2px;
+
+            border-radius: $border;
+
+            #epi {
+                @include global.middle;
+                @include global.size(90%);
+                background-color: $green-board;
+
+                border-radius: $border;
+
+                span {
+                    @include global.setFont(chalk);
+                    color: white;
+                }
+            }
+        }
+
+        #acumulador {
+            $border: 10px;
+            @include global.size(calc($viewers-size - $border*2));
+
+            background-color: $lightgreen-display;
+
+            border: 10px ridge black;
+            border-radius: 5px;
+
+            position: relative;
+
+            span {
+                @include global.absolutemiddle;
+                @include global.setFont(segment);
+
+                &#overlay {
+                    color: rgba(0, 0, 0, 0.08);
+                }
+            }
+        }
+
+        #gaveteiro {}
     }
 }

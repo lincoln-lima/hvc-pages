@@ -60,58 +60,55 @@
             <button class="botao-menu"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
-    <main class="flex-between-center centralizar-x">
-        <section id="porta-cartoes" class="texto-centro" title="Porta Cartões">
-            <!-- <h2 class="subtitulo">Porta-Cartões</h2> -->
-        </section>
-        <div id="visores-gaveteiro">
-            <div id="visores" class="texto-centro flex-between-center">
-                <section id="folha-de-saida" title="Folha de Saída">
-                    <!-- <h2 class="subtitulo cursiva">Folha de Saída</h2> -->
-                    <span id="saida-span" class="cursiva centralizar-y"></span>
-                </section>
-                <div id="contorno-epi">
-                    <section id="epi" class="centralizar-y" title="EPI">
-                        <!-- <h2 class="giz">EPI</h2> -->
-                        <span id="epi-span" class="giz centralizar-y"></span>
-                    </section>
+    <main>
+        <section id="playground">
+            <article id="porta-cartoes" title="Porta Cartões"></article>
+            <div id="visores-gaveteiro">
+                <div id="visores" class="texto-centro flex-between-center">
+                    <div id="contorno-epi" class="viewers">
+                        <article id="epi" title="EPI">
+                            <span id="epi-span"></span>
+                        </article>
+                    </div>
+                    <article id="acumulador" title="Acumulador" class="viewers">
+                        <span id="overlay">000</span>
+                        <span id="acumulador-span-valor"></span>
+                    </article>
+                    <article id="folha-de-saida" title="Folha de Saída" class="viewers">
+                        <span id="saida-span"></span>
+                    </article>
                 </div>
-                <section id="acumulador" title="Acumulador">
-                    <!-- <h2 class="segmento">Acumulador</h2> -->
-                    <span id="acumulador-span-visor" class="segmento centralizar-y">000</span>
-                    <span id="acumulador-span-valor" class="segmento centralizar-y"></span>
-                </section>
+                <article id="gaveteiro" class="flex-between-center scroll-y" title="Gaveteiro">
+                </article>
             </div>
-            <section id="gaveteiro" class="flex-between-center scroll-y" title="Gaveteiro">
+        </section>
+            <section id="config-modal" class="mymodal">
+                <article>
+                    <div id="config-header" class="modal-header flex-between-center">
+                        <h2>Configurações</h2>
+                        <button id="close-configs" class="botao close">&times;</button>
+                    </div>
+                    <div class="modal-corpo">
+                        <form name="configs-form" class="flex-between-center campo">
+                            <label for="delay">Delay (ms)</label>
+                            <input type="number" name="delay" id="delay" min="100" value="700">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save-configs" type="submit" class="botao centralizar-y texto">Salvar</button>
+                    </div>
+                </article>
             </section>
-        </div>
-        <section id="config-modal" class="mymodal">
-            <article>
-                <div id="config-header" class="modal-header flex-between-center">
-                    <h2>Configurações</h2>
-                    <button id="close-configs" class="botao close">&times;</button>
-                </div>
-                <div class="modal-corpo">
-                    <form name="configs-form" class="flex-between-center campo">
-                        <label for="delay">Delay (ms)</label>
-                        <input type="number" name="delay" id="delay" min="100" value="700">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="save-configs" type="submit" class="botao centralizar-y texto">Salvar</button>
-                </div>
-            </article>
-        </section>
-        <section id="cartao-modal" class="mymodal">
-            <article class="conteudo-modal centralizar-y texto">
-                <div class="modal-corpo flex-between-center">
-                    <form name="cartaos-form" class="flex-between-center campo">
-                        <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
-                    </form>
-                    <button id="submit-card" class="botao"><img src="/img/check.png"></button>
-                </div>
-            </article>
-        </section>
+            <section id="cartao-modal" class="mymodal">
+                <article class="conteudo-modal centralizar-y texto">
+                    <div class="modal-corpo flex-between-center">
+                        <form name="cartaos-form" class="flex-between-center campo">
+                            <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
+                        </form>
+                        <button id="submit-card" class="botao"><img src="/img/check.png"></button>
+                    </div>
+                </article>
+            </section>
     </main>
 
     <script src="/src/default.ts" type="module"></script>

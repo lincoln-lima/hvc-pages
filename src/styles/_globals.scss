@@ -82,12 +82,28 @@ $fonts:
     width: $width;
     height: $heigth;
 }
+
+@mixin shadow($type: null, $length1, $length2: $length1, $blur, $transparency) {
+    box-shadow: $type $length1 $length2 $blur rgba(0, 0, 0, $transparency);
+}
+
+@mixin background($color: transparent, $image: none, $position: 0, $repeat: initial, $size: auto) {
+    background-color: $color;
+    background-image: url('/img/#{$image}.png');
+    background-position: $position;
+    background-repeat: $repeat;
+    background-size: $size;
+}
 /* -------------------------------------------------------------------- */
 @mixin center {
     margin: auto;
 }
 
 @mixin middle {
+    @include flex($justify: center);
+}
+
+@mixin absolutemiddle {
     position: absolute;
     top: 50%;
     left: 50%;
