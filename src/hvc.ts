@@ -43,7 +43,7 @@ hvc.addEventOutput((out: string) => {
     globals.saida.innerText = out;
 });
 
-hvc.addEventInput(async() => { 
+hvc.addEventInput(async () => {
     globals.displayElement(globals.cardmodal);
 
     globals.card.value = '';
@@ -52,10 +52,10 @@ hvc.addEventInput(async() => {
     return await new Promise<string>(resolve => {
         globals.submitcard.onclick = () => submit();
 
-        globals.card.onkeydown = e => { 
+        globals.card.onkeydown = e => {
             if (e.key.toLowerCase() === "enter") {
                 e.preventDefault();
-                
+
                 submit();
             }
         };
@@ -70,6 +70,8 @@ hvc.addEventInput(async() => {
 // ------------------------------------------------------------------------------- 
 hvc.addEventClock(_HVMState => {
     const hvm = hvc.getHVM();
+
+    console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
 
     const acumulador = hvm.calculadora.getAcumulador();
     const drawers = hvm.gaveteiro.getGavetas();

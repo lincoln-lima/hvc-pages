@@ -28,46 +28,10 @@ section#gaveteiro {
 }
 
 article.gaveta {
-    position: relative;
-    margin: 0 0.5vw;
-}
-
-article.gaveta:first-child {
-    margin: 0 0.5vw 0 0;
-}
-
-article.gaveta:last-child {
-    margin: 0 0 0 0.5vw;
-}
-
-article.gaveta > div {
-    width: 146px;
+    min-width: 146px;
     height: 122px;
 
     background-image: url(../img/gaveteiro.png);
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-span.num-gaveta {
-    font-size: 2em;
-    font-weight: bold;
-    color: #ffffff;
-
-    position: absolute;
-    top: 50px;
-    left: 24px;
-
-    transform: skewY(12deg);
-}
-
-span.cont-gaveta {
-    font-size: 1.5em;
-    color: #ffffff;
-
-    position: absolute;
-    top: 50px;
-    right: 2px;
-
-    transform: skewY(-25deg);
 }

@@ -7,12 +7,11 @@ export default () => {
 
         const numdrawer = document.createElement("span");
         numdrawer.innerText = i.toString().padStart(2, "0");
-        numdrawer.className = "num-gaveta mono";
+        numdrawer.className = "num-gaveta";
 
         const cont_gaveta = document.createElement("span");
-        cont_gaveta.className = "cont-gaveta mono";
+        cont_gaveta.className = "cont-gaveta";
 
-        article.appendChild(document.createElement("div"));
         article.appendChild(numdrawer);
         article.appendChild(cont_gaveta);
 

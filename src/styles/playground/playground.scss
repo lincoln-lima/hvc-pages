@@ -135,6 +135,46 @@ main {
             }
         }
 
-        #gaveteiro {}
+        #gaveteiro {
+            .gaveta {
+                $margin: 0.5vw;
+                
+                position: relative;
+                margin: 0 $margin;
+
+                &:first-child {
+                    margin: 0 $margin 0 0;
+                }
+
+                &:last-child {
+                    margin: 0 0 0 $margin;
+                }
+
+                span {
+                    @include global.setFont(mono);
+
+                    color: #ffffff;
+
+                    position: absolute;
+                    top: 50px;
+
+                    @mixin numbers($font, $deg, $right) {
+                        font-size: $font;
+                        transform: skewY(#{$deg}deg);
+                        right: #{$right}px;
+                    }
+
+                    &.num-gaveta {
+                        @include numbers(2em, 12, 82);
+                        font-weight: bold;
+                    }
+
+                    &.cont-gaveta {
+                        @include numbers(1.5em, -25, 2);
+                    }
+                }
+                
+            }
+        }
     }
 }
