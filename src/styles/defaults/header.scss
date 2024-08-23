@@ -1,15 +1,70 @@
 @use '../globals' as global;
 /* -------------------------------------------------------------------- */
+$width-view: 95vw;
+$nav-width: calc(5 * 140px); //definir globalmente
+/* -------------------------------------------------------------------- */
 @mixin actions {
     border-radius: 10px;
     padding: 1px 5px;
     font-size: 1.5em !important;
 }
+
+@mixin responsive-menu {
+    top: $height-header;
+    left: 0;
+    
+    height: 120px;
+
+    align-items: normal !important;
+
+    position: absolute;
+    flex-direction: column;
+
+    width: fit-content !important;
+    min-width: fit-content !important;
+
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+    background-color: #00000020;
+}
 /* -------------------------------------------------------------------- */
 header {
     padding: 25px 0;
     box-shadow: 1px 1px 9px #00000033;
-    
+
+    &#header-index {
+        @media screen and (max-width: 939px) {
+            position: sticky;
+            top: 0;
+
+            background-color: white;
+
+            z-index: 1;
+        }
+    }    
+
+    &#header-play {
+        padding: 0.3em 0;
+
+        nav {
+            max-width: $width-view;
+
+            menu {
+                width: calc($nav-width * 1.2);
+
+                button {
+                    padding: 0 0.4em;
+
+                    cursor: pointer;
+
+                    img {
+                        margin: 0 0.6em 0 0;
+                    }
+                }
+            }
+        }
+    }
+
     nav {
         @include global.flex();
         @include global.center;
@@ -59,6 +114,39 @@ header {
             list-style-type: none;
 
             transition: opacity 0.5s, visibility 0.5s;
+
+            li {
+                @mixin navlinksbynum($color, $colorhover) {
+                    @include global.setFont(text);
+
+                    padding: 0 15px;
+                    border: none;
+
+                    background-color: $color;
+                    
+                    &:hover {
+                        background-color: $colorhover;
+                    }
+
+                }
+
+                .link-nav-1 {
+                    @include navlinksbynum(global.$color1, global.$color1-dark);
+                }
+
+                .link-nav-2 {
+                    @include navlinksbynum(global.$color2, global.$color2-dark);
+                }
+
+                .link-nav-3 {
+                    @include navlinksbynum(global.$color3, global.$color3-dark);
+                }
+
+                button {
+                    @include global.flex;
+                }
+
+            }
         }
 
         button {
@@ -67,32 +155,6 @@ header {
 
         span {
             color: white;
-        }
-
-        @mixin navlinksbynum($color, $colorhover) {
-            @include global.setFont(text);
-
-            padding: 0 15px;
-            border: none;
-
-            background-color: $color;
-            
-            &:hover {
-                background-color: $colorhover;
-            }
-
-        }
-
-        .link-nav-1 {
-            @include navlinksbynum(global.$color1, global.$color1-dark);
-        }
-
-        .link-nav-2 {
-            @include navlinksbynum(global.$color2, global.$color2-dark);
-        }
-
-        .link-nav-3 {
-            @include navlinksbynum(global.$color3, global.$color3-dark);
         }
         
         button.botao-menu {
@@ -112,16 +174,5 @@ header {
                 background-color: #00000015;
             }
         }
-    }
-}
-
-@media screen and (max-width: 939px) {
-    header {
-        position: sticky;
-        top: 0;
-
-        background-color: white;
-
-        z-index: 1;
     }
 }

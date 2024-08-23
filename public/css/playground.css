@@ -12,26 +12,7 @@
     --secoes-h: calc(100vh - var(--cabecalho-h) - 8vh); /* altura baseada com o cabecalho e os paddings */
 }
 /* -------------------------------------------------------------------- */
-div#visores-gaveteiro {
-    width: 60vw;
-    height: var(--secoes-h);
-    /* height: 80vh; */
-
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-}
-/* -------------------------------------------------------------------- */
-section#gaveteiro {
+/* section#gaveteiro {
     height: fit-content;
     padding-bottom: 5px;
-}
-
-article.gaveta {
-    min-width: 146px;
-    height: 122px;
-
-    background-image: url(../img/gaveteiro.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+} */

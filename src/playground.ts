@@ -3,6 +3,7 @@ import { globals } from "./global";
 import drawers from "./drawers";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/header.scss";
+import "/src/styles/defaults/style.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
 // ------------------------------------------------------------------------------- 
@@ -13,8 +14,8 @@ drawers();
     document.body.appendChild(await card());
 })(); */
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.monitoreMenu(939));
-window.addEventListener('load', () => globals.monitoreMenu(939));
+window.addEventListener('resize', () => globals.monitoreMenu(1110));
+window.addEventListener('load', () => globals.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
 globals.delay.value = (localStorage.getItem("delay")) ? (localStorage.getItem("delay"))! : '700';
 // ------------------------------------------------------------------------------- 

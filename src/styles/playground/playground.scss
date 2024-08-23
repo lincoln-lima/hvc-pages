@@ -13,33 +13,11 @@ $margin-top-bottom-view: 4vh;
 $playground-height: calc($heigth-view - $margin-top-bottom-view * 2);
 
 $viewers-size: 30vh;
-$font-viewers: calc($viewers-size * 0.5);
+$font-size-viewers: calc($viewers-size * 0.48);
 
 $brown-wood: #915901;
 $green-board: #1d3825;
 $lightgreen-display: #93a28d;
-/* -------------------------------------------------------------------- */
-header#header-play {
-    padding: $header-padding 0;
-
-    nav {
-        max-width: $width-view;
-
-        menu {
-            width: calc($nav-width * 1.2);
-
-            button {
-                padding: 0 0.4em;
-
-                cursor: pointer;
-
-                img {
-                    margin: 0 0.6em 0 0;
-                }
-            }
-        }
-    }
-}
 /* -------------------------------------------------------------------- */
 main {
     @include global.middle;
@@ -74,106 +52,127 @@ main {
             }
         }
         
-        .viewers {
-            @include global.size($viewers-size);
-            @include portacartoes-viewers;
+        .debuggers {
+            @include global.flex($align: normal,$direction: column, $justify: space-around, $wrap: nowrap);
 
-            span {
-                font-size: $font-viewers;
-            }
-        }
+            $initial-width: 60vw;
 
-        #folha-de-saida {
-            @include global.middle;
-            @include global.background($image: notepad, $size: contain);
+            @include global.size($initial-width, $playground-height);
 
-            span {
-                @include global.setFont(cursive);
-            }
-        }
+            width: 60vw;
 
-        #contorno-epi {
-            @include global.middle;
-            @include global.background($color: $brown-wood, $image: madeirado, $size: cover);
+            .viewers {
+                @include global.flex;
 
-            $border: 2px;
-
-            border-radius: $border;
-
-            #epi {
-                @include global.middle;
-                @include global.size(90%);
-                background-color: $green-board;
-
-                border-radius: $border;
-
-                span {
-                    @include global.setFont(chalk);
-                    color: white;
-                }
-            }
-        }
-
-        #acumulador {
-            $border: 10px;
-            @include global.size(calc($viewers-size - $border*2));
-
-            background-color: $lightgreen-display;
-
-            border: 10px ridge black;
-            border-radius: 5px;
-
-            position: relative;
-
-            span {
-                @include global.absolutemiddle;
-                @include global.setFont(segment);
-
-                &#overlay {
-                    color: rgba(0, 0, 0, 0.08);
-                }
-            }
-        }
-
-        #gaveteiro {
-            .gaveta {
-                $margin: 0.5vw;
-                
-                position: relative;
-                margin: 0 $margin;
-
-                &:first-child {
-                    margin: 0 $margin 0 0;
-                }
-
-                &:last-child {
-                    margin: 0 0 0 $margin;
+                > * {
+                    @include global.size($viewers-size);
+                    @include portacartoes-viewers;
                 }
 
                 span {
-                    @include global.setFont(mono);
+                    font-size: $font-size-viewers;
+                }
 
-                    color: #ffffff;
-
-                    position: absolute;
-                    top: 50px;
-
-                    @mixin numbers($font, $deg, $right) {
-                        font-size: $font;
-                        transform: skewY(#{$deg}deg);
-                        right: #{$right}px;
-                    }
-
-                    &.num-gaveta {
-                        @include numbers(2em, 12, 82);
-                        font-weight: bold;
-                    }
-
-                    &.cont-gaveta {
-                        @include numbers(1.5em, -25, 2);
+                #folha-de-saida {
+                    @include global.middle;
+                    @include global.background($image: notepad, $size: contain);
+        
+                    span {
+                        @include global.setFont(cursive);
                     }
                 }
-                
+        
+                #contorno-epi {
+                    @include global.middle;
+                    @include global.background($color: $brown-wood, $image: madeirado, $size: cover);
+        
+                    $border: 2px;
+        
+                    border-radius: $border;
+        
+                    #epi {
+                        @include global.middle;
+                        @include global.size(90%);
+                        background-color: $green-board;
+        
+                        border-radius: $border;
+        
+                        span {
+                            @include global.setFont(chalk);
+                            color: white;
+                        }
+                    }
+                }
+        
+                #acumulador {
+                    $border: 10px;
+                    @include global.size(calc($viewers-size - $border*2));
+        
+                    background-color: $lightgreen-display;
+        
+                    border: 10px ridge black;
+                    border-radius: 5px;
+        
+                    position: relative;
+        
+                    span {
+                        @include global.absolutemiddle;
+                        @include global.setFont(segment);
+        
+                        &#overlay {
+                            color: rgba(0, 0, 0, 0.08);
+                        }
+                    }
+                }
+            }
+
+            #gaveteiro {
+                @include global.flex($wrap: nowrap);
+
+                overflow: auto;
+
+                .gaveta {
+                    @include global.background($image: gaveteiro);
+                    $margin: 0.5vw;
+
+                    min-width: 146px;
+                    height: 122px;
+                    
+                    position: relative;
+                    margin: 0 $margin;
+
+                    &:first-child {
+                        margin: 0 $margin 0 0;
+                    }
+
+                    &:last-child {
+                        margin: 0 0 0 $margin;
+                    }
+
+                    span {
+                        @include global.setFont(mono);
+
+                        color: #ffffff;
+
+                        position: absolute;
+                        top: 50px;
+
+                        @mixin numbers($font, $deg, $right) {
+                            font-size: $font;
+                            transform: skewY(#{$deg}deg);
+                            right: #{$right}px;
+                        }
+
+                        &.num-gaveta {
+                            @include numbers(2em, 12, 82);
+                            font-weight: bold;
+                        }
+
+                        &.cont-gaveta {
+                            @include numbers(1.5em, -25, 2);
+                        }
+                    }
+                }
             }
         }
     }

@@ -7,7 +7,7 @@
     <title>HVC - Playground</title>
 
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <!-- <link rel="stylesheet" href="/css/cabecalho.css"> -->
 
     <link rel="stylesheet" href="/css/playground.css">
@@ -18,40 +18,40 @@
 
 <body>
     <header id="header-play">
-        <nav id="nav-play" class="flex-between-center centralizar-x">
-            <a id="home" class="flex-between-center" rel="author" target="_top" href="/index.html">
+        <nav>
+            <a id="home" rel="author" target="_top" href="/index.html">
                 <img id="logo-gaveta" src="/img/gaveta-logo.png" alt="ícone de gaveta">
-                <h1 class="titulo">
+                <h1>
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <menu class="flex-between-center">
+            <menu>
                 <li>
-                    <button id="debug" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F8">
+                    <button id="debug" class="link-nav-1" target="_self" title="F8">
                         <img src="/img/debug.png" alt="" srcset="">
                         <span>Depurar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="run" class="flex-between-center link-nav link-nav-1 texto" target="_self" title="F9">
+                    <button id="run" class="link-nav-1" target="_self" title="F9">
                         <img src="/img/run.png" alt="" srcset="">
                         <span>Executar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="import" class="flex-between-center link-nav link-nav-2 texto" target="_self">
+                    <button id="import" class="link-nav-2" target="_self">
                         <img src="/img/folder.png" alt="" srcset="">
                         <span>Importar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="export" class="flex-between-center link-nav link-nav-2 texto" target="_self" title="Ctrl+S">
+                    <button id="export" class="link-nav-2" target="_self" title="Ctrl+S">
                         <img src="/img/download.png" alt="" srcset="">
                         <span>Exportar</span>
                     </button>
                 </li>
                 <li>
-                    <button id="config" class="flex-between-center link-nav link-nav-3 texto" target="_self" title="F12">
+                    <button id="config" class="link-nav-3" target="_self" title="F12">
                         <img src="/img/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
@@ -63,23 +63,22 @@
     <main>
         <section id="playground">
             <article id="porta-cartoes" title="Porta Cartões"></article>
-            <div id="visores-gaveteiro">
-                <div id="visores" class="texto-centro flex-between-center">
-                    <div id="contorno-epi" class="viewers">
+            <div class="debuggers">
+                <div class="viewers">
+                    <div id="contorno-epi">
                         <article id="epi" title="EPI">
                             <span id="epi-span"></span>
                         </article>
                     </div>
-                    <article id="acumulador" title="Acumulador" class="viewers">
+                    <article id="acumulador" title="Acumulador">
                         <span id="overlay">000</span>
                         <span id="acumulador-span-valor"></span>
                     </article>
-                    <article id="folha-de-saida" title="Folha de Saída" class="viewers">
+                    <article id="folha-de-saida" title="Folha de Saída">
                         <span id="saida-span"></span>
                     </article>
                 </div>
-                <article id="gaveteiro" class="flex-between-center scroll-y" title="Gaveteiro">
-                </article>
+                <article id="gaveteiro" title="Gaveteiro"></article>
             </div>
         </section>
             <section id="config-modal" class="mymodal">
