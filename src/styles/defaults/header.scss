@@ -1,7 +1,18 @@
 @use '../globals' as global;
 /* -------------------------------------------------------------------- */
-$width-view: 95vw;
-$nav-width: calc(5 * 140px); //definir globalmente
+$home-height: 51px;
+$buttons-height: 32px;
+
+$index-responsive-width: 1064px;
+$index-header-padding: 25px;
+$index-header-height: calc($index-header-padding * 2 + $home-height);
+$index-nav-width: 80vw;
+
+$play-responsive-width: 1110px;
+$play-header-padding: 0.3em;
+$play-header-height: calc($play-header-padding * 2 + $home-height);
+$play-nav-width: 95vw;
+$play-menu-width: calc(5 * 140px);
 /* -------------------------------------------------------------------- */
 @mixin actions {
     border-radius: 10px;
@@ -9,15 +20,15 @@ $nav-width: calc(5 * 140px); //definir globalmente
     font-size: 1.5em !important;
 }
 
-@mixin responsive-menu {
-    top: $height-header;
-    left: 0;
-    
-    height: 120px;
-
-    align-items: normal !important;
-
+@mixin responsive-menu($top, $items) {
     position: absolute;
+    z-index: 999;
+    top: $top;
+    right: 0;
+    
+    height: calc($items * $buttons-height * 1.2);
+
+    align-items: end !important;
     flex-direction: column;
 
     width: fit-content !important;
@@ -29,11 +40,24 @@ $nav-width: calc(5 * 140px); //definir globalmente
 }
 /* -------------------------------------------------------------------- */
 header {
-    padding: 25px 0;
     box-shadow: 1px 1px 9px #00000033;
-
+    
     &#header-index {
-        @media screen and (max-width: 939px) {
+        padding: 25px 0;
+
+        nav {
+            max-width: $index-nav-width;
+        }
+
+        menu {
+            min-width: 45vw;
+
+            @media screen and (max-width: $index-responsive-width) {
+                @include responsive-menu(calc($index-header-height - $index-header-padding), 3);
+            }
+        }
+
+        @media screen and (max-width: $index-responsive-width) {
             position: sticky;
             top: 0;
 
@@ -44,13 +68,17 @@ header {
     }    
 
     &#header-play {
-        padding: 0.3em 0;
+        padding: $play-header-padding 0;
 
         nav {
-            max-width: $width-view;
+            max-width: $play-nav-width;
 
             menu {
-                width: calc($nav-width * 1.2);
+                width: calc($play-menu-width * 1.2);
+
+                @media screen and (max-width: $play-responsive-width) {
+                    @include responsive-menu(calc($play-header-height - $play-header-padding), 5);
+                }
 
                 button {
                     padding: 0 0.4em;
@@ -69,7 +97,6 @@ header {
         @include global.flex();
         @include global.center;
 
-        max-width: 80vw;
         position: relative;
 
         a {
@@ -110,7 +137,6 @@ header {
         menu {
             @include global.flex;
 
-            min-width: 45vw;
             list-style-type: none;
 
             transition: opacity 0.5s, visibility 0.5s;
@@ -119,7 +145,7 @@ header {
                 @mixin navlinksbynum($color, $colorhover) {
                     @include global.setFont(text);
 
-                    padding: 0 15px;
+                    padding: 0 0.7em;
                     border: none;
 
                     background-color: $color;
@@ -161,14 +187,12 @@ header {
             @include global.border(transparent, 0, 3px);
 
             display: none;
-    
             height: 50px;
-            background-color: transparent;
-            cursor: pointer;
-    
             padding: 5px;
     
+            background-color: transparent;
             transition: 0.3s;
+            cursor: pointer;
             
             &:hover {
                 background-color: #00000015;

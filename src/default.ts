@@ -1,5 +1,7 @@
 import { globals } from "./global";
 // ------------------------------------------------------------------------------- 
+import "/src/styles/defaults/header.scss";
+// ------------------------------------------------------------------------------- 
 globals.menuburger.addEventListener('click', viewMenu);
 
 function viewMenu() {

@@ -1,7 +1,6 @@
 import { globals } from "./global";
 import { table, footer } from "./templates";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/footer.scss";
 
 import "/src/styles/index/table.scss";

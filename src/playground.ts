@@ -2,7 +2,6 @@ import { globals } from "./global";
 // import { configs, card } from "./templates";
 import drawers from "./drawers";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";

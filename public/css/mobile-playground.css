@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 @media screen and (max-width: 1449px) and (min-width: 940px) {
     :root {
         --visor-r-xy: calc(var(--visor-xy) * 0.9);
@@ -50,36 +49,12 @@
     }
 }
 
-@media screen and (min-width: 940px) {
-    nav button#botao-menu {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 939px) {
     :root {
         --visor-r-xy: 28vw;
         --visor-ac-r-xy: calc(var(--visor-r-xy) - 20px);
 
         --secoes-r-h: calc(var(--secoes-h) * 0.8);
-    }
-    
-    nav > menu {
-        position: absolute;
-        top: var(--cabecalho-h);
-        right: 0;
-        
-        align-items: end !important;
-        flex-direction: column;
-    
-        height: calc(var(--menu-height) * 1.3);
-
-        width: fit-content !important;
-        min-width: fit-content !important;
-
-        padding: 15px;
-        border-radius: 0 0 5px 5px;
-        background-color: #00000020;
     }
     
     nav > menu button {

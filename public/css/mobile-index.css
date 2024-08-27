@@ -1,35 +1,9 @@
 @charset "UTF-8";
 
-@media screen and (min-width: 1065px) {
-    nav button#botao-menu {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 1064px) {
     /* Cabeçalho --------------------*/
     header {
         margin-bottom: 10px;
-    }
-
-    nav {
-        flex-direction: row-reverse;
-    }
-    
-    nav > menu {
-        position: absolute;
-        top: 10vh;
-        left: 0;
-        
-        align-items: normal !important;
-        flex-direction: column;
-    
-        height: 120px;
-
-        min-width: fit-content !important;
-        padding: 15px;
-        border-radius: 0 0 5px 5px;
-        background-color: #00000020;
     }
     
     section#descricao-hv > img {

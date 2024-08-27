@@ -116,7 +116,7 @@ main {
                     position: relative;
         
                     span {
-                        @include global.absolutemiddle;
+                        @include global.absolute-middle;
                         @include global.setFont(segment);
         
                         &#overlay {
