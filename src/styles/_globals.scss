@@ -95,6 +95,37 @@ $fonts:
     background-size: $size;
 }
 /* -------------------------------------------------------------------- */
+@mixin responsive-flex(
+    $screen,
+    $justify: space-between,
+    $align: center,
+    $direction: row,
+    $wrap: wrap)
+
+    {
+    @media screen and (max-width: $screen) {
+        @include flex($justify, $align, $direction, $wrap);
+    }
+}
+
+@mixin responsive-resize($screen, $size, $percentual) {
+    @media screen and (max-width: $screen) {
+        @include size(calc($size * $percentual));
+    }
+}
+
+@mixin responsive-width($screen, $width) {
+    @media screen and (max-width: $screen) {
+        width: $width;
+    }
+}
+
+@mixin responsive-height($screen, $height) {
+    @media screen and (max-width: $screen) {
+        height: $height;
+    }
+}
+/* -------------------------------------------------------------------- */
 @mixin center {
     margin: auto;
 }

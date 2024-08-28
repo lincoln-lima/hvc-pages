@@ -1,0 +1,28 @@
+@use '../defaults/default' as default;
+// ------------------------------------------------------------------------------- 
+$header-padding: 0.3em;
+$header-height: calc($header-padding * 2 + default.$home-height);
+$header-responsive-width: 1110px;
+// ------------------------------------------------------------------------------- 
+$nav-width: 95vw;
+$nav-button-width: 140px;
+$nav-num-buttons: 5;
+// ------------------------------------------------------------------------------- 
+$menu-width: calc($nav-num-buttons * $nav-button-width);
+// ------------------------------------------------------------------------------- 
+$main-width: $nav-width;
+$main-height: calc(100vh - $header-height);
+// ------------------------------------------------------------------------------- 
+$playground-height: calc($main-height - 4vh * 2);
+$playground-responsive-width1: 1440px;
+$playground-responsive-width2: 1140px;
+// ------------------------------------------------------------------------------- 
+$porta-cartoes-width: 30vw;
+// ------------------------------------------------------------------------------- 
+$debuggers-width: 60vw;
+// ------------------------------------------------------------------------------- 
+$viewers-size: 30vh;
+// ------------------------------------------------------------------------------- 
+$brown-wood: #915901;
+$green-board: #1d3825;
+$lightgreen-display: #93a28d;
