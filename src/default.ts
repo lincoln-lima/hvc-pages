@@ -2,15 +2,13 @@ import { globals } from "./global";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/header.scss";
 // ------------------------------------------------------------------------------- 
-globals.menuburger.addEventListener('click', viewMenu);
-
-function viewMenu() {
+const switchMenu = () => {
     if(globals.menumodal.style.visibility == "hidden") {
-        globals.menumodal.style.visibility = "visible";
-        globals.menumodal.style.opacity = '1';
+        globals.viewMenu(true);
     }
     else {
-        globals.menumodal.style.opacity = '0';
-        globals.menumodal.style.visibility = "hidden";
+        globals.viewMenu(false);
     }
 }
+// ------------------------------------------------------------------------------- 
+globals.menuburger.addEventListener('click', switchMenu);

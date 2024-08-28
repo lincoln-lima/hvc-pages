@@ -55,18 +55,25 @@ export const globals = {
     /* monitora comportamento do menu */
     monitoreMenu: (size: number) => {
         if (window.innerWidth > size) {
+            globals.viewMenu(true);
+            globals.menuburger.style.display = "none";
+        }
+        else {
+            globals.viewMenu(false);
+            globals.menuburger.style.display = "block";
+        }
+
+    },
+
+    viewMenu: (set: boolean) => {
+        if(set) {
             globals.menumodal.style.opacity = '1';
             globals.menumodal.style.visibility = "visible";
-
-            globals.menuburger.style.display = "none";
         }
         else {
             globals.menumodal.style.opacity = '0';
             globals.menumodal.style.visibility = "hidden";
-
-            globals.menuburger.style.display = "block";
         }
-
     }
 }
 // ------------------------------------------------------------------------------- 
