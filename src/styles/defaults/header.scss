@@ -1,23 +1,25 @@
 @use '../globals' as global;
+@use '../defaults/default' as default;
+@use '../index/index' as index;
+@use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
-$home-height: 51px;
-$buttons-height: 32px;
-
-$index-responsive-width: 1064px;
-$index-header-padding: 25px;
-$index-header-height: calc($index-header-padding * 2 + $home-height);
-$index-nav-width: 80vw;
-
-$play-responsive-width: 1110px;
-$play-header-padding: 0.3em;
-$play-header-height: calc($play-header-padding * 2 + $home-height);
-$play-nav-width: 95vw;
-$play-menu-width: calc(5 * 140px);
-/* -------------------------------------------------------------------- */
-@mixin actions {
+@mixin navlinks {
+    @include global.setFont(text);
+    font-size: 1.5em;
+    
+    padding: 0 0.7em;
+    border: none;
     border-radius: 10px;
-    padding: 1px 5px;
-    font-size: 1.5em !important;
+}
+
+@mixin navlinksbynum($color, $colorhover) {
+    @include navlinks;
+
+    background-color: $color;
+    
+    &:hover {
+        background-color: $colorhover;
+    }
 }
 
 @mixin responsive-menu($top, $items) {
@@ -26,13 +28,13 @@ $play-menu-width: calc(5 * 140px);
     top: $top;
     right: 0;
     
-    height: calc($items * $buttons-height * 1.2);
+    width: fit-content !important;
+    min-width: fit-content !important;
+    
+    height: calc($items * default.$buttons-height * 1.2);
 
     align-items: end !important;
     flex-direction: column;
-
-    width: fit-content !important;
-    min-width: fit-content !important;
 
     padding: 15px;
     border-radius: 0 0 5px 5px;
@@ -46,18 +48,18 @@ header {
         padding: 25px 0;
 
         nav {
-            max-width: $index-nav-width;
-        }
-
-        menu {
-            min-width: 45vw;
-
-            @media screen and (max-width: $index-responsive-width) {
-                @include responsive-menu(calc($index-header-height - $index-header-padding), 3);
+            max-width: index.$nav-width;
+            
+            menu {
+                min-width: 45vw;
+                
+                @media screen and (max-width: index.$responsive-width) {
+                    @include responsive-menu(calc(index.$header-height - index.$header-padding), 3);
+                }
             }
         }
 
-        @media screen and (max-width: $index-responsive-width) {
+        @media screen and (max-width: index.$responsive-width) {
             position: sticky;
             top: 0;
 
@@ -68,16 +70,16 @@ header {
     }    
 
     &#header-play {
-        padding: $play-header-padding 0;
+        padding: play.$header-padding 0;
 
         nav {
-            max-width: $play-nav-width;
+            max-width: play.$nav-width;
 
             menu {
-                width: calc($play-menu-width * 1.2);
+                width: calc(play.$menu-width * 1.2);
 
-                @media screen and (max-width: $play-responsive-width) {
-                    @include responsive-menu(calc($play-header-height - $play-header-padding), 5);
+                @media screen and (max-width: play.$header-responsive-width) {
+                    @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$nav-num-buttons);
                 }
 
                 button {
@@ -86,7 +88,7 @@ header {
                     cursor: pointer;
 
                     img {
-                        margin: 0 0.6em 0 0;
+                        margin-right: 0.5em;
                     }
                 }
             }
@@ -94,14 +96,12 @@ header {
     }
 
     nav {
-        @include global.flex();
+        @include global.flex;
         @include global.center;
 
         position: relative;
 
         a {
-            @include actions;
-
             color: white;
 
             &:hover {
@@ -110,9 +110,9 @@ header {
 
             &#home {
                 @include global.flex($wrap: nowrap);
+                @include global.size(170px, default.$home-height);
 
-                width: 170px;
-                height: 49px;
+                font-size: 1.5em;
 
                 &:hover {
                     background-color: #00000015;
@@ -142,20 +142,6 @@ header {
             transition: opacity 0.5s, visibility 0.5s;
 
             li {
-                @mixin navlinksbynum($color, $colorhover) {
-                    @include global.setFont(text);
-
-                    padding: 0 0.7em;
-                    border: none;
-
-                    background-color: $color;
-                    
-                    &:hover {
-                        background-color: $colorhover;
-                    }
-
-                }
-
                 .link-nav-1 {
                     @include navlinksbynum(global.$color1, global.$color1-dark);
                 }
@@ -173,10 +159,6 @@ header {
                 }
 
             }
-        }
-
-        button {
-            @include actions;
         }
 
         span {
