@@ -1,43 +1,35 @@
 @use '../globals' as global;
+@use './play' as play;
 /* -------------------------------------------------------------------- */
-$header-padding: 0.3em;
-$header-height: calc($header-padding * 2 + 51px); //tornar tamanho do link home global
+@mixin portacartoes-viewers {
+    @include global.shadow($length1: 5px, $blur: 5px, $transparency: 0.2);
+}
 
-$nav-width: calc(5 * 140px); //definir globalmente
-$nav-height: calc(5 * 32px); //definir globalmente
+@mixin numbers($font, $deg, $right) {
+    font-size: $font;
+    transform: skewY(#{$deg}deg);
+    right: #{$right}px;
+}
 
-$width-view: 95vw;
-$heigth-view: calc(100vh - $header-height);
-$margin-top-bottom-view: 4vh;
-
-$playground-height: calc($heigth-view - $margin-top-bottom-view * 2);
-
-$viewers-size: 30vh;
-$font-size-viewers: calc($viewers-size * 0.48);
-
-$brown-wood: #915901;
-$green-board: #1d3825;
-$lightgreen-display: #93a28d;
+@mixin font-size-viewers($size) {
+    font-size: calc($size * 0.46);
+}
 /* -------------------------------------------------------------------- */
 main {
     @include global.middle;
     @include global.center;
-    @include global.size($width-view, $heigth-view);
-
-    @mixin portacartoes-viewers {
-        @include global.shadow($length1: 5px, $blur: 5px, $transparency: 0.2);
-    }
+    @include global.size(play.$main-width, play.$main-height);
     
     #playground {
         @include global.flex;
-        @include global.size(100%, $playground-height);
-        
+        @include global.size(100%, play.$playground-height);
+
         #porta-cartoes {
             @include portacartoes-viewers;
-            
-            $initial-width: 30vw;
-            
-            @include global.size($initial-width, 100%);
+            @include global.size(play.$porta-cartoes-width, 100%);
+
+            @include global.responsive-width(play.$playground-responsive-width1, 50vw);
+            @include global.responsive-width(play.$playground-responsive-width2, 100%);
 
             text-align: center;
 
@@ -53,24 +45,32 @@ main {
         }
         
         .debuggers {
-            @include global.flex($align: normal,$direction: column, $justify: space-around, $wrap: nowrap);
+            @include global.flex($align: normal, $direction: column, $justify: space-around, $wrap: nowrap);
+            @include global.size(play.$debuggers-width, 100%);
 
-            $initial-width: 60vw;
+            @include global.responsive-flex($screen: play.$playground-responsive-width1, $align: normal, $direction: row, $justify: space-between, $wrap: nowrap);
+            @include global.responsive-flex($screen: play.$playground-responsive-width2, $align: normal, $direction: column, $justify: space-between, $wrap: nowrap);
 
-            @include global.size($initial-width, $playground-height);
+            @include global.responsive-width(play.$playground-responsive-width1, 40vw);
+            @include global.responsive-width(play.$playground-responsive-width2, 100%);
 
-            width: 60vw;
+            @include global.responsive-height(play.$playground-responsive-width2, 50vh);
 
             .viewers {
                 @include global.flex;
 
+                @include global.responsive-flex($screen: play.$playground-responsive-width1, $direction: column);
+                @include global.responsive-flex($screen: play.$playground-responsive-width2, $direction: row);
+
                 > * {
-                    @include global.size($viewers-size);
+                    @include global.size(play.$viewers-size);
                     @include portacartoes-viewers;
+
+                    @include global.responsive-resize(play.$playground-responsive-width1, play.$viewers-size, 0.9);
                 }
 
                 span {
-                    font-size: $font-size-viewers;
+                    @include font-size-viewers(play.$viewers-size);
                 }
 
                 #folha-de-saida {
@@ -84,7 +84,7 @@ main {
         
                 #contorno-epi {
                     @include global.middle;
-                    @include global.background($color: $brown-wood, $image: madeirado, $size: cover);
+                    @include global.background($color: play.$brown-wood, $image: madeirado, $size: cover);
         
                     $border: 2px;
         
@@ -93,7 +93,7 @@ main {
                     #epi {
                         @include global.middle;
                         @include global.size(90%);
-                        background-color: $green-board;
+                        background-color: play.$green-board;
         
                         border-radius: $border;
         
@@ -106,11 +106,14 @@ main {
         
                 #acumulador {
                     $border: 10px;
-                    @include global.size(calc($viewers-size - $border*2));
+                    $size: calc(play.$viewers-size - $border * 2);
+
+                    @include global.size($size);
+                    @include global.responsive-resize(play.$playground-responsive-width1, $size, 0.9);
         
-                    background-color: $lightgreen-display;
+                    background-color: play.$lightgreen-display;
         
-                    border: 10px ridge black;
+                    border: $border ridge black;
                     border-radius: 5px;
         
                     position: relative;
@@ -129,6 +132,9 @@ main {
             #gaveteiro {
                 @include global.flex($wrap: nowrap);
 
+                @include global.responsive-flex($screen: play.$playground-responsive-width1, $direction: column, $wrap: nowrap);
+                @include global.responsive-flex($screen: play.$playground-responsive-width2, $direction: row, $wrap: nowrap);
+
                 overflow: auto;
 
                 .gaveta {
@@ -136,7 +142,7 @@ main {
                     $margin: 0.5vw;
 
                     min-width: 146px;
-                    height: 122px;
+                    min-height: 122px;
                     
                     position: relative;
                     margin: 0 $margin;
@@ -156,12 +162,6 @@ main {
 
                         position: absolute;
                         top: 50px;
-
-                        @mixin numbers($font, $deg, $right) {
-                            font-size: $font;
-                            transform: skewY(#{$deg}deg);
-                            right: #{$right}px;
-                        }
 
                         &.num-gaveta {
                             @include numbers(2em, 12, 82);

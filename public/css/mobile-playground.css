@@ -57,14 +57,6 @@
         --secoes-r-h: calc(var(--secoes-h) * 0.8);
     }
     
-    nav > menu button {
-        flex-direction: row-reverse;
-    }
-
-    nav > menu button img {
-        margin: 0 0 0 0.6em !important;
-    }
-    
     main {
         max-width: 90vw;
     }
