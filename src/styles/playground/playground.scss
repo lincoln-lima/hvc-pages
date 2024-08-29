@@ -15,6 +15,45 @@
     font-size: calc($size * 0.46);
 }
 /* -------------------------------------------------------------------- */
+@mixin porta-cartoes-responsive {
+    $min: play.$playground-responsive-width2;
+    $max: play.$playground-responsive-width1;
+
+    @include global.responsive-width($min, $max, 55%);
+    @include global.responsive-width(0, play.$playground-responsive-width2, 100%);
+}
+
+@mixin debuggers-responsive {
+    $min: play.$playground-responsive-width2;
+    $max: play.$playground-responsive-width1;
+
+    @include global.responsive-flex-direction($min, $max, $direction: row);
+    @include global.responsive-width($min, $max, 45%);
+
+    $min: 0;
+    $max: play.$playground-responsive-width2;
+    
+    @include global.responsive-width($min, $max, 100%);
+    @include global.responsive-height($min, $max, 50vh);
+}
+
+@mixin viewers-responsive {
+    $min: play.$playground-responsive-width2;
+    $max: play.$playground-responsive-width1;
+
+    @include global.responsive-flex-direction($min, $max, $direction: column);
+    @include global.responsive-width($min, $max, 60%);
+}
+
+@mixin gaveteiro-responsive {
+    $min: play.$playground-responsive-width2;
+    $max: play.$playground-responsive-width1;
+
+    @include global.responsive-flex-direction($min, $max, $direction: column);
+    @include global.responsive-width($min, $max, 35%);
+    @include global.responsive-height($min, $max, 100%);
+}
+/* -------------------------------------------------------------------- */
 main {
     @include global.middle;
     @include global.center;
@@ -25,13 +64,12 @@ main {
         @include global.size(100%, play.$playground-height);
 
         #porta-cartoes {
+            text-align: center;
+
             @include portacartoes-viewers;
             @include global.size(play.$porta-cartoes-width, 100%);
 
-            @include global.responsive-width(play.$playground-responsive-width1, 50vw);
-            @include global.responsive-width(play.$playground-responsive-width2, 100%);
-
-            text-align: center;
+            @include porta-cartoes-responsive;
 
             .editor {
                 height: 100%;
@@ -45,28 +83,25 @@ main {
         }
         
         .debuggers {
-            @include global.flex($align: normal, $direction: column, $justify: space-around, $wrap: nowrap);
+            @include global.flex($align: normal, $direction: column, $justify: space-around);
             @include global.size(play.$debuggers-width, 100%);
 
-            @include global.responsive-flex($screen: play.$playground-responsive-width1, $align: normal, $direction: row, $justify: space-between, $wrap: nowrap);
-            @include global.responsive-flex($screen: play.$playground-responsive-width2, $align: normal, $direction: column, $justify: space-between, $wrap: nowrap);
+            @include debuggers-responsive;
 
-            @include global.responsive-width(play.$playground-responsive-width1, 40vw);
-            @include global.responsive-width(play.$playground-responsive-width2, 100%);
-
-            @include global.responsive-height(play.$playground-responsive-width2, 50vh);
+            > * {
+                width: 100%;
+            }
 
             .viewers {
                 @include global.flex;
 
-                @include global.responsive-flex($screen: play.$playground-responsive-width1, $direction: column);
-                @include global.responsive-flex($screen: play.$playground-responsive-width2, $direction: row);
+                @include viewers-responsive;
 
                 > * {
                     @include global.size(play.$viewers-size);
                     @include portacartoes-viewers;
 
-                    @include global.responsive-resize(play.$playground-responsive-width1, play.$viewers-size, 0.9);
+                    @include global.responsive-resize(0, play.$playground-responsive-width1, play.$viewers-size, 0.9);
                 }
 
                 span {
@@ -83,19 +118,18 @@ main {
                 }
         
                 #contorno-epi {
+                    $border: 2px;
+                    border-radius: $border;
+
                     @include global.middle;
                     @include global.background($color: play.$brown-wood, $image: madeirado, $size: cover);
         
-                    $border: 2px;
-        
-                    border-radius: $border;
-        
                     #epi {
+                        background-color: play.$green-board;
+                        border-radius: $border;
+
                         @include global.middle;
                         @include global.size(90%);
-                        background-color: play.$green-board;
-        
-                        border-radius: $border;
         
                         span {
                             @include global.setFont(chalk);
@@ -107,16 +141,16 @@ main {
                 #acumulador {
                     $border: 10px;
                     $size: calc(play.$viewers-size - $border * 2);
-
-                    @include global.size($size);
-                    @include global.responsive-resize(play.$playground-responsive-width1, $size, 0.9);
-        
+                    
                     background-color: play.$lightgreen-display;
         
                     border: $border ridge black;
                     border-radius: 5px;
         
                     position: relative;
+
+                    @include global.size($size);
+                    @include global.responsive-resize(0, play.$playground-responsive-width1, $size, 0.9);
         
                     span {
                         @include global.absolute-middle;
@@ -130,23 +164,23 @@ main {
             }
 
             #gaveteiro {
-                @include global.flex($wrap: nowrap);
-
-                @include global.responsive-flex($screen: play.$playground-responsive-width1, $direction: column, $wrap: nowrap);
-                @include global.responsive-flex($screen: play.$playground-responsive-width2, $direction: row, $wrap: nowrap);
-
                 overflow: auto;
 
-                .gaveta {
-                    @include global.background($image: gaveteiro);
-                    $margin: 0.5vw;
+                @include global.flex($wrap: nowrap);
 
+                @include gaveteiro-responsive;
+
+                .gaveta {
+                    $margin: 0.5vw;
+                    
                     min-width: 146px;
                     min-height: 122px;
                     
                     position: relative;
                     margin: 0 $margin;
 
+                    @include global.background($image: gaveteiro);
+                    
                     &:first-child {
                         margin: 0 $margin 0 0;
                     }
@@ -156,16 +190,17 @@ main {
                     }
 
                     span {
-                        @include global.setFont(mono);
-
                         color: #ffffff;
-
+                        
                         position: absolute;
                         top: 50px;
 
+                        @include global.setFont(mono);
+
                         &.num-gaveta {
-                            @include numbers(2em, 12, 82);
                             font-weight: bold;
+
+                            @include numbers(2em, 12, 82);
                         }
 
                         &.cont-gaveta {
