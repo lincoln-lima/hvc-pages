@@ -20,7 +20,9 @@
     $max: play.$playground-responsive-width1;
 
     @include global.responsive-width($min, $max, 55%);
+
     @include global.responsive-width(0, play.$playground-responsive-width2, 100%);
+    @include global.responsive-height(0, play.$playground-responsive-width2, 45%);
 }
 
 @mixin debuggers-responsive {
@@ -34,7 +36,7 @@
     $max: play.$playground-responsive-width2;
     
     @include global.responsive-width($min, $max, 100%);
-    @include global.responsive-height($min, $max, 50vh);
+    @include global.responsive-height($min, $max, 50%);
 }
 
 @mixin viewers-responsive {
@@ -75,6 +77,10 @@ main {
                 height: 100%;
                 font-size: 2em;
 
+                .content {
+                    @include global.setFont(dotted);
+                }
+
                 .cm-lineNumbers > * {
                     @include global.setFont(code);
                     font-size: 0.9em;
@@ -105,7 +111,7 @@ main {
                 }
 
                 span {
-                    @include font-size-viewers(play.$viewers-size);
+                    font-size: play.$viewers-font-size;
                 }
 
                 #folha-de-saida {
@@ -153,6 +159,8 @@ main {
                     @include global.responsive-resize(0, play.$playground-responsive-width1, $size, 0.9);
         
                     span {
+                        font-size: calc(play.$viewers-font-size / 1.4);
+
                         @include global.absolute-middle;
                         @include global.setFont(segment);
         
@@ -165,6 +173,7 @@ main {
 
             #gaveteiro {
                 overflow: auto;
+                scroll-behavior: smooth;
 
                 @include global.flex($wrap: nowrap);
 

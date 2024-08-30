@@ -13,7 +13,7 @@ import { noctisLilac } from "thememirror";
 const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n150\n850\n000";
 
 const editorclass = EditorView.editorAttributes.of({ class: "editor" });
-const myfont = EditorView.contentAttributes.of({ class: "pontilhada" });
+const contentclass = EditorView.contentAttributes.of({ class: "content" });
 
 const codechange = EditorView.updateListener.of(update => {
     if(update.docChanged) localStorage.setItem("code", getDoc());
@@ -27,7 +27,7 @@ let startstate = EditorState.create({
         codechange,
         noctisLilac,
         editorclass,
-        myfont
+        contentclass
     ]
 });
 
