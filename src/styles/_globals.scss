@@ -29,8 +29,9 @@ $fonts:
     quote: 'Parisienne',
     segment: 'Segment',
     chalk: 'Eraser',
-    cursive: 'Kindergarten',
-    dotted: 'Dots'
+    cursive: 'Indie Flower',
+    dotted: 'Dots',
+    default: 'Times New Roman'
     );
 
 @function findFont($req) {
@@ -41,7 +42,7 @@ $fonts:
     }
 }
 
-@mixin setFont($type) {
+@mixin setFont($type: 'default') {
     font-family: findFont($type);
 }
 
@@ -50,7 +51,7 @@ $fonts:
 }
 
 @mixin fontSize($size) {
-    font-size: $size;
+    font-size: calc(100 * $size);
 }
 
 @mixin textAlign($align: center) {
@@ -140,5 +141,21 @@ $fonts:
 
 @mixin defaultText {
     @include setFont(text);
-    @include fontSize(1.4em);
+    font-size: 1.4em;
+}
+/* -------------------------------------------------------------------- */
+@mixin twink-effect {
+    @keyframes twink {
+        from {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: twink 1.5s infinite;
 }
