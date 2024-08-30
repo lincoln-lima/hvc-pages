@@ -35,8 +35,6 @@ code {
 }
 /* -------------------------------------------------------------------- */
 button.botao {
-    @include global.border(black, 0, 15px);
-
     background: global.$fade-button;
     padding: 5px 30px;
 
@@ -48,10 +46,13 @@ button.botao {
     font-weight: 700;
     font-size: 1.5em;
     text-transform: uppercase;
-
+    
     color: white;
-
+    
     cursor: pointer;
+    
+    @include global.border(black, 0, 15px);
+    @include global.setFont(text);
 
     &:hover {
         background: global.$fade-hover !important;

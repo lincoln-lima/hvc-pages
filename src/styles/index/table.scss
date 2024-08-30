@@ -7,8 +7,7 @@
 }
 /* -------------------------------------------------------------------- */
 table {
-    @include global.setFont(text);
-    @include global.fontSize(1.4em);
+    @include global.defaultText;
     @include global.center;
 
     width: 100%;
@@ -44,7 +43,7 @@ table {
         }
         
         &.arrow {
-            @include global.fontSize(1.5em);
+            font-size: 1.5em;
         }
     }
 }

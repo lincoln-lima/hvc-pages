@@ -18,14 +18,14 @@ window.addEventListener('load', () => globals.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
 globals.delay.value = (localStorage.getItem("delay")) ? (localStorage.getItem("delay"))! : '700';
 // ------------------------------------------------------------------------------- 
-globals.configs.addEventListener("click", () => globals.displayElement(globals.configmodal));
+globals.configs.addEventListener("click", () => globals.displayElement(globals.configmodal, 'flex'));
 globals.closeconfigs.addEventListener("click", () => globals.undisplayElement(globals.configmodal));
 
 document.addEventListener("keydown", e => { // evento de click para abrir configurações
     if(e.key.toLocaleLowerCase() === "f12") {
         e.preventDefault();
 
-        if(!(globals.configmodal.style.display)) globals.displayElement(globals.configmodal);
+        if(!(globals.configmodal.style.display)) globals.displayElement(globals.configmodal, 'flex');
         else globals.undisplayElement(globals.configmodal);
     }
 });

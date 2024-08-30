@@ -2,17 +2,13 @@
 @use './play' as play;
 /* -------------------------------------------------------------------- */
 @mixin portacartoes-viewers {
-    @include global.shadow($length1: 5px, $blur: 5px, $transparency: 0.2);
+    @include global.shadow($length1: 10px, $blur: 5px, $transparency: 0.2);
 }
 
 @mixin numbers($font, $deg, $right) {
     font-size: $font;
     transform: skewY(#{$deg}deg);
     right: #{$right}px;
-}
-
-@mixin font-size-viewers($size) {
-    font-size: calc($size * 0.46);
 }
 /* -------------------------------------------------------------------- */
 @mixin porta-cartoes-responsive {
@@ -111,7 +107,7 @@ main {
                 }
 
                 span {
-                    font-size: play.$viewers-font-size;
+                    @include global.fontSize(10%);
                 }
 
                 #folha-de-saida {
@@ -159,13 +155,13 @@ main {
                     @include global.responsive-resize(0, play.$playground-responsive-width1, $size, 0.9);
         
                     span {
-                        font-size: calc(play.$viewers-font-size / 1.4);
-
                         @include global.absolute-middle;
                         @include global.setFont(segment);
+                        @include global.fontSize(7.5%);
         
                         &#overlay {
                             color: rgba(0, 0, 0, 0.08);
+                            user-select: none;
                         }
                     }
                 }
@@ -183,12 +179,14 @@ main {
                     $margin: 0.5vw;
                     
                     min-width: 146px;
-                    min-height: 122px;
+                    min-height: 144px;
                     
                     position: relative;
                     margin: 0 $margin;
 
-                    @include global.background($image: gaveteiro);
+                    filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
+
+                    @include global.background($image: gaveteiro, $repeat: no-repeat);
                     
                     &:first-child {
                         margin: 0 $margin 0 0;
@@ -198,11 +196,17 @@ main {
                         margin: 0 0 0 $margin;
                     }
 
+                    &:active {
+                        // background-color: black;
+                        // filter: hue-rotate(45deg);
+                        @include global.twink-effect;
+                    }
+
                     span {
                         color: #ffffff;
                         
                         position: absolute;
-                        top: 50px;
+                        top: 60px;
 
                         @include global.setFont(mono);
 

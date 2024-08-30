@@ -26,13 +26,18 @@ export const globals = {
 
     submitcard: document.getElementById("submit-card")!,
 
+    /* área de configuração */
+    delay: document.getElementById("delay")! as HTMLInputElement,
+
     /* armazena gavetas */
     gaveteiro: document.getElementById("gaveteiro")!,
+    gavetas: document.getElementsByClassName("gaveta")!,
     contentgavetas: document.getElementsByClassName("cont-gaveta")!, 
     numgavs: 100,
 
-    /* área de configuração */
-    delay: document.getElementById("delay")! as HTMLInputElement,
+    getGaveta: (i: number) => {
+        return globals.gavetas[i]! as HTMLElement;
+    },
 
     /* código */
     getCode: () => {
@@ -44,8 +49,8 @@ export const globals = {
     },
     
     /* mostrar ou ocultar elemento */
-    displayElement: (element: HTMLElement) => {
-        element.style.display = "block";
+    displayElement: (element: HTMLElement, display: string) => {
+        element.style.display = display;
     },
 
     undisplayElement: (element: HTMLElement) => {

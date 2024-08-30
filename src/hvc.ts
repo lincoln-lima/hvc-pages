@@ -44,12 +44,18 @@ hvc.addEventOutput((out: string) => {
 });
 
 hvc.addEventInput(async () => {
-    globals.displayElement(globals.cardmodal);
+    globals.displayElement(globals.cardmodal, 'flex');
 
     globals.card.value = '';
     globals.card.focus();
 
     return await new Promise<string>(resolve => {
+        const submit = () => {
+            globals.undisplayElement(globals.cardmodal);
+
+            setTimeout(resolve, +localStorage.getItem("delay")!, globals.card.value);
+        }
+
         globals.submitcard.onclick = () => submit();
 
         globals.card.onkeydown = e => {
@@ -59,25 +65,27 @@ hvc.addEventInput(async () => {
                 submit();
             }
         };
-
-        function submit() {
-            globals.undisplayElement(globals.cardmodal);
-
-            setTimeout(resolve, +localStorage.getItem("delay")!, globals.card.value);
-        }
     });
 });
 // ------------------------------------------------------------------------------- 
 hvc.addEventClock(_HVMState => {
     const hvm = hvc.getHVM();
 
-    console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
-
     const acumulador = hvm.calculadora.getAcumulador();
     const drawers = hvm.gaveteiro.getGavetas();
+    const epi = hvm.epi.lerRegistro();
+
+    const gaveta = globals.getGaveta(epi);
+
+    console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
 
     globals.acumulador.innerText = acumulador.toString().padStart(3, "0");
-    globals.epi.innerText = hvm.epi.lerRegistro().toString();
+
+    gaveta.scrollIntoView({ inline: "center" });
+    gaveta.style.filter = "hue-rotate(45deg)";
+    gaveta.focus();
+
+    globals.epi.innerText = epi.toString();
 
     Array.from(globals.contentgavetas).forEach((cont, i) => {
         (cont as HTMLElement).innerText = drawers[i] ? drawers[i].toString() : "---";

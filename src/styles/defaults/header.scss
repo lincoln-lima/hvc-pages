@@ -24,7 +24,7 @@
 
 @mixin responsive-menu($top, $items) {
     position: absolute;
-    z-index: 999;
+    z-index: 10;
     top: $top;
     right: 0;
     
