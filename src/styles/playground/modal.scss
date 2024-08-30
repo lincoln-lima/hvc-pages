@@ -2,10 +2,12 @@
 /* -------------------------------------------------------------------- */
 $modal-border: 1em;
 /* -------------------------------------------------------------------- */
+@mixin modal {
+	display: none;
+}
+
 @mixin header-footer($border-top, $border-bottom) {
 	height: 10%;
-
-	position: relative;
 
 	background: global.$fade-default;
 
@@ -16,11 +18,7 @@ $modal-border: 1em;
 	border-bottom-right-radius: $border-bottom;
 }
 /* -------------------------------------------------------------------- */
-section.mymodal {
-	@include global.size(100vw, 100vh);
-
-	display: none;
- 
+.mymodal {
 	background-color: #00000030;
 
 	position: fixed;
@@ -28,23 +26,38 @@ section.mymodal {
 	left: 0;
 	z-index: 99;
 
-	article {
-		@include global.middle;
-		@include global.defaultText;
+	@include global.size(100vw, 100vh);
+	@include global.flex($justify: center);
+	@include modal;
 
+	.modal-body {
 		background-color: white;
 		border-radius: $modal-border;
+
+		@include global.defaultText;
 
 		> * {
 			padding: 0 15px;
 		}
 
-		div.modal-header {
+		.modal-header {
 			@include header-footer($modal-border, 0);
+			@include global.flex;
+
+			button.close {
+				padding: 0;
+				border-radius: 50%;
+				font-weight: bolder;
+				
+				@include global.setFont('default');
+				@include global.fontSize(1.55%);
+				@include global.size(40px);
+			}
 		}
 
-		div.modal-footer {
+		.modal-footer {
 			@include header-footer(0, $modal-border);
+			@include global.flex($justify: center)
 		}
 
 		h2 {
@@ -52,7 +65,7 @@ section.mymodal {
 		}
 
 		form {
-			flex-direction: column;
+			@include global.flex($direction: column);
 			
 			label {
 				font-weight: bold;
@@ -64,27 +77,19 @@ section.mymodal {
 			}
 		}
 	}
-
-	button.close {
-		@include global.size(40px);
-
-		padding: 0;
-		
-		border-radius: 50%;
-	}
 }
 
 /* -------------------------------------------------------------------- */
-section#config-modal {
-	article {
-		@include global.size(60vh);
+#config-modal {
+	.modal-body {
+		@include global.size(calc(100vh * 0.5));
 		
-		div.modal-corpo {
+		.modal-main {
 			height: 80%;
 		}
 		
 		button#save-configs {
-			@include global.fontSize(1.3em);
+			@include global.fontSize(1.3%);
 			
 			padding: 0;
 			width: 5em;
@@ -92,25 +97,34 @@ section#config-modal {
 	}
 }
 /* -------------------------------------------------------------------- */
-section#cartao-modal {
-	$width-content: 600px;
-    $height-content: 150px;
+#cartao-modal {
+	.modal-body {
+		$width: 50vh;
+		$height: 15vh;
 
-	// display: block;
-
-	article {
-		@include global.size($width-content, $height-content);
+		@include global.size($width, $height);
+		@include global.flex($justify: center);
 		
-		div.modal-corpo {
-			height: 100%;
+		.modal-main {
+			width: 100%;
+
+			@include global.flex;
 			
 			form {
 				width: 75%;
 				
 				input {
 					width: 100%;
-					font-size: calc($height-content * 0.5);
+					text-align: center;
+					
+					@include global.fontSize(3%);
+					@include global.setFont('dotted');
 				}
+			}
+
+			button#submit-card {
+				width: 20%;
+				padding: 0;
 			}
 		}
 	}
