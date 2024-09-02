@@ -47,10 +47,15 @@ export const globals = {
     setCode: (text: string) => {
         setDoc(text);
     },
+
+    viewElement: (element: HTMLElement, set: boolean) => {
+        if(set) globals.displayElement(element);
+        else globals.undisplayElement(element);
+    },
     
     /* mostrar ou ocultar elemento */
-    displayElement: (element: HTMLElement, display: string) => {
-        element.style.display = display;
+    displayElement: (element: HTMLElement) => {
+        element.style.display = 'inherit';
     },
 
     undisplayElement: (element: HTMLElement) => {

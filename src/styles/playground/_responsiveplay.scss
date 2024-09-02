@@ -1,60 +1,41 @@
 @use '../globals' as global;
 @use './play' as play;
 /* -------------------------------------------------------------------- */
+$width1: play.$screen-responsive-width1;
+$width2: play.$screen-responsive-width2;
+/* -------------------------------------------------------------------- */
 @mixin main {
-    $min: 0;
-    $max: play.$screen-responsive-width2;
-
-    @include global.responsive-height($min, $max, play.$main-responsive-heigth);
+    @include global.responsive-height(0, $width2, play.$main-responsive-heigth);
 }
 
 @mixin playground {
-    $min: 0;
-    $max: play.$screen-responsive-width2;
-
-    @include global.responsive-width($min, $max, play.$main-responsive-width);
-    @include global.responsive-flex-direction($min, $max, $direction: column);
+    @include global.responsive-width(0, $width2, play.$main-responsive-width);
+    @include global.responsive-flex-direction(0, $width2, $direction: column);
 }
 
 @mixin porta-cartoes {
-    $min: play.$screen-responsive-width2;
-    $max: play.$screen-responsive-width1;
+    @include global.responsive-width($width2, $width1, play.$porta-cartoes-responsive-width);
 
-    @include global.responsive-width($min, $max, play.$porta-cartoes-responsive-width);
-    
-    $min: 0;
-    $max: play.$screen-responsive-width2;
-
-    @include global.responsive-width($min, $max, 100%);
-    @include global.responsive-height($min, $max, 35%);
+    @include global.responsive-width(0, $width2, 100%);
+    @include global.responsive-height(0, $width2, 35%);
 }
 
 @mixin debuggers {
-    $min: 0;
-    $max: play.$screen-responsive-width1;
+    @include global.responsive-flex-direction(0, $width1, $direction: row);
+    @include global.responsive-justify-content(0, $width1, $justify: space-between);
 
-    @include global.responsive-flex-direction($min, $max, $direction: row);
-    @include global.responsive-justify-content($min, $max, $justify: space-between);
-    @include global.responsive-width($min, $max, play.$debuggers-responsive-width);
+    @include global.responsive-width($width2, $width1, play.$debuggers-responsive-width);
 
-    $max: play.$screen-responsive-width2;
-
-    @include global.responsive-width($min, $max, 100%);
-    @include global.responsive-height($min, $max, 60%);
+    @include global.responsive-width(0, $width2, 100%);
+    @include global.responsive-height(0, $width2, 60%);
 }
 
 @mixin debuggers-childs {
-    $min: 0;
-    $max: play.$screen-responsive-width1;
-
-    @include global.responsive-flex-direction($min, $max, $direction: column);
-    @include global.responsive-width($min, $max, fit-content);
-    @include global.responsive-height($min, $max, 100%);
+    @include global.responsive-flex-direction(0, $width1, $direction: column);
+    @include global.responsive-width(0, $width1, fit-content);
+    @include global.responsive-height(0, $width1, 100%);
 }
 
 @mixin viewers-childs {
-    $min: play.$screen-responsive-width2;
-    $max: play.$screen-responsive-width1;
-
-    @include global.responsive-size($min: $min, $max: $max, $width: play.$viewers-responsive-size);
+    @include global.responsive-size($min: $width2, $max: $width1, $width: play.$viewers-responsive-size);
 }

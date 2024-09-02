@@ -44,7 +44,7 @@ hvc.addEventOutput((out: string) => {
 });
 
 hvc.addEventInput(async () => {
-    globals.displayElement(globals.cardmodal, 'flex');
+    globals.displayElement(globals.cardmodal);
 
     globals.card.value = '';
     globals.card.focus();
