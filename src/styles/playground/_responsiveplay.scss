@@ -1,0 +1,60 @@
+@use '../globals' as global;
+@use './play' as play;
+/* -------------------------------------------------------------------- */
+@mixin main {
+    $min: 0;
+    $max: play.$screen-responsive-width2;
+
+    @include global.responsive-height($min, $max, play.$main-responsive-heigth);
+}
+
+@mixin playground {
+    $min: 0;
+    $max: play.$screen-responsive-width2;
+
+    @include global.responsive-width($min, $max, play.$main-responsive-width);
+    @include global.responsive-flex-direction($min, $max, $direction: column);
+}
+
+@mixin porta-cartoes {
+    $min: play.$screen-responsive-width2;
+    $max: play.$screen-responsive-width1;
+
+    @include global.responsive-width($min, $max, play.$porta-cartoes-responsive-width);
+    
+    $min: 0;
+    $max: play.$screen-responsive-width2;
+
+    @include global.responsive-width($min, $max, 100%);
+    @include global.responsive-height($min, $max, 35%);
+}
+
+@mixin debuggers {
+    $min: 0;
+    $max: play.$screen-responsive-width1;
+
+    @include global.responsive-flex-direction($min, $max, $direction: row);
+    @include global.responsive-justify-content($min, $max, $justify: space-between);
+    @include global.responsive-width($min, $max, play.$debuggers-responsive-width);
+
+    $max: play.$screen-responsive-width2;
+
+    @include global.responsive-width($min, $max, 100%);
+    @include global.responsive-height($min, $max, 60%);
+}
+
+@mixin debuggers-childs {
+    $min: 0;
+    $max: play.$screen-responsive-width1;
+
+    @include global.responsive-flex-direction($min, $max, $direction: column);
+    @include global.responsive-width($min, $max, fit-content);
+    @include global.responsive-height($min, $max, 100%);
+}
+
+@mixin viewers-childs {
+    $min: play.$screen-responsive-width2;
+    $max: play.$screen-responsive-width1;
+
+    @include global.responsive-size($min: $min, $max: $max, $width: play.$viewers-responsive-size);
+}

@@ -1,10 +1,13 @@
 @use '../globals' as global;
+@use './default' as default;
 /* -------------------------------------------------------------------- */
 * {
     padding: 0;
     margin: 0;
     text-decoration: none;
     color: #000000;
+
+    box-sizing: border-box;
 }
 
 html {
@@ -75,7 +78,7 @@ a.link-externo {
 /* -------------------------------------------------------------------- */
 ::-webkit-scrollbar {
     height: 0.8em;
-    width: 1em;
+    width: default.$scrollbar-width;
 }
 
 ::-webkit-scrollbar-track {

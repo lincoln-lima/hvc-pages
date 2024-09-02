@@ -50,10 +50,6 @@ $fonts:
     font-weight: $weight;
 }
 
-@mixin fontSize($size) {
-    font-size: calc(100 * $size);
-}
-
 @mixin textAlign($align: center) {
     text-align: $align;
 }
@@ -84,8 +80,8 @@ $fonts:
     height: $heigth;
 }
 
-@mixin shadow($type: null, $length1, $length2: $length1, $blur, $transparency) {
-    box-shadow: $type $length1 $length2 $blur rgba(0, 0, 0, $transparency);
+@mixin shadow($type: null, $length1, $length2: $length1, $length3: 0, $blur, $transparency) {
+    box-shadow: $type $length1 $length2 $blur $length3 rgba(0, 0, 0, $transparency);
 }
 
 @mixin background($color: transparent, $image: none, $position: 0, $repeat: initial, $size: auto) {
@@ -102,9 +98,15 @@ $fonts:
     }
 }
 
-@mixin responsive-resize($min, $max, $size, $percentual) {
+@mixin responsive-justify-content($min, $max, $justify) {
     @media screen and (min-width: $min) and (max-width: $max) {
-        @include size(calc($size * $percentual));
+        justify-content: $justify;
+    }
+}
+
+@mixin responsive-size($min, $max, $width, $height: $width) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        @include size($width, $height);
     }
 }
 
@@ -145,6 +147,8 @@ $fonts:
 }
 /* -------------------------------------------------------------------- */
 @mixin twink-effect {
+    animation: twink 1.5s infinite;
+
     @keyframes twink {
         from {
             opacity: 1;
@@ -156,6 +160,4 @@ $fonts:
             opacity: 1;
         }
     }
-
-    animation: twink 1.5s infinite;
 }

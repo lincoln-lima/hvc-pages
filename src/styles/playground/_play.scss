@@ -1,27 +1,41 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
+$screen-responsive-width1: 1470px;
+$screen-responsive-width2: 700px;
+// ------------------------------------------------------------------------------- 
+$header-responsive-width: 1110px;
+
 $header-padding: 0.3em;
 $header-height: calc($header-padding * 2 + default.$home-height);
-$header-responsive-width: 1110px;
-// ------------------------------------------------------------------------------- 
-$nav-width: 95vw;
+
+$nav-initial-width: 95vw;
+$nav-responsive-width: 90vw;
+
 $nav-button-width: 140px;
 $nav-num-buttons: 5;
-// ------------------------------------------------------------------------------- 
+
 $menu-width: calc($nav-num-buttons * $nav-button-width);
 // ------------------------------------------------------------------------------- 
-$main-width: $nav-width;
-$main-height: calc(100vh - $header-height);
+$main-initial-width: $nav-initial-width;
+$main-responsive-width: calc($nav-responsive-width - 5vw);
+
+$main-initial-height: calc(100vh - $header-height);
+$main-responsive-heigth: 165vh;
 // ------------------------------------------------------------------------------- 
-$playground-height: calc($main-height - 4vh * 2);
-$playground-responsive-width1: 1440px;
-$playground-responsive-width2: 1160px;
+$viewers-initial-size: 30vh;
+$viewers-responsive-size: calc($viewers-initial-size * 0.9);
 // ------------------------------------------------------------------------------- 
-$porta-cartoes-width: 36%;
+$gaveta-margin: 10px;
+$gaveta-width: 146px;
+$gaveta-height: 144px;
 // ------------------------------------------------------------------------------- 
-$debuggers-width: 62%;
+$spacing: 50px;
 // ------------------------------------------------------------------------------- 
-$viewers-size: 30vh;
+$debuggers-initial-width: 62%;
+$debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
+// ------------------------------------------------------------------------------- 
+$porta-cartoes-initial-width: 36%;
+$porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
 // ------------------------------------------------------------------------------- 
 $brown-wood: #915901;
 $green-board: #1d3825;

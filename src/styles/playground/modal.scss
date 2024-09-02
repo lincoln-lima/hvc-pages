@@ -48,9 +48,9 @@ $modal-border: 1em;
 				padding: 0;
 				border-radius: 50%;
 				font-weight: bolder;
+				font-size: 1.55em;
 				
 				@include global.setFont('default');
-				@include global.fontSize(1.55%);
 				@include global.size(40px);
 			}
 		}
@@ -89,7 +89,7 @@ $modal-border: 1em;
 		}
 		
 		button#save-configs {
-			@include global.fontSize(1.3%);
+			font-size: 1.3em;
 			
 			padding: 0;
 			width: 5em;
@@ -116,8 +116,8 @@ $modal-border: 1em;
 				input {
 					width: 100%;
 					text-align: center;
+					font-size: 3em;
 					
-					@include global.fontSize(3%);
 					@include global.setFont('dotted');
 				}
 			}

@@ -31,7 +31,7 @@
     width: fit-content !important;
     min-width: fit-content !important;
     
-    height: calc($items * default.$buttons-height * 1.2);
+    height: calc($items * default.$buttons-height * 1.3);
 
     align-items: end !important;
     flex-direction: column;
@@ -73,7 +73,11 @@ header {
         padding: play.$header-padding 0;
 
         nav {
-            max-width: play.$nav-width;
+            max-width: play.$nav-initial-width;
+
+            @media screen and (max-width: play.$screen-responsive-width2) {
+                max-width: play.$nav-responsive-width;
+            }
 
             menu {
                 width: calc(play.$menu-width * 1.2);
