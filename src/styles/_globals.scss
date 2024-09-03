@@ -146,18 +146,14 @@ $fonts:
     font-size: 1.4em;
 }
 /* -------------------------------------------------------------------- */
-@mixin twink-effect {
-    animation: twink 1.5s infinite;
-
-    @keyframes twink {
-        from {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+@keyframes twink {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

@@ -35,8 +35,18 @@ export const globals = {
     contentgavetas: document.getElementsByClassName("cont-gaveta")!, 
     numgavs: 100,
 
-    getGaveta: (i: number) => {
-        return globals.gavetas[i]! as HTMLElement;
+    highlightDrawer: (drawer: HTMLElement) => {
+        drawer.style.animation = "twink 1.5s 1";
+        drawer.style.filter = "hue-rotate(45deg)";
+    },
+
+    defaultHighlight: (element: HTMLElement) => {
+        element.style.animation = "inherit";
+        element.style.filter = "revert-layer";
+    },
+
+    scrollTo: (element: HTMLElement) => {
+        element.scrollIntoView({ inline: "center" });
     },
 
     /* código */
@@ -66,13 +76,12 @@ export const globals = {
     monitoreMenu: (size: number) => {
         if (window.innerWidth > size) {
             globals.viewMenu(true);
-            globals.menuburger.style.display = "none";
+            globals.undisplayElement(globals.menuburger);
         }
         else {
             globals.viewMenu(false);
-            globals.menuburger.style.display = "block";
+            globals.displayElement(globals.menuburger);
         }
-
     },
 
     viewMenu: (set: boolean) => {

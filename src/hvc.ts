@@ -2,9 +2,9 @@ import { globals } from "./global";
 import { HVC } from "hvcjs";
 import ahv from "./ahv";
 // ------------------------------------------------------------------------------- 
-const hvc = new HVC();
-
 ahv();
+// ------------------------------------------------------------------------------- 
+const hvc = new HVC();
 // ------------------------------------------------------------------------------- 
 globals.run.addEventListener('click', () => exec(true));
 globals.debug.addEventListener('click', () => exec(false));
@@ -15,8 +15,12 @@ document.addEventListener('keydown', e => {
     if (key === "f9") exec(true);
     else if (key === "f8") exec(false);
 });
+// ------------------------------------------------------------------------------- 
+const exec = async(isquick: boolean) => {
+    Array.from(globals.gavetas).forEach(gaveta => {
+        globals.defaultHighlight(gaveta as HTMLElement);
+    })
 
-async function exec(isquick: boolean) {
     hvc.setCode(globals.getCode());
 
     globals.saida.innerText = '-';
@@ -53,7 +57,7 @@ hvc.addEventInput(async () => {
         const submit = () => {
             globals.undisplayElement(globals.cardmodal);
 
-            setTimeout(resolve, +localStorage.getItem("delay")!, globals.card.value);
+            setTimeout(resolve, +globals.delay.value, globals.card.value);
         }
 
         globals.submitcard.onclick = () => submit();
@@ -70,20 +74,20 @@ hvc.addEventInput(async () => {
 // ------------------------------------------------------------------------------- 
 hvc.addEventClock(_HVMState => {
     const hvm = hvc.getHVM();
+    // const state = hvm.getState();
 
     const acumulador = hvm.calculadora.getAcumulador();
     const drawers = hvm.gaveteiro.getGavetas();
     const epi = hvm.epi.lerRegistro();
 
-    const gaveta = globals.getGaveta(epi);
+    const gaveta = globals.gavetas[epi] as HTMLElement;
 
-    console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
+    // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
 
-    globals.acumulador.innerText = acumulador.toString().padStart(3, "0");
+    globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : acumulador.toString().padStart(3, " ");
 
-    gaveta.scrollIntoView({ inline: "center" });
-    gaveta.style.filter = "hue-rotate(45deg)";
-    gaveta.focus();
+    globals.scrollTo(gaveta);
+    globals.highlightDrawer(gaveta);
 
     globals.epi.innerText = epi.toString();
 

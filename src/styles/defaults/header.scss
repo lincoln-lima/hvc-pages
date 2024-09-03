@@ -170,16 +170,15 @@ header {
         }
         
         button.botao-menu {
-            @include global.border(transparent, 0, 3px);
-
-            display: none;
             height: 50px;
             padding: 5px;
-    
+            
             background-color: transparent;
             transition: 0.3s;
             cursor: pointer;
             
+            @include global.border(transparent, 0, 3px);
+
             &:hover {
                 background-color: #00000015;
             }

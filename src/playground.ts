@@ -16,7 +16,7 @@ drawers();
 window.addEventListener('resize', () => globals.monitoreMenu(1110));
 window.addEventListener('load', () => globals.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
-globals.delay.value = (localStorage.getItem("delay")) ? (localStorage.getItem("delay"))! : '700';
+globals.delay.value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
 // ------------------------------------------------------------------------------- 
 globals.configs.addEventListener("click", () => globals.displayElement(globals.configmodal));
 globals.closeconfigs.addEventListener("click", () => globals.undisplayElement(globals.configmodal));
