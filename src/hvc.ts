@@ -79,19 +79,25 @@ hvc.addEventClock(_HVMState => {
     const acumulador = hvm.calculadora.getAcumulador();
     const drawers = hvm.gaveteiro.getGavetas();
     const epi = hvm.epi.lerRegistro();
-
-    const gaveta = globals.gavetas[epi] as HTMLElement;
-
+    
     // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
-
+    
     globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : acumulador.toString().padStart(3, " ");
-
-    globals.scrollTo(gaveta);
-    globals.highlightDrawer(gaveta);
-
     globals.epi.innerText = epi.toString();
 
+    (globals.gavetas[epi] as HTMLElement).style.filter = "hue-rotate(45deg)";
+    globals.scrollTo(globals.gavetas[epi] as HTMLElement);
+    
     Array.from(globals.contentgavetas).forEach((cont, i) => {
-        (cont as HTMLElement).innerText = drawers[i] ? drawers[i].toString() : "---";
+        const gaveta = globals.gavetas[i] as HTMLElement;
+
+        if(drawers[i]) {
+            // console.log(i);
+            globals.highlightDrawer(gaveta);
+
+            (cont as HTMLElement).innerText = drawers[i].toString();
+        }
+        else (cont as HTMLElement).innerText = "---";
+        // (cont as HTMLElement).innerText = drawers[i] ? drawers[i].toString() : "---";
     })
 });

@@ -2,19 +2,25 @@ import { globals } from "./global";
 
 export default () => {
     for (let i = 0; i < globals.numgavs; i++) {
-        const article = document.createElement("article");
-        article.className = "gaveta";
+        const drawer = document.createElement("article");
+        drawer.className = "gaveta";
 
         const numdrawer = document.createElement("span");
         numdrawer.innerText = i.toString().padStart(2, "0");
         numdrawer.className = "num-gaveta";
+        
+        const div_numdrawer = document.createElement("div");
+        div_numdrawer.appendChild(numdrawer);
 
-        const cont_gaveta = document.createElement("span");
-        cont_gaveta.className = "cont-gaveta";
+        const contdrawer = document.createElement("span");
+        contdrawer.className = "cont-gaveta";
 
-        article.appendChild(numdrawer);
-        article.appendChild(cont_gaveta);
+        const div_contdrawer = document.createElement("div");
+        div_contdrawer.appendChild(contdrawer);
 
-        globals.gaveteiro.appendChild(article);
+        drawer.appendChild(div_numdrawer);
+        drawer.appendChild(div_contdrawer);
+
+        globals.gaveteiro.appendChild(drawer);
     }
 }

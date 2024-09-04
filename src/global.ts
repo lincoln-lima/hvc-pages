@@ -37,12 +37,12 @@ export const globals = {
 
     highlightDrawer: (drawer: HTMLElement) => {
         drawer.style.animation = "twink 1.5s 1";
-        drawer.style.filter = "hue-rotate(45deg)";
+        drawer.style.filter = "drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5))";
     },
 
     defaultHighlight: (element: HTMLElement) => {
         element.style.animation = "inherit";
-        element.style.filter = "revert-layer";
+        element.style.filter = "brightness(0.5)";
     },
 
     scrollTo: (element: HTMLElement) => {

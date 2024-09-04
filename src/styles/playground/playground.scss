@@ -6,10 +6,13 @@
     @include global.shadow($length1: 3px, $blur: 5px, $transparency: 0.2);
 }
 
-@mixin numbers($font, $deg, $right) {
-    font-size: $font;
+@mixin numbers($top, $right, $deg, $width, $height) {
+    top: $top;
+    right: $right;
+
     transform: skewY(#{$deg}deg);
-    right: #{$right}px;
+
+    @include global.size($width, $height);
 }
 /* -------------------------------------------------------------------- */
 main {
@@ -145,7 +148,6 @@ main {
                     position: relative;
                     margin: 0 play.$gaveta-margin;
 
-                    // animation: none;
                     filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
 
                     @include global.background($image: gaveteiro, $repeat: no-repeat);
@@ -158,22 +160,32 @@ main {
                         margin: 0 0 0 play.$gaveta-margin;
                     }
 
-                    span {
-                        color: #ffffff;
-                        
+                    div {
                         position: absolute;
-                        top: 60px;
 
-                        @include global.setFont(mono);
+                        @include global.middle;
 
-                        &.num-gaveta {
-                            font-weight: bold;
-
-                            @include numbers(2em, 12, 82);
+                        &:first-child {
+                            @include numbers(40px, initial, 13, 88px, 86px);
                         }
 
-                        &.cont-gaveta {
-                            @include numbers(1.5em, -25, 2);
+                        &:last-child {
+                            @include numbers(42px, 0, -28, 50px, 75px);
+                        }
+
+                        span {
+                            color: #ffffff;
+
+                            @include global.setFont(mono);
+
+                            &.num-gaveta {
+                                font-weight: bold;
+                                font-size: 2em;
+                            }
+
+                            &.cont-gaveta {
+                                font-size: 1.5em;
+                            }
                         }
                     }
                 }
