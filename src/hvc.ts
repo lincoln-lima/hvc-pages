@@ -81,12 +81,11 @@ hvc.addEventClock(_HVMState => {
     const epi = hvm.epi.lerRegistro();
     
     // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
-    
-    globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : acumulador.toString().padStart(3, " ");
-    globals.epi.innerText = epi.toString();
 
-    (globals.gavetas[epi] as HTMLElement).style.filter = "hue-rotate(45deg)";
-    globals.scrollTo(globals.gavetas[epi] as HTMLElement);
+    // console.log(_HVMState);
+    
+    globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
+    globals.epi.innerText = epi.toString();
     
     Array.from(globals.contentgavetas).forEach((cont, i) => {
         const gaveta = globals.gavetas[i] as HTMLElement;
@@ -99,5 +98,8 @@ hvc.addEventClock(_HVMState => {
         }
         else (cont as HTMLElement).innerText = "---";
         // (cont as HTMLElement).innerText = drawers[i] ? drawers[i].toString() : "---";
-    })
+    });
+
+    (globals.gavetas[epi] as HTMLElement).style.filter = "hue-rotate(45deg)";
+    globals.scrollTo(globals.gavetas[epi] as HTMLElement);
 });
