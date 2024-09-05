@@ -157,3 +157,16 @@ $fonts:
         opacity: 1;
     }
 }
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@mixin twink($duration, $times) {
+    animation: twink $duration $times;
+}

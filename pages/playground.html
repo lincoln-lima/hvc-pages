@@ -16,12 +16,18 @@
 <body>
     <header id="header-play">
         <nav>
-            <a id="home" rel="author" target="_top" href="/index.html">
+            <!-- <a id="home" rel="author" target="_top" href="/index.html">
                 <img id="logo-gaveta" src="/img/gaveta-logo.png" alt="ícone de gaveta">
                 <h1>
                     <span>HV</span><span>C</span>
                 </h1>
-            </a>
+            </a> -->
+            <section id="hvm-state">
+                <article>
+                    <span class="dot"></span>
+                    <span id="state-value">Desligado</span>
+                </article>
+            </section>
             <menu>
                 <li>
                     <button id="run" class="link-nav-1" target="_self" title="F9">
@@ -102,6 +108,17 @@
                         <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
                     </form>
                     <button id="submit-card" class="botao"><img src="/img/check.png"></button>
+                </div>
+            </article>
+        </section>
+        <section id="error-modal" class="mymodal">
+            <article class="modal-body">
+                <div class="modal-header">
+                    <h2>Erro ao executar código!</h2>
+                    <button id="close-configs" class="botao close">&times;</button>
+                </div>
+                <div class="modal-main">
+                    <span>erro erro erro erro</span>
                 </div>
             </article>
         </section>
