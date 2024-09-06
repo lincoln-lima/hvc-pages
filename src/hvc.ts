@@ -83,7 +83,7 @@ hvc.addEventClock(HVMState => {
     // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
 
     // console.log(HVMState);
-    globals.setStateStyle(HVMState.toLowerCase());
+    globals.setState(HVMState.toLowerCase());
     
     globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
     globals.epi.innerText = epi.toString();

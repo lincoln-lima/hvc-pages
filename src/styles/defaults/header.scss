@@ -40,6 +40,12 @@
     border-radius: 0 0 5px 5px;
     background-color: #00000020;
 }
+
+@mixin dot-state($animation, $radius) {
+    border-radius: $radius;
+
+    @include global.animation($animation, 1.5s, infinite);
+}
 /* -------------------------------------------------------------------- */
 header {
     box-shadow: 1px 1px 9px #00000033;
@@ -81,17 +87,16 @@ header {
 
             #hvm-state {
                 border-radius: 15px;
-                background-color: darkred;
-                
-                transition: 0.5s;
-                filter: brightness(0.8);
                 
                 @include global.middle;
                 @include global.size(180px, default.$home-height);
 
+                &, * {
+                    transition: 0.5s;
+                }
+
                 &:hover {
                     cursor: help;
-                    filter: none;
                 }
                 
                 article {
@@ -105,14 +110,41 @@ header {
                         @include global.setFont('mono');
                     }
 
-                    .dot {
+                    #dot-state {
                         background-color: white;
-                        border-radius: 50%;
-
                         margin-right: 1em;
 
-                        @include global.size(calc(default.$home-height * 0.4));
+                        @include global.size(calc(default.$home-height * 0.5));
                     }
+                }
+                
+                &.running {
+                    background-color: green;
+
+                    #dot-state {
+                        @include dot-state(grow, 50%);
+                    }
+                }
+
+                &.loading {
+                    background-color: darkgoldenrod;
+                    
+                    #dot-state {
+                        $size-border: 5px;
+
+                        border: $size-border solid transparent;
+                        border-top: $size-border solid white;
+                        border-left: $size-border solid white;
+
+                        background-color: transparent;
+
+                        @include dot-state(spin, 50%);
+                    }
+                }
+
+                &.stopped {
+                    background-color: darkred;
+                    filter: brightness(0.8);
                 }
             }
 

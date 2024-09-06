@@ -17,7 +17,6 @@ export const globals = {
 
     containerstate: document.getElementById("hvm-state")!,
     hvmstate: document.getElementById("state-value")!,
-    dot: document.getElementsByClassName("dot")[0]! as HTMLElement,
     
     run: document.getElementById("run")!,
     debug: document.getElementById("debug")!,
@@ -39,20 +38,15 @@ export const globals = {
     contentgavetas: document.getElementsByClassName("cont-gaveta")!, 
     numgavs: 100,
 
-    setStateStyle: (state: string) => {
-        let animation = 'grow 0.8s infinite';
-        let backgroundcolor;
+    setState: (state: string) => {
+        let dotclass;
 
-        if(state === 'carga') backgroundcolor = 'darkgoldenrod';
-        else if(state === 'execução') backgroundcolor = 'green'
-        else {
-            backgroundcolor = 'revert-layer';
-            animation = 'inherit';
-        }
+        if(state === 'carga') dotclass = 'loading';
+        else if(state === 'execução') dotclass = 'running';
+        else dotclass = 'stopped';
 
-        globals.containerstate.style.backgroundColor = backgroundcolor;
+        globals.containerstate.className = dotclass;
         globals.hvmstate.innerText = state;
-        globals.dot.style.animation = animation;
     },
 
     highlightDrawer: (drawer: HTMLElement) => {

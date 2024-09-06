@@ -167,6 +167,27 @@ $fonts:
     }
 }
 
-@mixin twink($duration, $times) {
-    animation: twink $duration $times;
+@keyframes pulse {
+    from {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(0.5);
+    }
+    to {
+        filter: brightness(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }    
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin animation($name, $duration, $times) {
+    animation: $name $duration $times;
 }

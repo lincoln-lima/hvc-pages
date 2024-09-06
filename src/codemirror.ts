@@ -1,7 +1,6 @@
 import { EditorState } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
-import { noctisLilac } from "thememirror";
 
 // import { tags } from "@lezer/highlight";
 // import { HighlightStyle } from "@codemirror/language";
@@ -25,7 +24,6 @@ let startstate = EditorState.create({
         keymap.of(defaultKeymap),
         lineNumbers(),
         codechange,
-        noctisLilac,
         editorclass,
         contentclass
     ]
