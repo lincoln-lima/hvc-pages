@@ -91,6 +91,38 @@ $fonts:
     background-repeat: $repeat;
     background-size: $size;
 }
+
+@mixin rounded-border($border-top, $border-bottom) {
+	border-top-left-radius: $border-top;
+	border-top-right-radius: $border-top;
+
+	border-bottom-left-radius: $border-bottom;
+	border-bottom-right-radius: $border-bottom;
+}
+/* -------------------------------------------------------------------- */
+@mixin center {
+    margin: 0 auto;
+}
+
+@mixin middle {
+    @include flex($justify: center);
+}
+
+@mixin absolute-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin scroll {
+    overflow: auto;
+}
+
+@mixin defaultText {
+    @include setFont(text);
+    font-size: 1.4em;
+}
 /* -------------------------------------------------------------------- */
 @mixin responsive-flex-direction($min, $max, $direction) {
     @media screen and (min-width: $min) and (max-width: $max) {
@@ -121,29 +153,11 @@ $fonts:
         height: $height;
     }
 }
-/* -------------------------------------------------------------------- */
-@mixin center {
-    margin: auto;
-}
 
-@mixin middle {
-    @include flex($justify: center);
-}
-
-@mixin absolute-middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@mixin scroll {
-    overflow: auto;
-}
-
-@mixin defaultText {
-    @include setFont(text);
-    font-size: 1.4em;
+@mixin responsive-center($min, $max) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        @include center;
+    }
 }
 /* -------------------------------------------------------------------- */
 @keyframes twink {

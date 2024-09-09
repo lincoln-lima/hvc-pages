@@ -21,7 +21,7 @@ globals.delay.value = localStorage.getItem("delay") ? (localStorage.getItem("del
 globals.configs.addEventListener("click", () => globals.displayElement(globals.configmodal));
 globals.closeconfigs.addEventListener("click", () => globals.undisplayElement(globals.configmodal));
 
-document.addEventListener("keydown", e => { // evento de click para abrir configurações
+document.addEventListener("keydown", e => {
     if(e.key.toLocaleLowerCase() === "f12") {
         e.preventDefault();
 
@@ -32,3 +32,5 @@ document.addEventListener("keydown", e => { // evento de click para abrir config
 window.addEventListener("click", e => {
     if(e.target == globals.configmodal) globals.undisplayElement(globals.configmodal);
 });
+// ------------------------------------------------------------------------------- 
+globals.closeerrors.addEventListener('click', () => globals.undisplayElement(globals.errorsmodal));

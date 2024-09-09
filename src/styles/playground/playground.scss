@@ -70,6 +70,7 @@ main {
                 @include global.flex;
 
                 @include responsive.debuggers-childs;
+                @include responsive.viewers;
 
                 > * {
                     @include global.size(play.$viewers-initial-size);
@@ -79,7 +80,7 @@ main {
                 }
 
                 span {
-                    font-size: 10em;
+                    font-size: calc(play.$viewers-responsive-size * 0.6);
                 }
 
                 #folha-de-saida {
@@ -144,6 +145,7 @@ main {
                 @include global.flex($wrap: nowrap);
 
                 @include responsive.debuggers-childs;
+                @include responsive.gaveteiro;
 
                 .gaveta {
                     min-width: play.$gaveta-width;
@@ -156,12 +158,18 @@ main {
 
                     @include global.background($image: gaveteiro, $repeat: no-repeat);
                     
+                    & {
+                        @include responsive.gavetas;
+                    }
+                    
                     &:first-child {
                         margin: 0 play.$gaveta-margin 0 0;
+                        @include responsive.gavetas;
                     }
 
                     &:last-child {
                         margin: 0 0 0 play.$gaveta-margin;
+                        @include responsive.gavetas;
                     }
 
                     div {

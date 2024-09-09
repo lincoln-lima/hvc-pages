@@ -1,7 +1,8 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
 $screen-responsive-width1: 1470px;
-$screen-responsive-width2: 700px;
+$screen-responsive-width2: 800px;
+$screen-responsive-width3: 600px;
 // ------------------------------------------------------------------------------- 
 $header-responsive-width: 1110px;
 
@@ -17,10 +18,8 @@ $nav-num-buttons: 5;
 $menu-width: calc($nav-num-buttons * $nav-button-width);
 // ------------------------------------------------------------------------------- 
 $main-initial-width: $nav-initial-width;
-$main-responsive-width: calc($nav-responsive-width - 5vw);
 
 $main-initial-height: calc(100vh - $header-height);
-$main-responsive-heigth: 165vh;
 // ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vh;
 $viewers-responsive-size: calc($viewers-initial-size * 0.9);
@@ -40,3 +39,7 @@ $porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spac
 $brown-wood: #915901;
 $green-board: #1d3825;
 $lightgreen-display: #93a28d;
+
+$dark-red: #8b0000;
+$golden: #b8860b;
+$nice-green: #008000;

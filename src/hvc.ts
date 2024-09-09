@@ -10,7 +10,7 @@ globals.run.addEventListener('click', () => exec(true));
 globals.debug.addEventListener('click', () => exec(false));
 
 document.addEventListener('keydown', e => {
-    let key = e.key.toLocaleLowerCase();
+    const key = e.key.toLocaleLowerCase();
 
     if (key === "f9") exec(true);
     else if (key === "f8") exec(false);
@@ -31,7 +31,7 @@ const exec = async(isquick: boolean) => {
         else await hvc.debug(+globals.delay.value);
     }
     catch (e) {
-        console.log((e as Error).message);
+        globals.detectError((e as Error).message);
     }
 }
 // ------------------------------------------------------------------------------- 
@@ -56,7 +56,6 @@ hvc.addEventInput(async () => {
     return await new Promise<string>(resolve => {
         const submit = () => {
             globals.undisplayElement(globals.cardmodal);
-
             setTimeout(resolve, +globals.delay.value, globals.card.value);
         }
 
@@ -74,7 +73,6 @@ hvc.addEventInput(async () => {
 // ------------------------------------------------------------------------------- 
 hvc.addEventClock(HVMState => {
     const hvm = hvc.getHVM();
-    // const state = hvm.getState();
 
     const acumulador = hvm.calculadora.getAcumulador();
     const drawers = hvm.gaveteiro.getGavetas();
@@ -82,7 +80,6 @@ hvc.addEventClock(HVMState => {
     
     // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
 
-    // console.log(HVMState);
     globals.setState(HVMState.toLowerCase());
     
     globals.acumulador.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
@@ -92,13 +89,11 @@ hvc.addEventClock(HVMState => {
         const gaveta = globals.gavetas[i] as HTMLElement;
 
         if(drawers[i]) {
-            // console.log(i);
             globals.highlightDrawer(gaveta);
 
             (cont as HTMLElement).innerText = drawers[i].toString();
         }
         else (cont as HTMLElement).innerText = "---";
-        // (cont as HTMLElement).innerText = drawers[i] ? drawers[i].toString() : "---";
     });
 
     (globals.gavetas[epi] as HTMLElement).style.filter = "hue-rotate(45deg)";

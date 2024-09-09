@@ -5,6 +5,7 @@ export const globals = {
     menumodal: document.getElementsByTagName("menu")[0]!,
     configmodal: document.getElementById("config-modal")!,
     cardmodal: document.getElementById("cartao-modal")!,
+    errorsmodal: document.getElementById("error-modal")!,
 
     /* áreas de texto */
     saida: document.getElementById("saida-span")!,
@@ -28,6 +29,9 @@ export const globals = {
     closeconfigs: document.getElementById("close-configs")!,
 
     submitcard: document.getElementById("submit-card")!,
+
+    error: document.getElementById("error")!,
+    closeerrors: document.getElementById("close-error")!,
 
     /* área de configuração */
     delay: document.getElementById("delay")! as HTMLInputElement,
@@ -61,6 +65,11 @@ export const globals = {
 
     scrollTo: (element: HTMLElement) => {
         element.scrollIntoView({ inline: "center" });
+    },
+
+    detectError: (message: string) => {
+        globals.error.innerText = message;
+        globals.displayElement(globals.errorsmodal);
     },
 
     /* código */

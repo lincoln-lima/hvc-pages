@@ -1,25 +1,13 @@
 @use '../globals' as global;
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
-$modal-border: 1em;
-/* -------------------------------------------------------------------- */
-@mixin modal {
+@mixin nonemodal {
 	display: none;
-}
-
-@mixin header-footer($border-top, $border-bottom) {
-	height: 10%;
-
-	background: global.$fade-default;
-
-	border-top-left-radius: $border-top;
-	border-top-right-radius: $border-top;
-
-	border-bottom-left-radius: $border-bottom;
-	border-bottom-right-radius: $border-bottom;
 }
 /* -------------------------------------------------------------------- */
 .mymodal {
+	$modal-border: 1em;
+
 	background-color: #00000030;
 
 	position: fixed;
@@ -29,12 +17,15 @@ $modal-border: 1em;
 
 	@include global.size(100vw, 100vh);
 	@include global.flex($justify: center);
-	@include modal;
+	@include nonemodal;
 
 	.modal-body {
 		background-color: white;
 		border-radius: $modal-border;
 
+		max-width: 90%;
+
+		@include global.flex($direction: column, $align: normal);
 		@include global.defaultText;
 
 		> * {
@@ -42,22 +33,26 @@ $modal-border: 1em;
 		}
 
 		.modal-header {
-			@include header-footer($modal-border, 0);
+			@include global.rounded-border($modal-border, 0);
 			@include global.flex;
 
-			button.close {
+			h2 {
+				font-size: 1.4em;
+			}
+
+			.close {
 				padding: 0;
 				border-radius: 50%;
 				font-weight: bolder;
-				font-size: 1.55em;
+				font-size: 1.4em;
 				
 				@include global.setFont('default');
-				@include global.size(40px);
+				@include global.size(1.1em);
 			}
 		}
 
 		.modal-footer {
-			@include header-footer(0, $modal-border);
+			@include global.rounded-border(0, $modal-border);
 			@include global.flex($justify: center)
 		}
 
@@ -85,12 +80,21 @@ $modal-border: 1em;
 	.modal-body {
 		@include global.size(calc(100vh * 0.5));
 		
+		.modal-header, .modal-footer {
+			background: global.$fade-default;
+		}
+
 		.modal-main {
-			height: 80%;
+			height: 60%;
+		}
+
+		.modal-footer {
+			height: 10%;
 		}
 		
-		button#save-configs {
-			font-size: 1.3em;
+		#save-configs {
+			font-size: 1em;
+			height: 85%;
 			
 			padding: 0;
 			width: 5em;
@@ -132,16 +136,32 @@ $modal-border: 1em;
 }
 /* -------------------------------------------------------------------- */
 #error-modal {
-	// display: flex;
+	background-color: rgba(139, 0, 0, 0.4);
 
 	.modal-body {
-		min-width: 30vw;
-		max-width: 95vw;
-
-		height: 15vh;
+		width: 25em;
+		height: 20vh;
 
 		.modal-header {
 			height: 35%;
+
+			background: play.$dark-red;
+
+			.close {
+				background: play.$dark-red;
+
+				&:hover {
+					background: white !important; //melhorar classe botão
+					color: play.$dark-red;
+				}
+			}
+		}
+
+		.modal-main {
+			height: 65%;
+			text-align: center;
+
+			@include global.middle;
 		}
 	}
 }

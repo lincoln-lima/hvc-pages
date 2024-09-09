@@ -50,6 +50,12 @@
 header {
     box-shadow: 1px 1px 9px #00000033;
     
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    background-color: white;
+
     &#header-index {
         padding: 25px 0;
 
@@ -63,15 +69,6 @@ header {
                     @include responsive-menu(calc(index.$header-height - index.$header-padding), 3);
                 }
             }
-        }
-
-        @media screen and (max-width: index.$responsive-width) {
-            position: sticky;
-            top: 0;
-
-            background-color: white;
-
-            z-index: 1;
         }
     }    
 
@@ -119,7 +116,7 @@ header {
                 }
                 
                 &.running {
-                    background-color: green;
+                    background-color: play.$nice-green;
 
                     #dot-state {
                         @include dot-state(grow, 50%);
@@ -127,7 +124,7 @@ header {
                 }
 
                 &.loading {
-                    background-color: darkgoldenrod;
+                    background-color: play.$golden;
                     
                     #dot-state {
                         $size-border: 5px;
@@ -143,7 +140,7 @@ header {
                 }
 
                 &.stopped {
-                    background-color: darkred;
+                    background-color: play.$dark-red;
                     filter: brightness(0.8);
                 }
             }
