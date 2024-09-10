@@ -1,21 +1,5 @@
-import global from "./global";
-// ------------------------------------------------------------------------------- 
-const globals = await global();
-// ------------------------------------------------------------------------------- 
-export default () => {
-    globals.import.addEventListener('click', importahv);
-    globals.export.addEventListener('click', exportahv);
-
-    document.addEventListener('keydown', (e) => {
-        let key = e.key.toLocaleLowerCase();
-
-        if (key === "s" && e.ctrlKey) {
-            e.preventDefault();
-            exportahv();
-        }
-    })
-
-    function importahv() {
+export default (globals: any) => {
+    const importahv = () => {
         const inputelement = document.createElement('input');
         inputelement.id = 'file';
         inputelement.type = 'file';
@@ -36,7 +20,7 @@ export default () => {
         document.body.removeChild(inputelement);
     }
 
-    function exportahv() {
+    const exportahv = () => {
         const blob = new Blob([globals.getCode()], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -50,4 +34,16 @@ export default () => {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
+
+    globals.import.addEventListener('click', importahv);
+    globals.export.addEventListener('click', exportahv);
+
+    document.addEventListener('keydown', (e) => {
+        let key = e.key.toLocaleLowerCase();
+
+        if (key === "s" && e.ctrlKey) {
+            e.preventDefault();
+            exportahv();
+        }
+    })
 }

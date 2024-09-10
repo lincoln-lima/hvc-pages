@@ -1,20 +1,30 @@
 import global from "./global";
-import drawers from "./drawers";
 import templates from "./templates";
+import drawers from "./drawers";
+import hvc from './hvc';
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/style.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
 // ------------------------------------------------------------------------------- 
-drawers();
+const setModals = async() => {
+    return new Promise<void>(resolve => {
+        const modals = ['configs', 'card', 'error'];
+    
+        modals.forEach(async modal => {
+            document.body.appendChild(await templates('modal/' + modal));
+        });
 
-const modals = ['configs', 'card', 'error'];
+        setTimeout(resolve, 1000);
+    })
+}
 
-modals.forEach(async modal => {
-    document.body.appendChild(await templates('modal/' + modal));
-});
+await setModals();
 // ------------------------------------------------------------------------------- 
-const globals = await global();
+const globals = global();
+// ------------------------------------------------------------------------------- 
+drawers(globals);
+hvc(globals);
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(1110));
 window.addEventListener('load', () => globals.monitoreMenu(1110));
