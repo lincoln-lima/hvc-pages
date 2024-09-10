@@ -1,97 +1,99 @@
-<thead>
-    <tr>
-        <th scope="col">Comando</th>
-        <th scope="col">Descrição</th>
-        <th scope="colgroup" colspan="5">Assembler</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>0EE</td>
-        <td class="description">copie valor da gaveta EE (cEE) para AC</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>1EE</td>
-        <td class="description">copie valor do AC (cAC) para gaveta EE</td>
-        <td>EE</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cAC</td>
-    </tr>
-    <tr>
-        <td>2EE</td>
-        <td class="description">some cEE ao AC</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cAC</td>
-        <td class="operation">+</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>3EE</td>
-        <td class="description">subtraia de AC o cEE</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cAC</td>
-        <td class="operation">-</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>4EE</td>
-        <td class="description">multiplique o cAC por cEE</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cAC</td>
-        <td class="operation">*</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>5EE</td>
-        <td class="description">divida o cAC por cEE</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cAC</td>
-        <td class="operation">/</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>6EE</td>
-        <td class="description">se cAC > 0, vá para EE</td>
-        <td>se cAC > 0</td>
-        <td class="operation">então</td>
-        <td>EPI</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>EE</td>
-    </tr>
-    <tr>
-        <td>7EE</td>
-        <td class="description">leia um valor e guarda na gaveta EE</td>
-        <td>leia(EE)</td>
-    </tr>
-    <tr>
-        <td>8EE</td>
-        <td class="description">escreva cEE no dispositivo de saída</td>
-        <td>escreva(cEE)</td>
-    </tr>
-    <tr>
-        <td>9EE</td>
-        <td class="description">vá para cEE</td>
-        <td>EPI</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>cEE</td>
-    </tr>
-    <tr>
-        <td>0-N</td>
-        <td class="description">AC recebe uma constante (truque)</td>
-        <td>AC</td>
-        <td class="operation arrow">&#8592;</td>
-        <td>N</td>
-    </tr>
-    <tr>
-        <td>000</td>
-        <td class="description">encerra execução</td>
-        <td>fim</td>
-    </tr>
-</tbody>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Comando</th>
+            <th scope="col">Descrição</th>
+            <th scope="colgroup" colspan="5">Assembler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0EE</td>
+            <td class="description">copie valor da gaveta EE (cEE) para AC</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>1EE</td>
+            <td class="description">copie valor do AC (cAC) para gaveta EE</td>
+            <td>EE</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cAC</td>
+        </tr>
+        <tr>
+            <td>2EE</td>
+            <td class="description">some cEE ao AC</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cAC</td>
+            <td class="operation">+</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>3EE</td>
+            <td class="description">subtraia de AC o cEE</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cAC</td>
+            <td class="operation">-</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>4EE</td>
+            <td class="description">multiplique o cAC por cEE</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cAC</td>
+            <td class="operation">*</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>5EE</td>
+            <td class="description">divida o cAC por cEE</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cAC</td>
+            <td class="operation">/</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>6EE</td>
+            <td class="description">se cAC > 0, vá para EE</td>
+            <td>se cAC > 0</td>
+            <td class="operation">então</td>
+            <td>EPI</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>EE</td>
+        </tr>
+        <tr>
+            <td>7EE</td>
+            <td class="description">leia um valor e guarda na gaveta EE</td>
+            <td>leia(EE)</td>
+        </tr>
+        <tr>
+            <td>8EE</td>
+            <td class="description">escreva cEE no dispositivo de saída</td>
+            <td>escreva(cEE)</td>
+        </tr>
+        <tr>
+            <td>9EE</td>
+            <td class="description">vá para cEE</td>
+            <td>EPI</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>cEE</td>
+        </tr>
+        <tr>
+            <td>0-N</td>
+            <td class="description">AC recebe uma constante (truque)</td>
+            <td>AC</td>
+            <td class="operation arrow">&#8592;</td>
+            <td>N</td>
+        </tr>
+        <tr>
+            <td>000</td>
+            <td class="description">encerra execução</td>
+            <td>fim</td>
+        </tr>
+    </tbody>
+</table>

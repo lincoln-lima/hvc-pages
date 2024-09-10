@@ -1,5 +1,7 @@
-import { globals } from "./global";
-
+import global from "./global";
+// ------------------------------------------------------------------------------- 
+const globals = await global();
+// ------------------------------------------------------------------------------- 
 export default () => {
     for (let i = 0; i < globals.numgavs; i++) {
         const drawer = document.createElement("article");

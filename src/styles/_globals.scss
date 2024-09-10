@@ -54,6 +54,10 @@ $fonts:
     text-align: $align;
 }
 /* -------------------------------------------------------------------- */
+@mixin nonedisplay {
+    display: none;
+}
+
 @mixin flex(
     $justify: space-between,
     $align: center,

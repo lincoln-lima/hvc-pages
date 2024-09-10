@@ -1,6 +1,6 @@
-import { globals } from "./global";
-// import { configs, card } from "./templates";
+import global from "./global";
 import drawers from "./drawers";
+import templates from "./templates";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/style.scss";
 import "/src/styles/playground/playground.scss";
@@ -8,10 +8,13 @@ import "/src/styles/playground/modal.scss";
 // ------------------------------------------------------------------------------- 
 drawers();
 
-/* (async () => {
-    document.body.appendChild(await configs());
-    document.body.appendChild(await card());
-})(); */
+const modals = ['configs', 'card', 'error'];
+
+modals.forEach(async modal => {
+    document.body.appendChild(await templates('modal/' + modal));
+});
+// ------------------------------------------------------------------------------- 
+const globals = await global();
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.monitoreMenu(1110));
 window.addEventListener('load', () => globals.monitoreMenu(1110));
@@ -34,3 +37,5 @@ window.addEventListener("click", e => {
 });
 // ------------------------------------------------------------------------------- 
 globals.closeerrors.addEventListener('click', () => globals.undisplayElement(globals.errorsmodal));
+// ------------------------------------------------------------------------------- 
+console.log(document.getElementById('config-modal'));

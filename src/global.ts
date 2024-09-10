@@ -1,6 +1,6 @@
 import { getDoc, setDoc } from "./codemirror"
 
-export const globals = {
+const globals = {
     /* áreas da página */
     menumodal: document.getElementsByTagName("menu")[0]!,
     configmodal: document.getElementById("config-modal")!,
@@ -46,7 +46,7 @@ export const globals = {
         let dotclass;
 
         if(state === 'carga') dotclass = 'loading';
-        else if(state === 'execução') dotclass = 'running';
+        else if(state === 'depuração') dotclass = 'running';
         else dotclass = 'stopped';
 
         globals.containerstate.className = dotclass;
@@ -118,4 +118,9 @@ export const globals = {
         }
     }
 }
-// ------------------------------------------------------------------------------- 
+
+export default async() => {
+    return new Promise<any>(resolve => {
+        setTimeout(resolve, 1000, globals);
+    });
+}
