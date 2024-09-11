@@ -76,6 +76,44 @@
                 <article id="gaveteiro" title="Gaveteiro"></article>
             </div>
         </section>
+        <section id="config-modal" class="mymodal">
+            <article class="modal-body">
+                <div class="modal-header">
+                    <h2>Configurações</h2>
+                    <button id="close-configs" class="botao close">&times;</button>
+                </div>
+                <div class="modal-main">
+                    <form name="configs-form">
+                        <label for="delay">Delay (ms)</label>
+                        <input type="number" name="delay" id="delay" min="100">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-configs" type="submit" class="botao">Salvar</button>
+                </div>
+            </article>
+        </section>
+        <section id="cartao-modal" class="mymodal">
+            <article class="modal-body">
+                <div class="modal-main">
+                    <form name="cartaos-form" class="flex-between-center campo">
+                        <input type="number" name="cartao" id="cartao" min="0" max="999" class="texto-centro pontilhada">
+                    </form>
+                    <button id="submit-card" class="botao"><img src="/img/check.png"></button>
+                </div>
+            </article>
+        </section>
+        <section id="error-modal" class="mymodal">
+            <article class="modal-body">
+                <div class="modal-header">
+                    <h2>Erro detectado !!!</h2>
+                    <button id="close-error" class="botao close">&times;</button>
+                </div>
+                <div class="modal-main">
+                    <span id="error"></span>
+                </div>
+            </article>
+        </section>
     </main>
 
     <script src="/src/default.ts" type="module"></script>

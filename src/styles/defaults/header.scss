@@ -29,6 +29,7 @@
     right: 0;
     
     width: fit-content !important;
+    min-width: fit-content !important;
     
     height: calc($items * default.$buttons-height * 1.3);
 
@@ -47,109 +48,22 @@
 }
 /* -------------------------------------------------------------------- */
 header {
-    & {
-        box-shadow: 1px 1px 9px #00000033;
-        
-        position: sticky;
-        top: 0;
-        z-index: 1;
+    box-shadow: 1px 1px 9px #00000033;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
-        background-color: white;
-
-        nav {
-            @include global.flex;
-            @include global.center;
-
-            position: relative;
-
-            menu {
-                list-style-type: none;
-                transition: 0.5s;
-                
-                @include global.flex;
-
-                li {
-                    .link-nav-1 {
-                        @include navlinksbynum(global.$color1, global.$color1-dark);
-                    }
-
-                    .link-nav-2 {
-                        @include navlinksbynum(global.$color2, global.$color2-dark);
-                    }
-
-                    .link-nav-3 {
-                        @include navlinksbynum(global.$color3, global.$color3-dark);
-                    }
-
-                    button {
-                        @include global.flex;
-                    }
-
-                }
-            }
-
-            span {
-                color: white;
-            }
-            
-            .botao-menu {
-                height: 50px;
-                padding: 5px;
-                
-                background-color: transparent;
-                transition: 0.3s;
-                cursor: pointer;
-                
-                @include global.border(transparent, 0, 3px);
-
-                &:hover {
-                    background-color: hsla(0, 0%, 0%, 0.08);
-                }
-            }
-        }
-    }
+    background-color: white;
 
     &#header-index {
-        padding: 10px 0;
+        padding: 25px 0;
 
         nav {
             max-width: index.$nav-width;
-
-            a {
-                color: white;
-
-                &:hover {
-                    text-decoration: underline #ffffff 2px;
-                }
-
-                &#home {
-                    @include global.flex($wrap: nowrap);
-                    @include global.size(170px, default.$home-height);
-
-                    font-size: 1.5em;
-
-                    &:hover {
-                        background-color: #00000015;
-                    }
-
-                    h1 {
-                        span {
-                            font-size: 1.2em;
-
-                            &:nth-child(1) {
-                                color: global.$color2;
-                            }
-
-                            &:nth-child(2) {
-                                color: global.$color1;
-                            }
-                        }
-                    }
-                }
-            }
             
             menu {
-                width: 55%;
+                min-width: 45vw;
                 
                 @media screen and (max-width: index.$responsive-width) {
                     @include responsive-menu(calc(index.$header-height - index.$header-padding), 3);
@@ -247,6 +161,92 @@ header {
                         margin-right: 0.5em;
                     }
                 }
+            }
+        }
+    }
+
+    nav {
+        @include global.flex;
+        @include global.center;
+
+        position: relative;
+
+        a {
+            color: white;
+
+            &:hover {
+                text-decoration: underline #ffffff 2px;
+            }
+
+            &#home {
+                @include global.flex($wrap: nowrap);
+                @include global.size(170px, default.$home-height);
+
+                font-size: 1.5em;
+
+                &:hover {
+                    background-color: #00000015;
+                }
+
+                h1 {
+                    span {
+                        font-size: 1.2em;
+
+                        &:nth-child(1) {
+                            color: global.$color2;
+                        }
+
+                        &:nth-child(2) {
+                            color: global.$color1;
+                        }
+                    }
+                }
+            }
+        }
+
+        menu {
+            @include global.flex;
+
+            list-style-type: none;
+
+            transition: opacity 0.5s, visibility 0.5s;
+
+            li {
+                .link-nav-1 {
+                    @include navlinksbynum(global.$color1, global.$color1-dark);
+                }
+
+                .link-nav-2 {
+                    @include navlinksbynum(global.$color2, global.$color2-dark);
+                }
+
+                .link-nav-3 {
+                    @include navlinksbynum(global.$color3, global.$color3-dark);
+                }
+
+                button {
+                    @include global.flex;
+                }
+
+            }
+        }
+
+        span {
+            color: white;
+        }
+        
+        button.botao-menu {
+            height: 50px;
+            padding: 5px;
+            
+            background-color: transparent;
+            transition: 0.3s;
+            cursor: pointer;
+            
+            @include global.border(transparent, 0, 3px);
+
+            &:hover {
+                background-color: #00000015;
             }
         }
     }

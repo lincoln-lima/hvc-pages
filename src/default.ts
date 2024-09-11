@@ -1,8 +1,6 @@
-import global from "./global";
+import { globals } from "./global";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/header.scss";
-// ------------------------------------------------------------------------------- 
-const globals = await global();
 // ------------------------------------------------------------------------------- 
 const switchMenu = () => {
     globals.viewMenu(globals.menumodal.style.visibility == "hidden");

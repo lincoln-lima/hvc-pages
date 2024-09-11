@@ -1,9 +1,7 @@
+import { globals } from "./global";
 import { HVC } from "hvcjs";
-import global from "./global";
 import ahv from "./ahv";
 // ------------------------------------------------------------------------------- 
-const globals = await global();
-console.log(globals);
 ahv();
 // ------------------------------------------------------------------------------- 
 const hvc = new HVC();
@@ -34,9 +32,6 @@ const exec = async(isquick: boolean) => {
     }
     catch (e) {
         globals.detectError((e as Error).message);
-
-        hvc.finish();
-        globals.setState(hvc.getHVM().getState().toLowerCase());
     }
 }
 // ------------------------------------------------------------------------------- 

@@ -1,6 +1,10 @@
 @use '../globals' as global;
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
+@mixin nonemodal {
+	display: none;
+}
+/* -------------------------------------------------------------------- */
 .mymodal {
 	$modal-border: 1em;
 
@@ -13,7 +17,7 @@
 
 	@include global.size(100vw, 100vh);
 	@include global.flex($justify: center);
-	@include global.nonedisplay;
+	@include nonemodal;
 
 	.modal-body {
 		background-color: white;
@@ -98,7 +102,7 @@
 	}
 }
 /* -------------------------------------------------------------------- */
-#card-modal {
+#cartao-modal {
 	.modal-body {
 		$width: 50vh;
 		$height: 15vh;
@@ -123,7 +127,7 @@
 				}
 			}
 
-			#submit-card {
+			button#submit-card {
 				width: 20%;
 				padding: 0;
 			}

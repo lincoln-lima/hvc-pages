@@ -1,7 +1,5 @@
-import global from "./global";
-// ------------------------------------------------------------------------------- 
-const globals = await global();
-// ------------------------------------------------------------------------------- 
+import { globals } from "./global";
+
 export default () => {
     globals.import.addEventListener('click', importahv);
     globals.export.addEventListener('click', exportahv);
