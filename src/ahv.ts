@@ -1,4 +1,6 @@
-export default (globals: any) => {
+import { play } from "./playground";
+// ------------------------------------------------------------------------------- 
+export default () => {
     const importahv = () => {
         const inputelement = document.createElement('input');
         inputelement.id = 'file';
@@ -12,7 +14,7 @@ export default (globals: any) => {
             const [file] = inputelement.files!;
 
             if (file) {
-                if (file.size <= 1024) globals.setCode(await file.text());
+                if (file.size <= 1024) play.actions.setCode(await file.text());
                 else alert("Os scripts deverão possuir no máximo 1KB");
             }
         });
@@ -21,7 +23,7 @@ export default (globals: any) => {
     }
 
     const exportahv = () => {
-        const blob = new Blob([globals.getCode()], { type: 'text/plain' });
+        const blob = new Blob([play.actions.getCode()], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
 
@@ -35,11 +37,11 @@ export default (globals: any) => {
         URL.revokeObjectURL(url);
     }
 
-    globals.import.addEventListener('click', importahv);
-    globals.export.addEventListener('click', exportahv);
+    play.elements.import().addEventListener('click', importahv);
+    play.elements.export().addEventListener('click', exportahv);
 
     document.addEventListener('keydown', (e) => {
-        let key = e.key.toLocaleLowerCase();
+        const key = e.key.toLocaleLowerCase();
 
         if (key === "s" && e.ctrlKey) {
             e.preventDefault();

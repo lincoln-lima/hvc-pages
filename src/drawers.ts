@@ -1,24 +1,11 @@
-export default (globals: any) => {
-    for (let i = 0; i < globals.numgavs; i++) {
-        const drawer = document.createElement("article");
-        drawer.className = "gaveta";
+import templates from "./templates";
 
-        const numdrawer = document.createElement("span");
-        numdrawer.innerText = i.toString().padStart(2, "0");
-        numdrawer.className = "num-gaveta";
+export default async(gaveteiro: HTMLElement) => {
+    for (let i = 0; i < 100; i++) {
+        const drawer = await templates('playground/drawer');
+        const numdrawer = drawer.childNodes[1].firstChild!;
+        numdrawer.textContent = i.toString().padStart(2, "0");
         
-        const div_numdrawer = document.createElement("div");
-        div_numdrawer.appendChild(numdrawer);
-
-        const contdrawer = document.createElement("span");
-        contdrawer.className = "cont-gaveta";
-
-        const div_contdrawer = document.createElement("div");
-        div_contdrawer.appendChild(contdrawer);
-
-        drawer.appendChild(div_numdrawer);
-        drawer.appendChild(div_contdrawer);
-
-        globals.gaveteiro.appendChild(drawer);
+        gaveteiro.appendChild(drawer);
     }
 }
