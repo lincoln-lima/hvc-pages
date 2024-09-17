@@ -11,9 +11,6 @@
 	left: 0;
 	z-index: 99;
 
-	visibility: hidden;
-	transition: 0.5s;
-
 	@include global.size(100vw, 100vh);
 	@include global.flex($justify: center);
 

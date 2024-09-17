@@ -7,7 +7,7 @@ export const globals = {
     },
     actions: {
         displayElement: (element: HTMLElement) => {
-            element.style.display = 'revert-layer';
+            element.style.display = "revert-layer";
         },
     
         undisplayElement: (element: HTMLElement) => {
@@ -17,10 +17,6 @@ export const globals = {
         switchDisplay: (element: HTMLElement, set: boolean) => {
             if(set) globals.actions.displayElement(element);
             else globals.actions.undisplayElement(element);
-        },
-
-        showElement: (element: HTMLElement, visible: boolean) => {
-           element.style.visibility = visible ? 'visible' : 'hidden'; 
         },
     
         scrollTo: (element: HTMLElement) => {

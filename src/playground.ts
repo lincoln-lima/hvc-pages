@@ -57,7 +57,7 @@ export const play = {
     
         detectError: (message: string) => {
             play.elements.error().innerText = message;
-            globals.actions.showElement(play.elements.errorsmodal(), true);
+            globals.actions.displayElement(play.elements.errorsmodal());
         },
     
         getCode: () => {
@@ -69,17 +69,24 @@ export const play = {
         },
     
         highlightDrawer: (drawer: HTMLElement, state: string) => {
-            drawer.className = 'gaveta '+state;
+            drawer.classList.remove(drawer.classList.item(1)!);
+            drawer.classList.add(state);
         },
     }
 }
+// ------------------------------------------------------------------------------- 
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
+window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
 const setModals = async() => {
     return new Promise<void>(resolve => {
         const modals = ['configs', 'card', 'error'];
     
         modals.forEach(async modal => {
-            document.body.appendChild(await templates('modal/' + modal));
+            const element = await templates('modal/' + modal) as HTMLElement;
+            element.style['display'] = 'none';
+
+            document.body.appendChild(element);
         });
 
         setTimeout(resolve, 1000);
@@ -91,25 +98,28 @@ await setModals();
 await drawers(play.elements.gaveteiro());
 hvc();
 // ------------------------------------------------------------------------------- 
-window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
-// ------------------------------------------------------------------------------- 
 play.elements.delay().value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
 // ------------------------------------------------------------------------------- 
-play.elements.configs().addEventListener("click", () => globals.actions.showElement(play.elements.configmodal(), true));
-play.elements.closeconfigs().addEventListener("click", () => globals.actions.showElement(play.elements.configmodal(), false));
+play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
+play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
+play.elements.saveconfigs().addEventListener('click', () => {
+    localStorage.setItem("delay", play.elements.delay().value);
+
+    globals.actions.undisplayElement(play.elements.configmodal());
+    alert("As configurações foram salvas!");
+});
 
 document.addEventListener("keydown", e => {
     if(e.key.toLocaleLowerCase() === "f12") {
         const config = play.elements.configmodal();
         e.preventDefault();
 
-        globals.actions.showElement(config, config.style.visibility === 'hidden');
+        globals.actions.switchDisplay(config, config.style['display'] === 'none');
     }
 });
 
 window.addEventListener("click", e => {
-    if(e.target == play.elements.configmodal()) globals.actions.showElement(play.elements.configmodal(), false);
+    if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
 });
 // ------------------------------------------------------------------------------- 
-play.elements.closeerrors().addEventListener('click', () => globals.actions.showElement(play.elements.errorsmodal(), false));
+play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));

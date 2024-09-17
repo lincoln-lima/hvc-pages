@@ -39,28 +39,20 @@ export default () => {
             play.actions.detectError((e as Error).message);
         }
     }
-    // ---------------------------------------------------------------------------
-    play.elements.saveconfigs().addEventListener('click', () => {
-        localStorage.setItem("delay", play.elements.delay().value);
-
-        globals.actions.showElement(play.elements.configmodal(), false);
-
-        alert("As configurações foram salvas!");
-    });
     // ------------------------------------------------------------------------------- 
     hvc.addEventOutput((out: string) => {
         play.elements.saida().innerText = out;
     });
 
     hvc.addEventInput(async () => {
-        globals.actions.showElement(play.elements.cardmodal(), true);
+        globals.actions.displayElement(play.elements.cardmodal());
 
         play.elements.card().value = '';
         play.elements.card().focus();
 
         return await new Promise<string>(resolve => {
             const submit = () => {
-                globals.actions.showElement(play.elements.cardmodal(), false);
+                globals.actions.undisplayElement(play.elements.cardmodal());
                 setTimeout(resolve, +play.elements.delay().value, play.elements.card().value);
             }
 

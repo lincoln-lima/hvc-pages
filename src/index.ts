@@ -8,10 +8,12 @@ import "/src/styles/index/table.scss";
 window.addEventListener('resize', () => globals.actions.monitoreMenu(1064));
 window.addEventListener('load', () => globals.actions.monitoreMenu(1064));
 // ------------------------------------------------------------------------------- 
-(async () => {
+const setTemplates = async () => {
     document.getElementById("table")!.appendChild(await templates('table'));
     document.body.appendChild(await templates('footer')); 
-})();
+};
+
+await setTemplates();
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copiar")!;
 
