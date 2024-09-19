@@ -48,7 +48,7 @@ export const play = {
             let dotclass;
     
             if(state === 'carga') dotclass = 'loading';
-            else if(state === 'depuração') dotclass = 'running';
+            else if(state === 'execução') dotclass = 'running';
             else dotclass = 'stopped';
     
             play.elements.state().className = dotclass;
