@@ -18,7 +18,7 @@
 		background-color: white;
 		border-radius: $modal-border;
 
-		max-width: 90%;
+		max-width: 92%;
 
 		@include global.flex($direction: column, $align: normal);
 		@include global.defaultText;
@@ -158,6 +158,17 @@
 			text-align: center;
 
 			@include global.middle;
+		}
+	}
+}
+
+#help-modal {
+	.modal-body {
+		overflow: auto;
+		font-size: 1em;
+
+		table {
+			padding: 0;
 		}
 	}
 }

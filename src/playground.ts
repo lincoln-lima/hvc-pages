@@ -8,6 +8,7 @@ import templates from "./templates";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
+import "/src/styles/index/table.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
@@ -27,6 +28,7 @@ export const play = {
         configmodal: () => { return document.getElementById("config-modal")! },
         cardmodal: () => { return document.getElementById("card-modal")! },
         errorsmodal: () => { return document.getElementById("error-modal")! },
+        helpmodal: () => { return document.getElementById('help-modal')! },
     
         configs: () => { return  document.getElementById("config")! },
         saveconfigs: () => { return document.getElementById("save-configs")! },
@@ -36,6 +38,8 @@ export const play = {
     
         error: () => { return document.getElementById("error")! },
         closeerrors: () => { return document.getElementById("close-error")! },
+
+        help: () => { return document.getElementById('help')! },
 
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
     
@@ -80,10 +84,10 @@ window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
 const setModals = async() => {
     return new Promise<void>(resolve => {
-        const modals = ['configs', 'card', 'error'];
+        const modals = ['configs', 'card', 'error', 'help'];
     
         modals.forEach(async modal => {
-            const element = await templates('modal/' + modal) as HTMLElement;
+            const element = await templates('modal/' + modal);
             element.style['display'] = 'none';
 
             document.body.appendChild(element);
@@ -94,6 +98,7 @@ const setModals = async() => {
 }
 
 await setModals();
+play.elements.helpmodal().firstElementChild!.appendChild(await templates('table'));
 // ------------------------------------------------------------------------------- 
 await drawers(play.elements.gaveteiro());
 hvc();
@@ -110,9 +115,9 @@ play.elements.saveconfigs().addEventListener('click', () => {
 });
 
 document.addEventListener("keydown", e => {
-    if(e.key.toLocaleLowerCase() === "f12") {
-        const config = play.elements.configmodal();
+    if(e.ctrlKey && e.key.toLowerCase() === "f12") {
         e.preventDefault();
+        const config = play.elements.configmodal();
 
         globals.actions.switchDisplay(config, config.style['display'] === 'none');
     }
@@ -123,3 +128,18 @@ window.addEventListener("click", e => {
 });
 // ------------------------------------------------------------------------------- 
 play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
+// ------------------------------------------------------------------------------- 
+const switchHelp = () => {
+    const element = play.elements.helpmodal();
+    const display = element.style['display'] === 'none';
+    
+    globals.actions.switchDisplay(element, display);
+}
+
+play.elements.help().addEventListener('click', switchHelp);
+document.addEventListener('keydown', e => {
+    if(!e.ctrlKey && e.key.toLowerCase() === 'f12') {
+        e.preventDefault();
+        switchHelp();
+    }
+})

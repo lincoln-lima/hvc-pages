@@ -6,5 +6,5 @@ export default async(tmpl: string) => {
     
     element.innerHTML = await res.text();
 
-    return element.childNodes[2];
+    return element.childNodes[2] as HTMLElement;
 }

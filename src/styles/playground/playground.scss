@@ -219,3 +219,20 @@ main {
         }
     }
 }
+
+aside {
+    $distance: 0.3em;
+
+    position: fixed;
+    bottom: $distance;
+    right: $distance;
+
+    z-index: 999;
+
+    .botao {
+        border-radius: 50%;
+        padding: 0.2em;
+
+        @include global.middle;
+    }
+}
