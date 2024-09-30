@@ -90,6 +90,40 @@ export default () => {
             if(drawers[i]) {
                 play.actions.highlightDrawer(gaveta, 'highlight');
 
+                (cont as HTMLElement).innerText = drawers[i].toString().padStart(3, "0");
+            }
+            else (cont as HTMLElement).innerText = "---";
+        });
+
+        play.actions.highlightDrawer(pointed, 'pointed');
+        globals.actions.scrollTo(pointed);
+    });
+
+    document.getElementById('pause')!.addEventListener('click', () => hvc.stop());
+    document.getElementById('vorta')!.addEventListener('click', () => {
+        hvc.back()
+
+        const hvm = hvc.getHVM();
+
+        const acumulador = hvm.calculadora.getAcumulador();
+        const drawers = hvm.gaveteiro.getGavetas();
+        const epi = hvm.epi.lerRegistro();
+
+        const pointed = play.elements.gavetas()[epi] as HTMLElement;
+        
+        // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
+
+        play.actions.setState(hvm.getState().toLowerCase());
+        
+        play.elements.acumulador().innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
+        play.elements.epi().innerText = epi.toString();
+        
+        Array.from(play.elements.contentgavetas()).forEach((cont, i) => {
+            const gaveta = play.elements.gavetas()[i] as HTMLElement;
+
+            if(drawers[i]) {
+                play.actions.highlightDrawer(gaveta, 'highlight');
+
                 (cont as HTMLElement).innerText = drawers[i].toString();
             }
             else (cont as HTMLElement).innerText = "---";
@@ -98,4 +132,10 @@ export default () => {
         play.actions.highlightDrawer(pointed, 'pointed');
         globals.actions.scrollTo(pointed);
     });
+    document.getElementById('avanca')!.addEventListener('click', () => hvc.next());
+    document.getElementById('acaba')!.addEventListener('click', () => hvc.finish());
+    document.getElementById('continua')!.addEventListener('click', () => hvc.continue());
+    // ctrl e setas para depurar frente e trás
+    // ctrl + c para encerrar
+    // barra de depuração junto da navegação
 }

@@ -116,6 +116,7 @@ play.elements.saveconfigs().addEventListener('click', () => {
 
 document.addEventListener("keydown", e => {
     if(e.ctrlKey && e.key.toLowerCase() === "f12") {
+        // console.log('apertou')
         e.preventDefault();
         const config = play.elements.configmodal();
 
