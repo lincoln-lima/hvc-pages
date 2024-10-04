@@ -40,6 +40,13 @@
     background-color: #00000020;
 }
 
+@mixin options {
+    list-style-type: none;
+    transition: 0.5s;
+    
+    @include global.flex;
+}
+
 @mixin dot-state($animation, $radius) {
     border-radius: $radius;
 
@@ -63,10 +70,7 @@ header {
             position: relative;
 
             menu {
-                list-style-type: none;
-                transition: 0.5s;
-                
-                @include global.flex;
+                @include options;
 
                 li {
                     .link-nav-1 {
@@ -228,6 +232,22 @@ header {
                 &.stopped {
                     background-color: play.$dark-red;
                     filter: brightness(0.8);
+                }
+            }
+
+            #debug-menu {
+                ul {
+                    @include options;
+
+                    li {
+                        @include global.size(1.5em);
+
+                        i {
+                            border-top: 8px solid transparent;
+                            border-left: 12px solid #000;
+                            border-bottom: 8px solid transparent;
+                        }
+                    }
                 }
             }
 
