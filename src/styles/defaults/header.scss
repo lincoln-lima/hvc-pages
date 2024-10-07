@@ -40,6 +40,12 @@
     background-color: #00000020;
 }
 
+@mixin dot-state($animation, $radius) {
+    border-radius: $radius;
+    
+    @include global.animation($animation, 1.5s, infinite);
+}
+
 @mixin options {
     list-style-type: none;
     transition: 0.5s;
@@ -47,10 +53,8 @@
     @include global.flex;
 }
 
-@mixin dot-state($animation, $radius) {
-    border-radius: $radius;
-
-    @include global.animation($animation, 1.5s, infinite);
+@mixin debug-itens($icon) {
+    @include global.background($image: $icon, $size: cover);
 }
 /* -------------------------------------------------------------------- */
 header {
@@ -236,16 +240,43 @@ header {
             }
 
             #debug-menu {
-                ul {
-                    @include options;
+                article {
+                    ul {
+                        $width: 10em;
+                        width: $width;
 
-                    li {
-                        @include global.size(1.5em);
+                        @include options;
 
-                        i {
-                            border-top: 8px solid transparent;
-                            border-left: 12px solid #000;
-                            border-bottom: 8px solid transparent;
+                        li {
+                            & {
+                                cursor: pointer;
+
+                                @include global.size(calc($width/5));
+                            }
+
+                            &#back {
+                                @include debug-itens('back');
+                            }
+
+                            &#forth {
+                                @include debug-itens('forth');
+                            }
+
+                            &.pause {
+                                @include debug-itens('pause');
+                            }
+
+                            &.continue {
+                                @include debug-itens('continue');
+                            }
+
+                            &#finish {
+                                @include debug-itens('finish');
+                            }
+
+                            &:hover {
+                                box-shadow: 4px 4px 8px #00000020;
+                            }
                         }
                     }
                 }

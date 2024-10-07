@@ -30,7 +30,12 @@ export default () => {
 
         try {
             if (isquick) await hvc.run();
-            else await hvc.debug(+play.elements.delay().value);
+            else {
+                const debugmenu = play.elements.debugmenu();
+
+                globals.actions.switchDisplay(debugmenu, debugmenu.style['display'] === 'none');
+                await hvc.debug(+play.elements.delay().value);
+            }
         }
         catch (e) {
             hvc.finish();
@@ -100,16 +105,45 @@ export default () => {
     }
 
     hvc.addEventClock(_HVMState => {updateDrawers()});
+    // ------------------------------------------------------------------------------- 
+    play.elements.pausecontinue().addEventListener('click', () => {
+        if(play.elements.pausecontinue().className === 'pause') hvc.stop();
+        else hvc.continue();
 
-    document.getElementById('pause')!.addEventListener('click', () => hvc.stop());
-    document.getElementById('vorta')!.addEventListener('click', () => {
+        play.actions.switchPauseContinue();
+    });
+
+    play.elements.finish().addEventListener('click', () => hvc.finish());
+
+    play.elements.forth().addEventListener('click', () => hvc.next());
+    play.elements.back().addEventListener('click', () => {
         hvc.back();
         updateDrawers();
     });
-    document.getElementById('avanca')!.addEventListener('click', () => hvc.next());
-    document.getElementById('acaba')!.addEventListener('click', () => hvc.finish());
-    document.getElementById('continua')!.addEventListener('click', () => hvc.continue());
-    // ctrl e setas para depurar frente e trás
-    // ctrl + c para encerrar
-    // barra de depuração junto da navegação
+
+    document.addEventListener('keydown', e => {
+        if(e.ctrlKey && e.key.toLowerCase() === 'arrowright') {
+            e.preventDefault();
+
+            hvc.next();
+        }
+    })
+
+    document.addEventListener('keydown', e => {
+        if(e.ctrlKey && e.key.toLowerCase() === 'arrowleft') {
+            e.preventDefault();
+
+            hvc.back();
+            updateDrawers();
+        }
+
+    });
+
+    document.addEventListener('keydown', e => {
+        if(e.ctrlKey && e.key.toLowerCase() === 'c') {
+            e.preventDefault();
+            
+            hvc.finish();
+        }
+    });
 }

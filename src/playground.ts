@@ -1,7 +1,7 @@
 import { globals } from "./default";
 import { getDoc, setDoc } from "./codemirror"
 // ------------------------------------------------------------------------------- 
-import hvc from './hvc';
+import hvc from "./hvc";
 import drawers from "./drawers";
 import templates from "./templates";
 // ------------------------------------------------------------------------------- 
@@ -25,10 +25,17 @@ export const play = {
         state: () => { return document.getElementById("state")! },
         hvmstate: () => { return document.getElementById("hvm-state")! },
 
+        debugmenu: () => { return document.getElementById("debug-menu")! },
+
+        back: () => { return document.getElementById("back")! },
+        forth: () => { return document.getElementById("forth")! },
+        pausecontinue: () => { return document.getElementById("pause-continue")! },
+        finish: () => { return document.getElementById("finish")! },
+
         configmodal: () => { return document.getElementById("config-modal")! },
         cardmodal: () => { return document.getElementById("card-modal")! },
         errorsmodal: () => { return document.getElementById("error-modal")! },
-        helpmodal: () => { return document.getElementById('help-modal')! },
+        helpmodal: () => { return document.getElementById("help-modal")! },
     
         configs: () => { return  document.getElementById("config")! },
         saveconfigs: () => { return document.getElementById("save-configs")! },
@@ -39,7 +46,7 @@ export const play = {
         error: () => { return document.getElementById("error")! },
         closeerrors: () => { return document.getElementById("close-error")! },
 
-        help: () => { return document.getElementById('help')! },
+        help: () => { return document.getElementById("help")! },
 
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
     
@@ -76,11 +83,19 @@ export const play = {
             drawer.classList.remove(drawer.classList.item(1)!);
             drawer.classList.add(state);
         },
+
+        switchPauseContinue: () => {
+            const actual = play.elements.pausecontinue().className;
+
+            play.elements.pausecontinue().className = actual === 'pause' ? 'continue' : 'pause';
+        }
     }
 }
 // ------------------------------------------------------------------------------- 
 window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
 window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
+// ------------------------------------------------------------------------------- 
+play.elements.debugmenu().style['display'] = 'none';
 // ------------------------------------------------------------------------------- 
 const setModals = async() => {
     return new Promise<void>(resolve => {
@@ -115,8 +130,7 @@ play.elements.saveconfigs().addEventListener('click', () => {
 });
 
 document.addEventListener("keydown", e => {
-    if(e.ctrlKey && e.key.toLowerCase() === "f12") {
-        // console.log('apertou')
+    if(e.key.toLowerCase() === "f2") {
         e.preventDefault();
         const config = play.elements.configmodal();
 
