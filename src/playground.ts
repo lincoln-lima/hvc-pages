@@ -95,8 +95,6 @@ export const play = {
 window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
 window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
-play.elements.debugmenu().style['display'] = 'none';
-// ------------------------------------------------------------------------------- 
 const setModals = async() => {
     return new Promise<void>(resolve => {
         const modals = ['configs', 'card', 'error', 'help'];

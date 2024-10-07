@@ -240,6 +240,11 @@ header {
             }
 
             #debug-menu {
+                transition: 0.5s;
+
+                visibility: hidden;
+                opacity: 0;
+
                 article {
                     ul {
                         $width: 10em;
@@ -275,7 +280,7 @@ header {
                             }
 
                             &:hover {
-                                box-shadow: 4px 4px 8px #00000020;
+                                filter: drop-shadow(2px 4px 6px #0000009a);
                             }
                         }
                     }

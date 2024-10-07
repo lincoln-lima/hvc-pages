@@ -162,6 +162,10 @@ main {
                         @include responsive.gavetas;
                     }
 
+                    &:hover {
+                        filter: hue-rotate(45deg);
+                    }
+
                     &.default {
                         animation: inherit;
                         filter: brightness(0.5);

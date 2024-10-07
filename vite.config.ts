@@ -10,5 +10,12 @@ export default defineConfig({
         playground: resolve('./pages/playground.html')
       }
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
   }
 });

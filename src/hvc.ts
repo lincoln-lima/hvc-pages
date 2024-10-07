@@ -33,8 +33,12 @@ export default () => {
             else {
                 const debugmenu = play.elements.debugmenu();
 
-                globals.actions.switchDisplay(debugmenu, debugmenu.style['display'] === 'none');
+                globals.actions.switchVisibility(debugmenu, true);
+
                 await hvc.debug(+play.elements.delay().value);
+
+                // globals.actions.switchVisibility(debugmenu, false);
+                // play.elements.pausecontinue().className = 'pause';
             }
         }
         catch (e) {
@@ -106,6 +110,14 @@ export default () => {
 
     hvc.addEventClock(_HVMState => {updateDrawers()});
     // ------------------------------------------------------------------------------- 
+    const terminate = () => {
+        const debugmenu = play.elements.debugmenu();
+        globals.actions.switchVisibility(debugmenu, false);
+        
+        hvc.finish();
+        hvc.next();
+    }
+
     play.elements.pausecontinue().addEventListener('click', () => {
         if(play.elements.pausecontinue().className === 'pause') hvc.stop();
         else hvc.continue();
@@ -113,7 +125,7 @@ export default () => {
         play.actions.switchPauseContinue();
     });
 
-    play.elements.finish().addEventListener('click', () => hvc.finish());
+    play.elements.finish().addEventListener('click', terminate);
 
     play.elements.forth().addEventListener('click', () => hvc.next());
     play.elements.back().addEventListener('click', () => {
@@ -140,10 +152,11 @@ export default () => {
     });
 
     document.addEventListener('keydown', e => {
-        if(e.ctrlKey && e.key.toLowerCase() === 'c') {
+        const hvm = hvc.getHVM();
+
+        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvm.getState() != 'DESLIGADO') {
             e.preventDefault();
-            
-            hvc.finish();
+            terminate();
         }
     });
 }

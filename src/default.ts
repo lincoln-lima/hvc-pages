@@ -24,16 +24,14 @@ export const globals = {
             element.scrollIntoView({ inline: "center" });
         },
         
-        viewMenu: (set: boolean) => {
-            const menu = globals.elements.menumodal();
-
+        switchVisibility: (element: HTMLElement, set: boolean) => {
             if(set) {
-                menu.style.opacity = '1';
-                menu.style.visibility = "visible";
+                element.style['opacity'] = '1';
+                element.style['visibility'] = "visible";
             }
             else {
-                menu.style.opacity = '0';
-                menu.style.visibility = "hidden";
+                element.style['opacity'] = '0';
+                element.style['visibility'] = "hidden";
             }
         },
 
@@ -41,18 +39,18 @@ export const globals = {
             const burger = globals.elements.menuburger();
 
             if (window.innerWidth > size) {
-                globals.actions.viewMenu(true);
+                globals.actions.switchVisibility(globals.elements.menumodal(), true);
                 globals.actions.undisplayElement(burger);
             }
             else {
-                globals.actions.viewMenu(false);
+                globals.actions.switchVisibility(globals.elements.menumodal(), false);
                 globals.actions.displayElement(burger);
             }
         },
     
         switchMenu: () => {
             const menu = globals.elements.menumodal();
-            globals.actions.viewMenu(menu.style.visibility == "hidden");
+            globals.actions.switchVisibility(menu, menu.style['visibility'] == "hidden");
         }
     }
 }
@@ -61,8 +59,9 @@ globals.elements.menuburger().addEventListener('click', globals.actions.switchMe
 // ------------------------------------------------------------------------------- 
 window.addEventListener('click', e => {
     const element = e.target as Node;
+    const menu = globals.elements.menumodal();
     const burgerblock = globals.elements.menuburger().style.display != "none";
     const modalvisible = globals.elements.menumodal().style.visibility == "visible";
 
-    if(burgerblock && modalvisible && !globals.elements.menuburger().contains(element)) globals.actions.viewMenu(false);
+    if(burgerblock && modalvisible && !globals.elements.menuburger().contains(element)) globals.actions.switchVisibility(menu, false);
 })
