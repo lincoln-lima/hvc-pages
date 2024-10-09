@@ -18,7 +18,7 @@ const codechange = EditorView.updateListener.of(update => {
     if(update.docChanged) localStorage.setItem("code", getDoc());
 })
 
-const startstate = EditorState.create({
+let startstate = EditorState.create({
     doc: initialcode!,
     extensions: [
         keymap.of(defaultKeymap),
@@ -29,7 +29,7 @@ const startstate = EditorState.create({
     ]
 });
 
-const view = new EditorView({
+let view = new EditorView({
     state: startstate,
     parent: document.getElementById("porta-cartoes")!
 });
