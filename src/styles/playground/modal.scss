@@ -1,6 +1,10 @@
 @use '../globals' as global;
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
+@mixin nonemodal {
+	display: none;
+}
+/* -------------------------------------------------------------------- */
 .mymodal {
 	$modal-border: 1em;
 
@@ -13,12 +17,13 @@
 
 	@include global.size(100vw, 100vh);
 	@include global.flex($justify: center);
+	@include nonemodal;
 
 	.modal-body {
 		background-color: white;
 		border-radius: $modal-border;
 
-		max-width: 92%;
+		max-width: 90%;
 
 		@include global.flex($direction: column, $align: normal);
 		@include global.defaultText;
@@ -97,7 +102,7 @@
 	}
 }
 /* -------------------------------------------------------------------- */
-#card-modal {
+#cartao-modal {
 	.modal-body {
 		$width: 50vh;
 		$height: 15vh;
@@ -112,7 +117,6 @@
 			
 			form {
 				width: 75%;
-				border: 1px solid rgba(0, 0, 0, 0.2);
 				
 				input {
 					width: 100%;
@@ -123,7 +127,7 @@
 				}
 			}
 
-			#submit-card {
+			button#submit-card {
 				width: 20%;
 				padding: 0;
 			}
@@ -158,19 +162,6 @@
 			text-align: center;
 
 			@include global.middle;
-		}
-	}
-}
-
-#help-modal {
-	.modal-body {
-		overflow: auto;
-		font-size: 1em;
-
-		max-height: 95%;
-
-		table {
-			padding: 0;
 		}
 	}
 }

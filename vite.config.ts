@@ -7,14 +7,9 @@ export default defineConfig({
       input: {
         main: resolve('./index.html'),
         documentation: resolve('./pages/documentation.html'),
-        playground: resolve('./pages/playground.html')
-      }
-    }
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler'
+        playground: resolve('./pages/playground.html'),
+        table: resolve('./templates/table.html'),
+        footer: resolve('./templates/footer.html')
       }
     }
   }

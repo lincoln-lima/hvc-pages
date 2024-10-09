@@ -39,6 +39,9 @@ code {
 /* -------------------------------------------------------------------- */
 button.botao {
     background: global.$fade-button;
+    padding: 5px 30px;
+
+    display: block;
 
     transition: 0.5s;
     
