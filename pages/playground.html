@@ -14,10 +14,20 @@
 <body>
     <header id="header-play">
         <nav>
-            <section id="hvm-state" class="stopped">
+            <section id="state" class="stopped">
                 <article>
                     <span id="dot-state"></span>
-                    <span id="state-value">Desligado</span>
+                    <span id="hvm-state">Desligado</span>
+                </article>
+            </section>
+            <section id="debug-menu">
+                <article>
+                    <ul>
+                        <li id="back"></li>
+                        <li id="pause-continue" class="pause"></li>
+                        <li id="finish"></li>
+                        <li id="forth"></li>
+                    </ul>
                 </article>
             </section>
             <menu>
@@ -46,7 +56,7 @@
                     </button>
                 </li>
                 <li>
-                    <button id="config" class="link-nav-3" target="_self" title="F12">
+                    <button id="config" class="link-nav-3" target="_self" title="F2">
                         <img src="/img/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
@@ -115,10 +125,12 @@
             </article>
         </section>
     </main>
+    <aside>
+        <button id="help" class="botao"><img src="/img/help.png" title="Ajuda (F12)"></button>
+    </aside>
 
     <script src="/src/default.ts" type="module"></script>
     <script src="/src/playground.ts" type="module"></script>
-    <script src="/src/hvc.ts" type="module"></script>
 </body>
 
 </html>

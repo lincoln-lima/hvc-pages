@@ -1,16 +1,19 @@
-import { globals } from "./global";
-import { table, footer } from "./templates";
+import templates from "./templates";
+// ------------------------------------------------------------------------------- 
+import { globals } from "./default";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/footer.scss";
 import "/src/styles/index/table.scss";
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.monitoreMenu(1064));
-window.addEventListener('load', () => globals.monitoreMenu(1064));
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1064));
+window.addEventListener('load', () => globals.actions.monitoreMenu(1064));
 // ------------------------------------------------------------------------------- 
-(async () => {
-    document.getElementById("table")!.appendChild(await table());
-    document.body.appendChild(await footer()); 
-})();
+const setTemplates = async () => {
+    document.getElementById("table")!.appendChild(await templates('table'));
+    document.body.appendChild(await templates('footer')); 
+};
+
+await setTemplates();
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copiar")!;
 
