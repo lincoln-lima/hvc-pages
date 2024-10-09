@@ -6,40 +6,41 @@
     white-space: nowrap;
 }
 /* -------------------------------------------------------------------- */
-table {
-    @include global.defaultText;
-    @include global.center;
-
+table#commands {
     width: 100%;
     border-spacing: 10px 10px;
 
-    th {
-        @include datas;
+    @include global.defaultText;
+    @include global.center;
 
+    th {
         background-color: global.$color3;
         border-radius: 5px 5px 0 0;
+
+        @include datas;
     }
 
     td {
+        background-color: global.$color1;
+        border-radius: 5px 0 5px 0;
+        
         @include datas;
         @include global.textAlign;
         @include global.fontWeight(500);
 
-        background-color: global.$color1;
-        border-radius: 5px 0 5px 0;
-        
         &.description {
-            @include global.textAlign(left);
             border-radius: 0;
+            @include global.textAlign(left);
         }
         
         &.operation {
-            @include global.fontWeight(700);
             background-color: transparent;
             padding: 0;
             width: 10px;
             
             color: global.$color3;
+
+            @include global.fontWeight(700);
         }
         
         &.arrow {
