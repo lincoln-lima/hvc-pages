@@ -14,7 +14,7 @@ export default defineConfig({
         error: resolve('./templates/modal/error.html'),
         help: resolve('./templates/modal/help.html'),
         footer: resolve('./templates/footer.html'),
-        table: resolve('./templates/modal/table.html'),
+        table: resolve('./templates/table.html'),
         drawer: resolve('./templates/playground/drawer.html')
       }
     }
