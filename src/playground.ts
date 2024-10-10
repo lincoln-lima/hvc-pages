@@ -101,7 +101,7 @@ const setModals = async() => {
     
         modals.forEach(async modal => {
             const element = await templates('modal/' + modal);
-            element.style['display'] = 'none';
+            (element as HTMLElement).style['display'] = 'none';
 
             document.body.appendChild(element);
         });
