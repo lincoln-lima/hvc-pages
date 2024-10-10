@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   build: {
+    target: "esnext",
     rollupOptions: {
       input: {
         main: resolve('./index.html'),
