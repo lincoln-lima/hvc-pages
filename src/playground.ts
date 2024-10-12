@@ -95,64 +95,61 @@ export const play = {
 window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
 window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
 // ------------------------------------------------------------------------------- 
-const setModals = async() => {
-    return new Promise<void>(resolve => {
-        const modals = ['configs', 'card', 'error', 'help'];
-    
-        modals.forEach(async modal => {
-            const element = await templates('modal/' + modal);
-            (element as HTMLElement).style['display'] = 'none';
+const loadplay = async () => {
+    await drawers(play.elements.gaveteiro());
+    hvc();
+    // ------------------------------------------------------------------------------- 
+    play.elements.helpmodal().children[0].appendChild(await templates('table'));
+    // ------------------------------------------------------------------------------- 
+    play.elements.delay().value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
+    // ------------------------------------------------------------------------------- 
+    play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
+    play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
+    play.elements.saveconfigs().addEventListener('click', () => {
+        localStorage.setItem("delay", play.elements.delay().value);
 
-            document.body.appendChild(element);
-        });
+        globals.actions.undisplayElement(play.elements.configmodal());
+        alert("As configurações foram salvas!");
+    });
 
-        setTimeout(resolve, 1000);
+    document.addEventListener("keydown", e => {
+        if(e.key.toLowerCase() === "f2") {
+            e.preventDefault();
+            const config = play.elements.configmodal();
+
+            globals.actions.switchDisplay(config, config.style['display'] === 'none');
+        }
+    });
+
+    window.addEventListener("click", e => {
+        if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+    });
+    // ------------------------------------------------------------------------------- 
+    play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
+    // ------------------------------------------------------------------------------- 
+    const switchHelp = () => {
+        const element = play.elements.helpmodal();
+        const display = element.style['display'] === 'none';
+        
+        globals.actions.switchDisplay(element, display);
+    }
+
+    play.elements.help().addEventListener('click', switchHelp);
+    document.addEventListener('keydown', e => {
+        if(!e.ctrlKey && e.key.toLowerCase() === 'f12') {
+            e.preventDefault();
+            switchHelp();
+        }
     })
 }
-
-await setModals();
-play.elements.helpmodal().firstElementChild!.appendChild(await templates('table'));
 // ------------------------------------------------------------------------------- 
-await drawers(play.elements.gaveteiro());
-hvc();
-// ------------------------------------------------------------------------------- 
-play.elements.delay().value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
-// ------------------------------------------------------------------------------- 
-play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
-play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
-play.elements.saveconfigs().addEventListener('click', () => {
-    localStorage.setItem("delay", play.elements.delay().value);
+const modals = ['configs', 'card', 'error', 'help'];
 
-    globals.actions.undisplayElement(play.elements.configmodal());
-    alert("As configurações foram salvas!");
-});
+modals.forEach(async modal => {
+    const element = await templates('modal/' + modal);
+    element.style['display'] = 'none';
 
-document.addEventListener("keydown", e => {
-    if(e.key.toLowerCase() === "f2") {
-        e.preventDefault();
-        const config = play.elements.configmodal();
-
-        globals.actions.switchDisplay(config, config.style['display'] === 'none');
-    }
-});
-
-window.addEventListener("click", e => {
-    if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+    document.body.appendChild(element);
 });
 // ------------------------------------------------------------------------------- 
-play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
-// ------------------------------------------------------------------------------- 
-const switchHelp = () => {
-    const element = play.elements.helpmodal();
-    const display = element.style['display'] === 'none';
-    
-    globals.actions.switchDisplay(element, display);
-}
-
-play.elements.help().addEventListener('click', switchHelp);
-document.addEventListener('keydown', e => {
-    if(!e.ctrlKey && e.key.toLowerCase() === 'f12') {
-        e.preventDefault();
-        switchHelp();
-    }
-})
+await loadplay();
