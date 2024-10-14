@@ -42,8 +42,7 @@ export default () => {
             }
         }
         catch (e) {
-            hvc.finish();
-            play.actions.setState(hvc.getHVM().getState().toLowerCase());
+            terminate();
             
             play.actions.detectError((e as Error).message);
         }
@@ -108,14 +107,19 @@ export default () => {
         globals.actions.scrollTo(pointed);
     }
 
-    hvc.addEventClock(_HVMState => {updateDrawers()});
+    hvc.addEventClock(HVMState => {
+        updateDrawers();
+
+        if(HVMState.toLowerCase() == 'desligado') terminate();
+    });
     // ------------------------------------------------------------------------------- 
     const terminate = () => {
         const debugmenu = play.elements.debugmenu();
         globals.actions.switchVisibility(debugmenu, false);
         
         hvc.finish();
-        hvc.next();
+        
+        play.actions.setState("desligado");
     }
 
     play.elements.pausecontinue().addEventListener('click', () => {
@@ -148,13 +152,12 @@ export default () => {
             hvc.back();
             updateDrawers();
         }
-
     });
 
     document.addEventListener('keydown', e => {
         const hvm = hvc.getHVM();
 
-        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvm.getState() != 'DESLIGADO') {
+        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvm.getState().toLowerCase() != 'desligado') {
             e.preventDefault();
             terminate();
         }
