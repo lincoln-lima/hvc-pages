@@ -1,4 +1,4 @@
-// import "/src/styles/defaults/style.scss";
+import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {

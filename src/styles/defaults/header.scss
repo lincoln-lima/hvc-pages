@@ -1,6 +1,6 @@
 @use '../globals' as global;
 @use '../defaults/default' as default;
-@use '../index/index' as index;
+@use '../index/in' as index;
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
 @mixin navlinks {
@@ -30,7 +30,7 @@
     
     width: fit-content !important;
     
-    height: calc($items * default.$buttons-height * 1.3);
+    height: calc($items * default.$buttons-height * 1.4);
 
     align-items: end !important;
     flex-direction: column;
@@ -118,7 +118,11 @@ header {
     }
 
     &#header-index {
-        padding: 10px 0;
+        padding: index.$header-padding 0;
+        
+        @media screen and (max-width: index.$responsive-width) {
+            margin-bottom: 10px;
+        }
 
         nav {
             max-width: index.$nav-width;

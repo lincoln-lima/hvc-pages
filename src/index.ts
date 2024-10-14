@@ -2,11 +2,12 @@ import templates from "./templates";
 // ------------------------------------------------------------------------------- 
 import { globals } from "./default";
 // ------------------------------------------------------------------------------- 
+import "/src/styles/index/index.scss";
 import "/src/styles/defaults/footer.scss";
-import "/src/styles/index/table.scss";
+import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1064));
-window.addEventListener('load', () => globals.actions.monitoreMenu(1064));
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1100));
+window.addEventListener('load', () => globals.actions.monitoreMenu(1100));
 // ------------------------------------------------------------------------------- 
 const setTemplates = async () => {
     document.getElementById("table")!.appendChild(await templates('table'));
@@ -15,7 +16,7 @@ const setTemplates = async () => {
 
 await setTemplates();
 // ------------------------------------------------------------------------------- 
-const copies = document.getElementsByClassName("copiar")!;
+const copies = document.getElementsByClassName("copy")!;
 
 const copyCode = (id: string) => {
     const copyid = (id.split('-').shift()! + '-cmd');

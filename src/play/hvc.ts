@@ -1,6 +1,6 @@
 import { HVC } from "hvcjs";
-import { globals } from "./default";
-import { play } from "./playground";
+import { globals } from "../default";
+import { play } from "../playground";
 // ------------------------------------------------------------------------------- 
 import ahv from "./ahv";
 // ------------------------------------------------------------------------------- 

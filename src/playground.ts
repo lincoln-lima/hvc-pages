@@ -1,14 +1,14 @@
 import { globals } from "./default";
-import { getDoc, setDoc } from "./codemirror"
+import { getDoc, setDoc } from "./play/codemirror"
 // ------------------------------------------------------------------------------- 
-import hvc from "./hvc";
-import drawers from "./drawers";
+import hvc from "./play/hvc";
+import drawers from "./play/drawers";
 import templates from "./templates";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/defaults/style.scss";
+// import "/src/styles/defaults/style.scss";
+import "/src/styles/defaults/table.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
-import "/src/styles/index/table.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
@@ -92,8 +92,8 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1110));
-window.addEventListener('load', () => globals.actions.monitoreMenu(1110));
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1300));
+window.addEventListener('load', () => globals.actions.monitoreMenu(1300));
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
     await drawers(play.elements.gaveteiro());

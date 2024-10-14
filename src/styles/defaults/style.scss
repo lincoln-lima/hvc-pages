@@ -19,22 +19,46 @@ mark {
     padding: 0 5px;
 }
 /* -------------------------------------------------------------------- */
-h1 {
+h1, h2 {
+    text-align: center;
+
+    color: transparent;
+
+    background-image: global.$fade-text;
+    background-clip: text;
+
     @include global.setFont(title);
+}
+
+h3 {
+    color: global.$color2;
+    font-size: 2.6em;
+
+    @include global.setFont(subtitle);
+}
+
+p {
+    @include global.defaultText;
 }
 /* -------------------------------------------------------------------- */
 code {
-    color: global.$color1;
+    color: global.$color3;
     text-align: left;
     font-size: 1.15em;
     font-weight: 700;
+
+    @include global.setFont("code");
 }
 
-.codigo-pre {
+.pre-code {
     background-color: #FFC958;
 
     border-radius: 5px;
     padding: 7px 20px;
+
+    overflow-x: auto;
+    
+    @include global.flex($wrap: nowrap);
 }
 /* -------------------------------------------------------------------- */
 button.botao {
@@ -56,8 +80,19 @@ button.botao {
 
     &:hover {
         background: global.$fade-hover !important;
-
         box-shadow: 3px 3px 5px #0000005f;
+    }
+}
+
+button.copy {
+    cursor: pointer;
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &:hover {
+        border: 1px solid global.$color3;
     }
 }
 

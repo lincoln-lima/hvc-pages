@@ -1,14 +1,9 @@
 @use '../globals' as global;
 /* -------------------------------------------------------------------- */
 footer {
-    font-size: 1.4em;
-
-    @include global.setFont(text);
-
     background: global.$fade-default;
 
     padding: 30px 0;
-    font-weight: 700;
 
     * {
         color: #ffffff;
@@ -28,9 +23,14 @@ footer {
                 @include global.flex($justify: space-evenly, $direction: column);
             }
             
-            ul, div {
-                font-weight: 600;
+            ul {
                 list-style-type: none;
+
+                @include global.defaultText;
+            }
+
+            p:first-child, div p:first-child {
+                font-weight: 700;
             }
             
             a:hover {

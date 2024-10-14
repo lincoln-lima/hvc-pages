@@ -23,10 +23,11 @@ table#commands {
     td {
         background-color: global.$color1;
         border-radius: 5px 0 5px 0;
+
+        font-weight: 500;
         
         @include datas;
         @include global.textAlign;
-        @include global.fontWeight(500);
 
         &.description {
             border-radius: 0;
@@ -40,7 +41,7 @@ table#commands {
             
             color: global.$color3;
 
-            @include global.fontWeight(700);
+            font-weight: 700;
         }
         
         &.arrow {

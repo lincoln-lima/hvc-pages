@@ -1,8 +1,9 @@
 @use '../defaults/default' as default;
 /* -------------------------------------------------------------------- */
-$responsive-width: 1064px;
+$responsive-width: 1100px;
 /* -------------------------------------------------------------------- */
 $header-padding: 25px;
 $header-height: calc($header-padding * 2 + default.$home-height);
 /* -------------------------------------------------------------------- */
 $nav-width: 80vw;
+$main-width: $nav-width;

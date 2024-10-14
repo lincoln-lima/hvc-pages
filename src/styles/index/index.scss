@@ -1,0 +1,219 @@
+@use '../globals' as global;
+@use './in' as index;
+/* -------------------------------------------------------------------- */
+main {
+    max-width: index.$main-width;
+    @include global.center;
+
+    h1, h2 {
+        font-size: 3.8em;
+    }
+
+    button.botao {
+        display: block;
+        padding: 5px 15px;
+
+        @include global.center;
+    }
+
+    section {
+        margin-bottom: 15vh;
+
+        @include global.center;
+
+        article {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+
+        &#descricao-hv {
+            min-height: 90vh;
+
+            @include global.flex($justify: space-around, $wrap: wrap-reverse);
+
+            article {
+                max-width: 450px;
+
+                p {
+                    margin: 60px 0;
+                }
+            }
+
+            img {
+                max-width: 100%;
+                margin: 0 15px;
+
+                @media screen and (max-width: index.$responsive-width) {
+                    margin: 0;
+                }
+            }
+        }
+
+        &#instale {
+            max-width: 1200px;
+            min-width: 40vw;
+
+            article {
+                .icones-so {
+                    float: left;
+                    margin-right: 15px;
+                }
+
+                ol {
+                    margin-top: 40px;
+                    margin-left: 22px;
+
+                    li {
+                        position: relative;
+                        list-style-position: inside;
+
+                        margin-bottom: 40px;
+
+                        @include global.setFont("subtitle");
+
+                        &::marker {
+                            color: white;
+                            font-size: 1.1em;
+                            content: counter(list-item);
+
+                            @include global.setFont("title");
+                        }
+
+                        &::before {
+                            content: "";
+                            
+                            position: absolute;
+                            display: inline-block;
+                            z-index: -1;
+                            top: 5px;
+                            left: -9px;
+
+                            background-color: global.$color1;
+
+                            @include global.circle;
+                            @include global.size(30px);
+                        }
+
+                        span {
+                            font-size: 1.6em;
+                            font-weight: 600;
+                            color: global.$color1;
+
+                            margin-left: 20px;
+                        }
+                        
+                        p {
+                            margin-left: 35px;
+                        }
+
+                        pre {
+                            margin-top: 20px;
+                            margin-left: 35px;
+
+                            button.copy {
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &#aprenda {
+            max-width: 1400px;
+
+            article {
+                h3 {
+                    font-size: 2.9em;
+                    text-transform: uppercase;
+
+                    margin-bottom: 15px;
+                    @include global.setFont("title");
+                }
+
+                > div {
+                    @include global.flex;
+
+                    @media screen and (max-width: index.$responsive-width) {
+                        justify-content: center;
+                    }
+
+                    div {
+                        max-width: 50vw;
+                        
+                        @media screen and (max-width: index.$responsive-width) {
+                            max-width: none;
+                            margin-top: 40px;
+                        }
+                    }
+                }
+
+                &#hv {
+                    h3 {
+                        color: global.$color3;
+                    }
+
+                    ul {
+                        list-style-position: inside;
+                        @include global.defaultText;
+                    }
+                }
+
+                &#assembly {
+                    h3 {
+                        color: global.$color1;
+                    }
+
+                    #table {
+                        overflow-x: auto;
+                    }
+                }
+
+                &#como {
+                    h3 {
+                        color: global.$color3;
+                    }
+                    
+                    pre {
+                        padding: 15px 20px;
+                        max-width: 645px;
+                    }
+                }
+
+                &#playground {
+                    h3 {
+                        color: global.$color1;
+                    }
+
+                    div {
+                        flex-wrap: wrap-reverse;
+                        margin-bottom: 70px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+aside {
+    padding: 100px 0;
+    max-width: 65vw;
+    
+    @include global.center;
+    
+    blockquote {
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.265);
+        border-radius: 20px 0;
+        padding: 10px;
+        
+        background-color: rgb(241, 239, 239);
+    
+        p {
+            text-align: center;
+            font-size: 2.2em;
+            padding: 3px;
+            
+            @include global.setFont(quote);
+        }
+    }
+}

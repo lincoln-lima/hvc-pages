@@ -1,4 +1,4 @@
-import { play } from "./playground";
+import { play } from "../playground";
 // ------------------------------------------------------------------------------- 
 export default () => {
     const importahv = () => {

@@ -7,12 +7,6 @@
     <title>HVC - Inicial</title>
 
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- <link rel="stylesheet" href="/css/cabecalho.css"> -->
-
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/mobile-index.css">
 
     <link rel="shortcut icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
@@ -22,7 +16,7 @@
         <nav>
             <a id="home" rel="author" target="_top" href="/index.html">
                 <img src="/img/gaveta-logo.png" alt="ícone de gaveta">
-                <h1 class="titulo">
+                <h1>
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
@@ -34,33 +28,31 @@
             <button class="botao-menu"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
-    <main class="centralizar-x">
-        <section id="descricao-hv" class="centralizar-x">
+    <main>
+        <section id="descricao-hv">
             <article>
-                <h1 id="titulo-principal" class="titulo">HV Compiler</h1>
-                <p class="texto">
+                <h1>HV Compiler</h1>
+                <p>
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
                     HV Script e Assembly HV, voltadas para um computador hipotético.
                     <br>
                     Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
                 <a href="#instale" rel="author" target="_top">
-                    <button class="texto botao centralizar-x">COMECE AQUI</button>
+                    <button class="botao">COMECE AQUI</button>
                 </a>
             </article>
             <img src="/img/mlk-do-grau.png" alt="menino que programa">
         </section>
-        <section id="instale" class="centralizar-x">
-            <h2 class="titulo">Instale</h2>
+        <section id="instale">
+            <h2>Instale</h2>
             <article>
                 <img class="icones-so" src="/img/windows.png" alt="">
-                <h3 class="subtitulo flex-between-center">
-                    Windows
-                </h3>
+                <h3>Windows</h3>
                 <ol>
-                    <li class="subtitulo">
+                    <li>
                         <span>Baixar instalador do compilador</span>
-                        <p class="texto">
+                        <p>
                             Faça download e execute o arquivo 
                             <mark>
                                 <a class="link-marcado" rel="author" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável" download>
@@ -69,12 +61,12 @@
                             </mark>
                         </p>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Teste o compilador no terminal</span>
-                        <p class="texto">
+                        <p>
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code id="help-cmd" class="codigo">hvc --help</code><button id="help-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code id="help-cmd">hvc --help</code><button id="help-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
                 </ol>
             </article>
@@ -84,72 +76,71 @@
                     Linux e Mac
                 </h3>
                 <ol>
-                    <li class="subtitulo">
+                    <li>
                         <span>Instale ferramentas de compilação</span>
-                        <p class="texto">
+                        <p>
                             Para realizar a compilação do projeto é necessário ter instalado um compilador
                             de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
                             compilação.
                         </p>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Clone o repositório</span>
-                        <p class="texto">
+                        <p>
                             Com o terminal aberto, execute o seguinte comando:
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code id="clonar-cmd" class="codigo">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button id="clonar-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code id="clonar-cmd">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button id="clonar-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Acesse o diretório do projeto</span>
-                        <p class="texto">
+                        <p>
                             Mude para pasta gerada
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code id="cd-cmd" class="codigo">cd ./HV-Compiler</code><button id="cd-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code id="cd-cmd">cd ./HV-Compiler</code><button id="cd-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Compile o código</span>
-                        <p class="texto">
+                        <p>
                             Execute o comando <mark><em>make</em></mark> para compilar o código usando clang++
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code id="make-cmd" class="codigo">make</code><button id="make-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code id="make-cmd">make</code><button id="make-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Adicione o HVC ao PATH do seu sistema</span>
-                        <p class="texto">
+                        <p>
                             Este comando adicionará o diretório <mark><em>./bin</em></mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code id="echo-cmd" class="codigo">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button id="echo-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code id="echo-cmd">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button id="echo-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
-                    <li class="subtitulo">
+                    <li>
                         <span>Teste o compilador no terminal</span>
-                        <p class="texto">
+                        <p>
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo">hvc --help</code><button id="help-copy" class="copiar"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code>hvc --help</code><button id="help-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
                     </li>
                 </ol>
             </article>
         </section>
-        <section id="aprenda" class="centralizar-x">
-            <h2 class="titulo">Aprenda</h2>
+        <section id="aprenda">
+            <h2>Aprenda</h2>
             <article id="hv">
-                <div class="aprenda-div-texto-imagem flex-between-center">
+                <div>
                     <img src="/img/compiuter.png" alt="computador">
                     <div>
                         <h3>O que é HV?</h3>
-                        <p class="texto">
+                        <p>
                             Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
                             ensino
                             de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
                             conta com instruções simples
                             mas engenhosas, capazes de construir algoritmos complexos e refinados.
                         </p>
-                        <br>
-                        <p class="texto">
+                        <p>
                             Em sua construção, um computador HV possui:
                         </p>
-                        <ul class="texto">
+                        <ul>
                             <li>100 gavetas</li>
                             <li>Calculadora, mostrador e teclado</li>
                             <li>Quadro Negro (EPI)</li>
@@ -160,38 +151,38 @@
                     </div>
                 </div>
                 <br>
-                <p class="texto">
+                <p>
                     A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
                     programação, e ainda adquirir noções
                     intuitivas de arquitetura de computadores.
                 </p>
                 <br>
-                <p class="texto">
+                <p>
                     O material completo acerca está disponível no link 
                     <mark><a class="link-marcado" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>.
                 </p>
             </article>
             <article id="assembly">
                 <h3>Assembly HV</h3>
-                <p class="texto">
+                <p>
                     Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
                     entendimento na introdução ao
                     universo de resolução de problemas e criação de algoritmos.
                 </p>
                 <br>
-                <p class="texto">
+                <p>
                     Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
                     gaveta.
                 </p>
                 <br>
-                <div id="table" class="scroll-x"></div>
+                <div id="table"></div>
             </article>
             <article id="como">
                 <h3>Como usar o compilador</h3>
-                <p class="texto">Crie um arquivo de extensão <mark title="formato de arquivo">.ahv</mark>, nele ficará seu código.</p>
-                <p class="texto">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
+                <p>Crie um arquivo de extensão <mark title="formato de arquivo">.ahv</mark>, nele ficará seu código.</p>
+                <p>O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <br>
-                <pre class="codigo-pre flex-between-center scroll-x"><code class="codigo">750
+                <pre class="pre-code"><code>750
 751
 050
 251
@@ -202,9 +193,9 @@
             </article>
             <article id="playground">
                 <h3>Playground</h3>
-                <div class="aprenda-div-texto-imagem flex-between-center">
+                <div>
                     <div>
-                        <p class="texto">
+                        <p>
                             Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
                             funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
                             HV,
@@ -215,7 +206,7 @@
                             do desenvolvedor
                         </p>
                     </div>
-                    <img class="centralizar-x" src="/img/brinks.png" alt="peça de montar">
+                    <img src="/img/brinks.png" alt="peça de montar">
                 </div>
                 <a id="go-to-playground" href="/pages/playground.html" rel="author" title="mas só se souber brincar" target="_blank">
                     <button class="texto botao centralizar-x">descer para o play</button>
@@ -223,8 +214,8 @@
             </article>
         </section>
     </main>
-    <aside class="centralizar-x">
-        <blockquote class="citacao">
+    <aside>
+        <blockquote>
             <em>
                 <p>"Nós só podemos ver um pouco do futuro, mas o suficiente para perceber que há muito a fazer."</p>
             </em>
