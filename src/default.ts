@@ -1,3 +1,4 @@
+import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
 // ------------------------------------------------------------------------------- 

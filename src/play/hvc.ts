@@ -36,9 +36,6 @@ export default () => {
                 globals.actions.switchVisibility(debugmenu, true);
 
                 await hvc.debug(+play.elements.delay().value);
-
-                // globals.actions.switchVisibility(debugmenu, false);
-                // play.elements.pausecontinue().className = 'pause';
             }
         }
         catch (e) {
@@ -110,7 +107,7 @@ export default () => {
     hvc.addEventClock(HVMState => {
         updateDrawers();
 
-        if(HVMState.toLowerCase() == 'desligado') terminate();
+        if(HVMState.toLowerCase() === 'desligado') terminate();
     });
     // ------------------------------------------------------------------------------- 
     const terminate = () => {
@@ -118,6 +115,9 @@ export default () => {
         globals.actions.switchVisibility(debugmenu, false);
         
         hvc.finish();
+        hvc.continue();
+
+        play.elements.pausecontinue().className = "pause";
         
         play.actions.setState("desligado");
     }
