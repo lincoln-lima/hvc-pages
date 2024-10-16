@@ -5,9 +5,9 @@ import hvc from "./play/hvc";
 import drawers from "./play/drawers";
 import templates from "./templates";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/defaults/table.scss";
 import "/src/styles/playground/playground.scss";
 import "/src/styles/playground/modal.scss";
+import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
