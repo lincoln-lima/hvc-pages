@@ -44,8 +44,8 @@ main {
                     background-color: #ffe8c4;
                 }
 
-                .content {
-                    @include global.setFont(dotted);
+                .content * {
+                    @include global.setFont(mono);
                 }
 
                 .cm-lineNumbers > * {

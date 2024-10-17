@@ -33,6 +33,7 @@
 
 			h2 {
 				font-size: 1.4em;
+				color: white;
 			}
 
 			.close {
@@ -49,10 +50,6 @@
 		.modal-footer {
 			@include global.rounded-border(0, $modal-border);
 			@include global.flex($justify: center)
-		}
-
-		h2 {
-			color: white;
 		}
 
 		form {
@@ -75,7 +72,7 @@
 	.modal-body {
 		@include global.size(calc(100vh * 0.5));
 		
-		.modal-header, .modal-footer {
+		.modal-header {
 			background: global.$fade-default;
 		}
 
@@ -85,6 +82,7 @@
 
 		.modal-footer {
 			height: 10%;
+			background: global.$fade-default;
 		}
 		
 		#save-configs {
@@ -143,6 +141,10 @@
 
 			background: play.$dark-red;
 
+			h2 {
+				@include global.setFont(code);
+			}
+
 			.close {
 				background: play.$dark-red;
 
@@ -158,6 +160,7 @@
 			text-align: center;
 
 			@include global.middle;
+			@include global.setFont(code);
 		}
 	}
 }

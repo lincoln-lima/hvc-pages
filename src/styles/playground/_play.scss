@@ -12,10 +12,8 @@ $header-height: calc($header-padding * 2 + default.$home-height);
 $nav-initial-width: 95vw;
 $nav-responsive-width: 90vw;
 
-$nav-button-width: 140px;
-$nav-num-buttons: 5;
-
-$menu-width: calc($nav-num-buttons * $nav-button-width);
+$menu-num-buttons: 5;
+$menu-width: calc($menu-num-buttons * default.$menu-button-width);
 // ------------------------------------------------------------------------------- 
 $main-initial-width: $nav-initial-width;
 

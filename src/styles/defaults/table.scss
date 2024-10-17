@@ -26,12 +26,13 @@ table#commands {
 
         font-weight: 500;
         
+        text-align: center;
+
         @include datas;
-        @include global.textAlign;
 
         &.description {
+            text-align: left;
             border-radius: 0;
-            @include global.textAlign(left);
         }
         
         &.operation {

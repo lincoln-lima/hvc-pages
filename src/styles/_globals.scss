@@ -15,7 +15,9 @@ $color2-hover: #00A8AC;
 $color3-hover: #8C4AFF;
 
 $fade-default: linear-gradient(90deg, $color3 5.85%, $color1 73%, $color2 149.38%);
-$fade-text: linear-gradient(to right, $color1, $color3);
+
+$fade-title: linear-gradient(to right, $color1, $color3);
+$fade-subtitle: linear-gradient(to right, $color2 0%, $color3 40%);
 
 $fade-button: linear-gradient(90deg, $color1-button 5.85%, $color2-button 73%, $color3-button 149.38%);
 $fade-hover: linear-gradient(90deg, $color1-hover 5.85%, $color2-hover 73%, $color3-hover 149.38%);
@@ -45,10 +47,6 @@ $fonts:
 
 @mixin setFont($type: 'default') {
     font-family: findFont($type);
-}
-
-@mixin textAlign($align: center) {
-    text-align: $align;
 }
 /* -------------------------------------------------------------------- */
 @mixin flex(

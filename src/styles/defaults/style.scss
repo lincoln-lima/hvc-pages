@@ -8,6 +8,8 @@
     color: #000000;
 
     box-sizing: border-box;
+
+    @include global.setFont(text);
 }
 
 html {
@@ -19,25 +21,47 @@ mark {
     padding: 0 5px;
 }
 /* -------------------------------------------------------------------- */
-h1, h2 {
-    text-align: center;
-
+h1, h2, h3, h4 {
     color: transparent;
-
-    background-image: global.$fade-text;
     background-clip: text;
+}
 
+h1, h2 {
+    background-image: global.$fade-title;
     @include global.setFont(title);
 }
 
-h3 {
-    color: global.$color2;
-    font-size: 2.6em;
-
+h3, h4 {
+    background-image: global.$fade-subtitle;
     @include global.setFont(subtitle);
 }
 
+h1 {
+    font-size: 4em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3.5em;
+}
+
+h3 {
+    font-size: 2.5em;
+}
+
+h4 {
+    font-size: 2em;
+}
+
 p {
+    @include global.defaultText;
+}
+
+ul, ol {
+    list-style-position: inside;
+}
+
+ul {
     @include global.defaultText;
 }
 /* -------------------------------------------------------------------- */
@@ -47,7 +71,7 @@ code {
     font-size: 1.15em;
     font-weight: 700;
 
-    @include global.setFont("code");
+    @include global.setFont(code);
 }
 
 .pre-code {
@@ -76,7 +100,6 @@ button.botao {
     cursor: pointer;
     
     @include global.border(black, 0, 15px);
-    @include global.setFont(text);
 
     &:hover {
         background: global.$fade-hover !important;

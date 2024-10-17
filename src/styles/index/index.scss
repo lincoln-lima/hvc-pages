@@ -5,8 +5,8 @@ main {
     max-width: index.$main-width;
     @include global.center;
 
-    h1, h2 {
-        font-size: 3.8em;
+    h2 {
+        text-align: center;
     }
 
     button.botao {
@@ -65,18 +65,16 @@ main {
 
                     li {
                         position: relative;
-                        list-style-position: inside;
 
                         margin-bottom: 40px;
 
-                        @include global.setFont("subtitle");
-
+                        
                         &::marker {
                             color: white;
                             font-size: 1.1em;
                             content: counter(list-item);
 
-                            @include global.setFont("title");
+                            @include global.setFont(title);
                         }
 
                         &::before {
@@ -100,6 +98,7 @@ main {
                             color: global.$color1;
 
                             margin-left: 20px;
+                            @include global.setFont(subtitle);
                         }
                         
                         p {
@@ -124,11 +123,10 @@ main {
 
             article {
                 h3 {
-                    font-size: 2.9em;
                     text-transform: uppercase;
 
                     margin-bottom: 15px;
-                    @include global.setFont("title");
+                    @include global.setFont(title);
                 }
 
                 > div {
@@ -151,11 +149,6 @@ main {
                 &#hv {
                     h3 {
                         color: global.$color3;
-                    }
-
-                    ul {
-                        list-style-position: inside;
-                        @include global.defaultText;
                     }
                 }
 
@@ -207,12 +200,14 @@ aside {
         padding: 10px;
         
         background-color: rgb(241, 239, 239);
-    
+        
         p {
             text-align: center;
             font-size: 2.2em;
             padding: 3px;
-            
+        }
+        
+        * {
             @include global.setFont(quote);
         }
     }

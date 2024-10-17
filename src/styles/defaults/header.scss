@@ -5,7 +5,6 @@
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
 @mixin navlinks {
-    @include global.setFont(text);
     font-size: 1.5em;
     
     padding: 0 0.7em;
@@ -31,7 +30,7 @@
     
     width: fit-content !important;
     
-    height: calc($items * default.$buttons-height * 1.4);
+    height: calc($items * default.$menu-buttons-height * 1.4);
 
     align-items: end !important;
     flex-direction: column;
@@ -91,9 +90,11 @@ header {
                 }
     
                 h1 {
+                    font-size: 1.8em;
+
                     span {
-                        font-size: 1.2em;
-    
+                        @include global.setFont(title);
+
                         &:nth-child(1) {
                             color: global.$color2;
                         }
@@ -176,7 +177,7 @@ header {
             max-width: doc.$nav-width;
 
             menu {
-                width: 30%;
+                width: doc.$menu-width;
             }
         }
     }
@@ -213,7 +214,7 @@ header {
                         font-weight: bold;
                         text-transform: uppercase;
 
-                        @include global.setFont('mono');
+                        @include global.setFont(mono);
                     }
 
                     #dot-state {
@@ -262,7 +263,7 @@ header {
 
                 article {
                     ul {
-                        $width: 10em;
+                        $width: 8em;
                         width: $width;
 
                         @include options;
@@ -270,7 +271,6 @@ header {
                         li {
                             & {
                                 cursor: pointer;
-
                                 @include global.size(calc($width/5));
                             }
 
@@ -306,7 +306,7 @@ header {
                 width: calc(play.$menu-width * 1.2);
 
                 @media screen and (max-width: play.$header-responsive-width) {
-                    @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$nav-num-buttons);
+                    @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons);
                 }
 
                 button {

@@ -1,0 +1,31 @@
+@use '../globals' as global;
+@use './doc' as doc;
+
+main {
+    width: doc.$main-width;
+
+    @include global.center;
+
+    nav {
+        position: sticky;
+        top: 50%;
+        left: -50px;
+    }
+
+    section {
+        padding: 2em 0;
+        
+        figure {
+            padding: 1em 0;
+            text-align: center;
+            
+            img {
+                max-width: 100%;
+            }
+        }
+        
+        article {
+            padding: 1em 0;
+        }
+    }
+}
