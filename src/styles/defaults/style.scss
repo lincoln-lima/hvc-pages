@@ -65,17 +65,8 @@ ul {
     @include global.defaultText;
 }
 /* -------------------------------------------------------------------- */
-code {
-    color: global.$color3;
-    text-align: left;
-    font-size: 1.15em;
-    font-weight: 700;
-
-    @include global.setFont(code);
-}
-
 .pre-code {
-    background-color: #FFC958;
+    background-color: rgb(212, 210, 210);
 
     border-radius: 5px;
     padding: 7px 20px;
@@ -83,6 +74,35 @@ code {
     overflow-x: auto;
     
     @include global.flex($wrap: nowrap);
+    
+    code {
+        $font-size: 1.15em;
+
+        &, * {
+            color: global.$color3;
+            text-align: left;
+            font-size: $font-size;
+            font-weight: 700;
+
+            @include global.setFont(code);
+        }
+
+        * {
+            font-size: calc(0.85 * $font-size);
+        }
+
+        .comment {
+            color: gray;
+        }
+
+        .reserved {
+            color: global.$color2-dark;
+        }
+
+        .value {
+            color: global.$color1-dark;
+        }
+    }
 }
 /* -------------------------------------------------------------------- */
 button.botao {

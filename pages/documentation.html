@@ -26,12 +26,12 @@
             <button class="botao-menu"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
+    <!-- <nav>
+        <menu>
+            <li>O Computador HV</li>
+        </menu>
+    </nav> -->
     <main>
-        <!-- <nav>
-            <menu>
-                <li>O Computador HV</li>
-            </menu>
-        </nav> -->
         <section id="computador-hv">
             <h1>O Computador HV</h1>
             <hr>
@@ -100,7 +100,8 @@
                     <li>Antes de escrever algo numa gaveta, precisamos apagar o que já está lá.</li>
                     <li>O valor que será escrito numa gaveta não pode ser inferior a 0 e superior a 999.</li>
                     <li>Somente o operador do sistema pode mexer no gaveteiro.</li>
-                    <li>Durante o estado de carga as instruções que estão no porta cartões são guardadas no gaveteiro,
+                    <li>
+                        Durante o estado de carga as instruções que estão no porta cartões são guardadas no gaveteiro,
                         até que seja armazenado o cartão contendo a instrução 000, que indica o fim do estado de carga.
                     </li>
                 </ul>
@@ -120,10 +121,13 @@
                     operação da calculadora sendo realizada desta forma:
                 </p>
                 <ul>
-                    <li>Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o
+                    <li>
+                        Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o
                         encerramento de qualquer operação anterior. Em seguida, os algarismos do número desejado são
-                        digitados. Este número é então exibido no acumulador.</li>
-                    <li>Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo
+                        digitados. Este número é então exibido no acumulador.
+                    </li>
+                    <li>
+                        Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo
                         número. Para executá-la, é necessário pressionar a tecla da operação desejada, inserir o segundo
                         número e em seguida pressionar a tecla “=”. O resultado da operação será exibido no acumulador.
                     </li>
@@ -157,14 +161,20 @@
                     ocorre da seguinte forma:
                 </p>
                 <ul>
-                    <li>Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar
-                        escritos apenas instruções e números de até 3 algarismos;</li>
-                    <li>Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que
-                        foram colocados no dispositivo;</li>
+                    <li>
+                        Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar
+                        escritos apenas instruções e números de até 3 algarismos;
+                    </li>
+                    <li>
+                        Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que
+                        foram colocados no dispositivo;
+                    </li>
                     <li>Somente CHICO pode retirar um cartão;</li>
                     <li>A inserção de um cartão só pode ser feita por um usuário;</li>
-                    <li>Quando o CHICO executa uma instrução de leitura do porta cartões que se encontra vazio, é
-                        solicitado ao usuário que insira um novo cartão para que a execução do programa continue. </li>
+                    <li>
+                        Quando o CHICO executa uma instrução de leitura do porta cartões que se encontra vazio, é
+                        solicitado ao usuário que insira um novo cartão para que a execução do programa continue.
+                    </li>
                 </ul>
                 <figure>
                     <figcaption><strong>Figura </strong> - </figcaption>
@@ -350,10 +360,10 @@
                         Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados
                         armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).
                     </p>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
+                    <pre class="pre-code"><code>730    ; <span class="comment">Leitura de cartão para gaveta 30</span>
+830    ; <span class="comment">Escrita da gaveta 30 para folha de saída</span>
+000    ; <span class="comment">Fim do programa</span>
+2      ; <span class="comment">Dado a ser lido pela instrução</span></code></pre>
                 </article>
 
                 <article id="variaveis">
@@ -368,10 +378,10 @@
                     <p>
                         Considere o seguinte código em Python com três variáveis:
                     </p>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
+                    <pre class="pre-code"><code>x <span class="reserved">=</span> <span class="value">5</span>
+y <span class="reserved">=</span> <span class="value">5</span>
+result <span class="reserved">=</span> x <span class="reserved">+</span> y
+<span class="reserved">print</span>(result)</code></pre>
                     <p>
                         Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas,
                         representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as
@@ -379,10 +389,15 @@
                         forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo
                         que a leitura com a instrução 7EE atribua corretamente os valores às "variáveis".
                     </p>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
+                    <pre class="pre-code"><code>730     ; <span class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
+731	; <span class="comment">Leitura do porta-cartões para gaveta 31 (y)</span>
+030	; <span class="comment">Coloca o valor da gaveta 30 (x) no acumulador</span>
+231	; <span class="comment">Realiza a adição do valor da gaveta 31 (y) ao acumulador</span>
+132	; <span class="comment">Copia o valor do acumulador para gaveta 32 (result)</span>
+832	; <span class="comment">Imprime na folha de saída o valor da gaveta 32 (result)</span>
+000	; <span class="comment">Fim do programa</span>
+5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 30</span>
+5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 31</span></code></pre>
                 </article>
 
                 <article id="desvio">

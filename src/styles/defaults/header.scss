@@ -80,10 +80,10 @@ header {
             }
 
             &#home {
+                font-size: 1.5em;
+
                 @include global.flex($wrap: nowrap);
                 @include global.size(170px, default.$home-height);
-    
-                font-size: 1.5em;
     
                 &:hover {
                     background-color: #00000015;

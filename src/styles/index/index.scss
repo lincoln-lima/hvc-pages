@@ -92,7 +92,7 @@ main {
                             @include global.size(30px);
                         }
 
-                        span {
+                        > span {
                             font-size: 1.6em;
                             font-weight: 600;
                             color: global.$color1;
