@@ -46,8 +46,7 @@
     @include global.animation($animation, 1.5s, infinite);
 }
 
-@mixin options {
-    list-style-type: none;
+@mixin nav-menu {
     transition: 0.5s;
     
     @include global.flex;
@@ -81,6 +80,7 @@ header {
 
             &#home {
                 font-size: 1.5em;
+                text-decoration: none;
 
                 @include global.flex($wrap: nowrap);
                 @include global.size(170px, default.$home-height);
@@ -107,8 +107,8 @@ header {
             }
         }
 
-        menu {
-            @include options;
+        .primary-menu {
+            @include nav-menu;
             
             li {
                 .link-nav-1 {
@@ -134,7 +134,7 @@ header {
             color: white;
         }
         
-        .botao-menu {
+        .burger-menu {
             height: 50px;
             padding: 5px;
             
@@ -160,7 +160,7 @@ header {
         nav {
             max-width: index.$nav-width;
             
-            menu {
+            .primary-menu {
                 width: 55%;
                 
                 @media screen and (max-width: index.$responsive-width) {
@@ -176,7 +176,7 @@ header {
         nav {
             max-width: doc.$nav-width;
 
-            menu {
+            .primary-menu {
                 width: doc.$menu-width;
             }
         }
@@ -262,11 +262,11 @@ header {
                 opacity: 0;
 
                 article {
-                    ul {
-                        $width: 8em;
+                    menu {
+                        $width: 10em;
                         width: $width;
 
-                        @include options;
+                        @include nav-menu;
 
                         li {
                             & {
@@ -302,7 +302,7 @@ header {
                 }
             }
 
-            menu {
+            .primary-menu {
                 width: calc(play.$menu-width * 1.2);
 
                 @media screen and (max-width: play.$header-responsive-width) {

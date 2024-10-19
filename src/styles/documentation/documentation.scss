@@ -1,35 +1,65 @@
 @use '../globals' as global;
 @use './doc' as doc;
-
+// ------------------------------------------------------------------------------- 
 main {
     width: doc.$main-width;
 
     @include global.center;
+    @include global.flex($align: flex-start);
 
-    nav {
+    .sticky-nav {
         position: sticky;
-        top: 50%;
-        left: -50px;
-    }
+        top: doc.$header-height;
 
-    section {
-        padding: 2em 0;
+        overflow-y: auto;
         
-        figure {
-            padding: 1em 0;
-            text-align: center;
-            
-            img {
-                max-width: 100%;
+        @include global.size(18%, calc(100vh - doc.$header-height));
+
+        menu{
+            * {
+                font-size: 1.01em;
+                text-align: left;
+            }
+
+            ul {
+                padding-left: 1em;
+                list-style-type: none;
+            }
+
+            li {
+                &:hover {
+                    background-color: global.$color2;
+                }
+
+                &:active {
+                    background-color: global.$color1;
+                }
             }
         }
+    }
 
-        .pre-code {
-            margin: 1.5em 0;
-        }
-        
-        article {
-            padding: 1em 0;
+    .content {
+        width: 80%;
+
+        section {
+            padding: 1.5em 0;
+            
+            figure {
+                padding: 1em 0;
+                text-align: center;
+                
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            .pre-code {
+                margin: 1.5em 0;
+            }
+            
+            article {
+                padding: 1em 0;
+            }
         }
     }
 }

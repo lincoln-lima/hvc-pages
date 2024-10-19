@@ -53,16 +53,16 @@ h4 {
     font-size: 2em;
 }
 
-p {
+ul, p {
     @include global.defaultText;
+}
+/* -------------------------------------------------------------------- */
+menu {
+    list-style-type: none;
 }
 
 ul, ol {
     list-style-position: inside;
-}
-
-ul {
-    @include global.defaultText;
 }
 /* -------------------------------------------------------------------- */
 .pre-code {
@@ -118,9 +118,8 @@ button.botao {
     color: white;
     
     cursor: pointer;
-    
     @include global.border(black, 0, 15px);
-
+    
     &:hover {
         background: global.$fade-hover !important;
         box-shadow: 3px 3px 5px #0000005f;
@@ -139,16 +138,18 @@ button.copy {
     }
 }
 
-a.link-marcado {
-    text-decoration: underline black 0.01em;
+a {
+    &.marked {
+        text-decoration: underline black 0.01em;
 
-    &:hover {
-        text-decoration-thickness: 0.1em;
+        &:hover {
+            text-decoration-thickness: 0.1em;
+        }
     }
-}
 
-a.link-externo {
-    cursor: alias;
+    &.external {
+        cursor: alias;
+    }
 }
 /* -------------------------------------------------------------------- */
 ::-webkit-scrollbar {

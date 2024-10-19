@@ -74,6 +74,10 @@
 		
 		.modal-header {
 			background: global.$fade-default;
+			
+			h2 {
+				@include global.setFont(text);
+			}
 		}
 
 		.modal-main {

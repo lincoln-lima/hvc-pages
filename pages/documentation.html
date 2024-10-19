@@ -18,378 +18,396 @@
                     <span>HV</span><span>C</span>
                 </h1>
             </a>
-            <menu>
+            <menu class="primary-menu">
                 <li><a class="link-nav-1 link-externo" href="/pages/playground.html" target="_blank">Playground</a></li>
                 <li><a class="link-nav-2 link-externo" href="/pages/documentation.html" target="_blank">Documentação</a></li>
                 <li><a class="link-nav-3 link-externo" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">GitHub</a></li>
             </menu>
-            <button class="botao-menu"><img src="/img/menu.png" alt=""></button>
+            <button class="burger-menu"><img src="/img/menu.png" alt=""></button>
         </nav>
     </header>
-    <!-- <nav>
-        <menu>
-            <li>O Computador HV</li>
-        </menu>
-    </nav> -->
     <main>
-        <section id="computador-hv">
-            <h1>O Computador HV</h1>
-            <hr>
-            <p>
-                O computador de gaveta representa uma ferramenta pedagógica valiosa em
-                um contexto onde linguagens de programação de alto nível, como JavaScript
-                e Python, predominam. No cenário atual da programação, a relação entre o
-                programador e a máquina, outrora mais evidente, tornou-se desafiadora para
-                novos desenvolvedores. Com o aumento da semelhança entre linguagens de
-                programação e linguagem humana, compreender como o código é interpretado
-                pelo computador tornou-se uma tarefa complexa e que muitas.
-            </p>
-            <br>
-            <p>
-                Para enfrentar esse desafio, foi concebido o computador de gaveta. Trata-se de um computador hipotético
-                que adere à arquitetura de Von Neumann, semelhante aos computadores contemporâneos.
-            </p>
-            <figure>
-                <figcaption><strong>Figura 1</strong> - Arquitetura de Von Neumann</figcaption>
-                <img src="/img/documentation/fig1.png" alt="Arquitetura de Von Neumann">
-            </figure>
-            <p>
-                Entretanto, suas características são simplificadas, preservando funcionalidades análogas às encontradas
-                em componentes reais. A distinção reside na acessibilidade da linguagem de máquina, especialmente
-                projetada para ser compreendida por iniciantes na programação.
-            </p>
-            <br>
-            <p>
-                O propósito deste projeto é resgatar a compreensão da interação entre o código e a máquina, oferecendo
-                uma abordagem mais clara e educativa para aqueles que estão dando os primeiros passos na programação. A
-                intenção é proporcionar uma compreensão mais profunda da relação entre o código escrito e as operações
-                realizadas pelo computador, promovendo uma base sólida para o aprendizado da programação
-            </p>
-        </section>
-        <section id="componentes">
-            <h2>Componentes</h2>
-            <hr>
-            <p>
-                Como dito no trecho anterior, o HV segue uma arquitetura semelhante à arquitetura de Von no Neumann,
-                como mostrado na figura 2. A seguir os estão listados os componentes do HV:
-            </p>
-            <ul>
-                <li>Um gaveteiro com 100 gavetas; </li>
-                <li>Uma calculadora com mostrador e teclado; </li>
-                <li>Um pequeno quadro-negro denominado EPI; </li>
-                <li>Um porta-cartões; </li>
-                <li>Uma folha de saída; </li>
-                <li>Um operador do sistema, uma pessoa chamada CHICO, com lápis, apagador de quadro-negro e giz;</li>
-            </ul>
-            <figure>
-                <figcaption><strong>Figura 2</strong> - Arquitetura do HV</figcaption>
-                <img src="/img/documentation/fig2.png" alt="Arquitetura do HV">
-            </figure>
-
-            <article id="gaveteiro">
-                <h3>Gaveteiro</h3>
+        <nav class="sticky-nav">
+            <menu>
+                <li><a href="#computador-hv">O Computador HV</a></li>
+                    <ul>
+                        <li><a href="#componentes">Componentes</a></li>
+                            <ul>
+                                <li><a href="#gaveteiro">Gaveteiro</a></li>
+                                <li><a href="#calculadora">Calculadora</a></li>
+                                <li><a href="#epi">EPI (Quadro Negro)</a></li>
+                                <li><a href="#porta-cartoes">Porta Cartões</a></li>
+                                <li><a href="#folha-de-saida">Folha de Saída</a></li>
+                                <li><a href="#chico">Operador Chico</a></li>
+                                    <ul>
+                                        <li><a href="#carga">Estado de Carga</a></li>
+                                        <li><a href="#execucao">Estado de Execução</a></li>
+                                    </ul>
+                            </ul>
+                        <li><a href="#linguagem">A Linguagem de Máquina do HV</a></li>
+                            <ul>
+                                <li><a href="#instrucoes">Instruções</a></li>
+                                    <ul>
+                                        <li><a href="#carregamento">Instruções de carregamento</a></li>
+                                        <li><a href="#aritmetica">Operações Aritméticas</a></li>
+                                        <li><a href="#fluxo">Controle de Fluxo</a></li>
+                                        <li><a href="#entrada-saida-instrucao">Entrada/Saída</a></li>
+                                        <li><a href="#controle">Controle de Programa</a></li>
+                                    </ul>
+                                <li><a href="#conceitos">Conceitos Essenciais</a></li>
+                                    <ul>
+                                        <li><a href="#entrada-saida-conceito">Entrada/Saída</a></li>
+                                        <li><a href="#variaveis">Variáveis</a></li>
+                                        <li><a href="#desvio">Desvio</a></li>
+                                        <li><a href="#lacos">Laços de repetição</a></li>
+                                        <li><a href="#sub-rotinas">Sub-rotinas</a></li>
+                                    </ul>
+                            </ul>
+                    </ul>
+            </menu>
+        </nav>
+        <section class="content">
+            <section id="computador-hv">
+                <h1>O Computador HV</h1>
+                <hr>
                 <p>
-                    O gaveteiro é como uma série de gavetas numeradas de 00 a 99, sendo este número chamado de seu
-                    endereço. Dentro de cada gaveta há uma folha vazia, mas que pode conter até um número de três
-                    algarismos (por exemplo, 102, 50, 3, etc.) ou uma instrução e algumas informações adicionais que
-                    vamos abordar mais tarde. Agora, vamos entender como funciona esse sistema de gavetas:
+                    O computador de gaveta representa uma ferramenta pedagógica valiosa em
+                    um contexto onde linguagens de programação de alto nível, como JavaScript
+                    e Python, predominam. No cenário atual da programação, a relação entre o
+                    programador e a máquina, outrora mais evidente, tornou-se desafiadora para
+                    novos desenvolvedores. Com o aumento da semelhança entre linguagens de
+                    programação e linguagem humana, compreender como o código é interpretado
+                    pelo computador tornou-se uma tarefa complexa e que muitas.
+                </p>
+                <br>
+                <p>
+                    Para enfrentar esse desafio, foi concebido o computador de gaveta. Trata-se de um computador hipotético
+                    que adere à <a class="marked" href="https://pt.wikipedia.org/wiki/Arquitetura_de_von_Neumann" target="_blank">arquitetura de Von Neumann</a>, semelhante aos computadores contemporâneos.
+                </p>
+                <figure>
+                    <figcaption><strong>Figura 1</strong> - Arquitetura de Von Neumann</figcaption>
+                    <img src="/img/documentation/fig1.png" alt="Arquitetura de Von Neumann">
+                </figure>
+                <p>
+                    Entretanto, suas características são simplificadas, preservando funcionalidades análogas às encontradas
+                    em componentes reais. A distinção reside na acessibilidade da linguagem de máquina, especialmente
+                    projetada para ser compreendida por iniciantes na programação.
+                </p>
+                <br>
+                <p>
+                    O propósito deste projeto é resgatar a compreensão da interação entre o código e a máquina, oferecendo
+                    uma abordagem mais clara e educativa para aqueles que estão dando os primeiros passos na programação. A
+                    intenção é proporcionar uma compreensão mais profunda da relação entre o código escrito e as operações
+                    realizadas pelo computador, promovendo uma base sólida para o aprendizado da programação
+                </p>
+            </section>
+            <section id="componentes">
+                <h2>Componentes</h2>
+                <hr>
+                <p>
+                    Como dito no trecho anterior, o HV segue uma arquitetura semelhante à arquitetura de Von no Neumann,
+                    como mostrado na figura 2. A seguir os estão listados os componentes do HV:
                 </p>
                 <ul>
-                    <li>Em qualquer momento, só podemos abrir uma gaveta.</li>
-                    <li>Quando lemos o que está escrito em uma gaveta, isso não muda o que está escrito lá.</li>
-                    <li>Antes de escrever algo numa gaveta, precisamos apagar o que já está lá.</li>
-                    <li>O valor que será escrito numa gaveta não pode ser inferior a 0 e superior a 999.</li>
-                    <li>Somente o operador do sistema pode mexer no gaveteiro.</li>
-                    <li>
-                        Durante o estado de carga as instruções que estão no porta cartões são guardadas no gaveteiro,
-                        até que seja armazenado o cartão contendo a instrução 000, que indica o fim do estado de carga.
-                    </li>
+                    <li>Um gaveteiro com 100 gavetas; </li>
+                    <li>Uma calculadora com mostrador e teclado; </li>
+                    <li>Um pequeno quadro-negro denominado EPI; </li>
+                    <li>Um porta-cartões; </li>
+                    <li>Uma folha de saída; </li>
+                    <li>Um operador do sistema, uma pessoa chamada CHICO, com lápis, apagador de quadro-negro e giz;</li>
                 </ul>
                 <figure>
-                    <figcaption><strong>Figura </strong> - </figcaption>
-                    <img src="/img/documentation/fig.png" alt="">
+                    <figcaption><strong>Figura 2</strong> - Arquitetura do HV</figcaption>
+                    <img src="/img/documentation/fig2.png" alt="Arquitetura do HV">
                 </figure>
-            </article>
-
-            <article id="calculadora">
-                <h3>Calculadora</h3>
-                <p>
-                    A calculadora utilizada no HV é semelhante a qualquer outra, apresentando um teclado com dígitos de
-                    0 a 9 e um visor onde são exibidos os resultados das operações. Estes resultados são armazenados no
-                    acumulador. No entanto, ao contrário das calculadoras convencionais, esta opera exclusivamente com
-                    valores inteiros e oferece apenas quatro operações: soma, subtração, divisão e multiplicação. Com a
-                    operação da calculadora sendo realizada desta forma:
-                </p>
-                <ul>
-                    <li>
-                        Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o
-                        encerramento de qualquer operação anterior. Em seguida, os algarismos do número desejado são
-                        digitados. Este número é então exibido no acumulador.
-                    </li>
-                    <li>
-                        Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo
-                        número. Para executá-la, é necessário pressionar a tecla da operação desejada, inserir o segundo
-                        número e em seguida pressionar a tecla “=”. O resultado da operação será exibido no acumulador.
-                    </li>
-                    <li>Assim como o gaveteiro, a calculadora só pode ser utilizada pelo CHICO.</li>
-                </ul>
-                <figure>
-                    <figcaption><strong>Figura </strong> - </figcaption>
-                    <img src="/img/documentation/fig.png" alt="">
-                </figure>
-            </article>
-
-            <article id="epi">
-                <h3>EPI (Quadro Negro)</h3>
-                <p>
-                    O EPI é um quadro negro que o CHICO usa para deixar anotado o endereço da proxima instrução que ele
-                    deve executar durante o estado de execução. Somente o CHICO pode alterar e ler o conteúdo do EPI.
-                </p>
-                <figure>
-                    <figcaption><strong>Figura </strong> - </figcaption>
-                    <img src="/img/documentation/fig.png" alt="">
-                </figure>
-            </article>
-
-            <article id="porta-cartoes">
-                <h3>Porta Cartões</h3>
-                <p>
-                    É um componente que se assemelha a um porta cigarros, com os cartões sendo inseridos na parte
-                    superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser
-                    executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse
-                    estado. Diferente dos outros componentes, esse pode ser manipulado pelo usuário, e seu funcionamento
-                    ocorre da seguinte forma:
-                </p>
-                <ul>
-                    <li>
-                        Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar
-                        escritos apenas instruções e números de até 3 algarismos;
-                    </li>
-                    <li>
-                        Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que
-                        foram colocados no dispositivo;
-                    </li>
-                    <li>Somente CHICO pode retirar um cartão;</li>
-                    <li>A inserção de um cartão só pode ser feita por um usuário;</li>
-                    <li>
-                        Quando o CHICO executa uma instrução de leitura do porta cartões que se encontra vazio, é
-                        solicitado ao usuário que insira um novo cartão para que a execução do programa continue.
-                    </li>
-                </ul>
-                <figure>
-                    <figcaption><strong>Figura </strong> - </figcaption>
-                    <img src="/img/documentation/fig.png" alt="">
-                </figure>
-            </article>
-
-            <article id="folha-de-saida">
-                <h3>Folha de Saída</h3>
-                <p>
-                    Trata-se de uma folha de papel onde pode ser escrito um número em cada linha, utilizando-se sempre
-                    linhas consecutivas. Somente o CHICO pode escrever nesta folha e somente o usuário pode ler o que já
-                    foi escrito.
-                </p>
-                <figure>
-                    <figcaption><strong>Figura </strong> - </figcaption>
-                    <img src="/img/documentation/fig.png" alt="">
-                </figure>
-            </article>
-
-            <article id="chico">
-                <h3>Operador CHICO</h3>
-                <p>
-                    Resumindo as diversas características descritas, vemos que o operador CHICO é a única pessoa que tem
-                    acesso ao gaveteiro, à calculadora e ao EPI, além de ser o único que pode retirar cartões do
-                    porta-cartões e escrever na folha de saída. Ele executa estritamente as ordens recebidas, não
-                    podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens
-                    podem ser quaisquer uma das instruções que serão detalhadas na seção A Linguagem de Máquina do HV. O
-                    CHICO trabalha sempre em um de dois estados diferentes:
-                </p>
-
-                <article id="carga">
-                    <h4>Estado de Carga</h4>
+                <article id="gaveteiro">
+                    <h3>Gaveteiro</h3>
                     <p>
-                        O estado de carga se inicia assim que o usuário pede a execução do código. Nele o Chico retira
-                        um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a
-                        sequência das gavetas. Esse processo é repetido até a instrução 000, que indica o fim do
-                        programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.
+                        O gaveteiro é como uma série de gavetas numeradas de 00 a 99, sendo este número chamado de seu
+                        endereço. Dentro de cada gaveta há uma folha vazia, mas que pode conter até um número de três
+                        algarismos (por exemplo, 102, 50, 3, etc.) ou uma instrução e algumas informações adicionais que
+                        vamos abordar mais tarde. Agora, vamos entender como funciona esse sistema de gavetas:
                     </p>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                </article>
-
-                <article id="execucao">
-                    <h4>Estado de Execução</h4>
-                    <p>
-                        O estado de execução é o no qual o operador do sistema executa as instruções que foram escritas
-                        nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse
-                        sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI,
-                        geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro
-                        negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o
-                        programa. Para demonstrar melhor como o estado de execução funciona vamos ilustrar com imagens
-                        do CHICO executando um programa que imprime 50 na folha de saída. Os detalhes sobre como
-                        escrever um código para CHICO executar serão detalhados posteriomente.
-                    </p>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption><strong>Figura </strong> - </figcaption>
-                        <img src="/img/documentation/fig.png" alt="">
-                    </figure>
-                </article>
-            </article>
-        </section>
-        <section id="linguagem">
-            <h2>A Linguagem de Máquina do HV</h2>
-            <hr>
-            <p>
-                Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina, o HV mesmo
-                sendo um computador hipotético tem sim sua linguagem de máquina que são os conjuntos de instruções que o
-                CHICO conhece, o CHICO só conhece os números de base 10 então suas instruções são números decimais,
-                sendo composto geralmente por 3 dígitos, com exceção da 0-N. A seguir vamos ver todas as instruções que
-                o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções
-                são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas,
-                entrada, saída, controle.
-            </p>
-
-            <article id="instrucoes">
-                <h3>Instruções</h3>
-
-                <article id="carregamento">
-                    <h4>Instruções de carregamento:</h4>
                     <ul>
-                        <li>0EE (Copie valor da gaveta EE para AC): Esta instrução permite transferir dados armazenados
-                            em uma gaveta (registrador temporário) denominada EE para o Acumulador (AC). Isso é
-                            fundamental para mover informações entre locais de armazenamento temporário e o registrador
-                            principal, onde operações subsequentes podem ser realizadas.</li>
-                        <li>1EE (Copie valor do AC para gaveta EE): Inversamente à instrução anterior, esta permite a
-                            transferência de dados do Acumulador para uma gaveta específica. É útil quando se deseja
-                            preservar temporariamente o conteúdo do Acumulador antes de realizar outras operações.</li>
-                        <li>0-N (AC recebe uma constante): Permite carregar uma constante (representada por N)
-                            diretamente no Acumulador. Isso é útil para inicializar variáveis ou realizar operações com
-                            valores fixos.</li>
+                        <li>Em qualquer momento, só podemos abrir uma gaveta.</li>
+                        <li>Quando lemos o que está escrito em uma gaveta, isso não muda o que está escrito lá.</li>
+                        <li>Antes de escrever algo numa gaveta, precisamos apagar o que já está lá.</li>
+                        <li>O valor que será escrito numa gaveta não pode ser inferior a 0 e superior a 999.</li>
+                        <li>Somente o operador do sistema pode mexer no gaveteiro.</li>
+                        <li>
+                            Durante o estado de carga as instruções que estão no porta cartões são guardadas no gaveteiro,
+                            até que seja armazenado o cartão contendo a instrução 000, que indica o fim do estado de carga.
+                        </li>
                     </ul>
+                    <figure>
+                        <figcaption><strong>Figura </strong> - </figcaption>
+                        <img src="/img/documentation/fig.png" alt="">
+                    </figure>
                 </article>
-
-                <article id="aritmetica">
-                    <h4>Operações Aritméticas:</h4>
-                    <ul>
-                        <li>2EE (Some cEE ao AC): Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do
-                            Acumulador.</li>
-                        <li>3EE (Subtraia de AC o cEE): Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual
-                            do Acumulador.</li>
-                        <li>4EE (Multiplique o cAC por cEE): Multiplica o conteúdo atual do Acumulador (cAC) pelo valor
-                            armazenado em uma gaveta (cEE). </li>
-                        <li>5EE (Divida o cAC por cEE): Divide o conteúdo atual do Acumulador (cAC) pelo valor
-                            armazenado em uma gaveta (cEE).</li>
-                    </ul>
-                </article>
-
-                <article id="fluxo">
-                    <h4>Controle de Fluxo:</h4>
-                    <ul>
-                        <li>6EE (Se cAC > 0, vá para EE): Permite a execução condicional, desviando o fluxo do programa
-                            para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso
-                            é útil para tomar decisões com base em condições.</li>
-                        <li>9EE (Vá para cEE): Instrução de desvio incondicional que direciona o fluxo do programa para
-                            um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.</li>
-                    </ul>
-                </article>
-
-                <article id="entrada-saida-instrucao">
-                    <h4>Entrada/Saída:</h4>
-                    <ul>
-                        <li>7EE (Leia um valor e guarde na gaveta EE): Permite a entrada de dados a partir do porta
-                            cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para
-                            interações com o usuário ou inicialização de dados.</li>
-                        <li>8EE (Escreva cEE no dispositivo de saída): Realiza a saída de dados para a folha de saída,
-                            utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos
-                            dados.</li>
-                    </ul>
-                </article>
-
-                <article id="controle">
-                    <h4>Controle de Programa:</h4>
-                    <ul>
-                        <li>000 (Fim do programa): Indica o encerramento do estado de CARGA e início do estado de
-                            EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser
-                            interrompida. Essa instrução é essencial para marcar o término do código executável.</li>
-                    </ul>
-                </article>
-            </article>
-
-            <article id="conceitos">
-                <h3>Conceitos Essenciais</h3>
-
-                <article id="entrada-saida-conceito">
-                    <h4>Entrada e Saída</h4>
+                <article id="calculadora">
+                    <h3>Calculadora</h3>
                     <p>
-                        No computador hipotético HV as operações de entrada são realizadas através de um de seus
-                        componentes: o porta-cartões.
+                        A calculadora utilizada no HV é semelhante a qualquer outra, apresentando um teclado com dígitos de
+                        0 a 9 e um visor onde são exibidos os resultados das operações. Estes resultados são armazenados no
+                        acumulador. No entanto, ao contrário das calculadoras convencionais, esta opera exclusivamente com
+                        valores inteiros e oferece apenas quatro operações: soma, subtração, divisão e multiplicação. Com a
+                        operação da calculadora sendo realizada desta forma:
                     </p>
+                    <ul>
+                        <li>
+                            Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o
+                            encerramento de qualquer operação anterior. Em seguida, os algarismos do número desejado são
+                            digitados. Este número é então exibido no acumulador.
+                        </li>
+                        <li>
+                            Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo
+                            número. Para executá-la, é necessário pressionar a tecla da operação desejada, inserir o segundo
+                            número e em seguida pressionar a tecla “=”. O resultado da operação será exibido no acumulador.
+                        </li>
+                        <li>Assim como o gaveteiro, a calculadora só pode ser utilizada pelo CHICO.</li>
+                    </ul>
+                    <figure>
+                        <figcaption><strong>Figura </strong> - </figcaption>
+                        <img src="/img/documentation/fig.png" alt="">
+                    </figure>
+                </article>
+                <article id="epi">
+                    <h3>EPI (Quadro Negro)</h3>
                     <p>
-                        Ao executar uma instrução de leitura (7EE), o operador do sistema irá verificar se há nele algum
-                        cartão contendo informação, a fim de armazená-lo na gaveta indicada. Caso o CHICO não encontre
-                        um cartão em sua busca, a execução do código será interrompida e prosseguirá apenas quando o
-                        usuário inserir um novo dado no porta-cartões.
+                        O EPI é um quadro negro que o CHICO usa para deixar anotado o endereço da proxima instrução que ele
+                        deve executar durante o estado de execução. Somente o CHICO pode alterar e ler o conteúdo do EPI.
                     </p>
+                    <figure>
+                        <figcaption><strong>Figura </strong> - </figcaption>
+                        <img src="/img/documentation/fig.png" alt="">
+                    </figure>
+                </article>
+                <article id="porta-cartoes">
+                    <h3>Porta Cartões</h3>
                     <p>
-                        Por também ser o componente no qual o código a ser executado é armazenado, é possível inserir
-                        cartões contendo dados a serem utilizados no programa antes de sua execução ao se colocar
-                        números após a instrução de final de programa (000). Neste cenário, a instrução de leitura não
-                        pediria a inserção de dado pelo usuário, visto que o operador do sistema encontraria já um
-                        cartão para guardar.
+                        É um componente que se assemelha a um porta cigarros, com os cartões sendo inseridos na parte
+                        superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser
+                        executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse
+                        estado. Diferente dos outros componentes, esse pode ser manipulado pelo usuário, e seu funcionamento
+                        ocorre da seguinte forma:
                     </p>
+                    <ul>
+                        <li>
+                            Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar
+                            escritos apenas instruções e números de até 3 algarismos;
+                        </li>
+                        <li>
+                            Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que
+                            foram colocados no dispositivo;
+                        </li>
+                        <li>Somente CHICO pode retirar um cartão;</li>
+                        <li>A inserção de um cartão só pode ser feita por um usuário;</li>
+                        <li>
+                            Quando o CHICO executa uma instrução de leitura do porta cartões que se encontra vazio, é
+                            solicitado ao usuário que insira um novo cartão para que a execução do programa continue.
+                        </li>
+                    </ul>
+                    <figure>
+                        <figcaption><strong>Figura </strong> - </figcaption>
+                        <img src="/img/documentation/fig.png" alt="">
+                    </figure>
+                </article>
+                <article id="folha-de-saida">
+                    <h3>Folha de Saída</h3>
                     <p>
-                        Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados
-                        armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).
+                        Trata-se de uma folha de papel onde pode ser escrito um número em cada linha, utilizando-se sempre
+                        linhas consecutivas. Somente o CHICO pode escrever nesta folha e somente o usuário pode ler o que já
+                        foi escrito.
                     </p>
-                    <pre class="pre-code"><code>730    ; <span class="comment">Leitura de cartão para gaveta 30</span>
+                    <figure>
+                        <figcaption><strong>Figura </strong> - </figcaption>
+                        <img src="/img/documentation/fig.png" alt="">
+                    </figure>
+                </article>
+                <article id="chico">
+                    <h3>Operador CHICO</h3>
+                    <p>
+                        Resumindo as diversas características descritas, vemos que o operador CHICO é a única pessoa que tem
+                        acesso ao gaveteiro, à calculadora e ao EPI, além de ser o único que pode retirar cartões do
+                        porta-cartões e escrever na folha de saída. Ele executa estritamente as ordens recebidas, não
+                        podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens
+                        podem ser quaisquer uma das instruções que serão detalhadas na seção A Linguagem de Máquina do HV. O
+                        CHICO trabalha sempre em um de dois estados diferentes:
+                    </p>
+                    <article id="carga">
+                        <h4>Estado de Carga</h4>
+                        <p>
+                            O estado de carga se inicia assim que o usuário pede a execução do código. Nele o Chico retira
+                            um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a
+                            sequência das gavetas. Esse processo é repetido até a instrução 000, que indica o fim do
+                            programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.
+                        </p>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                    </article>
+                    <article id="execucao">
+                        <h4>Estado de Execução</h4>
+                        <p>
+                            O estado de execução é o no qual o operador do sistema executa as instruções que foram escritas
+                            nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse
+                            sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI,
+                            geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro
+                            negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o
+                            programa. Para demonstrar melhor como o estado de execução funciona vamos ilustrar com imagens
+                            do CHICO executando um programa que imprime 50 na folha de saída. Os detalhes sobre como
+                            escrever um código para CHICO executar serão detalhados posteriomente.
+                        </p>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                        <figure>
+                            <figcaption><strong>Figura </strong> - </figcaption>
+                            <img src="/img/documentation/fig.png" alt="">
+                        </figure>
+                    </article>
+                </article>
+            </section>
+            <section id="linguagem">
+                <h2>A Linguagem de Máquina do HV</h2>
+                <hr>
+                <p>
+                    Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina, o HV mesmo
+                    sendo um computador hipotético tem sim sua linguagem de máquina que são os conjuntos de instruções que o
+                    CHICO conhece, o CHICO só conhece os números de base 10 então suas instruções são números decimais,
+                    sendo composto geralmente por 3 dígitos, com exceção da 0-N. A seguir vamos ver todas as instruções que
+                    o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções
+                    são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas,
+                    entrada, saída, controle.
+                </p>
+                <article id="instrucoes">
+                    <h3>Instruções</h3>
+                    <article id="carregamento">
+                        <h4>Instruções de carregamento:</h4>
+                        <ul>
+                            <li>0EE (Copie valor da gaveta EE para AC): Esta instrução permite transferir dados armazenados
+                                em uma gaveta (registrador temporário) denominada EE para o Acumulador (AC). Isso é
+                                fundamental para mover informações entre locais de armazenamento temporário e o registrador
+                                principal, onde operações subsequentes podem ser realizadas.</li>
+                            <li>1EE (Copie valor do AC para gaveta EE): Inversamente à instrução anterior, esta permite a
+                                transferência de dados do Acumulador para uma gaveta específica. É útil quando se deseja
+                                preservar temporariamente o conteúdo do Acumulador antes de realizar outras operações.</li>
+                            <li>0-N (AC recebe uma constante): Permite carregar uma constante (representada por N)
+                                diretamente no Acumulador. Isso é útil para inicializar variáveis ou realizar operações com
+                                valores fixos.</li>
+                        </ul>
+                    </article>
+                    <article id="aritmetica">
+                        <h4>Operações Aritméticas:</h4>
+                        <ul>
+                            <li>2EE (Some cEE ao AC): Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do
+                                Acumulador.</li>
+                            <li>3EE (Subtraia de AC o cEE): Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual
+                                do Acumulador.</li>
+                            <li>4EE (Multiplique o cAC por cEE): Multiplica o conteúdo atual do Acumulador (cAC) pelo valor
+                                armazenado em uma gaveta (cEE). </li>
+                            <li>5EE (Divida o cAC por cEE): Divide o conteúdo atual do Acumulador (cAC) pelo valor
+                                armazenado em uma gaveta (cEE).</li>
+                        </ul>
+                    </article>
+                    <article id="fluxo">
+                        <h4>Controle de Fluxo:</h4>
+                        <ul>
+                            <li>6EE (Se cAC > 0, vá para EE): Permite a execução condicional, desviando o fluxo do programa
+                                para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso
+                                é útil para tomar decisões com base em condições.</li>
+                            <li>9EE (Vá para cEE): Instrução de desvio incondicional que direciona o fluxo do programa para
+                                um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.</li>
+                        </ul>
+                    </article>
+                    <article id="entrada-saida-instrucao">
+                        <h4>Entrada/Saída:</h4>
+                        <ul>
+                            <li>7EE (Leia um valor e guarde na gaveta EE): Permite a entrada de dados a partir do porta
+                                cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para
+                                interações com o usuário ou inicialização de dados.</li>
+                            <li>8EE (Escreva cEE no dispositivo de saída): Realiza a saída de dados para a folha de saída,
+                                utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos
+                                dados.</li>
+                        </ul>
+                    </article>
+                    <article id="controle">
+                        <h4>Controle de Programa:</h4>
+                        <ul>
+                            <li>000 (Fim do programa): Indica o encerramento do estado de CARGA e início do estado de
+                                EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser
+                                interrompida. Essa instrução é essencial para marcar o término do código executável.</li>
+                        </ul>
+                    </article>
+                </article>
+                <article id="conceitos">
+                    <h3>Conceitos Essenciais</h3>
+                    <article id="entrada-saida-conceito">
+                        <h4>Entrada e Saída</h4>
+                        <p>
+                            No computador hipotético HV as operações de entrada são realizadas através de um de seus
+                            componentes: o porta-cartões.
+                        </p>
+                        <p>
+                            Ao executar uma instrução de leitura (7EE), o operador do sistema irá verificar se há nele algum
+                            cartão contendo informação, a fim de armazená-lo na gaveta indicada. Caso o CHICO não encontre
+                            um cartão em sua busca, a execução do código será interrompida e prosseguirá apenas quando o
+                            usuário inserir um novo dado no porta-cartões.
+                        </p>
+                        <p>
+                            Por também ser o componente no qual o código a ser executado é armazenado, é possível inserir
+                            cartões contendo dados a serem utilizados no programa antes de sua execução ao se colocar
+                            números após a instrução de final de programa (000). Neste cenário, a instrução de leitura não
+                            pediria a inserção de dado pelo usuário, visto que o operador do sistema encontraria já um
+                            cartão para guardar.
+                        </p>
+                        <p>
+                            Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados
+                            armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).
+                        </p>
+                        <pre class="pre-code"><code>730    ; <span class="comment">Leitura de cartão para gaveta 30</span>
 830    ; <span class="comment">Escrita da gaveta 30 para folha de saída</span>
 000    ; <span class="comment">Fim do programa</span>
 2      ; <span class="comment">Dado a ser lido pela instrução</span></code></pre>
-                </article>
-
-                <article id="variaveis">
-                    <h4>Variáveis</h4>
-                    <p>
-                        Na linguagem de máquina do HV, o conceito de variáveis é abordado de forma diferente do que
-                        estamos acostumados em linguagens de alto nível. Nessa linguagem, não há uma representação
-                        direta de variáveis, e os dados são armazenados em gavetas identificadas por endereços
-                        específicos. Para atribuir valores às "variáveis" do seu programa, é necessário escolher um
-                        endereço de gaveta e utilizar instruções apropriadas.
-                    </p>
-                    <p>
-                        Considere o seguinte código em Python com três variáveis:
-                    </p>
-                    <pre class="pre-code"><code>x <span class="reserved">=</span> <span class="value">5</span>
+                    </article>
+                    <article id="variaveis">
+                        <h4>Variáveis</h4>
+                        <p>
+                            Na linguagem de máquina do HV, o conceito de variáveis é abordado de forma diferente do que
+                            estamos acostumados em linguagens de alto nível. Nessa linguagem, não há uma representação
+                            direta de variáveis, e os dados são armazenados em gavetas identificadas por endereços
+                            específicos. Para atribuir valores às "variáveis" do seu programa, é necessário escolher um
+                            endereço de gaveta e utilizar instruções apropriadas.
+                        </p>
+                        <p>
+                            Considere o seguinte código em Python com três variáveis:
+                        </p>
+                        <pre class="pre-code"><code>x <span class="reserved">=</span> <span class="value">5</span>
 y <span class="reserved">=</span> <span class="value">5</span>
 result <span class="reserved">=</span> x <span class="reserved">+</span> y
 <span class="reserved">print</span>(result)</code></pre>
-                    <p>
-                        Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas,
-                        representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as
-                        "variáveis" durante a leitura do porta-cartões, colocando valores após a instrução 000. Desta
-                        forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo
-                        que a leitura com a instrução 7EE atribua corretamente os valores às "variáveis".
-                    </p>
-                    <pre class="pre-code"><code>730     ; <span class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
+                        <p>
+                            Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas,
+                            representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as
+                            "variáveis" durante a leitura do porta-cartões, colocando valores após a instrução 000. Desta
+                            forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo
+                            que a leitura com a instrução 7EE atribua corretamente os valores às "variáveis".
+                        </p>
+                        <pre class="pre-code"><code>730     ; <span class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
 731	; <span class="comment">Leitura do porta-cartões para gaveta 31 (y)</span>
 030	; <span class="comment">Coloca o valor da gaveta 30 (x) no acumulador</span>
 231	; <span class="comment">Realiza a adição do valor da gaveta 31 (y) ao acumulador</span>
@@ -398,43 +416,41 @@ result <span class="reserved">=</span> x <span class="reserved">+</span> y
 000	; <span class="comment">Fim do programa</span>
 5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 30</span>
 5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 31</span></code></pre>
+                    </article>
+                    <article id="desvio">
+                        <h4>Desvio</h4>
+                        <p>
+                            Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as
+                            instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o
+                            desenvolvimento de programas mais complexos.
+                        </p>
+                        <p>
+                            A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada
+                            parte do código só é executada caso alguma condição específica seja atendida.
+                        </p>
+                        <p>
+                            A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero
+                            parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas
+                            maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.
+                        </p>
+                    </article>
+                    <article id="lacos">
+                        <h4>Laços de repetição</h4>
+                        <p>
+                            Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou
+                            seja, um pedaço do código que é executado diversas vezes.
+                        </p>
+                    </article>
+                    <article id="sub-rotinas">
+                        <h4>Sub-rotinas</h4>
+                        <p>
+                            Se o programador deseja utilizar um mesmo pedaço de código em linguagem de máquina HV mais de
+                            uma vez, ele pode ainda, usando as instruções de desvio, criar sub-rotinas que podem ser
+                            chamadas diversas vezes.
+                        </p>
+                    </article>
                 </article>
-
-                <article id="desvio">
-                    <h4>Desvio</h4>
-                    <p>
-                        Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as
-                        instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o
-                        desenvolvimento de programas mais complexos.
-                    </p>
-                    <p>
-                        A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada
-                        parte do código só é executada caso alguma condição específica seja atendida.
-                    </p>
-                    <p>
-                        A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero
-                        parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas
-                        maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.
-                    </p>
-                </article>
-
-                <article id="lacos">
-                    <h4>Laços de repetição</h4>
-                    <p>
-                        Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou
-                        seja, um pedaço do código que é executado diversas vezes.
-                    </p>
-                </article>
-
-                <article id="sub-rotinas">
-                    <h4>Sub-rotinas</h4>
-                    <p>
-                        Se o programador deseja utilizar um mesmo pedaço de código em linguagem de máquina HV mais de
-                        uma vez, ele pode ainda, usando as instruções de desvio, criar sub-rotinas que podem ser
-                        chamadas diversas vezes.
-                    </p>
-                </article>
-            </article>
+            </section>
         </section>
     </main>
 

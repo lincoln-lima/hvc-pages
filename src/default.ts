@@ -4,8 +4,8 @@ import "/src/styles/defaults/header.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     elements: {
-        menumodal: () => { return document.getElementsByTagName("menu")[0]! },
-        menuburger: () => { return document.getElementsByClassName("botao-menu")[0]! as HTMLElement },
+        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
+        menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement },
     },
     actions: {
         displayElement: (element: HTMLElement) => {

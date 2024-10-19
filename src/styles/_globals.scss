@@ -117,7 +117,6 @@ $fonts:
 @mixin defaultText {
     font-size: 1.4em;
     text-align: justify;
-    @include setFont(text);
 }
 
 @mixin circle {
