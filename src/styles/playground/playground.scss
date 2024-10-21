@@ -30,20 +30,45 @@ main {
 
         #porta-cartoes {
             text-align: center;
-
-            @include portacartoes-viewers;
+            
             @include global.size(play.$porta-cartoes-initial-width, 100%);
-
+            @include global.flex($justify: center);
+            
             @include responsive.porta-cartoes;
+            
+            > * {
+                @include portacartoes-viewers;
+            }
+            
+            table {
+                width: 100%;
+                
+                background-color: black;
+                border-spacing: 0.15em;
+
+                tbody {
+                    tr { 
+                        background-color: #ffe8c4;
+                        
+                        .cards {
+                            padding: 0.25em 0;
+
+                            font-size: 2em;
+                            @include global.setFont(dotted);
+                        }
+                    }
+                }
+            }
 
             .editor {
+                display: none !important;
                 height: 100%;
                 font-size: 2em;
 
                 &, * {
                     background-color: #ffe8c4;
                 }
-
+                
                 .content * {
                     @include global.setFont(mono);
                 }
@@ -74,8 +99,8 @@ main {
 
                 > * {
                     @include global.size(play.$viewers-initial-size);
+                    
                     @include portacartoes-viewers;
-
                     @include responsive.viewers-childs;
                 }
 

@@ -121,7 +121,7 @@ export default () => {
         
         play.actions.setState("desligado");
     }
-
+    // ------------------------------------------------------------------------------- 
     play.elements.pausecontinue().addEventListener('click', () => {
         if(play.elements.pausecontinue().className === 'pause') hvc.stop();
         else hvc.continue();
@@ -136,7 +136,7 @@ export default () => {
         hvc.back();
         updateDrawers();
     });
-
+    // ------------------------------------------------------------------------------- 
     document.addEventListener('keydown', e => {
         if(e.ctrlKey && e.key.toLowerCase() === 'arrowright') {
             e.preventDefault();

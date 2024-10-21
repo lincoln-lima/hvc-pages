@@ -22,22 +22,24 @@
     }
 }
 
-@mixin responsive-menu($top, $items) {
-    position: absolute;
-    z-index: 10;
-    top: $top;
-    right: 0;
-    
-    width: fit-content !important;
-    
-    height: calc($items * default.$menu-buttons-height * 1.4);
+@mixin responsive-menu($top, $items, $max-screen) {
+    @media screen and (max-width: $max-screen) {
+        position: absolute;
+        z-index: 10;
+        top: $top;
+        right: 0;
+        
+        width: fit-content !important;
+        
+        height: calc($items * default.$menu-buttons-height * 1.4);
 
-    align-items: end !important;
-    flex-direction: column;
+        align-items: end !important;
+        flex-direction: column;
 
-    padding: 15px;
-    border-radius: 0 0 5px 5px;
-    background-color: #00000020;
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+        background-color: #00000020;
+    }
 }
 
 @mixin dot-state($animation, $radius) {
@@ -163,9 +165,7 @@ header {
             .primary-menu {
                 width: 55%;
                 
-                @media screen and (max-width: index.$responsive-width) {
-                    @include responsive-menu(calc(index.$header-height - index.$header-padding), 3);
-                }
+                @include responsive-menu(calc(index.$header-height - index.$header-padding), 3, index.$header-responsive-width);
             }
         }
     }    
@@ -178,6 +178,8 @@ header {
 
             .primary-menu {
                 width: doc.$menu-width;
+
+                @include responsive-menu(calc(doc.$header-height - doc.$header-padding), 3, doc.$header-responsive-width);
             }
         }
     }
@@ -305,9 +307,7 @@ header {
             .primary-menu {
                 width: calc(play.$menu-width * 1.2);
 
-                @media screen and (max-width: play.$header-responsive-width) {
-                    @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons);
-                }
+                @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
                 button {
                     padding: 0 0.4em;

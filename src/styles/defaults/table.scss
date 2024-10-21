@@ -8,7 +8,7 @@
 /* -------------------------------------------------------------------- */
 table#commands {
     width: 100%;
-    border-spacing: 10px 10px;
+    border-spacing: 0.45em;
 
     @include global.defaultText;
     @include global.center;
