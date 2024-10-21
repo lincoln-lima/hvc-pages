@@ -16,6 +16,8 @@ main {
         @include global.size(18%, calc(100vh - doc.$header-height));
 
         menu{
+            padding: 0.5em 0;
+
             * {
                 font-size: 1.01em;
                 text-align: left;
@@ -24,6 +26,12 @@ main {
             ul {
                 padding-left: 1em;
                 list-style-type: none;
+
+                border-left: 0.1em solid transparent;
+
+                &:hover {
+                    border-color: black;
+                }
             }
 
             li {

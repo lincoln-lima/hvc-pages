@@ -51,7 +51,9 @@ export const play = {
     
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         gavetas: () => { return document.getElementsByClassName("gaveta")! },
-        contentgavetas: () => { return document.getElementsByClassName("cont-gaveta")! }
+        contentgavetas: () => { return document.getElementsByClassName("cont-gaveta")! },
+
+        cards: () => { return document.getElementById("cards")! }
     },
     actions: {
         setState: (state: string) => {
@@ -87,6 +89,16 @@ export const play = {
             const actual = play.elements.pausecontinue().className;
 
             play.elements.pausecontinue().className = actual === 'pause' ? 'continue' : 'pause';
+        },
+
+        addCardToTable: (card: string) => {
+            const line = document.createElement("tr");
+            const data = document.createElement("td");
+
+            data.innerText = card;
+
+            line.appendChild(data);
+            play.elements.cards().appendChild(line);
         }
     }
 }
