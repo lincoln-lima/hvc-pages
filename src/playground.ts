@@ -11,10 +11,10 @@ import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
-        saida: () => { return document.getElementById("saida-span")! },
-        acumulador: () => { return document.getElementById("acumulador-span-valor")! },
+        out: () => { return document.getElementById("saida-span")! },
+        acumulator: () => { return document.getElementById("acumulador-span-valor")! },
         epi: () => { return document.getElementById("epi-span")! },
-        card: () => { return document.getElementById("cartao")! as HTMLInputElement },
+        readcard: () => { return document.getElementById("card")! as HTMLInputElement },
         
         run: () => { return document.getElementById("run")! },
         debug: () => { return document.getElementById("debug")! },
@@ -25,6 +25,9 @@ export const play = {
         hvmstate: () => { return document.getElementById("hvm-state")! },
 
         debugmenu: () => { return document.getElementById("debug-menu")! },
+
+        portacartoes: () => { return document.getElementById("porta-cartoes")! },
+        editor: () => { return document.getElementById("editor")! },
 
         back: () => { return document.getElementById("back")! },
         forth: () => { return document.getElementById("forth")! },
@@ -50,10 +53,11 @@ export const play = {
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
     
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
-        gavetas: () => { return document.getElementsByClassName("gaveta")! },
-        contentgavetas: () => { return document.getElementsByClassName("cont-gaveta")! },
+        drawers: () => { return document.getElementsByClassName("drawer")! },
+        drawerscontent: () => { return document.getElementsByClassName("cont-drawer")! },
 
-        cards: () => { return document.getElementById("cards")! }
+        tablecards: () => { return document.getElementById("cards")! },
+        cards: () => { return play.elements.tablecards().children[0]! as HTMLElement }
     },
     actions: {
         setState: (state: string) => {
@@ -162,5 +166,10 @@ modals.forEach(async modal => {
 
     document.body.appendChild(element);
 });
+// ------------------------------------------------------------------------------- 
+const tablecards = await templates("playground/cards");
+tablecards.style['display'] = "none";
+
+play.elements.portacartoes().appendChild(tablecards);
 // ------------------------------------------------------------------------------- 
 await loadplay();

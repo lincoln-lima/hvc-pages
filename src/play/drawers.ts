@@ -1,5 +1,5 @@
 import templates from "../templates";
-
+// ------------------------------------------------------------------------------- 
 export default async(gaveteiro: HTMLElement) => {
     for (let i = 0; i < 100; i++) {
         const drawer = await templates('playground/drawer');

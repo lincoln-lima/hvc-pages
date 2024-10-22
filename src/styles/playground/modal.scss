@@ -82,19 +82,23 @@
 
 		.modal-main {
 			height: 60%;
+
+			#delay {
+				width: 3.5em;
+			}
 		}
 
 		.modal-footer {
 			height: 10%;
 			background: global.$fade-default;
-		}
-		
-		#save-configs {
-			font-size: 1em;
-			height: 85%;
 			
-			padding: 0;
-			width: 5em;
+			#save-configs {
+				font-size: 1em;
+				height: 85%;
+				
+				padding: 0;
+				width: 5em;
+			}
 		}
 	}
 }

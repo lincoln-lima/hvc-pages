@@ -1,41 +1,68 @@
 import { HVC } from "hvcjs";
 import { globals } from "../default";
 import { play } from "../playground";
-// ------------------------------------------------------------------------------- 
+// -----------------------------------------------------------------------------------
 import ahv from "./ahv";
-// ------------------------------------------------------------------------------- 
+// -----------------------------------------------------------------------------------
 export default () => {
     const hvc = new HVC();
+    let previous = "desligado";
     ahv();
-    // ---------------------------------------------------------------------------
-    play.elements.run().addEventListener('click', () => exec(true));
-    play.elements.debug().addEventListener('click', () => exec(false));
+    // ------------------------------------------------------------------------------- 
+    const runner = play.elements.run();
+    const debug = play.elements.debug();
+    
+    const back = play.elements.back();
+    const finish = play.elements.finish();
+    const pausecontinue = play.elements.pausecontinue();
+    const forth = play.elements.forth();
+    
+    const outwrite = play.elements.out();
+    const epiwrite = play.elements.epi();
+    const acumulator = play.elements.acumulator();
+    
+    const drawers = play.elements.drawers();
+    const drawerscontent = play.elements.drawerscontent();
+    
+    const delay = play.elements.delay();
+    
+    const debugmenu = play.elements.debugmenu();
+    const editor = play.elements.editor();
+    const tablecards = play.elements.tablecards();
+    
+    const cards = play.elements.cards();
+    const readcard = play.elements.readcard();
+    const cardmodal = play.elements.cardmodal();
+    const submitcard = play.elements.submitcard();
+    // ------------------------------------------------------------------------------- 
+    runner.addEventListener('click', () => exec(true));
+    debug.addEventListener('click', () => exec(false));
 
     document.addEventListener('keydown', e => {
-        const key = e.key.toLocaleLowerCase();
+        const key = e.key.toLowerCase();
 
         if (key === "f9") exec(true);
         else if (key === "f8") exec(false);
     });
-    // ---------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------- 
     const exec = async(isquick: boolean) => {
-        Array.from(play.elements.gavetas()).forEach(gaveta => {
+        Array.from(drawers).forEach(gaveta => {
             play.actions.highlightDrawer(gaveta as HTMLElement, 'default');
         })
-
+        // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
 
-        play.elements.saida().innerText = '-';
-        play.elements.epi().innerText = '-';
-
+        outwrite.innerText = '-';
+        epiwrite.innerText = '-';
+        // ---------------------------------------------------------------------------
         try {
             if (isquick) await hvc.run();
             else {
-                const debugmenu = play.elements.debugmenu();
-
                 globals.actions.switchVisibility(debugmenu, true);
+                globals.actions.undisplayElement(editor);
+                globals.actions.displayElement(tablecards);
 
-                await hvc.debug(+play.elements.delay().value);
+                await hvc.debug(+delay.value);
             }
         }
         catch (e) {
@@ -46,24 +73,24 @@ export default () => {
     }
     // ------------------------------------------------------------------------------- 
     hvc.addEventOutput((out: string) => {
-        play.elements.saida().innerText = out;
+        outwrite.innerText = out;
     });
 
     hvc.addEventInput(async () => {
-        globals.actions.displayElement(play.elements.cardmodal());
+        globals.actions.displayElement(cardmodal);
 
-        play.elements.card().value = '';
-        play.elements.card().focus();
+        readcard.value = '';
+        readcard.focus();
 
         return await new Promise<string>(resolve => {
             const submit = () => {
-                globals.actions.undisplayElement(play.elements.cardmodal());
-                setTimeout(resolve, +play.elements.delay().value, play.elements.card().value);
+                globals.actions.undisplayElement(cardmodal);
+                setTimeout(resolve, +delay.value, readcard.value);
             }
 
-            play.elements.submitcard().onclick = () => submit();
+            submitcard.onclick = () => submit();
 
-            play.elements.card().onkeydown = (e: KeyboardEvent) => {
+            readcard.onkeydown = (e: KeyboardEvent) => {
                 if (e.key.toLowerCase() === "enter") {
                     e.preventDefault();
 
@@ -73,70 +100,80 @@ export default () => {
         });
     });
     // ------------------------------------------------------------------------------- 
-    const updateDrawers = () => {
+    const updateViewers = () => {
         const hvm = hvc.getHVM();
-
+        // ---------------------------------------------------------------------------
         const acumulador = hvm.calculadora.getAcumulador();
-        const drawers = hvm.gaveteiro.getGavetas();
+        const gavetas = hvm.gaveteiro.getGavetas();
         const epi = hvm.epi.lerRegistro();
+        const portaCartoes = hvm.portaCartoes.conteudo;
+        // ---------------------------------------------------------------------------
+        cards.innerHTML = "";
 
-        const pointed = play.elements.gavetas()[epi] as HTMLElement;
-        
-        // console.log(hvm.portaCartoes.conteudo); //inserir tabela no lugar do editor pegando o porta-cartoes
-
+        portaCartoes.forEach(cartao => {
+            play.actions.addCardToTable(cartao);
+        });
+        // ---------------------------------------------------------------------------
         play.actions.setState(hvm.getState().toLowerCase());
         
-        play.elements.acumulador().innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
-        play.elements.epi().innerText = epi.toString();
-        
-        Array.from(play.elements.contentgavetas()).forEach((cont, i) => {
-            const gaveta = play.elements.gavetas()[i] as HTMLElement;
+        acumulator.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
+        epiwrite.innerText = epi.toString();
+        // ---------------------------------------------------------------------------
+        Array.from(drawerscontent).forEach((cont, i) => {
+            const drawer = drawers[i] as HTMLElement;
 
-            if(drawers[i]) {
-                play.actions.highlightDrawer(gaveta, 'highlight');
+            if(gavetas[i]) {
+                play.actions.highlightDrawer(drawer, 'highlight');
 
-                (cont as HTMLElement).innerText = drawers[i].toString();
+                (cont as HTMLElement).innerText = gavetas[i];
             }
             else (cont as HTMLElement).innerText = "---";
         });
+        // ---------------------------------------------------------------------------
+        const pointed = drawers[epi] as HTMLElement;
 
         play.actions.highlightDrawer(pointed, 'pointed');
         globals.actions.scrollTo(pointed);
     }
-
+    // ---------------------------------------------------------------------------
     hvc.addEventClock(HVMState => {
-        updateDrawers();
+        const state = HVMState.toLowerCase();
 
-        if(HVMState.toLowerCase() === 'desligado') terminate();
+        updateViewers();
+
+        if(previous != state && state === "desligado") terminate();
+        previous = state;
     });
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     const terminate = () => {
-        const debugmenu = play.elements.debugmenu();
         globals.actions.switchVisibility(debugmenu, false);
+        globals.actions.undisplayElement(tablecards);
+        globals.actions.displayElement(editor);
         
         hvc.finish();
         hvc.continue();
 
-        play.elements.pausecontinue().className = "pause";
+        pausecontinue.className = "pause";
         
-        play.actions.setState("desligado");
+        previous = "desligado";
+        play.actions.setState(previous);
     }
-    // ------------------------------------------------------------------------------- 
-    play.elements.pausecontinue().addEventListener('click', () => {
-        if(play.elements.pausecontinue().className === 'pause') hvc.stop();
+    // ---------------------------------------------------------------------------
+    pausecontinue.addEventListener('click', () => {
+        if(pausecontinue.className === 'pause') hvc.stop();
         else hvc.continue();
 
         play.actions.switchPauseContinue();
     });
 
-    play.elements.finish().addEventListener('click', terminate);
+    finish.addEventListener('click', terminate);
 
-    play.elements.forth().addEventListener('click', () => hvc.next());
-    play.elements.back().addEventListener('click', () => {
+    forth.addEventListener('click', () => hvc.next());
+    back.addEventListener('click', () => {
         hvc.back();
-        updateDrawers();
+        updateViewers();
     });
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     document.addEventListener('keydown', e => {
         if(e.ctrlKey && e.key.toLowerCase() === 'arrowright') {
             e.preventDefault();
@@ -150,7 +187,7 @@ export default () => {
             e.preventDefault();
 
             hvc.back();
-            updateDrawers();
+            updateViewers();
         }
     });
 

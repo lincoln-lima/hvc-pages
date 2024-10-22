@@ -30,27 +30,30 @@ main {
 
         #porta-cartoes {
             text-align: center;
+            background-color: #ffe8c4;
+            
+            overflow-y: auto;
             
             @include global.size(play.$porta-cartoes-initial-width, 100%);
             @include global.flex($justify: center);
             
+            @include portacartoes-viewers;
             @include responsive.porta-cartoes;
             
-            > * {
-                @include portacartoes-viewers;
-            }
-            
-            table {
+            #cards {
                 width: 100%;
-                
-                background-color: black;
-                border-spacing: 0.15em;
+                border-spacing: 0.5em;
 
                 tbody {
                     tr { 
-                        background-color: #ffe8c4;
+                        background-color: white;
+
+                        &:hover {
+                            background-color: global.$color1-dark;
+                        }
                         
-                        .cards {
+                        td {
+                            border: 0.05em solid black;
                             padding: 0.25em 0;
 
                             font-size: 2em;
@@ -60,16 +63,15 @@ main {
                 }
             }
 
-            .editor {
-                display: none !important;
-                height: 100%;
+            #editor {
                 font-size: 2em;
+                @include global.size(100%);
 
                 &, * {
                     background-color: #ffe8c4;
                 }
                 
-                .content * {
+                #content * {
                     @include global.setFont(mono);
                 }
 
@@ -172,7 +174,7 @@ main {
                 @include responsive.debuggers-childs;
                 @include responsive.gaveteiro;
 
-                .gaveta {
+                .drawer {
                     min-width: play.$gaveta-width;
                     min-height: play.$gaveta-height;
                     
@@ -233,12 +235,12 @@ main {
 
                             @include global.setFont(mono);
 
-                            &.num-gaveta {
+                            &.num-drawer {
                                 font-weight: bold;
                                 font-size: 2em;
                             }
 
-                            &.cont-gaveta {
+                            &.cont-drawer {
                                 font-size: 1.5em;
                             }
                         }

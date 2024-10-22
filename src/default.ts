@@ -13,7 +13,7 @@ export const globals = {
         },
     
         undisplayElement: (element: HTMLElement) => {
-            element.style.display = "none";
+            element.style.setProperty("display", "none", "important");
         },
         
         switchDisplay: (element: HTMLElement, set: boolean) => {
