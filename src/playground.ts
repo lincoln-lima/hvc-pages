@@ -11,9 +11,9 @@ import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
-        out: () => { return document.getElementById("saida-span")! },
-        acumulator: () => { return document.getElementById("acumulador-span-valor")! },
-        epi: () => { return document.getElementById("epi-span")! },
+        out: () => { return document.getElementById("saida-value")! },
+        acumulator: () => { return document.getElementById("acumulador-value")! },
+        epi: () => { return document.getElementById("epi-value")! },
         readcard: () => { return document.getElementById("card")! as HTMLInputElement },
         
         run: () => { return document.getElementById("run")! },
@@ -173,3 +173,4 @@ tablecards.style['display'] = "none";
 play.elements.portacartoes().appendChild(tablecards);
 // ------------------------------------------------------------------------------- 
 await loadplay();
+// console.log('terminou');

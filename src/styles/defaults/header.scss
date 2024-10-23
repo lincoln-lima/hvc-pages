@@ -263,42 +263,40 @@ header {
                 visibility: hidden;
                 opacity: 0;
 
-                article {
-                    menu {
-                        $width: 10em;
-                        width: $width;
+                menu {
+                    $width: 10em;
+                    width: $width;
 
-                        @include nav-menu;
+                    @include nav-menu;
 
-                        li {
-                            & {
-                                cursor: pointer;
-                                @include global.size(calc($width/5));
-                            }
+                    li {
+                        & {
+                            cursor: pointer;
+                            @include global.size(calc($width/5));
+                        }
 
-                            &#back {
-                                @include debug-itens('back');
-                            }
+                        &#back {
+                            @include debug-itens('back');
+                        }
 
-                            &#forth {
-                                @include debug-itens('forth');
-                            }
+                        &#forth {
+                            @include debug-itens('forth');
+                        }
 
-                            &.pause {
-                                @include debug-itens('pause');
-                            }
+                        &.pause {
+                            @include debug-itens('pause');
+                        }
 
-                            &.continue {
-                                @include debug-itens('continue');
-                            }
+                        &.continue {
+                            @include debug-itens('continue');
+                        }
 
-                            &#finish {
-                                @include debug-itens('finish');
-                            }
+                        &#finish {
+                            @include debug-itens('finish');
+                        }
 
-                            &:hover {
-                                filter: drop-shadow(2px 4px 6px #0000009a);
-                            }
+                        &:hover {
+                            filter: drop-shadow(2px 4px 6px #0000009a);
                         }
                     }
                 }

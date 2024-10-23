@@ -10,47 +10,70 @@ main {
     .sticky-nav {
         position: sticky;
         top: doc.$header-height;
-
-        overflow-y: auto;
         
-        @include global.size(18%, calc(100vh - doc.$header-height));
-
+        @include global.size(doc.$sticky-nav-width, doc.$sticky-nav-height);
+        @include global.middle;
+        
         menu{
-            padding: 0.5em 0;
+            height: 90%;
+            overflow-y: auto;
+            
+            background-color: #00000020;
+            
+            border-radius: 15px 0 0 15px;
 
             * {
-                font-size: 1.01em;
+                font-size: 1.3rem;
                 text-align: left;
+            }
+
+            strong {
+                font-size: 1.35rem;
             }
 
             ul {
                 padding-left: 1em;
                 list-style-type: none;
-
-                border-left: 0.1em solid transparent;
-
-                &:hover {
-                    border-color: black;
-                }
             }
-
+            
             li {
+                padding: 0 0.5em;
+                border-radius: 15px 0 0 15px;
+                
+                &:has(+ul) {
+                    border-radius: 15px 0 0 0;
+                }
+
+                & + ul {
+                    padding-top: 0.1em;
+                    padding-bottom: 0.1em;
+                }
+                
                 &:hover {
-                    background-color: global.$color2;
+                    background-color: global.$color1;
+                    
+                    & + ul {
+                        background-color: #00000020;
+                    }
                 }
 
                 &:active {
                     background-color: global.$color1;
+                }
+                
+                a {
+                    display: block;
                 }
             }
         }
     }
 
     .content {
-        width: 80%;
+        width: doc.$content-width;
+        margin-bottom: 1em;
 
         section {
-            padding: 1.5em 0;
+            padding-top: doc.$header-height;
             
             figure {
                 padding: 1em 0;
@@ -66,7 +89,7 @@ main {
             }
             
             article {
-                padding: 1em 0;
+                padding-top: doc.$header-height;
             }
         }
     }
