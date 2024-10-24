@@ -24,6 +24,7 @@ mark {
 h1, h2, h3, h4 {
     color: transparent;
     background-clip: text;
+    display: inline-block;
 }
 
 h1, h2 {
@@ -36,9 +37,12 @@ h3, h4 {
     @include global.setFont(subtitle);
 }
 
+div:has(h1) {
+    text-align: center;
+}
+
 h1 {
     font-size: 4em;
-    text-align: center;
 }
 
 h2 {
@@ -55,6 +59,12 @@ h4 {
 
 ul, p {
     @include global.defaultText;
+}
+
+br {
+    display: block;
+    content: '';
+    height: 0.5em;
 }
 /* -------------------------------------------------------------------- */
 menu {
@@ -105,42 +115,43 @@ ul, ol {
     }
 }
 /* -------------------------------------------------------------------- */
-button.botao {
-    background: global.$fade-button;
+button {
+    &.botao {
+        background: global.$fade-button;
 
-    transition: 0.5s;
-    
-    /* texto */
-    font-weight: 700;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    
-    color: white;
-    
-    cursor: pointer;
-    @include global.border(black, 0, 15px);
-    
-    &:hover {
-        background: global.$fade-hover !important;
-        box-shadow: 3px 3px 5px #0000005f;
+        transition: 0.5s;
+        
+        font-weight: 700;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        
+        color: white;
+        
+        cursor: pointer;
+        @include global.border(black, 0, 15px);
+        
+        &:hover {
+            background: global.$fade-hover;
+            box-shadow: 3px 3px 5px #0000005f;
+        }
     }
-}
 
-button.copy {
-    cursor: pointer;
-    background: transparent;
+    &.copy {
+        cursor: pointer;
+        background: transparent;
 
-    border: 1px solid transparent;
-    border-radius: 5px;
+        border: 1px solid transparent;
+        border-radius: 5px;
 
-    &:hover {
-        border: 1px solid global.$color3;
+        &:hover {
+            border: 1px solid global.$color3;
+        }
     }
 }
 
 a {
     &.marked {
-        text-decoration: underline black 0.01em;
+        text-decoration: underline global.$color3-dark 0.01em;
 
         &:hover {
             text-decoration-thickness: 0.1em;
@@ -181,4 +192,9 @@ a {
     &:active {
         background-color: global.$color1-dark; 
     }
+}
+/* -------------------------------------------------------------------- */
+::selection {
+    color: black;
+    background-color: global.$color1;
 }

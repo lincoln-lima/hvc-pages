@@ -5,7 +5,7 @@ main {
     max-width: index.$main-width;
     @include global.center;
 
-    h2 {
+    div:has(h2) {
         text-align: center;
     }
 
@@ -130,6 +130,8 @@ main {
                 }
 
                 > div {
+                    margin-bottom: 1em;
+
                     @include global.flex;
 
                     @media screen and (max-width: index.$responsive-width) {
