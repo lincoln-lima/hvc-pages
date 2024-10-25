@@ -38,6 +38,7 @@ export const play = {
         cardmodal: () => { return document.getElementById("card-modal")! },
         errorsmodal: () => { return document.getElementById("error-modal")! },
         helpmodal: () => { return document.getElementById("help-modal")! },
+        loadingmodal: () => { return document.getElementById("loading-modal")! },
     
         configs: () => { return  document.getElementById("config")! },
         saveconfigs: () => { return document.getElementById("save-configs")! },
@@ -158,7 +159,7 @@ const loadplay = async () => {
     })
 }
 // ------------------------------------------------------------------------------- 
-const modals = ['configs', 'card', 'error', 'help'];
+const modals = ['configs', 'card', 'error', 'help', 'loading'];
 
 modals.forEach(async modal => {
     const element = await templates('modal/' + modal);
@@ -172,5 +173,6 @@ tablecards.style['display'] = "none";
 
 play.elements.portacartoes().appendChild(tablecards);
 // ------------------------------------------------------------------------------- 
+globals.actions.displayElement(play.elements.loadingmodal());
 await loadplay();
-// console.log('terminou');
+globals.actions.undisplayElement(play.elements.loadingmodal());

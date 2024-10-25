@@ -42,12 +42,6 @@
     }
 }
 
-@mixin dot-state($animation, $radius) {
-    border-radius: $radius;
-    
-    @include global.animation($animation, 1.5s, infinite);
-}
-
 @mixin nav-menu {
     transition: 0.5s;
     
@@ -231,7 +225,8 @@ header {
                     background-color: play.$nice-green;
 
                     #dot-state {
-                        @include dot-state(grow, 50%);
+                        border-radius: 50%;
+                        @include global.animation(grow, 1.5s, infinite);
                     }
                 }
 
@@ -239,15 +234,7 @@ header {
                     background-color: play.$golden;
                     
                     #dot-state {
-                        $size-border: 5px;
-
-                        border: $size-border solid transparent;
-                        border-top: $size-border solid white;
-                        border-left: $size-border solid white;
-
-                        background-color: transparent;
-
-                        @include dot-state(spin, 50%);
+                        @include global.load-spin(0.25em, white);
                     }
                 }
 

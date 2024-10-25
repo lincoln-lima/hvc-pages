@@ -15,7 +15,8 @@ export default defineConfig({
         help: resolve('./templates/modal/help.html'),
         footer: resolve('./templates/footer.html'),
         table: resolve('./templates/table.html'),
-        drawer: resolve('./templates/playground/drawer.html')
+        drawer: resolve('./templates/playground/drawer.html'),
+        cards: resolve('./templates/playground/cards.html')
       }
     }
   },

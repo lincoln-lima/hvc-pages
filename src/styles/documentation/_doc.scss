@@ -11,6 +11,6 @@ $menu-num-buttons: 3;
 $menu-width: calc($menu-num-buttons * default.$menu-button-width * 1.3);
 $main-width: 95vw;
 // ------------------------------------------------------------------------------- 
-$sticky-nav-width: 19rem;
+$sticky-nav-width: 18rem;
 $sticky-nav-height: calc(100vh - $header-height);
 $content-width: calc(100% - $sticky-nav-width - 3em);

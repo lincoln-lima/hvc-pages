@@ -61,8 +61,8 @@ globals.elements.menuburger().addEventListener('click', globals.actions.switchMe
 window.addEventListener('click', e => {
     const element = e.target as Node;
     const menu = globals.elements.menumodal();
-    const burgerblock = globals.elements.menuburger().style.display != "none";
-    const modalvisible = globals.elements.menumodal().style.visibility == "visible";
+    const burgerblock = globals.elements.menuburger().style['display'] != "none";
+    const modalvisible = globals.elements.menumodal().style['visibility'] == "visible";
 
     if(burgerblock && modalvisible && !globals.elements.menuburger().contains(element)) globals.actions.switchVisibility(menu, false);
 })
