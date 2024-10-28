@@ -15,6 +15,7 @@ main {
         @include global.middle;
         
         menu {
+            $font-size: 1.35rem;
             $radius: 1em;
 
             height: 90%;
@@ -26,12 +27,12 @@ main {
             border-bottom-left-radius: $radius;
 
             * {
-                font-size: 1.3rem;
+                font-size: $font-size;
                 text-align: left;
             }
 
             strong {
-                font-size: 1.35rem;
+                font-size: calc($font-size * 1.01);
             }
 
             ul {

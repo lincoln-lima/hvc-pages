@@ -185,14 +185,3 @@
 		}
 	}
 }
-/* -------------------------------------------------------------------- */
-#loading-modal {
-	.modal-body {
-		background-color: transparent;
-
-		#load-spin {
-			@include global.size(30vh);
-			@include global.load-spin(2.5em, white);
-		}
-	}
-}

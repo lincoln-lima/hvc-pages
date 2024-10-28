@@ -80,6 +80,10 @@ main {
 
                     @include global.setFont(code);
                 }
+                
+                br {
+                    content: inherit;
+                }
             }
         }
         

@@ -111,11 +111,9 @@ export const play = {
 window.addEventListener('resize', () => globals.actions.monitoreMenu(1300));
 window.addEventListener('load', () => globals.actions.monitoreMenu(1300));
 // ------------------------------------------------------------------------------- 
-const loadplay = async () => {
-    await drawers(play.elements.gaveteiro());
+const loadplay = () => {
+    drawers(play.elements.gaveteiro());
     hvc();
-    // ------------------------------------------------------------------------------- 
-    play.elements.helpmodal().children[0].appendChild(await templates('table'));
     // ------------------------------------------------------------------------------- 
     play.elements.delay().value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
     // ------------------------------------------------------------------------------- 
@@ -159,7 +157,7 @@ const loadplay = async () => {
     })
 }
 // ------------------------------------------------------------------------------- 
-const modals = ['configs', 'card', 'error', 'help', 'loading'];
+const modals = ['configs', 'card', 'error', 'help'];
 
 modals.forEach(async modal => {
     const element = await templates('modal/' + modal);
@@ -173,6 +171,6 @@ tablecards.style['display'] = "none";
 
 play.elements.portacartoes().appendChild(tablecards);
 // ------------------------------------------------------------------------------- 
-globals.actions.displayElement(play.elements.loadingmodal());
-await loadplay();
-globals.actions.undisplayElement(play.elements.loadingmodal());
+play.elements.helpmodal().children[0].appendChild(await templates('table'));
+// ------------------------------------------------------------------------------- 
+loadplay();
