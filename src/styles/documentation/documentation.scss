@@ -7,12 +7,21 @@ main {
     @include global.center;
     @include global.flex($align: flex-start);
 
-    .sticky-nav {
+    #sticky-nav {
         position: sticky;
         top: doc.$header-height;
+
+        z-index: 99;
+
+        transition: 0.5s;
         
         @include global.size(doc.$sticky-nav-width, doc.$sticky-nav-height);
         @include global.middle;
+
+        @media screen and (max-width: doc.$responsive-width) {
+            position: fixed;
+            right: calc(-1 * doc.$sticky-nav-width);
+        }
         
         menu {
             $font-size: 1.35rem;
@@ -21,10 +30,10 @@ main {
             height: 90%;
             overflow-y: auto;
             
-            background-color: #00000020;
+            background-color: lightgray;
             
-            border-top-left-radius: $radius;
-            border-bottom-left-radius: $radius;
+            border-top-left-radius: calc($radius * 1.3);
+            border-bottom-left-radius: calc($radius * 1.3);
 
             * {
                 font-size: $font-size;
@@ -39,7 +48,7 @@ main {
                 padding-left: 1em;
                 list-style-type: none;
 
-                border-left: 0.2em solid transparent;
+                border-left: 0.25em solid transparent;
             }
             
             li {
@@ -62,7 +71,7 @@ main {
                     font-weight: bold;
                     
                     & + ul {
-                        background-color: #00000020;
+                        background-color: #00000015;
                         border-left-color: global.$color1;
                     }
                 }
@@ -82,9 +91,42 @@ main {
         }
     }
 
+    #show-nav {
+        $size: 2.5em;
+
+        display: none;
+        position: fixed;
+
+        top: 50%;
+        
+        cursor: pointer;
+
+        border-radius: $size 0 0 $size;
+
+        @include global.size(calc($size/2), $size);
+
+        @media screen and (max-width: doc.$responsive-width) {
+            display: block;
+        }
+        
+        &.retracted {
+            right: 0;
+        }
+
+        &.expanded {
+            right: doc.$sticky-nav-width;
+        }
+    }
+
     .content {
         width: doc.$content-width;
         margin-bottom: 1em;
+
+        @include global.center;
+        
+        @media screen and (max-width: doc.$responsive-width) {
+            width: 85vw;
+        }
 
         section {
             padding-top: doc.$header-height;
