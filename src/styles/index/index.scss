@@ -22,8 +22,8 @@ main {
         @include global.center;
 
         article {
-            margin-top: 70px;
-            margin-bottom: 70px;
+            padding-top: index.$header-height;
+            padding-bottom: index.$header-height;
         }
 
         &#descricao-hv {
