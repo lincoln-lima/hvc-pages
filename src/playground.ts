@@ -117,12 +117,12 @@ const loadplay = async () => {
     // ------------------------------------------------------------------------------- 
     play.elements.helpmodal().children[0].appendChild(await templates('table'));
     // ------------------------------------------------------------------------------- 
-    play.elements.delay().value = localStorage.getItem("delay") ? (localStorage.getItem("delay"))! : '800';
+    play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
     // ------------------------------------------------------------------------------- 
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.saveconfigs().addEventListener('click', () => {
-        localStorage.setItem("delay", play.elements.delay().value);
+        localStorage.setItem("delay-hvc", play.elements.delay().value);
 
         globals.actions.undisplayElement(play.elements.configmodal());
         alert("As configurações foram salvas!");
