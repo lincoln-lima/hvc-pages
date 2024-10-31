@@ -13,6 +13,9 @@ $main-width: 95vw;
 // ------------------------------------------------------------------------------- 
 $sticky-nav-width: 19rem;
 $sticky-nav-height: calc(100vh - $header-height);
-$content-width: calc(100% - $sticky-nav-width - 3em);
 // ------------------------------------------------------------------------------- 
-$responsive-width: 1050px
+$spacement-content-nav: 4em; 
+// ------------------------------------------------------------------------------- 
+$content-width: calc(100% - $sticky-nav-width - $spacement-content-nav);
+// ------------------------------------------------------------------------------- 
+$responsive-width: 1050px;

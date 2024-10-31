@@ -22,6 +22,14 @@ main {
             position: fixed;
             right: calc(-1 * doc.$sticky-nav-width);
         }
+
+        &.retracted {
+            right: - doc.$sticky-nav-width;
+        }
+
+        &.expanded {
+            right: 0;
+        }
         
         menu {
             $font-size: 1.35rem;
@@ -96,6 +104,7 @@ main {
 
         display: none;
         position: fixed;
+        z-index: 99;
 
         top: 50%;
         
@@ -121,11 +130,10 @@ main {
     .content {
         width: doc.$content-width;
         margin-bottom: 1em;
-
-        @include global.center;
         
         @media screen and (max-width: doc.$responsive-width) {
             width: 85vw;
+            @include global.center;
         }
 
         section {

@@ -9,11 +9,21 @@ const shownav = document.getElementById("show-nav")!;
 const stickynav = document.getElementById("sticky-nav")!;
 
 const switchnav = () => {
-    const rightnav = stickynav.style['right'];
-    const rightshow = shownav.style['right'];
-    
-    stickynav.style['right'] = rightnav == '0' || rightnav == '' ? '0' : "revert-layer";
-    shownav.style['right'] = rightshow == '0' || rightshow == '' ? '0' : stickynav.style['width'];
+    const components = [shownav, stickynav];
+    const states = ["expanded", "retracted"];
+
+    if(shownav.classList.contains(states[0])) {
+        components.forEach(element => {
+            element.classList.remove(states[0]);
+            element.classList.add(states[1]);
+        })
+    }
+    else {
+        components.forEach(element => {
+            element.classList.remove(states[1]);
+            element.classList.add(states[0]);
+        })
+    }
 };
 
 shownav.addEventListener('click', switchnav);
