@@ -173,4 +173,4 @@ tablecards.style['display'] = "none";
 
 play.elements.portacartoes().appendChild(tablecards);
 // ------------------------------------------------------------------------------- 
-await loadplay();
+setTimeout(async () => await loadplay(), 100);
