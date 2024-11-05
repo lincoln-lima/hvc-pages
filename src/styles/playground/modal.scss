@@ -158,7 +158,7 @@
 				background: play.$dark-red;
 
 				&:hover {
-					background: white !important; //melhorar classe botão
+					background: white !important;
 					color: play.$dark-red;
 				}
 			}
@@ -183,6 +183,73 @@
 
 		table {
 			padding: 0;
+		}
+	}
+}
+/* -------------------------------------------------------------------- */
+#rating-modal {
+	.modal-body {
+		width: 23em;
+		min-height: 12em;
+
+		.modal-header {
+			background-color: global.$color2;
+			
+			h2 {
+				font-size: 1.5em;
+				@include global.setFont(subtitle);
+			}
+
+			#close-rating {
+				background: white;
+				color: global.$color2-dark;
+
+				&:hover {
+					background: global.$color2-dark;
+					color: white;
+				}
+			}
+		}
+
+		.modal-main {
+			font-size: 1.1em;
+			text-align: center;
+
+			#rating {
+				font-size: 1.5em;
+				color: global.$color2-dark;
+
+				border-radius: 1em;
+				padding: 0 0.5em;
+
+				transition: 0.5s;
+
+				&:hover {
+					background-color: global.$color2-dark;
+					color: white;
+				}
+			}
+		}
+
+		.modal-footer {
+			background-color: global.$color2;
+			padding-top: 0.2em;
+			padding-bottom: 0.2em;
+
+			justify-content: end;
+
+			#dont-rating {
+				font-size: 0.6em;
+				padding: 0.1em 0.5em;
+
+				background: white;
+				color: global.$color2-dark;
+
+				&:hover {
+					background: global.$color2-dark;
+					color: white;
+				}
+			}
 		}
 	}
 }

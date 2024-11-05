@@ -13,6 +13,7 @@ export default defineConfig({
         configs: resolve('./templates/modal/configs.html'),
         error: resolve('./templates/modal/error.html'),
         help: resolve('./templates/modal/help.html'),
+        rating: resolve('./templates/modal/rating.html'),
         footer: resolve('./templates/footer.html'),
         table: resolve('./templates/table.html'),
         drawer: resolve('./templates/playground/drawer.html'),

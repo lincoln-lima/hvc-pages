@@ -39,6 +39,7 @@ export const play = {
         errorsmodal: () => { return document.getElementById("error-modal")! },
         helpmodal: () => { return document.getElementById("help-modal")! },
         loadingmodal: () => { return document.getElementById("loading-modal")! },
+        ratingmodal: () => { return document.getElementById("rating-modal")! },
     
         configs: () => { return  document.getElementById("config")! },
         saveconfigs: () => { return document.getElementById("save-configs")! },
@@ -50,6 +51,9 @@ export const play = {
         closeerrors: () => { return document.getElementById("close-error")! },
 
         help: () => { return document.getElementById("help")! },
+
+        dontrating: () => { return document.getElementById("dont-rating")! },
+        closerating: () => { return document.getElementById("close-rating")! },
 
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
     
@@ -127,7 +131,13 @@ const loadplay = async () => {
         globals.actions.undisplayElement(play.elements.configmodal());
         alert("As configurações foram salvas!");
     });
+    // ------------------------------------------------------------------------------- 
+    const hideRating = () => {
+        globals.actions.undisplayElement(play.elements.ratingmodal());
+    }
 
+    play.elements.closerating().addEventListener("click", hideRating);
+    // ------------------------------------------------------------------------------- 
     document.addEventListener("keydown", e => {
         if(e.key.toLowerCase() === "f2") {
             e.preventDefault();
@@ -159,7 +169,7 @@ const loadplay = async () => {
     })
 }
 // ------------------------------------------------------------------------------- 
-const modals = ['configs', 'card', 'error', 'help'];
+const modals = ['configs', 'card', 'error', 'help', 'rating'];
 
 modals.forEach(async modal => {
     const element = await templates('modal/' + modal);
