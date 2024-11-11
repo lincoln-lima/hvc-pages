@@ -190,13 +190,13 @@
 #rating-modal {
 	.modal-body {
 		width: 23em;
-		min-height: 12em;
+		min-height: 11em;
 
 		.modal-header {
 			background-color: global.$color2-dark;
 			
 			h2 {
-				font-size: 1.5em;
+				font-size: 1.55em;
 				@include global.setFont(subtitle);
 			}
 
@@ -205,7 +205,7 @@
 				color: global.$color2-dark;
 
 				&:hover {
-					background: global.$color2-dark;
+					background: global.$color2;
 					color: white;
 				}
 			}
@@ -217,15 +217,15 @@
 
 			#rating {
 				font-size: 1.5em;
-				color: global.$color2-dark;
+				color: global.$color2;
 
 				border-radius: 1em;
-				padding: 0 0.5em;
+				padding: 0 0.4em;
 
 				transition: 0.5s;
 
 				&:hover {
-					background-color: global.$color2-dark;
+					background-color: global.$color2;
 					color: white;
 				}
 			}
@@ -238,15 +238,15 @@
 
 			justify-content: end;
 
-			#dont-rating {
-				font-size: 0.8em;
+			#dont-ask {
+				font-size: 0.75em;
 				padding: 0.1em 0.5em;
 
 				background: white;
 				color: global.$color2-dark;
 
 				&:hover {
-					background: global.$color2-dark;
+					background: global.$color2;
 					color: white;
 				}
 			}

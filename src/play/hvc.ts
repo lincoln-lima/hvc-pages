@@ -33,6 +33,7 @@ export default () => {
     const cards = play.elements.cards();
     const readcard = play.elements.readcard();
     const cardmodal = play.elements.cardmodal();
+    const ratingmodal = play.elements.ratingmodal();
     const submitcard = play.elements.submitcard();
     // ------------------------------------------------------------------------------- 
     runner.addEventListener('click', () => exec(true));
@@ -69,6 +70,14 @@ export default () => {
             terminate();
             
             play.actions.detectError((e as Error).message);
+        }
+        finally {
+            if(localStorage.getItem("askrating") === "true") {
+                const counter = +play.elements.counter() + 1;
+                localStorage.setItem("counter", counter.toString());
+
+                if(counter % 3 == 0) globals.actions.displayElement(ratingmodal);
+            }
         }
     }
     // ------------------------------------------------------------------------------- 

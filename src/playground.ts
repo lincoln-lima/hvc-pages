@@ -51,18 +51,21 @@ export const play = {
         closeerrors: () => { return document.getElementById("close-error")! },
 
         help: () => { return document.getElementById("help")! },
-
-        dontrating: () => { return document.getElementById("dont-rating")! },
-        closerating: () => { return document.getElementById("close-rating")! },
-
+        
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
-    
+        
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         drawers: () => { return document.getElementsByClassName("drawer")! },
         drawerscontent: () => { return document.getElementsByClassName("cont-drawer")! },
 
         tablecards: () => { return document.getElementById("cards")! },
-        cards: () => { return play.elements.tablecards().children[0]! as HTMLElement }
+        cards: () => { return play.elements.tablecards().children[0]! as HTMLElement },
+        
+        askrating: () => { return localStorage.getItem("askrating")! },
+        closerating: () => { return document.getElementById("close-rating")! },
+        ratingstars: () => { return document.getElementById("rating")! },
+        counter: () => { return localStorage.getItem("counter")! },
+        dontask: () => { return document.getElementById("dont-ask")! }
     },
     actions: {
         setState: (state: string) => {
@@ -123,6 +126,24 @@ const loadplay = async () => {
     // ------------------------------------------------------------------------------- 
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
     // ------------------------------------------------------------------------------- 
+    if(!play.elements.askrating() || !play.elements.counter()) {
+        localStorage.setItem("askrating", "true");
+        localStorage.setItem("counter", "0");
+    }
+    
+    const hideRating = () => {
+        globals.actions.undisplayElement(play.elements.ratingmodal());
+    }
+
+    const neveraskagain = () => {
+        localStorage.setItem("askrating", "false");
+        hideRating();
+    }
+    
+    play.elements.closerating().addEventListener("click", hideRating);
+    play.elements.ratingstars().addEventListener("click", hideRating);
+    play.elements.dontask().addEventListener("click", neveraskagain);
+    // ------------------------------------------------------------------------------- 
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.saveconfigs().addEventListener('click', () => {
@@ -131,12 +152,6 @@ const loadplay = async () => {
         globals.actions.undisplayElement(play.elements.configmodal());
         alert("As configurações foram salvas!");
     });
-    // ------------------------------------------------------------------------------- 
-    const hideRating = () => {
-        globals.actions.undisplayElement(play.elements.ratingmodal());
-    }
-
-    play.elements.closerating().addEventListener("click", hideRating);
     // ------------------------------------------------------------------------------- 
     document.addEventListener("keydown", e => {
         if(e.key.toLowerCase() === "f2") {
