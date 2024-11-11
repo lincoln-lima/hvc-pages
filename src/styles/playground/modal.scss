@@ -193,7 +193,7 @@
 		min-height: 12em;
 
 		.modal-header {
-			background-color: global.$color2;
+			background-color: global.$color2-dark;
 			
 			h2 {
 				font-size: 1.5em;
@@ -232,14 +232,14 @@
 		}
 
 		.modal-footer {
-			background-color: global.$color2;
+			background-color: global.$color2-dark;
 			padding-top: 0.2em;
 			padding-bottom: 0.2em;
 
 			justify-content: end;
 
 			#dont-rating {
-				font-size: 0.6em;
+				font-size: 0.8em;
 				padding: 0.1em 0.5em;
 
 				background: white;

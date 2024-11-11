@@ -33,6 +33,7 @@ main {
             background-color: #ffe8c4;
             
             overflow-y: auto;
+            overflow-x: hidden;
             
             @include global.size(play.$porta-cartoes-initial-width, 100%);
             @include global.flex($justify: center);
