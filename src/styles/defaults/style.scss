@@ -180,15 +180,13 @@ a {
  
 ::-webkit-scrollbar-thumb {
     background-color: global.$color3-dark; 
+    background-clip: padding-box;
 
     @include global.border(transparent, 2px, 10px);
-
-    background-clip: padding-box;
     
     &:hover {
-        background-color: global.$color2-dark; 
-        
         border: 0;
+        background-color: global.$color2-dark; 
     }
     
     &:active {

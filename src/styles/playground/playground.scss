@@ -71,6 +71,10 @@ main {
                 &, * {
                     background-color: #ffe8c4;
                 }
+
+                .cm-scroller {
+                    overflow-x: hidden;
+                }
                 
                 #content * {
                     @include global.setFont(mono);

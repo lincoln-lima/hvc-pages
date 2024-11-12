@@ -105,6 +105,8 @@
 }
 /* -------------------------------------------------------------------- */
 #card-modal {
+	$submit-width: 2em;
+
 	.modal-body {
 		$width: 50vh;
 		$height: 15vh;
@@ -118,7 +120,7 @@
 			@include global.flex;
 			
 			form {
-				width: 75%;
+				width: calc(100% - $submit-width - 15%);
 				border: 1px solid rgba(0, 0, 0, 0.2);
 				
 				input {
@@ -131,7 +133,7 @@
 			}
 
 			#submit-card {
-				width: 20%;
+				width: $submit-width;
 				padding: 0;
 			}
 		}
@@ -143,7 +145,7 @@
 
 	.modal-body {
 		width: 25em;
-		height: 20vh;
+		height: 30vh;
 
 		.modal-header {
 			height: 35%;
@@ -151,6 +153,7 @@
 			background: play.$dark-red;
 
 			h2 {
+				font-size: 1.15em;
 				@include global.setFont(code);
 			}
 
