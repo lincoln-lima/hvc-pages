@@ -105,7 +105,7 @@
 }
 /* -------------------------------------------------------------------- */
 #card-modal {
-	$submit-width: 2em;
+	$submit-size: 2.2em;
 
 	.modal-body {
 		$width: 50vh;
@@ -120,7 +120,7 @@
 			@include global.flex;
 			
 			form {
-				width: calc(100% - $submit-width - 15%);
+				width: calc(100% - $submit-size - 10%);
 				border: 1px solid rgba(0, 0, 0, 0.2);
 				
 				input {
@@ -133,8 +133,8 @@
 			}
 
 			#submit-card {
-				width: $submit-width;
-				padding: 0;
+				@include global.circle;
+				@include global.size($submit-size);
 			}
 		}
 	}
@@ -145,10 +145,10 @@
 
 	.modal-body {
 		width: 25em;
-		height: 30vh;
+		height: 25vh;
 
 		.modal-header {
-			height: 35%;
+			height: 25%;
 
 			background: play.$dark-red;
 
@@ -159,6 +159,7 @@
 
 			.close {
 				background: play.$dark-red;
+				font-size: 1.7em;
 
 				&:hover {
 					background: white !important;
@@ -168,7 +169,7 @@
 		}
 
 		.modal-main {
-			height: 65%;
+			height: 75%;
 			text-align: center;
 
 			@include global.middle;

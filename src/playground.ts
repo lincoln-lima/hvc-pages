@@ -115,10 +115,11 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1300));
-window.addEventListener('load', () => globals.actions.monitoreMenu(1300));
+globals.actions.monitoreMenu(1100);
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1100));
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
+    // ------------------------------------------------------------------------------- 
     drawers(play.elements.gaveteiro());
     hvc();
     // ------------------------------------------------------------------------------- 

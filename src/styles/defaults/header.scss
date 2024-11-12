@@ -41,16 +41,6 @@
         background-color: #00000020;
     }
 }
-
-@mixin nav-menu {
-    transition: 0.5s;
-    
-    @include global.flex;
-}
-
-@mixin debug-itens($icon) {
-    @include global.background($image: 'playground/debugger/#{$icon}', $size: cover);
-}
 /* -------------------------------------------------------------------- */
 header {
     box-shadow: 1px 1px 9px #00000033;
@@ -104,7 +94,9 @@ header {
         }
 
         .primary-menu {
-            @include nav-menu;
+            transition: 0.5s;
+            
+            @include global.flex;
             
             li {
                 .link-nav-1 {
@@ -244,50 +236,6 @@ header {
                 }
             }
 
-            #debug-menu {
-                transition: 0.5s;
-
-                visibility: hidden;
-                opacity: 0;
-
-                menu {
-                    $width: 10em;
-                    width: $width;
-
-                    @include nav-menu;
-
-                    li {
-                        & {
-                            cursor: pointer;
-                            @include global.size(calc($width/5));
-                        }
-
-                        &#back {
-                            @include debug-itens('back');
-                        }
-
-                        &#forth {
-                            @include debug-itens('forth');
-                        }
-
-                        &.pause {
-                            @include debug-itens('pause');
-                        }
-
-                        &.continue {
-                            @include debug-itens('continue');
-                        }
-
-                        &#finish {
-                            @include debug-itens('finish');
-                        }
-
-                        &:hover {
-                            filter: drop-shadow(2px 4px 6px #0000009a);
-                        }
-                    }
-                }
-            }
 
             .primary-menu {
                 width: calc(play.$menu-width * 1.2);

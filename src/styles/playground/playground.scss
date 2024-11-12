@@ -14,6 +14,10 @@
 
     @include global.size($width, $height);
 }
+
+@mixin debug-itens($icon) {
+    @include global.background($image: 'playground/debugger/#{$icon}', $size: cover);
+}
 /* -------------------------------------------------------------------- */
 main {
     @include global.middle;
@@ -253,6 +257,67 @@ main {
                                 font-size: 1.5em;
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        #debug-menu {
+            width: 100%;
+
+            position: fixed;
+            bottom: 0;
+
+            transition: 0.5s;
+
+            visibility: hidden;
+            opacity: 0;
+
+            menu {
+                $width: 15em;
+                width: $width;
+
+                background-color: global.$color3-button;
+                padding: 0.5em;
+
+                border-radius: 2em 2em 0 0;
+
+                @include global.center;
+                @include global.flex;
+
+                li {
+                    & {
+                        cursor: pointer;
+                        @include global.size(calc($width/5));
+                    }
+
+                    &#back {
+                        @include debug-itens('back');
+                    }
+
+                    &#forth {
+                        @include debug-itens('forth');
+                    }
+
+                    &.pause {
+                        @include debug-itens('pause');
+                    }
+
+                    &.continue {
+                        @include debug-itens('continue');
+                    }
+
+                    &#finish {
+                        @include debug-itens('finish');
+                    }
+
+                    &:hover {
+                        scale: 1.1;
+                        filter: hue-rotate(-45deg);
+                    }
+
+                    &:active {
+                        filter: contrast(0.3);
                     }
                 }
             }

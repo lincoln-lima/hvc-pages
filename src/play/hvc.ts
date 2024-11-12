@@ -63,6 +63,8 @@ export default () => {
                 globals.actions.undisplayElement(editor);
                 globals.actions.displayElement(tablecards);
 
+                globals.actions.undisplayElement(play.elements.help());
+
                 await hvc.debug(+delay.value);
             }
         }
@@ -158,6 +160,7 @@ export default () => {
         globals.actions.switchVisibility(debugmenu, false);
         globals.actions.undisplayElement(tablecards);
         globals.actions.displayElement(editor);
+        globals.actions.displayElement(play.elements.help());
         
         hvc.finish();
         hvc.continue();
