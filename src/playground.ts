@@ -21,8 +21,7 @@ export const play = {
         import: () => { return document.getElementById("import")! },
         export: () => { return document.getElementById("export")! },
 
-        state: () => { return document.getElementById("state")! },
-        hvmstate: () => { return document.getElementById("hvm-state")! },
+        state: () => { return document.getElementById("states-view")! },
 
         debugmenu: () => { return document.getElementById("debug-menu")! },
 
@@ -71,12 +70,11 @@ export const play = {
         setState: (state: string) => {
             let dotclass;
     
-            if(state === 'carga') dotclass = 'loading';
+            if(state === 'carga') dotclass = 'charging';
             else if(state === 'execução') dotclass = 'running';
-            else dotclass = 'stopped';
+            else dotclass = 'editing';
     
             play.elements.state().className = dotclass;
-            play.elements.hvmstate().innerText = state;
         },
     
         detectError: (message: string) => {
@@ -115,8 +113,8 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-globals.actions.monitoreMenu(1100);
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1100));
+globals.actions.monitoreMenu(1350);
+window.addEventListener('resize', () => globals.actions.monitoreMenu(1350));
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
     // ------------------------------------------------------------------------------- 
@@ -165,6 +163,7 @@ const loadplay = async () => {
 
     window.addEventListener("click", e => {
         if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+        else if(e.target == play.elements.helpmodal()) switchHelp();
     });
     // ------------------------------------------------------------------------------- 
     play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
@@ -174,6 +173,9 @@ const loadplay = async () => {
         const display = element.style['display'] === 'none';
         
         globals.actions.switchDisplay(element, display);
+
+        if(display) globals.actions.undisplayElement(play.elements.help());
+        else globals.actions.displayElement(play.elements.help());
     }
 
     play.elements.help().addEventListener('click', switchHelp);

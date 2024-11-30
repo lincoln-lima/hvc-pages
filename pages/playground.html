@@ -12,10 +12,24 @@
 <body>
     <header id="header-play">
         <nav>
-            <section id="state" class="stopped">
-                <article>
-                    <span id="dot-state"></span>
-                    <span id="hvm-state">Desligado</span>
+            <section id="states-view" class="editing">
+                <article id="editing-state" class="state">
+                    <div>
+                        <span class="dot-state"></span>
+                        <span class="hvm-state">Edição</span>
+                    </div>
+                </article>
+                <article id="charging-state" class="state">
+                    <div>
+                        <span class="dot-state"></span>
+                        <span class="hvm-state">Carga</span>
+                    </div>
+                </article>
+                <article id="running-state" class="state">
+                    <div>
+                        <span class="dot-state"></span>
+                        <span class="hvm-state">Execução</span>
+                    </div>
                 </article>
             </section>
             <menu class="primary-menu">

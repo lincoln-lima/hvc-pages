@@ -180,59 +180,124 @@ header {
                 max-width: play.$nav-responsive-width;
             }
 
-            #state {
-                border-radius: 15px;
-                
-                @include global.middle;
-                @include global.size(180px, default.$home-height);
+            #states-view {
+                @include global.size(28em, calc(default.$home-height * 0.9));
+                @include global.flex;
 
-                &, * {
-                    transition: 0.5s;
-                }
+                .state {
+                    $dot-size: calc(default.$home-height * 0.5);
 
-                &:hover {
-                    cursor: help;
-                }
-                
-                article {
-                    @include global.flex;
-
-                    span {
-                        font-size: 1.3em;
-                        font-weight: bold;
-                        text-transform: uppercase;
-
-                        @include global.setFont(mono);
-                    }
-
-                    #dot-state {
-                        background-color: white;
-                        margin-right: 1em;
-
-                        @include global.size(calc(default.$home-height * 0.5));
-                    }
-                }
-                
-                &.running {
-                    background-color: play.$nice-green;
-
-                    #dot-state {
-                        border-radius: 50%;
-                        @include global.animation(grow, 1.5s, infinite);
-                    }
-                }
-
-                &.loading {
-                    background-color: play.$golden;
+                    border-radius: 15px;
+                    filter: brightness(0.4);
                     
-                    #dot-state {
-                        @include global.load-spin(0.25em, white);
+                    @include global.middle;
+                    @include global.size(31%, 100%);
+
+                    &, * {
+                        transition: 0.5s;
+                    }
+
+                    &:hover {
+                        cursor: help;
+                    }
+                    
+                    div {
+                        min-width: 75%;
+                        @include global.flex;
+
+                        span {
+                            font-size: 1.2em;
+                            font-weight: bold;
+                            text-transform: uppercase;
+
+                            @include global.setFont(mono);
+                        
+                            &.dot-state {
+                                background-color: white;
+                                border-radius: 0.1em;
+    
+                                @include global.size($dot-size);
+                            }
+                        }
+                    }
+                    
+                    &#running-state {
+                        background-color: play.$nice-green;
+
+                        div {
+                            width: 90%;
+                        
+                            .dot-state {
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+
+                    &#charging-state {
+                        background-color: play.$golden;
+                    }
+
+                    &#editing-state {
+                        background-color: play.$live-blue;
+
+                        .dot-state {
+                            $pen-width: calc($dot-size * 0.3);
+                            $pen-height: calc($dot-size * 0.8);
+
+                            position: relative;
+                            top: 0.2em;
+                            transform: rotate(40deg);
+                            @include global.size($pen-width, $pen-height);
+
+                            &::before {
+                                content: "";
+                                background: white;
+
+                                position: absolute;
+                                top: -10px;
+
+                                @include global.size($pen-width);
+                            }
+
+                            &::after {
+                                content: "";
+                                position: absolute;
+
+                                background: white;
+                                left: 1px;
+                                bottom: -3px;
+
+                                transform: rotate(45deg);
+                                @include global.size(calc($pen-width * 0.8));
+                            }
+                        }
                     }
                 }
 
-                &.stopped {
-                    background-color: play.$dark-red;
-                    filter: brightness(0.8);
+                &.editing {
+                    #editing-state {
+                        filter: brightness(1);
+                    }
+                }
+
+                &.charging {
+                    #charging-state {
+                        filter: brightness(1);
+
+                        .dot-state {
+                            @include global.load-spin(0.35em, white);
+                        }
+                    }
+                }
+
+                &.running {
+                    #running-state {
+                        filter: brightness(1); 
+
+                        .dot-state {
+                            @include global.animation(grow, 1.5s, infinite);
+                        }
+                    }
                 }
             }
 
