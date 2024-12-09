@@ -119,7 +119,7 @@ main {
                     @include responsive.viewers-childs;
                 }
 
-                span {
+                .viewers-values {
                     font-size: calc(play.$viewers-responsive-size * 0.6);
                 }
 
@@ -127,7 +127,7 @@ main {
                     @include global.middle;
                     @include global.background($image: 'playground/notepad', $size: contain);
         
-                    span {
+                    #saida-value {
                         margin-top: 0.1em;
 
                         @include global.setFont(cursive);
@@ -149,7 +149,7 @@ main {
                         @include global.middle;
                         @include global.size(90%);
         
-                        span {
+                        #epi-value {
                             @include global.setFont(chalk);
                             color: white;
                         }
@@ -164,7 +164,7 @@ main {
         
                     position: relative;
         
-                    span {
+                    #acumulador-value, #overlay {
                         font-size: calc(play.$viewers-initial-size * 0.44);
 
                         @include global.absolute-middle;

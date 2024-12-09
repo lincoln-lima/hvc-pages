@@ -41,11 +41,20 @@ export default () => {
     play.elements.export().addEventListener('click', exportahv);
 
     document.addEventListener('keydown', (e) => {
-        const key = e.key.toLocaleLowerCase();
+        const key = e.key.toLowerCase();
 
         if (key === "s" && e.ctrlKey) {
             e.preventDefault();
             exportahv();
         }
-    })
+    });
+
+    document.addEventListener('keydown', (e) => {
+        const key = e.key.toLowerCase();
+
+        if (key === "i" && e.ctrlKey) {
+            e.preventDefault();
+            importahv();
+        }
+    });
 }

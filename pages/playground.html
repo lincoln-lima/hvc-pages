@@ -33,35 +33,40 @@
                 </article>
             </section>
             <menu class="primary-menu">
-                <li>
-                    <button id="run" class="link-nav-1" target="_self" title="F9">
+                <li class="tooltiper">
+                    <button id="run" class="link-nav-1" target="_self">
                         <img src="/img/playground/menu/run.png" alt="" srcset="">
                         <span>Executar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">F9</span></div>
                 </li>
-                <li>
-                    <button id="debug" class="link-nav-1" target="_self" title="F8">
+                <li class="tooltiper">
+                    <button id="debug" class="link-nav-1" target="_self">
                         <img src="/img/playground/menu/debug.png" alt="" srcset="">
                         <span>Depurar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">F8</span></div>
                 </li>
-                <li>
+                <li class="tooltiper">
                     <button id="import" class="link-nav-2" target="_self">
                         <img src="/img/playground/menu/folder.png" alt="" srcset="">
                         <span>Importar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">ctrl+i</span></div>
                 </li>
-                <li>
-                    <button id="export" class="link-nav-2" target="_self" title="Ctrl+S">
+                <li class="tooltiper">
+                    <button id="export" class="link-nav-2" target="_self">
                         <img src="/img/playground/menu/download.png" alt="" srcset="">
                         <span>Exportar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">ctrl+s</span></div>
                 </li>
-                <li>
-                    <button id="config" class="link-nav-3" target="_self" title="F2">
+                <li class="tooltiper">
+                    <button id="config" class="link-nav-3" target="_self">
                         <img src="/img/playground/menu/config.png" alt="" srcset="">
                         <span>Configurar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">F2</span></div>
                 </li>
             </menu>
             <button class="burger-menu"><img src="/img/menu.png" alt=""></button>
@@ -69,23 +74,30 @@
     </header>
     <main>
         <section id="playground">
-            <article id="porta-cartoes" title="Porta Cartões"></article>
+            <article id="porta-cartoes" class="tooltiper">
+                <div class="tooltip"><span class="tooltip-text">porta cartões</span></div>
+            </article>
             <div class="debuggers">
                 <div class="viewers">
                     <div id="contorno-epi">
-                        <article id="epi" title="EPI">
-                            <span id="epi-value"></span>
+                        <article id="epi" class="tooltiper" title="EPI">
+                            <span id="epi-value" class="viewers-values"></span>
+                            <div class="tooltip"><span class="tooltip-text">EPI</span></div>
                         </article>
                     </div>
-                    <article id="acumulador" title="Acumulador">
+                    <article id="acumulador" class="tooltiper">
                         <span id="overlay">000</span>
-                        <span id="acumulador-value"></span>
+                        <span id="acumulador-value" class="viewers-values"></span>
+                        <div class="tooltip"><span class="tooltip-text">acumulador</span></div>
                     </article>
-                    <article id="folha-de-saida" title="Folha de Saída">
-                        <span id="saida-value"></span>
+                    <article id="folha-de-saida" class="tooltiper">
+                        <span id="saida-value" class="viewers-values"></span>
+                        <div class="tooltip"><span class="tooltip-text">Folha de Saída</span></div>
                     </article>
                 </div>
-                <article id="gaveteiro" title="Gaveteiro"></article>
+                <article id="gaveteiro" class="tooltiper">
+                    <div class="tooltip"><span class="tooltip-text">gaveteiro</span></div>
+                </article>
             </div>
             <section id="debug-menu">
                 <menu>
