@@ -6,8 +6,10 @@ import "/src/styles/index/index.scss";
 import "/src/styles/defaults/footer.scss";
 import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1100));
-window.addEventListener('load', () => globals.actions.monitoreMenu(1100));
+const windowsizemenu = 1100;
+// ------------------------------------------------------------------------------- 
+globals.actions.monitoreMenu(windowsizemenu);
+window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 const setTemplates = async () => {
     document.getElementById("table")!.appendChild(await templates('table'));

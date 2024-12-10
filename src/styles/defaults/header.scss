@@ -22,8 +22,8 @@
     }
 }
 
-@mixin responsive-menu($top, $items, $max-screen) {
-    @media screen and (max-width: $max-screen) {
+@mixin responsive-menu($top, $items, $window-size) {
+    @media screen and (max-width: $window-size) {
         position: absolute;
         z-index: 10;
         top: $top;
@@ -39,6 +39,12 @@
         padding: 15px;
         border-radius: 0 0 5px 5px;
         background-color: #00000020;
+    }
+}
+
+@mixin responsive-burguer($window-size) {
+    @media screen and (min-width: $window-size) {
+        display: none; 
     }
 }
 /* -------------------------------------------------------------------- */
@@ -99,6 +105,10 @@ header {
             @include global.flex;
             
             li {
+                > * {
+                    height: default.$menu-buttons-height;
+                }
+
                 .link-nav-1 {
                     @include navlinksbynum(global.$color1, global.$color1-dark);
                 }
@@ -114,7 +124,6 @@ header {
                 button {
                     @include global.flex;
                 }
-
             }
         }
 
@@ -153,6 +162,10 @@ header {
                 
                 @include responsive-menu(calc(index.$header-height - index.$header-padding), 3, index.$header-responsive-width);
             }
+
+            .burger-menu {
+                @include responsive-burguer(index.$header-responsive-width);
+            }
         }
     }    
 
@@ -166,6 +179,10 @@ header {
                 width: doc.$menu-width;
 
                 @include responsive-menu(calc(doc.$header-height - doc.$header-padding), 3, doc.$header-responsive-width);
+            }
+
+            .burger-menu {
+                @include responsive-burguer(doc.$header-responsive-width);
             }
         }
     }
@@ -292,7 +309,7 @@ header {
 
                 &.running {
                     #running-state {
-                        filter: brightness(1); 
+                        filter: brightness(1);
 
                         .dot-state {
                             @include global.animation(grow, 1.5s, infinite);
@@ -305,11 +322,31 @@ header {
             .primary-menu {
                 width: calc(play.$menu-width * 1.2);
 
+                @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$menu-buttons-responsive-width) {
+                    width: calc(play.$menu-width * 0.5);
+
+                    .tooltip {
+                        height: calc(default.$tooltip-height * 1.7);
+                        padding: 0 0.5em;
+                    }
+                }
+                    
                 @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
-                .tooltip {
-                    bottom: calc((play.$header-padding * 4 + default.$tooltip-padding-y + 1em) * -1);
-                    right: 0;
+                .tooltiper {
+                    @include global.middle;
+
+                    .tooltip {
+                        top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
+
+                        &::after {
+                            @include global.tooltip-top(default.$tooltip-size-arr);
+                        }
+
+                        .tooltip-text {
+                            font-size: 0.9em;
+                        }
+                    }
                 }
 
                 button {
@@ -317,10 +354,18 @@ header {
 
                     cursor: pointer;
 
-                    img {
-                        margin-right: 0.5em;
+                    .label-tool {
+                        margin-left: 0.5em;
+                        
+                        @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$menu-buttons-responsive-width) {
+                            display: none;
+                        }
                     }
                 }
+            }
+
+            .burger-menu {
+                @include responsive-burguer(play.$menu-buttons-responsive-width);
             }
         }
     }

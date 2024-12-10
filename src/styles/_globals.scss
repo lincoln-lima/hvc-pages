@@ -217,3 +217,27 @@ $fonts:
 
     @include animation(spin, 1.5s, infinite);
 }
+/* -------------------------------------------------------------------- */
+@mixin tooltip-top($size-arr) {
+    top: -$size-arr;
+    left: 50%;
+    margin-left: -$size-arr;
+}
+
+@mixin tooltip-bottom($size-arr) {
+    bottom: -$size-arr;
+    left: 50%;
+    margin-left: -$size-arr;
+}
+
+@mixin tooltip-right($size-arr) {
+    top: 50%;
+    right: -$size-arr;
+    margin-top: -$size-arr;
+}
+
+@mixin tooltip-left($size-arr) {
+    top: 50%;
+    left: -$size-arr;
+    margin-top: -$size-arr;
+}

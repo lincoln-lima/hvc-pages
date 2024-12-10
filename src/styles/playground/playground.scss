@@ -33,12 +33,17 @@ main {
 
         @include responsive.playground;
 
+        .tooltip {
+            z-index: 1;
+
+            .tooltip-text {
+                font-size: 1.1em;
+            }
+        }
+
         #porta-cartoes {
             text-align: center;
             background-color: #ffe8c4;
-            
-            overflow-y: auto;
-            overflow-x: hidden;
             
             @include global.size(play.$porta-cartoes-initial-width, 100%);
             @include global.flex($justify: center);
@@ -46,24 +51,29 @@ main {
             @include portacartoes-viewers;
             @include responsive.porta-cartoes;
             
-            #cards {
+            #scroll-tablecards {
                 width: 100%;
-                border-spacing: 0.5em;
+                overflow-y: auto;
 
-                tbody {
-                    tr { 
-                        background-color: white;
+                #cards {
+                    width: 100%;
+                    border-spacing: 0.5em;
 
-                        &:hover {
-                            background-color: global.$color1-dark;
-                        }
-                        
-                        td {
-                            border: 0.05em solid black;
-                            padding: 0.25em 0;
+                    tbody {
+                        tr { 
+                            background-color: white;
 
-                            font-size: 2em;
-                            @include global.setFont(dotted);
+                            &:hover {
+                                background-color: global.$color1-dark;
+                            }
+                            
+                            td {
+                                border: 0.05em solid black;
+                                padding: 0.25em 0;
+
+                                font-size: 2em;
+                                @include global.setFont(dotted);
+                            }
                         }
                     }
                 }
@@ -95,6 +105,15 @@ main {
                     content: inherit;
                 }
             }
+
+            .tooltip {
+                bottom: default.$tooltip-size-arr;
+                right: default.$tooltip-size-arr;
+
+                &::after {
+                    @include global.tooltip-top(default.$tooltip-size-arr);
+                }
+            }
         }
         
         .debuggers {
@@ -110,7 +129,8 @@ main {
             .viewers {
                 @include global.flex;
 
-                @include responsive.debuggers-childs;
+                @include responsive.debuggers-childs-flex;
+                @include responsive.debuggers-childs-size;
                 @include responsive.viewers;
 
                 > * {
@@ -122,6 +142,14 @@ main {
 
                 .viewers-values {
                     font-size: calc(play.$viewers-responsive-size * 0.6);
+                }
+
+                .tooltip {
+                    bottom: default.$tooltip-size-arr;
+
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
+                    }
                 }
 
                 #folha-de-saida {
@@ -151,19 +179,22 @@ main {
                         @include global.size(90%);
         
                         #epi-value {
-                            @include global.setFont(chalk);
                             color: white;
+                            @include global.setFont(chalk);
                         }
                     }
                 }
         
                 #acumulador {
+                    $border-width: 10px;
+                    
                     background-color: play.$lightgreen-display;
-        
-                    border: 10px ridge black;
+                    
+                    border: $border-width ridge black;
                     border-radius: 5px;
         
                     position: relative;
+                    @include global.middle;
         
                     #acumulador-value, #overlay {
                         font-size: calc(play.$viewers-initial-size * 0.44);
@@ -180,82 +211,96 @@ main {
             }
 
             #gaveteiro {
-                overflow: scroll;
-                scroll-behavior: smooth;
-
-                @include global.flex($wrap: nowrap);
-
-                @include responsive.debuggers-childs;
+                @include global.middle;
                 @include responsive.gaveteiro;
+                @include responsive.debuggers-childs-size;
+            
+                .tooltip {
+                    bottom: 0;
 
-                .drawer {
-                    min-width: play.$gaveta-width;
-                    min-height: play.$gaveta-height;
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
+                    }
+                }
+
+                #scroll-gaveteiro {
+                    overflow: scroll;
+                    scroll-behavior: smooth;
                     
-                    position: relative;
-                    margin: 0 play.$gaveta-margin;
+                    @include global.flex($wrap: nowrap);
 
-                    filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
+                    @include responsive.scrollgaveteiro;
+                    @include responsive.debuggers-childs-flex;
 
-                    @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat);
-                    
-                    & {
-                        @include responsive.gavetas;
-                    }
+                    .drawer {
+                        min-width: play.$gaveta-width;
+                        min-height: play.$gaveta-height;
+                        
+                        position: relative;
+                        margin: 0 play.$gaveta-margin;
 
-                    &:hover {
-                        filter: hue-rotate(45deg);
-                    }
-
-                    &.default {
-                        animation: inherit;
-                        filter: brightness(0.5);
-                    }
-
-                    &.highlight {
                         filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
-                        @include global.animation(twink, 1.5s, 1);
-                    }
 
-                    &.pointed {
-                        filter: hue-rotate(45deg);
-                    }
-                    
-                    &:first-child {
-                        margin: 0 play.$gaveta-margin 0 0;
-                        @include responsive.gavetas;
-                    }
+                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat);
+                        
+                        & {
+                            @include responsive.gavetas;
+                        }
 
-                    &:last-child {
-                        margin: 0 0 0 play.$gaveta-margin;
-                        @include responsive.gavetas;
-                    }
+                        &:hover {
+                            filter: hue-rotate(45deg);
+                        }
 
-                    div {
-                        position: absolute;
+                        &.default {
+                            animation: inherit;
+                            filter: brightness(0.5);
+                        }
 
-                        @include global.middle;
+                        &.highlight {
+                            filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
+                            @include global.animation(twink, 1.5s, 1);
+                        }
 
+                        &.pointed {
+                            filter: hue-rotate(45deg);
+                        }
+                        
                         &:first-child {
-                            @include numbers(40px, initial, 13, 88px, 86px);
+                            margin: 0 play.$gaveta-margin 0 0;
+                            @include responsive.gavetas;
                         }
 
                         &:last-child {
-                            @include numbers(42px, 0, -28, 50px, 75px);
+                            margin: 0 0 0 play.$gaveta-margin;
+                            @include responsive.gavetas;
                         }
 
-                        span {
-                            color: #ffffff;
+                        div {
+                            position: absolute;
 
-                            @include global.setFont(mono);
+                            @include global.middle;
 
-                            &.num-drawer {
-                                font-weight: bold;
-                                font-size: 2em;
+                            &:first-child {
+                                @include numbers(40px, initial, 13, 88px, 86px);
                             }
 
-                            &.cont-drawer {
-                                font-size: 1.5em;
+                            &:last-child {
+                                @include numbers(42px, 0, -28, 50px, 75px);
+                            }
+
+                            span {
+                                color: #ffffff;
+
+                                @include global.setFont(mono);
+
+                                &.num-drawer {
+                                    font-weight: bold;
+                                    font-size: 2em;
+                                }
+
+                                &.cont-drawer {
+                                    font-size: 1.5em;
+                                }
                             }
                         }
                     }
@@ -346,6 +391,15 @@ main {
 
     .tooltip {
         top: calc(play.$question-mark-size/2 - 0.5em);
-        left: calc((play.$question-mark-size + default.$tooltip-padding-x) * -1);
+        right: calc(100% + default.$tooltip-size-arr + $padding);
+
+        &::after {
+            @include global.tooltip-right(default.$tooltip-size-arr);
+        }
+
+        .tooltip-text {
+            width: 5.5em;
+            font-size: 0.9em;
+        }
     }
 }

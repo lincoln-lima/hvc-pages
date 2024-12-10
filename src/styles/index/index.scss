@@ -1,5 +1,6 @@
 @use '../globals' as global;
 @use './in' as index;
+@use '../defaults/default' as default;
 /* -------------------------------------------------------------------- */
 main {
     max-width: index.$main-width;
@@ -24,6 +25,22 @@ main {
         article {
             padding-top: index.$header-height;
             padding-bottom: index.$header-height;
+
+            .come-to-play {
+                @include global.middle;
+
+                .tooltip {
+                    top: calc(100% + default.$tooltip-size-arr * 2);
+
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
+                    }
+
+                    .tooltip-text {
+                        font-size: 0.9em;
+                    }
+                }
+            }
         }
 
         &#descricao-hv {

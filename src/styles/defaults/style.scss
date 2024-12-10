@@ -167,6 +167,8 @@ a {
 }
 /* -------------------------------------------------------------------- */
 .tooltiper {
+    $color: #1f1f1f;
+
     position: relative;
 
     &:hover .tooltip {
@@ -174,13 +176,12 @@ a {
     }
 
     .tooltip {
-        $color: #000000d0;
-
         background-color: $color;
-        padding: default.$tooltip-padding-y default.$tooltip-padding-x;
+        padding: 0 default.$tooltip-padding-x;
+
+        height: default.$tooltip-height;
 
         text-align: center;
-        text-transform: capitalize;
         color: white;
         font-weight: bold;
 
@@ -189,23 +190,17 @@ a {
         border-radius: 0.5em;
         visibility: hidden;
 
+        @include global.middle;
+
         &::after {
-            $size: 5px;
-            
             content: "";
             position: absolute;
 
-            bottom: -$size;
-            left: 50%;
-            margin-left: -$size;
-
             transform: rotate(45deg);
 
-            border-width: $size;
-            border-style: solid;
-            border-color: transparent $color $color transparent;
+            border: default.$tooltip-size-arr solid $color;
         }
-
+        
         .tooltip-text {
             font-size: 1em;
         }

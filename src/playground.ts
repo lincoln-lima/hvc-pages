@@ -54,9 +54,11 @@ export const play = {
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
         
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
+        scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
         drawers: () => { return document.getElementsByClassName("drawer")! },
         drawerscontent: () => { return document.getElementsByClassName("cont-drawer")! },
 
+        scrolltablecards: () => { return document.getElementById("scroll-tablecards")! },
         tablecards: () => { return document.getElementById("cards")! },
         cards: () => { return play.elements.tablecards().children[0]! as HTMLElement },
         
@@ -113,12 +115,14 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-globals.actions.monitoreMenu(1350);
-window.addEventListener('resize', () => globals.actions.monitoreMenu(1350));
+const windowsizemenu = 860;
+// ------------------------------------------------------------------------------- 
+globals.actions.monitoreMenu(windowsizemenu);
+window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
     // ------------------------------------------------------------------------------- 
-    drawers(play.elements.gaveteiro());
+    drawers(play.elements.scrollgaveteiro());
     hvc();
     // ------------------------------------------------------------------------------- 
     play.elements.helpmodal().children[0].appendChild(await templates('table'));
@@ -197,8 +201,8 @@ modals.forEach(async modal => {
 });
 // ------------------------------------------------------------------------------- 
 const tablecards = await templates("playground/cards");
-tablecards.style['display'] = "none";
 
-play.elements.portacartoes().appendChild(tablecards);
+play.elements.scrolltablecards().appendChild(tablecards);
+play.elements.scrolltablecards().style['display'] = "none";
 // ------------------------------------------------------------------------------- 
 setTimeout(async () => await loadplay(), 500);

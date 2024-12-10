@@ -28,7 +28,7 @@ export default () => {
     
     const debugmenu = play.elements.debugmenu();
     const editor = play.elements.editor();
-    const tablecards = play.elements.tablecards();
+    const scrolltablecards = play.elements.scrolltablecards();
     
     const cards = play.elements.cards();
     const readcard = play.elements.readcard();
@@ -61,7 +61,7 @@ export default () => {
             else {
                 globals.actions.switchVisibility(debugmenu, true);
                 globals.actions.undisplayElement(editor);
-                globals.actions.displayElement(tablecards);
+                globals.actions.displayElement(scrolltablecards);
 
                 globals.actions.undisplayElement(play.elements.help());
 
@@ -158,7 +158,8 @@ export default () => {
     // ---------------------------------------------------------------------------
     const terminate = () => {
         globals.actions.switchVisibility(debugmenu, false);
-        globals.actions.undisplayElement(tablecards);
+        globals.actions.undisplayElement(scrolltablecards);
+        globals.actions.undisplayElement(submitcard);
         globals.actions.displayElement(editor);
         globals.actions.displayElement(play.elements.help());
         
@@ -187,7 +188,9 @@ export default () => {
     });
     // ---------------------------------------------------------------------------
     document.addEventListener('keydown', e => {
-        if(e.ctrlKey && e.key.toLowerCase() === 'arrowright') {
+        const hvmstate = hvc.getHVM().getState().toLowerCase();
+
+        if(e.ctrlKey && e.key.toLowerCase() === 'arrowright' && (hvmstate === 'execução' || hvmstate === 'carga')) {
             e.preventDefault();
 
             hvc.next();
@@ -195,7 +198,9 @@ export default () => {
     })
 
     document.addEventListener('keydown', e => {
-        if(e.ctrlKey && e.key.toLowerCase() === 'arrowleft') {
+        const hvmstate = hvc.getHVM().getState().toLowerCase();
+
+        if(e.ctrlKey && e.key.toLowerCase() === 'arrowleft' && hvmstate === 'execução') {
             e.preventDefault();
 
             hvc.back();
@@ -204,9 +209,9 @@ export default () => {
     });
 
     document.addEventListener('keydown', e => {
-        const hvm = hvc.getHVM();
+        const hvmstate = hvc.getHVM().getState().toLowerCase();
 
-        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvm.getState().toLowerCase() != 'desligado') {
+        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvmstate != 'desligado') {
             e.preventDefault();
             terminate();
         }
