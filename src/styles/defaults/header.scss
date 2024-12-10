@@ -307,6 +307,11 @@ header {
 
                 @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
+                .tooltip {
+                    bottom: calc((play.$header-padding * 4 + default.$tooltip-padding-y + 1em) * -1);
+                    right: 0;
+                }
+
                 button {
                     padding: 0 0.4em;
 

@@ -174,17 +174,37 @@ a {
     }
 
     .tooltip {
-        background-color: #000000;
-        padding: 0.1em 1em;
+        $color: #000000d0;
+
+        background-color: $color;
+        padding: default.$tooltip-padding-y default.$tooltip-padding-x;
 
         text-align: center;
         text-transform: capitalize;
         color: white;
+        font-weight: bold;
 
         position: absolute;
         z-index: 999;
         border-radius: 0.5em;
         visibility: hidden;
+
+        &::after {
+            $size: 5px;
+            
+            content: "";
+            position: absolute;
+
+            bottom: -$size;
+            left: 50%;
+            margin-left: -$size;
+
+            transform: rotate(45deg);
+
+            border-width: $size;
+            border-style: solid;
+            border-color: transparent $color $color transparent;
+        }
 
         .tooltip-text {
             font-size: 1em;

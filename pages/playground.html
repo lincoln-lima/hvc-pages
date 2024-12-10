@@ -80,7 +80,7 @@
             <div class="debuggers">
                 <div class="viewers">
                     <div id="contorno-epi">
-                        <article id="epi" class="tooltiper" title="EPI">
+                        <article id="epi" class="tooltiper">
                             <span id="epi-value" class="viewers-values"></span>
                             <div class="tooltip"><span class="tooltip-text">EPI</span></div>
                         </article>
@@ -109,8 +109,9 @@
             </section>
         </section>
     </main>
-    <aside>
-        <button id="help" class="botao"><img src="/img/help.png" title="Ajuda (F12)"></button>
+    <aside id="help-aside" class="tooltiper">
+        <button id="help" class="botao"><img src="/img/help.png"></button>
+        <div class="tooltip"><span class="tooltip-text">F12</span></div>
     </aside>
 
     <script src="/src/default.ts" type="module"></script>

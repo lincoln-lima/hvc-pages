@@ -1,5 +1,6 @@
 @use '../globals' as global;
 @use './play' as play;
+@use '../defaults/default' as default;
 @use './responsiveplay' as responsive;
 /* -------------------------------------------------------------------- */
 @mixin portacartoes-viewers {
@@ -326,8 +327,9 @@ main {
     }
 }
 
-aside {
+#help-aside {
     $distance: 0.3em;
+    $padding: 0.2em;
 
     position: fixed;
     bottom: $distance;
@@ -337,8 +339,13 @@ aside {
 
     .botao {
         border-radius: 50%;
-        padding: 0.2em;
+        padding: $padding;
 
         @include global.middle;
+    }
+
+    .tooltip {
+        top: calc(play.$question-mark-size/2 - 0.5em);
+        left: calc((play.$question-mark-size + default.$tooltip-padding-x) * -1);
     }
 }

@@ -13,7 +13,7 @@ $nav-initial-width: 95vw;
 $nav-responsive-width: 90vw;
 
 $menu-num-buttons: 5;
-$menu-width: calc($menu-num-buttons * default.$menu-button-width);
+$menu-width: calc($menu-num-buttons * default.$menu-buttons-width);
 // ------------------------------------------------------------------------------- 
 $main-initial-width: $nav-initial-width;
 
@@ -42,3 +42,5 @@ $dark-red: #8b0000;
 $live-blue: #0000F6;
 $golden: #b8860b;
 $nice-green: #008000;
+// ------------------------------------------------------------------------------- 
+$question-mark-size: 40px
