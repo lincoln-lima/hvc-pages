@@ -115,7 +115,7 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 860;
+const windowsizemenu = 680;
 // ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));

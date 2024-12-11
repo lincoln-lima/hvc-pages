@@ -9,7 +9,7 @@
     
     padding: 0 0.7em;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.4em;
 }
 
 @mixin navlinksbynum($color, $colorhover) {
@@ -36,14 +36,14 @@
         align-items: end !important;
         flex-direction: column;
 
-        padding: 15px;
+        padding: 0.5em;
         border-radius: 0 0 5px 5px;
         background-color: #00000020;
     }
 }
 
 @mixin responsive-burguer($window-size) {
-    @media screen and (min-width: $window-size) {
+    @media screen and (min-width: ($window-size + 1)) {
         display: none; 
     }
 }
@@ -73,6 +73,8 @@ header {
             &#home {
                 font-size: 1.5em;
                 text-decoration: none;
+
+                padding: 0.1em;
 
                 @include global.flex($wrap: nowrap);
                 @include global.size(170px, default.$home-height);
@@ -190,6 +192,10 @@ header {
     &#header-play {
         padding: play.$header-padding 0;
 
+        .tooltip-text {
+            font-size: 0.9em;
+        }
+
         nav {
             max-width: play.$nav-initial-width;
 
@@ -201,6 +207,10 @@ header {
                 @include global.size(28em, calc(default.$home-height * 0.9));
                 @include global.flex;
 
+                @media screen and (max-width: play.$state-labels-responsive-width) {
+                    width: 15em;
+                }
+
                 .state {
                     $dot-size: calc(default.$home-height * 0.5);
 
@@ -210,15 +220,21 @@ header {
                     @include global.middle;
                     @include global.size(31%, 100%);
 
-                    &, * {
-                        transition: 0.5s;
-                    }
-
                     &:hover {
                         cursor: help;
                     }
+
+                    .tooltip {
+                        top: calc(100% + default.$tooltip-size-arr * 2);
+                        height: 3em;
+                        width: 7em;
+
+                        &::after {
+                            @include global.tooltip-top(default.$tooltip-size-arr);
+                        }
+                    }
                     
-                    div {
+                    .state-data {
                         min-width: 75%;
                         @include global.flex;
 
@@ -232,8 +248,20 @@ header {
                             &.dot-state {
                                 background-color: white;
                                 border-radius: 0.1em;
+
+                                transition: 0.5s;
     
                                 @include global.size($dot-size);
+
+                                @media screen and (max-width: play.$state-labels-responsive-width) {
+                                    @include global.center;
+                                }
+                            }
+
+                            &.hvm-state {
+                                @media screen and (max-width: play.$state-labels-responsive-width) {
+                                    display: none;
+                                }
                             }
                         }
                     }
@@ -241,7 +269,7 @@ header {
                     &#running-state {
                         background-color: play.$nice-green;
 
-                        div {
+                        .state-data {
                             width: 90%;
                         
                             .dot-state {
@@ -322,7 +350,7 @@ header {
             .primary-menu {
                 width: calc(play.$menu-width * 1.2);
 
-                @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$menu-buttons-responsive-width) {
+                @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$tools-buttons-responsive-width) {
                     width: calc(play.$menu-width * 0.5);
 
                     .tooltip {
@@ -342,10 +370,6 @@ header {
                         &::after {
                             @include global.tooltip-top(default.$tooltip-size-arr);
                         }
-
-                        .tooltip-text {
-                            font-size: 0.9em;
-                        }
                     }
                 }
 
@@ -357,7 +381,7 @@ header {
                     .label-tool {
                         margin-left: 0.5em;
                         
-                        @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$menu-buttons-responsive-width) {
+                        @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
                             display: none;
                         }
                     }
@@ -365,7 +389,7 @@ header {
             }
 
             .burger-menu {
-                @include responsive-burguer(play.$menu-buttons-responsive-width);
+                @include responsive-burguer(play.$header-responsive-width);
             }
         }
     }

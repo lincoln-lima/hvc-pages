@@ -1,3 +1,5 @@
+@use './defaults/default' as default;
+/* -------------------------------------------------------------------- */
 $color1: #00A8AC;
 $color2: #FFB61C;
 $color3: #5427A0;
@@ -13,6 +15,8 @@ $color3-button: #0F6ED2;
 $color1-hover: #8D49FF;
 $color2-hover: #00A8AC;
 $color3-hover: #8C4AFF;
+    
+$color-tooltip: #1f1f1f;
 
 $fade-default: linear-gradient(90deg, $color3 5.85%, $color1 73%, $color2 149.38%);
 
@@ -117,7 +121,7 @@ $fonts:
 }
 
 @mixin defaultText {
-    font-size: 1.4em;
+    font-size: default.$font-size;
     text-align: justify;
 }
 
@@ -158,6 +162,12 @@ $fonts:
 @mixin responsive-center($min, $max) {
     @media screen and (min-width: $min) and (max-width: $max) {
         @include center;
+    }
+}
+
+@mixin responsive-font-size($min, $max, $size) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        font-size: calc($size * 0.85);
     }
 }
 /* -------------------------------------------------------------------- */

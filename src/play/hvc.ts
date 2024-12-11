@@ -130,11 +130,16 @@ export default () => {
         acumulator.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
         epiwrite.innerText = epi.toString();
         // ---------------------------------------------------------------------------
+        const endindex = gavetas.indexOf('000');
+
         Array.from(drawerscontent).forEach((cont, i) => {
             const drawer = drawers[i] as HTMLElement;
+            let style;
 
             if(gavetas[i]) {
-                play.actions.highlightDrawer(drawer, 'highlight');
+                style = (endindex == -1 || i <= endindex) ? 'code' : 'data';
+                
+                play.actions.highlightDrawer(drawer, style);
 
                 (cont as HTMLElement).innerText = gavetas[i];
             }

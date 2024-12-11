@@ -1,4 +1,5 @@
 @use '../globals' as global;
+@use '../defaults/default' as default;
 @use './play' as play;
 /* -------------------------------------------------------------------- */
 $width1: play.$screen-responsive-width1;
@@ -72,6 +73,9 @@ $width3: play.$screen-responsive-width3;;
     @media screen and (min-width: 0) and (max-width: $width1) {
         overflow-x: hidden;
         height: 100%;
+
+        // padding-top: default.$tooltip-height;
+        padding-right: 0.5em;
     }
 }
 

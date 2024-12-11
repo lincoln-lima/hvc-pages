@@ -4,13 +4,15 @@ $screen-responsive-width1: 1470px;
 $screen-responsive-width2: 800px;
 $screen-responsive-width3: 600px;
 // ------------------------------------------------------------------------------- 
-$header-responsive-width: 860px;
-$menu-buttons-responsive-width: 1370px;
+$header-responsive-width: 680px;
+
+$tools-buttons-responsive-width: 1390px;
+$state-labels-responsive-width: 860px;
 
 $header-padding: 0.3em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 
-$nav-initial-width: 95vw;
+$nav-initial-width: 94vw;
 $nav-responsive-width: 90vw;
 
 $menu-num-buttons: 5;

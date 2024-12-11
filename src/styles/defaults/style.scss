@@ -24,8 +24,6 @@ h1, h2, h3, h4 {
     color: transparent;
     background-clip: text;
     display: inline-block;
-
-    max-width: 100%;
 }
 
 h1, h2 {
@@ -43,23 +41,37 @@ div:has(h1) {
 }
 
 h1 {
-    font-size: 4em;
+    $size: 4em;
+	font-size: 4em;
+
+	@include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 h2 {
-    font-size: 3.5em;
+    $size: 3.5em;
+	font-size: 3.5em;
+
+	@include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 h3 {
-    font-size: 2.5em;
+    $size: 2.5em;
+	font-size: 2.5em;
+
+	// @include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 h4 {
-    font-size: 2em;
+    $size: 2em;
+	font-size: 2em;
+
+	// @include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 ul, p {
     @include global.defaultText;
+
+	// @include global.responsive-font-size(0, default.$screen-font-responsive, default.$font-size);
 }
 
 br {
@@ -167,16 +179,18 @@ a {
 }
 /* -------------------------------------------------------------------- */
 .tooltiper {
-    $color: #1f1f1f;
-
     position: relative;
 
     &:hover .tooltip {
+        transition: 0.5s;
+        transition-delay: 1s;
+
         visibility: visible;
+        opacity: 1;
     }
 
     .tooltip {
-        background-color: $color;
+        background-color: global.$color-tooltip;
         padding: 0 default.$tooltip-padding-x;
 
         height: default.$tooltip-height;
@@ -188,7 +202,9 @@ a {
         position: absolute;
         z-index: 999;
         border-radius: 0.5em;
+
         visibility: hidden;
+        opacity: 0;
 
         @include global.middle;
 
@@ -197,8 +213,9 @@ a {
             position: absolute;
 
             transform: rotate(45deg);
+            z-index: -1;
 
-            border: default.$tooltip-size-arr solid $color;
+            border: default.$tooltip-size-arr solid global.$color-tooltip;
         }
         
         .tooltip-text {
