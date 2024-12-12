@@ -182,11 +182,10 @@ a {
     position: relative;
 
     &:hover .tooltip {
-        transition: 0.5s;
-        transition-delay: 1s;
-
         visibility: visible;
-        opacity: 1;
+        transition-delay: 1s;
+        
+        @include global.animation(reveal, 5s, 1);
     }
 
     .tooltip {

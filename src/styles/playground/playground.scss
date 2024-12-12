@@ -319,50 +319,79 @@ main {
 
             transition: 0.5s;
 
-            visibility: hidden;
-            opacity: 0;
+            // visibility: hidden;
+            // opacity: 0;
 
             menu {
-                $width: 15em;
+                $width: 18em;
+                $border-radius: 1em;
                 width: $width;
 
-                background-color: global.$color3-button;
+                background-color: #c0c0c0;
                 padding: 0.5em;
 
-                border-radius: 2em 2em 0 0;
+                border-width: 0.3em;
+                border-color: black;
+                border-style: ridge;
+                border-bottom: none;
+                border-radius: $border-radius $border-radius 0 0;
 
                 @include global.center;
                 @include global.flex;
 
                 li {
-                    & {
-                        cursor: pointer;
-                        @include global.size(calc($width/5));
-                    }
+                    // position: relative;
+                    
+                    cursor: pointer;
+                    @include global.size(calc($width/5));
+                    
+                    //                    &::after {
+//
+//                        position: relative;
+//                        top: 0;
+//                        left: 0;
+//
+//                        font-size: calc($width/5);
+//                    }
 
                     &#back {
                         @include debug-itens('back');
+
+                        // &::after {
+                        //     content: "\25c0";
+                        // }
                     }
 
                     &#forth {
                         @include debug-itens('forth');
+                        // &::after {
+                        //     content: "\25b6";
+                        // }
                     }
 
                     &.pause {
                         @include debug-itens('pause');
+                        // &::after {
+                        //     content: "\fe0f";
+                        // }
                     }
 
                     &.continue {
                         @include debug-itens('continue');
+//                        &::after {
+//                            content: "\25c0";
+//                        }
                     }
 
                     &#finish {
                         @include debug-itens('finish');
+                        // &::after {
+                        //     content: "\23f9";
+                        // }
                     }
 
                     &:hover {
                         scale: 1.1;
-                        filter: hue-rotate(-45deg);
                     }
 
                     &:active {
