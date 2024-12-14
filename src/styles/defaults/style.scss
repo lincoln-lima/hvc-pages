@@ -153,11 +153,18 @@ button {
         cursor: pointer;
         background: transparent;
 
-        border: 1px solid transparent;
-        border-radius: 5px;
+        border: none;
+
+        outline: 0.15em solid transparent;
+        border-radius: 0.4em;
 
         &:hover {
-            border: 1px solid global.$color3;
+            outline-color: #000000;
+            background-color: #00000010;
+        }
+
+        &:active {
+            background-color: #00000020;
         }
     }
 }
@@ -185,7 +192,7 @@ a {
         visibility: visible;
         transition-delay: 1s;
         
-        @include global.animation(reveal, 5s, 1);
+        @include global.animation(reveal, 3s, 1);
     }
 
     .tooltip {
@@ -251,8 +258,7 @@ a {
         background-color: global.$color1-dark; 
     }
 }
-/* -------------------------------------------------------------------- */
-::selection {
-    color: black;
-    background-color: global.$color1;
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }

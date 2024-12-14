@@ -15,10 +15,6 @@
 
     @include global.size($width, $height);
 }
-
-@mixin debug-itens($icon) {
-    @include global.background($image: 'playground/debugger/#{$icon}', $size: cover);
-}
 /* -------------------------------------------------------------------- */
 main {
     @include global.middle;
@@ -108,7 +104,7 @@ main {
 
             .tooltip {
                 bottom: default.$tooltip-size-arr;
-                right: default.$tooltip-size-arr;
+                left: default.$tooltip-size-arr;
 
                 &::after {
                     @include global.tooltip-top(default.$tooltip-size-arr);
@@ -323,12 +319,12 @@ main {
             opacity: 0;
 
             menu {
-                $width: 35vh;
+                $width: 40vh;
                 $border-radius: 1em;
                 width: $width;
 
                 background-color: #c0c0c0;
-                padding: 0.5em;
+                padding: 1em 0.5em;
 
                 border-width: 0.3em;
                 border-color: black;
@@ -412,7 +408,7 @@ main {
         }
     }
 }
-
+/* -------------------------------------------------------------------- */
 #help-aside {
     $distance: 0.3em;
     $padding: 0.2em;
@@ -441,6 +437,42 @@ main {
         .tooltip-text {
             width: 5.5em;
             font-size: 0.9em;
+        }
+    }
+}
+/* -------------------------------------------------------------------- */
+.darkmode {
+    $body-color: #1d1d1d;
+
+    background-color: $body-color;
+
+    header {
+        $header-color: #131313;
+
+        background-color: $header-color;
+    }
+
+    .tooltip {
+        $color: #464646;
+        
+        background-color: $color;
+
+        &::after {
+            border-color: $color;
+        }
+    }
+
+    .modal-body {
+        $modal-color: #333333;
+
+        background-color: $modal-color !important;
+
+        .modal-main {
+            color: white;
+        }
+
+        .close:hover {
+            background: black !important;
         }
     }
 }

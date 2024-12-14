@@ -14,14 +14,14 @@ table#commands {
     @include global.center;
 
     th {
-        background-color: global.$color3;
+        background-color: global.$color3-dark;
         border-radius: 5px 5px 0 0;
 
         @include datas;
     }
 
     td {
-        background-color: global.$color1;
+        background-color: global.$color1-dark;
         border-radius: 5px 0 5px 0;
 
         font-weight: 500;
@@ -40,7 +40,7 @@ table#commands {
             padding: 0;
             width: 10px;
             
-            color: global.$color3;
+            color: global.$color2-dark;
 
             font-weight: 700;
         }

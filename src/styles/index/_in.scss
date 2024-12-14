@@ -1,7 +1,10 @@
 @use '../defaults/default' as default;
 /* -------------------------------------------------------------------- */
-$header-responsive-width: 1100px;
+$header-responsive-width: 1000px;
 $responsive-width: 1100px;
+/* -------------------------------------------------------------------- */
+$menu-num-buttons: 3;
+$menu-width: calc(default.$menu-buttons-width * ($menu-num-buttons + 1));
 /* -------------------------------------------------------------------- */
 $header-padding: 15px;
 $header-height: calc($header-padding * 2 + default.$home-height);

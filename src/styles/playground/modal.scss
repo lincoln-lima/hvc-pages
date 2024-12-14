@@ -37,7 +37,6 @@
 			}
 
 			.close {
-				padding: 0;
 				border-radius: 50%;
 				font-weight: bolder;
 				font-size: 1.4em;
@@ -120,14 +119,14 @@
 			@include global.flex;
 			
 			form {
-				width: calc(100% - $submit-size - 10%);
+				width: calc(100% - $submit-size - 15%);
 				border: 1px solid rgba(0, 0, 0, 0.2);
 				
 				input {
 					width: 100%;
 					text-align: center;
 					font-size: 3em;
-					
+
 					@include global.setFont('dotted');
 				}
 			}
@@ -135,6 +134,7 @@
 			#submit-card {
 				@include global.circle;
 				@include global.size($submit-size);
+				@include global.middle;
 			}
 		}
 	}
@@ -148,7 +148,7 @@
 		height: 25vh;
 
 		.modal-header {
-			height: 25%;
+			height: 30%;
 
 			background: play.$dark-red;
 
@@ -162,14 +162,14 @@
 				font-size: 1.7em;
 
 				&:hover {
-					background: white !important;
+					background: white;
 					color: play.$dark-red;
 				}
 			}
 		}
 
 		.modal-main {
-			height: 75%;
+			height: 70%;
 			text-align: center;
 
 			@include global.middle;

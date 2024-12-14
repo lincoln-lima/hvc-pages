@@ -164,7 +164,7 @@ export default () => {
     const terminate = () => {
         globals.actions.switchVisibility(debugmenu, false);
         globals.actions.undisplayElement(scrolltablecards);
-        globals.actions.undisplayElement(submitcard);
+        globals.actions.undisplayElement(cardmodal);
         globals.actions.displayElement(editor);
         globals.actions.displayElement(play.elements.help());
         
