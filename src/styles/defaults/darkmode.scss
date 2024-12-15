@@ -1,0 +1,57 @@
+$body-color: #1d1d1d;
+$header-color: #131313;
+$tooltip-color: #464646;
+$pre-code-color: #b0b0b0;
+$sticky-nav-color: #313131;
+$modal-color: #333333;
+/* -------------------------------------------------------------------- */
+.darkmode {
+    background-color: $body-color;
+
+    header {
+        background-color: $header-color;
+    }
+
+    ul, p, a, figcaption {
+        color: white;
+    }
+
+    blockquote * {
+        color: black;
+    }
+
+    .pre-code {
+        background-color: $pre-code-color;
+    }
+
+    #sticky-nav menu {
+        background-color: $sticky-nav-color;
+    }
+
+    .tooltip {
+        background-color: $tooltip-color;
+
+        &::after {
+            border-color: $tooltip-color;
+        }
+    }
+
+    .modal-body {
+        background-color: $modal-color !important;
+
+        .modal-main {
+            color: white;
+
+            form {
+                * {
+                    background-color: $modal-color;
+                    color: white;
+                }
+
+                input, select {
+                    border-color: white;
+                }
+            }
+        }
+    }
+}

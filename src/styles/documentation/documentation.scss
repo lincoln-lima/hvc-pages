@@ -38,7 +38,7 @@ main {
             height: 90%;
             overflow-y: auto;
             
-            background-color: lightgray;
+            background-color: #e2e2e2;
             
             border-top-left-radius: calc($radius * 1.6);
             border-bottom-left-radius: calc($radius * 1.6);
@@ -147,14 +147,6 @@ main {
 
         section {
             padding-top: doc.$header-height;
-
-            hr {
-                border: 0;
-                margin-bottom: 1em;
-
-                height: 0.1em;
-                background: global.$fade-title;
-            }
 
             ul {
                 margin-top: 1em;

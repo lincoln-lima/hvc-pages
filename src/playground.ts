@@ -52,6 +52,7 @@ export const play = {
         help: () => { return document.getElementById("help")! },
         
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
+        theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
         
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
@@ -128,6 +129,9 @@ const loadplay = async () => {
     play.elements.helpmodal().children[0].appendChild(await templates('table'));
     // ------------------------------------------------------------------------------- 
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
+    play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
+    // ------------------------------------------------------------------------------- 
+    document.body.className = play.elements.theme().value;
     // ------------------------------------------------------------------------------- 
     if(!play.elements.askrating() || !play.elements.counter()) {
         localStorage.setItem("askrating", "true");
@@ -151,9 +155,11 @@ const loadplay = async () => {
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.saveconfigs().addEventListener('click', () => {
         localStorage.setItem("delay-hvc", play.elements.delay().value);
+        localStorage.setItem("theme-play", play.elements.theme().value);
+
+        document.body.className = localStorage.getItem("theme-play")!;
 
         globals.actions.undisplayElement(play.elements.configmodal());
-        alert("As configurações foram salvas!");
     });
     // ------------------------------------------------------------------------------- 
     document.addEventListener("keydown", e => {

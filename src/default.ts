@@ -1,6 +1,7 @@
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
+import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     elements: {
@@ -56,13 +57,45 @@ export const globals = {
     }
 }
 // ------------------------------------------------------------------------------- 
+const switchteme = document.getElementById("switch-teme")!;
+
+if (switchteme) {
+    const switchTheme = (oldtheme: string) => {
+        switchteme.classList.replace(oldtheme, actualtheme);
+        document.body.className = actualtheme + "mode";
+    }
+
+    const oldTheme = (newtheme: string) => {
+        return newtheme === "light" ? "dark" : "light";
+    }
+
+    let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
+    switchTheme(oldTheme(actualtheme));
+
+    switchteme.addEventListener("click", () => {
+        actualtheme = switchteme.classList.contains("light") ? "dark" : "light"; 
+
+        localStorage.setItem("theme-content", actualtheme);
+        switchTheme(oldTheme(actualtheme));
+    });
+    
+    window.addEventListener("storage", () => {
+        if (actualtheme != localStorage.getItem("theme-content")!) {
+            actualtheme = localStorage.getItem("theme-content")!;
+            
+            switchTheme(oldTheme(actualtheme));
+        }
+    });
+}
+// ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener('click', globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
 window.addEventListener('click', e => {
     const element = e.target as Node;
     const menu = globals.elements.menumodal();
+    const menuburger = globals.elements.menuburger();
     const burgerblock = globals.elements.menuburger().style['display'] != "none";
     const modalvisible = globals.elements.menumodal().style['visibility'] == "visible";
 
-    if(burgerblock && modalvisible && !globals.elements.menuburger().contains(element)) globals.actions.switchVisibility(menu, false);
+    if(burgerblock && modalvisible && !menuburger.contains(element)) globals.actions.switchVisibility(menu, false);
 })

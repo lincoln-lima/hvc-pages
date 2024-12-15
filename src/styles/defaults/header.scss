@@ -77,13 +77,11 @@ header {
                 font-size: 1.5em;
                 text-decoration: none;
 
-                padding: 0.1em;
-
                 @include global.flex($wrap: nowrap);
                 @include global.size(170px, default.$home-height);
     
                 &:hover {
-                    background-color: #00000015;
+                    filter: brightness(0.9);
                 }
     
                 h1 {
