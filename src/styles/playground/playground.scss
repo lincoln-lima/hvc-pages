@@ -237,7 +237,7 @@ main {
 
                         filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
 
-                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat);
+                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $position: 0);
                         @include global.animation(twink, 1.5s, 1);
                         
                         @include responsive.gavetas;
@@ -310,6 +310,7 @@ main {
             width: 100%;
 
             position: fixed;
+            z-index: 999;
             bottom: 0;
             left: 0;
 

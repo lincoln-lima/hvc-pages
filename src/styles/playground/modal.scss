@@ -144,7 +144,6 @@
 			#submit-card {
 				@include global.circle;
 				@include global.size($submit-size);
-				@include global.middle;
 			}
 		}
 	}

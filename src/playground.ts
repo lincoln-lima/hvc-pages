@@ -118,21 +118,21 @@ export const play = {
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 680;
 // ------------------------------------------------------------------------------- 
+document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
+// ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
-    // ------------------------------------------------------------------------------- 
-    drawers(play.elements.scrollgaveteiro());
-    hvc();
-    // ------------------------------------------------------------------------------- 
-    play.elements.helpmodal().children[0].appendChild(await templates('table'));
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
     play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
-    // ------------------------------------------------------------------------------- 
-    document.body.className = play.elements.theme().value;
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
+    drawers(play.elements.scrollgaveteiro());
+    hvc();
+    // ---------------------------------------------------------------------------
+    play.elements.helpmodal().children[0].appendChild(await templates('table'));
+    // ---------------------------------------------------------------------------
     if(!play.elements.askrating() || !play.elements.counter()) {
         localStorage.setItem("askrating", "true");
         localStorage.setItem("counter", "0");
@@ -150,7 +150,7 @@ const loadplay = async () => {
     play.elements.closerating().addEventListener("click", hideRating);
     play.elements.ratingstars().addEventListener("click", hideRating);
     play.elements.dontask().addEventListener("click", neveraskagain);
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.saveconfigs().addEventListener('click', () => {
@@ -161,7 +161,7 @@ const loadplay = async () => {
 
         globals.actions.undisplayElement(play.elements.configmodal());
     });
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     document.addEventListener("keydown", e => {
         if(e.key.toLowerCase() === "f2") {
             e.preventDefault();
@@ -170,14 +170,14 @@ const loadplay = async () => {
             globals.actions.switchDisplay(config, config.style['display'] === 'none');
         }
     });
-
+    // ---------------------------------------------------------------------------
     window.addEventListener("click", e => {
         if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
         else if(e.target == play.elements.helpmodal()) switchHelp();
     });
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
-    // ------------------------------------------------------------------------------- 
+    // ---------------------------------------------------------------------------
     const switchHelp = () => {
         const element = play.elements.helpmodal();
         const display = element.style['display'] === 'none';

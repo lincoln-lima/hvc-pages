@@ -17,7 +17,7 @@ html {
 
 mark {
     background-color: #FFB61C;
-    padding: 0 5px;
+    padding: 0 0.25em;
 }
 /* -------------------------------------------------------------------- */
 h1, h2, h3, h4 {
@@ -57,21 +57,15 @@ h2 {
 h3 {
     $size: 2.5em;
 	font-size: $size;
-
-	// @include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 h4 {
     $size: 2em;
 	font-size: $size;
-
-	// @include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 ul, p {
     @include global.defaultText;
-
-	// @include global.responsive-font-size(0, default.$screen-font-responsive, default.$font-size);
 }
 
 br {
@@ -85,23 +79,22 @@ menu {
 }
 
 ul, ol {
-    list-style-position: inside;
+    padding-left: 1.1em;
 }
 
 hr {
     width: 100%;
     border: 0;
-    margin-bottom: 1em;
 
     height: 0.1em;
     background: global.$fade-title;
 }
 /* -------------------------------------------------------------------- */
 .pre-code {
-    background-color: #d2d2d2;
+    background-color: global.$lightgray;
 
-    border-radius: 5px;
-    padding: 7px 20px;
+    border-radius: 0.5em;
+    padding: 0.3em 1.5em;
 
     overflow-x: auto;
     
@@ -112,9 +105,11 @@ hr {
 
         &, * {
             color: global.$color3;
-            text-align: left;
+
             font-size: $font-size;
             font-weight: 700;
+
+            text-align: left;
 
             @include global.setFont(code);
         }
@@ -124,7 +119,7 @@ hr {
         }
 
         .comment {
-            color: gray;
+            color: global.$gray;
         }
 
         .reserved {
@@ -151,6 +146,7 @@ button {
         
         cursor: pointer;
         @include global.border(black, 0, 15px);
+        @include global.middle;
         
         &:hover {
             background: global.$fade-hover;
@@ -187,7 +183,6 @@ button {
         padding: $padding;
 
         @include global.size($size);
-        @include global.middle;
 
         .tooltip {
             top: calc($size/2/2);
@@ -200,13 +195,19 @@ button {
             }
 
             .tooltip-text {
-                width: 6.5em;
+                width: 7em;
                 font-size: 0.6em;
             }
         }
     }
 
-    &#switch-teme {
+    &#switch-theme {
+        @include global.middle;
+
+        img {
+            width: 100%;
+        }
+
         &.light {
             #sun {
                 display: none;

@@ -16,14 +16,12 @@ const switchnav = () => {
 
     if(shownav.classList.contains(states[0])) {
         components.forEach(element => {
-            element.classList.remove(states[0]);
-            element.classList.add(states[1]);
+            element.classList.replace(states[0], states[1]);
         })
     }
     else {
         components.forEach(element => {
-            element.classList.remove(states[1]);
-            element.classList.add(states[0]);
+            element.classList.replace(states[1], states[0]);
         })
     }
 };

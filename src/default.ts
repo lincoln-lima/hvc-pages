@@ -10,7 +10,7 @@ export const globals = {
     },
     actions: {
         displayElement: (element: HTMLElement) => {
-            element.style.display = "revert-layer";
+            element.style['display'] = "revert-layer";
         },
     
         undisplayElement: (element: HTMLElement) => {
@@ -57,23 +57,24 @@ export const globals = {
     }
 }
 // ------------------------------------------------------------------------------- 
-const switchteme = document.getElementById("switch-teme")!;
+const switchtheme = document.getElementById("switch-theme")!;
 
-if (switchteme) {
+if (switchtheme) {
+    let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
+    
     const switchTheme = (oldtheme: string) => {
-        switchteme.classList.replace(oldtheme, actualtheme);
+        switchtheme.classList.replace(oldtheme, actualtheme);
         document.body.className = actualtheme + "mode";
     }
 
     const oldTheme = (newtheme: string) => {
         return newtheme === "light" ? "dark" : "light";
     }
-
-    let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
+    
     switchTheme(oldTheme(actualtheme));
 
-    switchteme.addEventListener("click", () => {
-        actualtheme = switchteme.classList.contains("light") ? "dark" : "light"; 
+    switchtheme.addEventListener("click", () => {
+        actualtheme = switchtheme.classList.contains("light") ? "dark" : "light"; 
 
         localStorage.setItem("theme-content", actualtheme);
         switchTheme(oldTheme(actualtheme));

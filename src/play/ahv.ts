@@ -3,9 +3,10 @@ import { play } from "../playground";
 export default () => {
     const importahv = () => {
         const inputelement = document.createElement('input');
+
         inputelement.id = 'file';
         inputelement.type = 'file';
-        inputelement.style.display = 'none';
+        inputelement.style['display'] = 'none';
 
         document.body.appendChild(inputelement);
         inputelement.click();
@@ -43,18 +44,15 @@ export default () => {
     document.addEventListener('keydown', (e) => {
         const key = e.key.toLowerCase();
 
-        if (key === "s" && e.ctrlKey) {
-            e.preventDefault();
-            exportahv();
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        const key = e.key.toLowerCase();
-
-        if (key === "i" && e.ctrlKey) {
-            e.preventDefault();
-            importahv();
+        if(e.ctrlKey) {
+            if (key === "s") {
+                e.preventDefault();
+                exportahv();
+            }
+            else if (key === "i") {
+                e.preventDefault();
+                importahv();
+            }
         }
     });
 }

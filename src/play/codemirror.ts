@@ -2,7 +2,7 @@ import { EditorState } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
 // ------------------------------------------------------------------------------- 
-const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n150\n850\n000";
+const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n105\n805\n000";
 
 const editorclass = EditorView.editorAttributes.of({ id: "editor" });
 const contentclass = EditorView.contentAttributes.of({ id: "content" });
@@ -29,7 +29,7 @@ const view = new EditorView({
 
 export const getDoc = () => {
     return view.state.doc.toString();
-}
+};
 
 export const setDoc = (text: string) => {
     view.dispatch({
@@ -38,5 +38,5 @@ export const setDoc = (text: string) => {
             to: view.state.doc.length,
             insert: text
         }
-    })
-}
+    });
+};

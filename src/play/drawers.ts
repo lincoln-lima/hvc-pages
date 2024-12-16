@@ -11,4 +11,4 @@ export default (gaveteiro: HTMLElement) => {
         
         gaveteiro.appendChild(drawer);
     }
-}
+};

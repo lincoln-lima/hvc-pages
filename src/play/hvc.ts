@@ -7,6 +7,7 @@ import ahv from "./ahv";
 export default () => {
     const hvc = new HVC();
     let previous = "desligado";
+    // ------------------------------------------------------------------------------- 
     ahv();
     // ------------------------------------------------------------------------------- 
     const runner = play.elements.run();
@@ -49,7 +50,9 @@ export default () => {
     const exec = async(isquick: boolean) => {
         Array.from(drawers).forEach(gaveta => {
             play.actions.highlightDrawer(gaveta as HTMLElement, 'default');
-        })
+        });
+        // ---------------------------------------------------------------------------
+        terminate();
         // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
 
@@ -60,6 +63,7 @@ export default () => {
             if (isquick) await hvc.run();
             else {
                 globals.actions.switchVisibility(debugmenu, true);
+
                 globals.actions.undisplayElement(editor);
                 globals.actions.displayElement(scrolltablecards);
 
@@ -175,7 +179,18 @@ export default () => {
         
         previous = "desligado";
         play.actions.setState(previous);
-    }
+    };
+    
+    const controlling = (set: boolean) => {
+        pausecontinue.className = "continue";
+
+        if(set) {
+            hvc.back();
+            updateViewers();
+            globals.actions.undisplayElement(cardmodal);
+        }
+        else hvc.next();
+    };
     // ---------------------------------------------------------------------------
     pausecontinue.addEventListener('click', () => {
         if(pausecontinue.className === 'pause') hvc.stop();
@@ -186,39 +201,27 @@ export default () => {
 
     finish.addEventListener('click', terminate);
 
-    forth.addEventListener('click', () => hvc.next());
-    back.addEventListener('click', () => {
-        hvc.back();
-        updateViewers();
-    });
+    back.addEventListener('click', () => controlling(true));
+    forth.addEventListener('click', () => controlling(false));
     // ---------------------------------------------------------------------------
     document.addEventListener('keydown', e => {
         const hvmstate = hvc.getHVM().getState().toLowerCase();
 
-        if(e.ctrlKey && e.key.toLowerCase() === 'arrowright' && (hvmstate === 'execução' || hvmstate === 'carga')) {
-            e.preventDefault();
+        if (e.ctrlKey) {
+            const key = e.key.toLowerCase();
 
-            hvc.next();
-        }
-    })
-
-    document.addEventListener('keydown', e => {
-        const hvmstate = hvc.getHVM().getState().toLowerCase();
-
-        if(e.ctrlKey && e.key.toLowerCase() === 'arrowleft' && hvmstate === 'execução') {
-            e.preventDefault();
-
-            hvc.back();
-            updateViewers();
-        }
-    });
-
-    document.addEventListener('keydown', e => {
-        const hvmstate = hvc.getHVM().getState().toLowerCase();
-
-        if(e.ctrlKey && e.key.toLowerCase() === 'c' && hvmstate != 'desligado') {
-            e.preventDefault();
-            terminate();
+            if(key === 'c' && hvmstate != 'desligado') {
+                e.preventDefault();
+                terminate();
+            }
+            else if(key === 'arrowleft' && hvmstate === 'execução') {
+                e.preventDefault();
+                controlling(true);
+            }
+            else if (key === 'arrowright' && (hvmstate === 'execução' || hvmstate === 'carga')) {
+                e.preventDefault();
+                controlling(false);
+            }
         }
     });
 }
