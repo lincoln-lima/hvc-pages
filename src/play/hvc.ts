@@ -73,9 +73,7 @@ export default () => {
             }
         }
         catch (e) {
-            terminate();
-            
-            play.actions.detectError((e as Error).message);
+            detectError(e as Error);
         }
         finally {
             if(localStorage.getItem("askrating") === "true") {
@@ -86,6 +84,13 @@ export default () => {
             }
         }
     }
+
+    const detectError = (e: Error) => {
+        terminate();
+        
+        play.actions.showError(e.message);
+    }
+    
     // ------------------------------------------------------------------------------- 
     hvc.addEventOutput((out: string) => {
         outwrite.innerText = out;
@@ -108,7 +113,6 @@ export default () => {
             readcard.onkeydown = (e: KeyboardEvent) => {
                 if (e.key.toLowerCase() === "enter") {
                     e.preventDefault();
-
                     submit();
                 }
             };
@@ -118,10 +122,13 @@ export default () => {
     const updateViewers = () => {
         const hvm = hvc.getHVM();
         // ---------------------------------------------------------------------------
+        const portaCartoes = hvm.portaCartoes.conteudo;
         const acumulador = hvm.calculadora.getAcumulador();
         const gavetas = hvm.gaveteiro.getGavetas();
         const epi = hvm.epi.lerRegistro();
-        const portaCartoes = hvm.portaCartoes.conteudo;
+        // ---------------------------------------------------------------------------
+        const pointed = drawers[epi] as HTMLElement;
+        const endindex = gavetas.indexOf('000');
         // ---------------------------------------------------------------------------
         cards.innerHTML = "";
 
@@ -130,12 +137,11 @@ export default () => {
         });
         // ---------------------------------------------------------------------------
         play.actions.setState(hvm.getState().toLowerCase());
-        
+        // console.log(hvm.getState());
+        // ---------------------------------------------------------------------------
         acumulator.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
         epiwrite.innerText = epi.toString();
         // ---------------------------------------------------------------------------
-        const endindex = gavetas.indexOf('000');
-
         Array.from(drawerscontent).forEach((cont, i) => {
             const drawer = drawers[i] as HTMLElement;
             let style;
@@ -150,8 +156,6 @@ export default () => {
             else (cont as HTMLElement).innerText = "---";
         });
         // ---------------------------------------------------------------------------
-        const pointed = drawers[epi] as HTMLElement;
-
         play.actions.highlightDrawer(pointed, 'pointed');
         globals.actions.scrollTo(pointed);
     }
@@ -181,15 +185,22 @@ export default () => {
         play.actions.setState(previous);
     };
     
-    const controlling = (set: boolean) => {
+    const controlling = async (set: boolean) => {
         pausecontinue.className = "continue";
 
         if(set) {
-            hvc.back();
+            await hvc.back();
             updateViewers();
             globals.actions.undisplayElement(cardmodal);
         }
-        else hvc.next();
+        else {
+            try {
+                await hvc.next();
+            }
+            catch (e) {
+                detectError(e as Error);
+            }
+        }
     };
     // ---------------------------------------------------------------------------
     pausecontinue.addEventListener('click', () => {

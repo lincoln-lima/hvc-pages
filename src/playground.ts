@@ -80,7 +80,7 @@ export const play = {
             play.elements.state().className = dotclass;
         },
     
-        detectError: (message: string) => {
+        showError: (message: string) => {
             play.elements.error().innerText = message;
             globals.actions.displayElement(play.elements.errorsmodal());
         },
