@@ -201,11 +201,11 @@ button {
         }
     }
 
-    &#switch-theme {
+    &.switch-theme {
         @include global.middle;
 
         img {
-            width: 100%;
+            width: 90%;
         }
 
         &.light {

@@ -37,10 +37,10 @@ export default () => {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
-
+    // ------------------------------------------------------------------------------- 
     play.elements.import().addEventListener('click', importahv);
     play.elements.export().addEventListener('click', exportahv);
-
+    // ------------------------------------------------------------------------------- 
     document.addEventListener('keydown', (e) => {
         const key = e.key.toLowerCase();
 

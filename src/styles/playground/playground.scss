@@ -55,21 +55,19 @@ main {
                     width: 100%;
                     border-spacing: 0.5em;
 
-                    tbody {
-                        tr { 
-                            background-color: white;
+                    tr { 
+                        background-color: white;
 
-                            &:hover {
-                                background-color: global.$color1-dark;
-                            }
-                            
-                            td {
-                                border: 0.05em solid black;
-                                padding: 0.25em 0;
+                        &:hover {
+                            background-color: global.$color1-dark;
+                        }
+                        
+                        td {
+                            border: 0.05em solid black;
+                            padding: 0.25em 0;
 
-                                font-size: 2em;
-                                @include global.setFont(dotted);
-                            }
+                            font-size: 2em;
+                            @include global.setFont(dotted);
                         }
                     }
                 }

@@ -67,7 +67,6 @@
 				background-color: #d9d9d9;
 				font-size: 1em;
 				
-				border-radius: 5%;
 				border-width: 0.1rem;
 			}
 		}
@@ -126,24 +125,25 @@
 		.modal-main {
 			width: 100%;
 
-			@include global.flex;
-			
 			form {
-				width: calc(100% - $submit-size - 15%);
-				border: 1px solid rgba(0, 0, 0, 0.2);
+				@include global.flex;
 				
 				input {
-					width: 100%;
+					width: calc(100% - $submit-size * 0.6);
 					text-align: center;
 					font-size: 3em;
 
 					@include global.setFont('dotted');
 				}
-			}
 
-			#submit-card {
-				@include global.circle;
-				@include global.size($submit-size);
+				#submit-card {
+					@include global.circle;
+					@include global.size($submit-size);
+
+					img {
+						background-color: transparent;
+					}
+				}
 			}
 		}
 	}

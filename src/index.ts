@@ -14,7 +14,7 @@ window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizem
 const setTemplates = async () => {
     document.getElementById("table")!.appendChild(await templates('table'));
     document.body.appendChild(await templates('footer')); 
-};
+}
 
 await setTemplates();
 // ------------------------------------------------------------------------------- 

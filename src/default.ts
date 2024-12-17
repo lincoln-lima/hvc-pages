@@ -1,12 +1,13 @@
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
+import "/src/styles/defaults/modal.scss";
 import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     elements: {
-        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
         menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement },
+        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement }
     },
     actions: {
         displayElement: (element: HTMLElement) => {
@@ -21,10 +22,6 @@ export const globals = {
             if(set) globals.actions.displayElement(element);
             else globals.actions.undisplayElement(element);
         },
-    
-        scrollTo: (element: HTMLElement) => {
-            element.scrollIntoView({ inline: "center" });
-        },
         
         switchVisibility: (element: HTMLElement, set: boolean) => {
             if(set) {
@@ -36,7 +33,7 @@ export const globals = {
                 element.style['visibility'] = "hidden";
             }
         },
-
+        
         monitoreMenu: (size: number) => {
             const burger = globals.elements.menuburger();
 
@@ -53,15 +50,19 @@ export const globals = {
         switchMenu: () => {
             const menu = globals.elements.menumodal();
             globals.actions.switchVisibility(menu, menu.style['visibility'] == "hidden");
+        },
+        
+        scrollTo: (element: HTMLElement) => {
+            element.scrollIntoView({ inline: "center" });
         }
     }
 }
 // ------------------------------------------------------------------------------- 
-const switchtheme = document.getElementById("switch-theme")!;
+const switchtheme = document.getElementsByClassName("switch-theme")[0]! as HTMLElement;
 
 if (switchtheme) {
     let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
-    
+    // ---------------------------------------------------------------------------
     const switchTheme = (oldtheme: string) => {
         switchtheme.classList.replace(oldtheme, actualtheme);
         document.body.className = actualtheme + "mode";
@@ -70,9 +71,9 @@ if (switchtheme) {
     const oldTheme = (newtheme: string) => {
         return newtheme === "light" ? "dark" : "light";
     }
-    
+    // ---------------------------------------------------------------------------
     switchTheme(oldTheme(actualtheme));
-
+    // ---------------------------------------------------------------------------
     switchtheme.addEventListener("click", () => {
         actualtheme = switchtheme.classList.contains("light") ? "dark" : "light"; 
 
@@ -96,7 +97,7 @@ window.addEventListener('click', e => {
     const menu = globals.elements.menumodal();
     const menuburger = globals.elements.menuburger();
     const burgerblock = globals.elements.menuburger().style['display'] != "none";
-    const modalvisible = globals.elements.menumodal().style['visibility'] == "visible";
+    const modalvisible = globals.elements.menumodal().style['visibility'] === "visible";
 
     if(burgerblock && modalvisible && !menuburger.contains(element)) globals.actions.switchVisibility(menu, false);
 })
