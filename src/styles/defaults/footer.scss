@@ -3,7 +3,7 @@
 footer {
     background: global.$fade-default;
 
-    padding: 30px 0;
+    padding: 2em 0;
 
     * {
         color: #ffffff;
@@ -12,12 +12,9 @@ footer {
 
     section {
         @include global.flex($justify: space-around);
-        @include global.center;
-
-        max-width: 90vw;
         
         article {
-            @include global.size(350px, 160px);
+            @include global.size(22em, 10em);
             
             &:nth-child(2) {
                 @include global.flex($justify: space-evenly, $direction: column);
@@ -25,6 +22,7 @@ footer {
             
             ul {
                 list-style-type: none;
+                padding-left: 0;
 
                 @include global.defaultText;
             }

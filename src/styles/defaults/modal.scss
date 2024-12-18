@@ -4,7 +4,7 @@
 .mymodal {
 	$modal-border: 1em;
 
-	background-color: #00000030;
+	background-color: #00000070;
 
 	position: fixed;
 	top: 0;
@@ -18,13 +18,14 @@
 		background-color: white;
 		border-radius: $modal-border;
 
-		max-width: 92%;
+		max-width: 90%;
+		max-height: 80%;
 
 		@include global.flex($direction: column, $align: normal);
 		@include global.defaultText;
 
 		> * {
-			padding: 0 15px;
+			padding: 0 0.5em;
 		}
 
 		.modal-header {
@@ -41,14 +42,14 @@
 				font-weight: bolder;
 				font-size: 1.4em;
 				
-				@include global.setFont('default');
+				@include global.setFont(default);
 				@include global.size(1.1em);
 			}
 		}
 
 		.modal-footer {
 			@include global.rounded-border(0, $modal-border);
-			@include global.flex($justify: center)
+			@include global.middle;
 		}
 
 		form {
@@ -57,17 +58,17 @@
 			
 			div {
 				@include global.flex($direction: column);
-			}
-
-			label {
-				font-weight: bold;
-			}
-			
-			input, select {
-				background-color: #d9d9d9;
-				font-size: 1em;
 				
-				border-width: 0.1rem;
+				label {
+					font-weight: bold;
+				}
+				
+				input, select {
+					background-color: #d9d9d9;
+					font-size: 1em;
+					
+					border-width: 0.1rem;
+				}
 			}
 		}
 	}
@@ -120,7 +121,7 @@
 		$height: 15vh;
 
 		@include global.size($width, $height);
-		@include global.flex($justify: center);
+		@include global.middle;
 		
 		.modal-main {
 			width: 100%;
@@ -133,7 +134,7 @@
 					text-align: center;
 					font-size: 3em;
 
-					@include global.setFont('dotted');
+					@include global.setFont(dotted);
 				}
 
 				#submit-card {
@@ -167,7 +168,7 @@
 			}
 
 			.close {
-				background: play.$dark-red;
+				background: transparent;
 				font-size: 1.7em;
 
 				&:hover {
@@ -192,8 +193,6 @@
 		overflow: auto;
 		font-size: 1em;
 
-		max-height: 95%;
-
 		table {
 			padding: 0;
 		}
@@ -203,7 +202,7 @@
 #rating-modal {
 	.modal-body {
 		width: 23em;
-		min-height: 11em;
+		height: 14em;
 
 		.modal-header {
 			background-color: global.$color2-dark;
@@ -214,12 +213,12 @@
 			}
 
 			#close-rating {
-				background: white;
-				color: global.$color2-dark;
+				background: transparent;
+				font-size: 1.5em;
 
 				&:hover {
-					background: global.$color2;
-					color: white;
+					background: white;
+					color: global.$color2;
 				}
 			}
 		}

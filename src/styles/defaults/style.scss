@@ -94,7 +94,7 @@ hr {
     background-color: global.$lightgray;
 
     border-radius: 0.5em;
-    padding: 0.3em 1.5em;
+    padding: 0.3em 1em;
 
     overflow-x: auto;
     
@@ -170,7 +170,7 @@ button {
 
     &.fixed {
         $size: 2.1em;
-        $distance: 0.5em;
+        $distance: 0.2rem;
         $padding: 0.2em;
 
         position: fixed;
@@ -223,10 +223,11 @@ button {
 }
 
 a {
-    color: #000000;
+    $color: black;
+    color: $color;
 
     &.marked {
-        text-decoration: underline global.$color3-dark 0.01em;
+        text-decoration: underline $color 0.01em;
 
         &:hover {
             text-decoration-thickness: 0.1em;

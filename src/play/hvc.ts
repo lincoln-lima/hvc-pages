@@ -49,6 +49,8 @@ export default () => {
         outwrite.innerText = '-';
         epiwrite.innerText = '-';
         // ---------------------------------------------------------------------------
+        globals.actions.undisplayElement(play.elements.help());
+        // ---------------------------------------------------------------------------
         try {
             if (set) await hvc.run();
             else {
@@ -56,8 +58,6 @@ export default () => {
 
                 globals.actions.undisplayElement(editor);
                 globals.actions.displayElement(tablecards);
-
-                globals.actions.undisplayElement(play.elements.help());
 
                 await hvc.debug(+delay.value);
             }

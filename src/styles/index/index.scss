@@ -1,6 +1,6 @@
 @use '../globals' as global;
-@use './in' as index;
 @use '../defaults/default' as default;
+@use './in' as index;
 /* -------------------------------------------------------------------- */
 main {
     max-width: index.$main-width;
@@ -10,14 +10,28 @@ main {
         text-align: center;
     }
 
-    button.botao {
-        display: block;
-        padding: 5px 15px;
+    .come-to-play {
+        @include global.middle;
+        
+        .botao {
+            padding: 0.2em 0.6em;
+        }
 
-        @include global.center;
+        .tooltip {
+            top: calc(100% + default.$tooltip-size-arr * 2);
+
+            &::after {
+                @include global.tooltip-top(default.$tooltip-size-arr);
+            }
+
+            .tooltip-text {
+                font-size: 0.9em;
+            }
+        }
     }
-
+    
     section {
+        max-width: 75em;
         margin-bottom: 15vh;
 
         @include global.center;
@@ -25,22 +39,6 @@ main {
         article {
             padding-top: index.$header-height;
             padding-bottom: index.$header-height;
-
-            .come-to-play {
-                @include global.middle;
-
-                .tooltip {
-                    top: calc(100% + default.$tooltip-size-arr * 2);
-
-                    &::after {
-                        @include global.tooltip-top(default.$tooltip-size-arr);
-                    }
-
-                    .tooltip-text {
-                        font-size: 0.9em;
-                    }
-                }
-            }
         }
 
         &#descricao-hv {
@@ -49,47 +47,47 @@ main {
             @include global.flex($justify: space-around, $wrap: wrap-reverse);
 
             article {
-                max-width: 450px;
+                width: 30em;
+                height: 40em;
 
-                p {
-                    margin: 60px 0;
-                }
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+
+                @include global.flex($direction: column);
             }
 
             img {
                 max-width: 100%;
-                margin: 0 15px;
-
-                @media screen and (max-width: index.$responsive-width) {
-                    margin: 0;
-                }
             }
         }
 
         &#instale {
-            max-width: 1200px;
-            min-width: 40vw;
-
             article {
+                $margin-side: 0.5em;
+
                 .icones-so {
                     float: left;
-                    margin-right: 15px;
+                    margin-right: $margin-side;
                 }
 
                 ol {
-                    margin-top: 40px;
-                    margin-left: 22px;
+                    margin-top: 3em;
+                    margin-left: calc($margin-side * 1.4);
 
-                    list-style-position: inside;
+                    @media screen and (max-width: index.$list-responsive-width){
+                        margin-left: 0; 
+                    }
 
                     li {
+                        $margin-side: calc($margin-side * 1.5);
+                        
                         position: relative;
-                        margin-bottom: 40px;
+                        margin-bottom: 2.5em;
 
                         &::marker {
+                            content: counter(list-item);
                             color: white;
                             font-size: 1.1em;
-                            content: counter(list-item);
 
                             @include global.setFont(title);
                         }
@@ -98,36 +96,39 @@ main {
                             content: "";
                             
                             position: absolute;
-                            display: inline-block;
                             z-index: -1;
-                            top: 5px;
-                            left: -9px;
+
+                            top: 6px;
+                            left: -1.3em;
 
                             background-color: global.$color1;
 
                             @include global.circle;
-                            @include global.size(30px);
+                            @include global.size(1.8em);
                         }
 
                         > span {
-                            font-size: 1.6em;
-                            font-weight: 600;
+                            display: block;
                             color: global.$color1;
 
-                            margin-left: 20px;
+                            font-size: 1.6em;
+                            font-weight: 600;
+
+                            margin-left: $margin-side;
+
                             @include global.setFont(subtitle);
                         }
                         
                         p {
-                            margin-left: 35px;
+                            margin-left: calc($margin-side * 1.15);
                         }
 
                         pre {
-                            margin-top: 20px;
-                            margin-left: 35px;
+                            margin-top: 1.5em;
+                            margin-left: calc($margin-side * 1.8);
 
                             button.copy {
-                                margin-left: 5px;
+                                margin-left: $margin-side;
                             }
                         }
                     }
@@ -136,8 +137,6 @@ main {
         }
 
         &#aprenda {
-            max-width: 1400px;
-
             article {
                 h3 {
                     text-transform: uppercase;
@@ -146,28 +145,24 @@ main {
                     @include global.setFont(title);
                 }
 
-                > div {
-                    margin-bottom: 1em;
-
-                    @include global.flex;
+                img {
+                    float: right;
+                    padding: 1em;
 
                     @media screen and (max-width: index.$responsive-width) {
-                        justify-content: center;
-                    }
-
-                    div {
-                        max-width: 50vw;
-                        
-                        @media screen and (max-width: index.$responsive-width) {
-                            max-width: none;
-                            margin-top: 40px;
-                        }
+                        display: block;
+                        float: none;
+                        @include global.center;
                     }
                 }
 
                 &#hv {
                     h3 {
                         color: global.$color3;
+                    }
+
+                    ul {
+                        margin: 1em 0;
                     }
                 }
 
@@ -197,37 +192,11 @@ main {
                         color: global.$color1;
                     }
 
-                    div {
-                        flex-wrap: wrap-reverse;
-                        margin-bottom: 70px;
+                    .come-to-play {
+                        margin-top: 5em;
                     }
                 }
             }
-        }
-    }
-}
-
-aside {
-    padding: 100px 0;
-    max-width: 65vw;
-    
-    @include global.center;
-    
-    blockquote {
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.265);
-        border-radius: 20px 0;
-        padding: 10px;
-        
-        background-color: #FFC958;
-        
-        p {
-            text-align: center;
-            font-size: 2.2em;
-            padding: 3px;
-        }
-        
-        * {
-            @include global.setFont(quote);
         }
     }
 }

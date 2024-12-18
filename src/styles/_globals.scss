@@ -170,7 +170,7 @@ $fonts:
 
 @mixin responsive-font-size($min, $max, $size) {
     @media screen and (min-width: $min) and (max-width: $max) {
-        font-size: calc($size * 0.85);
+        font-size: calc($size * 0.75);
     }
 }
 /* -------------------------------------------------------------------- */

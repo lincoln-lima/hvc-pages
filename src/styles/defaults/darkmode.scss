@@ -12,7 +12,7 @@ $modal-color: #333333;
         background-color: $header-color;
     }
 
-    ul, p, a, figcaption {
+    ul, p, figcaption {
         color: white;
     }
 
@@ -26,6 +26,10 @@ $modal-color: #333333;
 
     #sticky-nav menu {
         background-color: $sticky-nav-color;
+        
+        * {
+            color: white;
+        }
     }
 
     .tooltip {
