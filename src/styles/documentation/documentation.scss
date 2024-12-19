@@ -112,6 +112,7 @@ main {
 
         border-radius: $size 0 0 $size;
 
+        @include global.faded-button;
         @include global.size(calc($size/2), $size);
 
         @media screen and (max-width: doc.$responsive-width) {
@@ -141,7 +142,7 @@ main {
         margin-bottom: 1em;
         
         @media screen and (max-width: doc.$responsive-width) {
-            width: 85vw;
+            width: doc.$main-width;
             @include global.center;
         }
 

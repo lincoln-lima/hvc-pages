@@ -38,10 +38,10 @@
 			}
 
 			.close {
-				border-radius: 50%;
 				font-weight: bolder;
-				font-size: 1.4em;
 				
+				@include global.circle;
+				@include global.faded-button($font: 1.4em);
 				@include global.setFont(default);
 				@include global.size(1.1em);
 			}
@@ -77,10 +77,10 @@
 /* -------------------------------------------------------------------- */
 #config-modal {
 	.modal-body {
-		@include global.size(18em);
+		@include global.size(16em);
 		
 		.modal-header {
-			height: 10%;
+			height: 12%;
 
 			background: global.$fade-default;
 			
@@ -90,7 +90,7 @@
 		}
 
 		.modal-main {
-			height: 50%;
+			height: 55%;
 
 			#delay {
 				width: 3.5em;
@@ -99,15 +99,18 @@
 		}
 
 		.modal-footer {
-			height: 10%;
+			height: 12%;
 			background: global.$fade-default;
 			
 			#save-configs {
-				font-size: 1em;
-				height: 85%;
+				height: 80%;
 				
 				padding: 0;
 				width: 5em;
+
+				border-radius: 0.6em;
+
+				@include global.faded-button($font: 1em);
 			}
 		}
 	}
@@ -139,6 +142,7 @@
 
 				#submit-card {
 					@include global.circle;
+					@include global.faded-button('playground/check');
 					@include global.size($submit-size);
 
 					img {
@@ -169,7 +173,6 @@
 
 			.close {
 				background: transparent;
-				font-size: 1.7em;
 
 				&:hover {
 					background: white;
@@ -202,7 +205,7 @@
 #rating-modal {
 	.modal-body {
 		width: 23em;
-		height: 14em;
+		min-height: 12em;
 
 		.modal-header {
 			background-color: global.$color2-dark;
@@ -224,8 +227,13 @@
 		}
 
 		.modal-main {
+			$padding: 0.5em;
+
 			font-size: 1.1em;
 			text-align: center;
+
+			padding-top: $padding;			
+			padding-bottom: $padding;
 
 			#rating {
 				font-size: 1.5em;
@@ -251,11 +259,15 @@
 			justify-content: end;
 
 			#dont-ask {
-				font-size: 0.75em;
 				padding: 0.1em 0.5em;
-
-				background: white;
-				color: global.$color2-dark;
+				border-radius: 0.6em;
+				
+				@include global.faded-button($font: 0.7em);
+				
+				& {
+					background: white;
+					color: global.$color2-dark;
+				}
 
 				&:hover {
 					background: global.$color2;

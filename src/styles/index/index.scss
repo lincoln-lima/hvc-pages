@@ -13,8 +13,11 @@ main {
     .come-to-play {
         @include global.middle;
         
-        .botao {
+        button {
+            border-radius: 0.6em;
             padding: 0.2em 0.6em;
+
+            @include global.faded-button;
         }
 
         .tooltip {
@@ -32,27 +35,25 @@ main {
     
     section {
         max-width: 75em;
-        margin-bottom: 15vh;
+        margin-bottom: 10vh;
 
         @include global.center;
 
         article {
             padding-top: index.$header-height;
-            padding-bottom: index.$header-height;
+            padding-bottom: calc(index.$header-height * 0.5);
         }
 
         &#descricao-hv {
             min-height: 90vh;
+            margin-bottom: 15vh;
 
             @include global.flex($justify: space-around, $wrap: wrap-reverse);
 
             article {
-                width: 30em;
-                height: 40em;
+                padding: 1em 0.5em;
 
-                padding-left: 0.5em;
-                padding-right: 0.5em;
-
+                @include global.size(30em);
                 @include global.flex($direction: column);
             }
 
@@ -72,11 +73,7 @@ main {
 
                 ol {
                     margin-top: 3em;
-                    margin-left: calc($margin-side * 1.4);
-
-                    @media screen and (max-width: index.$list-responsive-width){
-                        margin-left: 0; 
-                    }
+                    margin-left: calc($margin-side * 2.5);
 
                     li {
                         $margin-side: calc($margin-side * 1.5);
@@ -141,7 +138,7 @@ main {
                 h3 {
                     text-transform: uppercase;
 
-                    margin-bottom: 15px;
+                    margin-bottom: 0.5em;
                     @include global.setFont(title);
                 }
 
@@ -182,8 +179,10 @@ main {
                     }
                     
                     pre {
-                        padding: 15px 20px;
-                        max-width: 645px;
+                        max-width: 40em;
+
+                        padding: 1em;
+                        margin-top: 1em;
                     }
                 }
 

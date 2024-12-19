@@ -57,6 +57,8 @@ h2 {
 h3 {
     $size: 2.5em;
 	font-size: $size;
+
+	@include global.responsive-font-size(0, default.$screen-font-responsive, $size);
 }
 
 h4 {
@@ -133,32 +135,11 @@ hr {
 }
 /* -------------------------------------------------------------------- */
 button {
-    &.botao {
-        background: global.$fade-button;
-
-        transition: 0.5s;
-        
-        font-weight: 700;
-        font-size: 1.5em;
-        text-transform: uppercase;
-        
-        color: white;
-        
-        cursor: pointer;
-        @include global.border(black, 0, 15px);
-        @include global.middle;
-        
-        &:hover {
-            background: global.$fade-hover;
-            box-shadow: 3px 3px 5px #0000005f;
-        }
-    }
+    cursor: pointer;
+    border: none;
 
     &.copy {
-        cursor: pointer;
         background: transparent;
-
-        border: none;
 
         outline: 0.1rem solid transparent;
         border-radius: 0.4em;
@@ -168,56 +149,16 @@ button {
         }
     }
 
-    &.fixed {
-        $size: 2.1em;
-        $distance: 0.2rem;
-        $padding: 0.2em;
-
-        position: fixed;
-        bottom: $distance;
-        right: $distance;
-
-        z-index: 999;
-
-        border-radius: 50%;
-        padding: $padding;
-
-        @include global.size($size);
-
-        .tooltip {
-            top: calc($size/2/2);
-            right: calc(100% + default.$tooltip-size-arr + $padding);
-
-            height: 1.4em;
-
-            &::after {
-                @include global.tooltip-right(default.$tooltip-size-arr);
-            }
-
-            .tooltip-text {
-                width: 7em;
-                font-size: 0.6em;
-            }
-        }
-    }
-
     &.switch-theme {
-        @include global.middle;
-
-        img {
-            width: 90%;
-        }
+        @include global.circle;
+        @include global.fixed-button;
 
         &.light {
-            #sun {
-                display: none;
-            }
+            @include global.faded-button('moon');
         }
 
         &.dark {
-            #moon {
-                display: none;
-            }
+            @include global.faded-button('sun');
         }
     }
 }

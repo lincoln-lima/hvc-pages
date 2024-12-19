@@ -407,3 +407,9 @@ main {
         }
     }
 }
+
+#help {
+    @include global.circle;
+    @include global.fixed-button;
+    @include global.faded-button('help');
+}

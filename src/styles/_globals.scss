@@ -57,6 +57,55 @@ $fonts:
     font-family: findFont($type);
 }
 /* -------------------------------------------------------------------- */
+@mixin faded-button($img: none, $font: 1.5em) {
+    background: url('/img/#{$img}.png') center/75% no-repeat, $fade-button center center transparent;
+
+    transition: 0.5s;
+    
+    font-weight: 700;
+    font-size: $font;
+    text-transform: uppercase;
+    
+    color: white;
+
+    @include middle;
+    
+    &:hover {
+        background-image: url('/img/#{$img}.png'), $fade-hover;
+        box-shadow: 3px 3px 5px #0000005f;
+    }
+}
+
+@mixin fixed-button {
+    $size: 2.1em;
+    $distance: 0.4em;
+    $padding: 0.2em;
+
+    position: fixed;
+    bottom: $distance;
+    right: $distance;
+
+    z-index: 999;
+
+    @include size($size);
+
+    .tooltip {
+        top: calc($size/2/2);
+        right: calc(100% + default.$tooltip-size-arr + $padding);
+
+        height: 1.4em;
+
+        &::after {
+            @include tooltip-right(default.$tooltip-size-arr);
+        }
+
+        .tooltip-text {
+            width: 7em;
+            font-size: 0.6em;
+        }
+    }
+}
+/* -------------------------------------------------------------------- */
 @mixin flex(
     $justify: space-between,
     $align: center,
@@ -170,7 +219,7 @@ $fonts:
 
 @mixin responsive-font-size($min, $max, $size) {
     @media screen and (min-width: $min) and (max-width: $max) {
-        font-size: calc($size * 0.75);
+        font-size: calc($size * 0.8);
     }
 }
 /* -------------------------------------------------------------------- */
