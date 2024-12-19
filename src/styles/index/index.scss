@@ -51,10 +51,16 @@ main {
             @include global.flex($justify: space-around, $wrap: wrap-reverse);
 
             article {
+                max-width: 30em;
+                min-height: 30em;
+
                 padding: 1em 0.5em;
 
-                @include global.size(30em);
                 @include global.flex($direction: column);
+
+                hr {
+                    margin: 1em 0;
+                }
             }
 
             img {
@@ -192,7 +198,7 @@ main {
                     }
 
                     .come-to-play {
-                        margin-top: 5em;
+                        margin-top: 2em;
                     }
                 }
             }

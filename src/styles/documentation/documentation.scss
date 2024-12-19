@@ -102,7 +102,6 @@ main {
     #show-nav {
         $size: 2.5em;
 
-        display: none;
         position: fixed;
         z-index: 99;
 
@@ -115,8 +114,8 @@ main {
         @include global.faded-button;
         @include global.size(calc($size/2), $size);
 
-        @media screen and (max-width: doc.$responsive-width) {
-            display: block;
+        @media screen and (min-width: calc(doc.$responsive-width + 1px)) {
+            display: none;
         }
         
         &.retracted {
