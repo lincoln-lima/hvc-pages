@@ -133,21 +133,6 @@ header {
         span {
             color: white;
         }
-        
-        .burger-menu {
-            height: 50px;
-            padding: 5px;
-            
-            background-color: transparent;
-            transition: 0.3s;
-            cursor: pointer;
-            
-            @include global.border(transparent, 0, 3px);
-
-            &:hover {
-                background-color: hsla(0, 0%, 0%, 0.08);
-            }
-        }
     }
 
     &#header-index {

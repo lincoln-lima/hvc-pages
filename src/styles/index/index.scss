@@ -130,8 +130,13 @@ main {
                             margin-top: 1.5em;
                             margin-left: calc($margin-side * 1.8);
 
-                            button.copy {
-                                margin-left: $margin-side;
+                            code {
+                                margin-right: $margin-side;
+                            }
+
+                            .copy {
+                                position: sticky;
+                                right: 0;
                             }
                         }
                     }

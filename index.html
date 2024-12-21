@@ -23,7 +23,7 @@
                 <li><a class="link-nav-2 external" href="/pages/documentation.html" target="_blank">Documentação</a></li>
                 <li><a class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank">GitHub</a></li>
             </menu>
-            <button class="burger-menu"><img src="/img/menu.png" alt=""></button>
+            <button class="burger-menu"></button>
         </nav>
     </header>
     <main>
@@ -67,7 +67,7 @@
                         <p>
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="pre-code"><code id="help-cmd">hvc --help</code><button id="help-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="copy"></button></pre>
                     </li>
                 </ol>
             </article>
@@ -88,21 +88,21 @@
                         <p>
                             Com o terminal aberto, execute o seguinte comando:
                         </p>
-                        <pre class="pre-code"><code id="clonar-cmd">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button id="clonar-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="copy"></button></pre>
                     </li>
                     <li>
                         <span>Acesse o diretório do projeto</span>
                         <p>
                             Mude para pasta gerada
                         </p>
-                        <pre class="pre-code"><code id="cd-cmd">cd ./HV-Compiler</code><button id="cd-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">cd ./HV-Compiler</code><button class="copy"></button></pre>
                     </li>
                     <li>
                         <span>Compile o código</span>
                         <p>
                             Execute o comando <mark><em>make</em></mark> para compilar o código usando clang++
                         </p>
-                        <pre class="pre-code"><code id="make-cmd">make</code><button id="make-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">make</code><button class="copy"></button></pre>
                     </li>
                     <li>
                         <span>Adicione o HVC ao PATH do sistema</span>
@@ -110,14 +110,14 @@
                             Este comando adicionará o diretório <mark><em>./bin</em></mark> ao PATH do seu sistema. Isso permitirá
                             que você execute o compilador de qualquer diretório do seu sistema
                         </p>
-                        <pre class="pre-code"><code id="echo-cmd">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button id="echo-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="copy"></button></pre>
                     </li>
                     <li>
                         <span>Teste o compilador no terminal</span>
                         <p>
                             Faça um teste para conferir se o HVC foi instalado corretamente
                         </p>
-                        <pre class="pre-code"><code>hvc --help</code><button id="help-copy" class="copy"><img src="/img/clipboard.png"></button></pre>
+                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="copy"></button></pre>
                     </li>
                 </ol>
             </article>

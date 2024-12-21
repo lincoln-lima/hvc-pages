@@ -6,7 +6,7 @@ import "/src/styles/index/index.scss";
 import "/src/styles/defaults/footer.scss";
 import "/src/styles/defaults/table.scss";
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 1000;
+const windowsizemenu = 860;
 // ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
@@ -19,16 +19,10 @@ const setTemplates = async () => {
 await setTemplates();
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copy")!;
+const commands = document.getElementsByClassName("cmd")!;
 
-const copyCode = (id: string) => {
-    const copyid = (id.split('-').shift()! + '-cmd');
-    const copytext = document.getElementById(copyid)!.innerHTML;
-
-    navigator.clipboard.writeText(copytext);
-
-    alert("Texto copiado para área de transferência:\n" + copytext);
-}
-
-Array.from(copies).forEach(copy =>
-    copy.addEventListener('click', () => copyCode(copy.id))
+Array.from(copies).forEach((copy, i) =>
+    copy.addEventListener('click', () => {
+        navigator.clipboard.writeText(commands[i].textContent!);
+    })
 );

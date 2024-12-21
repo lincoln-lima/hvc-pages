@@ -1,3 +1,5 @@
+@use 'sass:map';
+/* -------------------------------------------------------------------- */
 @use './defaults/default' as default;
 /* -------------------------------------------------------------------- */
 $color1: #00A8AC;
@@ -51,9 +53,10 @@ $fonts:
             @return $font;
         }
     }
+    @return map.get($fonts, default);
 }
 
-@mixin setFont($type: 'default') {
+@mixin setFont($type: default) {
     font-family: findFont($type);
 }
 /* -------------------------------------------------------------------- */

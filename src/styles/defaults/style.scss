@@ -138,11 +138,26 @@ button {
     cursor: pointer;
     border: none;
 
-    &.copy {
-        background: transparent;
+    &.burger-menu {
+        transition: 0.3s;
+        border-radius: 0.3em;
+        
+        @include global.size(default.$home-height);
+        @include global.background($image: menu, $repeat: no-repeat, $position: center, $size: 90%, $color: transparent);
 
-        outline: 0.1rem solid transparent;
+        &:hover {
+            background-color: #00000015;
+        }
+    }
+
+    &.copy {
+        outline: 0.1rem solid #00000030;
         border-radius: 0.4em;
+
+        min-width: default.$copy-size;
+
+        @include global.size(default.$copy-size);
+        @include global.background($image: clipboard, $color: white);
 
         &:hover {
             outline-color: #000000;
@@ -165,6 +180,7 @@ button {
 
 a {
     $color: black;
+
     color: $color;
 
     &.marked {
@@ -191,6 +207,8 @@ button, a {
 
     &:hover .tooltip {
         visibility: visible;
+        
+        transition-property: visibility;
         transition-delay: 1s;
         
         @include global.animation(reveal, 3s, 1);
