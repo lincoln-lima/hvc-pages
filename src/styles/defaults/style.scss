@@ -156,11 +156,17 @@ button {
 
         min-width: default.$copy-size;
 
+        transition: 0.3s ease-out;
+
         @include global.size(default.$copy-size);
-        @include global.background($image: clipboard, $color: white);
+        @include global.background($image: clipboard, $color: global.$lightgray, $size: cover);
 
         &:hover {
             outline-color: #000000;
+        }
+
+        &.copied {
+            @include global.background($image: check, $color: global.$gray, $size: cover);
         }
     }
 

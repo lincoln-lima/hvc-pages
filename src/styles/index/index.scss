@@ -11,7 +11,10 @@ main {
     }
 
     .come-to-play {
+        width: fit-content;
+
         @include global.middle;
+        @include global.center;
         
         button {
             border-radius: 0.6em;
@@ -153,42 +156,40 @@ main {
                     @include global.setFont(title);
                 }
 
+                &:nth-child(even) h3 {
+                    color: global.$color3;
+                }
+
+                &:nth-child(odd) h3 {
+                    color: global.$color1;
+                }
+
                 img {
+                    display: block;
                     float: right;
+
                     padding: 1em;
 
-                    @media screen and (max-width: index.$responsive-width) {
-                        display: block;
+                    @include global.center;
+
+                    @media screen and (max-width: index.$content-responsive-width) {
                         float: none;
-                        @include global.center;
                     }
                 }
 
                 &#hv {
-                    h3 {
-                        color: global.$color3;
-                    }
-
                     ul {
                         margin: 1em 0;
                     }
                 }
 
                 &#assembly {
-                    h3 {
-                        color: global.$color1;
-                    }
-
                     #table {
                         overflow-x: auto;
                     }
                 }
 
                 &#como {
-                    h3 {
-                        color: global.$color3;
-                    }
-                    
                     pre {
                         max-width: 40em;
 
@@ -198,10 +199,6 @@ main {
                 }
 
                 &#playground {
-                    h3 {
-                        color: global.$color1;
-                    }
-
                     .come-to-play {
                         margin-top: 2em;
                     }

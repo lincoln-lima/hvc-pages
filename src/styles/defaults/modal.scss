@@ -120,8 +120,8 @@
 	$submit-size: 2.2em;
 
 	.modal-body {
-		$width: 50vh;
-		$height: 15vh;
+		$width: 15em;
+		$height: 5em;
 
 		@include global.size($width, $height);
 		@include global.middle;
@@ -142,7 +142,7 @@
 
 				#submit-card {
 					@include global.circle;
-					@include global.faded-button('playground/check');
+					@include global.faded-button(check);
 					@include global.size($submit-size);
 
 					img {

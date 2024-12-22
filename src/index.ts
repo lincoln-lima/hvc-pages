@@ -11,8 +11,10 @@ const windowsizemenu = 860;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
+const table = document.getElementById("table")!;
+
 const setTemplates = async () => {
-    document.getElementById("table")!.appendChild(await templates('table'));
+    table.appendChild(await templates('table'));
     document.body.appendChild(await templates('footer')); 
 }
 
@@ -23,6 +25,12 @@ const commands = document.getElementsByClassName("cmd")!;
 
 Array.from(copies).forEach((copy, i) =>
     copy.addEventListener('click', () => {
+        copy.classList.add("copied");
+
+        setTimeout(() => {
+           copy.classList.remove("copied"); 
+        }, 3000);
+
         navigator.clipboard.writeText(commands[i].textContent!);
     })
 );

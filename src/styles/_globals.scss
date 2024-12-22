@@ -88,7 +88,7 @@ $fonts:
     bottom: $distance;
     right: $distance;
 
-    z-index: 999;
+    z-index: 99;
 
     @include size($size);
 
@@ -135,7 +135,7 @@ $fonts:
     height: $heigth;
 }
 
-@mixin shadow($type: null, $length1, $length2: $length1, $length3: 0, $blur, $transparency) {
+@mixin shadow($length1, $length2: $length1, $length3: 0, $blur, $transparency, $type: null) {
     box-shadow: $type $length1 $length2 $blur $length3 rgba(0, 0, 0, $transparency);
 }
 

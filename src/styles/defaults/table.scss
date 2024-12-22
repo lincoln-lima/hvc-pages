@@ -2,31 +2,32 @@
 /* -------------------------------------------------------------------- */
 @mixin datas {
     color: white;
-    padding: 3px 10px;
+    padding: 0.2em 0.4em;
     white-space: nowrap;
 }
 /* -------------------------------------------------------------------- */
 table#commands {
-    width: 100%;
-    border-spacing: 0.45em;
+    $radius: 0.25em;
 
-    @include global.defaultText;
+    width: 100%;
+    border-spacing: 0.5em;
+
     @include global.center;
+    @include global.defaultText;
 
     th {
         background-color: global.$color3-dark;
-        border-radius: 5px 5px 0 0;
+        border-radius: $radius $radius 0 0;
 
         @include datas;
     }
 
     td {
         background-color: global.$color1-dark;
-        border-radius: 5px 0 5px 0;
+        border-radius: $radius 0 $radius 0;
 
-        font-weight: 500;
-        
         text-align: center;
+        font-weight: 500;
 
         @include datas;
 
@@ -38,7 +39,7 @@ table#commands {
         &.operation {
             background-color: transparent;
             padding: 0;
-            width: 10px;
+            width: 0.5em;
             
             color: global.$color2-dark;
 

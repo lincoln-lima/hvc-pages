@@ -30,7 +30,6 @@
         right: 0;
         
         width: fit-content !important;
-        
         height: calc($items * default.$menu-buttons-height * 1.4);
 
         align-items: end !important;
@@ -138,7 +137,7 @@ header {
     &#header-index {
         padding: index.$header-padding 0;
         
-        @media screen and (max-width: index.$responsive-width) {
+        @media screen and (max-width: index.$content-responsive-width) {
             margin-bottom: 1em;
         }
 
