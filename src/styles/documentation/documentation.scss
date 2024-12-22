@@ -37,7 +37,7 @@ main {
             max-height: 90%;
             overflow-y: auto;
             
-            background-color: #e2e2e2;
+            background-color: doc.$color-menu;
             
             border-top-left-radius: calc($radius * 1.6);
             border-bottom-left-radius: calc($radius * 1.6);
@@ -99,10 +99,11 @@ main {
 
         position: fixed;
         z-index: 999;
-
         top: 50%;
 
         border-radius: $size 0 0 $size;
+
+        transition: 0.5s;
 
         @include global.faded-button;
         @include global.size(calc($size/2), $size);

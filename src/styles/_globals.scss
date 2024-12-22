@@ -21,6 +21,12 @@ $color3-hover: #8C4AFF;
 $gray: #808080;
 $lightgray: #d2d2d2;
 /* -------------------------------------------------------------------- */
+$color-code: #0d00ff;
+$color-comment: $gray;
+$color-reserved: #B23325;
+$color-value: #d4750f;
+/* -------------------------------------------------------------------- */
+$color-mark: #FFB61C;
 $color-tooltip: #1f1f1f;
 /* -------------------------------------------------------------------- */
 $fade-default: linear-gradient(90deg, $color3 5.85%, $color1 73%, $color2 149.38%);
@@ -62,8 +68,6 @@ $fonts:
 /* -------------------------------------------------------------------- */
 @mixin faded-button($img: none, $font: 1.5em) {
     background: url('/img/#{$img}.png') center/75% no-repeat, $fade-button center center transparent;
-
-    transition: 0.5s;
     
     font-weight: 700;
     font-size: $font;

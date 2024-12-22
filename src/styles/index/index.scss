@@ -80,6 +80,10 @@ main {
                     margin-right: $margin-side;
                 }
 
+                h3 {
+                    line-height: index.$icon-so-height;
+                }
+
                 ol {
                     margin-top: 3em;
                     margin-left: calc($margin-side * 2.5);
