@@ -66,9 +66,7 @@ $fonts:
     font-family: findFont($type);
 }
 /* -------------------------------------------------------------------- */
-@mixin faded-button($img: none, $font: 1.5em) {
-    background: url('/img/#{$img}.png') center/75% no-repeat, $fade-button center center transparent;
-    
+@mixin faded-button($img: null, $font: 1.5em) {
     font-weight: 700;
     font-size: $font;
     text-transform: uppercase;
@@ -78,9 +76,24 @@ $fonts:
     @include middle;
     
     &:hover {
-        background-image: url('/img/#{$img}.png'), $fade-hover;
         box-shadow: 3px 3px 5px #0000005f;
     }
+
+    @if $img != null { 
+        background: url('/img/#{$img}.png') center/75% no-repeat, $fade-button center center transparent;
+        
+        &:hover {
+            background-image: url('/img/#{$img}.png'), $fade-hover;
+        }
+    }
+    @else {
+        background-image: $fade-button;
+
+        &:hover {
+            background-image: $fade-hover;
+        }
+    }
+    
 }
 
 @mixin fixed-button {
