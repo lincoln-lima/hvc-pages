@@ -4,60 +4,63 @@
 @use '../documentation/doc' as doc;
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
-@mixin navlinks {
-    font-size: 1.5em;
-    
-    padding: 0 0.7em;
-    border: none;
-    border-radius: 0.4em;
-}
-
-@mixin navlinksbynum($color, $colorhover) {
-    @include navlinks;
-
-    background-color: $color;
-    
-    &:hover {
-        background-color: $colorhover;
-    }
-}
-
-@mixin responsive-menu($top, $items, $window-size) {
-    @media screen and (max-width: $window-size) {
-        position: absolute;
-        z-index: 10;
-        top: $top;
-        right: 0;
-        
-        width: fit-content !important;
-        height: calc($items * default.$menu-buttons-height * 1.4);
-
-        align-items: end !important;
-        flex-direction: column;
-
-        padding: 0.5em;
-        border-radius: 0 0 5px 5px;
-        background-color: #00000020;
-
-        visibility: hidden;
-        opacity: 0;
-    }
-}
-
 @mixin responsive-burguer($window-size) {
     @media screen and (min-width: ($window-size + 1)) {
         display: none; 
     }
 }
+
+@mixin navlinks {
+    height: default.$menu-buttons-height;
+    line-height: default.$menu-buttons-height;
+
+    padding: 0 0.7em;
+    font-size: 1.5em;
+    
+    border-radius: 0.4em;
+}
+
+@mixin navlinksbynum($color, $color-hover) {
+    background-color: $color;
+
+    @include navlinks;
+    
+    &:hover {
+        background-color: $color-hover;
+    }
+}
+
+@mixin responsive-menu($top, $items, $window-size) {
+    $height: calc(($items + 1.5) * default.$menu-buttons-height);
+
+    @media screen and (max-width: $window-size) {
+        position: absolute;
+        top: $top;
+        right: 0;
+        z-index: 10;
+
+        align-items: end;
+        flex-direction: column;
+
+        padding: 0.5em;
+        backdrop-filter: blur(2px);
+        background-color: #ffffff#{default.$transparency-menu};
+
+        @include global.hidden;
+        @include global.size(fit-content, $height);
+        @include global.shadow($type: inset, $blur: 5px, $transparency: 0.3);
+        @include global.rounded-border($border-top: 0, $border-bottom: 0.25em);
+    }
+}
 /* -------------------------------------------------------------------- */
 header {
-    box-shadow: 1px 1px 9px #00000033;
-    
     position: sticky;
     top: 0;
     z-index: 1;
 
     background-color: white;
+
+    @include global.shadow($length1: 1px, $blur: 9px, $transparency: 0.2);
 
     nav {
         @include global.flex;
@@ -69,15 +72,14 @@ header {
             color: white;
 
             &:hover {
-                text-decoration: underline #ffffff 2px;
+                text-decoration: underline white 2px;
             }
 
             &#home {
                 font-size: 1.5em;
-                text-decoration: none;
 
                 @include global.flex($wrap: nowrap);
-                @include global.size(170px, default.$home-height);
+                @include global.size(7em, default.$home-height);
     
                 &:hover {
                     filter: brightness(0.9);
@@ -102,14 +104,12 @@ header {
         }
 
         .primary-menu {
-            transition: 0.5s;
-            
+            transition: opacity 0.5s;
+
             @include global.flex;
             
             li {
-                > * {
-                    height: default.$menu-buttons-height;
-                }
+                @include global.middle;
 
                 .link-nav-1 {
                     @include navlinksbynum(global.$color1, global.$color1-dark);
@@ -165,7 +165,7 @@ header {
             .primary-menu {
                 width: doc.$menu-width;
 
-                @include responsive-menu(calc(doc.$header-height - doc.$header-padding), 3, doc.$header-responsive-width);
+                @include responsive-menu(calc(doc.$header-height - doc.$header-padding), doc.$menu-num-buttons, doc.$header-responsive-width);
             }
 
             .burger-menu {
@@ -176,10 +176,6 @@ header {
 
     &#header-play {
         padding: play.$header-padding 0;
-
-        .tooltip-text {
-            font-size: 0.9em;
-        }
 
         nav {
             max-width: play.$nav-initial-width;
@@ -346,15 +342,11 @@ header {
                     
                 @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
-                .tooltiper {
-                    @include global.middle;
+                .tooltip {
+                    top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
 
-                    .tooltip {
-                        top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
-
-                        &::after {
-                            @include global.tooltip-top(default.$tooltip-size-arr);
-                        }
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
                     }
                 }
 
@@ -375,6 +367,10 @@ header {
 
             .burger-menu {
                 @include responsive-burguer(play.$header-responsive-width);
+            }
+
+            .tooltip-text {
+                font-size: 0.9em;
             }
         }
     }

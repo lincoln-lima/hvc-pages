@@ -77,7 +77,7 @@ export default () => {
 
     const detectError = async(e: Error) => {
         await terminate();
-        play.actions.showError(e.message);
+        play.actions.showError(e.message.replace(" Conteúdo", "\nConteúdo"));
     }
 
     const updateViewers = () => {

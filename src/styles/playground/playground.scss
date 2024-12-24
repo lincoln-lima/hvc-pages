@@ -314,8 +314,7 @@ main {
 
             transition: 0.5s;
 
-            visibility: hidden;
-            opacity: 0;
+            @include global.hidden;
 
             menu {
                 $width: 40vh;

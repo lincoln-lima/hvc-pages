@@ -213,8 +213,8 @@ button, a {
     &:hover .tooltip {
         visibility: visible;
         
-        transition-property: visibility;
         transition-delay: 1s;
+        transition-property: visibility;
         
         @include global.animation(reveal, 3s, 1);
     }
@@ -233,9 +233,7 @@ button, a {
         z-index: 999;
         border-radius: 0.5em;
 
-        visibility: hidden;
-        opacity: 0;
-
+        @include global.hidden;
         @include global.middle;
 
         &::after {

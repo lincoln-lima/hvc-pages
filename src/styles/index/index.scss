@@ -4,6 +4,7 @@
 /* -------------------------------------------------------------------- */
 main {
     max-width: index.$main-width;
+
     @include global.center;
 
     div:has(h2) {

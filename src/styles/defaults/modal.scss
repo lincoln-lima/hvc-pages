@@ -11,26 +11,26 @@
 	left: 0;
 	z-index: 99;
 
+	@include global.middle;
 	@include global.size(100vw, 100vh);
-	@include global.flex($justify: center);
 
 	.modal-body {
 		background-color: white;
 		border-radius: $modal-border;
 
 		max-width: 90%;
-		max-height: 80%;
+		max-height: 85%;
 
-		@include global.flex($direction: column, $align: normal);
 		@include global.defaultText;
+		@include global.flex($direction: column, $align: normal);
 
 		> * {
 			padding: 0 0.5em;
 		}
 
 		.modal-header {
-			@include global.rounded-border($modal-border, 0);
 			@include global.flex;
+			@include global.rounded-border($modal-border, 0);
 
 			h2 {
 				font-size: 1.4em;
@@ -38,18 +38,16 @@
 			}
 
 			.close {
-				font-weight: bolder;
-				
 				@include global.circle;
-				@include global.faded-button($font: 1.4em);
-				@include global.setFont(default);
 				@include global.size(1.1em);
+				@include global.setFont(default);
+				@include global.faded-button($font: 1.4em);
 			}
 		}
 
 		.modal-footer {
-			@include global.rounded-border(0, $modal-border);
 			@include global.middle;
+			@include global.rounded-border(0, $modal-border);
 		}
 
 		form {
@@ -64,8 +62,8 @@
 				}
 				
 				input, select {
-					background-color: #d9d9d9;
 					font-size: 1em;
+					background-color: global.$lightgray;
 					
 					border-width: 0.1rem;
 				}
@@ -81,7 +79,6 @@
 		
 		.modal-header {
 			height: 12%;
-
 			background: global.$fade-default;
 			
 			h2 {
@@ -103,13 +100,9 @@
 			background: global.$fade-default;
 			
 			#save-configs {
-				height: 80%;
-				
-				padding: 0;
-				width: 5em;
-
 				border-radius: 0.6em;
 
+				@include global.size(5em, 80%);
 				@include global.faded-button($font: 1em);
 			}
 		}
@@ -120,11 +113,8 @@
 	$submit-size: 2.2em;
 
 	.modal-body {
-		$width: 15em;
-		$height: 5em;
-
-		@include global.size($width, $height);
 		@include global.middle;
+		@include global.size(15em, 5em);
 		
 		.modal-main {
 			width: 100%;
@@ -133,21 +123,20 @@
 				@include global.flex;
 				
 				input {
-					width: calc(100% - $submit-size * 0.6);
-					text-align: center;
 					font-size: 3em;
+					text-align: center;
+					
+					width: calc(100% - $submit-size * 0.6);
+
+					border: 0.1rem solid black;
 
 					@include global.setFont(dotted);
 				}
 
 				#submit-card {
 					@include global.circle;
-					@include global.faded-button(check);
 					@include global.size($submit-size);
-
-					img {
-						background-color: transparent;
-					}
+					@include global.faded-button(check);
 				}
 			}
 		}
@@ -155,19 +144,17 @@
 }
 /* -------------------------------------------------------------------- */
 #error-modal {
-	background-color: rgba(139, 0, 0, 0.4);
+	background-color: #{play.$dark-red}88;
 
 	.modal-body {
 		width: 25em;
-		height: 25vh;
 
 		.modal-header {
-			height: 30%;
-
 			background: play.$dark-red;
 
 			h2 {
 				font-size: 1.15em;
+				line-height: 1.8em;
 				@include global.setFont(code);
 			}
 
@@ -182,19 +169,22 @@
 		}
 
 		.modal-main {
-			height: 70%;
 			text-align: center;
 
 			@include global.middle;
-			@include global.setFont(code);
+
+			#error {
+				padding: 0.5em 0;
+			}
 		}
 	}
 }
 /* -------------------------------------------------------------------- */
 #help-modal {
 	.modal-body {
-		overflow: auto;
 		font-size: 1em;
+		
+		@include global.scroll;
 
 		table {
 			padding: 0;
@@ -205,19 +195,18 @@
 #rating-modal {
 	.modal-body {
 		width: 23em;
-		min-height: 12em;
 
 		.modal-header {
 			background-color: global.$color2-dark;
 			
 			h2 {
-				font-size: 1.55em;
+				font-size: 1.6em;
 				@include global.setFont(subtitle);
 			}
 
 			#close-rating {
-				background: transparent;
 				font-size: 1.5em;
+				background: transparent;
 
 				&:hover {
 					background: white;
@@ -239,24 +228,24 @@
 				font-size: 1.5em;
 				color: global.$color2;
 
-				border-radius: 1em;
 				padding: 0 0.4em;
+				border-radius: 1em;
 
 				transition: 0.5s;
 
 				&:hover {
-					background-color: global.$color2;
 					color: white;
+					background-color: global.$color2;
 				}
 			}
 		}
 
 		.modal-footer {
-			background-color: global.$color2-dark;
 			padding-top: 0.2em;
 			padding-bottom: 0.2em;
-
+			
 			justify-content: end;
+			background-color: global.$color2-dark;
 
 			#dont-ask {
 				padding: 0.1em 0.5em;
@@ -270,8 +259,8 @@
 				}
 
 				&:hover {
-					background: global.$color2;
 					color: white;
+					background: global.$color2;
 				}
 			}
 		}

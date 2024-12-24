@@ -152,7 +152,7 @@ $fonts:
     height: $heigth;
 }
 
-@mixin shadow($length1, $length2: $length1, $length3: 0, $blur, $transparency, $type: null) {
+@mixin shadow($length1: 0, $length2: $length1, $length3: 0, $blur, $transparency, $type: null) {
     box-shadow: $type $length1 $length2 $blur $length3 rgba(0, 0, 0, $transparency);
 }
 
@@ -186,6 +186,11 @@ $fonts:
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@mixin hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @mixin scroll {
