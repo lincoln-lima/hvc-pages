@@ -34,6 +34,11 @@ export const globals = {
             }
         },
         
+        switchMenu: () => {
+            const menu = globals.elements.menumodal();
+            globals.actions.switchVisibility(menu, menu.style['visibility'] == "hidden");
+        },
+        
         monitoreMenu: (size: number) => {
             const burger = globals.elements.menuburger();
 
@@ -45,11 +50,6 @@ export const globals = {
                 globals.actions.switchVisibility(globals.elements.menumodal(), false);
                 globals.actions.displayElement(burger);
             }
-        },
-    
-        switchMenu: () => {
-            const menu = globals.elements.menumodal();
-            globals.actions.switchVisibility(menu, menu.style['visibility'] == "hidden");
         },
         
         scrollTo: (element: HTMLElement) => {
@@ -93,11 +93,22 @@ if (switchtheme) {
 globals.elements.menuburger().addEventListener('click', globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
 window.addEventListener('click', e => {
-    const element = e.target as Node;
+    const element = e.target;
     const menu = globals.elements.menumodal();
-    const menuburger = globals.elements.menuburger();
-    const burgerblock = globals.elements.menuburger().style['display'] != "none";
-    const modalvisible = globals.elements.menumodal().style['visibility'] === "visible";
+    const burger = globals.elements.menuburger();
 
-    if(burgerblock && modalvisible && !menuburger.contains(element)) globals.actions.switchVisibility(menu, false);
-})
+    const isTarget = element != menu && element != burger;
+    const areVisible = menu.style['visibility'] != 'hidden' && burger.style['display'] != 'none';
+
+    if(isTarget && areVisible) globals.actions.switchMenu();
+});
+// ------------------------------------------------------------------------------- 
+document.addEventListener('keydown', e => {
+    const key = e.key.toLowerCase();
+    const menu = globals.elements.menumodal();
+    const burger = globals.elements.menuburger();
+
+    const areVisible = menu.style['visibility'] != 'hidden' && burger.style['display'] != 'none';
+    
+    if(key === 'escape' && areVisible) globals.actions.switchMenu();
+});

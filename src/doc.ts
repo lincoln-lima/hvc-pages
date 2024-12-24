@@ -31,3 +31,20 @@ const expand = () => {
 }
 // -----------------------------------------------------------------------------------
 shownav.addEventListener('click', switchnav);
+// -----------------------------------------------------------------------------------
+window.addEventListener('resize', retract);
+window.addEventListener('click', e => {
+    const element = e.target;
+    
+    const notTarget = element != shownav;
+    const areExpanded = shownav.classList.contains(states[0]) || stickynav.classList.contains(states[0]);
+
+    if(notTarget && areExpanded && !stickynav.contains(element as Node)) retract();
+});
+// -----------------------------------------------------------------------------------
+document.addEventListener('keydown', e => {
+    const key = e.key.toLowerCase();
+    const areExpanded = shownav.classList.contains(states[0]) || stickynav.classList.contains(states[0]);
+
+    if(key === 'escape' && areExpanded) retract();
+});

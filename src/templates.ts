@@ -5,7 +5,7 @@ export default async(tmpl: string) => {
     const element = document.createElement('div');
     const html = await res.text();
 
-    element.innerHTML = html.replace('<script type="module" src="/@vite/client"></script>', '');
+    element.innerHTML = html.replace(/<script.*\/script>/, '');
 
     return element.children[0] as HTMLElement;
 }

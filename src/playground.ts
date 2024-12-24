@@ -36,8 +36,8 @@ export const play = {
         cardmodal: () => { return document.getElementById("card-modal")! },
         errorsmodal: () => { return document.getElementById("error-modal")! },
         helpmodal: () => { return document.getElementById("help-modal")! },
-        loadingmodal: () => { return document.getElementById("loading-modal")! },
         ratingmodal: () => { return document.getElementById("rating-modal")! },
+        modals: () => { return document.getElementsByClassName("mymodal")! },
     
         configs: () => { return  document.getElementById("config")! },
         formconfigs: () => { return document.getElementById("configs-form")! },
@@ -167,13 +167,10 @@ const loadplay = async () => {
         const display = element.style['display'] === 'none';
         
         globals.actions.switchDisplay(element, display);
-
-        if(display) globals.actions.undisplayElement(play.elements.help());
-        else globals.actions.displayElement(play.elements.help());
     }
     // ---------------------------------------------------------------------------
-    play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
-    play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
+    play.elements.configs().addEventListener('click', () => globals.actions.displayElement(play.elements.configmodal()));
+    play.elements.closeconfigs().addEventListener('click', () => globals.actions.undisplayElement(play.elements.configmodal()));
     
     play.elements.saveconfigs().addEventListener('click', saveConfigs);
     play.elements.formconfigs().addEventListener('submit', e => {
@@ -181,18 +178,23 @@ const loadplay = async () => {
         saveConfigs();
     });
 
-    play.elements.closerating().addEventListener("click", hideRating);
-    play.elements.ratingstars().addEventListener("click", hideRating);
-    play.elements.dontask().addEventListener("click", neverAskAgain);
+    play.elements.closerating().addEventListener('click', hideRating);
+    play.elements.ratingstars().addEventListener('click', hideRating);
+    play.elements.dontask().addEventListener('click', neverAskAgain);
 
     play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     play.elements.help().addEventListener('click', switchHelp);
     // ---------------------------------------------------------------------------
-    document.addEventListener("keydown", e => {
+    window.addEventListener('click', e => {
+        if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+        else if(e.target == play.elements.helpmodal()) switchHelp();
+    });
+    // ---------------------------------------------------------------------------
+    document.addEventListener('keydown', e => {
         const key = e.key.toLowerCase();
 
         if(!e.ctrlKey) {
-            if(key === "f2") {
+            if(key === 'f2') {
                 e.preventDefault();
                 const config = play.elements.configmodal();
 
@@ -202,12 +204,14 @@ const loadplay = async () => {
                 e.preventDefault();
                 switchHelp();
             }
+            else if(key === 'escape') {
+                Array.from(play.elements.modals()).forEach(modal => {
+                    const element = modal as HTMLElement;
+
+                    if(element != play.elements.cardmodal()) globals.actions.undisplayElement(element);
+                });
+            }
         }
-    });
-    // ---------------------------------------------------------------------------
-    window.addEventListener("click", e => {
-        if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
-        else if(e.target == play.elements.helpmodal()) switchHelp();
     });
     // ---------------------------------------------------------------------------
     play.elements.helpmodal().children[0].appendChild(await templates('table'));
