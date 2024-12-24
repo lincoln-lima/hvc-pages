@@ -1,6 +1,6 @@
 import { EditorState } from "@codemirror/state";
-import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
+import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 // -----------------------------------------------------------------------------------
 const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n105\n805\n000";
 

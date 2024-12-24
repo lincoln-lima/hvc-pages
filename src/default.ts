@@ -1,21 +1,21 @@
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
-import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/modal.scss";
+import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     elements: {
-        menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement },
-        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement }
+        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
+        menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement }
     },
     actions: {
         displayElement: (element: HTMLElement) => {
-            element.style['display'] = "revert-layer";
+            if(element.style['display'] != 'revert-layer') element.style['display'] = "revert-layer";
         },
     
         undisplayElement: (element: HTMLElement) => {
-            element.style.setProperty("display", "none", "important");
+            if(element.style['display'] != 'none') element.style.setProperty("display", "none", "important");
         },
         
         switchDisplay: (element: HTMLElement, set: boolean) => {

@@ -1,6 +1,6 @@
 import { HVC } from "hvcjs";
-import { globals } from "../default";
 import { play } from "../playground";
+import { globals } from "../default";
 // -----------------------------------------------------------------------------------
 import ahv from "./ahv";
 // -----------------------------------------------------------------------------------
@@ -14,9 +14,9 @@ export default () => {
     const debug = play.elements.debug();
     
     const back = play.elements.back();
+    const forth = play.elements.forth();
     const finish = play.elements.finish();
     const pausecontinue = play.elements.pausecontinue();
-    const forth = play.elements.forth();
     
     const outwrite = play.elements.out();
     const epiwrite = play.elements.epi();
@@ -27,17 +27,19 @@ export default () => {
     
     const delay = play.elements.delay();
     
-    const debugmenu = play.elements.debugmenu();
     const editor = play.elements.editor();
+    const debugmenu = play.elements.debugmenu();
+
+    const cards = play.elements.cards();
     const tablecards = play.elements.tablecards();
     
-    const cards = play.elements.cards();
     const readcard = play.elements.readcard();
+    const formcard = play.elements.formcard();
     const cardmodal = play.elements.cardmodal();
     const ratingmodal = play.elements.ratingmodal();
-    const formcard = play.elements.formcard();
     // ------------------------------------------------------------------------------- 
     const exec = async(set: boolean) => {
+        play.actions.hideModals();
         await terminate();
         // ---------------------------------------------------------------------------
         Array.from(drawers).forEach(gaveta => {
@@ -54,10 +56,9 @@ export default () => {
         try {
             if (set) await hvc.run();
             else {
-                globals.actions.switchVisibility(debugmenu, true);
-
                 globals.actions.undisplayElement(editor);
                 globals.actions.displayElement(tablecards);
+                globals.actions.switchVisibility(debugmenu, true);
 
                 await hvc.debug(+delay.value);
             }
@@ -83,10 +84,10 @@ export default () => {
     const updateViewers = () => {
         const hvm = hvc.getHVM();
         // ---------------------------------------------------------------------------
+        const epi = hvm.epi.lerRegistro();
+        const gavetas = hvm.gaveteiro.getGavetas();
         const portaCartoes = hvm.portaCartoes.conteudo;
         const acumulador = hvm.calculadora.getAcumulador();
-        const gavetas = hvm.gaveteiro.getGavetas();
-        const epi = hvm.epi.lerRegistro();
         // ---------------------------------------------------------------------------
         const pointed = drawers[epi] as HTMLElement;
         const endindex = gavetas.indexOf('000');
@@ -121,10 +122,10 @@ export default () => {
     }
 
     const terminate = async() => {
-        globals.actions.switchVisibility(debugmenu, false);
-        globals.actions.undisplayElement(tablecards);
-        globals.actions.undisplayElement(cardmodal);
         globals.actions.displayElement(editor);
+        globals.actions.undisplayElement(cardmodal);
+        globals.actions.undisplayElement(tablecards);
+        globals.actions.switchVisibility(debugmenu, false);
         globals.actions.displayElement(play.elements.help());
         
         hvc.finish();

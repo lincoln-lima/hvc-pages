@@ -2,31 +2,33 @@
 /* -------------------------------------------------------------------- */
 @use './defaults/default' as default;
 /* -------------------------------------------------------------------- */
-$color1: #00A8AC;
-$color2: #FFB61C;
-$color3: #5427A0;
+$color1: #00a8ac;
+$color2: #ffb61c;
+$color3: #5427a0;
 
 $color1-dark: #019699;
 $color2-dark: #e4a419;
 $color3-dark: #42207e;
 /* -------------------------------------------------------------------- */
-$color1-button: #0D77CC;
-$color2-button: #00A8AC;
-$color3-button: #0F6ED2;
+$color1-button: #0d77cc;
+$color2-button: #00a8ac;
+$color3-button: #0f6ed2;
 
-$color1-hover: #8D49FF;
-$color2-hover: #00A8AC;
-$color3-hover: #8C4AFF;
+$color1-hover: #8d49ff;
+$color2-hover: #00a8ac;
+$color3-hover: #8c4aff;
 /* -------------------------------------------------------------------- */
+$black: #000000;
+$white: #ffffff;
 $gray: #808080;
 $lightgray: #d2d2d2;
 /* -------------------------------------------------------------------- */
 $color-code: #0d00ff;
 $color-comment: $gray;
-$color-reserved: #B23325;
+$color-reserved: #b23325;
 $color-value: #d4750f;
 /* -------------------------------------------------------------------- */
-$color-mark: #FFB61C;
+$color-mark: #ffb61c;
 $color-tooltip: #1f1f1f;
 /* -------------------------------------------------------------------- */
 $fade-default: linear-gradient(90deg, $color3 5.85%, $color1 73%, $color2 149.38%);
@@ -45,7 +47,6 @@ $fonts:
     text: 'Nunito',
     code: 'IBM Plex Mono',
     mono: 'Space',
-    quote: 'Parisienne',
     segment: 'Segment',
     chalk: 'Eraser',
     cursive: 'Indie Flower',
@@ -67,16 +68,16 @@ $fonts:
 }
 /* -------------------------------------------------------------------- */
 @mixin faded-button($img: null, $font: 1.5em) {
-    font-weight: 700;
     font-size: $font;
+    font-weight: 700;
     text-transform: uppercase;
     
-    color: white;
+    color: $white;
 
     @include middle;
     
     &:hover {
-        box-shadow: 3px 3px 5px #0000005f;
+        @include shadow($length1: 3px, $blur: 5px, $transparency: 0.4);
     }
 
     @if $img != null { 
@@ -101,11 +102,11 @@ $fonts:
     $distance: 0.4em;
     $padding: 0.2em;
 
-    position: fixed;
-    bottom: $distance;
-    right: $distance;
-
     z-index: 99;
+    position: fixed;
+
+    right: $distance;
+    bottom: $distance;
 
     @include size($size);
 
@@ -126,6 +127,31 @@ $fonts:
     }
 }
 /* -------------------------------------------------------------------- */
+@mixin size($width, $heigth: $width) {
+    width: $width;
+    height: $heigth;
+}
+
+@mixin shadow($length1: 0, $length2: $length1, $length3: 0, $blur, $transparency, $type: null) {
+    box-shadow: $type $length1 $length2 $blur $length3 rgba(0, 0, 0, $transparency);
+}
+
+@mixin rounded-border($border-top, $border-bottom) {
+	border-top-left-radius: $border-top;
+	border-top-right-radius: $border-top;
+
+	border-bottom-left-radius: $border-bottom;
+	border-bottom-right-radius: $border-bottom;
+}
+
+@mixin background($color: transparent, $image: none, $position: inherit, $repeat: initial, $size: auto) {
+    background-color: $color;
+    background-image: url('/img/#{$image}.png');
+    background-position: $position;
+    background-repeat: $repeat;
+    background-size: $size;
+}
+
 @mixin flex(
     $justify: space-between,
     $align: center,
@@ -139,46 +165,14 @@ $fonts:
     flex-direction: $direction;
     flex-wrap: $wrap;
 }
-
-@mixin border($color: black, $width, $radius) {
-    border-color: $color;
-    border-width: $width;
-    border-style: solid;
-    border-radius: $radius;
-}
-
-@mixin size($width, $heigth: $width) {
-    width: $width;
-    height: $heigth;
-}
-
-@mixin shadow($length1: 0, $length2: $length1, $length3: 0, $blur, $transparency, $type: null) {
-    box-shadow: $type $length1 $length2 $blur $length3 rgba(0, 0, 0, $transparency);
-}
-
-@mixin background($color: transparent, $image: none, $position: inherit, $repeat: initial, $size: auto) {
-    background-color: $color;
-    background-image: url('/img/#{$image}.png');
-    background-position: $position;
-    background-repeat: $repeat;
-    background-size: $size;
-}
-
-@mixin rounded-border($border-top, $border-bottom) {
-	border-top-left-radius: $border-top;
-	border-top-right-radius: $border-top;
-
-	border-bottom-left-radius: $border-bottom;
-	border-bottom-right-radius: $border-bottom;
-}
 /* -------------------------------------------------------------------- */
+@mixin middle {
+    @include flex($justify: center);
+}
+
 @mixin center {
     margin-left: auto;
     margin-right: auto;
-}
-
-@mixin middle {
-    @include flex($justify: center);
 }
 
 @mixin absolute-middle {
@@ -187,23 +181,19 @@ $fonts:
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* -------------------------------------------------------------------- */
+@mixin circle {
+    border-radius: 50%;
+}
 
 @mixin hidden {
     opacity: 0;
     visibility: hidden;
 }
 
-@mixin scroll {
-    overflow: auto;
-}
-
 @mixin defaultText {
     font-size: default.$font-size;
     text-align: justify;
-}
-
-@mixin circle {
-    border-radius: 50%;
 }
 /* -------------------------------------------------------------------- */
 @mixin responsive-flex-direction($min, $max, $direction) {
@@ -310,10 +300,10 @@ $fonts:
     border: $border-size solid transparent;
     border-top-color: $color;
     border-left-color: $color;
-    border-radius: 50%;
-
+    
     background-color: transparent;
-
+    
+    @include circle;
     @include animation(spin, 1.5s, infinite);
 }
 /* -------------------------------------------------------------------- */

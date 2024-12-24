@@ -39,7 +39,7 @@ main {
 
         #porta-cartoes {
             text-align: center;
-            background-color: #ffe8c4;
+            background-color: play.$old-paper;
             
             @include global.size(play.$porta-cartoes-initial-width, 100%);
             @include global.flex($justify: center);
@@ -56,14 +56,14 @@ main {
                     border-spacing: 0.5em;
 
                     tr { 
-                        background-color: white;
+                        background-color: global.$white;
 
                         &:hover {
                             background-color: global.$color1-dark;
                         }
                         
                         td {
-                            border: 0.05em solid black;
+                            border: 0.05em solid global.$black;
                             padding: 0.25em 0;
 
                             font-size: 2em;
@@ -78,7 +78,7 @@ main {
                 @include global.size(100%);
 
                 &, * {
-                    background-color: #ffe8c4;
+                    background-color: play.$old-paper;
                 }
 
                 .cm-scroller {
@@ -173,7 +173,7 @@ main {
                         @include global.size(90%);
         
                         #epi-value {
-                            color: white;
+                            color: global.$white;
                             @include global.setFont(chalk);
                         }
                     }
@@ -184,7 +184,7 @@ main {
                     
                     background-color: play.$lightgreen-display;
                     
-                    border: $border-width ridge black;
+                    border: $border-width ridge global.$black;
                     border-radius: 5px;
         
                     position: relative;
@@ -197,7 +197,7 @@ main {
                         @include global.setFont(segment);
         
                         &#overlay {
-                            color: rgba(0, 0, 0, 0.08);
+                            color: #{global.$black}15;
                             user-select: none;
                         }
                     }
@@ -233,7 +233,7 @@ main {
                         position: relative;
                         margin: 0 play.$gaveta-margin;
 
-                        filter: drop-shadow(4px 7px 2px rgba(0, 0, 0, 0.5));
+                        filter: drop-shadow(4px 7px 2px #{global.$black}80);
 
                         @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $position: 0);
                         @include global.animation(twink, 1.5s, 1);
@@ -263,12 +263,10 @@ main {
                         
                         &:first-child {
                             margin: 0 play.$gaveta-margin 0 0;
-                            @include responsive.gavetas;
                         }
 
                         &:last-child {
                             margin: 0 0 0 play.$gaveta-margin;
-                            @include responsive.gavetas;
                         }
 
                         div {
@@ -285,7 +283,7 @@ main {
                             }
 
                             span {
-                                color: #ffffff;
+                                color: global.$white;
 
                                 @include global.setFont(mono);
 
@@ -321,11 +319,11 @@ main {
                 $border-radius: 1em;
                 width: $width;
 
-                background-color: #c0c0c0;
+                background-color: global.$lightgray;
                 padding: 1em 0.5em;
 
                 border-width: 0.3em;
-                border-color: black;
+                border-color: global.$black;
                 border-style: ridge;
                 border-bottom: none;
                 border-radius: $border-radius $border-radius 0 0;
@@ -336,7 +334,7 @@ main {
                 li {
                     $size-icon: calc($width/6);
                     $size-border: calc($size-icon/2);
-                    $color: black;
+                    $color: global.$black;
                     $radius: 20%;
 
                     cursor: pointer;

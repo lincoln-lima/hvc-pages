@@ -2,17 +2,17 @@ import { globals } from "./default";
 import { getDoc, setDoc } from "./play/codemirror"
 // ------------------------------------------------------------------------------- 
 import hvc from "./play/hvc";
-import drawers from "./play/drawers";
 import templates from "./templates";
+import drawers from "./play/drawers";
 // ------------------------------------------------------------------------------- 
-import "/src/styles/playground/playground.scss";
 import "/src/styles/defaults/table.scss";
+import "/src/styles/playground/playground.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
     elements: {
+        epi: () => { return document.getElementById("epi-value")! },
         out: () => { return document.getElementById("saida-value")! },
         acumulator: () => { return document.getElementById("acumulador-value")! },
-        epi: () => { return document.getElementById("epi-value")! },
         readcard: () => { return document.getElementById("read-card")! as HTMLInputElement },
         
         run: () => { return document.getElementById("run")! },
@@ -21,27 +21,26 @@ export const play = {
         export: () => { return document.getElementById("export")! },
 
         state: () => { return document.getElementById("states-view")! },
-
         debugmenu: () => { return document.getElementById("debug-menu")! },
 
-        portacartoes: () => { return document.getElementById("porta-cartoes")! },
         editor: () => { return document.getElementById("editor")! },
+        portacartoes: () => { return document.getElementById("porta-cartoes")! },
 
         back: () => { return document.getElementById("back")! },
         forth: () => { return document.getElementById("forth")! },
-        pausecontinue: () => { return document.getElementById("pause-continue")! },
         finish: () => { return document.getElementById("finish")! },
+        pausecontinue: () => { return document.getElementById("pause-continue")! },
 
-        configmodal: () => { return document.getElementById("config-modal")! },
+        helpmodal: () => { return document.getElementById("help-modal")! },
         cardmodal: () => { return document.getElementById("card-modal")! },
         errorsmodal: () => { return document.getElementById("error-modal")! },
-        helpmodal: () => { return document.getElementById("help-modal")! },
+        configmodal: () => { return document.getElementById("config-modal")! },
         ratingmodal: () => { return document.getElementById("rating-modal")! },
+
         modals: () => { return document.getElementsByClassName("mymodal")! },
     
-        configs: () => { return  document.getElementById("config")! },
+        configs: () => { return document.getElementById("config")! },
         formconfigs: () => { return document.getElementById("configs-form")! },
-        saveconfigs: () => { return document.getElementById("save-configs")! },
         closeconfigs: () => { return document.getElementById("close-configs")! },
     
         formcard: () => { return document.getElementById("card-form")! },
@@ -56,19 +55,28 @@ export const play = {
         
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
+
         drawers: () => { return document.getElementsByClassName("drawer")! },
         drawerscontent: () => { return document.getElementsByClassName("cont-drawer")! },
 
-        tablecards: () => { return document.getElementById("scroll-tablecards")! },
         cards: () => { return document.getElementById("cards")! },
+        tablecards: () => { return document.getElementById("scroll-tablecards")! },
         
-        askrating: () => { return localStorage.getItem("askrating")! },
-        closerating: () => { return document.getElementById("close-rating")! },
-        ratingstars: () => { return document.getElementById("rating")! },
         counter: () => { return localStorage.getItem("counter")! },
-        dontask: () => { return document.getElementById("dont-ask")! }
+        askrating: () => { return localStorage.getItem("askrating")! },
+        dontask: () => { return document.getElementById("dont-ask")! },
+        ratingstars: () => { return document.getElementById("rating")! },
+        closerating: () => { return document.getElementById("close-rating")! }
     },
     actions: {
+        getCode: () => {
+            return getDoc();
+        },
+        
+        setCode: (text: string) => {
+            setDoc(text);
+        },
+
         setState: (state: string) => {
             let dotclass;
     
@@ -82,14 +90,6 @@ export const play = {
         showError: (message: string) => {
             play.elements.error().innerText = message;
             globals.actions.displayElement(play.elements.errorsmodal());
-        },
-    
-        getCode: () => {
-            return getDoc();
-        },
-        
-        setCode: (text: string) => {
-            setDoc(text);
         },
     
         highlightDrawer: (drawer: HTMLElement, state: string) => {
@@ -111,6 +111,18 @@ export const play = {
 
             line.appendChild(data);
             play.elements.cards().appendChild(line);
+        },
+
+        hideModals: () => {
+            Array.from(play.elements.modals()).forEach(modal => {
+                const element = modal as HTMLElement;
+
+                if(element != play.elements.cardmodal()) {
+                    globals.actions.undisplayElement(element);
+                
+                    if(element == play.elements.helpmodal()) globals.actions.displayElement(play.elements.help());
+                }
+            });
         }
     }
 }
@@ -144,15 +156,6 @@ const loadplay = async () => {
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
     play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
     // ---------------------------------------------------------------------------
-    const saveConfigs = () => {
-        localStorage.setItem("delay-hvc", play.elements.delay().value);
-        localStorage.setItem("theme-play", play.elements.theme().value);
-
-        document.body.className = localStorage.getItem("theme-play")!;
-
-        globals.actions.undisplayElement(play.elements.configmodal());
-    }
-
     const hideRating = () => {
         globals.actions.undisplayElement(play.elements.ratingmodal());
     }
@@ -162,32 +165,43 @@ const loadplay = async () => {
         hideRating();
     }
 
+    const saveConfigs = () => {
+        localStorage.setItem("delay-hvc", play.elements.delay().value);
+        localStorage.setItem("theme-play", play.elements.theme().value);
+
+        document.body.className = localStorage.getItem("theme-play")!;
+
+        globals.actions.undisplayElement(play.elements.configmodal());
+    }
+
     const switchHelp = () => {
-        const element = play.elements.helpmodal();
-        const display = element.style['display'] === 'none';
+        const button = play.elements.help();
+        const modal = play.elements.helpmodal();
+
+        const modaldisplay = modal.style['display'] === 'none';
+        const buttondisplay = button.style['display'] === 'none';
         
-        globals.actions.switchDisplay(element, display);
+        globals.actions.switchDisplay(modal, modaldisplay);
+        globals.actions.switchDisplay(button, buttondisplay);
     }
     // ---------------------------------------------------------------------------
     play.elements.configs().addEventListener('click', () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener('click', () => globals.actions.undisplayElement(play.elements.configmodal()));
-    
-    play.elements.saveconfigs().addEventListener('click', saveConfigs);
     play.elements.formconfigs().addEventListener('submit', e => {
         e.preventDefault();
         saveConfigs();
     });
 
+    play.elements.dontask().addEventListener('click', neverAskAgain);
     play.elements.closerating().addEventListener('click', hideRating);
     play.elements.ratingstars().addEventListener('click', hideRating);
-    play.elements.dontask().addEventListener('click', neverAskAgain);
 
-    play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     play.elements.help().addEventListener('click', switchHelp);
+    play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     // ---------------------------------------------------------------------------
     window.addEventListener('click', e => {
-        if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
-        else if(e.target == play.elements.helpmodal()) switchHelp();
+        if(e.target == play.elements.helpmodal()) switchHelp();
+        else if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
     });
     // ---------------------------------------------------------------------------
     document.addEventListener('keydown', e => {
@@ -204,17 +218,11 @@ const loadplay = async () => {
                 e.preventDefault();
                 switchHelp();
             }
-            else if(key === 'escape') {
-                Array.from(play.elements.modals()).forEach(modal => {
-                    const element = modal as HTMLElement;
-
-                    if(element != play.elements.cardmodal()) globals.actions.undisplayElement(element);
-                });
-            }
+            else if(key === 'escape') play.actions.hideModals();
         }
     });
     // ---------------------------------------------------------------------------
     play.elements.helpmodal().children[0].appendChild(await templates('table'));
 }
 // ------------------------------------------------------------------------------- 
-setTimeout(async () => await loadplay(), modals.length * 250);
+setTimeout(async () => await loadplay(), modals.length * 100);

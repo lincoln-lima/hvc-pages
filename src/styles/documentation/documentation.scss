@@ -74,7 +74,7 @@ main {
                     font-weight: bold;
                     
                     & + ul {
-                        background-color: #00000015;
+                        background-color: #{global.$black}15;
                         border-left-color: global.$color1;
                     }
                 }
@@ -157,7 +157,7 @@ main {
                 img {
                     max-width: 100%;
 
-                    filter: drop-shadow(0.3em 0.3em 0.5em #00000030);
+                    filter: drop-shadow(0.3em 0.3em 0.5em #{global.$black}30);
                 }
             }
 

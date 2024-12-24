@@ -97,7 +97,7 @@ main {
 
                         &::marker {
                             content: counter(list-item);
-                            color: white;
+                            color: global.$white;
                             font-size: 1.1em;
 
                             @include global.setFont(title);

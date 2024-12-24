@@ -1,3 +1,4 @@
+@use '../globals' as global;
 @use './default' as default;
 // ------------------------------------------------------------------------------- 
 $body-color: #1d1d1d;
@@ -20,7 +21,7 @@ $modal-color: #333333;
     }
 
     ul, p, figcaption {
-        color: white;
+        color: global.$white;
     }
 
     .pre-code {
@@ -31,7 +32,7 @@ $modal-color: #333333;
         background-color: $sticky-nav-color;
         
         * {
-            color: white;
+            color: global.$white;
         }
     }
 
@@ -47,16 +48,16 @@ $modal-color: #333333;
         background-color: $modal-color !important;
 
         .modal-main {
-            color: white;
+            color: global.$white;
 
             form {
                 * {
                     background-color: $modal-color;
-                    color: white;
+                    color: global.$white;
                 }
 
                 input, select {
-                    border-color: white;
+                    border-color: global.$white;
                 }
             }
         }

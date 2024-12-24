@@ -37,10 +37,11 @@ $debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spaci
 $porta-cartoes-initial-width: 36%;
 $porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
 // ------------------------------------------------------------------------------- 
+$old-paper: #ffe8c4;
 $brown-wood: #915901;
 $green-board: #1d3825;
 $lightgreen-display: #93a28d;
-
+// ------------------------------------------------------------------------------- 
 $golden: #b8860b;
 $dark-red: #8b0000;
 $live-blue: #0000F6;

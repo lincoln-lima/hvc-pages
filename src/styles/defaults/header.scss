@@ -44,7 +44,7 @@
 
         padding: 0.5em;
         backdrop-filter: blur(2px);
-        background-color: #ffffff#{default.$transparency-menu};
+        background-color: #{global.$white}#{default.$transparency-menu};
 
         @include global.hidden;
         @include global.size(fit-content, $height);
@@ -58,7 +58,7 @@ header {
     top: 0;
     z-index: 1;
 
-    background-color: white;
+    background-color: global.$white;
 
     @include global.shadow($length1: 1px, $blur: 9px, $transparency: 0.2);
 
@@ -69,10 +69,10 @@ header {
         position: relative;
 
         a {
-            color: white;
+            color: global.$white;
 
             &:hover {
-                text-decoration: underline white 2px;
+                text-decoration: underline global.$white 2px;
             }
 
             &#home {
@@ -130,7 +130,7 @@ header {
         }
 
         span {
-            color: white;
+            color: global.$white;
         }
     }
 
@@ -227,7 +227,7 @@ header {
                             @include global.setFont(mono);
                         
                             &.dot-state {
-                                background-color: white;
+                                background-color: global.$white;
                                 border-radius: 0.1em;
 
                                 transition: 0.5s;
@@ -277,7 +277,7 @@ header {
 
                             &::before {
                                 content: "";
-                                background: white;
+                                background: global.$white;
 
                                 position: absolute;
                                 top: -10px;
@@ -289,7 +289,7 @@ header {
                                 content: "";
                                 position: absolute;
 
-                                background: white;
+                                background: global.$white;
                                 left: 1px;
                                 bottom: -3px;
 
@@ -311,7 +311,7 @@ header {
                         filter: brightness(1);
 
                         .dot-state {
-                            @include global.load-spin(0.35em, white);
+                            @include global.load-spin(0.35em, global.$white);
                         }
                     }
                 }

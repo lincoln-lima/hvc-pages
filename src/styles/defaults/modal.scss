@@ -4,7 +4,7 @@
 .mymodal {
 	$modal-border: 1em;
 
-	background-color: #00000070;
+	background-color: #{global.$black}70;
 
 	position: fixed;
 	top: 0;
@@ -15,7 +15,7 @@
 	@include global.size(100vw, 100vh);
 
 	.modal-body {
-		background-color: white;
+		background-color: global.$white;
 		border-radius: $modal-border;
 
 		max-width: 90%;
@@ -34,7 +34,7 @@
 
 			h2 {
 				font-size: 1.4em;
-				color: white;
+				color: global.$white;
 			}
 
 			.close {
@@ -128,7 +128,7 @@
 					
 					width: calc(100% - $submit-size * 0.6);
 
-					border: 0.1rem solid black;
+					border: 0.1rem solid global.$black;
 
 					@include global.setFont(dotted);
 				}
@@ -162,7 +162,7 @@
 				background: transparent;
 
 				&:hover {
-					background: white;
+					background: global.$white;
 					color: play.$dark-red;
 				}
 			}
@@ -183,8 +183,7 @@
 #help-modal {
 	.modal-body {
 		font-size: 1em;
-		
-		@include global.scroll;
+		overflow: auto;
 
 		table {
 			padding: 0;
@@ -209,7 +208,7 @@
 				background: transparent;
 
 				&:hover {
-					background: white;
+					background: global.$white;
 					color: global.$color2;
 				}
 			}
@@ -234,7 +233,7 @@
 				transition: 0.5s;
 
 				&:hover {
-					color: white;
+					color: global.$white;
 					background-color: global.$color2;
 				}
 			}
@@ -254,12 +253,12 @@
 				@include global.faded-button($font: 0.7em);
 				
 				& {
-					background: white;
+					background: global.$white;
 					color: global.$color2-dark;
 				}
 
 				&:hover {
-					color: white;
+					color: global.$white;
 					background: global.$color2;
 				}
 			}
