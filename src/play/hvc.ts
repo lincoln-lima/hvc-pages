@@ -9,8 +9,6 @@ export default () => {
     // ------------------------------------------------------------------------------- 
     const hvc = new HVC();
     // ------------------------------------------------------------------------------- 
-    let previous = "DESLIGADO";
-    // ------------------------------------------------------------------------------- 
     const runner = play.elements.run();
     const debug = play.elements.debug();
     
@@ -38,6 +36,8 @@ export default () => {
     const formcard = play.elements.formcard();
     const cardmodal = play.elements.cardmodal();
     const ratingmodal = play.elements.ratingmodal();
+    // ------------------------------------------------------------------------------- 
+    let previous : HVMState = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
     const exec = async(set: boolean) => {
         await terminate();
@@ -69,7 +69,7 @@ export default () => {
         finally {
             if(localStorage.getItem("askrating") === "true") {
                 const counter = +play.elements.counter() + 1;
-                localStorage.setItem("counter", counter.toString());
+                globals.actions.changeStorage("counter", counter.toString());
 
                 if(counter % 3 == 0) globals.actions.displayElement(ratingmodal);
             }
@@ -111,12 +111,12 @@ export default () => {
             let content;
 
             if(gavetas[i]) {
+                content = gavetas[i];
+
                 if(epi != i) {
                     const style = (endindex == -1 || i <= endindex) ? "code" : "data";
                     play.actions.highlightDrawer(drawer, style);
                 }
-                
-                content = gavetas[i];
             }
             else content = "---";
 
@@ -125,19 +125,20 @@ export default () => {
     }
 
     const terminate = async() => {
-        globals.actions.displayElement(editor);
-        globals.actions.undisplayElement(cardmodal);
-        globals.actions.undisplayElement(tablecards);
-        globals.actions.switchVisibility(debugmenu, false);
-        globals.actions.displayElement(play.elements.help());
-        
         hvc.finish();
         await hvc.continue();
-
-        globals.actions.changeElementClass(pausecontinue, "pause");
         
         previous = "DESLIGADO";
         play.actions.setState(previous);
+
+        globals.actions.displayElement(editor);
+        globals.actions.displayElement(play.elements.help());
+
+        globals.actions.undisplayElement(cardmodal);
+        globals.actions.undisplayElement(tablecards);
+
+        globals.actions.switchVisibility(debugmenu, false);
+        globals.actions.changeElementClass(pausecontinue, "pause");
     }
     
     const toggling = async() => {

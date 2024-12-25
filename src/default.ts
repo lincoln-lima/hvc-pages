@@ -25,8 +25,8 @@ export const globals = {
         
         switchVisibility: (element: HTMLElement, set: boolean) => {
             if(set) {
-                element.style["opacity"] = "1";
                 element.style["visibility"] = "visible";
+                element.style["opacity"] = "1";
             }
             else {
                 element.style["opacity"] = "0";
@@ -36,7 +36,7 @@ export const globals = {
         
         switchMenu: () => {
             const menu = globals.elements.menumodal();
-            globals.actions.switchVisibility(menu, menu.style["visibility"] == "hidden");
+            globals.actions.switchVisibility(menu, menu.style["visibility"] != "visible");
         },
         
         monitoreMenu: (size: number) => {
@@ -47,13 +47,13 @@ export const globals = {
                 globals.actions.undisplayElement(burger);
             }
             else {
-                globals.actions.switchVisibility(globals.elements.menumodal(), false);
                 globals.actions.displayElement(burger);
+                globals.actions.switchVisibility(globals.elements.menumodal(), false);
             }
         },
         
         scrollTo: (element: Element) => {
-            element.scrollIntoView({ inline: "center" });
+            element.scrollIntoView({behavior: "smooth", inline: "center", block: "center" });
         },
 
         changeElementText: (element: Element, text: string) => {
@@ -62,6 +62,10 @@ export const globals = {
 
         changeElementClass: (element: Element, className: string) => {
             if(element.className != className) element.className = className;
+        },
+
+        changeStorage: (item: string, value: string) => {
+            if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
         }
     }
 }
@@ -73,11 +77,11 @@ if (switchtheme) {
     // ---------------------------------------------------------------------------
     const switchTheme = (oldtheme: string) => {
         switchtheme.classList.replace(oldtheme, actualtheme);
-        document.body.className = actualtheme + "mode";
+        globals.actions.changeElementClass(document.body, actualtheme + "mode");
     }
 
     const oldTheme = (newtheme: string) => {
-        return newtheme === "light" ? "dark" : "light";
+        return newtheme != "light" ? "light" : "dark";
     }
     // ---------------------------------------------------------------------------
     switchTheme(oldTheme(actualtheme));
@@ -85,7 +89,7 @@ if (switchtheme) {
     switchtheme.addEventListener("click", () => {
         actualtheme = switchtheme.classList.contains("light") ? "dark" : "light"; 
 
-        localStorage.setItem("theme-content", actualtheme);
+        globals.actions.changeStorage("theme-content", actualtheme);
         switchTheme(oldTheme(actualtheme));
     });
     

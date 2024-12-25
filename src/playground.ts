@@ -80,11 +80,18 @@ export const play = {
         setState: (state: string) => {
             const stateview = play.elements.state();
             let dotclass;
-    
-            if(state === "CARGA") dotclass = "charging";
-            else if(state === "EXECUÇÃO") dotclass = "running";
-            else dotclass = "editing";
-    
+
+            switch(state) {
+                case "CARGA":
+                    dotclass = "charging";
+                    break;
+                case "EXECUÇÃO":
+                    dotclass = "running";
+                    break;
+                default:
+                    dotclass = "editing";
+            } 
+
             stateview.classList.replace(stateview.className, dotclass);
         },
     
@@ -103,7 +110,7 @@ export const play = {
         switchPauseContinue: () => {
             const actual = play.elements.pausecontinue().className;
 
-            play.elements.pausecontinue().className = actual === "pause" ? "continue" : "pause";
+            play.elements.pausecontinue().className = actual != "pause" ? "pause" : "continue";
         },
 
         addCardToTable: (card: string) => {
@@ -164,17 +171,16 @@ const loadplay = async () => {
     }
 
     const neverAskAgain = () => {
-        localStorage.setItem("askrating", "false");
         hideRating();
+        localStorage.setItem("askrating", "false");
     }
 
     const saveConfigs = () => {
-        localStorage.setItem("delay-hvc", play.elements.delay().value);
-        localStorage.setItem("theme-play", play.elements.theme().value);
-
-        document.body.className = localStorage.getItem("theme-play")!;
+        globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
+        globals.actions.changeStorage("theme-play", play.elements.theme().value!);
 
         globals.actions.undisplayElement(play.elements.configmodal());
+        globals.actions.changeElementClass(document.body, localStorage.getItem("theme-play")!);
     }
 
     const switchHelp = () => {
@@ -225,7 +231,7 @@ const loadplay = async () => {
         }
     });
     // ---------------------------------------------------------------------------
-    play.elements.helpmodal().children[0].appendChild(await templates("table"));
+    play.elements.helpmodal().getElementsByClassName("modal-body")[0]!.appendChild(await templates("table"));
 }
 // ------------------------------------------------------------------------------- 
-setTimeout(async () => await loadplay(), modals.length * 100);
+setTimeout(async () => await loadplay(), modals.length * 150);
