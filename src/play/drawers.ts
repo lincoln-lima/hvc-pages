@@ -1,6 +1,6 @@
 import templates from "../templates";
 // ------------------------------------------------------------------------------- 
-const template = await templates('playground/drawer');
+const template = await templates("playground/drawer");
 
 export default (gaveteiro: Element) => {
     for (let i = 0; i < 100; i++) {

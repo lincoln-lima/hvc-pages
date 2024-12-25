@@ -1,14 +1,15 @@
-import { HVC } from "hvcjs";
+import { HVC, HVMState } from "hvcjs";
 import { play } from "../playground";
 import { globals } from "../default";
 // -----------------------------------------------------------------------------------
 import ahv from "./ahv";
 // -----------------------------------------------------------------------------------
 export default () => {
-    const hvc = new HVC();
-    let previous = "desligado";
-    // ------------------------------------------------------------------------------- 
     ahv();
+    // ------------------------------------------------------------------------------- 
+    const hvc = new HVC();
+    // ------------------------------------------------------------------------------- 
+    let previous = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
     const runner = play.elements.run();
     const debug = play.elements.debug();
@@ -39,22 +40,21 @@ export default () => {
     const ratingmodal = play.elements.ratingmodal();
     // ------------------------------------------------------------------------------- 
     const exec = async(set: boolean) => {
-        play.actions.hideModals();
         await terminate();
         // ---------------------------------------------------------------------------
-        Array.from(drawers).forEach(gaveta => {
-            play.actions.highlightDrawer(gaveta, 'default');
-        });
-        // ---------------------------------------------------------------------------
-        hvc.setCode(play.actions.getCode());
-
-        outwrite.innerText = '-';
-        epiwrite.innerText = '-';
-        // ---------------------------------------------------------------------------
+        play.actions.hideModals();
         globals.actions.undisplayElement(play.elements.help());
         // ---------------------------------------------------------------------------
+        Array.from(drawers).forEach(gaveta => {
+            play.actions.highlightDrawer(gaveta, "default");
+        });
+
+        globals.actions.changeElementText(outwrite, "");
+        // ---------------------------------------------------------------------------
+        hvc.setCode(play.actions.getCode());
+        // ---------------------------------------------------------------------------
         try {
-            if (set) await hvc.run();
+            if(set) await hvc.run();
             else {
                 globals.actions.undisplayElement(editor);
                 globals.actions.displayElement(tablecards);
@@ -78,10 +78,10 @@ export default () => {
 
     const detectError = async(e: Error) => {
         await terminate();
-        play.actions.showError(e.message.replace(/\.(?!$)/, ".\n"));
+        play.actions.showError(e.message);
     }
 
-    const updateViewers = () => {
+    const updateViewers = (state: HVMState) => {
         const hvm = hvc.getHVM();
         // ---------------------------------------------------------------------------
         const epi = hvm.epi.lerRegistro();
@@ -90,7 +90,9 @@ export default () => {
         const acumulador = hvm.calculadora.getAcumulador();
         // ---------------------------------------------------------------------------
         const pointed = drawers[epi];
-        const endindex = gavetas.indexOf('000');
+        const endindex = gavetas.indexOf("000");
+        // ---------------------------------------------------------------------------
+        play.actions.setState(state);
         // ---------------------------------------------------------------------------
         cards.innerHTML = "";
 
@@ -98,29 +100,28 @@ export default () => {
             play.actions.addCardToTable(cartao);
         });
         // ---------------------------------------------------------------------------
-        play.actions.setState(hvm.getState().toLowerCase());
+        globals.actions.changeElementText(epiwrite, epi.toString());
+        globals.actions.changeElementText(acumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
         // ---------------------------------------------------------------------------
-        acumulator.innerText = acumulador >= 0 ? acumulador.toString().padStart(3, "0") : '-' + (acumulador * -1).toString().padStart(2, "0");
-        epiwrite.innerText = epi.toString();
+        play.actions.highlightDrawer(pointed, "pointed");
+        if(state != "CARGA") globals.actions.scrollTo(pointed);
         // ---------------------------------------------------------------------------
         Array.from(drawerscontent).forEach((cont, i) => {
             const drawer = drawers[i];
             let content;
 
             if(gavetas[i]) {
-                const style = (endindex == -1 || i <= endindex) ? 'code' : 'data';
+                if(epi != i) {
+                    const style = (endindex == -1 || i <= endindex) ? "code" : "data";
+                    play.actions.highlightDrawer(drawer, style);
+                }
                 
-                play.actions.highlightDrawer(drawer, style);
-
                 content = gavetas[i];
             }
             else content = "---";
 
-            cont.textContent = content;
+            globals.actions.changeElementText(cont, content);
         });
-        // ---------------------------------------------------------------------------
-        play.actions.highlightDrawer(pointed, 'pointed');
-        globals.actions.scrollTo(pointed);
     }
 
     const terminate = async() => {
@@ -133,38 +134,58 @@ export default () => {
         hvc.finish();
         await hvc.continue();
 
-        pausecontinue.className = "pause";
+        globals.actions.changeElementClass(pausecontinue, "pause");
         
-        previous = "desligado";
+        previous = "DESLIGADO";
         play.actions.setState(previous);
-    };
+    }
     
-    const controlling = async(set: boolean) => {
-        pausecontinue.className = "continue";
+    const toggling = async() => {
+        const topause = pausecontinue.className === "pause";
 
-        if(set) {
-            await hvc.back();
-            updateViewers();
-            globals.actions.undisplayElement(cardmodal);
-        }
+        play.actions.switchPauseContinue();
+
+        if(topause) await hvc.stop();
         else {
             try {
-                await hvc.next();
+                await hvc.continue();
             }
             catch (e) {
                 await detectError(e as Error);
             }
         }
-    };
+    }
+
+    const controlling = async(set: boolean) => {
+        const hvm = hvc.getHVM();
+        const hvmstate = hvm.getState();
+        const debugstate = hvm.getDebugState();
+
+        if(hvmstate === "EXECUÇÃO" && debugstate === "PAUSADO") {
+            if(set) {
+                await hvc.back();
+                updateViewers(hvmstate);
+                globals.actions.undisplayElement(cardmodal);
+            }
+            else {
+                try {
+                    await hvc.next();
+                }
+                catch (e) {
+                    await detectError(e as Error);
+                }
+            }
+        }
+    }
     // ------------------------------------------------------------------------------- 
     hvc.addEventOutput((out: string) => {
-        outwrite.innerText = out;
+        globals.actions.changeElementText(outwrite, out);
     });
 
-    hvc.addEventInput(async () => {
+    hvc.addEventInput(async() => {
         globals.actions.displayElement(cardmodal);
 
-        readcard.value = '';
+        readcard.value = "";
         readcard.focus();
 
         return new Promise(resolve => {
@@ -181,59 +202,42 @@ export default () => {
     });
     
     hvc.addEventClock(async HVMState => {
-        const state = HVMState.toLowerCase();
+        updateViewers(HVMState);
 
-        updateViewers();
-
-        if(previous != state && state === "desligado") await terminate();
-        previous = state;
+        if(previous != HVMState && HVMState === "DESLIGADO") await terminate();
+        previous = HVMState;
     });
     // ---------------------------------------------------------------------------
-    runner.addEventListener('click', async() => await exec(true));
-    debug.addEventListener('click', async() => await exec(false));
+    runner.addEventListener("click", async() => await exec(true));
+    debug.addEventListener("click", async() => await exec(false));
+    
+    back.addEventListener("click", async() => await controlling(true));
+    forth.addEventListener("click", async() => await controlling(false));
 
-    pausecontinue.addEventListener('click', async() => {
-        const topause = pausecontinue.className === 'pause';
-
-        play.actions.switchPauseContinue();
-
-        if(topause) await hvc.stop();
-        else {
-            try {
-                await hvc.continue();
-            }
-            catch (e) {
-                await detectError(e as Error);
-            }
-        }
-    });
-
-    back.addEventListener('click', async() => await controlling(true));
-    forth.addEventListener('click', async() => await controlling(false));
-
-    finish.addEventListener('click', async() => await terminate());
+    finish.addEventListener("click", async() => await terminate());
+    pausecontinue.addEventListener("click", async() => await toggling());
     // ---------------------------------------------------------------------------
-    document.addEventListener('keydown', async(e) => {
+    document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();
-        const hvmstate = hvc.getHVM().getState().toLowerCase();
+        const hvmstate = hvc.getHVM().getState();
 
-        if (e.ctrlKey) {
-            if(key === 'c' && hvmstate != 'desligado') {
+        if(e.ctrlKey) {
+            if(key === "c" && hvmstate != "DESLIGADO") {
                 e.preventDefault();
                 await terminate();
             }
-            else if(key === 'arrowleft' && hvmstate === 'execução') {
+            else if(key === "arrowleft") {
                 e.preventDefault();
                 await controlling(true);
             }
-            else if (key === 'arrowright' && (hvmstate === 'execução' || hvmstate === 'carga')) {
+            else if(key === "arrowright") {
                 e.preventDefault();
                 await controlling(false);
             }
         }
         else {
-            if (key === "f9") await exec(true);
-            else if (key === "f8") await exec(false);
+            if(key === "f9") await exec(true);
+            else if(key === "f8") await exec(false);
         }
     });
 }

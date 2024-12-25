@@ -5,7 +5,7 @@ import "/src/styles/documentation/documentation.scss";
 const windowsizemenu = 860;
 // -----------------------------------------------------------------------------------
 globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
+window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // -----------------------------------------------------------------------------------
 const shownav = document.getElementById("show-nav")!;
 const stickynav = document.getElementById("sticky-nav")!;
@@ -30,10 +30,10 @@ const expand = () => {
     });
 }
 // -----------------------------------------------------------------------------------
-shownav.addEventListener('click', switchnav);
+shownav.addEventListener("click", switchnav);
 // -----------------------------------------------------------------------------------
-window.addEventListener('resize', retract);
-window.addEventListener('click', e => {
+window.addEventListener("resize", retract);
+window.addEventListener("click", e => {
     const element = e.target;
     
     const notTarget = element != shownav;
@@ -42,9 +42,9 @@ window.addEventListener('click', e => {
     if(notTarget && areExpanded && !stickynav.contains(element as Node)) retract();
 });
 // -----------------------------------------------------------------------------------
-document.addEventListener('keydown', e => {
+document.addEventListener("keydown", e => {
     const key = e.key.toLowerCase();
     const areExpanded = shownav.classList.contains(states[0]) || stickynav.classList.contains(states[0]);
 
-    if(key === 'escape' && areExpanded) retract();
+    if(key === "escape" && areExpanded) retract();
 });

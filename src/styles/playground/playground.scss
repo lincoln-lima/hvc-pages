@@ -237,7 +237,7 @@ main {
 
                         @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $position: 0);
                         @include global.animation(twink, 1.5s, 1);
-                        
+
                         @include responsive.gavetas;
 
                         &:hover {
@@ -263,10 +263,12 @@ main {
                         
                         &:first-child {
                             margin: 0 play.$gaveta-margin 0 0;
+                            @include responsive.gavetas;
                         }
 
                         &:last-child {
                             margin: 0 0 0 play.$gaveta-margin;
+                            @include responsive.gavetas;
                         }
 
                         div {

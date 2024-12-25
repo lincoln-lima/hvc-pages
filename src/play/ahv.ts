@@ -2,11 +2,11 @@ import { play } from "../playground";
 // ------------------------------------------------------------------------------- 
 export default () => {
     const importahv = () => {
-        const inputelement = document.createElement('input');
+        const inputelement = document.createElement("input");
 
-        inputelement.id = 'file';
-        inputelement.type = 'file';
-        inputelement.style['display'] = 'none';
+        inputelement.id = "file";
+        inputelement.type = "file";
+        inputelement.style["display"] = "none";
 
         document.body.appendChild(inputelement);
         inputelement.click();
@@ -24,9 +24,9 @@ export default () => {
     }
 
     const exportahv = () => {
-        const blob = new Blob([play.actions.getCode()], { type: 'text/plain' });
+        const blob = new Blob([play.actions.getCode()], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        const link = document.createElement("a");
 
         link.download = "main";
         link.href = url;
@@ -38,10 +38,10 @@ export default () => {
         URL.revokeObjectURL(url);
     }
     // ------------------------------------------------------------------------------- 
-    play.elements.import().addEventListener('click', importahv);
-    play.elements.export().addEventListener('click', exportahv);
+    play.elements.import().addEventListener("click", importahv);
+    play.elements.export().addEventListener("click", exportahv);
     // ------------------------------------------------------------------------------- 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
         const key = e.key.toLowerCase();
 
         if(e.ctrlKey) {

@@ -78,29 +78,32 @@ export const play = {
         },
 
         setState: (state: string) => {
+            const stateview = play.elements.state();
             let dotclass;
     
-            if(state === 'carga') dotclass = 'charging';
-            else if(state === 'execução') dotclass = 'running';
-            else dotclass = 'editing';
+            if(state === "CARGA") dotclass = "charging";
+            else if(state === "EXECUÇÃO") dotclass = "running";
+            else dotclass = "editing";
     
-            play.elements.state().className = dotclass;
+            stateview.classList.replace(stateview.className, dotclass);
         },
     
         showError: (message: string) => {
-            play.elements.error().innerText = message;
+            play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
             globals.actions.displayElement(play.elements.errorsmodal());
         },
     
-        highlightDrawer: (drawer: Element, state: string) => {
-            drawer.classList.remove(drawer.classList.item(1)!);
-            drawer.classList.add(state);
+        highlightDrawer: (drawer: Element, style: string) => {
+            if(!drawer.classList.contains(style)) {
+                drawer.classList.remove(drawer.classList.item(1)!);
+                drawer.classList.add(style);
+            }
         },
 
         switchPauseContinue: () => {
             const actual = play.elements.pausecontinue().className;
 
-            play.elements.pausecontinue().className = actual === 'pause' ? 'continue' : 'pause';
+            play.elements.pausecontinue().className = actual === "pause" ? "continue" : "pause";
         },
 
         addCardToTable: (card: string) => {
@@ -123,16 +126,16 @@ export const play = {
                     if(element == play.elements.helpmodal()) globals.actions.displayElement(play.elements.help());
                 }
             });
-        }
+        },
     }
 }
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 680;
 // ------------------------------------------------------------------------------- 
-document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
+document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
 // ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener('resize', () => globals.actions.monitoreMenu(windowsizemenu));
+window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 drawers(play.elements.scrollgaveteiro());
 // ------------------------------------------------------------------------------- 
@@ -141,11 +144,11 @@ if(!play.elements.askrating() || !play.elements.counter()) {
     localStorage.setItem("counter", "0");
 }
 // ------------------------------------------------------------------------------- 
-const modals = ['configs', 'card', 'error', 'help', 'rating'];
+const modals = ["configs", "card", "error", "help", "rating"];
 
 modals.forEach(async modal => {
-    const element = await templates('modal/' + modal);
-    element.style['display'] = 'none';
+    const element = await templates("modal/" + modal);
+    element.style["display"] = "none";
     
     document.body.appendChild(element);
 });
@@ -153,8 +156,8 @@ modals.forEach(async modal => {
 const loadplay = async () => {
     hvc();
     // ---------------------------------------------------------------------------
-    play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : '1000';
-    play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : 'lightmode';
+    play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : "1000";
+    play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
     // ---------------------------------------------------------------------------
     const hideRating = () => {
         globals.actions.undisplayElement(play.elements.ratingmodal());
@@ -178,51 +181,51 @@ const loadplay = async () => {
         const button = play.elements.help();
         const modal = play.elements.helpmodal();
 
-        const modaldisplay = modal.style['display'] === 'none';
-        const buttondisplay = button.style['display'] === 'none';
+        const modaldisplay = modal.style["display"] === "none";
+        const buttondisplay = button.style["display"] === "none";
         
         globals.actions.switchDisplay(modal, modaldisplay);
         globals.actions.switchDisplay(button, buttondisplay);
     }
     // ---------------------------------------------------------------------------
-    play.elements.configs().addEventListener('click', () => globals.actions.displayElement(play.elements.configmodal()));
-    play.elements.closeconfigs().addEventListener('click', () => globals.actions.undisplayElement(play.elements.configmodal()));
-    play.elements.formconfigs().addEventListener('submit', e => {
+    play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
+    play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
+    play.elements.formconfigs().addEventListener("submit", e => {
         e.preventDefault();
         saveConfigs();
     });
 
-    play.elements.dontask().addEventListener('click', neverAskAgain);
-    play.elements.closerating().addEventListener('click', hideRating);
-    play.elements.ratingstars().addEventListener('click', hideRating);
+    play.elements.dontask().addEventListener("click", neverAskAgain);
+    play.elements.closerating().addEventListener("click", hideRating);
+    play.elements.ratingstars().addEventListener("click", hideRating);
 
-    play.elements.help().addEventListener('click', switchHelp);
-    play.elements.closeerrors().addEventListener('click', () => globals.actions.undisplayElement(play.elements.errorsmodal()));
+    play.elements.help().addEventListener("click", switchHelp);
+    play.elements.closeerrors().addEventListener("click", () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     // ---------------------------------------------------------------------------
-    window.addEventListener('click', e => {
+    window.addEventListener("click", e => {
         if(e.target == play.elements.helpmodal()) switchHelp();
         else if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
     });
     // ---------------------------------------------------------------------------
-    document.addEventListener('keydown', e => {
+    document.addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
 
         if(!e.ctrlKey) {
-            if(key === 'f2') {
+            if(key === "f2") {
                 e.preventDefault();
                 const config = play.elements.configmodal();
 
-                globals.actions.switchDisplay(config, config.style['display'] === 'none');
+                globals.actions.switchDisplay(config, config.style["display"] === "none");
             }
-            else if(key === 'f12') {
+            else if(key === "f12") {
                 e.preventDefault();
                 switchHelp();
             }
-            else if(key === 'escape') play.actions.hideModals();
+            else if(key === "escape") play.actions.hideModals();
         }
     });
     // ---------------------------------------------------------------------------
-    play.elements.helpmodal().children[0].appendChild(await templates('table'));
+    play.elements.helpmodal().children[0].appendChild(await templates("table"));
 }
 // ------------------------------------------------------------------------------- 
 setTimeout(async () => await loadplay(), modals.length * 100);
