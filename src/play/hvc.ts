@@ -43,7 +43,7 @@ export default () => {
         await terminate();
         // ---------------------------------------------------------------------------
         Array.from(drawers).forEach(gaveta => {
-            play.actions.highlightDrawer(gaveta as HTMLElement, 'default');
+            play.actions.highlightDrawer(gaveta, 'default');
         });
         // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
@@ -78,7 +78,7 @@ export default () => {
 
     const detectError = async(e: Error) => {
         await terminate();
-        play.actions.showError(e.message.replace(" Conteúdo", "\nConteúdo"));
+        play.actions.showError(e.message.replace(/\.(?!$)/, ".\n"));
     }
 
     const updateViewers = () => {
@@ -89,7 +89,7 @@ export default () => {
         const portaCartoes = hvm.portaCartoes.conteudo;
         const acumulador = hvm.calculadora.getAcumulador();
         // ---------------------------------------------------------------------------
-        const pointed = drawers[epi] as HTMLElement;
+        const pointed = drawers[epi];
         const endindex = gavetas.indexOf('000');
         // ---------------------------------------------------------------------------
         cards.innerHTML = "";
@@ -104,17 +104,19 @@ export default () => {
         epiwrite.innerText = epi.toString();
         // ---------------------------------------------------------------------------
         Array.from(drawerscontent).forEach((cont, i) => {
-            const drawer = drawers[i] as HTMLElement;
-            let style;
+            const drawer = drawers[i];
+            let content;
 
             if(gavetas[i]) {
-                style = (endindex == -1 || i <= endindex) ? 'code' : 'data';
+                const style = (endindex == -1 || i <= endindex) ? 'code' : 'data';
                 
                 play.actions.highlightDrawer(drawer, style);
 
-                (cont as HTMLElement).innerText = gavetas[i];
+                content = gavetas[i];
             }
-            else (cont as HTMLElement).innerText = "---";
+            else content = "---";
+
+            cont.textContent = content;
         });
         // ---------------------------------------------------------------------------
         play.actions.highlightDrawer(pointed, 'pointed');

@@ -92,7 +92,7 @@ export const play = {
             globals.actions.displayElement(play.elements.errorsmodal());
         },
     
-        highlightDrawer: (drawer: HTMLElement, state: string) => {
+        highlightDrawer: (drawer: Element, state: string) => {
             drawer.classList.remove(drawer.classList.item(1)!);
             drawer.classList.add(state);
         },

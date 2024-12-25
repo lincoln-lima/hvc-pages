@@ -52,13 +52,13 @@ export const globals = {
             }
         },
         
-        scrollTo: (element: HTMLElement) => {
+        scrollTo: (element: Element) => {
             element.scrollIntoView({ inline: "center" });
         }
     }
 }
 // ------------------------------------------------------------------------------- 
-const switchtheme = document.getElementsByClassName("switch-theme")[0]! as HTMLElement;
+const switchtheme = document.getElementsByClassName("switch-theme")[0]!;
 
 if (switchtheme) {
     let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
