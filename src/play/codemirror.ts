@@ -4,8 +4,8 @@ import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 // -----------------------------------------------------------------------------------
 const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n105\n805\n000";
 
-const editorclass = EditorView.editorAttributes.of({ id: "editor" });
-const contentclass = EditorView.contentAttributes.of({ id: "content" });
+const editorid = EditorView.editorAttributes.of({ id: "editor" });
+const contentid = EditorView.contentAttributes.of({ id: "content" });
 
 const codechange = EditorView.updateListener.of(update => {
     if(update.docChanged) localStorage.setItem("code", getDoc());
@@ -17,8 +17,8 @@ const startstate = EditorState.create({
         keymap.of(defaultKeymap),
         lineNumbers(),
         codechange,
-        editorclass,
-        contentclass
+        editorid,
+        contentid
     ]
 });
 // -----------------------------------------------------------------------------------

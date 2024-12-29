@@ -14,15 +14,11 @@ const components = [shownav, stickynav];
 const states = ["expanded", "retracted"];
 
 const retract = () => {
-    components.forEach(element => {
-        element.classList.replace(states[0], states[1]);
-    });
+    components.forEach(element => element.classList.replace(states[0], states[1]));
 }
 
 const expand = () => {
-    components.forEach(element => {
-        element.classList.replace(states[1], states[0]);
-    });
+    components.forEach(element => element.classList.replace(states[1], states[0]));
 }
 
 const switchnav = () => {

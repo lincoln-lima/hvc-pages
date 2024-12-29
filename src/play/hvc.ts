@@ -45,9 +45,7 @@ export default () => {
         play.actions.hideModals();
         globals.actions.undisplayElement(play.elements.help());
         // ---------------------------------------------------------------------------
-        Array.from(drawers).forEach(gaveta => {
-            play.actions.highlightDrawer(gaveta, "default");
-        });
+        Array.from(drawers).forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
 
         globals.actions.changeElementText(outwrite, "");
         // ---------------------------------------------------------------------------
@@ -96,9 +94,7 @@ export default () => {
         // ---------------------------------------------------------------------------
         cards.innerHTML = "";
 
-        portaCartoes.forEach(cartao => {
-            play.actions.addCardToTable(cartao);
-        });
+        portaCartoes.forEach(cartao => play.actions.addCardToTable(cartao));
         // ---------------------------------------------------------------------------
         globals.actions.changeElementText(epiwrite, epi.toString());
         globals.actions.changeElementText(acumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
@@ -126,7 +122,6 @@ export default () => {
 
     const terminate = async() => {
         hvc.finish();
-        await hvc.continue();
         
         previous = "DESLIGADO";
         play.actions.setState(previous);
@@ -138,7 +133,6 @@ export default () => {
         globals.actions.undisplayElement(tablecards);
 
         globals.actions.switchVisibility(debugmenu, false);
-        globals.actions.changeElementClass(pausecontinue, "pause");
     }
     
     const toggling = async() => {
@@ -206,6 +200,7 @@ export default () => {
         updateViewers(HVMState);
 
         if(previous != HVMState && HVMState === "DESLIGADO") await terminate();
+
         previous = HVMState;
     });
     // ---------------------------------------------------------------------------
@@ -227,14 +222,8 @@ export default () => {
                 e.preventDefault();
                 await terminate();
             }
-            else if(key === "arrowleft") {
-                e.preventDefault();
-                await controlling(true);
-            }
-            else if(key === "arrowright") {
-                e.preventDefault();
-                await controlling(false);
-            }
+            else if(key === "arrowleft") await controlling(true);
+            else if(key === "arrowright") await controlling(false);
         }
         else {
             if(key === "f9") await exec(true);
