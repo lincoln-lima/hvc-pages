@@ -25,9 +25,10 @@ $main-initial-height: calc(100vh - $header-height);
 $viewers-initial-size: 30vh;
 $viewers-responsive-size: calc($viewers-initial-size * 0.9);
 // ------------------------------------------------------------------------------- 
-$gaveta-margin: 10px;
 $gaveta-width: 146px;
 $gaveta-height: 144px;
+
+$gaveta-margin: 10px;
 // ------------------------------------------------------------------------------- 
 $spacing: 50px;
 // ------------------------------------------------------------------------------- 

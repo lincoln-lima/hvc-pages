@@ -267,35 +267,7 @@ header {
                         background-color: play.$live-blue;
 
                         .dot-state {
-                            $pen-width: calc($dot-size * 0.3);
-                            $pen-height: calc($dot-size * 0.8);
-
-                            position: relative;
-                            top: 0.2em;
-                            transform: rotate(40deg);
-                            @include global.size($pen-width, $pen-height);
-
-                            &::before {
-                                content: "";
-                                background: global.$white;
-
-                                position: absolute;
-                                top: -10px;
-
-                                @include global.size($pen-width);
-                            }
-
-                            &::after {
-                                content: "";
-                                position: absolute;
-
-                                background: global.$white;
-                                left: 1px;
-                                bottom: -3px;
-
-                                transform: rotate(45deg);
-                                @include global.size(calc($pen-width * 0.8));
-                            }
+                            @include global.background($image: 'playground/menu/pen', $size: cover);
                         }
                     }
                 }

@@ -137,13 +137,16 @@ button {
     cursor: pointer;
     border: none;
 
-    transition: 0.3s;
+    transition: 0.5s;
 
     &.burger-menu {
-        border-radius: 0.3em;
+        $radius: 0.3em;
+        $size: default.$home-height;
+
+        border-radius: $radius;
         
-        @include global.size(default.$home-height);
-        @include global.background($image: menu, $repeat: no-repeat, $position: center, $size: 90%, $color: transparent);
+        @include global.size($size);
+        @include global.background($image: menu);
 
         &:hover {
             background-color: #{global.$black}15;
@@ -157,7 +160,7 @@ button {
         min-width: default.$copy-size;
 
         @include global.size(default.$copy-size);
-        @include global.background($image: clipboard, $color: global.$lightgray, $size: 100%, $repeat: no-repeat);
+        @include global.faded-button(clipboard);
 
         &:hover {
             outline-color: #{global.$black};
@@ -165,7 +168,7 @@ button {
 
         &.copied {
             @include global.circle;
-            @include global.background($image: check, $color: global.$gray, $size: 75%, $position: center, $repeat: no-repeat);
+            @include global.faded-button(check);
         }
     }
 
@@ -174,11 +177,11 @@ button {
         @include global.fixed-button;
 
         &.light {
-            @include global.faded-button('moon');
+            @include global.faded-button(moon);
         }
 
         &.dark {
-            @include global.faded-button('sun');
+            @include global.faded-button(sun);
         }
     }
 }

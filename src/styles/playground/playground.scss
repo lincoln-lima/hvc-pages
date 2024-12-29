@@ -161,9 +161,9 @@ main {
                     $border: 2px;
 
                     border-radius: $border;
+                    background-color: play.$brown-wood;
 
                     @include global.middle;
-                    @include global.background($color: play.$brown-wood, $image: 'playground/madeirado', $size: cover);
         
                     #epi {
                         background-color: play.$green-board;
@@ -235,8 +235,8 @@ main {
 
                         filter: drop-shadow(4px 7px 2px #{global.$black}80);
 
-                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $position: 0);
                         @include global.animation(twink, 1.5s, 1);
+                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
 
                         @include responsive.gavetas;
 
@@ -410,5 +410,5 @@ main {
 #help {
     @include global.circle;
     @include global.fixed-button;
-    @include global.faded-button('help');
+    @include global.faded-button(info);
 }

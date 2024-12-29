@@ -81,10 +81,10 @@ $fonts:
     }
 
     @if $img != null { 
-        background: url('/img/#{$img}.png') center/75% no-repeat, $fade-button center center transparent;
+        background: url('/img/#{$img}.svg') center/70% no-repeat, $fade-button center center transparent;
         
         &:hover {
-            background-image: url('/img/#{$img}.png'), $fade-hover;
+            background-image: url('/img/#{$img}.svg'), $fade-hover;
         }
     }
     @else {
@@ -146,7 +146,7 @@ $fonts:
 
 @mixin background($color: transparent, $image: none, $position: inherit, $repeat: initial, $size: auto) {
     background-color: $color;
-    background-image: url('/img/#{$image}.png');
+    background-image: url('/img/#{$image}.svg');
     background-position: $position;
     background-repeat: $repeat;
     background-size: $size;
