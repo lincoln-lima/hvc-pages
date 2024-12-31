@@ -7,36 +7,41 @@ $width2: play.$screen-responsive-width2;
 $width3: play.$screen-responsive-width3;;
 /* -------------------------------------------------------------------- */
 @mixin main {
-    @include global.responsive-height($width3, $width2, 165vh);
-    @include global.responsive-height(0, $width3, 250vh);
+    @include global.responsive-height($width3 + 1, $width2, 165vh);
+
+    @include global.responsive-height(0, $width3, 300vh);
 }
 
 @mixin playground {
-    @include global.responsive-width(0, $width2, 90%);
+    @media screen and (min-width: 0) and (max-width: $width2) {
+        max-width: play.$nav-responsive-width;
+    }
+    // @include global.responsive-width(0, $width2, play.$nav-responsive-width);
+    @include global.responsive-width(0, $width2, 30em);
     @include global.responsive-flex-direction(0, $width2, $direction: column);
-
-    @include global.responsive-height(0, $width3, 98%);
+    
+    @include global.responsive-height(0, $width3, 97%);
 }
 
 @mixin porta-cartoes {
-    @include global.responsive-width($width2, $width1, play.$porta-cartoes-responsive-width);
+    @include global.responsive-width($width2 + 1, $width1, play.$porta-cartoes-responsive-width);
 
     @include global.responsive-width(0, $width2, 100%);
-    @include global.responsive-height($width3, $width2, 35%);
+    @include global.responsive-height($width3 + 1, $width2, 35%);
 
-    @include global.responsive-height(0, $width3, 15%);
+    @include global.responsive-height(0, $width3, 23%);
 }
 
 @mixin debuggers {
-    @include global.responsive-flex-direction($width3, $width1, $direction: row);
+    // @include global.responsive-flex-direction($width3 + 1, $width1, $direction: row);
+    @include global.responsive-width($width2, $width1, play.$debuggers-responsive-width);
     @include global.responsive-justify-content(0, $width1, $justify: space-between);
 
-    @include global.responsive-width($width2, $width1, play.$debuggers-responsive-width);
-
     @include global.responsive-width(0, $width2, 100%);
-    @include global.responsive-height($width3, $width2, 60%);
+    @include global.responsive-height($width3 + 1, $width2, 60%);
 
-    @include global.responsive-height(0, $width3, 80%);
+    @include global.responsive-height(0, $width3, 75%);
+    @include global.responsive-flex-direction(0, $width3, $direction: column);
 }
 
 @mixin debuggers-childs-flex {
@@ -44,17 +49,16 @@ $width3: play.$screen-responsive-width3;;
 }
 
 @mixin debuggers-childs-size {
-    @include global.responsive-width($width3, $width1, fit-content);
-    @include global.responsive-height($width3, $width1, 100%);
+    @include global.responsive-width($width3 + 1, $width1, fit-content);
+    @include global.responsive-height($width3 + 1, $width1, 100%);
 }
 
 @mixin viewers {
-    @include global.responsive-height(0, $width3, 50%);
-
+    @include global.responsive-height(0, $width3, 45%);
 }
 
 @mixin viewers-childs {
-    @include global.responsive-size($width2, $width1, play.$viewers-responsive-size);
+    @include global.responsive-size($width2 + 1, $width1, play.$viewers-responsive-size);
 }
 
 @mixin gaveteiro {
@@ -63,7 +67,7 @@ $width3: play.$screen-responsive-width3;;
     }
     
     @media screen and (min-width: 0) and (max-width: $width3) {
-        height: 45%;
+        height: 50%;
 
         @include global.center;
     }
@@ -71,10 +75,10 @@ $width3: play.$screen-responsive-width3;;
 
 @mixin scrollgaveteiro {
     @media screen and (min-width: 0) and (max-width: $width1) {
-        overflow-x: hidden;
         height: 100%;
+        overflow-x: hidden;
 
-        padding-right: 0.5em;
+        padding-right: 1em;
     }
 }
 

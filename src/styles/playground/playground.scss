@@ -1,7 +1,7 @@
 @use '../globals' as global;
 @use './play' as play;
 @use '../defaults/default' as default;
-// @use './responsiveplay' as responsive;
+@use './responsiveplay' as responsive;
 /* -------------------------------------------------------------------- */
 @mixin portacartoes-viewers {
     @include global.shadow($length1: 3px, $blur: 5px, $transparency: 0.2);
@@ -19,15 +19,16 @@
 main {
     @include global.middle;
     @include global.center;
-    @include global.size(play.$main-initial-width, play.$main-initial-height);
+    @include global.size(100%, play.$main-initial-height);
+    // @include global.size(play.$main-initial-width, play.$main-initial-height);
 
-//    @include responsive.main;
+    @include responsive.main;
     
     #playground {
         @include global.flex;
-        @include global.size(100%, 95%);
+        @include global.size(play.$nav-initial-width, 95%);
 
-//        @include responsive.playground;
+        @include responsive.playground;
 
         .tooltip {
             z-index: 1;
@@ -43,13 +44,13 @@ main {
             text-align: center;
             background-color: play.$old-paper;
 
-            min-width: 20em;
+            // min-width: 20em;
             
             @include global.flex($justify: center);
             @include global.size(play.$porta-cartoes-initial-width, 100%);
             
             @include portacartoes-viewers;
-//            @include responsive.porta-cartoes;
+            @include responsive.porta-cartoes;
             
             #scroll-tablecards {
                 width: 100%;
@@ -116,7 +117,7 @@ main {
             @include global.size(play.$debuggers-initial-width, 100%);
             // @include global.flex($align: normal, $direction: column, $justify: space-around);
 
-//            @include responsive.debuggers;
+           @include responsive.debuggers;
 
             > * {
                 width: 100%;
@@ -127,9 +128,9 @@ main {
 
                 @include global.flex;
 
-//                @include responsive.debuggers-childs-flex;
-//                @include responsive.debuggers-childs-size;
-//                @include responsive.viewers;
+                @include responsive.viewers;
+                @include responsive.debuggers-childs-flex;
+                @include responsive.debuggers-childs-size;
 
                 .tooltip {
                     bottom: default.$tooltip-size-arr;
@@ -146,7 +147,7 @@ main {
                     @include global.size(play.$viewers-initial-size);
                     
                     @include portacartoes-viewers;
-//                    @include responsive.viewers-childs;
+                    @include responsive.viewers-childs;
                 }
 
                 .viewers-values {
@@ -207,8 +208,8 @@ main {
                 user-select: none;
 
                 @include global.middle;
-//                @include responsive.gaveteiro;
-//                @include responsive.debuggers-childs-size;
+                @include responsive.gaveteiro;
+                @include responsive.debuggers-childs-size;
             
                 .tooltip {
                     bottom: calc(100% - default.$tooltip-size-arr);
@@ -223,8 +224,8 @@ main {
                     
                     @include global.flex($wrap: nowrap);
 
-//                    @include responsive.scrollgaveteiro;
-//                    @include responsive.debuggers-childs-flex;
+                    @include responsive.scrollgaveteiro;
+                    @include responsive.debuggers-childs-flex;
 
                     .drawer {
                         min-width: play.$gaveta-width;
@@ -237,14 +238,14 @@ main {
                         @include global.animation(twink, 1.5s, 1);
                         @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
 
-//                        @include responsive.gavetas;
-
                         &:hover {
                             filter: hue-rotate(45deg) !important;
                         }
 
                         &:not(:first-child, :last-child) {
                             margin: 0 play.$gaveta-margin;
+
+                            @include responsive.gavetas;
                         }
 
                         &.default {
@@ -267,13 +268,13 @@ main {
                         &:first-child {
                             margin-right: play.$gaveta-margin;
                             // margin: 0 play.$gaveta-margin 0 0;
-//                            @include responsive.gavetas;
+                            @include responsive.gavetas;
                         }
 
                         &:last-child {
                             margin-left: play.$gaveta-margin;
                             // margin: 0 0 0 play.$gaveta-margin;
-//                            @include responsive.gavetas;
+                            @include responsive.gavetas;
                         }
 
                         div {

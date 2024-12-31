@@ -1,8 +1,8 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
-$screen-responsive-width1: 1470px;
+$screen-responsive-width1: 1050px;
 $screen-responsive-width2: 800px;
-$screen-responsive-width3: 600px;
+$screen-responsive-width3: 500px;
 // ------------------------------------------------------------------------------- 
 $header-responsive-width: 680px;
 
@@ -18,7 +18,7 @@ $nav-responsive-width: 90vw;
 $menu-num-buttons: 5;
 $menu-width: calc($menu-num-buttons * default.$menu-buttons-width);
 // ------------------------------------------------------------------------------- 
-$main-initial-width: $nav-initial-width;
+// $main-initial-width: $nav-initial-width;
 $main-initial-height: calc(100vh - $header-height);
 // ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vh;
@@ -31,12 +31,12 @@ $gaveta-height: 144px;
 
 $gaveta-margin: 0.6em;
 // ------------------------------------------------------------------------------- 
-$spacing: 50px;
+$spacing: 3em;
 // ------------------------------------------------------------------------------- 
-$debuggers-initial-width: 62%;
+$debuggers-initial-width: 65%;
 $debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
 // ------------------------------------------------------------------------------- 
-$porta-cartoes-initial-width: 36%;
+$porta-cartoes-initial-width: 30%;
 $porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
 // ------------------------------------------------------------------------------- 
 $old-paper: #ffe8c4;

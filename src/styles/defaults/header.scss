@@ -185,8 +185,8 @@ header {
             }
 
             #states-view {
-                @include global.size(28em, calc(default.$home-height * 0.9));
                 @include global.flex;
+                @include global.size(28em, default.$home-height);
 
                 @media screen and (max-width: play.$state-labels-responsive-width) {
                     width: 15em;
