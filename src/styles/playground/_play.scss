@@ -19,16 +19,17 @@ $menu-num-buttons: 5;
 $menu-width: calc($menu-num-buttons * default.$menu-buttons-width);
 // ------------------------------------------------------------------------------- 
 $main-initial-width: $nav-initial-width;
-
 $main-initial-height: calc(100vh - $header-height);
 // ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vh;
 $viewers-responsive-size: calc($viewers-initial-size * 0.9);
+
+$viewers-font-size: calc($viewers-initial-size * 0.5);
 // ------------------------------------------------------------------------------- 
 $gaveta-width: 146px;
 $gaveta-height: 144px;
 
-$gaveta-margin: 10px;
+$gaveta-margin: 0.6em;
 // ------------------------------------------------------------------------------- 
 $spacing: 50px;
 // ------------------------------------------------------------------------------- 

@@ -1,7 +1,7 @@
 @use '../globals' as global;
 @use './play' as play;
 @use '../defaults/default' as default;
-@use './responsiveplay' as responsive;
+// @use './responsiveplay' as responsive;
 /* -------------------------------------------------------------------- */
 @mixin portacartoes-viewers {
     @include global.shadow($length1: 3px, $blur: 5px, $transparency: 0.2);
@@ -21,13 +21,13 @@ main {
     @include global.center;
     @include global.size(play.$main-initial-width, play.$main-initial-height);
 
-    @include responsive.main;
+//    @include responsive.main;
     
     #playground {
         @include global.flex;
         @include global.size(100%, 95%);
 
-        @include responsive.playground;
+//        @include responsive.playground;
 
         .tooltip {
             z-index: 1;
@@ -38,14 +38,18 @@ main {
         }
 
         #porta-cartoes {
+            $font-size: 2em;
+
             text-align: center;
             background-color: play.$old-paper;
+
+            min-width: 20em;
             
-            @include global.size(play.$porta-cartoes-initial-width, 100%);
             @include global.flex($justify: center);
+            @include global.size(play.$porta-cartoes-initial-width, 100%);
             
             @include portacartoes-viewers;
-            @include responsive.porta-cartoes;
+//            @include responsive.porta-cartoes;
             
             #scroll-tablecards {
                 width: 100%;
@@ -59,14 +63,14 @@ main {
                         background-color: global.$white;
 
                         &:hover {
-                            background-color: global.$color1-dark;
+                            background-color: global.$lightgray;
                         }
                         
                         td {
-                            border: 0.05em solid global.$black;
                             padding: 0.25em 0;
-
-                            font-size: 2em;
+                            border: 0.05em solid global.$black;
+                            
+                            font-size: $font-size;
                             @include global.setFont(dotted);
                         }
                     }
@@ -74,25 +78,22 @@ main {
             }
 
             #editor {
-                font-size: 2em;
+                font-size: $font-size;
                 @include global.size(100%);
 
                 &, * {
                     background-color: play.$old-paper;
+
+                    @include global.setFont(code);
                 }
 
                 .cm-scroller {
                     overflow-x: hidden;
                 }
-                
-                #content * {
-                    @include global.setFont(mono);
-                }
 
                 .cm-lineNumbers > * {
                     font-size: 0.9em;
-
-                    @include global.setFont(code);
+                    user-select: none;
                 }
                 
                 br {
@@ -101,8 +102,8 @@ main {
             }
 
             .tooltip {
-                bottom: default.$tooltip-size-arr;
                 left: default.$tooltip-size-arr;
+                bottom: default.$tooltip-size-arr;
 
                 &::after {
                     @include global.tooltip-top(default.$tooltip-size-arr);
@@ -111,32 +112,24 @@ main {
         }
         
         .debuggers {
-            @include global.flex($align: normal, $direction: column, $justify: space-around);
+            @include global.flex;
             @include global.size(play.$debuggers-initial-width, 100%);
+            // @include global.flex($align: normal, $direction: column, $justify: space-around);
 
-            @include responsive.debuggers;
+//            @include responsive.debuggers;
 
             > * {
                 width: 100%;
             }
 
             .viewers {
+                $radius: 0.2em;
+
                 @include global.flex;
 
-                @include responsive.debuggers-childs-flex;
-                @include responsive.debuggers-childs-size;
-                @include responsive.viewers;
-
-                > * {
-                    @include global.size(play.$viewers-initial-size);
-                    
-                    @include portacartoes-viewers;
-                    @include responsive.viewers-childs;
-                }
-
-                .viewers-values {
-                    font-size: calc(play.$viewers-responsive-size * 0.6);
-                }
+//                @include responsive.debuggers-childs-flex;
+//                @include responsive.debuggers-childs-size;
+//                @include responsive.viewers;
 
                 .tooltip {
                     bottom: default.$tooltip-size-arr;
@@ -146,31 +139,30 @@ main {
                     }
                 }
 
-                #folha-de-saida {
-                    @include global.middle;
-                    @include global.background($image: 'playground/notepad', $size: contain);
-        
-                    #saida-value {
-                        margin-top: 0.1em;
+                > * {
+                    max-width: 100%;
 
-                        @include global.setFont(cursive);
-                    }
+                    @include global.middle;
+                    @include global.size(play.$viewers-initial-size);
+                    
+                    @include portacartoes-viewers;
+//                    @include responsive.viewers-childs;
+                }
+
+                .viewers-values {
+                    font-size: play.$viewers-font-size;
                 }
         
                 #contorno-epi {
-                    $border: 2px;
-
-                    border-radius: $border;
+                    border-radius: $radius;
                     background-color: play.$brown-wood;
-
-                    @include global.middle;
         
                     #epi {
+                        border-radius: $radius;
                         background-color: play.$green-board;
-                        border-radius: $border;
 
                         @include global.middle;
-                        @include global.size(90%);
+                        @include global.size(88%);
         
                         #epi-value {
                             color: global.$white;
@@ -180,34 +172,43 @@ main {
                 }
         
                 #acumulador {
-                    $border-width: 10px;
+                    $border-width: 0.5em;
                     
                     background-color: play.$lightgreen-display;
                     
+                    border-radius: $radius;
                     border: $border-width ridge global.$black;
-                    border-radius: 5px;
-        
-                    position: relative;
-                    @include global.middle;
         
                     #acumulador-value, #overlay {
-                        font-size: calc(play.$viewers-initial-size * 0.44);
+                        font-size: calc(play.$viewers-font-size * 0.9);
 
                         @include global.absolute-middle;
                         @include global.setFont(segment);
         
                         &#overlay {
-                            color: #{global.$black}15;
                             user-select: none;
+                            color: #{global.$black}15;
                         }
+                    }
+                }
+
+                #folha-de-saida {
+                    @include global.background($image: 'playground/notepad', $size: contain);
+        
+                    #saida-value {
+                        margin-top: 0.2em;
+    
+                        @include global.setFont(cursive);
                     }
                 }
             }
 
             #gaveteiro {
+                user-select: none;
+
                 @include global.middle;
-                @include responsive.gaveteiro;
-                @include responsive.debuggers-childs-size;
+//                @include responsive.gaveteiro;
+//                @include responsive.debuggers-childs-size;
             
                 .tooltip {
                     bottom: calc(100% - default.$tooltip-size-arr);
@@ -218,30 +219,32 @@ main {
                 }
 
                 #scroll-gaveteiro {
-                    overflow: scroll;
-                    scroll-behavior: smooth;
+                    overflow: auto;
                     
                     @include global.flex($wrap: nowrap);
 
-                    @include responsive.scrollgaveteiro;
-                    @include responsive.debuggers-childs-flex;
+//                    @include responsive.scrollgaveteiro;
+//                    @include responsive.debuggers-childs-flex;
 
                     .drawer {
                         min-width: play.$gaveta-width;
                         min-height: play.$gaveta-height;
                         
-                        position: relative;
-                        margin: 0 play.$gaveta-margin;
+                        // position: relative;
 
                         filter: drop-shadow(4px 7px 2px #{global.$black}80);
 
                         @include global.animation(twink, 1.5s, 1);
                         @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
 
-                        @include responsive.gavetas;
+//                        @include responsive.gavetas;
 
                         &:hover {
                             filter: hue-rotate(45deg) !important;
+                        }
+
+                        &:not(:first-child, :last-child) {
+                            margin: 0 play.$gaveta-margin;
                         }
 
                         &.default {
@@ -262,13 +265,15 @@ main {
                         }
                         
                         &:first-child {
-                            margin: 0 play.$gaveta-margin 0 0;
-                            @include responsive.gavetas;
+                            margin-right: play.$gaveta-margin;
+                            // margin: 0 play.$gaveta-margin 0 0;
+//                            @include responsive.gavetas;
                         }
 
                         &:last-child {
-                            margin: 0 0 0 play.$gaveta-margin;
-                            @include responsive.gavetas;
+                            margin-left: play.$gaveta-margin;
+                            // margin: 0 0 0 play.$gaveta-margin;
+//                            @include responsive.gavetas;
                         }
 
                         div {
@@ -290,8 +295,8 @@ main {
                                 @include global.setFont(mono);
 
                                 &.num-drawer {
-                                    font-weight: bold;
                                     font-size: 2em;
+                                    font-weight: bold;
                                 }
 
                                 &.cont-drawer {
@@ -307,10 +312,10 @@ main {
         #debug-menu {
             width: 100%;
 
-            position: fixed;
-            z-index: 999;
-            bottom: 0;
             left: 0;
+            bottom: 0;
+            z-index: 999;
+            position: fixed;
 
             transition: 0.5s;
 
@@ -319,41 +324,37 @@ main {
             menu {
                 $width: 40vh;
                 $border-radius: 1em;
+
                 width: $width;
 
-                background-color: global.$lightgray;
                 padding: 1em 0.5em;
+                background-color: global.$lightgray;
 
-                border-width: 0.3em;
-                border-color: global.$black;
-                border-style: ridge;
+                border: 0.3em ridge global.$black;
+
                 border-bottom: none;
-                border-radius: $border-radius $border-radius 0 0;
 
-                @include global.center;
                 @include global.flex;
+                @include global.center;
+                @include global.rounded-border($border-radius, 0);
 
                 li {
+                    $radius: 20%;
+                    $color: global.$black;
                     $size-icon: calc($width/6);
                     $size-border: calc($size-icon/2);
-                    $color: global.$black;
-                    $radius: 20%;
 
                     cursor: pointer;
-                    position: relative;
-                    
-                    border-width: $size-border;
-                    border-style: solid;
-                    border-color: transparent;
-
                     filter: brightness(0.5);
+                    
+                    border: $size-border solid transparent;
 
                     &#back {
-                        border-right-color: $color;
-                        border-right-width: calc($size-icon);
                         border-left-width: 0;
-                        
+                        border-right-width: calc($size-icon);
+
                         border-radius: $radius;
+                        border-right-color: $color;
                         
                         &:hover {
                             border-right-color: play.$live-blue;
@@ -361,32 +362,33 @@ main {
                     }
 
                     &#forth {
-                        border-left-color: $color;
-                        border-left-width: calc($size-icon);
                         border-right-width: 0;
+                        border-left-width: calc($size-icon);
                         
                         border-radius: $radius;
+                        border-left-color: $color;
                         
                         &:hover {
                             border-left-color: play.$live-blue;
                         }
                     }
 
-                    &.pause {
-                        border-color: play.$nice-green;
-                        border-style: double;
-                        
-                        border-width: 0 0 0 $size-icon;
-
+                    &#pause-continue {
                         @include global.size($size-icon);
-                    }
 
-                    &.continue {
-                        border-left-color: play.$nice-green;
-                        border-left-width: calc($size-icon);
-                        border-right-width: 0;
-                        
-                        @include global.size($size-icon);
+                        &.pause {
+                            border-style: double;
+                            border-color: play.$nice-green;
+                            
+                            border-width: 0 0 0 $size-icon;
+                        }
+
+                        &.continue {
+                            border-right-width: 0;
+
+                            border-left-width: calc($size-icon);
+                            border-left-color: play.$nice-green;
+                        }
                     }
 
                     &#finish {
