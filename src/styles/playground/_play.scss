@@ -1,43 +1,31 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
-$screen-responsive-width1: 1050px;
-$screen-responsive-width2: 800px;
-$screen-responsive-width3: 500px;
+$spacing: 3em;
 // ------------------------------------------------------------------------------- 
-$header-responsive-width: 680px;
-
-$tools-buttons-responsive-width: 1390px;
-$state-labels-responsive-width: 860px;
-
 $header-padding: 0.3em;
 $header-height: calc($header-padding * 2 + default.$home-height);
-
-$nav-initial-width: 94vw;
-$nav-responsive-width: 90vw;
-
-$menu-num-buttons: 5;
-$menu-width: calc($menu-num-buttons * default.$menu-buttons-width);
 // ------------------------------------------------------------------------------- 
-// $main-initial-width: $nav-initial-width;
+$nav-initial-width: 94vw;
+// ------------------------------------------------------------------------------- 
+$menu-num-buttons: 5;
+$menu-width: calc(($menu-num-buttons + 1) * default.$menu-buttons-width);
+// ------------------------------------------------------------------------------- 
 $main-initial-height: calc(100vh - $header-height);
 // ------------------------------------------------------------------------------- 
+$debuggers-initial-width: 65%;
+// ------------------------------------------------------------------------------- 
+$porta-cartoes-initial-width: 30%;
+// ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vh;
-$viewers-responsive-size: calc($viewers-initial-size * 0.9);
+$viewers-font-size: 550%;
 
-$viewers-font-size: calc($viewers-initial-size * 0.5);
+$playground-percentual: 0.95;
+$playground-initial-height: calc($main-initial-height * $playground-percentual);
 // ------------------------------------------------------------------------------- 
 $gaveta-width: 146px;
 $gaveta-height: 144px;
 
 $gaveta-margin: 0.6em;
-// ------------------------------------------------------------------------------- 
-$spacing: 3em;
-// ------------------------------------------------------------------------------- 
-$debuggers-initial-width: 65%;
-$debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
-// ------------------------------------------------------------------------------- 
-$porta-cartoes-initial-width: 30%;
-$porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
 // ------------------------------------------------------------------------------- 
 $old-paper: #ffe8c4;
 $brown-wood: #915901;
@@ -48,3 +36,20 @@ $golden: #b8860b;
 $dark-red: #8b0000;
 $live-blue: #0000F6;
 $nice-green: #008000;
+// ------------------------------------------------------------------------------- 
+$screen-responsive-width1: 1100px;
+$screen-responsive-width2: 800px;
+$screen-responsive-width3: 500px;
+// ------------------------------------------------------------------------------- 
+$header-responsive-width: 700px;
+$tools-buttons-responsive-width: 1390px;
+$state-labels-responsive-width: 860px;
+// ------------------------------------------------------------------------------- 
+$nav-responsive-width: 88vw;
+$debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
+$porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
+
+$viewers-responsive-size: calc($playground-initial-height * 0.3);
+$viewers-responsive-size2: 12em;
+
+$playground-responsive-height: calc($viewers-responsive-size2 * 3 + $spacing);

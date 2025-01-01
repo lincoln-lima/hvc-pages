@@ -26,7 +26,7 @@ main {
     
     #playground {
         @include global.flex;
-        @include global.size(play.$nav-initial-width, 95%);
+        @include global.size(play.$nav-initial-width, play.$playground-percentual * 100%);
 
         @include responsive.playground;
 
@@ -128,17 +128,8 @@ main {
 
                 @include global.flex;
 
-                @include responsive.viewers;
                 @include responsive.debuggers-childs-flex;
                 @include responsive.debuggers-childs-size;
-
-                .tooltip {
-                    bottom: default.$tooltip-size-arr;
-
-                    &::after {
-                        @include global.tooltip-top(default.$tooltip-size-arr);
-                    }
-                }
 
                 > * {
                     max-width: 100%;
@@ -198,8 +189,17 @@ main {
         
                     #saida-value {
                         margin-top: 0.2em;
+                        font-size: calc(play.$viewers-font-size * 1.2);
     
                         @include global.setFont(cursive);
+                    }
+                }
+
+                .tooltip {
+                    bottom: default.$tooltip-size-arr;
+
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
                     }
                 }
             }
@@ -230,8 +230,6 @@ main {
                     .drawer {
                         min-width: play.$gaveta-width;
                         min-height: play.$gaveta-height;
-                        
-                        // position: relative;
 
                         filter: drop-shadow(4px 7px 2px #{global.$black}80);
 
@@ -323,10 +321,11 @@ main {
             @include global.hidden;
 
             menu {
-                $width: 40vh;
+                $width: 15em;
+                $height: calc($width/3);
                 $border-radius: 1em;
 
-                width: $width;
+                max-width: 90%;
 
                 padding: 1em 0.5em;
                 background-color: global.$lightgray;
@@ -337,12 +336,13 @@ main {
 
                 @include global.flex;
                 @include global.center;
+                @include global.size($width, $height);
                 @include global.rounded-border($border-radius, 0);
 
                 li {
                     $radius: 20%;
                     $color: global.$black;
-                    $size-icon: calc($width/6);
+                    $size-icon: calc($height/2);
                     $size-border: calc($size-icon/2);
 
                     cursor: pointer;
