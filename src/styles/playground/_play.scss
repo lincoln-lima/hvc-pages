@@ -17,7 +17,7 @@ $debuggers-initial-width: 65%;
 $porta-cartoes-initial-width: 30%;
 // ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vh;
-$viewers-font-size: 550%;
+$viewers-font-size: calc($viewers-initial-size * 0.45);
 
 $playground-percentual: 0.95;
 $playground-initial-height: calc($main-initial-height * $playground-percentual);
@@ -37,19 +37,23 @@ $dark-red: #8b0000;
 $live-blue: #0000F6;
 $nice-green: #008000;
 // ------------------------------------------------------------------------------- 
-$screen-responsive-width1: 1100px;
-$screen-responsive-width2: 800px;
-$screen-responsive-width3: 500px;
+$screen-responsive: (width1: 1100px, width2: 800px, width3: 500px);
 // ------------------------------------------------------------------------------- 
 $header-responsive-width: 700px;
 $tools-buttons-responsive-width: 1390px;
 $state-labels-responsive-width: 860px;
 // ------------------------------------------------------------------------------- 
 $nav-responsive-width: 88vw;
-$debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
-$porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
 
 $viewers-responsive-size: calc($playground-initial-height * 0.3);
 $viewers-responsive-size2: 12em;
+
+$debuggers-responsive-width: calc($viewers-initial-size + $gaveta-width + $spacing);
+$debuggers-responsive-width2: calc($viewers-responsive-size2 + $gaveta-width + $spacing);
+
+$porta-cartoes-responsive-width: calc(100% - $debuggers-responsive-width - $spacing);
+
+$viewers-responsive-font-size: calc($viewers-responsive-size * 0.45);
+$viewers-responsive-font-size2: calc($viewers-responsive-size2 * 0.45);
 
 $playground-responsive-height: calc($viewers-responsive-size2 * 3 + $spacing);

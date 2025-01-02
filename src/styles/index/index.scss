@@ -170,15 +170,17 @@ main {
                 }
 
                 img {
-                    display: block;
                     float: right;
+                    display: block;
 
                     padding: 1em;
+                    max-width: 100%;
 
                     @include global.center;
 
                     @media screen and (max-width: index.$content-responsive-width) {
                         float: none;
+                        padding: 1em 0;
                     }
                 }
 

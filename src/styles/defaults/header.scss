@@ -1,3 +1,5 @@
+@use 'sass:map';
+/* -------------------------------------------------------------------- */
 @use '../globals' as global;
 @use '../defaults/default' as default;
 @use '../index/in' as index;
@@ -56,7 +58,7 @@
 header {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 9;
 
     background-color: global.$white;
 
@@ -180,11 +182,13 @@ header {
         nav {
             max-width: play.$nav-initial-width;
 
-            @media screen and (max-width: play.$screen-responsive-width2) {
+            @media screen and (max-width: map.get(play.$screen-responsive, width2)) {
                 max-width: play.$nav-responsive-width;
             }
 
             #states-view {
+                max-width: calc(100% - default.$home-height - play.$spacing/2);
+
                 @include global.flex;
                 @include global.size(28em, default.$home-height);
 
