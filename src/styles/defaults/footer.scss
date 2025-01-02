@@ -11,10 +11,14 @@ footer {
     }
 
     section {
+        max-width: 95%;
+        
+        @include global.center;
         @include global.flex($justify: space-around);
         
         article {
-            @include global.size(22em, 10em);
+            max-width: 22em;
+            min-height: 10em;
             
             &:nth-child(2) {
                 @include global.flex($justify: space-evenly, $direction: column);

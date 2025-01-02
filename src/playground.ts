@@ -137,7 +137,7 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 680;
+const windowsizemenu = 700;
 // ------------------------------------------------------------------------------- 
 document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
 // ------------------------------------------------------------------------------- 

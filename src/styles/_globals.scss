@@ -196,45 +196,9 @@ $fonts:
     text-align: justify;
 }
 /* -------------------------------------------------------------------- */
-@mixin responsive-flex-direction($min, $max, $direction) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        flex-direction: $direction;
-    }
-}
-
-@mixin responsive-justify-content($min, $max, $justify) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        justify-content: $justify;
-    }
-}
-
-@mixin responsive-size($min, $max, $width, $height: $width) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        @include size($width, $height);
-    }
-}
-
-@mixin responsive-width($min, $max, $width) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        width: $width;
-    }
-}
-
-@mixin responsive-height($min, $max, $height) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        height: $height;
-    }
-}
-
-@mixin responsive-center($min, $max) {
-    @media screen and (min-width: $min) and (max-width: $max) {
-        @include center;
-    }
-}
-
 @mixin responsive-font-size($min, $max, $size) {
     @media screen and (min-width: $min) and (max-width: $max) {
-        font-size: calc($size * 0.8);
+        font-size: calc($size * 0.7);
     }
 }
 /* -------------------------------------------------------------------- */

@@ -146,7 +146,7 @@ button {
         border-radius: $radius;
         
         @include global.size($size);
-        @include global.background($image: menu);
+        @include global.background($image: menu, $size: contain);
 
         &:hover {
             background-color: #{global.$black}15;

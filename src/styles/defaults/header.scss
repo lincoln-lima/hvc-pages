@@ -1,3 +1,5 @@
+@use 'sass:map';
+/* -------------------------------------------------------------------- */
 @use '../globals' as global;
 @use '../defaults/default' as default;
 @use '../index/in' as index;
@@ -56,7 +58,7 @@
 header {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 9;
 
     background-color: global.$white;
 
@@ -180,13 +182,15 @@ header {
         nav {
             max-width: play.$nav-initial-width;
 
-            @media screen and (max-width: play.$screen-responsive-width2) {
+            @media screen and (max-width: map.get(play.$screen-responsive, width2)) {
                 max-width: play.$nav-responsive-width;
             }
 
             #states-view {
-                @include global.size(28em, calc(default.$home-height * 0.9));
+                max-width: calc(100% - default.$home-height - play.$spacing/2);
+
                 @include global.flex;
+                @include global.size(28em, default.$home-height);
 
                 @media screen and (max-width: play.$state-labels-responsive-width) {
                     width: 15em;
@@ -195,7 +199,7 @@ header {
                 .state {
                     $dot-size: calc(default.$home-height * 0.5);
 
-                    border-radius: 15px;
+                    border-radius: 1em;
                     filter: brightness(0.5);
                     
                     @include global.middle;
@@ -205,18 +209,7 @@ header {
                         cursor: help;
                     }
 
-                    .tooltip {
-                        top: calc(100% + default.$tooltip-size-arr * 2);
-                        height: 3em;
-                        width: 7em;
-
-                        &::after {
-                            @include global.tooltip-top(default.$tooltip-size-arr);
-                        }
-                    }
-                    
                     .state-data {
-                        min-width: 75%;
                         @include global.flex;
 
                         span {
@@ -227,8 +220,8 @@ header {
                             @include global.setFont(mono);
                         
                             &.dot-state {
-                                background-color: global.$white;
                                 border-radius: 0.1em;
+                                background-color: global.$white;
 
                                 transition: 0.5s;
     
@@ -254,20 +247,38 @@ header {
                             width: 90%;
                         
                             .dot-state {
-                                border-radius: 50%;
+                                @include global.circle;
                             }
                         }
                     }
 
                     &#charging-state {
                         background-color: play.$golden;
+
+                        .state-data {
+                            width: 70%;
+                        }
                     }
 
                     &#editing-state {
                         background-color: play.$live-blue;
 
-                        .dot-state {
-                            @include global.background($image: 'playground/menu/pen', $size: cover);
+                        .state-data {
+                            width: 80%;
+
+                            .dot-state {
+                                @include global.background($image: 'playground/menu/pen', $size: cover);
+                            }
+                        }
+                    }
+
+                    .tooltip {
+                        width: 7em;
+                        height: 3em;
+                        top: calc(100% + default.$tooltip-size-arr * 2);
+
+                        &::after {
+                            @include global.tooltip-top(default.$tooltip-size-arr);
                         }
                     }
                 }
@@ -299,33 +310,22 @@ header {
                 }
             }
 
-
             .primary-menu {
-                width: calc(play.$menu-width * 1.2);
+                width: play.$menu-width;
 
                 @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$tools-buttons-responsive-width) {
-                    width: calc(play.$menu-width * 0.5);
+                    width: calc(play.$menu-width * 0.4);
 
                     .tooltip {
-                        height: calc(default.$tooltip-height * 1.7);
                         padding: 0 0.5em;
+                        height: calc(default.$tooltip-height * 1.7);
                     }
                 }
                     
                 @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
-                .tooltip {
-                    top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
-
-                    &::after {
-                        @include global.tooltip-top(default.$tooltip-size-arr);
-                    }
-                }
-
                 button {
                     padding: 0 0.4em;
-
-                    cursor: pointer;
 
                     .label-tool {
                         margin-left: 0.5em;
@@ -333,6 +333,14 @@ header {
                         @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
                             display: none;
                         }
+                    }
+                }
+
+                .tooltip {
+                    top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
+
+                    &::after {
+                        @include global.tooltip-top(default.$tooltip-size-arr);
                     }
                 }
             }
