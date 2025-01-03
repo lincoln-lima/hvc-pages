@@ -70,9 +70,11 @@ export const globals = {
     }
 }
 // ------------------------------------------------------------------------------- 
+globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
+// ------------------------------------------------------------------------------- 
 const switchtheme = document.getElementsByClassName("switch-theme")[0]!;
 
-if (switchtheme) {
+if(switchtheme) {
     let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
     // ---------------------------------------------------------------------------
     const switchTheme = (oldtheme: string) => {
@@ -102,7 +104,20 @@ if (switchtheme) {
     });
 }
 // ------------------------------------------------------------------------------- 
-globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
+const copies = document.getElementsByClassName("copy")!;
+const commands = document.getElementsByClassName("cmd")!;
+
+if(copies) {
+    Array.from(copies).forEach((copy, i) =>
+        copy.addEventListener("click", () => {
+            copy.classList.add("copied");
+            
+            setTimeout(() => copy.classList.remove("copied"), 3000);
+            
+            navigator.clipboard.writeText(commands[i].textContent!);
+        })
+    );
+}
 // ------------------------------------------------------------------------------- 
 window.addEventListener("click", e => {
     const element = e.target;

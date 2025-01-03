@@ -65,6 +65,8 @@ header {
     @include global.shadow($length1: 1px, $blur: 9px, $transparency: 0.2);
 
     nav {
+        max-width: default.$nav-width;
+
         @include global.flex;
         @include global.center;
 
@@ -78,10 +80,20 @@ header {
             }
 
             &#home {
+                $max-percentual: 0.85;
+
                 font-size: 1.5em;
 
                 @include global.flex($wrap: nowrap);
-                @include global.size(7em, default.$home-height);
+                @include global.size(default.$home-width, default.$home-height);
+
+                @media screen and (max-width: default.$home-responsive-width) {
+                    width: fit-content;
+
+                    h1 {
+                        display: none;
+                    }
+                }
     
                 &:hover {
                     filter: brightness(0.9);
@@ -106,6 +118,8 @@ header {
         }
 
         .primary-menu {
+            width: default.$menu-width;
+
             transition: opacity 0.5s;
 
             @include global.flex;
@@ -143,36 +157,24 @@ header {
             margin-bottom: 1em;
         }
 
-        nav {
-            max-width: index.$nav-width;
-            
-            .primary-menu {
-                width: index.$menu-width;
-                
-                @include responsive-menu(calc(index.$header-height - index.$header-padding), index.$menu-num-buttons, index.$header-responsive-width);
-            }
+        .primary-menu {
+            @include responsive-menu(calc(index.$header-height - index.$header-padding), default.$menu-num-buttons, index.$header-responsive-width);
+        }
 
-            .burger-menu {
-                @include responsive-burguer(index.$header-responsive-width);
-            }
+        .burger-menu {
+            @include responsive-burguer(index.$header-responsive-width);
         }
     }    
 
     &#header-doc {
         padding: doc.$header-padding 0;
 
-        nav {
-            max-width: doc.$nav-width;
+        .primary-menu {
+            @include responsive-menu(calc(doc.$header-height - doc.$header-padding), default.$menu-num-buttons, doc.$header-responsive-width);
+        }
 
-            .primary-menu {
-                width: doc.$menu-width;
-
-                @include responsive-menu(calc(doc.$header-height - doc.$header-padding), doc.$menu-num-buttons, doc.$header-responsive-width);
-            }
-
-            .burger-menu {
-                @include responsive-burguer(doc.$header-responsive-width);
-            }
+        .burger-menu {
+            @include responsive-burguer(doc.$header-responsive-width);
         }
     }
 
@@ -313,7 +315,7 @@ header {
             .primary-menu {
                 width: play.$menu-width;
 
-                @media screen and (min-width: play.$header-responsive-width) and (max-width: play.$tools-buttons-responsive-width) {
+                @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
                     width: calc(play.$menu-width * 0.4);
 
                     .tooltip {

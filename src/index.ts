@@ -11,21 +11,6 @@ const windowsizemenu = 860;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
-const copies = document.getElementsByClassName("copy")!;
-const commands = document.getElementsByClassName("cmd")!;
-
-Array.from(copies).forEach((copy, i) =>
-    copy.addEventListener("click", () => {
-        copy.classList.add("copied");
-        
-        setTimeout(() => {
-           copy.classList.remove("copied"); 
-        }, 3000);
-        
-        navigator.clipboard.writeText(commands[i].textContent!);
-    })
-);
-// ------------------------------------------------------------------------------- 
 const table = document.getElementById("table")!;
 
 const setTemplates = async () => {

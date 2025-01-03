@@ -1,16 +1,13 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
+$font-responsive-width: 500px;
 $header-responsive-width: 860px;
 $content-responsive-width: 1050px;
 // ------------------------------------------------------------------------------- 
 $header-padding: 0.5em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 // ------------------------------------------------------------------------------- 
-$nav-width: 90vw;
-$main-width: $nav-width;
-// ------------------------------------------------------------------------------- 
-$menu-num-buttons: 3;
-$menu-width: calc(($menu-num-buttons + 1) * default.$menu-buttons-width);
+$main-width: default.$nav-width;
 // ------------------------------------------------------------------------------- 
 $sticky-nav-width: 19rem;
 $sticky-nav-height: calc(100vh - $header-height);
@@ -18,4 +15,4 @@ $sticky-nav-height: calc(100vh - $header-height);
 $spacement-content-nav: 4em; 
 $content-width: calc(100% - $sticky-nav-width - $spacement-content-nav);
 // ------------------------------------------------------------------------------- 
-$color-menu: #e2e2e2;
+$color-menu: #ebebeb;

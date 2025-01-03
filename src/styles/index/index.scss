@@ -134,17 +134,14 @@ main {
                             margin-left: calc($margin-side * 1.15);
                         }
 
-                        pre {
+                        .pre-code {
                             margin-top: 1.5em;
                             margin-left: calc($margin-side * 1.8);
 
+                            align-items: center;
+
                             code {
                                 margin-right: $margin-side;
-                            }
-
-                            .copy {
-                                position: sticky;
-                                right: 0;
                             }
                         }
                     }
@@ -211,6 +208,16 @@ main {
                     }
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: index.$font-responsive-width) {
+        h1, h2, h3 {
+            font-size: 12vw;
+        }
+
+        .come-to-play {
+            font-size: 4vw;
         }
     }
 }
