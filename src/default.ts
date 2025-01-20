@@ -105,9 +105,10 @@ if(switchtheme) {
 }
 // ------------------------------------------------------------------------------- 
 const copies = document.getElementsByClassName("copy")!;
-const commands = document.getElementsByClassName("cmd")!;
 
 if(copies) {
+    const commands = document.getElementsByClassName("cmd")!;
+
     Array.from(copies).forEach((copy, i) =>
         copy.addEventListener("click", () => {
             copy.classList.add("copied");
@@ -117,6 +118,22 @@ if(copies) {
             navigator.clipboard.writeText(commands[i].textContent!);
         })
     );
+}
+// ------------------------------------------------------------------------------- 
+const opens = document.getElementsByClassName("open")!;
+
+if(opens) {
+    const codes = document.getElementsByClassName("ahv")!;
+
+    const param = location.origin + "/pages/playground.html?code=";
+
+    Array.from(opens).forEach((open, i) => {
+        const code = codes[i].textContent!.replace(/\s*;.*/g, '').replace(/\n/g, "%0A");
+
+        open.addEventListener("click", () => {
+            window.open(param + code, "_blank");
+        })
+    })
 }
 // ------------------------------------------------------------------------------- 
 window.addEventListener("click", e => {

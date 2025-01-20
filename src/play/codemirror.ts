@@ -1,8 +1,11 @@
 import { EditorState } from "@codemirror/state";
-import { defaultKeymap } from "@codemirror/commands";
+import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 // -----------------------------------------------------------------------------------
-const initialcode = (localStorage.getItem("code")) ? localStorage.getItem("code") : "0-50\n105\n805\n000";
+const params = new URLSearchParams(window.location.search);
+const initial = localStorage.getItem("code") ? localStorage.getItem("code") : "0-50\n105\n805\n000";
+
+const code = params.has("code") ? params.get("code") : initial;
 
 const editorid = EditorView.editorAttributes.of({ id: "editor" });
 
@@ -11,9 +14,11 @@ const codechange = EditorView.updateListener.of(update => {
 });
 // -----------------------------------------------------------------------------------
 const startstate = EditorState.create({
-    doc: initialcode!,
+    doc: code!,
     extensions: [
         keymap.of(defaultKeymap),
+        keymap.of(historyKeymap),
+        history(),
         lineNumbers(),
         codechange,
         editorid,

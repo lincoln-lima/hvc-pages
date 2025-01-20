@@ -394,10 +394,10 @@
                             Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados
                             armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).
                         </p>
-                        <pre class="pre-code"><code class="cmd">730    ; <span class="comment">Leitura de cartão para gaveta 30</span>
+                        <pre class="pre-code"><code class="cmd ahv">730    ; <span class="comment">Leitura de cartão para gaveta 30</span>
 830    ; <span class="comment">Escrita da gaveta 30 para folha de saída</span>
 000    ; <span class="comment">Fim do programa</span>
-2      ; <span class="comment">Dado a ser lido pela instrução</span></code><button class="copy"></button></pre>
+2      ; <span class="comment">Dado a ser lido pela instrução</span></code><div><button class="code copy"></button><button class="code open"></button></div></pre>
                     </article>
                     <article id="variaveis">
                         <h4>Variáveis</h4>
@@ -413,7 +413,7 @@
                         <pre class="pre-code"><code class="cmd">x <span class="reserved">=</span> <span class="value">5</span>
 y <span class="reserved">=</span> <span class="value">5</span>
 result <span class="reserved">=</span> x <span class="reserved">+</span> y
-<span class="reserved">print</span>(result)</code><button class="copy"></button></pre>
+<span class="reserved">print</span>(result)</code><button class="code copy"></button></pre>
                         <p>
                             Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas,
                             representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as
@@ -422,7 +422,7 @@ result <span class="reserved">=</span> x <span class="reserved">+</span> y
                             Desta forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo
                             que a leitura com a instrução 7EE atribua corretamente os valores às "variáveis".
                         </p>
-                        <pre class="pre-code"><code class="cmd">730     ; <span class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
+                        <pre class="pre-code"><code class="cmd ahv">730     ; <span class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
 731	; <span class="comment">Leitura do porta-cartões para gaveta 31 (y)</span>
 030	; <span class="comment">Coloca o valor da gaveta 30 (x) no acumulador</span>
 231	; <span class="comment">Realiza a adição do valor da gaveta 31 (y) ao acumulador</span>
@@ -430,7 +430,7 @@ result <span class="reserved">=</span> x <span class="reserved">+</span> y
 832	; <span class="comment">Imprime na folha de saída o valor da gaveta 32 (result)</span>
 000	; <span class="comment">Fim do programa</span>
 5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 30</span>
-5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 31</span></code><button class="copy"></button></pre>
+5       ; <span class="comment">Valor 5 no porta-cartões para leitura na gaveta 31</span></code><div><button class="code copy"></button><button class="code open"></button></div></pre>
                     </article>
                     <article id="desvio">
                         <h4>Desvio</h4>

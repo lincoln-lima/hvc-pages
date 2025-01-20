@@ -142,7 +142,7 @@ button {
         }
     }
 
-    &.copy {
+    &.code {
         border-radius: 0.4em;
         outline: 0.1rem solid #{global.$black}30;
 
@@ -152,15 +152,22 @@ button {
         position: sticky;
 
         @include global.size(default.$copy-size);
-        @include global.faded-button(clipboard);
-
+        
         &:hover {
             outline-color: #{global.$black};
         }
+        
+        &.copy {
+            @include global.faded-button(clipboard);
+    
+            &.copied {
+                @include global.circle;
+                @include global.faded-button(check);
+            }
+        }
 
-        &.copied {
-            @include global.circle;
-            @include global.faded-button(check);
+        &.open {
+            @include global.faded-button(open);
         }
     }
 
@@ -194,6 +201,17 @@ a {
     &.external {
         cursor: alias;
     }
+}
+
+div:has(button.code) {
+    $size: calc(default.$copy-size * 2 + 0.5em);
+
+    min-width: $size;
+
+    right: 0;
+    position: sticky;
+
+    @include global.flex;
 }
 /* -------------------------------------------------------------------- */
 .tooltiper {

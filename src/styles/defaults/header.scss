@@ -199,7 +199,7 @@ header {
                 }
 
                 .state {
-                    $dot-size: calc(default.$home-height * 0.5);
+                    $dot-size: calc(default.$home-height * 0.55);
 
                     border-radius: 1em;
                     filter: brightness(0.5);
@@ -269,7 +269,7 @@ header {
                             width: 80%;
 
                             .dot-state {
-                                @include global.background($image: 'playground/menu/pen', $size: cover);
+                                @include global.background($image: 'playground/menu/pen', $size: contain, $repeat: no-repeat, $position: center);
                             }
                         }
                     }
