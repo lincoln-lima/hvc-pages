@@ -5,12 +5,16 @@ import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 const params = new URLSearchParams(window.location.search);
 const initial = localStorage.getItem("code") ? localStorage.getItem("code") : "0-50\n105\n805\n000";
 
-const code = params.has("code") ? params.get("code") : initial;
+const code = localStorage.getItem("saved") != "true" && params.has("code") ? params.get("code") : initial;
 
 const editorid = EditorView.editorAttributes.of({ id: "editor" });
 
 const codechange = EditorView.updateListener.of(update => {
-    if(update.docChanged) localStorage.setItem("code", getDoc());
+    if(update.docChanged) {
+        localStorage.setItem("code", getDoc());
+
+        if(localStorage.getItem("saved") != "true") localStorage.setItem("saved", "true");
+    }
 });
 // -----------------------------------------------------------------------------------
 const startstate = EditorState.create({

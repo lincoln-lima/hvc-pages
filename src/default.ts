@@ -131,6 +131,8 @@ if(opens) {
         const code = codes[i].textContent!.replace(/\s*;.*/g, '').replace(/\n/g, "%0A");
 
         open.addEventListener("click", () => {
+            localStorage.setItem("saved", "false");
+
             window.open(param + code, "_blank");
         })
     })
