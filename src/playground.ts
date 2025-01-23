@@ -107,10 +107,11 @@ export const play = {
             }
         },
 
-        switchPauseContinue: () => {
-            const actual = play.elements.pausecontinue().className;
+        switchPauseContinue: (set: boolean) => {
+            const actual = set ? "pause" : "continue";
+            const switched = set ? "continue" : "pause";
 
-            play.elements.pausecontinue().className = actual != "pause" ? "pause" : "continue";
+            play.elements.pausecontinue().classList.replace(actual, switched);
         },
 
         addCardToTable: (card: string) => {

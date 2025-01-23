@@ -279,12 +279,28 @@ main {
                 @media screen and (max-width: $width3) {
                     height: play.$playground-responsive-height;
                 }
-            
-                .tooltip {
-                    bottom: calc(100% - default.$tooltip-size-arr);
 
-                    &::after {
-                        @include global.tooltip-bottom(default.$tooltip-size-arr);
+                .drawer, .little-drawer {
+                    filter: drop-shadow(4px 7px 2px #{global.$black}80);
+
+                    @include global.animation(twink, 1.5s, 1);
+                    @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
+
+                    &.default {
+                        animation: inherit;
+                        filter: brightness(0.5);
+                    }
+
+                    &.code {
+                        filter: hue-rotate(300deg);
+                    }
+                    
+                    &.data {
+                        filter: hue-rotate(210deg);
+                    }
+
+                    &.pointed {
+                        filter: hue-rotate(110deg);
                     }
                 }
 
@@ -305,38 +321,16 @@ main {
                         min-width: play.$gaveta-width;
                         min-height: play.$gaveta-height;
 
-                        filter: drop-shadow(4px 7px 2px #{global.$black}80);
-
-                        @include global.animation(twink, 1.5s, 1);
-                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
-
-                        @media screen and (min-width: 0) and (max-width: $width1) {
+                        @media screen and (max-width: $width1) {
                             margin: 0 !important;
                         }
 
                         &:hover {
-                            filter: hue-rotate(45deg) !important;
+                            filter: hue-rotate(45deg);
                         }
 
                         &:not(:first-child, :last-child) {
                             margin: 0 play.$gaveta-margin;
-                        }
-
-                        &.default {
-                            animation: inherit;
-                            filter: brightness(0.5);
-                        }
-
-                        &.code {
-                            filter: hue-rotate(300deg);
-                        }
-                        
-                        &.data {
-                            filter: hue-rotate(210deg);
-                        }
-
-                        &.pointed {
-                            filter: hue-rotate(110deg);
                         }
                         
                         &:first-child {
@@ -374,6 +368,54 @@ main {
                                     font-size: 1.5em;
                                 }
                             }
+                        }
+                    }
+                }
+
+                .tooltip {
+                    $drawer-size: 2em;
+
+                    bottom: 100%;
+
+                    @media screen and (max-width: $width1) {
+                        align-items: start;
+                        flex-direction: column;
+                    }
+
+                    @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                        bottom: inherit;
+                        right: calc(100% + default.$tooltip-size-arr * 2);
+                    }
+
+                    &::after {
+                        @media screen and ((max-width: $width3) or (min-width: ($width1 + 1))) {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr);
+                        }
+
+                        @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                            @include global.tooltip-right(default.$tooltip-size-arr);
+                        }
+                    }
+
+                    .tooltip-text {
+                        line-height: $drawer-size;
+                    }
+
+                    div {
+                        $spacing: calc($drawer-size/4);
+
+                        @include global.flex($wrap: nowrap);
+
+                        .little-drawer {
+                            @include global.size($drawer-size);
+                        }
+
+                        span {
+                            margin-left: $spacing;
+                        }
+
+                        &:not(:last-child) span {
+                            margin-right: $spacing;
                         }
                     }
                 }
@@ -422,6 +464,8 @@ main {
                     
                     border: $size-border solid transparent;
 
+                    @include global.middle;
+
                     &#back {
                         border-left-width: 0;
                         border-right-width: calc($size-icon);
@@ -431,6 +475,10 @@ main {
                         
                         &:hover {
                             border-right-color: play.$live-blue;
+                        }
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr, 75%);
                         }
                     }
 
@@ -444,6 +492,10 @@ main {
                         &:hover {
                             border-left-color: play.$live-blue;
                         }
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr, 25%);
+                        }
                     }
 
                     &#pause-continue {
@@ -454,6 +506,10 @@ main {
                             border-color: play.$nice-green;
                             
                             border-width: 0 0 0 $size-icon;
+                            
+                            .tooltip {
+                                bottom: 125%;
+                            }
                         }
 
                         &.continue {
@@ -462,10 +518,22 @@ main {
                             border-left-width: calc($size-icon);
                             border-left-color: play.$nice-green;
                         }
+
+                        .tooltip {
+                            margin-right: $size-icon;
+
+                            &::after {
+                                @include global.tooltip-bottom(default.$tooltip-size-arr);
+                            }
+                        }
                     }
 
                     &#finish {
                         border-color: play.$dark-red;
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr);
+                        }
                     }
 
                     &:hover {
@@ -475,6 +543,11 @@ main {
 
                     &:active {
                         filter: contrast(0.5);
+                    }
+
+                    .tooltip {
+                        width: max-content;
+                        bottom: calc($size-border * 1.5);
                     }
                 }
             }

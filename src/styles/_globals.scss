@@ -272,9 +272,9 @@ $fonts:
     margin-left: -$size-arr;
 }
 
-@mixin tooltip-bottom($size-arr) {
+@mixin tooltip-bottom($size-arr, $distance: 50%) {
     bottom: -$size-arr;
-    left: 50%;
+    left: $distance;
     margin-left: -$size-arr;
 }
 

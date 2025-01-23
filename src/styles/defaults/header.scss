@@ -276,7 +276,6 @@ header {
 
                     .tooltip {
                         width: 7em;
-                        height: 3em;
                         top: calc(100% + default.$tooltip-size-arr * 2);
 
                         &::after {
@@ -319,8 +318,7 @@ header {
                     width: calc(play.$menu-width * 0.4);
 
                     .tooltip {
-                        padding: 0 0.5em;
-                        height: calc(default.$tooltip-height * 1.7);
+                        padding: 0.1em 0.5em;
                     }
                 }
                     

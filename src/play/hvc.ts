@@ -136,17 +136,22 @@ export default () => {
     }
     
     const toggling = async() => {
-        const topause = pausecontinue.className === "pause";
+        const hvm = hvc.getHVM();
+        const hvmstate = hvm.getState();
 
-        play.actions.switchPauseContinue();
+        if(hvmstate != "DESLIGADO") {
+            const topause = pausecontinue.classList.contains("pause");
 
-        if(topause) await hvc.stop();
-        else {
-            try {
-                await hvc.continue();
-            }
-            catch (e) {
-                await detectError(e as Error);
+            play.actions.switchPauseContinue(topause);
+
+            if(topause) await hvc.stop();
+            else {
+                try {
+                    await hvc.continue();
+                }
+                catch (e) {
+                    await detectError(e as Error);
+                }
             }
         }
     }
@@ -221,6 +226,10 @@ export default () => {
             if(key === "c" && hvmstate != "DESLIGADO") {
                 e.preventDefault();
                 await terminate();
+            }
+            else if(e.code === "Space") {
+                e.preventDefault();
+                await toggling();
             }
             else if(key === "arrowleft") await controlling(true);
             else if(key === "arrowright") await controlling(false);
