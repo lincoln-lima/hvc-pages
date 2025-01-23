@@ -304,54 +304,6 @@ main {
                     }
                 }
 
-                .tooltip {
-                    $drawer-size: 2em;
-
-                    bottom: 100%;
-
-                    @media screen and (max-width: $width1) {
-                        align-items: start;
-                        flex-direction: column;
-                    }
-
-                    @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
-                        bottom: inherit;
-                        right: calc(100% + default.$tooltip-size-arr * 2);
-                    }
-
-                    &::after {
-                        @media screen and ((max-width: $width3) or (min-width: ($width1 + 1))) {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr);
-                        }
-
-                        @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
-                            @include global.tooltip-right(default.$tooltip-size-arr);
-                        }
-                    }
-
-                    .tooltip-text {
-                        line-height: $drawer-size;
-                    }
-
-                    div {
-                        $spacing: calc($drawer-size/4);
-
-                        @include global.flex($wrap: nowrap);
-
-                        .little-drawer {
-                            @include global.size($drawer-size);
-                        }
-
-                        span {
-                            margin-left: $spacing;
-                        }
-
-                        &:not(:last-child) span {
-                            margin-right: $spacing;
-                        }
-                    }
-                }
-
                 #scroll-gaveteiro {
                     overflow: auto;
                     
@@ -419,6 +371,54 @@ main {
                         }
                     }
                 }
+
+                .tooltip {
+                    $drawer-size: 2em;
+
+                    bottom: 100%;
+
+                    @media screen and (max-width: $width1) {
+                        align-items: start;
+                        flex-direction: column;
+                    }
+
+                    @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                        bottom: inherit;
+                        right: calc(100% + default.$tooltip-size-arr * 2);
+                    }
+
+                    &::after {
+                        @media screen and ((max-width: $width3) or (min-width: ($width1 + 1))) {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr);
+                        }
+
+                        @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                            @include global.tooltip-right(default.$tooltip-size-arr);
+                        }
+                    }
+
+                    .tooltip-text {
+                        line-height: $drawer-size;
+                    }
+
+                    div {
+                        $spacing: calc($drawer-size/4);
+
+                        @include global.flex($wrap: nowrap);
+
+                        .little-drawer {
+                            @include global.size($drawer-size);
+                        }
+
+                        span {
+                            margin-left: $spacing;
+                        }
+
+                        &:not(:last-child) span {
+                            margin-right: $spacing;
+                        }
+                    }
+                }
             }
         }
 
@@ -464,6 +464,8 @@ main {
                     
                     border: $size-border solid transparent;
 
+                    @include global.middle;
+
                     &#back {
                         border-left-width: 0;
                         border-right-width: calc($size-icon);
@@ -473,6 +475,10 @@ main {
                         
                         &:hover {
                             border-right-color: play.$live-blue;
+                        }
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr, 75%);
                         }
                     }
 
@@ -486,6 +492,10 @@ main {
                         &:hover {
                             border-left-color: play.$live-blue;
                         }
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr, 25%);
+                        }
                     }
 
                     &#pause-continue {
@@ -496,6 +506,10 @@ main {
                             border-color: play.$nice-green;
                             
                             border-width: 0 0 0 $size-icon;
+                            
+                            .tooltip {
+                                bottom: 125%;
+                            }
                         }
 
                         &.continue {
@@ -504,10 +518,22 @@ main {
                             border-left-width: calc($size-icon);
                             border-left-color: play.$nice-green;
                         }
+
+                        .tooltip {
+                            margin-right: $size-icon;
+
+                            &::after {
+                                @include global.tooltip-bottom(default.$tooltip-size-arr);
+                            }
+                        }
                     }
 
                     &#finish {
                         border-color: play.$dark-red;
+
+                        .tooltip::after {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr);
+                        }
                     }
 
                     &:hover {
@@ -517,6 +543,11 @@ main {
 
                     &:active {
                         filter: contrast(0.5);
+                    }
+
+                    .tooltip {
+                        width: max-content;
+                        bottom: calc($size-border * 1.5);
                     }
                 }
             }
