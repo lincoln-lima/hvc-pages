@@ -279,12 +279,70 @@ main {
                 @media screen and (max-width: $width3) {
                     height: play.$playground-responsive-height;
                 }
+
+                .drawer, .little-drawer {
+                    filter: drop-shadow(4px 7px 2px #{global.$black}80);
+
+                    @include global.animation(twink, 1.5s, 1);
+                    @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
+
+                    &.default {
+                        animation: inherit;
+                        filter: brightness(0.5);
+                    }
+
+                    &.code {
+                        filter: hue-rotate(300deg);
+                    }
+                    
+                    &.data {
+                        filter: hue-rotate(210deg);
+                    }
+
+                    &.pointed {
+                        filter: hue-rotate(110deg);
+                    }
+                }
             
                 .tooltip {
-                    bottom: calc(100% - default.$tooltip-size-arr);
+                    bottom: 100%;
 
                     &::after {
                         @include global.tooltip-bottom(default.$tooltip-size-arr);
+                    }
+                }
+
+                .tooltip {
+                    $drawer-size: 2em;
+
+                    opacity: 1;
+                    visibility: visible;
+
+                    width: calc($drawer-size * 9);
+                    height: calc($drawer-size * 1.1);
+
+                    flex-wrap: nowrap;
+
+                    .tooltip-text {
+                        line-height: $drawer-size;
+                    }
+
+                    div {
+                        $spacing: calc($drawer-size/4);
+
+                        @include global.flex($wrap: nowrap);
+
+                        .little-drawer {
+                            @include global.size($drawer-size);
+                        }
+
+                        span {
+                            margin-left: $spacing;
+                        }
+
+                        &:not(:last-child) span {
+                            margin-right: $spacing;
+                        }
                     }
                 }
 
@@ -305,38 +363,16 @@ main {
                         min-width: play.$gaveta-width;
                         min-height: play.$gaveta-height;
 
-                        filter: drop-shadow(4px 7px 2px #{global.$black}80);
-
-                        @include global.animation(twink, 1.5s, 1);
-                        @include global.background($image: 'playground/gaveteiro', $repeat: no-repeat, $size: contain, $position: 0);
-
-                        @media screen and (min-width: 0) and (max-width: $width1) {
+                        @media screen and (max-width: $width1) {
                             margin: 0 !important;
                         }
 
                         &:hover {
-                            filter: hue-rotate(45deg) !important;
+                            filter: hue-rotate(45deg);
                         }
 
                         &:not(:first-child, :last-child) {
                             margin: 0 play.$gaveta-margin;
-                        }
-
-                        &.default {
-                            animation: inherit;
-                            filter: brightness(0.5);
-                        }
-
-                        &.code {
-                            filter: hue-rotate(300deg);
-                        }
-                        
-                        &.data {
-                            filter: hue-rotate(210deg);
-                        }
-
-                        &.pointed {
-                            filter: hue-rotate(110deg);
                         }
                         
                         &:first-child {

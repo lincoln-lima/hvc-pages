@@ -227,10 +227,8 @@ div:has(button.code) {
     }
 
     .tooltip {
-        padding: 0 default.$tooltip-padding-x;
+        padding: 0.1em 0.8em;
         background-color: global.$color-tooltip;
-
-        height: default.$tooltip-height;
 
         font-weight: bold;
         text-align: center;
