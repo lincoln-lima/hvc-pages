@@ -303,25 +303,31 @@ main {
                         filter: hue-rotate(110deg);
                     }
                 }
-            
-                .tooltip {
-                    bottom: 100%;
-
-                    &::after {
-                        @include global.tooltip-bottom(default.$tooltip-size-arr);
-                    }
-                }
 
                 .tooltip {
                     $drawer-size: 2em;
 
-                    opacity: 1;
-                    visibility: visible;
+                    bottom: 100%;
 
-                    width: calc($drawer-size * 9);
-                    height: calc($drawer-size * 1.1);
+                    @media screen and (max-width: $width1) {
+                        align-items: start;
+                        flex-direction: column;
+                    }
 
-                    flex-wrap: nowrap;
+                    @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                        bottom: inherit;
+                        right: calc(100% + default.$tooltip-size-arr * 2);
+                    }
+
+                    &::after {
+                        @media screen and ((max-width: $width3) or (min-width: ($width1 + 1))) {
+                            @include global.tooltip-bottom(default.$tooltip-size-arr);
+                        }
+
+                        @media screen and (min-width: ($width3 + 1)) and (max-width: $width1) {
+                            @include global.tooltip-right(default.$tooltip-size-arr);
+                        }
+                    }
 
                     .tooltip-text {
                         line-height: $drawer-size;
