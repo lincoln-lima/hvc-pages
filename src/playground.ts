@@ -17,8 +17,10 @@ export const play = {
         
         run: () => { return document.getElementById("run")! },
         debug: () => { return document.getElementById("debug")! },
+        share: () => { return document.getElementById("share")! },
         import: () => { return document.getElementById("import")! },
         export: () => { return document.getElementById("export")! },
+        expand: () => { return document.getElementById("expand")! },
 
         state: () => { return document.getElementById("states-view")! },
         debugmenu: () => { return document.getElementById("debug-menu")! },
@@ -194,7 +196,18 @@ const loadplay = async () => {
         globals.actions.switchDisplay(modal, modaldisplay);
         globals.actions.switchDisplay(button, buttondisplay);
     }
+
+    const switchShare = () => {
+        const share = play.elements.share();
+
+        globals.actions.switchVisibility(share, share.style["visibility"] != "visible");
+    }
     // ---------------------------------------------------------------------------
+    play.elements.expand().addEventListener("click", switchShare);
+    play.elements.share().addEventListener("click", () => {
+        navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
+    });
+
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.formconfigs().addEventListener("submit", e => {

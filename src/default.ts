@@ -66,7 +66,9 @@ export const globals = {
 
         changeStorage: (item: string, value: string) => {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
-        }
+        },
+
+        hvcode: (code: string) => { return location.origin + "/pages/playground.html?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
     }
 }
 // ------------------------------------------------------------------------------- 
@@ -125,15 +127,13 @@ const opens = document.getElementsByClassName("open")!;
 if(opens) {
     const codes = document.getElementsByClassName("ahv")!;
 
-    const param = location.origin + "/pages/playground.html?code=";
-
     Array.from(opens).forEach((open, i) => {
-        const code = codes[i].textContent!.replace(/\s*;.*/g, '').replace(/\n/g, "%0A");
+        const code = globals.actions.hvcode(codes[i].textContent!);
 
         open.addEventListener("click", () => {
             localStorage.setItem("saved", "false");
 
-            window.open(param + code, "_blank");
+            window.open(code, "_blank");
         })
     })
 }

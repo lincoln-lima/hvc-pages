@@ -125,6 +125,8 @@ export default () => {
         
         previous = "DESLIGADO";
         play.actions.setState(previous);
+        
+        play.actions.switchPauseContinue(hvc.getHVM().getDebugState() != "RODANDO");
 
         globals.actions.displayElement(editor);
         globals.actions.displayElement(play.elements.help());
