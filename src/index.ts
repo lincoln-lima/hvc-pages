@@ -5,6 +5,7 @@ import templates from "./templates";
 import "/src/styles/index/index.scss";
 import "/src/styles/defaults/table.scss";
 import "/src/styles/defaults/footer.scss";
+import { Transformer } from "./lang/Transformer";
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 860;
 // ------------------------------------------------------------------------------- 
@@ -19,3 +20,5 @@ const setTemplates = async () => {
 }
 
 await setTemplates();
+
+Transformer.getInstance().init();
