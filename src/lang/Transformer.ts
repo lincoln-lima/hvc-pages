@@ -11,7 +11,14 @@ export class Transformer {
 
   public init() {
     
-    this.load(navigator.language);
+    const urlParams = new URLSearchParams(window.location.search);
+    const langInUrl = urlParams.get("lang");
+
+    if (langInUrl) 
+      this.load(langInUrl);
+    
+    else 
+      this.load(navigator.language);
 
   }
 
@@ -37,12 +44,34 @@ export class Transformer {
       }
 
       this.updateDOM();
+      this.updateUrl(lang);
 
     } catch (error) {
 
       console.error(`Erro ao carregar o idioma: ${lang}`, error);
 
     }
+
+  }
+
+  private updateDOM() {
+
+    document.querySelectorAll("[data-lang]").forEach(dlang => {
+
+      const key = dlang.getAttribute("data-lang");
+      
+      if (key) 
+        dlang.textContent = this.getTranslation(key);
+
+    });
+  
+  }
+
+  private updateUrl(lang: string) {
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang); 
+    window.history.pushState({}, "", url.toString()); 
 
   }
 
@@ -59,19 +88,6 @@ export class Transformer {
     
     return text;
 
-  }
-
-  private updateDOM() {
-
-    document.querySelectorAll("[data-lang]").forEach(dlang => {
-
-      const key = dlang.getAttribute("data-lang");
-      
-      if (key) 
-        dlang.textContent = this.getTranslation(key);
-
-    });
-  
   }
 
   public static getInstance(): Transformer {
