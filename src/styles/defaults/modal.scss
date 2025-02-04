@@ -54,7 +54,7 @@
 			@include global.size(100%);
 			@include global.flex($direction: column);
 			
-			div {
+			.field {
 				@include global.flex($direction: column);
 				
 				label {
@@ -87,11 +87,23 @@
 		}
 
 		.modal-main {
-			height: 55%;
+			height: 65%;
 
 			#delay {
 				width: 3.5em;
 				text-align: center;
+			}
+
+			.field:has(#skip) {
+				width: 13em;
+				max-width: 100%;
+
+				flex-direction: row;
+					
+				#skip {
+					@include global.circle;
+					@include global.size(1em);
+				}
 			}
 		}
 

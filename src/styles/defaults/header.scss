@@ -275,7 +275,6 @@ header {
                     }
 
                     .tooltip {
-                        width: 7em;
                         top: calc(100% + default.$tooltip-size-arr * 2);
 
                         &::after {
@@ -333,21 +332,23 @@ header {
                     }
                     
                     &.expand {
-                        padding: 0 0.2em;
+                        padding: 0 0.4em;
                         margin-left: 0.2rem;
 
                         border-top-left-radius: 0;
                         border-bottom-left-radius: 0;
+
+                        @include global.background(auto, caret, center, no-repeat);
                     }
 
-                    &#share {
+                    &.contract {
                         z-index: 1;
                         position: absolute;
 
                         left: 0;
                         top: calc(default.$menu-buttons-height * 1.1);
 
-                        // @include global.hidden;
+                        @include global.hidden;
                     }
 
                     .label-tool {
@@ -360,6 +361,7 @@ header {
                 }
 
                 .tooltip {
+                    width: max-content;
                     top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
 
                     &::after {

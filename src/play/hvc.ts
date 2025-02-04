@@ -24,6 +24,7 @@ export default () => {
     const drawers = play.elements.drawers();
     const drawerscontent = play.elements.drawerscontent();
     
+    const skip = play.elements.skip();
     const delay = play.elements.delay();
     
     const editor = play.elements.editor();
@@ -58,7 +59,7 @@ export default () => {
                 globals.actions.displayElement(tablecards);
                 globals.actions.switchVisibility(debugmenu, true);
 
-                await hvc.debug(+delay.value);
+                await hvc.debug(+delay.value, !skip.checked);
             }
         }
         catch (e) {

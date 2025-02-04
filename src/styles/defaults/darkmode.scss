@@ -52,8 +52,8 @@ $modal-color: #333333;
 
             form {
                 * {
-                    background-color: $modal-color;
                     color: global.$white;
+                    background-color: $modal-color !important;
                 }
 
                 input, select {

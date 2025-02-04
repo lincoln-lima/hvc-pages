@@ -25,14 +25,14 @@
                         <span class="dot-state"></span>
                         <span class="hvm-state">Carga</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Estado de Carga</span></div>
+                    <div class="tooltip"><span class="tooltip-text">Leitura do porta-cartões</span></div>
                 </article>
                 <article id="running-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
                         <span class="hvm-state">Execução</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Executando programa</span></div>
+                    <div class="tooltip"><span class="tooltip-text">Executando instruções</span></div>
                 </article>
             </section>
             <menu class="primary-menu">
@@ -41,30 +41,29 @@
                         <img src="/img/playground/menu/debug.svg">
                         <span class="label-tool">Depurar</span>
                     </button>
-                    <div class="tooltip"><span class="tooltip-text">Depurar (F8)</span></div>
+                    <div class="tooltip"><span class="tooltip-text">Passo a passo (F8)</span></div>
                 </li>
                 <li class="tooltiper">
                     <button id="run" class="link-nav-1">
                         <img src="/img/playground/menu/run.svg">
                         <span class="label-tool">Executar</span>
                     </button>
-                    <div class="tooltip"><span class="tooltip-text">Executar (F9)</span></div>
+                    <div class="tooltip"><span class="tooltip-text">Imediato (F9)</span></div>
                 </li>
                 <li class="tooltiper">
                     <button id="import" class="link-nav-2">
                         <img src="/img/playground/menu/import.svg">
                         <span class="label-tool">Importar</span>
                     </button>
+                    <div class="tooltip"><span class="tooltip-text">Selecionar arquivo...</span></div>
                 </li>
                 <li class="tooltiper">
                     <button id="export" class="link-nav-2">
                         <img src="/img/playground/menu/download.svg">
                         <span class="label-tool">Exportar</span>
                     </button>
-                    <button class="expand link-nav-2">
-                        <img src="/img/caret.svg">
-                    </button>
-                    <button id="share" class="link-nav-2">
+                    <button class="expand link-nav-2"></button>
+                    <button id="share" class="contract link-nav-2">
                         <img src="/img/playground/menu/share.svg">
                         <span class="label-tool">Partilhar</span>
                     </button>
@@ -74,10 +73,12 @@
                         <img src="/img/playground/menu/config.svg">
                         <span class="label-tool">Configurar</span>
                     </button>
-                    <button class="expand link-nav-3">
-                        <img src="/img/caret.svg">
+                    <button class="expand link-nav-3"></button>
+                    <button class="home contract link-nav-3">
+                        <img src="/img/home.svg">
+                        <span class="label-tool">Início</span>
                     </button>
-                    <div class="tooltip"><span class="tooltip-text">Configurar (F2)</span></div>
+                    <div class="tooltip"><span class="tooltip-text">Opções (F2)</span></div>
                 </li>
             </menu>
             <button class="burger-menu"></button>
@@ -86,7 +87,7 @@
     <main>
         <section id="playground">
             <article id="porta-cartoes" class="tooltiper">
-                <div class="tooltip"><span class="tooltip-text">Porta Cartões</span></div>
+                <div class="tooltip"><span class="tooltip-text">Porta-Cartões</span></div>
                 <div id="scroll-tablecards">
                     <table id="cards"></table>
                 </div>

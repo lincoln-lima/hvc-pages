@@ -6,6 +6,7 @@ import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     elements: {
+        home: () => { return document.getElementsByClassName("home")[0]! } ,
         menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
         menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement }
     },
@@ -71,6 +72,10 @@ export const globals = {
         hvcode: (code: string) => { return location.origin + "/pages/playground.html?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
     }
 }
+// ------------------------------------------------------------------------------- 
+globals.elements.home().addEventListener("click", () => {
+    window.open(location.origin, "_top");
+});
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
@@ -143,10 +148,13 @@ window.addEventListener("click", e => {
     const menu = globals.elements.menumodal();
     const burger = globals.elements.menuburger();
 
-    const isTarget = element != menu && element != burger;
+    const notTarget = element != menu && element != burger;
     const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
+    const notExpand = !(element as HTMLElement).classList.contains("expand") &&
+                      !(element as HTMLElement).classList.contains("contract") &&
+                      !(element as HTMLElement).parentElement!.classList.contains("contract");
 
-    if(isTarget && areVisible) globals.actions.switchMenu();
+    if(notTarget && notExpand && areVisible) globals.actions.switchMenu();
 });
 // ------------------------------------------------------------------------------- 
 document.addEventListener("keydown", e => {
