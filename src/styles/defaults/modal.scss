@@ -67,6 +67,53 @@
 					
 					border-width: 0.1rem;
 				}
+
+				&:has(.switcher) {
+					width: 100%;
+					flex-direction: row;
+				}
+
+				.switcher {
+					@include global.middle;
+					@include global.size(1.8em, 1em);
+
+					input[type="checkbox"] {
+						$box-size: 1rem;
+
+						appearance: none;
+						position: relative;
+						border-radius: 1em;
+
+						@include global.size(100%);
+						
+						&:hover {
+							filter: brightness(0.9);
+						}
+
+						&:checked {
+							background-color: global.$color3;
+						
+							&::after {
+								left: calc(90% - $box-size);
+							}
+						}
+
+						&::after {
+							content: "";
+
+							transition: 150ms ease-out;
+							background-color: global.$white;
+
+							position: absolute;
+
+							left: 10%;
+							top: calc((1em - $box-size)/2);
+
+							@include global.circle;
+							@include global.size($box-size);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -75,7 +122,7 @@
 /* -------------------------------------------------------------------- */
 #config-modal {
 	.modal-body {
-		@include global.size(16em);
+		@include global.size(18em, 20em);
 		
 		.modal-header {
 			height: 12%;
@@ -87,23 +134,11 @@
 		}
 
 		.modal-main {
-			height: 65%;
+			height: 70%;
 
 			#delay {
 				width: 3.5em;
 				text-align: center;
-			}
-
-			.field:has(#skip) {
-				width: 13em;
-				max-width: 100%;
-
-				flex-direction: row;
-					
-				#skip {
-					@include global.circle;
-					@include global.size(1em);
-				}
 			}
 		}
 

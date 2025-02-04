@@ -202,7 +202,7 @@ header {
                     $dot-size: calc(default.$home-height * 0.55);
 
                     border-radius: 1em;
-                    filter: brightness(0.5);
+                    filter: brightness(0.6);
                     
                     @include global.middle;
                     @include global.size(31%, 100%);
@@ -372,10 +372,6 @@ header {
 
             .burger-menu {
                 @include responsive-burguer(play.$header-responsive-width);
-            }
-
-            .tooltip-text {
-                font-size: 0.9em;
             }
         }
     }

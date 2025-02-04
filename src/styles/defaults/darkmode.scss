@@ -53,11 +53,21 @@ $modal-color: #333333;
             form {
                 * {
                     color: global.$white;
-                    background-color: $modal-color !important;
+                }
+                
+                input:not([type="checkbox"]), select {
+                    border-color: global.$white;
+                    background-color: $modal-color;
                 }
 
-                input, select {
-                    border-color: global.$white;
+                input[type="checkbox"] {
+                    &:not(:checked):after {
+                        background-color: global.$gray;
+                    }
+
+                    &:checked {
+                        background-color: global.$color1 !important;
+                    }
                 }
             }
         }

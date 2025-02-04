@@ -57,6 +57,7 @@ export const play = {
         skip: () => { return document.getElementById("skip")! as HTMLInputElement },
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
         theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
+        paused: () => { return document.getElementById("paused")! as HTMLInputElement },
         
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
@@ -170,6 +171,7 @@ const loadplay = async () => {
     hvc();
     // ---------------------------------------------------------------------------
     play.elements.skip().checked = (localStorage.getItem("skip-hvc"))! != "false";
+    play.elements.paused().checked = (localStorage.getItem("paused-hvc"))! != "false";
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : "1000";
     play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
     // ---------------------------------------------------------------------------
@@ -186,6 +188,7 @@ const loadplay = async () => {
         globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
         globals.actions.changeStorage("theme-play", play.elements.theme().value!);
         globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
+        globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
 
         globals.actions.undisplayElement(play.elements.configmodal());
     }
