@@ -125,7 +125,7 @@ header {
             @include global.flex;
             
             li {
-                @include global.middle;
+                @include global.flex;
 
                 .link-nav-1 {
                     @include navlinksbynum(global.$color1, global.$color1-dark);
@@ -323,40 +323,87 @@ header {
                     
                 @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
 
-                button {
-                    padding: 0 0.4em;
+                li {
+                    position: relative;
 
-                    &#export, &#config {
-                        border-top-right-radius: 0;
-                        border-bottom-right-radius: 0;
-                    }
-                    
-                    &.expand {
+                    button {
                         padding: 0 0.4em;
-                        margin-left: 0.2rem;
 
-                        border-top-left-radius: 0;
-                        border-bottom-left-radius: 0;
+                        &#export, &#config {
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                        }
+                        
+                        &.expand {
+                            margin-left: 0.2rem;
 
-                        @include global.background(auto, caret, center, no-repeat);
+                            border-top-left-radius: 0;
+                            border-bottom-left-radius: 0;
+
+                            @include global.background(auto, caret, center, no-repeat);
+                        }
+
+                        .icon-tool {
+                            transition: 0.1s;
+
+                            @include global.size(1em);
+                        }
+
+                        &#debug .icon-tool {
+                            @include global.background($image: "playground/menu/debug", $size: cover);
+                        }
+
+                        &#run .icon-tool {
+                            @include global.background($image: "playground/menu/run", $size: cover);
+                        }
+
+                        &#import .icon-tool {
+                            @include global.background($image: "playground/menu/import", $size: cover);
+                        }
+
+                        &#export .icon-tool {
+                            @include global.background($image: "playground/menu/download", $size: cover);
+                        }
+
+                        &#share {
+                            .icon-tool {
+                                @include global.background($image: "playground/menu/share", $size: cover);
+                            }
+
+                            &.copied .icon-tool {
+                                @include global.background($image: check, $size: cover);
+                            }
+                        }
+
+                        &#config .icon-tool {
+                            @include global.background($image: "playground/menu/config", $size: cover);
+                        }
+
+                        &.home .icon-tool {
+                            @include global.background($image: home, $size: cover);
+                        }
+
+                        .label-tool {
+                            margin-left: 0.5em;
+                            
+                            @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
+                                display: none;
+                            }
+                        }
                     }
+                }
+
+                .tooltiper {
+                    @include global.middle;
 
                     &.contract {
+                        top: 115%;
                         z-index: 1;
                         position: absolute;
 
-                        left: 0;
-                        top: calc(default.$menu-buttons-height * 1.1);
+                        transition: 0.3s ease-in-out;
 
                         @include global.hidden;
-                    }
-
-                    .label-tool {
-                        margin-left: 0.5em;
-                        
-                        @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
-                            display: none;
-                        }
                     }
                 }
 

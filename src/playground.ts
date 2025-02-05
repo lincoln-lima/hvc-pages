@@ -224,12 +224,17 @@ const loadplay = async () => {
         catch {
             const text = "Partilhar";
             
+            play.elements.share().classList.add("copied");
+
             const label = play.elements.share().getElementsByClassName("label-tool")[0];
             label.textContent = "Copiado!";
 
             navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
 
-            setTimeout(() => { label.textContent = text }, 3000);
+            setTimeout(() => {
+                label.textContent = text;
+                play.elements.share().classList.remove("copied");
+            }, 3000);
         }
     });
 
