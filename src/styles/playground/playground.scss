@@ -179,14 +179,16 @@ main {
                 }
 
                 > * {
-                    max-width: 100%;
+                    aspect-ratio: 1/1;
 
                     @include global.middle;
-                    @include global.size(play.$viewers-initial-size);
+                    @include global.size(play.$viewers-initial-size, auto);
                     
                     @include portacartoes-viewers;
 
                     @media screen and (min-width: ($width1 + 1)) {
+                        max-width: 30%;
+
                         .viewers-values {
                             font-size: play.$viewers-font-size;
                         }

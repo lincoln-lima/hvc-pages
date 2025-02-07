@@ -226,7 +226,7 @@ const loadplay = async () => {
             
             play.elements.share().classList.add("copied");
 
-            const label = play.elements.share().getElementsByClassName("label-tool")[0];
+            const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
             label.textContent = "Copiado!";
 
             navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
@@ -291,7 +291,7 @@ const loadplay = async () => {
         }
     });
     // ---------------------------------------------------------------------------
-    play.elements.helpmodal().getElementsByClassName("modal-body")[0]!.appendChild(await templates("table"));
+    play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(await templates("table"));
 }
 // ------------------------------------------------------------------------------- 
 setTimeout(async () => await loadplay(), modals.length * 150);

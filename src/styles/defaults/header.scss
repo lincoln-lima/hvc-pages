@@ -139,7 +139,7 @@ header {
                     @include navlinksbynum(global.$color3, global.$color3-dark);
                 }
 
-                button {
+                button, a {
                     @include global.flex;
                 }
             }
@@ -326,7 +326,7 @@ header {
                 li {
                     position: relative;
 
-                    button {
+                    button, a {
                         padding: 0 0.4em;
 
                         &#export, &#config {

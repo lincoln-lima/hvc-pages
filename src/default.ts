@@ -5,10 +5,13 @@ import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
+    path: {
+        index: location.origin,
+        playground: location.origin + "/pages/playground.html"
+    },
     elements: {
-        home: () => { return document.getElementsByClassName("home")[0]! } ,
-        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
-        menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement }
+        menumodal: () => { return document.getElementsByClassName("primary-menu").item(0)! as HTMLElement },
+        menuburger: () => { return document.getElementsByClassName("burger-menu").item(0)! as HTMLElement }
     },
     actions: {
         displayElement: (element: HTMLElement) => {
@@ -69,17 +72,31 @@ export const globals = {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
         },
 
-        hvcode: (code: string) => { return location.origin + "/pages/playground.html?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
+        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
     }
 }
 // ------------------------------------------------------------------------------- 
-globals.elements.home().addEventListener("click", () => {
-    window.open(location.origin, "_top");
-});
-// ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
-const switchtheme = document.getElementsByClassName("switch-theme")[0]!;
+const homes = document.getElementsByClassName("home")!;
+
+if(homes) {
+    Array.from(homes).forEach(home => {
+        home.setAttribute("href", globals.path.index);
+        home.setAttribute("target", "_top");
+    });
+}
+
+const cometoplays = document.getElementsByClassName("come-to-play")!;
+
+if(cometoplays) {
+    Array.from(cometoplays).forEach(come => {
+        come.setAttribute("href", globals.path.playground);
+        come.setAttribute("target", "_blank");
+    });
+}
+// ------------------------------------------------------------------------------- 
+const switchtheme = document.getElementsByClassName("switch-theme").item(0)!;
 
 if(switchtheme) {
     let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 

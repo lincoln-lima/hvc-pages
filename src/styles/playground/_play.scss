@@ -17,7 +17,7 @@ $debuggers-initial-width: 65%;
 $porta-cartoes-initial-width: 30%;
 // ------------------------------------------------------------------------------- 
 $viewers-initial-size: 30vmin;
-$viewers-font-size: calc($viewers-initial-size * 0.45);
+$viewers-font-size: calc($viewers-initial-size * 0.4);
 
 $playground-percentual: 0.95;
 $playground-initial-height: calc($main-initial-height * $playground-percentual);
@@ -37,7 +37,7 @@ $dark-red: #8b0000;
 $live-blue: #0000F6;
 $nice-green: #008000;
 // ------------------------------------------------------------------------------- 
-$screen-responsive: (width1: 1100px, width2: 800px, width3: 500px);
+$screen-responsive: (width1: 1250px, width2: 850px, width3: 500px);
 // ------------------------------------------------------------------------------- 
 $header-responsive-width: 700px;
 $tools-buttons-responsive-width: 1390px;

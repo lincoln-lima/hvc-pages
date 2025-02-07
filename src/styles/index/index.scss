@@ -11,17 +11,21 @@ main {
         text-align: center;
     }
 
-    .come-to-play {
-        width: fit-content;
-
+    .tooltiper {
         @include global.middle;
-        @include global.center;
-        
-        button {
-            border-radius: 0.6em;
-            padding: 0.2em 0.6em;
 
-            @include global.faded-button;
+        .come-to-play {
+            width: fit-content;
+
+            @include global.middle;
+            @include global.center;
+            
+            button {
+                border-radius: 0.6em;
+                padding: 0.2em 0.6em;
+
+                @include global.faded-button;
+            }
         }
 
         .tooltip {
