@@ -6,17 +6,26 @@
         </div>
         <div class="modal-main">
             <form id="configs-form" name="configs-form">
-                <div>
-                    <label for="delay">Delay (ms)</label>
-                    <input type="number" name="delay" id="delay" min="100">
-                </div>
-                <hr>
-                <div>
+                <div class="field">
                     <label for="theme">Tema</label>
                     <select name="theme" id="theme">
                         <option value="darkmode">Escuro</option>
                         <option value="lightmode">Claro</option>
                     </select>
+                </div>
+                <hr>
+                <div class="field">
+                    <label for="delay">Delay (ms)</label>
+                    <input type="number" name="delay" id="delay" min="100">
+                </div>
+                <hr>
+                <div class="field">
+                    <label for="skip">Estado de carga</label>
+                    <div class="switcher"><input type="checkbox" name="skip" id="skip"></div>
+                </div>
+                <div class="field">
+                    <label for="paused">Depuração pausada</label>
+                    <div class="switcher"><input type="checkbox" name="paused" id="paused"></div>
                 </div>
             </form>
         </div>

@@ -5,9 +5,13 @@ import "/src/styles/defaults/header.scss";
 import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
+    path: {
+        index: location.origin,
+        playground: location.origin + "/pages/playground.html"
+    },
     elements: {
-        menumodal: () => { return document.getElementsByClassName("primary-menu")[0]! as HTMLElement },
-        menuburger: () => { return document.getElementsByClassName("burger-menu")[0]! as HTMLElement }
+        menumodal: () => { return document.getElementsByClassName("primary-menu").item(0)! as HTMLElement },
+        menuburger: () => { return document.getElementsByClassName("burger-menu").item(0)! as HTMLElement }
     },
     actions: {
         displayElement: (element: HTMLElement) => {
@@ -66,13 +70,33 @@ export const globals = {
 
         changeStorage: (item: string, value: string) => {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
-        }
+        },
+
+        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
     }
 }
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
-const switchtheme = document.getElementsByClassName("switch-theme")[0]!;
+const homes = document.getElementsByClassName("home")!;
+
+if(homes) {
+    Array.from(homes).forEach(home => {
+        home.setAttribute("href", globals.path.index);
+        home.setAttribute("target", "_top");
+    });
+}
+
+const cometoplays = document.getElementsByClassName("come-to-play")!;
+
+if(cometoplays) {
+    Array.from(cometoplays).forEach(come => {
+        come.setAttribute("href", globals.path.playground);
+        come.setAttribute("target", "_blank");
+    });
+}
+// ------------------------------------------------------------------------------- 
+const switchtheme = document.getElementsByClassName("switch-theme").item(0)!;
 
 if(switchtheme) {
     let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
@@ -125,15 +149,13 @@ const opens = document.getElementsByClassName("open")!;
 if(opens) {
     const codes = document.getElementsByClassName("ahv")!;
 
-    const param = location.origin + "/pages/playground.html?code=";
-
     Array.from(opens).forEach((open, i) => {
-        const code = codes[i].textContent!.replace(/\s*;.*/g, '').replace(/\n/g, "%0A");
+        const code = globals.actions.hvcode(codes[i].textContent!);
 
         open.addEventListener("click", () => {
             localStorage.setItem("saved", "false");
 
-            window.open(param + code, "_blank");
+            window.open(code, "_blank");
         })
     })
 }
@@ -143,10 +165,13 @@ window.addEventListener("click", e => {
     const menu = globals.elements.menumodal();
     const burger = globals.elements.menuburger();
 
-    const isTarget = element != menu && element != burger;
+    const notTarget = element != menu && element != burger;
     const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
+    const notExpand = !(element as HTMLElement).classList.contains("expand") &&
+                      !(element as HTMLElement).classList.contains("contract") &&
+                      !(element as HTMLElement).parentElement!.classList.contains("contract");
 
-    if(isTarget && areVisible) globals.actions.switchMenu();
+    if(notTarget && notExpand && areVisible) globals.actions.switchMenu();
 });
 // ------------------------------------------------------------------------------- 
 document.addEventListener("keydown", e => {

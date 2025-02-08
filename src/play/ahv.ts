@@ -40,19 +40,4 @@ export default () => {
     // ------------------------------------------------------------------------------- 
     play.elements.import().addEventListener("click", importahv);
     play.elements.export().addEventListener("click", exportahv);
-    // ------------------------------------------------------------------------------- 
-    document.addEventListener("keydown", (e) => {
-        const key = e.key.toLowerCase();
-
-        if(e.ctrlKey) {
-            if (key === "s") {
-                e.preventDefault();
-                exportahv();
-            }
-            else if (key === "i") {
-                e.preventDefault();
-                importahv();
-            }
-        }
-    });
 }

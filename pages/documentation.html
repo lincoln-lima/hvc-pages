@@ -12,7 +12,7 @@
 <body>
     <header id="header-doc">
         <nav>
-            <a id="home" rel="author" target="_top" href="/index.html">
+            <a id="home" class="home">
                 <img src="/img/gaveta-logo.svg" alt="ícone de gaveta">
                 <h1>
                     <span>HV</span><span>C</span>
@@ -36,7 +36,7 @@
                                 <li><a href="#gaveteiro">Gaveteiro</a></li>
                                 <li><a href="#calculadora">Calculadora</a></li>
                                 <li><a href="#epi">EPI (Quadro Negro)</a></li>
-                                <li><a href="#porta-cartoes">Porta Cartões</a></li>
+                                <li><a href="#porta-cartoes">Porta-Cartões</a></li>
                                 <li><a href="#folha-de-saida">Folha de Saída</a></li>
                                 <li><a href="#chico"><em>Operador Chico</em></a></li>
                                     <ul>
@@ -133,7 +133,7 @@
                         <li>O valor que será escrito numa gaveta não pode ser inferior a 0 e superior a 999.</li>
                         <li>Somente o operador do sistema pode mexer no gaveteiro.</li>
                         <li>
-                            Durante o estado de carga as instruções que estão no porta cartões são guardadas no gaveteiro,
+                            Durante o estado de carga as instruções que estão no porta-cartões são guardadas no gaveteiro,
                             até que seja armazenado o cartão contendo a instrução 000, que indica o fim do estado de carga.
                         </li>
                     </ul>
@@ -182,9 +182,9 @@
                     </figure>
                 </article>
                 <article id="porta-cartoes">
-                    <h3>Porta Cartões</h3>
+                    <h3>Porta-Cartões</h3>
                     <p>
-                        É um componente que se assemelha a um porta cigarros, com os cartões sendo inseridos na parte
+                        É um componente que se assemelha a um porta-cigarros, com os cartões sendo inseridos na parte
                         superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser
                         executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse
                         estado.
@@ -204,12 +204,12 @@
                         <li>Somente CHICO pode retirar um cartão;</li>
                         <li>A inserção de um cartão só pode ser feita por um usuário;</li>
                         <li>
-                            Quando o CHICO executa uma instrução de leitura do porta cartões que se encontra vazio, é
+                            Quando o CHICO executa uma instrução de leitura do porta-cartões que se encontra vazio, é
                             solicitado ao usuário que insira um novo cartão para que a execução do programa continue.
                         </li>
                     </ul>
                     <figure>
-                        <figcaption><strong>Figura 6</strong> - Porta Cigarros (demonstrativo)</figcaption>
+                        <figcaption><strong>Figura 6</strong> - Porta-Cigarros (demonstrativo)</figcaption>
                         <img src="/img/documentation/fig6.png" alt="">
                     </figure>
                 </article>
@@ -355,8 +355,8 @@
                     <article id="entrada-saida-instrucao">
                         <h4>Entrada/Saída:</h4>
                         <ul>
-                            <li><strong>7EE (Leia um valor e guarde na gaveta EE)</strong>: Permite a entrada de dados a partir do porta
-                                cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para
+                            <li><strong>7EE (Leia um valor e guarde na gaveta EE)</strong>: Permite a entrada de dados a partir do porta-cartões,
+                                armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para
                                 interações com o usuário ou inicialização de dados.</li>
                             <li><strong>8EE (Escreva cEE no dispositivo de saída)</strong>: Realiza a saída de dados para a folha de saída,
                                 utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos

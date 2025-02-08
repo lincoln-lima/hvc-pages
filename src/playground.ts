@@ -17,8 +17,12 @@ export const play = {
         
         run: () => { return document.getElementById("run")! },
         debug: () => { return document.getElementById("debug")! },
+        share: () => { return document.getElementById("share")! },
         import: () => { return document.getElementById("import")! },
         export: () => { return document.getElementById("export")! },
+
+        expand: () => { return document.getElementsByClassName("expand")! },
+        contract: () => { return document.getElementsByClassName("contract")! },
 
         state: () => { return document.getElementById("states-view")! },
         debugmenu: () => { return document.getElementById("debug-menu")! },
@@ -50,8 +54,10 @@ export const play = {
 
         help: () => { return document.getElementById("help")! },
         
+        skip: () => { return document.getElementById("skip")! as HTMLInputElement },
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
         theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
+        paused: () => { return document.getElementById("paused")! as HTMLInputElement },
         
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
@@ -164,6 +170,8 @@ modals.forEach(async modal => {
 const loadplay = async () => {
     hvc();
     // ---------------------------------------------------------------------------
+    play.elements.skip().checked = (localStorage.getItem("skip-hvc"))! != "false";
+    play.elements.paused().checked = (localStorage.getItem("paused-hvc"))! != "false";
     play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : "1000";
     play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
     // ---------------------------------------------------------------------------
@@ -179,9 +187,10 @@ const loadplay = async () => {
     const saveConfigs = () => {
         globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
         globals.actions.changeStorage("theme-play", play.elements.theme().value!);
+        globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
+        globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
 
         globals.actions.undisplayElement(play.elements.configmodal());
-        globals.actions.changeElementClass(document.body, localStorage.getItem("theme-play")!);
     }
 
     const switchHelp = () => {
@@ -194,12 +203,50 @@ const loadplay = async () => {
         globals.actions.switchDisplay(modal, modaldisplay);
         globals.actions.switchDisplay(button, buttondisplay);
     }
+
+    const switchContract = (i: number) => {
+        const contracted = play.elements.contract().item(i) as HTMLElement;
+
+        globals.actions.switchVisibility(contracted, contracted.style["visibility"] != "visible");
+    }
     // ---------------------------------------------------------------------------
+    Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContract(i)));
+    Array.from(play.elements.contract()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
+
+    play.elements.share().addEventListener("click", async() => {
+        try {
+            await navigator.share({
+                title: document.title,
+                text: "Veja meu código no HVC!",
+                url: globals.actions.hvcode(play.actions.getCode())
+            });
+        }
+        catch {
+            const text = "Partilhar";
+            
+            play.elements.share().classList.add("copied");
+
+            const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
+            label.textContent = "Copiado!";
+
+            navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
+
+            setTimeout(() => {
+                label.textContent = text;
+                play.elements.share().classList.remove("copied");
+            }, 3000);
+        }
+    });
+
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
     play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.formconfigs().addEventListener("submit", e => {
         e.preventDefault();
         saveConfigs();
+    });
+
+    play.elements.theme().addEventListener("change", () => {
+        globals.actions.changeElementClass(document.body, play.elements.theme().value);
     });
 
     play.elements.dontask().addEventListener("click", neverAskAgain);
@@ -210,8 +257,20 @@ const loadplay = async () => {
     play.elements.closeerrors().addEventListener("click", () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     // ---------------------------------------------------------------------------
     window.addEventListener("click", e => {
-        if(e.target == play.elements.helpmodal()) switchHelp();
-        else if(e.target == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+        const element = e.target as HTMLElement;
+
+        if(element == play.elements.helpmodal()) switchHelp();
+        else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+
+        const isExpand = !element.classList.contains("contract") &&
+                         !(element as HTMLElement).parentElement!.classList.contains("contract") &&
+                         !element.classList.contains("expand");
+
+        if(isExpand) {
+            Array.from(play.elements.contract()).forEach((e, i) => {
+                if((e as HTMLElement).style["visibility"] != "hidden") switchContract(i);
+            });
+        }
     });
     // ---------------------------------------------------------------------------
     document.addEventListener("keydown", e => {
@@ -232,7 +291,7 @@ const loadplay = async () => {
         }
     });
     // ---------------------------------------------------------------------------
-    play.elements.helpmodal().getElementsByClassName("modal-body")[0]!.appendChild(await templates("table"));
+    play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(await templates("table"));
 }
 // ------------------------------------------------------------------------------- 
 setTimeout(async () => await loadplay(), modals.length * 150);

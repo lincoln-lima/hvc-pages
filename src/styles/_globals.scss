@@ -146,7 +146,8 @@ $fonts:
 }
 
 @mixin background($color: transparent, $image: none, $position: inherit, $repeat: initial, $size: auto) {
-    background-color: $color;
+    @if $color != auto { background-color: $color; }
+
     background-image: url('/img/#{$image}.svg');
     background-position: $position;
     background-repeat: $repeat;

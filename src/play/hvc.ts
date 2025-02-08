@@ -24,7 +24,9 @@ export default () => {
     const drawers = play.elements.drawers();
     const drawerscontent = play.elements.drawerscontent();
     
+    const skip = play.elements.skip();
     const delay = play.elements.delay();
+    const paused = play.elements.paused();
     
     const editor = play.elements.editor();
     const debugmenu = play.elements.debugmenu();
@@ -58,7 +60,7 @@ export default () => {
                 globals.actions.displayElement(tablecards);
                 globals.actions.switchVisibility(debugmenu, true);
 
-                await hvc.debug(+delay.value);
+                await hvc.debug(+delay.value, !skip.checked, paused.checked ? "PAUSADO" : "RODANDO");
             }
         }
         catch (e) {
@@ -125,6 +127,8 @@ export default () => {
         
         previous = "DESLIGADO";
         play.actions.setState(previous);
+        
+        play.actions.switchPauseContinue(paused.checked);
 
         globals.actions.displayElement(editor);
         globals.actions.displayElement(play.elements.help());
