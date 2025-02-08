@@ -217,7 +217,7 @@ const loadplay = async () => {
         try {
             await navigator.share({
                 title: document.title,
-                text: "Veja meu código no HVC!",
+                text: "Veja meu código no HVC!\n\n",
                 url: globals.actions.hvcode(play.actions.getCode())
             });
         }
@@ -264,6 +264,7 @@ const loadplay = async () => {
 
         const isExpand = !element.classList.contains("contract") &&
                          !(element as HTMLElement).parentElement!.classList.contains("contract") &&
+                         !(element as HTMLElement).parentElement!.parentElement!.classList.contains("contract") &&
                          !element.classList.contains("expand");
 
         if(isExpand) {
