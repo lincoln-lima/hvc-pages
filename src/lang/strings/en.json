@@ -1,3 +1,3 @@
 {
-    "main-description": "HV Script is a language that allows you to program an assembly language, with the HV-2 computer. It was created to serve as a compiler for the HV-2 computer language."
+    "main-description": "HVC is an interpreter that allows the compilation and execution of code in two languages, HV Script and HV Assembly, aimed at a hypothetical computer. It was intended to serve as a compiler for the hypothetical language of the hypothetical HV-2 computer."
 }

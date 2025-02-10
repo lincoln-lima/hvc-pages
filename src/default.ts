@@ -1,3 +1,5 @@
+import { Transformer } from "./lang/Transformer";
+// ------------------------------------------------------------------------------- 
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/modal.scss";
@@ -75,6 +77,8 @@ export const globals = {
         hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
     }
 }
+// ------------------------------------------------------------------------------- 
+// Transformer.getInstance().init();
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
