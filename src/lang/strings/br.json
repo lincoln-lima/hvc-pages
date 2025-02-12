@@ -3,14 +3,17 @@
     "come-to-play": "descer para o play",
 
     "drawer-computer-title": "Computador à Gaveta",
-    "drawer-computer-description1": "O computador à gaveta representa uma ferramenta pedagógica valiosa em um contexto onde linguagens de programação de alto nível, como JavaScript e Python, predominam. No cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. Com o aumento da semelhança entre linguagens de programação e linguagem humana, compreender como o código é interpretado pelo computador tornou-se uma tarefa complexa e que muitas. Para enfrentar esse desafio, foi concebido o computador de gaveta. Trata-se de um computador hipotético que adere à arquitetura de Von Neumann, semelhante aos computadores contemporâneos.",
-    "drawer-computer-description2": "Entretanto, suas características são simplificadas, preservando funcionalidades análogas às encontradas em componentes reais. A distinção reside na acessibilidade da linguagem de máquina, especialmente projetada para ser compreendida por iniciantes na programação. O propósito deste projeto é resgatar a compreensão da interação entre o código e a máquina, oferecendo uma abordagem mais clara e educativa para aqueles que estão dando os primeiros passos na programação. A intenção é proporcionar uma compreensão mais profunda da relação entre o código escrito e as operações realizadas pelo computador, promovendo uma base sólida para o aprendizado da programação.",
+    "drawer-computer-description1": "O computador à gaveta representa uma ferramenta pedagógica valiosa em um contexto onde linguagens de programação de alto nível, como JavaScript e Python, predominam. No cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. Com o aumento da semelhança entre linguagens de programação e linguagem humana, compreender como o código é interpretado pelo computador tornou-se uma tarefa complexa e que muitas.",
+    "drawer-computer-description2": "Para enfrentar esse desafio, foi concebido o computador de gaveta. Trata-se de um computador hipotético que adere à arquitetura de Von Neumann, semelhante aos computadores contemporâneos.",
+    "drawer-computer-description3": "Entretanto, suas características são simplificadas, preservando funcionalidades análogas às encontradas em componentes reais. A distinção reside na acessibilidade da linguagem de máquina, especialmente projetada para ser compreendida por iniciantes na programação.",
+    "drawer-computer-description4": "O propósito deste projeto é resgatar a compreensão da interação entre o código e a máquina, oferecendo uma abordagem mais clara e educativa para aqueles que estão dando os primeiros passos na programação. A intenção é proporcionar uma compreensão mais profunda da relação entre o código escrito e as operações realizadas pelo computador, promovendo uma base sólida para o aprendizado da programação.",
 
     "documentation-fig1-title": "Figura 1",
     "documentation-fig1-label": "Arquitetura de Von Neumann",
 
     "components-title": "Componentes",
-    "components-description": "Como dito no trecho anterior, o HV segue uma arquitetura semelhante à arquitetura de Von no Neumann, como mostrado na figura 2. A seguir os estão listados os componentes do HV:",
+    "components-description1": "Como dito no trecho anterior, o HV segue uma arquitetura semelhante à arquitetura de Von no Neumann, como mostrado na figura 2.",
+    "components-description2": "A seguir os estão listados os componentes do HV:",
 
     "components-list-item1": "Um gaveteiro com 100 gavetas;",
     "components-list-item2": "Uma calculadora com mostrador e teclado;",
@@ -23,7 +26,8 @@
     "documentation-fig2-label": "Arquitetura do HV",
 
     "chest-of-drawers-title": "Gaveteiro",
-    "chest-of-drawers-description": "O gaveteiro é como uma série de gavetas numeradas de 00 a 99, sendo este número chamado de seu endereço. Dentro de cada gaveta há uma folha vazia, mas que pode conter até um número de três algarismos (por exemplo, 102, 50, 3, etc.) ou uma instrução e algumas informações adicionais que vamos abordar mais tarde. Agora, vamos entender como funciona esse sistema de gavetas:",
+    "chest-of-drawers-description1": "O gaveteiro é como uma série de gavetas numeradas de 00 a 99, sendo este número chamado de seu endereço. Dentro de cada gaveta há uma folha vazia, mas que pode conter até um número de três algarismos (por exemplo, 102, 50, 3, etc.) ou uma instrução e algumas informações adicionais que vamos abordar mais tarde.",
+    "chest-of-drawers-description2": "Agora, vamos entender como funciona esse sistema de gavetas:",
 
     "chest-of-drawers-list-item1": "Em qualquer momento, só podemos abrir uma gaveta.",
     "chest-of-drawers-list-item2": "Quando lemos o que está escrito em uma gaveta, isso não muda o que está escrito lá.",
@@ -36,7 +40,8 @@
     "documentation-fig3-label": "Gaveteiro",
 
     "calculator-title": "Calculadora",
-    "calculator-description": "A calculadora utilizada no HV é semelhante a qualquer outra, apresentando um teclado com dígitos de 0 a 9 e um visor onde são exibidos os resultados das operações. Estes resultados são armazenados no acumulador. No entanto, ao contrário das calculadoras convencionais, esta opera exclusivamente com valores inteiros e oferece apenas quatro operações: soma, subtração, divisão e multiplicação. Com a operação da calculadora sendo realizada desta forma:",
+    "calculator-description1": "A calculadora utilizada no HV é semelhante a qualquer outra, apresentando um teclado com dígitos de 0 a 9 e um visor onde são exibidos os resultados das operações. Estes resultados são armazenados no acumulador. No entanto, ao contrário das calculadoras convencionais, esta opera exclusivamente com valores inteiros e oferece apenas quatro operações: soma, subtração, divisão e multiplicação.",
+    "calculator-description2": "Com a operação da calculadora sendo realizada desta forma:",
 
     "calculator-list-item1": "Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o encerramento de qualquer operação anterior. Em seguida, os algarismos do número desejado são digitados. Este número é então exibido no acumulador.",
     "calculator-list-item2": "Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo número. Para executá-la, é necessário pressionar a tecla da operação desejada, inserir o segundo número e em seguida pressionar a tecla “=”. O resultado da operação será exibido no acumulador.",
@@ -52,7 +57,8 @@
     "documentation-fig5-label": "Quadro Negro com EPI (Endereço da Próxima Instrução)",
 
     "card-holder-title": "Porta-Cartões",
-    "card-holder-description": "É um componente que se assemelha a um porta-cigarros, com os cartões sendo inseridos na parte superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse estado. Diferente dos outros componentes, esse pode ser manipulado pelo usuário, e seu funcionamento ocorre da seguinte forma:",
+    "card-holder-description1": "É um componente que se assemelha a um porta-cigarros, com os cartões sendo inseridos na parte superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse estado.",
+    "card-holder-description2": "Diferente dos outros componentes, esse pode ser manipulado pelo usuário, e seu funcionamento ocorre da seguinte forma:",
 
     "card-holder-list-item1": "Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar escritos apenas instruções e números de até 3 algarismos;",
     "card-holder-list-item2": "Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que foram colocados no dispositivo;",
@@ -70,16 +76,20 @@
     "documentation-fig7-label": "Folha de Saída",
 
     "chico-operator-title": "Operador CHICO",
-    "chico-operator-description": "Resumindo as diversas características descritas, vemos que o operador CHICO é a única pessoa que tem acesso ao gaveteiro, à calculadora e ao EPI, além de ser o único que pode retirar cartões do porta-cartões e escrever na folha de saída. Ele executa estritamente as ordens recebidas, não podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens podem ser quaisquer uma das instruções que serão detalhadas na seção Linguagem de Máquina. O CHICO trabalha sempre em um de dois estados diferentes:",
+    "chico-operator-description1": "Resumindo as diversas características descritas, vemos que o operador CHICO é a única pessoa que tem acesso ao gaveteiro, à calculadora e ao EPI, além de ser o único que pode retirar cartões do porta-cartões e escrever na folha de saída. Ele executa estritamente as ordens recebidas, não podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens podem ser quaisquer uma das instruções que serão detalhadas na seção Linguagem de Máquina.",
+    "chico-operator-description2": "O CHICO trabalha sempre em um de dois estados diferentes:",
 
     "loading-status-title": "Estado de Carga",
-    "loading-status-description": "O estado de carga se inicia assim que o usuário pede a execução do código. Nele o Chico retira um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a sequência das gavetas. Esse processo é repetido até a instrução 000, que indica o fim do programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.",
+    "loading-status-description1": "O estado de carga se inicia assim que o usuário pede a execução do código. Nele o Chico retira um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a sequência das gavetas.",
+    "loading-status-description2": "Esse processo é repetido até a instrução 000, que indica o fim do programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.",
 
     "documentation-fig8-title": "Figura 8",
     "documentation-fig8-label": "Estado de Carga",
 
     "running-status-title": "Estado de Execução",
-    "running-status-description": "O estado de execução é o no qual o operador do sistema executa as instruções que foram escritas nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI, geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o programa. Para demonstrar melhor como o estado de execução funciona vamos ilustrar com imagens do CHICO executando um programa que imprime 50 na folha de saída. Os detalhes sobre como escrever um código para CHICO executar serão detalhados posteriomente.",
+    "running-status-description1": "O estado de execução é o no qual o operador do sistema executa as instruções que foram escritas nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI, geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o programa.",
+    "running-status-description2": "Para demonstrar melhor como o estado de execução funciona vamos ilustrar com imagens do CHICO executando um programa que imprime 50 na folha de saída.",
+    "running-status-description3": "Os detalhes sobre como escrever um código para CHICO executar serão detalhados posteriomente.",
 
     "documentation-fig9-title": "Figura 9",
     "documentation-fig9-label": "Transição para o Estado de Execução",
@@ -97,41 +107,57 @@
     "documentation-fig13-label": "Quarta Instrução",
 
     "machine-language-title": "Linguagem de Máquina",
-    "machine-language-description": "Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina, o HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina que são os conjuntos de instruções que o CHICO conhece, o CHICO só conhece os números de base 10 então suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N. A seguir vamos ver todas as instruções que o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas, entrada, saída, controle.",
+    "machine-language-description1": "Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina, o HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina que são os conjuntos de instruções que o CHICO conhece, o CHICO só conhece os números de base 10 então suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N.",
+    "machine-language-description2": "A seguir vamos ver todas as instruções que o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas, entrada, saída, controle.",
 
     "instructions-title": "Instruções",
 
     "loading-instructions-title": "Instruções de carregamento",
 
-    "loading-instructions-list-item1": "0EE (Copie valor da gaveta EE para AC): Esta instrução permite transferir dados armazenados em uma gaveta (registrador temporário) denominada EE para o Acumulador (AC). Isso é fundamental para mover informações entre locais de armazenamento temporário e o registrador principal, onde operações subsequentes podem ser realizadas.",
-    "loading-instructions-list-item2": "1EE (Copie valor do AC para gaveta EE): Inversamente à instrução anterior, esta permite a transferência de dados do Acumulador para uma gaveta específica. É útil quando se deseja preservar temporariamente o conteúdo do Acumulador antes de realizar outras operações.",
-    "loading-instructions-list-item3": "0-N (AC recebe uma constante): Permite carregar uma constante (representada por N) diretamente no Acumulador. Isso é útil para inicializar variáveis ou realizar operações com valores fixos.",
+    "loading-instructions-list-item1-title": "0EE (Copie valor da gaveta EE para AC)",
+	"loading-instructions-list-item1-description": "Esta instrução permite transferir dados armazenados em uma gaveta (registrador temporário) denominada EE para o Acumulador (AC). Isso é fundamental para mover informações entre locais de armazenamento temporário e o registrador principal, onde operações subsequentes podem ser realizadas.",
+    "loading-instructions-list-item2-title": "1EE (Copie valor do AC para gaveta EE)",
+	"loading-instructions-list-item2-description": "Inversamente à instrução anterior, esta permite a transferência de dados do Acumulador para uma gaveta específica. É útil quando se deseja preservar temporariamente o conteúdo do Acumulador antes de realizar outras operações.",
+    "loading-instructions-list-item3-title": "0-N (AC recebe uma constante)",
+	"loading-instructions-list-item3-description": "Permite carregar uma constante (representada por N) diretamente no Acumulador. Isso é útil para inicializar variáveis ou realizar operações com valores fixos.",
 
     "arithmetic-operations-title": "Operações Aritméticas",
 
-    "arithmetic-operations-list-item1": "2EE (Some cEE ao AC): Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do Acumulador.",
-    "arithmetic-operations-list-item2": "3EE (Subtraia de AC o cEE): Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual do Acumulador.",
-    "arithmetic-operations-list-item3": "4EE (Multiplique o cAC por cEE): Multiplica o conteúdo atual do Acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
-    "arithmetic-operations-list-item4": "5EE (Divida o cAC por cEE): Divide o conteúdo atual do Acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
+    "arithmetic-operations-list-item1-title": "2EE (Some cEE ao AC)",
+	"arithmetic-operations-list-item1-description": "Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do Acumulador.",
+    "arithmetic-operations-list-item2-title": "3EE (Subtraia de AC o cEE)",
+	"arithmetic-operations-list-item2-description": "Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual do Acumulador.",
+    "arithmetic-operations-list-item3-title": "4EE (Multiplique o cAC por cEE)",
+	"arithmetic-operations-list-item3-description": "Multiplica o conteúdo atual do Acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
+    "arithmetic-operations-list-item4-title": "5EE (Divida o cAC por cEE)",
+	"arithmetic-operations-list-item4-description": "Divide o conteúdo atual do Acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
 
     "flow-control-title": "Controle de Fluxo",
     
-    "flow-control-list-item1": "6EE (Se cAC > 0, vá para EE): Permite a execução condicional, desviando o fluxo do programa para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso é útil para tomar decisões com base em condições.",
-    "flow-control-list-item2": "9EE (Vá para cEE): Instrução de desvio incondicional que direciona o fluxo do programa para um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.",
+    "flow-control-list-item1-title": "6EE (Se cAC > 0, vá para EE)",
+    "flow-control-list-item1-description": "Permite a execução condicional, desviando o fluxo do programa para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso é útil para tomar decisões com base em condições.",
+    "flow-control-list-item2-title": "9EE (Vá para cEE)",
+    "flow-control-list-item2-description": "Instrução de desvio incondicional que direciona o fluxo do programa para um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.",
 
     "input-output-title": "Entrada/Saída",
 
-    "input-out-list-item1": "7EE (Leia um valor e guarde na gaveta EE): Permite a entrada de dados a partir do porta-cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para interações com o usuário ou inicialização de dados.",
-    "input-out-list-item2": "8EE (Escreva cEE no dispositivo de saída): Realiza a saída de dados para a folha de saída, utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos dados.",
+    "input-out-list-item1-title": "7EE (Leia um valor e guarde na gaveta EE)",
+    "input-out-list-item1-description": "Permite a entrada de dados a partir do porta-cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para interações com o usuário ou inicialização de dados.",
+    "input-out-list-item2-title": "8EE (Escreva cEE no dispositivo de saída)",
+    "input-out-list-item2-description": "Realiza a saída de dados para a folha de saída, utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos dados.",
 
     "program-control-title": "Controle de Programa",
 
-    "program-control-list-item1": "000 (Fim do programa): Indica o encerramento do estado de CARGA e início do estado de EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser interrompida. Essa instrução é essencial para marcar o término do código executável.",
+    "program-control-list-item1-title": "000 (Fim do programa)",
+    "program-control-list-item1-description": "Indica o encerramento do estado de CARGA e início do estado de EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser interrompida. Essa instrução é essencial para marcar o término do código executável.",
 
     "essential-concepts-title": "Conceitos Essenciais",
 
     "input-and-output-title": "Entrada e Saída",
-    "input-and-output-description": "No computador hipotético HV as operações de entrada são realizadas através de um de seus componentes: o porta-cartões. Ao executar uma instrução de leitura (7EE), o operador do sistema irá verificar se há nele algum cartão contendo informação, a fim de armazená-lo na gaveta indicada. Caso o CHICO não encontre um cartão em sua busca, a execução do código será interrompida e prosseguirá apenas quando o usuário inserir um novo dado no porta-cartões. Por também ser o componente no qual o código a ser executado é armazenado, é possível inserir cartões contendo dados a serem utilizados no programa antes de sua execução ao se colocar números após a instrução de final de programa (000). Neste cenário, a instrução de leitura não pediria a inserção de dado pelo usuário, visto que o operador do sistema encontraria já um cartão para guardar. Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).",
+    "input-and-output-description1": "No computador hipotético HV as operações de entrada são realizadas através de um de seus componentes: o porta-cartões.",
+    "input-and-output-description2": "Ao executar uma instrução de leitura (7EE), o operador do sistema irá verificar se há nele algum cartão contendo informação, a fim de armazená-lo na gaveta indicada. Caso o CHICO não encontre um cartão em sua busca, a execução do código será interrompida e prosseguirá apenas quando o usuário inserir um novo dado no porta-cartões.",
+    "input-and-output-description3": "Por também ser o componente no qual o código a ser executado é armazenado, é possível inserir cartões contendo dados a serem utilizados no programa antes de sua execução ao se colocar números após a instrução de final de programa (000). Neste cenário, a instrução de leitura não pediria a inserção de dado pelo usuário, visto que o operador do sistema encontraria já um cartão para guardar.",
+    "input-and-output-description4": "Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).",
 
     "input-and-output-code-comment1": "Leitura de cartão para gaveta 30",
     "input-and-output-code-comment2": "Escrita da gaveta 30 para folha de saída",
@@ -139,8 +165,10 @@
     "input-and-output-code-comment4": "Dado a ser lido pela instrução",
 
     "variables-title": "Variáveis",
-    "variables-description1": "Na linguagem de máquina do HV, o conceito de variáveis é abordado de forma diferente do que estamos acostumados em linguagens de alto nível. Nessa linguagem, não há uma representação direta de variáveis, e os dados são armazenados em gavetas identificadas por endereços específicos. Para atribuir valores às \"variáveis\" do seu programa, é necessário escolher um endereço de gaveta e utilizar instruções apropriadas. Considere o seguinte código em Python com três variáveis:",
-    "variables-description2": "Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas, representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as \"variáveis\" durante a leitura do porta-cartões, colocando valores após a instrução 000. Desta forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo que a leitura com a instrução 7EE atribua corretamente os valores às \"variáveis\".",
+    "variables-description1": "Na linguagem de máquina do HV, o conceito de variáveis é abordado de forma diferente do que estamos acostumados em linguagens de alto nível. Nessa linguagem, não há uma representação direta de variáveis, e os dados são armazenados em gavetas identificadas por endereços específicos. Para atribuir valores às \"variáveis\" do seu programa, é necessário escolher um endereço de gaveta e utilizar instruções apropriadas.",
+    "variables-description2": "Considere o seguinte código em Python com três variáveis:",
+    "variables-description3": "Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas, representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as \"variáveis\" durante a leitura do porta-cartões, colocando valores após a instrução 000.",
+    "variables-description4": "Desta forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo que a leitura com a instrução 7EE atribua corretamente os valores às \"variáveis\".",
 
     "variables-code-comment1": "Leitura do porta-cartões para gaveta 30 (x)",
     "variables-code-comment2": "Leitura do porta-cartões para gaveta 31 (y)",
@@ -153,8 +181,13 @@
     "variables-code-comment9": "Valor 5 no porta-cartões para leitura na gaveta 31",
 
     "detour-title": "Desvio",
-    "detour-description": "Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o desenvolvimento de programas mais complexos. A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada parte do código só é executada caso alguma condição específica seja atendida. A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.",
+    "detour-description1": "Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o desenvolvimento de programas mais complexos.",
+    "detour-description2": "A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada parte do código só é executada caso alguma condição específica seja atendida.",
+    "detour-description3": "A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.",
 
     "repetition-loops-title": "Laços de repetição",
-    "repetition-loops-description": "Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou seja, um pedaço do código que é executado diversas vezes. As instruções de desvio podem também ser utilizadas para a construção de laços de repetição. Um mesmo pedaço de código pode ser executado diversas vezes ao colocarmos como alvo do desvio um endereço de gaveta anterior ao atual marcado pelo EPI, atribuindo um novo valor a este condizente com a estrutura do laço montado. O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações. Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV e criam novos desafios para os seus programadores."
+    "repetition-loops-description1": "Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou seja, um pedaço do código que é executado diversas vezes.",
+    "repetition-loops-description2": "As instruções de desvio podem também ser utilizadas para a construção de laços de repetição. Um mesmo pedaço de código pode ser executado diversas vezes ao colocarmos como alvo do desvio um endereço de gaveta anterior ao atual marcado pelo EPI, atribuindo um novo valor a este condizente com a estrutura do laço montado.",
+    "repetition-loops-description3": "O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações.",
+    "repetition-loops-description4": "Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV e criam novos desafios para os seus programadores."
 }

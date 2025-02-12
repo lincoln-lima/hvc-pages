@@ -1,6 +1,6 @@
-import br from "./strings/br.json"
-import en from "./strings/en.json"
-import es from "./strings/es.json"
+import br from "./strings/br.json";
+import en from "./strings/en.json";
+import es from "./strings/es.json";
 
 export class Transformer {
     private static instance: Transformer | null = null;

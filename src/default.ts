@@ -78,7 +78,7 @@ export const globals = {
     }
 }
 // ------------------------------------------------------------------------------- 
-// Transformer.getInstance().init();
+Transformer.getInstance().init();
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
