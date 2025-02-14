@@ -2,6 +2,10 @@
     "main-description": "O HVC é um interpretador que permite a compilação e execução de código em duas linguagens, HV Script e Assembly HV, voltadas para um computador hipotético. Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.",
     "come-to-play": "descer para o play",
 
+    "menu-playground": "Playground",
+    "menu-documentation": "Documentação",
+    "menu-repository": "Repositório",
+
     "drawer-computer-title": "Computador à Gaveta",
     "drawer-computer-description1": "O computador à gaveta representa uma ferramenta pedagógica valiosa em um contexto onde linguagens de programação de alto nível, como JavaScript e Python, predominam. No cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. Com o aumento da semelhança entre linguagens de programação e linguagem humana, compreender como o código é interpretado pelo computador tornou-se uma tarefa complexa e que muitas.",
     "drawer-computer-description2": "Para enfrentar esse desafio, foi concebido o computador de gaveta. Trata-se de um computador hipotético que adere à arquitetura de Von Neumann, semelhante aos computadores contemporâneos.",
@@ -189,5 +193,45 @@
     "repetition-loops-description1": "Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou seja, um pedaço do código que é executado diversas vezes.",
     "repetition-loops-description2": "As instruções de desvio podem também ser utilizadas para a construção de laços de repetição. Um mesmo pedaço de código pode ser executado diversas vezes ao colocarmos como alvo do desvio um endereço de gaveta anterior ao atual marcado pelo EPI, atribuindo um novo valor a este condizente com a estrutura do laço montado.",
     "repetition-loops-description3": "O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações.",
-    "repetition-loops-description4": "Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV e criam novos desafios para os seus programadores."
+    "repetition-loops-description4": "Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV e criam novos desafios para os seus programadores.",
+
+    "hvm-state-editing-title": "Edição",
+    "hvm-state-editing-tip": "Modo de programação",
+
+    "hvm-state-loading-title": "Carga",
+    "hvm-state-loading-tip": "Leitura do porta-cartões",
+    
+    "hvm-state-running-title": "Execução",
+    "hvm-state-running-tip": "Executando instruções",
+
+    "menu-debug-title": "Depurar",
+    "menu-debug-tip": "Passo a passo",
+
+    "menu-run-title": "Executar",
+    "menu-run-tip": "Imediato",
+    
+    "menu-import-title": "Importar",
+    "menu-import-tip": "Selecionar arquivo",
+    
+    "menu-export-title": "Exportar",
+    "menu-export-tip": "Download do código",
+
+    "menu-share-title": "Partilhar",
+    "menu-share-tip": "Copiar e enviar código",
+
+    "menu-configuration-title": "Configurações",
+    "menu-configuration-tip": "Opções",
+
+    "menu-home-tip": "Página inicial",
+
+    "card-holder-tip": "Porta-Cartões",
+    "epi-tip": "EPI",
+    "acumulator-tip": "Acumulador",
+    "output-sheet-tip": "Folha de Saída",
+
+    "drawer-code-tip": "Código",
+    "drawer-data-tip": "Dado",
+    "drawer-epi-tip": "EPI",
+
+    "help-tip": "Ajuda"
 }

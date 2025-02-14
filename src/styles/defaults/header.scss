@@ -101,18 +101,6 @@ header {
     
                 h1 {
                     font-size: 1.8em;
-
-                    span {
-                        @include global.setFont(title);
-
-                        &:nth-child(1) {
-                            color: global.$color2;
-                        }
-    
-                        &:nth-child(2) {
-                            color: global.$color1;
-                        }
-                    }
                 }
             }
         }

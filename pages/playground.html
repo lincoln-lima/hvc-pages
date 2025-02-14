@@ -16,23 +16,23 @@
                 <article id="editing-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Edição</span>
+                        <span data-lang="hvm-state-editing-title" class="hvm-state">Edição</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Modo de programação</span></div>
+                    <div class="tooltip"><span data-lang="hvm-state-editing-tip" class="tooltip-text">Modo de programação</span></div>
                 </article>
                 <article id="charging-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Carga</span>
+                        <span data-lang="hvm-state-loading-title" class="hvm-state">Carga</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Leitura do porta-cartões</span></div>
+                    <div class="tooltip"><span data-lang="hvm-state-loading-tip" class="tooltip-text">Leitura do porta-cartões</span></div>
                 </article>
                 <article id="running-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Execução</span>
+                        <span data-lang="hvm-state-running-title" class="hvm-state">Execução</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Executando instruções</span></div>
+                    <div class="tooltip"><span data-lang="hvm-state-running-tip" class="tooltip-text">Executando instruções</span></div>
                 </article>
             </section>
             <menu class="primary-menu">
@@ -40,53 +40,72 @@
                     <div class="tooltiper">
                         <button id="debug" class="link-nav-1">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Depurar</span>
+                            <span data-lang="menu-debug-title" class="label-tool">Depurar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Passo a passo (F8)</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-debug-tip">Passo a passo</span>
+                                <span>(F8)</span>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="run" class="link-nav-1">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Executar</span>
+                            <span data-lang="menu-run-title" class="label-tool">Executar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Imediato (F9)</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-run-tip">Imediato</span>
+                                <span>(F9)</span>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="import" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Importar</span>
+                            <span data-lang="menu-import-title" class="label-tool">Importar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Selecionar arquivo...</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-import-tip">Selecionar arquivo</span><span>...</span>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="export" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Exportar</span>
+                            <span data-lang="menu-export-title" class="label-tool">Exportar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Download de código</span></div>
+                        <div class="tooltip"><span data-lang="menu-export-tip" class="tooltip-text">Download do código</span></div>
                     </div>
                     <button class="expand link-nav-2"></button>
                     <div class="tooltiper contract">
                         <button id="share" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Partilhar</span>
+                            <span data-lang="menu-share-title" class="label-tool">Partilhar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Copiar e enviar código</span></div>
+                        <div class="tooltip"><span data-lang="menu-share-tip" class="tooltip-text">Copiar e enviar código</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="config" class="link-nav-3">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Configurar</span>
+                            <span data-lang="menu-configuration-title" class="label-tool">Configurar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Opções (F2)</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-configuration-tip">Opções</span>
+                                <span>(F2)</span>
+                            </span>
+                        </div>
                     </div>
                     <button class="expand link-nav-3"></button>
                     <div class="tooltiper contract">
@@ -94,7 +113,7 @@
                             <span class="icon-tool"></span>
                             <span class="label-tool">Início</span>
                         </a>
-                        <div class="tooltip"><span class="tooltip-text">Página inicial</span></div>
+                        <div class="tooltip"><span data-lang="menu-home-tip" class="tooltip-text">Página inicial</span></div>
                     </div>
                 </li>
             </menu>
@@ -104,7 +123,7 @@
     <main>
         <section id="playground">
             <article id="porta-cartoes" class="tooltiper">
-                <div class="tooltip"><span class="tooltip-text">Porta-Cartões</span></div>
+                <div class="tooltip"><span data-lang="card-holder-tip" class="tooltip-text">Porta-Cartões</span></div>
                 <div id="scroll-tablecards">
                     <table id="cards"></table>
                 </div>
@@ -114,32 +133,32 @@
                     <div id="contorno-epi">
                         <article id="epi" class="tooltiper">
                             <span id="epi-value" class="viewers-values"></span>
-                            <div class="tooltip"><span class="tooltip-text">EPI</span></div>
+                            <div class="tooltip"><span data-lang="epi-tip" class="tooltip-text">EPI</span></div>
                         </article>
                     </div>
                     <article id="acumulador" class="tooltiper">
                         <span id="overlay" class="viewers-values">000</span>
                         <span id="acumulador-value" class="viewers-values"></span>
-                        <div class="tooltip"><span class="tooltip-text">Acumulador</span></div>
+                        <div class="tooltip"><span data-lang="acumulator-tip" class="tooltip-text">Acumulador</span></div>
                     </article>
                     <article id="folha-de-saida" class="tooltiper">
                         <span id="saida-value" class="viewers-values"></span>
-                        <div class="tooltip"><span class="tooltip-text">Folha de Saída</span></div>
+                        <div class="tooltip"><span data-lang="output-sheet-tip" class="tooltip-text">Folha de Saída</span></div>
                     </article>
                 </div>
                 <article id="gaveteiro" class="tooltiper">
                     <div class="tooltip">
                         <div>
                             <article class="little-drawer code"></article>
-                            <span>Código</span>
+                            <span data-lang="drawer-code-tip">Código</span>
                         </div>
                         <div>
                             <article class="little-drawer data"></article>
-                            <span>Dado</span>
+                            <span data-lang="drawer-data-tip">Dado</span>
                         </div>
                         <div>
                             <article class="little-drawer pointed"></article>
-                            <span>EPI</span>
+                            <span data-lang="drawer-epi-tip">EPI</span>
                         </div>
                     </div>
                     <div id="scroll-gaveteiro"></div>
@@ -173,7 +192,12 @@
         </section>
     </main>
     <button id="help" class="tooltiper">
-        <div class="tooltip"><span class="tooltip-text">Ajuda (F12)</span></div>
+        <div class="tooltip">
+            <span class="tooltip-text">
+                <span data-lang="help-tip">Help</span>
+                <span>(F12)</span>
+            </span>
+        </div>
     </button>
 
     <script src="/src/default.ts" type="module"></script>
