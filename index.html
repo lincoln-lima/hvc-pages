@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HVC - Inicial</title>
+    <title data-lang="page-index-title">HVC - Início</title>
 
     <link rel="icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
@@ -29,18 +29,15 @@
             <article>
                 <div><h1>HV Compiler</h1></div>
                 <hr>
-                <p data-lang="main-description">
+                <p data-lang="main-description1">
                     O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
                     HV Script e Assembly HV, voltadas para um computador hipotético.
-                    <br>
-                    Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
                 </p>
+                <p data-lang="main-description2">Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.</p>
                 <hr>
                 <div class="tooltiper">
-                    <a class="come-to-play">
-                        <button data-lang="come-to-play">descer para o play</button>
-                    </a>
-                    <div class="tooltip"><span class="tooltip-text">mas só se souber brincar</span></div>
+                    <a data-lang="come-to-play-title" class="come-to-play">descer para o play</a>
+                    <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text">mas só se souber brincar</span></div>
                 </div>
             </article>
             <img src="/img/index/mlk-do-grau.png" alt="menino que programa">
@@ -123,45 +120,46 @@
             </article>
         </section>
         <section id="aprenda">
-            <div><h2>Aprenda</h2></div>
+            <div><h2 data-lang="learn-title">Aprenda</h2></div>
             <article id="hv">
-                <h3>O que é HV?</h3>
+                <h3 data-lang="what-is-hv-title">O que é HV?</h3>
                 <div>
                     <img src="/img/index/compiuter.png" alt="computador">
-                    <p>
+                    <p data-lang="what-is-hv-description1">
                         Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
-                        ensino
-                        de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
-                        conta com instruções simples
-                        mas engenhosas, capazes de construir algoritmos complexos e refinados.
-                        <br>
-                        Em sua construção, um computador HV possui:
+                        ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
+                        conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.
                     </p>
+                    <br>
+                    <p data-lang="what-is-hv-description2">Em sua construção, um computador HV possui:</p>
                     <ul>
-                        <li>100 gavetas</li>
-                        <li>Calculadora, mostrador e teclado</li>
-                        <li>Quadro Negro (EPI)</li>
-                        <li>Porta-cartões</li>
-                        <li>Folha de saída</li>
-                        <li>Operador de sistema (CHICO)</li>
+                        <li data-lang="what-is-hv-list-item1">100 gavetas</li>
+                        <li data-lang="what-is-hv-list-item2">Calculadora, mostrador e teclado</li>
+                        <li data-lang="what-is-hv-list-item3">Quadro Negro (EPI)</li>
+                        <li data-lang="what-is-hv-list-item4">Porta-cartões</li>
+                        <li data-lang="what-is-hv-list-item5">Folha de saída</li>
+                        <li data-lang="what-is-hv-list-item6">Operador de sistema (CHICO)</li>
                     </ul>
                 </div>
-                <p>
+                <p data-lang="what-is-hv-description3">
                     A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
-                    programação, e ainda adquirir noções
-                    intuitivas de arquitetura de computadores.
-                    <br>
-                    O material completo acerca está disponível no link 
-                    <mark><a class="marked" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>.
+                    programação, e ainda adquirir noções intuitivas de arquitetura de computadores.
+                </p>
+                <br>
+                <p>
+                    <span data-lang="what-is-hv-description4">O material completo acerca está disponível no arquivo</span>
+                    <mark><a class="marked" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">computador_hv.pdf</a></mark>.
                 </p>
             </article>
             <article id="assembly">
                 <h3>Assembly HV</h3>
-                <p>
+                <p data-lang="hv-assembly-description1">
                     Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
                     entendimento na introdução ao
                     universo de resolução de problemas e criação de algoritmos.
-                    <br>
+                </p>
+                <br>
+                <p data-lang="hv-assembly-description2">
                     Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
                     gaveta.
                 </p>
@@ -169,12 +167,14 @@
                 <div id="table"></div>
             </article>
             <article id="como">
-                <h3>Como usar o compilador</h3>
+                <h3 data-lang="how-to-use-compiler-title">Como usar o compilador</h3>
                 <p>
-                    Crie um arquivo de extensão <mark title="formato de arquivo">.ahv</mark>, nele ficará seu código.
-                    <br>
-                    O exemplo abaixo demonstra um código calcula a soma de dois números.
+                    <span data-lang="how-to-use-compiler-description1">Crie um arquivo de extensão</span>
+                    <span><mark title="formato de arquivo">.ahv</mark>,</span>
+                    <span data-lang="how-to-use-compiler-description2">nele ficará seu código.</span>
                 </p>
+                <br>
+                <p data-lang="how-to-use-compiler-description3">O exemplo abaixo demonstra um código calcula a soma de dois números.</p>
                 <pre class="pre-code"><code class="cmd ahv">750
 751
 050
@@ -187,29 +187,25 @@
                 <h3>Playground</h3>
                 <div>
                     <img src="/img/index/brinks.png" alt="peça de montar">
-                    <p>
+                    <p data-lang="playground-description1">
                         Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
                         funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
-                        HV,
-                        permitindo sua testagem em tempo real.
-                        <br>
+                        HV, permitindo sua testagem em tempo real.
+                    </p>
+                    <br>
+                    <p data-lang="playground-description2">
                         Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
-                        a compreensão
-                        do desenvolvedor.
+                        a compreensão do desenvolvedor.
                     </p>
                 </div>
                 <div class="tooltiper">
-                    <a class="come-to-play">
-                        <button>descer para o play</button>
-                    </a>
-                    <div class="tooltip"><span class="tooltip-text">mas só se souber brincar</span></div>
+                    <a data-lang="come-to-play-title" class="come-to-play">descer para o play</a>
+                    <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text">mas só se souber brincar</span></div>
                 </div>
             </article>
         </section>
     </main>
-    <button class="switch-theme tooltiper light">
-        <div class="tooltip"><span class="tooltip-text">Alternar tema</span></div>
-    </button>
+    <button class="switch-theme light"></button>
 
     <script src="/src/default.ts" type="module"></script>
     <script src="/src/index.ts" type="module"></script>

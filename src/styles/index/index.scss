@@ -12,20 +12,15 @@ main {
     }
 
     .tooltiper {
+        width: fit-content;
+        @include global.center;
         @include global.middle;
 
         .come-to-play {
-            width: fit-content;
+            border-radius: 0.6em;
+            padding: 0.2em 0.6em;
 
-            @include global.middle;
-            @include global.center;
-            
-            button {
-                border-radius: 0.6em;
-                padding: 0.2em 0.6em;
-
-                @include global.faded-button;
-            }
+            @include global.faded-button;
         }
 
         .tooltip {
@@ -72,6 +67,7 @@ main {
             }
 
             img {
+                padding: 1em 0;
                 max-width: 100%;
             }
         }
@@ -179,9 +175,8 @@ main {
 
                     @include global.center;
 
-                    @media screen and (max-width: index.$content-responsive-width) {
+                    @media screen and (max-width: index.$header-responsive-width) {
                         float: none;
-                        padding: 1em 0;
                     }
                 }
 
@@ -207,7 +202,7 @@ main {
                 }
 
                 &#playground {
-                    .come-to-play {
+                    .tooltiper:has(.come-to-play) {
                         margin-top: 2em;
                     }
                 }

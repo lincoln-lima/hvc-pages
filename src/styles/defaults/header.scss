@@ -140,10 +140,6 @@ header {
 
     &#header-index {
         padding: index.$header-padding 0;
-        
-        @media screen and (max-width: index.$content-responsive-width) {
-            margin-bottom: 1em;
-        }
 
         .primary-menu {
             @include responsive-menu(calc(index.$header-height - index.$header-padding), default.$menu-num-buttons, index.$header-responsive-width);

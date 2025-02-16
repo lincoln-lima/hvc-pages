@@ -59,7 +59,7 @@ export class Transformer {
     }
 
     private getTranslation(key: string, vars: Record<string, string> = {}) {
-        let text = this.translations[key] || key;
+        let text = this.translations[key] || "lang-"+key;
 
         for (const [varName, value] of Object.entries(vars)) text = text.replace(`{${varName}}`, value);
 

@@ -122,10 +122,9 @@
 /* -------------------------------------------------------------------- */
 #config-modal {
 	.modal-body {
-		@include global.size(18em, 20em);
+		@include global.size(18em);
 		
 		.modal-header {
-			height: 12%;
 			background: global.$fade-default;
 			
 			h2 {
@@ -143,7 +142,7 @@
 		}
 
 		.modal-footer {
-			height: 12%;
+			height: 10%;
 			background: global.$fade-default;
 			
 			#save-configs {
@@ -262,17 +261,23 @@
 		}
 
 		.modal-main {
-			$padding: 0.5em;
+			@include global.middle;
 
-			font-size: 1.1em;
-			text-align: center;
+			$padding: 1em;
 
 			padding-top: $padding;			
 			padding-bottom: $padding;
 
+			p {
+				font-size: 1.1em;
+				text-align: center;
+			}
+
 			#rating {
-				font-size: 1.5em;
+				font-size: 1.6em;
 				color: global.$color2;
+
+				margin: 0.5rem 0;
 
 				padding: 0 0.4em;
 				border-radius: 1em;
