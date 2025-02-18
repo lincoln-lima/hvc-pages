@@ -313,7 +313,7 @@ header {
                     button, a {
                         padding: 0 0.5em;
 
-                        &#export, &#config {
+                        &#export {
                             border-top-right-radius: 0;
                             border-bottom-right-radius: 0;
                         }
@@ -363,8 +363,16 @@ header {
                             @include global.background($image: "playground/menu/config", $size: cover);
                         }
 
-                        &.home .icon-tool {
-                            @include global.background($image: home, $size: cover);
+                        &.home {
+                            .icon-tool {
+                                @include global.background($image: home, $size: cover);
+                            }
+
+                            .label-tool {
+                                @media screen and (min-width: (play.$header-responsive-width + 1)) {
+                                    display: none;
+                                }
+                            }
                         }
 
                         .label-tool {

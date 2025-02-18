@@ -4,10 +4,11 @@ import { globals } from "../default";
 // -----------------------------------------------------------------------------------
 import ahv from "./ahv";
 // -----------------------------------------------------------------------------------
-export default () => {
+export default (lang: string) => {
     ahv();
     // ------------------------------------------------------------------------------- 
     const hvc = new HVC();
+    HVC.setLanguageMessages(lang);
     // ------------------------------------------------------------------------------- 
     const runner = play.elements.run();
     const debug = play.elements.debug();

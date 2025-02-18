@@ -32,6 +32,9 @@
     "table-description-title": "Descrição",
 
     "table-assembler-then": "então",
+    "table-assembler-read": "leia(EE)",
+    "table-assembler-write": "escreva(EE)",
+    "table-assembler-end": "fim",
 
     "table-command-0ee-description": "copie valor da gaveta EE (cEE) para AC",  
     "table-command-1ee-description": "copie valor do AC (cAC) para gaveta EE",
@@ -279,6 +282,7 @@
     "menu-configuration-title": "Configurações",
     "menu-configuration-tip": "Opções",
 
+    "menu-home-title": "Início",
     "menu-home-tip": "Página inicial",
 
     "card-holder-tip": "Porta-Cartões",
@@ -290,5 +294,25 @@
     "drawer-data-tip": "Dado",
     "drawer-epi-tip": "EPI",
 
-    "help-tip": "Ajuda"
+    "help-tip": "Ajuda",
+
+    "evaluate-now": "Avalie já",
+    "your-opinion": "Sua opinião é fundamental para nosso projeto:",
+    "click-on-stars": "Clique nas estrelas e responda o formulário!",
+    "dont-ask": "Não perguntar novamente",
+
+    "error-detected": "Erro detectado!",
+
+    "config-title": "Configurações",
+
+    "config-theme-title": "Tema",
+    "config-lightmode-title": "Claro",
+    "config-darkmode-title": "Escuro",
+
+    "config-delay-title": "Atraso",
+
+    "config-loading-status-title": "Estado de carga",
+    "config-paused-debug-title": "Depuração pausada",
+
+    "config-save-title": "Salvar"
 }

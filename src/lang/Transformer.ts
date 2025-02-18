@@ -1,4 +1,4 @@
-import br from "./strings/br.json";
+import pt from "./strings/pt.json";
 import en from "./strings/en.json";
 import es from "./strings/es.json";
 
@@ -6,7 +6,7 @@ export class Transformer {
     private static instance: Transformer | null = null;
 
     private translations: Record<string, string> = {};
-    private currentLang: "en" | "es" | "br" = "en";
+    private currentLang: "en" | "es" | "pt" = "en";
 
     public init() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -27,8 +27,8 @@ export class Transformer {
                 this.currentLang = "es";
             }
             else if(lang.includes("pt")) {
-                this.translations = br;
-                this.currentLang = "br";
+                this.translations = pt;
+                this.currentLang = "pt";
             }
 
             this.updateDOM();
@@ -40,11 +40,17 @@ export class Transformer {
     }
 
     private updateDOM() {
-        document.querySelectorAll("[data-lang]").forEach(dlang => {
-            const key = dlang.getAttribute("data-lang");
+        document.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+    }
 
-            if(key) dlang.textContent = this.getTranslation(key);
-        });
+    public updateSingle(element: Element) {
+        element.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+    }
+    
+    private updateTextElement(element: Element) {
+        const key = element.getAttribute("data-lang");
+
+        if(key) element.textContent = this.getTranslation(key);
     }
 
     private updateUrl(lang: string) {

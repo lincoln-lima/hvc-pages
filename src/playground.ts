@@ -144,7 +144,7 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 700;
+const windowsizemenu = 730;
 // ------------------------------------------------------------------------------- 
 document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
 // ------------------------------------------------------------------------------- 
@@ -163,12 +163,14 @@ const modals = ["configs", "card", "error", "help", "rating"];
 modals.forEach(async modal => {
     const element = await templates("modal/" + modal);
     element.style["display"] = "none";
+
+    globals.actions.translateElement(element);
     
     document.body.appendChild(element);
 });
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
-    hvc();
+    hvc(globals.actions.getLang());
     // ---------------------------------------------------------------------------
     play.elements.skip().checked = (localStorage.getItem("skip-hvc"))! != "false";
     play.elements.paused().checked = (localStorage.getItem("paused-hvc"))! != "false";
@@ -292,7 +294,10 @@ const loadplay = async () => {
         }
     });
     // ---------------------------------------------------------------------------
-    play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(await templates("table"));
+    const table = await templates("table");
+    globals.actions.translateElement(table);
+
+    play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(table);
 }
 // ------------------------------------------------------------------------------- 
 setTimeout(async () => await loadplay(), modals.length * 150);

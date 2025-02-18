@@ -74,7 +74,11 @@ export const globals = {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
         },
 
-        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); }
+        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); },
+
+        getLang: () => { return Transformer.getInstance().getCurrentLang() },
+
+        translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) }
     }
 }
 // ------------------------------------------------------------------------------- 
