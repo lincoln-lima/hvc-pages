@@ -11,7 +11,7 @@ const windowsizemenu = 860;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
-const scrolltable = document.getElementById("table")!;
+const scrolltable = document.getElementById("scroll-table")!;
 
 const setTemplates = async () => {
     const table = await templates("table");

@@ -1,32 +1,29 @@
 {
-    "main-description1": "O HVC é um interpretador que permite a compilação e execução de código em duas linguagens, HV Script e Assembly HV, voltadas para um computador hipotético.",
-    "main-description2": "Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.",
+    "main-description1": "O HVC é um interpretador que permite a execução de código escrito na linguagem de máquina HV, utilizada no computador hipotético HV-2.",
+    "main-description2": "Pensado como ferramenta didática, sua idealização busca facilitar a assimilação de conceitos computacionais básicos, dando introdução à elaboração de algoritmos e às linguagens de programação.",
 
     "learn-title": "Aprenda",
 
     "what-is-hv-title": "O que é HV?",
 
-    "what-is-hv-description1": "Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.",
-    "what-is-hv-description2": "Em sua construção, um computador HV possui:",
+    "what-is-hv-description1": "Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV.",
+    "what-is-hv-description2": "Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.",
+    "what-is-hv-description3": "Em sua construção, o computador HV possui:",
 
-    "what-is-hv-list-item1": "100 gavetas",
+    "what-is-hv-list-item1": "Um gaveteiro com 100 gavetas",
     "what-is-hv-list-item2": "Calculadora, mostrador e teclado",
     "what-is-hv-list-item3": "Quadro Negro (EPI)",
     "what-is-hv-list-item4": "Porta-cartões",
     "what-is-hv-list-item5": "Folha de saída",
     "what-is-hv-list-item6": "Operador de sistema (CHICO)",
 
-    "what-is-hv-description3": "A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.",
-    "what-is-hv-description4": "O material completo acerca está disponível no arquivo",
+    "what-is-hv-description4": "A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.",
+    "what-is-hv-description5": "O material completo acerca de sua estrutura e funcionamento está disponível no arquivo",
 
-    "hv-assembly-description1": "Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil entendimento na introdução ao universo de resolução de problemas e criação de algoritmos.",
-    "hv-assembly-description2": "Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma gaveta.",
+    "hv-machine-language-title": "Linguagem de Máquina HV",
 
-    "how-to-use-compiler-title": "Como usar o compilador",
-
-    "how-to-use-compiler-description1": "Crie um arquivo de extensão",
-    "how-to-use-compiler-description2": "nele ficará o seu código.",
-    "how-to-use-compiler-description3": "O exemplo abaixo demonstra um código calcula a soma de dois números.",
+    "hv-machine-language-description1": "Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que facilita o entendimento introdutório à resolução de problemas e criação de algoritmos.",
+    "hv-machine-language-description2": "Suas instruções são sucintas. Elas explicitam, em suma, um código de operação e o endereço de uma gaveta.",
 
     "table-command-title": "Comandos",
     "table-description-title": "Descrição",
@@ -53,8 +50,12 @@
     "orientation-by": "Sob orientação de:",
     "designed-by": "Design desenvolvido por:",
 
-    "playground-description1": "Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem HV, permitindo sua testagem em tempo real.",
-    "playground-description2": "Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie a compreensão do desenvolvedor.",
+    "playground-description1": "Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código na linguagem HV, permitindo sua testagem em tempo real.",
+    "playground-description2": "Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.",
+
+    "about-project-title": "Sobre o projeto",
+    "about-project-description1": "A implementação em software do computador hipotético HV, proposto pelos professores Routo Terada e Waldemar W. Setze na obra  “Introdução à Computação e à Construção de Algoritmos”, faz parte da Atividade Orientada de Ensino desenvolvida por nós na Universidade Federal de Mato Grosso do Sul (UFMS).",
+    "about-project-description2": "O código fonte do interpretador da linguagem de máquina HV, bem como instruções para sua implementação em outros ambientes está disponível no GitHub.",
 
     "come-to-play-title": "descer para o play",
     "come-to-play-tip": "mas só se souber brincar",

@@ -158,25 +158,38 @@ main {
                     @include global.setFont(title);
                 }
 
-                &:nth-child(even) h3 {
-                    color: global.$color3;
+                &:nth-child(even) {
+                    h3 {
+                        color: global.$color3;
+                    }
+                    
+                    img {
+                        float: right;
+                        margin-left: 1.5em;
+                    }
                 }
 
-                &:nth-child(odd) h3 {
-                    color: global.$color1;
+                &:nth-child(odd) {
+                    h3 {
+                        color: global.$color1;
+                    }
+
+                    img {
+                        float: left;
+                        margin-right: 1.5em;
+                    }
                 }
 
                 img {
-                    float: right;
                     display: block;
-
-                    padding: 1em;
                     max-width: 100%;
 
-                    @include global.center;
+                    margin-bottom: 1em;
+                    
+                    @media screen and (max-width: index.$figures-responsive-width) {
+                        float: none !important;
 
-                    @media screen and (max-width: index.$header-responsive-width) {
-                        float: none;
+                        @include global.center($important: yes);
                     }
                 }
 
@@ -187,17 +200,8 @@ main {
                 }
 
                 &#assembly {
-                    #table {
+                    #scroll-table {
                         overflow-x: auto;
-                    }
-                }
-
-                &#como {
-                    pre {
-                        max-width: 40em;
-
-                        padding: 1em;
-                        margin-top: 1em;
                     }
                 }
 
