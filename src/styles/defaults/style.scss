@@ -199,6 +199,17 @@ a {
         }
     }
 
+    &.location {
+        line-height: 0.5em;
+
+        &::after {
+            content: "\1f4cc";
+            font-size: 0.6em;
+
+            vertical-align: top;
+        }
+    }
+
     &.external {
         cursor: alias;
     }

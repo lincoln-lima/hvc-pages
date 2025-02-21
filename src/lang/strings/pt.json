@@ -48,14 +48,16 @@
 
     "developed-by": "Projeto desenvolvido por:",
     "orientation-by": "Sob orientação de:",
-    "designed-by": "Design desenvolvido por:",
+    "designed-by": "Design elaborado por:",
 
     "playground-description1": "Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código na linguagem HV, permitindo sua testagem em tempo real.",
     "playground-description2": "Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.",
 
     "about-project-title": "Sobre o projeto",
-    "about-project-description1": "A implementação em software do computador hipotético HV, proposto pelos professores Routo Terada e Waldemar W. Setze na obra  “Introdução à Computação e à Construção de Algoritmos”, faz parte da Atividade Orientada de Ensino desenvolvida por nós na Universidade Federal de Mato Grosso do Sul (UFMS).",
-    "about-project-description2": "O código fonte do interpretador da linguagem de máquina HV, bem como instruções para sua implementação em outros ambientes está disponível no GitHub.",
+    "about-project-description1": "O computador hipotético HV foi um modelo proposto pelos professores Routo Terada e Waldemar W. Setze na obra",
+    "book-title": "“Introdução à Computação e à Construção de Algoritmos”.",
+    "about-project-description2": "A implementação em software desses conceitos faz parte de uma Atividade Orientada de Ensino desenvolvida por nós da Faculdade de Computação na Universidade Federal do Mato Grosso do Sul (UFMS).",
+    "about-project-description3": "O código fonte do interpretador da linguagem de máquina HV, bem como as instruções para sua implantação em outros ambientes está disponível em seu repositório no GitHub.",
 
     "come-to-play-title": "descer para o play",
     "come-to-play-tip": "mas só se souber brincar",
