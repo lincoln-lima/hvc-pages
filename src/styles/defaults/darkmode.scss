@@ -22,6 +22,14 @@ $modal-color: #333333;
 
     ul, p, figcaption {
         color: global.$white;
+
+        :not(mark, mark > *) {
+            color: global.$white;
+            
+            &.marked {
+                text-decoration-color: global.$white;
+            }
+        }
     }
 
     .pre-code {

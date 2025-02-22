@@ -1,12 +1,10 @@
 @use '../defaults/default' as default;
 /* -------------------------------------------------------------------- */
-$font-responsive-width: 400px;
+$font-responsive-width: 505px;
 $header-responsive-width: 860px;
-$figures-responsive-width: 800px;
+$figures-responsive-width: 680px;
 /* -------------------------------------------------------------------- */
 $header-padding: 1em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 /* -------------------------------------------------------------------- */
 $main-width: default.$nav-width;
-/* -------------------------------------------------------------------- */
-$icon-so-height: 61px;

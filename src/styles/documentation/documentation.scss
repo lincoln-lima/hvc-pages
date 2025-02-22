@@ -173,10 +173,6 @@ main {
                     filter: drop-shadow(0.3em 0.3em 0.5em #{global.$black}30);
                 }
             }
-
-            .pre-code {
-                margin: 1.5em 0;
-            }
             
             article {
                 padding-top: doc.$header-height;

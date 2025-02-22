@@ -7,10 +7,6 @@ main {
 
     @include global.center;
 
-    div:has(h2) {
-        text-align: center;
-    }
-
     .tooltiper {
         width: fit-content;
         @include global.center;
@@ -45,6 +41,39 @@ main {
         article {
             padding-top: index.$header-height;
             padding-bottom: calc(index.$header-height * 0.5);
+
+            h3 {
+                text-transform: uppercase;
+
+                margin-bottom: 0.5em;
+                @include global.setFont(title);
+            }
+
+            &:nth-child(even) {
+                h3 {
+                    color: global.$color3;
+                }
+            }
+
+            &:nth-child(odd) {
+                h3 {
+                    color: global.$color1;
+                }
+            }
+        }
+
+        img {
+            float: right;
+            margin-left: 1em;
+
+            max-width: 100%;
+            
+            @media screen and (max-width: index.$figures-responsive-width) {
+                float: none;
+                display: block;
+
+                @include global.center($important: yes);
+            }
         }
 
         &#descricao-hv {
@@ -61,6 +90,10 @@ main {
 
                 @include global.flex($direction: column);
 
+                h1 {
+                    margin-bottom: 0;
+                }
+
                 hr {
                     margin: 1em 0;
                 }
@@ -72,127 +105,8 @@ main {
             }
         }
 
-        &#instale {
-            article {
-                $margin-side: 0.5em;
-
-                .icones-so {
-                    float: left;
-                    margin-right: $margin-side;
-                }
-
-                h3 {
-                    line-height: index.$icon-so-height;
-                }
-
-                ol {
-                    margin-top: 3em;
-                    margin-left: calc($margin-side * 2.5);
-
-                    li {
-                        $margin-side: calc($margin-side * 1.5);
-                        
-                        position: relative;
-                        margin-bottom: 2.5em;
-
-                        &::marker {
-                            content: counter(list-item);
-                            color: global.$white;
-                            font-size: 1.1em;
-
-                            @include global.setFont(title);
-                        }
-
-                        &::before {
-                            content: "";
-                            
-                            position: absolute;
-                            z-index: -1;
-
-                            top: 6px;
-                            left: -1.3em;
-
-                            background-color: global.$color1;
-
-                            @include global.circle;
-                            @include global.size(1.8em);
-                        }
-
-                        > span {
-                            display: block;
-                            color: global.$color1;
-
-                            font-size: 1.6em;
-                            font-weight: 600;
-
-                            margin-left: $margin-side;
-
-                            @include global.setFont(subtitle);
-                        }
-                        
-                        p {
-                            margin-left: calc($margin-side * 1.15);
-                        }
-
-                        .pre-code {
-                            margin-top: 1.5em;
-                            margin-left: calc($margin-side * 1.8);
-
-                            align-items: center;
-
-                            code {
-                                margin-right: $margin-side;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         &#aprenda {
             article {
-                h3 {
-                    text-transform: uppercase;
-
-                    margin-bottom: 0.5em;
-                    @include global.setFont(title);
-                }
-
-                &:nth-child(even) {
-                    h3 {
-                        color: global.$color3;
-                    }
-                    
-                    img {
-                        float: right;
-                        margin-left: 1.5em;
-                    }
-                }
-
-                &:nth-child(odd) {
-                    h3 {
-                        color: global.$color1;
-                    }
-
-                    img {
-                        float: left;
-                        margin-right: 1.5em;
-                    }
-                }
-
-                img {
-                    display: block;
-                    max-width: 100%;
-
-                    margin-bottom: 1em;
-                    
-                    @media screen and (max-width: index.$figures-responsive-width) {
-                        float: none !important;
-
-                        @include global.center($important: yes);
-                    }
-                }
-
                 &#hv {
                     ul {
                         margin: 1em 0;
@@ -205,18 +119,23 @@ main {
                     }
                 }
 
-                &#playground {
-                    .tooltiper:has(.come-to-play) {
-                        margin-top: 2em;
-                    }
-                }
+            }
+        }
+
+        &#about {
+            h2 {
+                margin-bottom: 0.5em;
             }
         }
     }
 
     @media screen and (max-width: index.$font-responsive-width) {
-        h1, h2, h3 {
+        h1, h2 {
             font-size: 12vw;
+        }
+
+        h3 {
+            font-size: 10vw;
         }
 
         .come-to-play {

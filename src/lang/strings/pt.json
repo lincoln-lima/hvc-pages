@@ -31,6 +31,7 @@
     "table-assembler-then": "então",
     "table-assembler-read": "leia(EE)",
     "table-assembler-write": "escreva(EE)",
+    "table-assembler-if": "se cAC > 0",
     "table-assembler-end": "fim",
 
     "table-command-0ee-description": "copie valor da gaveta EE (cEE) para AC",  
@@ -46,7 +47,15 @@
     "table-command-0-N-description": "AC recebe uma constante (truque)",
     "table-command-000-description": "encerra execução",
 
-    "developed-by": "Projeto desenvolvido por:",
+    "practice-title": "Pratique",
+
+    "hvcjs-description1": "Trata-se de uma versão modularizada do compilador",
+    "original-hvc": "HVC original",
+    "hvcjs-description2": "projetada para ser disponibilizada como um módulo npm.",
+    "hvcjs-description3": "Tal abordagem permite a eficiente distribuição e manutenção das ferramentas desenvolvidas por nossa equipe.",
+    "hvcjs-description4": "O módulo tem por objetivo facilitar a criação de novas aplicações de ensino que utilizam o Computador à Gaveta, por meio de uma interface simples e intuitiva.",
+
+    "developed-by": "Desenvolvido por:",
     "orientation-by": "Sob orientação de:",
     "designed-by": "Design elaborado por:",
 
@@ -54,17 +63,21 @@
     "playground-description2": "Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.",
 
     "about-project-title": "Sobre o projeto",
+
     "about-project-description1": "O computador hipotético HV foi um modelo proposto pelos professores Routo Terada e Waldemar W. Setze na obra",
     "book-title": "“Introdução à Computação e à Construção de Algoritmos”.",
-    "about-project-description2": "A implementação em software desses conceitos faz parte de uma Atividade Orientada de Ensino desenvolvida por nós da Faculdade de Computação na Universidade Federal do Mato Grosso do Sul (UFMS).",
+
+    "about-project-description2": "A implementação em software desses conceitos faz parte de uma Atividade Orientada de Ensino desenvolvida por nós graduandos da",
+    "facom": "Faculdade de Computação (FACOM)",
+    "ufms": "Universidade Federal de Mato Grosso do Sul (UFMS)",
     "about-project-description3": "O código fonte do interpretador da linguagem de máquina HV, bem como as instruções para sua implantação em outros ambientes está disponível em seu repositório no GitHub.",
 
     "come-to-play-title": "descer para o play",
     "come-to-play-tip": "mas só se souber brincar",
 
-    "menu-playground": "Playground",
-    "menu-documentation": "Documentação",
-    "menu-repository": "Repositório",
+    "playground-title": "Playground",
+    "documentation-title": "Documentação",
+    "repository-title": "Repositório",
 
     "page-index-title": "HVC - Início",
     "page-documentation-title": "HVC - Documentação",

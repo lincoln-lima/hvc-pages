@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang="page-index-title">HVC - Início</title>
+    <title data-lang="page-index-title"></title>
 
     <link rel="icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
@@ -17,9 +17,9 @@
                 <h1>HVC</h1>
             </a>
             <menu class="primary-menu">
-                <li><a data-lang="menu-playground" class="link-nav-1 come-to-play">Playground</a></li>
-                <li><a data-lang="menu-documentation" class="link-nav-2 external" href="/pages/documentation.html" target="_blank">Documentação</a></li>
-                <li><a data-lang="menu-repository" class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank">Repositório</a></li>
+                <li><a data-lang="playground-title" class="link-nav-1 come-to-play"></a></li>
+                <li><a data-lang="documentation-title" class="link-nav-2 external" href="/pages/documentation.html" target="_blank"></a></li>
+                <li><a data-lang="repository-title" class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank"></a></li>
             </menu>
             <button class="burger-menu"></button>
         </nav>
@@ -27,177 +27,99 @@
     <main>
         <section id="descricao-hv">
             <article>
-                <div><h1>HV Compiler</h1></div>
+                <h1>HV Compiler</h1>
                 <hr>
-                <p data-lang="main-description1">
-                    O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
-                    HV Script e Assembly HV, voltadas para um computador hipotético.
-                </p>
-                <p data-lang="main-description2">Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.</p>
+                <p data-lang="main-description1"></p>
+                <p data-lang="main-description2"></p>
                 <hr>
                 <div class="tooltiper">
-                    <a data-lang="come-to-play-title" class="come-to-play">descer para o play</a>
-                    <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text">mas só se souber brincar</span></div>
+                    <a data-lang="come-to-play-title" class="come-to-play"></a>
+                    <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text"></span></div>
                 </div>
             </article>
             <img src="/img/index/mlk-do-grau.png" alt="menino que programa">
         </section>
-        <section id="instale">
-            <div><h2>Instale</h2></div>
-            <article>
-                <img class="icones-so" src="/img/index/windows.png" alt="">
-                <h3>Windows</h3>
-                <ol>
-                    <li>
-                        <span>Baixar instalador do compilador</span>
-                        <p>
-                            Faça download e execute o arquivo 
-                            <mark>
-                                <a class="marked" rel="author" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável" download>
-                                    hvc.exe
-                                </a>
-                            </mark>
-                        </p>
-                    </li>
-                    <li>
-                        <span>Teste o compilador no terminal</span>
-                        <p>
-                            Faça um teste para conferir se o HVC foi instalado corretamente
-                        </p>
-                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="code copy"></button></pre>
-                    </li>
-                </ol>
-            </article>
-            <article>
-                <img class="icones-so" src="/img/index/linux-mac.png" alt="">
-                <h3>Linux e Mac</h3>
-                <ol>
-                    <li>
-                        <span>Instale ferramentas de compilação</span>
-                        <p>
-                            Para realizar a compilação do projeto é necessário ter instalado um compilador
-                            de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
-                            compilação.
-                        </p>
-                    </li>
-                    <li>
-                        <span>Clone o repositório</span>
-                        <p>
-                            Com o terminal aberto, execute o seguinte comando:
-                        </p>
-                        <pre class="pre-code"><code class="cmd">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Acesse o diretório do projeto</span>
-                        <p>
-                            Mude para pasta gerada
-                        </p>
-                        <pre class="pre-code"><code class="cmd">cd ./HV-Compiler</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Compile o código</span>
-                        <p>
-                            Execute o comando <mark><em>make</em></mark> para compilar o código usando clang++
-                        </p>
-                        <pre class="pre-code"><code class="cmd">make</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Adicione o HVC ao PATH do sistema</span>
-                        <p>
-                            Este comando adicionará o diretório <mark><em>./bin</em></mark> ao PATH do seu sistema. Isso permitirá
-                            que você execute o compilador de qualquer diretório do seu sistema
-                        </p>
-                        <pre class="pre-code"><code class="cmd">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Teste o compilador no terminal</span>
-                        <p>
-                            Faça um teste para conferir se o HVC foi instalado corretamente
-                        </p>
-                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="code copy"></button></pre>
-                    </li>
-                </ol>
-            </article>
-        </section>
         <section id="aprenda">
-            <div><h2 data-lang="learn-title">Aprenda</h2></div>
+            <h2 data-lang="learn-title"></h2>
             <article id="hv">
-                <h3 data-lang="what-is-hv-title">O que é HV?</h3>
+                <h3 data-lang="what-is-hv-title"></h3>
                 <div>
                     <img src="/img/index/compiuter.png" alt="computador">
-                    <p data-lang="what-is-hv-description1">
-                        Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
-                        ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
-                        conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.
-                    </p>
+                    <p data-lang="what-is-hv-description1"></p>
                     <p data-lang="what-is-hv-description2"></p>
                     <br>
-                    <p data-lang="what-is-hv-description3">Em sua construção, um computador HV possui:</p>
+                    <p data-lang="what-is-hv-description3"></p>
                     <ul>
-                        <li data-lang="what-is-hv-list-item1">100 gavetas</li>
-                        <li data-lang="what-is-hv-list-item2">Calculadora, mostrador e teclado</li>
-                        <li data-lang="what-is-hv-list-item3">Quadro Negro (EPI)</li>
-                        <li data-lang="what-is-hv-list-item4">Porta-cartões</li>
-                        <li data-lang="what-is-hv-list-item5">Folha de saída</li>
-                        <li data-lang="what-is-hv-list-item6">Operador de sistema (CHICO)</li>
+                        <li data-lang="what-is-hv-list-item1"></li>
+                        <li data-lang="what-is-hv-list-item2"></li>
+                        <li data-lang="what-is-hv-list-item3"></li>
+                        <li data-lang="what-is-hv-list-item4"></li>
+                        <li data-lang="what-is-hv-list-item5"></li>
+                        <li data-lang="what-is-hv-list-item6"></li>
                     </ul>
                 </div>
-                <p data-lang="what-is-hv-description4">
-                    A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
-                    programação, e ainda adquirir noções intuitivas de arquitetura de computadores.
-                </p>
+                <p data-lang="what-is-hv-description4"></p>
                 <br>
                 <p>
-                    <span data-lang="what-is-hv-description5">O material completo acerca está disponível no arquivo</span>
+                    <span data-lang="what-is-hv-description5"></span>
                     <mark><a class="marked" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">computador_hv.pdf</a></mark>.
                 </p>
             </article>
             <article id="assembly">
-                <h3 data-lang="hv-machine-language-title">Assembly HV</h3>
-                <p data-lang="hv-machine-language-description1">
-                    Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
-                    entendimento na introdução ao
-                    universo de resolução de problemas e criação de algoritmos.
-                </p>
+                <h3 data-lang="hv-machine-language-title"></h3>
+                <p data-lang="hv-machine-language-description1"></p>
                 <br>
-                <p data-lang="hv-machine-language-description2">
-                    Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
-                    gaveta.
-                </p>
+                <p data-lang="hv-machine-language-description2"></p>
                 <br>
                 <div id="scroll-table"></div>
             </article>
+        </section>
+        <section id="practice">
+            <h2 data-lang="practice-title"></h2>
             <article id="playground">
-                <h3>Playground</h3>
+                <h3 data-lang="playground-title"></h3>
                 <div>
                     <img src="/img/index/brinks.png" alt="peça de montar">
-                    <p data-lang="playground-description1">
-                        Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
-                        funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
-                        HV, permitindo sua testagem em tempo real.
-                    </p>
+                    <p data-lang="playground-description1"></p>
                     <br>
-                    <p data-lang="playground-description2">
-                        Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
-                        a compreensão do desenvolvedor.
-                    </p>
+                    <p data-lang="playground-description2"></p>
                 </div>
             </article>
-            <article id="about">
-                <h3 data-lang="about-project-title"></h3>
-                <img src="/img/index/sou-ufms.svg">
+            <article id="hvcjs">
+                <h3>HVCJS</h3>
                 <p>
-                    <span data-lang="about-project-description1"></span>
-                    <mark class="marked" data-lang="book-title"></mark>
+                    <span data-lang="hvcjs-description1"></span>
+                    <mark><a data-lang="original-hvc" class="external marked" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank"></a></mark>,
+                    <span data-lang="hvcjs-description2"></span>
+                    <span data-lang="hvcjs-description3"></span>
                 </p>
                 <br>
-                <p>
-                    <span data-lang="about-project-description2"></span>
-                    <a class="location external" href="https://maps.app.goo.gl/ks6ZGJrk7JrEqH5e7" target="_blank"></a>
-                </p>
-                <br>
-                <p data-lang="about-project-description3"></p>
+                <p data-lang="hvcjs-description4"></p>
+                <pre class="pre-code"><code class="cmd">import { HVC } from "hvcjs";
+
+const hvc = new HVC();
+
+hvc.setCode("0-5 020 820 000");
+                    
+hvc.run();</code><button class="code copy"></button></pre>
             </article>
+        </section>
+        <section id="about">
+            <h2 data-lang="about-project-title"></h3>
+            <img src="/img/index/sou-ufms.svg">
+            <p>
+                <span data-lang="about-project-description1"></span>
+                <mark class="marked" data-lang="book-title"></mark>
+            </p>
+            <br>
+            <p>
+                <span data-lang="about-project-description2"></span>
+                <a data-lang="facom" class="marked external" href="https://www.facom.ufms.br" target="_blank"></a>,
+                <span data-lang="ufms"></span>
+                <a class="location external" href="https://maps.app.goo.gl/ks6ZGJrk7JrEqH5e7" target="_blank"></a>.
+            </p>
+            <br>
+            <p data-lang="about-project-description3"></p>
         </section>
     </main>
     <button class="switch-theme light"></button>

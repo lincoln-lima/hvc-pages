@@ -22,17 +22,15 @@ h1, h2, h3, h4 {
 }
 
 h1, h2 {
+    margin-bottom: 0.1em;
     background-image: global.$fade-title;
+
     @include global.setFont(title);
 }
 
 h3, h4 {
     background-image: global.$fade-subtitle;
     @include global.setFont(subtitle);
-}
-
-div:has(h1) {
-    text-align: center;
 }
 
 h1 {
@@ -61,6 +59,14 @@ br {
     height: 0.5rem;
 }
 /* -------------------------------------------------------------------- */
+section {
+    text-align: center;
+
+    article {
+        text-align: left;
+    }
+}
+/* -------------------------------------------------------------------- */
 menu {
     list-style-type: none;
 }
@@ -87,6 +93,8 @@ mark {
 
     padding: 0.3em 1em;
     border-radius: 0.5em;
+
+    margin: 1.5em 0;
 
     overflow-x: auto;
     
