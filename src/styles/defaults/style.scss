@@ -91,7 +91,7 @@ mark {
 .pre-code {
     background-color: global.$lightgray;
 
-    padding: 0.3em 1em;
+    padding: 1em;
     border-radius: 0.5em;
 
     margin: 1.5em 0;
@@ -104,10 +104,8 @@ mark {
         font-size: 1.15em;
 
         &, * {
-            color: global.$color-code;
-
-            text-align: left;
             font-weight: 700;
+            color: global.$color-code;
 
             @include global.setFont(code);
         }
@@ -223,7 +221,7 @@ a {
     }
 }
 
-div:has(button.code) {
+div:has(> button.open) {
     $size: calc(default.$copy-size * 2 + 0.5em);
 
     min-width: $size;

@@ -17,7 +17,7 @@
                 <h1>HVC</h1>
             </a>
             <menu class="primary-menu">
-                <li><a data-lang="playground-title" class="link-nav-1" href="/pages/playground.html" target="_blank">Playground</a></li>
+                <li><a data-lang="playground-title" class="link-nav-1 come-to-play">Playground</a></li>
                 <li><a data-lang="documentation-title" class="link-nav-2" href="/pages/documentation.html">Documentação</a></li>
                 <li><a data-lang="repository-title" class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank">Repositório</a></li>
             </menu>
@@ -466,10 +466,17 @@
                             Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados
                             armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).
                         </p>
-                        <pre class="pre-code"><code class="cmd ahv">730    ; <span data-lang="input-and-output-code-comment1" class="comment">Leitura de cartão para gaveta 30</span>
+                        <div class="pre-code"><pre>
+<code class="cmd ahv">730    ; <span data-lang="input-and-output-code-comment1" class="comment">Leitura de cartão para gaveta 30</span>
 830    ; <span data-lang="input-and-output-code-comment2" class="comment">Escrita da gaveta 30 para folha de saída</span>
 000    ; <span data-lang="input-and-output-code-comment3" class="comment">Fim do programa</span>
-2      ; <span data-lang="input-and-output-code-comment4" class="comment">Dado a ser lido pela instrução</span></code><div><button class="code copy"></button><button class="code open"></button></div></pre>
+2      ; <span data-lang="input-and-output-code-comment4" class="comment">Dado a ser lido pela instrução</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <button class="code open"></button>
+                            </div>
+                        </div>
                     </article>
                     <article id="variaveis">
                         <h4 data-lang="variables-title">Variáveis</h4>
@@ -482,10 +489,14 @@
                         </p>
                         <br>
                         <p data-lang="variables-description2">Considere o seguinte código em Python com três variáveis:</p>
-                        <pre class="pre-code"><code class="cmd">x <span class="reserved">=</span> <span class="value">5</span>
-y <span class="reserved">=</span> <span class="value">5</span>
-result <span class="reserved">=</span> x <span class="reserved">+</span> y
-<span class="reserved">print</span>(result)</code><button class="code copy"></button></pre>
+                        <div class="pre-code"><pre>
+<code class="cmd"><var>x</var> <span class="reserved">=</span> <span class="value">5</span>
+<var>y</var> <span class="reserved">=</span> <span class="value">5</span>
+<var>result</var> <span class="reserved">=</span> <var>x</var> <span class="reserved">+</span> <var>y</var>
+<span class="reserved">print</span>(<var>result</var>)</code>
+</pre>
+                            <button class="code copy"></button>
+                        </div>
                         <p data-lang="variables-description3">
                             Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas,
                             representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as
@@ -496,15 +507,22 @@ result <span class="reserved">=</span> x <span class="reserved">+</span> y
                             Desta forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo
                             que a leitura com a instrução 7EE atribua corretamente os valores às "variáveis".
                         </p>
-                        <pre class="pre-code"><code class="cmd ahv">730     ; <span data-lang="variables-code-comment1" class="comment">Leitura do porta-cartões para gaveta 30 (x)</span>
-731	; <span data-lang="variables-code-comment2" class="comment">Leitura do porta-cartões para gaveta 31 (y)</span>
-030	; <span data-lang="variables-code-comment3" class="comment">Coloca o valor da gaveta 30 (x) no acumulador</span>
-231	; <span data-lang="variables-code-comment4" class="comment">Realiza a adição do valor da gaveta 31 (y) ao acumulador</span>
-132	; <span data-lang="variables-code-comment5" class="comment">Copia o valor do acumulador para gaveta 32 (result)</span>
-832	; <span data-lang="variables-code-comment6" class="comment">Imprime na folha de saída o valor da gaveta 32 (result)</span>
-000	; <span data-lang="variables-code-comment7" class="comment">Fim do programa</span>
-5       ; <span data-lang="variables-code-comment8" class="comment">Valor 5 no porta-cartões para leitura na gaveta 30</span>
-5       ; <span data-lang="variables-code-comment9" class="comment">Valor 5 no porta-cartões para leitura na gaveta 31</span></code><div><button class="code copy"></button><button class="code open"></button></div></pre>
+                        <div class="pre-code"><pre>
+<code class="cmd ahv">730    ; <span data-lang="variables-code-comment1" class="comment"></span>
+731    ; <span data-lang="variables-code-comment2" class="comment"></span>
+030    ; <span data-lang="variables-code-comment3" class="comment"></span>
+231    ; <span data-lang="variables-code-comment4" class="comment"></span>
+132    ; <span data-lang="variables-code-comment5" class="comment"></span>
+832    ; <span data-lang="variables-code-comment6" class="comment"></span>
+000    ; <span data-lang="variables-code-comment7" class="comment"></span>
+5      ; <span data-lang="variables-code-comment8" class="comment"></span>
+5      ; <span data-lang="variables-code-comment9" class="comment"></span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <button class="code open"></button>
+                            </div>
+                        </div>
                     </article>
                     <article id="desvio">
                         <h4 data-lang="detour-title">Desvio</h4>

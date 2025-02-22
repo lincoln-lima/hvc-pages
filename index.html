@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang="page-index-title"></title>
+    <title data-lang="page-index-title">HVC - Início</title>
 
     <link rel="icon" href="/img/gavetinha.ico" type="image/x-icon">
 </head>
@@ -25,8 +25,8 @@
         </nav>
     </header>
     <main>
-        <section id="descricao-hv">
-            <article>
+        <div class="container">
+            <section id="descricao-hv">
                 <h1>HV Compiler</h1>
                 <hr>
                 <p data-lang="main-description1"></p>
@@ -36,13 +36,13 @@
                     <a data-lang="come-to-play-title" class="come-to-play"></a>
                     <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text"></span></div>
                 </div>
-            </article>
+            </section>
             <img src="/img/index/mlk-do-grau.png" alt="menino que programa">
-        </section>
+        </div>
         <section id="aprenda">
-            <h2 data-lang="learn-title"></h2>
+            <h2 data-lang="learn-title">Aprenda</h2>
             <article id="hv">
-                <h3 data-lang="what-is-hv-title"></h3>
+                <h3 data-lang="what-is-hv-title">O que é HV?</h3>
                 <div>
                     <img src="/img/index/compiuter.png" alt="computador">
                     <p data-lang="what-is-hv-description1"></p>
@@ -66,7 +66,7 @@
                 </p>
             </article>
             <article id="assembly">
-                <h3 data-lang="hv-machine-language-title"></h3>
+                <h3 data-lang="hv-machine-language-title">Linguagem de Máquina HV</h3>
                 <p data-lang="hv-machine-language-description1"></p>
                 <br>
                 <p data-lang="hv-machine-language-description2"></p>
@@ -75,9 +75,9 @@
             </article>
         </section>
         <section id="practice">
-            <h2 data-lang="practice-title"></h2>
+            <h2 data-lang="practice-title">Pratique</h2>
             <article id="playground">
-                <h3 data-lang="playground-title"></h3>
+                <h3 data-lang="playground-title">Playground</h3>
                 <div>
                     <img src="/img/index/brinks.png" alt="peça de montar">
                     <p data-lang="playground-description1"></p>
@@ -95,18 +95,22 @@
                 </p>
                 <br>
                 <p data-lang="hvcjs-description4"></p>
-                <pre class="pre-code"><code class="cmd">import { HVC } from "hvcjs";
+                <div class="pre-code"><pre>
+<code class="cmd"><span class="reserved">import</span> { <span class="value">HVC</span> } <span class="reserved">from</span> "<span class="value">hvcjs</span>";
 
-const hvc = new HVC();
+<span class="reserved">const</span> <var>hvc</var> = <span class="reserved">new</span> HVC();
 
-hvc.setCode("0-5 020 820 000");
-                    
-hvc.run();</code><button class="code copy"></button></pre>
+<var>hvc</var>.<span class="reserved">setCode</span>("0-5 020 820 000");
+
+<var>hvc</var>.<span class="reserved">run</span>();</code>
+</pre>
+                    <button class="code copy"></button>
+                </div>
             </article>
         </section>
         <section id="about">
-            <h2 data-lang="about-project-title"></h3>
-            <img src="/img/index/sou-ufms.svg">
+            <h2 data-lang="about-project-title">Sobre o projeto</h2>
+            <img src="/img/index/sou-ufms.svg" alt="sou ufms">
             <p>
                 <span data-lang="about-project-description1"></span>
                 <mark class="marked" data-lang="book-title"></mark>

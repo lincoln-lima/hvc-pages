@@ -1,38 +1,44 @@
+@use './default' as default;
 @use '../globals' as global;
 /* -------------------------------------------------------------------- */
 footer {
     background: global.$fade-default;
 
-    padding: 2em 0;
+    padding: 1.5em 0;
 
     * {
         color: global.$white;
-        text-align: center;
+        text-align: center !important;
     }
 
-    section {
+    .container {
         max-width: 95%;
         
         @include global.center;
         @include global.flex($justify: space-around);
         
-        article {
-            max-width: 22em;
-            min-height: 10em;
+        section {
+            min-height: 14em;
             
-            &:nth-child(2) {
-                @include global.flex($justify: space-evenly, $direction: column);
+            @include global.flex($justify: space-evenly, $direction: column);
+
+            h2, h3 {
+                font-weight: 700;
+
+                @include global.setFont(text);
+            }
+
+            h2 {
+                font-size: (default.$font-size * 1.2);
+            }
+
+            h3 {
+                font-size: default.$font-size;
             }
             
             ul {
-                list-style-type: none;
                 padding-left: 0;
-
-                @include global.defaultText;
-            }
-
-            p:first-child, div p:first-child {
-                font-weight: 700;
+                list-style-type: none;
             }
             
             a:hover {

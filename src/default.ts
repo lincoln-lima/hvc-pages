@@ -143,11 +143,17 @@ if(copies) {
 
     Array.from(copies).forEach((copy, i) =>
         copy.addEventListener("click", () => {
+            const text = commands[i].textContent!;
+
             copy.classList.add("copied");
-            
             setTimeout(() => copy.classList.remove("copied"), 3000);
             
-            navigator.clipboard.writeText(commands[i].textContent!);
+            try {
+                navigator.clipboard.writeText(text);
+            }
+            catch {
+                console.log(text);
+            }
         })
     );
 }

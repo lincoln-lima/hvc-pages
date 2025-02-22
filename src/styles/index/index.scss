@@ -31,8 +31,37 @@ main {
             }
         }
     }
+
+    .container:has(#descricao-hv) {
+        min-height: 90vh;
+        margin-bottom: 15vh;
+
+        @include global.flex($justify: space-around, $wrap: wrap-reverse);
+
+        section#descricao-hv {
+            max-width: 30em;
+            min-height: 30em;
+
+            padding: 1em 0.5em;
+
+            @include global.flex($direction: column);
+
+            h1 {
+                margin-bottom: 0;
+            }
+
+            hr {
+                margin: 1em 0;
+            }
+        }
+
+        img {
+            padding: 1em 0;
+            max-width: 90%;
+        }
+    }
     
-    section {
+    section:not(#descricao-hv) {
         max-width: 75em;
         margin-bottom: 10vh;
 
@@ -76,35 +105,6 @@ main {
             }
         }
 
-        &#descricao-hv {
-            min-height: 90vh;
-            margin-bottom: 15vh;
-
-            @include global.flex($justify: space-around, $wrap: wrap-reverse);
-
-            article {
-                max-width: 30em;
-                min-height: 30em;
-
-                padding: 1em 0.5em;
-
-                @include global.flex($direction: column);
-
-                h1 {
-                    margin-bottom: 0;
-                }
-
-                hr {
-                    margin: 1em 0;
-                }
-            }
-
-            img {
-                padding: 1em 0;
-                max-width: 100%;
-            }
-        }
-
         &#aprenda {
             article {
                 &#hv {
@@ -118,7 +118,16 @@ main {
                         overflow-x: auto;
                     }
                 }
+            }
+        }
 
+        &#practice {
+            article {
+                &#hvcjs {
+                    .pre-code {
+                        max-width: 35em;
+                    }
+                }
             }
         }
 

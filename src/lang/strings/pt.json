@@ -55,9 +55,10 @@
     "hvcjs-description3": "Tal abordagem permite a eficiente distribuição e manutenção das ferramentas desenvolvidas por nossa equipe.",
     "hvcjs-description4": "O módulo tem por objetivo facilitar a criação de novas aplicações de ensino que utilizam o Computador à Gaveta, por meio de uma interface simples e intuitiva.",
 
-    "developed-by": "Desenvolvido por:",
-    "orientation-by": "Sob orientação de:",
-    "designed-by": "Design elaborado por:",
+    "developers-title": "Desenvolvedores",
+    "colaborators-title": "Colaboradores",
+    "supervisor-title": "Orientador:",
+    "designer-title": "Designer:",
 
     "playground-description1": "Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código na linguagem HV, permitindo sua testagem em tempo real.",
     "playground-description2": "Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.",

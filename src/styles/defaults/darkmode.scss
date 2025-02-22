@@ -5,7 +5,6 @@ $body-color: #1d1d1d;
 $header-color: #131313;
 $primary-menu-color: $header-color + default.$transparency-menu;
 $tooltip-color: #464646;
-$pre-code-color: #b0b0b0;
 $sticky-nav-color: #313131;
 $modal-color: #333333;
 /* -------------------------------------------------------------------- */
@@ -30,10 +29,6 @@ $modal-color: #333333;
                 text-decoration-color: global.$white;
             }
         }
-    }
-
-    .pre-code {
-        background-color: $pre-code-color;
     }
 
     #sticky-nav menu {
