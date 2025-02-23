@@ -258,15 +258,15 @@ const loadplay = async () => {
     play.elements.help().addEventListener("click", switchHelp);
     play.elements.closeerrors().addEventListener("click", () => globals.actions.undisplayElement(play.elements.errorsmodal()));
     // ---------------------------------------------------------------------------
-    window.addEventListener("click", e => {
+    document.addEventListener("click", e => {
         const element = e.target as HTMLElement;
 
         if(element == play.elements.helpmodal()) switchHelp();
         else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
 
         const isExpand = !element.classList.contains("contract") &&
-                         !(element as HTMLElement).parentElement!.classList.contains("contract") &&
-                         !(element as HTMLElement).parentElement!.parentElement!.classList.contains("contract") &&
+                         !element.parentElement!.classList.contains("contract") &&
+                         !element.parentElement!.parentElement!.classList.contains("contract") &&
                          !element.classList.contains("expand");
 
         if(isExpand) {
@@ -275,7 +275,7 @@ const loadplay = async () => {
             });
         }
     });
-    // ---------------------------------------------------------------------------
+
     document.addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
 

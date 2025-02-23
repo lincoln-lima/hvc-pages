@@ -25,11 +25,13 @@
         </nav>
     </header>
     <main>
-        <nav id="sticky-nav" class="retracted">
-            <menu>
+        <nav id="sticky-nav">
+            <ul class="content-menu">
                 <li><a href="#computador-hv"><strong data-lang="drawer-computer-title">Computador à Gaveta</strong></a></li>
+                <li>
                     <ul>
                         <li><a href="#componentes"><strong data-lang="components-title">Componentes</strong></a></li>
+                        <li>
                             <ul>
                                 <li><a href="#gaveteiro" data-lang="chest-of-drawers-title">Gaveteiro</a></li>
                                 <li><a href="#calculadora" data-lang="calculator-title">Calculadora</a></li>
@@ -37,14 +39,23 @@
                                 <li><a href="#porta-cartoes" data-lang="card-holder-title">Porta-Cartões</a></li>
                                 <li><a href="#folha-de-saida" data-lang="output-sheet-title">Folha de Saída</a></li>
                                 <li><a href="#chico"><em data-lang="chico-operator-title">Operador Chico</em></a></li>
+                                <li>
                                     <ul>
                                         <li><a href="#carga" data-lang="loading-status-title">Estado de Carga</a></li>
                                         <li><a href="#execucao" data-lang="running-status-title">Estado de Execução</a></li>
                                     </ul>
+                                </li>
                             </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
                         <li><a href="#linguagem"><strong data-lang="machine-language-title">Linguagem de Máquina</strong></a></li>
+                        <li>
                             <ul>
                                 <li><a href="#instrucoes"><em data-lang="instructions-title">Instruções</em></a></li>
+                                <li>
                                     <ul>
                                         <li><a href="#carregamento" data-lang="loading-instructions-title">Instruções de carregamento</a></li>
                                         <li><a href="#aritmetica" data-lang="arithmetic-operations-title">Operações Aritméticas</a></li>
@@ -52,19 +63,28 @@
                                         <li><a href="#entrada-saida-instrucao" data-lang="input-output-title">Entrada/Saída</a></li>
                                         <li><a href="#controle" data-lang="program-control-title">Controle de Programa</a></li>
                                     </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
                                 <li><a href="#conceitos"><em data-lang="essential-concepts-title">Conceitos Essenciais</em></a></li>
+                                <li>
                                     <ul>
                                         <li><a href="#entrada-saida-conceito" data-lang="input-and-output-title">Entrada/Saída</a></li>
                                         <li><a href="#variaveis" data-lang="variables-title">Variáveis</a></li>
                                         <li><a href="#desvio" data-lang="detour-title">Desvio</a></li>
                                         <li><a href="#lacos" data-lang="repetition-loops-title">Laços de repetição</a></li>
                                     </ul>
+                                </li>
                             </ul>
+                        </li>
                     </ul>
-            </menu>
-            <button id="show-nav" class="retracted"></button>
+                </li>
+            </ul>
+            <button id="show-nav"></button>
         </nav>
-        <section class="content">
+        <div class="content">
             <section id="computador-hv">
                 <h1 data-lang="drawer-computer-title">Computador à Gaveta</h1>
                 <hr>
@@ -325,6 +345,7 @@
                         <ul>
                             <li>
                                 <strong data-lang="loading-instructions-list-item1-title">0EE (Copie valor da gaveta EE para AC)</strong>: 
+                                <br>
                                 <span data-lang="loading-instructions-list-item1-description">
                                     Esta instrução permite transferir dados armazenados
                                     em uma gaveta (registrador temporário) denominada EE para o Acumulador (AC). Isso é
@@ -334,6 +355,7 @@
                             </li>
                             <li>
                                 <strong data-lang="loading-instructions-list-item2-title">1EE (Copie valor do AC para gaveta EE)</strong>: 
+                                <br>
                                 <span data-lang="loading-instructions-list-item2-description">
                                     Inversamente à instrução anterior, esta permite a
                                     transferência de dados do Acumulador para uma gaveta específica. É útil quando se deseja
@@ -342,6 +364,7 @@
                             </li>
                             <li>
                                 <strong data-lang="loading-instructions-list-item3-title">0-N (AC recebe uma constante)</strong>: 
+                                <br>
                                 <span data-lang="loading-instructions-list-item3-description">
                                     Permite carregar uma constante (representada por N)
                                     diretamente no Acumulador. Isso é útil para inicializar variáveis ou realizar operações com
@@ -355,6 +378,7 @@
                         <ul>
                             <li>
                                 <strong data-lang="arithmetic-operations-list-item1-title">2EE (Some cEE ao AC)</strong>: 
+                                <br>
                                 <span data-lang="arithmetic-operations-list-item1-description">
                                     Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do
                                     Acumulador.
@@ -362,6 +386,7 @@
                             </li>
                             <li>
                                 <strong data-lang="arithmetic-operations-list-item2-title">3EE (Subtraia de AC o cEE)</strong>: 
+                                <br>
                                 <span data-lang="arithmetic-operations-list-item2-description">
                                     Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual
                                     do Acumulador.
@@ -369,6 +394,7 @@
                             </li>
                             <li>
                                 <strong data-lang="arithmetic-operations-list-item3-title">4EE (Multiplique o cAC por cEE)</strong>: 
+                                <br>
                                 <span data-lang="arithmetic-operations-list-item3-description">
                                     Multiplica o conteúdo atual do Acumulador (cAC) pelo valor
                                     armazenado em uma gaveta (cEE).
@@ -376,6 +402,7 @@
                             </li>
                             <li>
                                 <strong data-lang="arithmetic-operations-list-item4-title">5EE (Divida o cAC por cEE)</strong>: 
+                                <br>
                                 <span data-lang="arithmetic-operations-list-item4-description">
                                     Divide o conteúdo atual do Acumulador (cAC) pelo valor
                                     armazenado em uma gaveta (cEE).
@@ -388,6 +415,7 @@
                         <ul>
                             <li>
                                 <strong data-lang="flow-control-list-item1-title">6EE (Se cAC > 0, vá para EE)</strong>: 
+                                <br>
                                 <span data-lang="flow-control-list-item1-description">
                                     Permite a execução condicional, desviando o fluxo do programa
                                     para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso
@@ -396,6 +424,7 @@
                             </li>
                             <li>
                                 <strong data-lang="flow-control-list-item2-title">9EE (Vá para cEE)</strong>: 
+                                <br>
                                 <span data-lang="flow-control-list-item2-description">
                                     Instrução de desvio incondicional que direciona o fluxo do programa para
                                     um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.
@@ -408,6 +437,7 @@
                         <ul>
                             <li>
                                 <strong data-lang="input-out-list-item1-title">7EE (Leia um valor e guarde na gaveta EE)</strong>: 
+                                <br>
                                 <span data-lang="input-out-list-item1-description">
                                     Permite a entrada de dados a partir do porta-cartões,
                                     armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para
@@ -416,6 +446,7 @@
                             </li>
                             <li>
                                 <strong data-lang="input-out-list-item2-title">8EE (Escreva cEE no dispositivo de saída)</strong>: 
+                                <br>
                                 <span data-lang="input-out-list-item2-description">
                                     Realiza a saída de dados para a folha de saída,
                                     utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos
@@ -429,6 +460,7 @@
                         <ul>
                             <li>
                                 <strong data-lang="program-control-list-item1-title">000 (Fim do programa)</strong>: 
+                                <br>
                                 <span data-lang="program-control-list-item1-description">
                                     Indica o encerramento do estado de CARGA e início do estado de
                                     EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser
@@ -555,7 +587,7 @@
                     </article>
                 </article>
             </section>
-        </section>
+        </div>
     </main>
     <button class="switch-theme light"></button>
 

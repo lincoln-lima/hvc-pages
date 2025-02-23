@@ -30,8 +30,12 @@ $modal-color: #333333;
             }
         }
     }
+    
+    table td.operation {
+        color: global.$white !important;
+    }
 
-    #sticky-nav menu {
+    #sticky-nav .content-menu {
         background-color: $sticky-nav-color;
         
         * {

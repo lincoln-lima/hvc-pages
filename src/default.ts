@@ -174,7 +174,7 @@ if(opens) {
     })
 }
 // ------------------------------------------------------------------------------- 
-window.addEventListener("click", e => {
+document.addEventListener("click", e => {
     const element = e.target;
     const menu = globals.elements.menumodal();
     const burger = globals.elements.menuburger();
@@ -187,7 +187,7 @@ window.addEventListener("click", e => {
 
     if(notTarget && notExpand && areVisible) globals.actions.switchMenu();
 });
-// ------------------------------------------------------------------------------- 
+
 document.addEventListener("keydown", e => {
     const key = e.key.toLowerCase();
     const menu = globals.elements.menumodal();

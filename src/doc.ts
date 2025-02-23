@@ -11,36 +11,29 @@ const shownav = document.getElementById("show-nav")!;
 const stickynav = document.getElementById("sticky-nav")!;
 // -----------------------------------------------------------------------------------
 const components = [shownav, stickynav];
-const states = ["expanded", "retracted"];
 
-const retract = () => {
-    components.forEach(element => element.classList.replace(states[0], states[1]));
-}
-
-const expand = () => {
-    components.forEach(element => element.classList.replace(states[1], states[0]));
+const areExpanded = () => {
+    return shownav.classList.contains("expanded") || stickynav.classList.contains("expanded");
 }
 
 const switchnav = () => {
-    if(shownav.classList.contains(states[0])) retract();
-    else expand();
+    components.forEach(element => element.classList.toggle("expanded"));
 }
 // -----------------------------------------------------------------------------------
 shownav.addEventListener("click", switchnav);
 // -----------------------------------------------------------------------------------
-window.addEventListener("resize", retract);
-window.addEventListener("click", e => {
-    const element = e.target;
+document.addEventListener("click", e => {
+    const element = e.target as Element;
     
-    const notTarget = element != shownav;
-    const areExpanded = shownav.classList.contains(states[0]) || stickynav.classList.contains(states[0]);
+    if(areExpanded()) {
+        const notTarget = !stickynav.contains(element) || stickynav.isSameNode(element);
 
-    if(notTarget && areExpanded && !stickynav.contains(element as Node)) retract();
+        if(notTarget) switchnav();
+    }
 });
-// -----------------------------------------------------------------------------------
+
 document.addEventListener("keydown", e => {
     const key = e.key.toLowerCase();
-    const areExpanded = shownav.classList.contains(states[0]) || stickynav.classList.contains(states[0]);
 
-    if(key === "escape" && areExpanded) retract();
+    if(key === "escape" && areExpanded()) switchnav();
 });

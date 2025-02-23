@@ -4,21 +4,21 @@
 
     "learn-title": "Aprenda",
 
-    "what-is-hv-title": "O que é HV?",
+    "hv-computer-title": "Computador HV",
 
-    "what-is-hv-description1": "Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV.",
-    "what-is-hv-description2": "Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.",
-    "what-is-hv-description3": "Em sua construção, o computador HV possui:",
+    "hv-computer-description1": "Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV.",
+    "hv-computer-description2": "Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.",
+    "hv-computer-description3": "Em sua construção, o computador HV possui:",
 
-    "what-is-hv-list-item1": "Um gaveteiro com 100 gavetas",
-    "what-is-hv-list-item2": "Calculadora, mostrador e teclado",
-    "what-is-hv-list-item3": "Quadro Negro (EPI)",
-    "what-is-hv-list-item4": "Porta-cartões",
-    "what-is-hv-list-item5": "Folha de saída",
-    "what-is-hv-list-item6": "Operador de sistema (CHICO)",
+    "hv-computer-list-item1": "Um gaveteiro com 100 gavetas",
+    "hv-computer-list-item2": "Calculadora, mostrador e teclado",
+    "hv-computer-list-item3": "Quadro Negro (EPI)",
+    "hv-computer-list-item4": "Porta-cartões",
+    "hv-computer-list-item5": "Folha de saída",
+    "hv-computer-list-item6": "Operador de sistema (CHICO)",
 
-    "what-is-hv-description4": "A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.",
-    "what-is-hv-description5": "O material completo acerca de sua estrutura e funcionamento está disponível no arquivo",
+    "hv-computer-description4": "A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.",
+    "hv-computer-description5": "O material completo acerca de sua estrutura e funcionamento está disponível no arquivo",
 
     "hv-machine-language-title": "Linguagem de Máquina HV",
 
@@ -100,8 +100,8 @@
     "components-list-item2": "Uma calculadora com mostrador e teclado;",
     "components-list-item3": "Um pequeno quadro-negro denominado EPI;",
     "components-list-item4": "Um porta-cartões;",
-    "components-list-item5": "Uma folha de saída;",
-    "components-list-item6": "Um operador de sistema, uma pessoa chamada CHICO, com lápis, apagador de quadro-negro e giz;     ",
+    "components-list-item5": "Uma folha de papel;",
+    "components-list-item6": "Um operador de sistema chamado CHICO, com um lápis, um apagador de quadro-negro e um giz.",
 
     "documentation-fig2-title": "Figura 2",
     "documentation-fig2-label": "Arquitetura do HV",
