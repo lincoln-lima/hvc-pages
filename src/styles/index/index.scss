@@ -36,18 +36,17 @@ main {
         min-height: 90vh;
         margin-bottom: 15vh;
 
-        @include global.flex($justify: space-around, $wrap: wrap-reverse);
+        @include global.flex($justify: space-evenly, $wrap: wrap-reverse);
 
         section#descricao-hv {
             max-width: 30em;
-            min-height: 30em;
-
             padding: 0 0.5em;
 
             @include global.flex($direction: column);
 
             h1 {
                 margin-bottom: 0;
+                line-height: 1.15em;
             }
 
             hr {
@@ -93,7 +92,7 @@ main {
 
         img {
             float: right;
-            margin-left: 1em;
+            margin-left: 2em;
 
             max-width: 100%;
             
@@ -101,7 +100,9 @@ main {
                 float: none;
                 display: block;
 
-                @include global.center($important: yes);
+                margin-bottom: 1em;
+
+                @include global.center;
             }
         }
 

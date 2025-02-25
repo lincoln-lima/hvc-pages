@@ -1,5 +1,6 @@
 {
-    "main-description1": "O HVC é um interpretador que permite a execução de código escrito na linguagem de máquina HV, utilizada no computador hipotético HV-2.",
+    "main-description1-article": "O",
+    "main-description1-definition": "é um interpretador que permite a execução de código escrito na linguagem de máquina HV, utilizada no computador hipotético HV-2.",
     "main-description2": "Pensado como ferramenta didática, sua idealização busca facilitar a assimilação de conceitos computacionais básicos, dando introdução à elaboração de algoritmos e às linguagens de programação.",
 
     "learn-title": "Aprenda",
@@ -80,8 +81,8 @@
     "documentation-title": "Documentação",
     "repository-title": "Repositório",
 
-    "page-index-title": "HVC - Início",
-    "page-documentation-title": "HVC - Documentação",
+    "page-index-title": "HVC | Início",
+    "page-documentation-title": "HVC | Documentação",
 
     "drawer-computer-title": "Computador à Gaveta",
     "drawer-computer-description1": "O computador à gaveta representa uma ferramenta pedagógica valiosa em um contexto onde linguagens de programação de alto nível, como JavaScript e Python, predominam. No cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. Com o aumento da semelhança entre linguagens de programação e linguagem humana, compreender como o código é interpretado pelo computador tornou-se uma tarefa complexa e que muitas.",
