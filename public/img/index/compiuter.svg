@@ -1,6 +1,6 @@
 <svg width="325" height="300" viewBox="0 0 325 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<ellipse cx="109.5" cy="110" rx="109.5" ry="110" transform="matrix(-1 0 0 1 325 73)" fill="#00A8AC"/>
-<ellipse cx="84" cy="84.5" rx="84" ry="84.5" transform="matrix(-1 0 0 1 168 41)" fill="#8D49FF"/>
+<ellipse cx="109.5" cy="110" rx="109.5" ry="110" transform="matrix(-1 0 0 1 325 73)" fill="#00a8ac"/>
+<ellipse cx="84" cy="84.5" rx="84" ry="84.5" transform="matrix(-1 0 0 1 168 41)" fill="#5427a8"/>
 <rect width="230" height="300" transform="matrix(-1 0 0 1 285 0)" fill="url(#pattern0_1_8)"/>
 <defs>
 <pattern id="pattern0_1_8" patternContentUnits="objectBoundingBox" width="1" height="1">
