@@ -196,7 +196,7 @@ main {
                         }
                     }
                     @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
-                        @include global.size(play.$viewers-responsive-size);
+                        width: play.$viewers-responsive-size;
 
                         .viewers-values {
                             font-size: play.$viewers-responsive-font-size;
@@ -204,7 +204,7 @@ main {
                     }
 
                     @media screen and (max-width: $width2) {
-                        @include global.size(play.$viewers-responsive-size2);
+                        width: play.$viewers-responsive-size2;
 
                         .viewers-values {
                             font-size: play.$viewers-responsive-font-size2;
@@ -559,8 +559,12 @@ main {
     }
 }
 
-#help {
-    @include global.circle;
-    @include global.fixed-button;
-    @include global.faded-button(info);
+.tooltiper:has(#help) {
+    @include global.fixed-button($size: 3em);
+    
+    #help {
+        @include global.circle;
+        @include global.size(100%);
+        @include global.faded-button(info);
+    }
 }

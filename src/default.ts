@@ -4,7 +4,6 @@ import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/modal.scss";
 import "/src/styles/defaults/header.scss";
-import "/src/styles/defaults/darkmode.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
     path: {
@@ -44,6 +43,13 @@ export const globals = {
             const menu = globals.elements.menumodal();
             globals.actions.switchVisibility(menu, menu.style["visibility"] != "visible");
         },
+
+        switchTheme: () => {
+            const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
+            
+            root.setAttribute("data-theme", theme);
+            globals.actions.changeStorage("theme-content", theme);
+        },
         
         monitoreMenu: (size: number) => {
             const burger = globals.elements.menuburger();
@@ -59,7 +65,7 @@ export const globals = {
         },
         
         scrollTo: (element: Element) => {
-            element.scrollIntoView({behavior: "smooth", inline: "center", block: "center" });
+            element.scrollIntoView({ behavior: "smooth", inline: "center", block: "center" });
         },
 
         changeElementText: (element: Element, text: string) => {
@@ -74,9 +80,11 @@ export const globals = {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
         },
 
-        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A"); },
+        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A") },
 
         getLang: () => { return Transformer.getInstance().getCurrentLang() },
+
+        getTheme: () => { return localStorage.getItem("theme-content")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
 
         translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) }
     }
@@ -85,6 +93,10 @@ export const globals = {
 Transformer.getInstance().init();
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
+// ------------------------------------------------------------------------------- 
+const root = document.documentElement;
+
+root.setAttribute("data-theme", globals.actions.getTheme());
 // ------------------------------------------------------------------------------- 
 const homes = document.getElementsByClassName("home")!;
 
@@ -107,32 +119,11 @@ if(cometoplays) {
 const switchtheme = document.getElementsByClassName("switch-theme").item(0)!;
 
 if(switchtheme) {
-    let actualtheme = localStorage.getItem("theme-content") ? localStorage.getItem("theme-content")! : "light"; 
-    // ---------------------------------------------------------------------------
-    const switchTheme = (oldtheme: string) => {
-        switchtheme.classList.replace(oldtheme, actualtheme);
-        globals.actions.changeElementClass(document.body, actualtheme + "mode");
-    }
+    if(globals.actions.getTheme() != "light") switchtheme.classList.toggle("dark");
 
-    const oldTheme = (newtheme: string) => {
-        return newtheme != "light" ? "light" : "dark";
-    }
-    // ---------------------------------------------------------------------------
-    switchTheme(oldTheme(actualtheme));
-    // ---------------------------------------------------------------------------
     switchtheme.addEventListener("click", () => {
-        actualtheme = switchtheme.classList.contains("light") ? "dark" : "light"; 
-
-        globals.actions.changeStorage("theme-content", actualtheme);
-        switchTheme(oldTheme(actualtheme));
-    });
-    
-    window.addEventListener("storage", () => {
-        if (actualtheme != localStorage.getItem("theme-content")!) {
-            actualtheme = localStorage.getItem("theme-content")!;
-            
-            switchTheme(oldTheme(actualtheme));
-        }
+        globals.actions.switchTheme();
+        switchtheme.classList.toggle("dark");
     });
 }
 // ------------------------------------------------------------------------------- 
@@ -173,6 +164,10 @@ if(opens) {
         })
     })
 }
+// ------------------------------------------------------------------------------- 
+window.addEventListener("storage", e => {
+    if(e.key === "theme-content") root.setAttribute("data-theme", e.newValue!);
+});
 // ------------------------------------------------------------------------------- 
 document.addEventListener("click", e => {
     const element = e.target;

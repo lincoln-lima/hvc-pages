@@ -1,6 +1,8 @@
 @use '../globals' as global;
 @use './default' as default;
 /* -------------------------------------------------------------------- */
+@use './dark.scss' as dark;
+/* -------------------------------------------------------------------- */
 * {
     padding: 0;
     margin: 0;
@@ -13,6 +15,10 @@
 
 html {
     scroll-behavior: smooth;
+
+    &[data-theme="dark"] {
+        @include dark.mode;
+    }
 }
 /* -------------------------------------------------------------------- */
 h1, h2, h3, h4 {
@@ -181,9 +187,7 @@ button {
         @include global.circle;
         @include global.fixed-button;
 
-        &.light {
-            @include global.faded-button(moon);
-        }
+        @include global.faded-button(moon);
 
         &.dark {
             @include global.faded-button(sun);

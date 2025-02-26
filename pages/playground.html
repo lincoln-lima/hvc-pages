@@ -24,29 +24,29 @@
 <body>
     <header id="header-play">
         <nav>
-            <section id="states-view" class="editing">
-                <article id="editing-state" class="state tooltiper">
+            <div id="states-view" class="editing">
+                <div id="editing-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
                         <span data-lang="hvm-state-editing-title" class="hvm-state">Edição</span>
                     </div>
                     <div class="tooltip"><span data-lang="hvm-state-editing-tip" class="tooltip-text">Modo de programação</span></div>
-                </article>
-                <article id="charging-state" class="state tooltiper">
+                </div>
+                <div id="charging-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
                         <span data-lang="hvm-state-loading-title" class="hvm-state">Carga</span>
                     </div>
                     <div class="tooltip"><span data-lang="hvm-state-loading-tip" class="tooltip-text">Leitura do porta-cartões</span></div>
-                </article>
-                <article id="running-state" class="state tooltiper">
+                </div>
+                <div id="running-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
                         <span data-lang="hvm-state-running-title" class="hvm-state">Execução</span>
                     </div>
                     <div class="tooltip"><span data-lang="hvm-state-running-tip" class="tooltip-text">Executando instruções</span></div>
-                </article>
-            </section>
+                </div>
+            </div>
             <menu class="primary-menu">
                 <li>
                     <div class="tooltiper">
@@ -134,32 +134,32 @@
         </nav>
     </header>
     <main>
-        <section id="playground">
-            <article id="porta-cartoes" class="tooltiper">
+        <div id="playground">
+            <div id="porta-cartoes" class="tooltiper">
                 <div class="tooltip"><span data-lang="card-holder-tip" class="tooltip-text">Porta-Cartões</span></div>
                 <div id="scroll-tablecards">
                     <table id="cards"></table>
                 </div>
-            </article>
+            </div>
             <div class="debuggers">
                 <div class="viewers">
                     <div id="contorno-epi">
-                        <article id="epi" class="tooltiper">
+                        <div id="epi" class="tooltiper">
                             <span id="epi-value" class="viewers-values"></span>
                             <div class="tooltip"><span data-lang="epi-tip" class="tooltip-text">EPI</span></div>
-                        </article>
+                        </div>
                     </div>
-                    <article id="acumulador" class="tooltiper">
+                    <div id="acumulador" class="tooltiper">
                         <span id="overlay" class="viewers-values">000</span>
                         <span id="acumulador-value" class="viewers-values"></span>
                         <div class="tooltip"><span data-lang="acumulator-tip" class="tooltip-text">Acumulador</span></div>
-                    </article>
-                    <article id="folha-de-saida" class="tooltiper">
+                    </div>
+                    <div id="folha-de-saida" class="tooltiper">
                         <span id="saida-value" class="viewers-values"></span>
                         <div class="tooltip"><span data-lang="output-sheet-tip" class="tooltip-text">Folha de Saída</span></div>
-                    </article>
+                    </div>
                 </div>
-                <article id="gaveteiro" class="tooltiper">
+                <div id="gaveteiro" class="tooltiper">
                     <div class="tooltip">
                         <div>
                             <div class="little-drawer code"></div>
@@ -175,9 +175,9 @@
                         </div>
                     </div>
                     <div id="scroll-gaveteiro"></div>
-                </article>
+                </div>
             </div>
-            <section id="debug-menu">
+            <div id="debug-menu">
                 <menu>
                     <li id="back" class="tooltiper">
                         <div class="tooltip">
@@ -201,17 +201,18 @@
 
                     </li>
                 </menu>
-            </section>
-        </section>
+            </div>
+        </div>
     </main>
-    <button id="help" class="tooltiper">
+    <div class="tooltiper">
+        <button id="help"></button>
         <div class="tooltip">
             <span class="tooltip-text">
                 <span data-lang="help-tip">Help</span>
                 <span>(F12)</span>
             </span>
         </div>
-    </button>
+    </div>
 
     <script src="/src/default.ts" type="module"></script>
     <script src="/src/playground.ts" type="module"></script>

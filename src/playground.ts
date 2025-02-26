@@ -79,8 +79,8 @@ export const play = {
             return getDoc();
         },
         
-        setCode: (text: string) => {
-            setDoc(text);
+        setCode: (code: string) => {
+            setDoc(code);
         },
 
         setState: (state: string) => {
@@ -146,8 +146,6 @@ export const play = {
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 730;
 // ------------------------------------------------------------------------------- 
-document.body.className = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
-// ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
@@ -172,10 +170,11 @@ modals.forEach(async modal => {
 const loadplay = async () => {
     hvc(globals.actions.getLang());
     // ---------------------------------------------------------------------------
-    play.elements.skip().checked = (localStorage.getItem("skip-hvc"))! != "false";
-    play.elements.paused().checked = (localStorage.getItem("paused-hvc"))! != "false";
-    play.elements.delay().value = localStorage.getItem("delay-hvc") ? (localStorage.getItem("delay-hvc"))! : "1000";
-    play.elements.theme().value = localStorage.getItem("theme-play") ? (localStorage.getItem("theme-play"))! : "lightmode";
+    play.elements.theme().value = globals.actions.getTheme();
+    play.elements.delay().value = localStorage.getItem("delay-hvc") || "1000";
+
+    play.elements.skip().checked = localStorage.getItem("skip-hvc")! != "false";
+    play.elements.paused().checked = localStorage.getItem("paused-hvc")! != "false";
     // ---------------------------------------------------------------------------
     const hideRating = () => {
         globals.actions.undisplayElement(play.elements.ratingmodal());
@@ -188,7 +187,6 @@ const loadplay = async () => {
 
     const saveConfigs = () => {
         globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
-        globals.actions.changeStorage("theme-play", play.elements.theme().value!);
         globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
         globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
 
@@ -247,9 +245,7 @@ const loadplay = async () => {
         saveConfigs();
     });
 
-    play.elements.theme().addEventListener("change", () => {
-        globals.actions.changeElementClass(document.body, play.elements.theme().value);
-    });
+    play.elements.theme().addEventListener("change", globals.actions.switchTheme);
 
     play.elements.dontask().addEventListener("click", neverAskAgain);
     play.elements.closerating().addEventListener("click", hideRating);

@@ -99,11 +99,7 @@ $fonts:
     
 }
 
-@mixin fixed-button {
-    $size: 2.1em;
-    $distance: 0.4em;
-    $padding: 0.2em;
-
+@mixin fixed-button($size: 2em, $distance: 0.3em, $padding: 0.2em) {
     z-index: 99;
     position: fixed;
 
@@ -116,15 +112,14 @@ $fonts:
         top: calc($size/2/2);
         right: calc(100% + default.$tooltip-size-arr + $padding);
 
-        height: 1.4em;
+        height: 1.6em;
 
         &::after {
             @include tooltip-right(default.$tooltip-size-arr);
         }
 
         .tooltip-text {
-            width: 7em;
-            font-size: 0.6em;
+            width: 6em;
         }
     }
 }

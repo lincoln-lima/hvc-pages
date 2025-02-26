@@ -1,0 +1,84 @@
+@use '../globals' as global;
+@use './default' as default;
+// ------------------------------------------------------------------------------- 
+$body-color: #1d1d1d;
+$header-color: #131313;
+$primary-menu-color: $header-color + default.$transparency-menu;
+$tooltip-color: #464646;
+$sticky-nav-color: #313131;
+$modal-color: #333333;
+/* -------------------------------------------------------------------- */
+@mixin mode {
+    body {
+        background-color: $body-color;
+
+        header {
+            background-color: $header-color;
+
+            .primary-menu {
+                background-color: $primary-menu-color !important;
+            }
+        }
+
+        ul, p, figcaption {
+            color: global.$white;
+
+            :not(mark, mark > *) {
+                color: global.$white;
+                
+                &.marked {
+                    text-decoration-color: global.$white;
+                }
+            }
+        }
+        
+        table td.operation {
+            color: global.$white !important;
+        }
+
+        #sticky-nav .content-menu {
+            background-color: $sticky-nav-color;
+            
+            * {
+                color: global.$white;
+            }
+        }
+
+        .tooltip {
+            background-color: $tooltip-color;
+
+            &::after {
+                border-color: $tooltip-color;
+            }
+        }
+
+        .modal-body {
+            background-color: $modal-color !important;
+
+            .modal-main {
+                color: global.$white;
+
+                form {
+                    * {
+                        color: global.$white;
+                    }
+                    
+                    input:not([type="checkbox"]), select {
+                        border-color: global.$white;
+                        background-color: $modal-color;
+                    }
+
+                    input[type="checkbox"] {
+                        &:not(:checked):after {
+                            background-color: global.$gray;
+                        }
+
+                        &:checked {
+                            background-color: global.$color1 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
