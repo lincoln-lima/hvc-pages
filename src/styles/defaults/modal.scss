@@ -33,15 +33,24 @@
 			@include global.rounded-border($modal-border, 0);
 
 			h2 {
-				font-size: 1.4em;
+				font-size: 1.35em;
 				color: global.$white;
 			}
 
 			.close {
+				font-size: 1.5em;
+				font-weight: bold;
+
+				color: global.$white;
+				background-color: transparent;
+
 				@include global.circle;
 				@include global.size(1.1em);
 				@include global.setFont(default);
-				@include global.faded-button($font: 1.4em);
+
+				&:hover {
+					background-color: global.$white;
+				}
 			}
 		}
 
@@ -83,6 +92,8 @@
 						appearance: none;
 						position: relative;
 						border-radius: 1em;
+
+						background-color: global.$gray;
 
 						@include global.size(100%);
 						
@@ -129,6 +140,10 @@
 			
 			h2 {
 				@include global.setFont(text);
+			}
+
+			.close:hover {
+				color: global.$color1;
 			}
 		}
 
@@ -204,13 +219,8 @@
 				@include global.setFont(code);
 			}
 
-			.close {
-				background: transparent;
-
-				&:hover {
-					background: global.$white;
-					color: play.$dark-red;
-				}
+			.close:hover {
+				color: play.$dark-red;
 			}
 		}
 
@@ -249,14 +259,8 @@
 				@include global.setFont(subtitle);
 			}
 
-			#close-rating {
-				font-size: 1.5em;
-				background: transparent;
-
-				&:hover {
-					background: global.$white;
-					color: global.$color2;
-				}
+			.close:hover {
+				color: global.$color2;
 			}
 		}
 

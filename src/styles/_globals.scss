@@ -69,7 +69,7 @@ $fonts:
     font-family: findFont($type);
 }
 /* -------------------------------------------------------------------- */
-@mixin faded-button($img: null, $font: 1.5em) {
+@mixin faded-button($img: null, $shadow: yes, $font: 1.5em) {
     font-size: $font;
     font-weight: 700;
     text-transform: uppercase;
@@ -78,8 +78,10 @@ $fonts:
 
     @include middle;
     
-    &:hover {
-        @include shadow($length1: 3px, $blur: 5px, $transparency: 0.4);
+    @if $shadow != no {
+        &:hover {
+            @include shadow($length1: 3px, $blur: 5px, $transparency: 0.4);
+        }
     }
 
     @if $img != null { 
@@ -99,7 +101,7 @@ $fonts:
     
 }
 
-@mixin fixed-button($size: 2em, $distance: 0.3em, $padding: 0.2em) {
+@mixin fixed-button($size: default.$fixed-size, $distance: default.$fixed-distance) {
     z-index: 99;
     position: fixed;
 
@@ -107,21 +109,6 @@ $fonts:
     bottom: $distance;
 
     @include size($size);
-
-    .tooltip {
-        top: calc($size/2/2);
-        right: calc(100% + default.$tooltip-size-arr + $padding);
-
-        height: 1.6em;
-
-        &::after {
-            @include tooltip-right(default.$tooltip-size-arr);
-        }
-
-        .tooltip-text {
-            width: 6em;
-        }
-    }
 }
 /* -------------------------------------------------------------------- */
 @mixin size($width, $heigth: $width) {

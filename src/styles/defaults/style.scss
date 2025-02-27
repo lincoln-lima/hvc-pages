@@ -303,11 +303,11 @@ div:has(> button.open) {
     
     &:hover {
         border-width: 0;
-        background-color: global.$color2-dark; 
+        background-color: global.$color1-dark; 
     }
     
     &:active {
-        background-color: global.$color1-dark; 
+        background-color: global.$color2-dark; 
     }
 }
 

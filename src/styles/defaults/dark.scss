@@ -53,7 +53,7 @@ $modal-color: #333333;
         }
 
         .modal-body {
-            background-color: $modal-color !important;
+            background-color: $modal-color;
 
             .modal-main {
                 color: global.$white;
@@ -70,7 +70,7 @@ $modal-color: #333333;
 
                     input[type="checkbox"] {
                         &:not(:checked):after {
-                            background-color: global.$gray;
+                            background-color: global.$lightgray;
                         }
 
                         &:checked {

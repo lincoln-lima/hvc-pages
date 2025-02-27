@@ -57,7 +57,7 @@
                         <div class="tooltip">
                             <span class="tooltip-text">
                                 <span data-lang="menu-debug-tip">Passo a passo</span>
-                                <span>(<kbd>F8</kbd>)</span>
+                                <kbd>(F8)</kbd>
                             </span>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="tooltip">
                             <span class="tooltip-text">
                                 <span data-lang="menu-run-tip">Imediato</span>
-                                <span>(<kbd>F9</kbd>)</span>
+                                <kbd>(F9)</kbd>
                             </span>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                         <div class="tooltip"><span data-lang="menu-export-tip" class="tooltip-text">Download do código</span></div>
                     </div>
                     <button class="expand link-nav-2"></button>
-                    <div class="tooltiper contract">
+                    <div class="tooltiper contracted">
                         <button id="share" class="link-nav-2">
                             <span class="icon-tool"></span>
                             <span data-lang="menu-share-title" class="label-tool">Partilhar</span>
@@ -115,18 +115,9 @@
                         <div class="tooltip">
                             <span class="tooltip-text">
                                 <span data-lang="menu-configuration-tip">Opções</span>
-                                <span>(<kbd>F2</kbd>)</span>
+                                <kbd>(F2)</kbd>
                             </span>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="tooltiper">
-                        <a class="home link-nav-3">
-                            <span class="icon-tool"></span>
-                            <span data-lang="menu-home-title" class="label-tool">Início</span>
-                        </a>
-                        <div class="tooltip"><span data-lang="menu-home-tip" class="tooltip-text">Página inicial</span></div>
                     </div>
                 </li>
             </menu>
@@ -204,13 +195,33 @@
             </div>
         </div>
     </main>
-    <div class="tooltiper">
-        <button id="help"></button>
-        <div class="tooltip">
-            <span class="tooltip-text">
-                <span data-lang="help-tip">Help</span>
-                <span>(F12)</span>
-            </span>
+    <div class="fixed-container">
+        <div class="contracted">
+            <div class="tooltiper">
+                <a class="home"></a>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="home-tip">Home</span>
+                    </span>
+                </div>
+            </div>
+            <div class="tooltiper">
+                <button id="help"></button>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="help-tip">Help</span>
+                        <kbd>(F12)</kbd>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="tooltiper">
+            <button class="expand"></button>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="expand-tip">Show options</span>
+                    </span>
+                </div>
         </div>
     </div>
 

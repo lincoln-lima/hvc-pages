@@ -5,10 +5,10 @@ $spacing: 3em;
 $header-padding: 0.3em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 // ------------------------------------------------------------------------------- 
-$nav-initial-width: 92vw;
+$nav-initial-width: 93vw;
 // ------------------------------------------------------------------------------- 
-$menu-num-buttons: 6;
-$menu-width: calc(($menu-num-buttons + 1) * default.$menu-buttons-width);
+$menu-num-buttons: 5;
+$menu-width: calc(($menu-num-buttons + 1.5) * default.$menu-buttons-width);
 // ------------------------------------------------------------------------------- 
 $main-initial-height: calc(100vh - $header-height);
 // ------------------------------------------------------------------------------- 
@@ -39,8 +39,8 @@ $nice-green: #008000;
 // ------------------------------------------------------------------------------- 
 $screen-responsive: (width1: 1320px, width2: 850px, width3: 450px);
 // ------------------------------------------------------------------------------- 
-$header-responsive-width: 730px;
-$tools-buttons-responsive-width: 1565px;
+$header-responsive-width: 710px;
+$tools-buttons-responsive-width: 1485px;
 $state-labels-responsive-width: 925px;
 // ------------------------------------------------------------------------------- 
 $nav-responsive-width: 88vw;

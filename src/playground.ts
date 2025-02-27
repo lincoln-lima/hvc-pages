@@ -1,5 +1,5 @@
 import { globals } from "./default";
-import { getDoc, setDoc } from "./play/codemirror"
+import { getDoc, setDoc } from "./play/codemirror";
 // ------------------------------------------------------------------------------- 
 import hvc from "./play/hvc";
 import templates from "./templates";
@@ -23,7 +23,7 @@ export const play = {
         export: () => { return document.getElementById("export")! },
 
         expand: () => { return document.getElementsByClassName("expand")! },
-        contract: () => { return document.getElementsByClassName("contract")! },
+        contracted: () => { return document.getElementsByClassName("contracted")! },
 
         state: () => { return document.getElementById("states-view")! },
         debugmenu: () => { return document.getElementById("debug-menu")! },
@@ -103,7 +103,7 @@ export const play = {
         },
     
         showError: (message: string) => {
-            play.elements.error().textContent = message.replace(/\.(?!$)/, ".\n");
+            play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
             globals.actions.displayElement(play.elements.errorsmodal());
         },
     
@@ -145,7 +145,7 @@ export const play = {
     }
 }
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 730;
+const windowsizemenu = 710;
 // ------------------------------------------------------------------------------- 
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
@@ -164,8 +164,81 @@ modals.forEach(async modal => {
     element.style["display"] = "none";
 
     globals.actions.translateElement(element);
-    
+
     document.body.appendChild(element);
+});
+// ---------------------------------------------------------------------------
+const hideRating = () => globals.actions.undisplayElement(play.elements.ratingmodal());
+
+const neverAskAgain = () => {
+    hideRating();
+    localStorage.setItem("askrating", "false");
+}
+
+const saveConfigs = () => {
+    globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
+    globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
+    globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
+
+    globals.actions.undisplayElement(play.elements.configmodal());
+}
+
+const switchHelp = () => {
+    const modal = play.elements.helpmodal();
+    const modaldisplay = modal.style["display"] === "none";
+    
+    globals.actions.switchDisplay(modal, modaldisplay);
+}
+
+const switchContracted = (i: number) => {
+    const expand = play.elements.expand().item(i)!;
+    const contracted = play.elements.contracted().item(i)! as HTMLElement;
+    
+    expand.classList.toggle("contract");
+    
+    globals.actions.switchVisibility(contracted, contracted.style["visibility"] != "visible");
+}
+// ------------------------------------------------------------------------------- 
+Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
+Array.from(play.elements.contracted()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
+// ------------------------------------------------------------------------------- 
+window.addEventListener("storage", e => {
+    if(e.key === "theme") play.elements.theme().value = e.newValue!;
+});
+// ---------------------------------------------------------------------------
+document.addEventListener("click", e => {
+    const element = e.target as HTMLElement;
+
+    if(element == play.elements.helpmodal()) switchHelp();
+    else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+
+    const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
+                        !element.parentElement!.classList.contains("contracted") &&
+                        !element.classList.contains("expand");
+
+    if(isExpand) {
+        Array.from(play.elements.contracted()).forEach((e, i) => {
+            if((e as HTMLElement).style["visibility"] != "hidden") switchContracted(i);
+        });
+    }
+});
+
+document.addEventListener("keydown", e => {
+    const key = e.key.toLowerCase();
+
+    if(!e.ctrlKey) {
+        if(key === "f2") {
+            e.preventDefault();
+            const config = play.elements.configmodal();
+
+            globals.actions.switchDisplay(config, config.style["display"] === "none");
+        }
+        else if(key === "f12") {
+            e.preventDefault();
+            switchHelp();
+        }
+        else if(key === "escape") play.actions.hideModals();
+    }
 });
 // ------------------------------------------------------------------------------- 
 const loadplay = async () => {
@@ -177,62 +250,23 @@ const loadplay = async () => {
     play.elements.skip().checked = localStorage.getItem("skip-hvc")! != "false";
     play.elements.paused().checked = localStorage.getItem("paused-hvc")! != "false";
     // ---------------------------------------------------------------------------
-    const hideRating = () => {
-        globals.actions.undisplayElement(play.elements.ratingmodal());
-    }
-
-    const neverAskAgain = () => {
-        hideRating();
-        localStorage.setItem("askrating", "false");
-    }
-
-    const saveConfigs = () => {
-        globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
-        globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
-        globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
-
-        globals.actions.undisplayElement(play.elements.configmodal());
-    }
-
-    const switchHelp = () => {
-        const button = play.elements.help();
-        const modal = play.elements.helpmodal();
-
-        const modaldisplay = modal.style["display"] === "none";
-        const buttondisplay = button.style["display"] === "none";
-        
-        globals.actions.switchDisplay(modal, modaldisplay);
-        globals.actions.switchDisplay(button, buttondisplay);
-    }
-
-    const switchContract = (i: number) => {
-        const contracted = play.elements.contract().item(i) as HTMLElement;
-
-        globals.actions.switchVisibility(contracted, contracted.style["visibility"] != "visible");
-    }
-    // ---------------------------------------------------------------------------
-    Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContract(i)));
-    Array.from(play.elements.contract()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
-
     play.elements.share().addEventListener("click", async() => {
         try {
             await navigator.share({
                 title: document.title,
-                text: "Veja meu código no HVC!\n\n",
+                text: globals.actions.retrieveLangText("menu-share-metaop") + "\n\n",
                 url: globals.actions.hvcode(play.actions.getCode())
             });
         }
         catch {
-            const text = "Partilhar";
-            
             play.elements.share().classList.add("copied");
 
             const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
-            label.textContent = "Copiado!";
+            label.textContent = globals.actions.retrieveLangText("menu-copied-title");
 
             setTimeout(() => {
-                label.textContent = text;
                 play.elements.share().classList.remove("copied");
+                label.textContent = globals.actions.retrieveLangText("menu-share-title");
             }, 3000);
 
             try {
@@ -259,42 +293,6 @@ const loadplay = async () => {
 
     play.elements.help().addEventListener("click", switchHelp);
     play.elements.closeerrors().addEventListener("click", () => globals.actions.undisplayElement(play.elements.errorsmodal()));
-    // ---------------------------------------------------------------------------
-    document.addEventListener("click", e => {
-        const element = e.target as HTMLElement;
-
-        if(element == play.elements.helpmodal()) switchHelp();
-        else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
-
-        const isExpand = !element.classList.contains("contract") &&
-                         !element.parentElement!.classList.contains("contract") &&
-                         !element.parentElement!.parentElement!.classList.contains("contract") &&
-                         !element.classList.contains("expand");
-
-        if(isExpand) {
-            Array.from(play.elements.contract()).forEach((e, i) => {
-                if((e as HTMLElement).style["visibility"] != "hidden") switchContract(i);
-            });
-        }
-    });
-
-    document.addEventListener("keydown", e => {
-        const key = e.key.toLowerCase();
-
-        if(!e.ctrlKey) {
-            if(key === "f2") {
-                e.preventDefault();
-                const config = play.elements.configmodal();
-
-                globals.actions.switchDisplay(config, config.style["display"] === "none");
-            }
-            else if(key === "f12") {
-                e.preventDefault();
-                switchHelp();
-            }
-            else if(key === "escape") play.actions.hideModals();
-        }
-    });
     // ---------------------------------------------------------------------------
     const table = await templates("table");
     globals.actions.translateElement(table);

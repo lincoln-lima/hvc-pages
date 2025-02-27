@@ -325,7 +325,13 @@ header {
                             border-top-left-radius: 0;
                             border-bottom-left-radius: 0;
 
+                            transition: none;
+
                             @include global.background(auto, caret, center, no-repeat);
+
+                            &.contract {
+                                transform: scaleY(-1);
+                            }
                         }
 
                         .icon-tool {
@@ -389,7 +395,7 @@ header {
                 .tooltiper {
                     @include global.middle;
 
-                    &.contract {
+                    &.contracted {
                         top: 115%;
                         z-index: 1;
                         position: absolute;

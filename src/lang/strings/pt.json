@@ -296,12 +296,12 @@
 
     "menu-share-title": "Partilhar",
     "menu-share-tip": "Copiar e enviar código",
+    "menu-share-metaop": "Veja meu código no HVC!",
+
+    "menu-copied-title": "Copiado!",
 
     "menu-configuration-title": "Configurações",
     "menu-configuration-tip": "Opções",
-
-    "menu-home-title": "Início",
-    "menu-home-tip": "Página inicial",
 
     "card-holder-tip": "Porta-Cartões",
     "epi-tip": "EPI",
@@ -313,6 +313,8 @@
     "drawer-epi-tip": "EPI",
 
     "help-tip": "Ajuda",
+    "home-tip": "Página inicial",
+    "expand-tip": "Exibir mais",
 
     "evaluate-now": "Avalie já",
     "your-opinion": "Sua opinião é fundamental para nosso projeto:",

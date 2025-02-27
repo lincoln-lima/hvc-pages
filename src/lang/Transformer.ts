@@ -64,7 +64,7 @@ export class Transformer {
         return this.currentLang;
     }
 
-    private getTranslation(key: string, vars: Record<string, string> = {}) {
+    public getTranslation(key: string, vars: Record<string, string> = {}) {
         let text = this.translations[key] || "lang-" + key;
 
         for (const [varName, value] of Object.entries(vars)) text = text.replace(`{${varName}}`, value);

@@ -85,7 +85,9 @@ export const globals = {
 
         getTheme: () => { return localStorage.getItem("theme")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
 
-        translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) }
+        translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) },
+
+        retrieveLangText: (dlang: string) => { return Transformer.getInstance().getTranslation(dlang) }
     }
 }
 // ------------------------------------------------------------------------------- 

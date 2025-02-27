@@ -557,12 +557,63 @@ main {
     }
 }
 
-.tooltiper:has(#help) {
-    @include global.fixed-button($size: 3em);
-    
-    #help {
-        @include global.circle;
-        @include global.size(100%);
-        @include global.faded-button(info);
+.fixed-container {
+    z-index: 99;
+    position: fixed;
+
+    right: default.$fixed-distance;
+    bottom: default.$fixed-distance;
+
+    .contracted {
+        transition: 0.5s;
+
+        .tooltiper {
+            margin-bottom: default.$fixed-distance;
+        }
+    }
+
+    .tooltiper {
+        $size: default.$fixed-size * 1.5;
+
+        @include global.size($size);
+        
+        > *:not(.tooltip) {
+            @include global.circle;
+            @include global.size(100%);
+
+            &.home {
+                @include global.faded-button(home);
+            }
+
+            &#help {
+                @include global.faded-button(info);
+            }
+
+            &.expand {
+                transition: 0.5s;
+                transform: rotate(180deg);
+
+                @include global.faded-button(caret, no);
+
+                &.contract {
+                    transform: none;
+                }
+            }
+        }
+
+        .tooltip {
+            top: calc($size/4);
+            right: calc(100% + default.$tooltip-size-arr + 0.2em);
+
+            height: 1.6em;
+
+            &::after {
+                @include global.tooltip-right(default.$tooltip-size-arr);
+            }
+
+            .tooltip-text {
+                width: max-content;
+            }
+        }
     }
 }
