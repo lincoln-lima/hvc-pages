@@ -239,7 +239,7 @@ header {
                         }
                     }
 
-                    &#charging-state {
+                    &#loading-state {
                         background-color: play.$golden;
 
                         .state-data {
@@ -274,8 +274,8 @@ header {
                     }
                 }
 
-                &.charging {
-                    #charging-state {
+                &.loading {
+                    #loading-state {
                         filter: brightness(1);
 
                         .dot-state {

@@ -2,7 +2,6 @@ import { Transformer } from "./lang/Transformer";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
-import "/src/styles/defaults/modal.scss";
 import "/src/styles/defaults/header.scss";
 // ------------------------------------------------------------------------------- 
 export const globals = {
@@ -48,7 +47,7 @@ export const globals = {
             const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
             
             root.setAttribute("data-theme", theme);
-            globals.actions.changeStorage("theme-content", theme);
+            globals.actions.changeStorage("theme", theme);
         },
         
         monitoreMenu: (size: number) => {
@@ -84,21 +83,22 @@ export const globals = {
 
         getLang: () => { return Transformer.getInstance().getCurrentLang() },
 
-        getTheme: () => { return localStorage.getItem("theme-content")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
+        getTheme: () => { return localStorage.getItem("theme")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
 
         translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) }
     }
 }
 // ------------------------------------------------------------------------------- 
+const root = document.documentElement;
+// ------------------------------------------------------------------------------- 
 Transformer.getInstance().init();
+// ------------------------------------------------------------------------------- 
+root.setAttribute("data-theme", globals.actions.getTheme());
 // ------------------------------------------------------------------------------- 
 globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
 // ------------------------------------------------------------------------------- 
-const root = document.documentElement;
-
-root.setAttribute("data-theme", globals.actions.getTheme());
-// ------------------------------------------------------------------------------- 
 const homes = document.getElementsByClassName("home")!;
+const cometoplays = document.getElementsByClassName("come-to-play")!;
 
 if(homes) {
     Array.from(homes).forEach(home => {
@@ -106,8 +106,6 @@ if(homes) {
         home.setAttribute("target", "_top");
     });
 }
-
-const cometoplays = document.getElementsByClassName("come-to-play")!;
 
 if(cometoplays) {
     Array.from(cometoplays).forEach(come => {
@@ -138,7 +136,7 @@ if(copies) {
 
             copy.classList.add("copied");
             setTimeout(() => copy.classList.remove("copied"), 3000);
-            
+
             try {
                 navigator.clipboard.writeText(text);
             }
@@ -166,21 +164,21 @@ if(opens) {
 }
 // ------------------------------------------------------------------------------- 
 window.addEventListener("storage", e => {
-    if(e.key === "theme-content") root.setAttribute("data-theme", e.newValue!);
+    if(e.key === "theme") root.setAttribute("data-theme", e.newValue!);
 });
 // ------------------------------------------------------------------------------- 
 document.addEventListener("click", e => {
-    const element = e.target;
+    const element = e.target as Element;
     const menu = globals.elements.menumodal();
     const burger = globals.elements.menuburger();
 
-    const notTarget = element != menu && element != burger;
-    const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
-    const notExpand = !(element as HTMLElement).classList.contains("expand") &&
-                      !(element as HTMLElement).classList.contains("contract") &&
-                      !(element as HTMLElement).parentElement!.classList.contains("contract");
+    const notTarget = element != menu && element != burger && !menu.contains(element);
 
-    if(notTarget && notExpand && areVisible) globals.actions.switchMenu();
+    if(notTarget) {
+        const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
+
+        if(areVisible) globals.actions.switchMenu();
+    }
 });
 
 document.addEventListener("keydown", e => {
@@ -188,7 +186,9 @@ document.addEventListener("keydown", e => {
     const menu = globals.elements.menumodal();
     const burger = globals.elements.menuburger();
 
-    const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
-    
-    if(key === "escape" && areVisible) globals.actions.switchMenu();
+    if(key === "escape") {
+        const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
+        
+        if(areVisible) globals.actions.switchMenu();
+    }
 });

@@ -48,9 +48,9 @@ export default (lang: string) => {
         play.actions.hideModals();
         globals.actions.undisplayElement(play.elements.help());
         // ---------------------------------------------------------------------------
-        Array.from(drawers).forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
-
         globals.actions.changeElementText(outwrite, "");
+        
+        Array.from(drawers).forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
         // ---------------------------------------------------------------------------
@@ -103,6 +103,7 @@ export default (lang: string) => {
         globals.actions.changeElementText(acumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
         // ---------------------------------------------------------------------------
         play.actions.highlightDrawer(pointed, "pointed");
+
         if(state != "CARGA") globals.actions.scrollTo(pointed);
         // ---------------------------------------------------------------------------
         Array.from(drawerscontent).forEach((cont, i) => {
@@ -198,11 +199,11 @@ export default (lang: string) => {
                 globals.actions.undisplayElement(cardmodal);
                 setTimeout(resolve, +delay.value, readcard.value);
             }
-            
-            formcard.onsubmit = e => {
+
+            formcard.addEventListener("submit", e => {
                 e.preventDefault();
                 submit();
-            }
+            });
         });
     });
     
@@ -214,8 +215,8 @@ export default (lang: string) => {
         previous = HVMState;
     });
     // ---------------------------------------------------------------------------
-    runner.addEventListener("click", async() => await exec(true));
     debug.addEventListener("click", async() => await exec(false));
+    runner.addEventListener("click", async() => await exec(true));
     
     back.addEventListener("click", async() => await controlling(true));
     forth.addEventListener("click", async() => await controlling(false));

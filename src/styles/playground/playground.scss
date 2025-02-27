@@ -505,6 +505,11 @@ main {
                     &#pause-continue {
                         @include global.size($size-icon);
 
+                        border-right-width: 0;
+
+                        border-left-width: calc($size-icon);
+                        border-left-color: play.$nice-green;
+
                         &.pause {
                             border-style: double;
                             border-color: play.$nice-green;
@@ -514,13 +519,6 @@ main {
                             .tooltip {
                                 bottom: 125%;
                             }
-                        }
-
-                        &.continue {
-                            border-right-width: 0;
-
-                            border-left-width: calc($size-icon);
-                            border-left-color: play.$nice-green;
                         }
 
                         .tooltip {

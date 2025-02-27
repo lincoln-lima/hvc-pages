@@ -1,7 +1,7 @@
 import pt from "./strings/pt.json";
 import en from "./strings/en.json";
 import es from "./strings/es.json";
-
+// ---------------------------------------------------------------------------
 export class Transformer {
     private static instance: Transformer | null = null;
 
@@ -65,7 +65,7 @@ export class Transformer {
     }
 
     private getTranslation(key: string, vars: Record<string, string> = {}) {
-        let text = this.translations[key] || "lang-"+key;
+        let text = this.translations[key] || "lang-" + key;
 
         for (const [varName, value] of Object.entries(vars)) text = text.replace(`{${varName}}`, value);
 

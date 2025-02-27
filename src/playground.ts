@@ -6,6 +6,7 @@ import templates from "./templates";
 import drawers from "./play/drawers";
 // ------------------------------------------------------------------------------- 
 import "/src/styles/defaults/table.scss";
+import "/src/styles/defaults/modal.scss";
 import "/src/styles/playground/playground.scss";
 // ------------------------------------------------------------------------------- 
 export const play = {
@@ -84,12 +85,12 @@ export const play = {
         },
 
         setState: (state: string) => {
-            const stateview = play.elements.state();
             let dotclass;
+            const stateview = play.elements.state();
 
             switch(state) {
                 case "CARGA":
-                    dotclass = "charging";
+                    dotclass = "loading";
                     break;
                 case "EXECUÇÃO":
                     dotclass = "running";
@@ -98,11 +99,11 @@ export const play = {
                     dotclass = "editing";
             } 
 
-            stateview.classList.replace(stateview.className, dotclass);
+            stateview.className = dotclass;
         },
     
         showError: (message: string) => {
-            play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
+            play.elements.error().textContent = message.replace(/\.(?!$)/, ".\n");
             globals.actions.displayElement(play.elements.errorsmodal());
         },
     
@@ -114,17 +115,17 @@ export const play = {
         },
 
         switchPauseContinue: (set: boolean) => {
-            const actual = set ? "pause" : "continue";
-            const switched = set ? "continue" : "pause";
+            const pausecontinue = play.elements.pausecontinue();
 
-            play.elements.pausecontinue().classList.replace(actual, switched);
+            if(set) pausecontinue.classList.remove("pause");
+            else pausecontinue.classList.add("pause");
         },
 
         addCardToTable: (card: string) => {
             const line = document.createElement("tr");
             const data = document.createElement("td");
 
-            data.innerText = card;
+            data.textContent = card;
 
             line.appendChild(data);
             play.elements.cards().appendChild(line);
@@ -151,9 +152,9 @@ window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizem
 // ------------------------------------------------------------------------------- 
 drawers(play.elements.scrollgaveteiro());
 // ------------------------------------------------------------------------------- 
-if(!play.elements.askrating() || !play.elements.counter()) {
-    localStorage.setItem("askrating", "true");
+if(!play.elements.counter() || !play.elements.askrating()) {
     localStorage.setItem("counter", "0");
+    localStorage.setItem("askrating", "true");
 }
 // ------------------------------------------------------------------------------- 
 const modals = ["configs", "card", "error", "help", "rating"];
@@ -229,12 +230,17 @@ const loadplay = async () => {
             const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
             label.textContent = "Copiado!";
 
-            navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
-
             setTimeout(() => {
                 label.textContent = text;
                 play.elements.share().classList.remove("copied");
             }, 3000);
+
+            try {
+                navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
+            }
+            catch {
+                console.log(play.actions.getCode());
+            }
         }
     });
 
