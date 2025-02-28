@@ -585,13 +585,17 @@ main {
                 @include global.faded-button(home);
             }
 
+            &#clear {
+                @include global.faded-button(rubber);
+            }
+
             &#help {
                 @include global.faded-button(info);
             }
 
             &.expand {
                 transition: 0.5s;
-                transform: rotate(180deg);
+                transform: rotate(-180deg);
 
                 @include global.faded-button(caret, no);
 

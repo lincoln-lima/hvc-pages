@@ -12,6 +12,8 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     const runner = play.elements.run();
     const debug = play.elements.debug();
+
+    const clear = play.elements.clear();
     
     const back = play.elements.back();
     const forth = play.elements.forth();
@@ -42,14 +44,23 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     let previous : HVMState = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
+    const clearView = () => {
+        globals.actions.changeElementText(outwrite, "");
+        globals.actions.changeElementText(epiwrite, "");
+        globals.actions.changeElementText(acumulator, "");
+        
+        Array.from(drawers).forEach((gaveta, i) => {
+            drawerscontent.item(i)!.textContent = "";
+            gaveta.classList.remove(gaveta.classList.item(1)!);
+        });
+    }
+
     const exec = async(set: boolean) => {
         await terminate();
         // ---------------------------------------------------------------------------
         play.actions.hideModals();
         globals.actions.undisplayElement(play.elements.help());
         // ---------------------------------------------------------------------------
-        globals.actions.changeElementText(outwrite, "");
-        
         Array.from(drawers).forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
@@ -223,6 +234,8 @@ export default (lang: string) => {
 
     finish.addEventListener("click", async() => await terminate());
     pausecontinue.addEventListener("click", async() => await toggling());
+
+    clear.addEventListener("click", clearView);
     // ---------------------------------------------------------------------------
     document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();

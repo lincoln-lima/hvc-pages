@@ -277,8 +277,18 @@ div:has(> button.open) {
         .tooltip-text {
             font-size: 1em;
             text-transform: none;
+
+            kbd {
+                @media screen and (max-width: default.$max-width-mobile) and (pointer: coarse) {
+                    display: none;
+                }
+            }
         }
     }
+}
+/* -------------------------------------------------------------------- */
+.prequel::after {
+    content: ":";
 }
 /* -------------------------------------------------------------------- */
 ::-webkit-scrollbar {

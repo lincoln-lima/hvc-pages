@@ -53,6 +53,7 @@ export const play = {
         error: () => { return document.getElementById("error")! },
         closeerrors: () => { return document.getElementById("close-error")! },
 
+        clear: () => { return document.getElementById("clear")! },
         help: () => { return document.getElementById("help")! },
         
         skip: () => { return document.getElementById("skip")! as HTMLInputElement },
