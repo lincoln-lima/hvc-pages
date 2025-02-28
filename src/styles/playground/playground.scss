@@ -585,6 +585,14 @@ main {
                 @include global.faded-button(home);
             }
 
+            &#save-code {
+                @include global.faded-button(save);
+
+                &.saved {
+                    @include global.faded-button(check);
+                }
+            }
+
             &#clear {
                 @include global.faded-button(rubber);
             }

@@ -14,29 +14,30 @@ export default (lang: string) => {
     const debug = play.elements.debug();
 
     const clear = play.elements.clear();
-    
+    const savecode = play.elements.savecode();
+
     const back = play.elements.back();
     const forth = play.elements.forth();
     const finish = play.elements.finish();
     const pausecontinue = play.elements.pausecontinue();
-    
+
     const outwrite = play.elements.out();
     const epiwrite = play.elements.epi();
     const acumulator = play.elements.acumulator();
-    
+
     const drawers = play.elements.drawers();
     const drawerscontent = play.elements.drawerscontent();
-    
+
     const skip = play.elements.skip();
     const delay = play.elements.delay();
     const paused = play.elements.paused();
-    
+
     const editor = play.elements.editor();
     const debugmenu = play.elements.debugmenu();
 
     const cards = play.elements.cards();
     const tablecards = play.elements.tablecards();
-    
+
     const readcard = play.elements.readcard();
     const formcard = play.elements.formcard();
     const cardmodal = play.elements.cardmodal();
@@ -44,11 +45,21 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     let previous : HVMState = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
+    const saveCode = () => {
+        if(localStorage.getItem("saved") != "true") {
+            localStorage.setItem("saved", "true");
+            localStorage.setItem("code", play.actions.getCode());
+
+            savecode.classList.add("saved");
+            setTimeout(() => savecode.classList.remove("saved"), 3000);
+        }
+    }
+
     const clearView = () => {
         globals.actions.changeElementText(outwrite, "");
         globals.actions.changeElementText(epiwrite, "");
         globals.actions.changeElementText(acumulator, "");
-        
+
         Array.from(drawers).forEach((gaveta, i) => {
             drawerscontent.item(i)!.textContent = "";
             gaveta.classList.remove(gaveta.classList.item(1)!);
@@ -236,6 +247,7 @@ export default (lang: string) => {
     pausecontinue.addEventListener("click", async() => await toggling());
 
     clear.addEventListener("click", clearView);
+    savecode.addEventListener("click", saveCode);
     // ---------------------------------------------------------------------------
     document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();
@@ -249,6 +261,10 @@ export default (lang: string) => {
             else if(e.code === "Space") {
                 e.preventDefault();
                 await toggling();
+            }
+            else if(key === "s") {
+                e.preventDefault();
+                saveCode();
             }
             else if(key === "arrowleft") await controlling(true);
             else if(key === "arrowright") await controlling(false);
