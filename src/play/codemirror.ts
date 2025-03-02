@@ -16,7 +16,7 @@ const unSaved = () => {
 // -----------------------------------------------------------------------------------
 if(params.has("code")) {
     const url = new URL(window.location.href);
-    
+
     unSaved();
     code = params.get("code")!;
 

@@ -51,9 +51,9 @@ export default (lang: string) => {
             globals.actions.changeStorage("saved", "true");
             globals.actions.changeStorage("code", play.actions.getCode());
 
-            savecode.classList.add("saved");
             portacartoes.classList.remove("unsaved");
-            setTimeout(() => savecode.classList.remove("saved"), 3000);
+
+            globals.actions.temporaryClass(savecode, "saved");
         }
     }
 
@@ -63,9 +63,11 @@ export default (lang: string) => {
         globals.actions.changeElementText(acumulator, "");
 
         Array.from(drawers).forEach((gaveta, i) => {
-            drawerscontent.item(i)!.textContent = "";
             gaveta.classList.remove(gaveta.classList.item(1)!);
+            globals.actions.changeElementText(drawerscontent.item(i)!, "");
         });
+
+        globals.actions.temporaryClass(clear, "cleaned");
     }
 
     const exec = async(set: boolean) => {
@@ -92,11 +94,11 @@ export default (lang: string) => {
             await detectError(e as Error);
         }
         finally {
-            if(localStorage.getItem("askrating") === "true") {
+            if(localStorage.getItem("askrating") != "false") {
                 const counter = +play.elements.counter() + 1;
                 globals.actions.changeStorage("counter", counter.toString());
 
-                if(counter % 3 == 0) globals.actions.displayElement(ratingmodal);
+                if(counter % 3 === 0) globals.actions.displayElement(ratingmodal);
             }
         }
     }
@@ -138,7 +140,7 @@ export default (lang: string) => {
                 content = gavetas[i];
 
                 if(epi != i) {
-                    const style = (endindex == -1 || i <= endindex) ? "code" : "data";
+                    const style = (endindex === -1 || i <= endindex) ? "code" : "data";
                     play.actions.highlightDrawer(drawer, style);
                 }
             }
@@ -150,10 +152,10 @@ export default (lang: string) => {
 
     const terminate = async() => {
         hvc.finish();
-        
+
         previous = "DESLIGADO";
         play.actions.setState(previous);
-        
+
         play.actions.switchPauseContinue(paused.checked);
 
         globals.actions.displayElement(editor);
@@ -164,7 +166,7 @@ export default (lang: string) => {
 
         globals.actions.switchVisibility(debugmenu, false);
     }
-    
+
     const toggling = async() => {
         const hvm = hvc.getHVM();
         const hvmstate = hvm.getState();
@@ -230,7 +232,7 @@ export default (lang: string) => {
             });
         });
     });
-    
+
     hvc.addEventClock(async HVMState => {
         updateViewers(HVMState);
 
@@ -241,7 +243,7 @@ export default (lang: string) => {
     // ---------------------------------------------------------------------------
     debug.addEventListener("click", async() => await exec(false));
     runner.addEventListener("click", async() => await exec(true));
-    
+
     back.addEventListener("click", async() => await controlling(true));
     forth.addEventListener("click", async() => await controlling(false));
 
@@ -260,16 +262,10 @@ export default (lang: string) => {
                 e.preventDefault();
                 await terminate();
             }
-            else if(e.code === "Space") {
-                e.preventDefault();
-                await toggling();
-            }
             else if(key === "s") {
                 e.preventDefault();
                 saveCode();
             }
-            else if(key === "arrowleft") await controlling(true);
-            else if(key === "arrowright") await controlling(false);
         }
         else {
             if(key === "f9") await exec(true);

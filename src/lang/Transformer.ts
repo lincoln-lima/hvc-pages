@@ -46,7 +46,7 @@ export class Transformer {
     public updateSingle(element: Element) {
         element.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
     }
-    
+
     private updateTextElement(element: Element) {
         const key = element.getAttribute("data-lang");
 

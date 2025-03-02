@@ -24,7 +24,7 @@ shownav.addEventListener("click", switchnav);
 // -----------------------------------------------------------------------------------
 document.addEventListener("click", e => {
     const element = e.target as Element;
-    
+
     if(areExpanded()) {
         const notTarget = !stickynav.contains(element) || stickynav.isSameNode(element);
 

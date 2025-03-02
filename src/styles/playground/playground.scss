@@ -25,7 +25,7 @@ main {
     @include global.middle;
     @include global.center;
     @include global.size(100%, play.$main-initial-height);
-    
+
     @media screen and (min-width: ($width3 + 1)) and (max-width: $width2) {
         height: calc(play.$playground-responsive-height * 2 + play.$spacing * 3);
     }
@@ -33,7 +33,7 @@ main {
     @media screen and (max-width: $width3) {
         height: calc(play.$playground-responsive-height * 3 + play.$spacing * 3);
     }
-    
+
     #playground {
         @include global.flex;
         @include global.size(play.$nav-initial-width, play.$playground-percentual * 100%);
@@ -48,7 +48,7 @@ main {
         @media screen and (max-width: $width3) {
             height: 98%;
         }
-        
+
         .tooltip {
             z-index: 1;
 
@@ -62,10 +62,10 @@ main {
 
             text-align: center;
             background-color: play.$old-paper;
-            
+
             @include global.flex($justify: center);
             @include global.size(play.$porta-cartoes-initial-width, 100%);
-            
+
             @include portacartoes-viewers;
 
             @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
@@ -75,7 +75,7 @@ main {
             @media screen and (max-width: $width2) {
                 @include global.size(100%, play.$playground-responsive-height);
             }
-            
+
             #scroll-tablecards {
                 width: 100%;
                 max-height: 100%;
@@ -92,11 +92,11 @@ main {
                         &:hover {
                             background-color: global.$lightgray;
                         }
-                        
+
                         td {
                             padding: 0.25em 0;
                             border: 0.05em solid global.$black;
-                            
+
                             font-size: $font-size;
                             @include global.setFont(dotted);
                         }
@@ -106,9 +106,8 @@ main {
 
             &.unsaved {
                 #editor {
-                    outline-style: dashed;
-                    outline-color: play.$dark-red;
-                
+                    outline: 1px dashed play.$dark-red;
+
                     &::after {
                         content: "*";
                         position: absolute;
@@ -141,7 +140,7 @@ main {
                     font-size: 0.9em;
                     user-select: none;
                 }
-                
+
                 br {
                     content: inherit;
                 }
@@ -156,11 +155,11 @@ main {
                 }
             }
         }
-        
+
         .debuggers {
             @include global.flex;
             @include global.size(play.$debuggers-initial-width, 100%);
-            
+
             @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
                 width: play.$debuggers-responsive-width;
             }
@@ -172,7 +171,7 @@ main {
             @media screen and (max-width: $width2) {
                 width: 100%; 
             }
-            
+
             @media screen and (max-width: $width3) {
                 flex-direction: column;
                 height: calc(play.$playground-responsive-height * 2 + play.$spacing);
@@ -204,7 +203,7 @@ main {
 
                     @include global.middle;
                     @include global.size(play.$viewers-initial-size, auto);
-                    
+
                     @include portacartoes-viewers;
 
                     @media screen and (min-width: ($width1 + 1)) {
@@ -230,18 +229,18 @@ main {
                         }
                     }
                 }
-        
+
                 #contorno-epi {
                     border-radius: $radius;
                     background-color: play.$brown-wood;
-        
+
                     #epi {
                         border-radius: $radius;
                         background-color: play.$green-board;
 
                         @include global.middle;
                         @include global.size(88%);
-        
+
                         #epi-value {
                             scale: 1.1;
                             color: global.$white;
@@ -250,19 +249,19 @@ main {
                         }
                     }
                 }
-        
+
                 #acumulador {
                     $border-width: 0.5em;
-                    
+
                     background-color: play.$lightgreen-display;
-                    
+
                     border-radius: $radius;
                     border: $border-width ridge global.$black;
-        
+
                     #acumulador-value, #overlay {
                         @include global.absolute-middle;
                         @include global.setFont(segment);
-        
+
                         &#overlay {
                             user-select: none;
                             color: #{global.$black}15;
@@ -272,11 +271,11 @@ main {
 
                 #folha-de-saida {
                     @include global.background($image: 'playground/notepad', $size: contain);
-        
+
                     #saida-value {
                         scale: 1.5;
                         margin-top: 0.3em;
-    
+
                         @include global.setFont(cursive);
                     }
                 }
@@ -317,7 +316,7 @@ main {
                     &.code {
                         filter: hue-rotate(300deg);
                     }
-                    
+
                     &.data {
                         filter: hue-rotate(210deg);
                     }
@@ -329,7 +328,7 @@ main {
 
                 #scroll-gaveteiro {
                     overflow: auto;
-                    
+
                     @include global.flex($wrap: nowrap);
 
                     @media screen and (max-width: $width1) {
@@ -355,7 +354,7 @@ main {
                         &:not(:first-child, :last-child) {
                             margin: 0 play.$gaveta-margin;
                         }
-                        
+
                         &:first-child {
                             margin-right: play.$gaveta-margin;
                         }
@@ -484,7 +483,7 @@ main {
 
                     cursor: pointer;
                     filter: brightness(0.5);
-                    
+
                     border: $size-border solid transparent;
 
                     @include global.middle;
@@ -495,29 +494,21 @@ main {
 
                         border-radius: $radius;
                         border-right-color: $color;
-                        
+
                         &:hover {
                             border-right-color: play.$live-blue;
-                        }
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr, 75%);
                         }
                     }
 
                     &#forth {
                         border-right-width: 0;
                         border-left-width: calc($size-icon);
-                        
+
                         border-radius: $radius;
                         border-left-color: $color;
-                        
+
                         &:hover {
                             border-left-color: play.$live-blue;
-                        }
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr, 25%);
                         }
                     }
 
@@ -532,29 +523,13 @@ main {
                         &.pause {
                             border-style: double;
                             border-color: play.$nice-green;
-                            
+
                             border-width: 0 0 0 $size-icon;
-                            
-                            .tooltip {
-                                bottom: 125%;
-                            }
-                        }
-
-                        .tooltip {
-                            margin-right: $size-icon;
-
-                            &::after {
-                                @include global.tooltip-bottom(default.$tooltip-size-arr);
-                            }
                         }
                     }
 
                     &#finish {
                         border-color: play.$dark-red;
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr);
-                        }
                     }
 
                     &:hover {
@@ -564,11 +539,6 @@ main {
 
                     &:active {
                         filter: contrast(0.5);
-                    }
-
-                    .tooltip {
-                        width: max-content;
-                        bottom: calc($size-border * 1.5);
                     }
                 }
             }
@@ -595,7 +565,7 @@ main {
         $size: default.$fixed-size * 1.5;
 
         @include global.size($size);
-        
+
         > *:not(.tooltip) {
             @include global.circle;
             @include global.size(100%);
@@ -614,6 +584,10 @@ main {
 
             &#clear {
                 @include global.faded-button(rubber);
+
+                &.cleaned {
+                    @include global.faded-button(check);
+                }
             }
 
             &#help {

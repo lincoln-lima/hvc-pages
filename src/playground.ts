@@ -1,21 +1,21 @@
 import { globals } from "./default";
 import { getDoc, setDoc } from "./play/codemirror";
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 import hvc from "./play/hvc";
 import templates from "./templates";
 import drawers from "./play/drawers";
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 import "/src/styles/defaults/table.scss";
 import "/src/styles/defaults/modal.scss";
 import "/src/styles/playground/playground.scss";
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 export const play = {
     elements: {
         epi: () => { return document.getElementById("epi-value")! },
         out: () => { return document.getElementById("saida-value")! },
         acumulator: () => { return document.getElementById("acumulador-value")! },
         readcard: () => { return document.getElementById("read-card")! as HTMLInputElement },
-        
+
         run: () => { return document.getElementById("run")! },
         debug: () => { return document.getElementById("debug")! },
         share: () => { return document.getElementById("share")! },
@@ -43,25 +43,25 @@ export const play = {
         ratingmodal: () => { return document.getElementById("rating-modal")! },
 
         modals: () => { return document.getElementsByClassName("mymodal")! },
-    
+
         configs: () => { return document.getElementById("config")! },
         formconfigs: () => { return document.getElementById("configs-form")! },
         closeconfigs: () => { return document.getElementById("close-configs")! },
-    
+
         formcard: () => { return document.getElementById("card-form")! },
-    
+
         error: () => { return document.getElementById("error")! },
         closeerrors: () => { return document.getElementById("close-error")! },
 
         savecode: () => { return document.getElementById("save-code")! },
         clear: () => { return document.getElementById("clear")! },
         help: () => { return document.getElementById("help")! },
-        
+
         skip: () => { return document.getElementById("skip")! as HTMLInputElement },
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
         theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
         paused: () => { return document.getElementById("paused")! as HTMLInputElement },
-        
+
         gaveteiro: () => { return document.getElementById("gaveteiro")! },
         scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
 
@@ -70,7 +70,7 @@ export const play = {
 
         cards: () => { return document.getElementById("cards")! },
         tablecards: () => { return document.getElementById("scroll-tablecards")! },
-        
+
         counter: () => { return localStorage.getItem("counter")! },
         askrating: () => { return localStorage.getItem("askrating")! },
         dontask: () => { return document.getElementById("dont-ask")! },
@@ -81,7 +81,7 @@ export const play = {
         getCode: () => {
             return getDoc();
         },
-        
+
         setCode: (code: string) => {
             setDoc(code);
         },
@@ -99,16 +99,16 @@ export const play = {
                     break;
                 default:
                     dotclass = "editing";
-            } 
+            }
 
             stateview.className = dotclass;
         },
-    
+
         showError: (message: string) => {
             play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
             globals.actions.displayElement(play.elements.errorsmodal());
         },
-    
+
         highlightDrawer: (drawer: Element, style: string) => {
             if(!drawer.classList.contains(style)) {
                 drawer.classList.remove(drawer.classList.item(1)!);
@@ -137,26 +137,26 @@ export const play = {
             Array.from(play.elements.modals()).forEach(modal => {
                 const element = modal as HTMLElement;
 
-                if(element != play.elements.cardmodal()) {
+                if(!element.isSameNode(play.elements.cardmodal())) {
                     globals.actions.undisplayElement(element);
-                
-                    if(element == play.elements.helpmodal()) globals.actions.displayElement(play.elements.help());
+
+                    if(element.isSameNode(play.elements.helpmodal())) globals.actions.displayElement(play.elements.help());
                 }
             });
         },
     }
 }
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 const windowsizemenu = 710;
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 if(!play.elements.counter() || !play.elements.askrating()) {
     globals.actions.changeStorage("counter", "0");
     globals.actions.changeStorage("askrating", "true");
 }
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 const hideRating = () => globals.actions.undisplayElement(play.elements.ratingmodal());
 
 const neverAskAgain = () => {
@@ -175,22 +175,22 @@ const saveConfigs = () => {
 const switchHelp = () => {
     const modal = play.elements.helpmodal();
     const modaldisplay = modal.style["display"] === "none";
-    
+
     globals.actions.switchDisplay(modal, modaldisplay);
 }
 
 const switchContracted = (i: number) => {
     const expand = play.elements.expand().item(i)!;
     const contracted = play.elements.contracted().item(i)! as HTMLElement;
-    
+
     expand.classList.toggle("contract");
-    
+
     globals.actions.switchVisibility(contracted, contracted.style["visibility"] != "visible");
 }
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
 Array.from(play.elements.contracted()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
     if(localStorage.getItem("saved")! != "true" && play.actions.getCode() != localStorage.getItem("code")) e.preventDefault();
 });
@@ -198,12 +198,12 @@ window.addEventListener("beforeunload", e => {
 window.addEventListener("storage", e => {
     if(e.key === "theme") play.elements.theme().value = e.newValue!;
 });
-// ---------------------------------------------------------------------------
+// -------------------------------------------------------------------------------
 document.addEventListener("click", e => {
     const element = e.target as HTMLElement;
 
-    if(element == play.elements.helpmodal()) switchHelp();
-    else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
+    if(element.isSameNode(play.elements.helpmodal())) switchHelp();
+    else if(element.isSameNode(play.elements.configmodal())) globals.actions.undisplayElement(play.elements.configmodal());
 
     const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
                      !element.parentElement!.classList.contains("contracted") &&
@@ -233,16 +233,16 @@ document.addEventListener("keydown", e => {
         else if(key === "escape") play.actions.hideModals();
     }
 });
-// ------------------------------------------------------------------------------- 
+// ---------------------------------------------------------------------------
 const loadplay = async () => {
     hvc(globals.actions.getLang());
-    // ---------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     play.elements.theme().value = globals.actions.getTheme();
     play.elements.delay().value = localStorage.getItem("delay-hvc") || "1000";
 
     play.elements.skip().checked = localStorage.getItem("skip-hvc")! != "false";
     play.elements.paused().checked = localStorage.getItem("paused-hvc")! != "false";
-    // ---------------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     play.elements.share().addEventListener("click", async() => {
         const shareurl = globals.actions.hvcode(play.actions.getCode());
 
@@ -295,9 +295,9 @@ const loadplay = async () => {
 
     play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(table);
 }
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 drawers(play.elements.scrollgaveteiro());
-// ------------------------------------------------------------------------------- 
+// -------------------------------------------------------------------------------
 const modals = ["configs", "card", "error", "help", "rating"];
 
 modals.forEach(async modal => {
@@ -308,5 +308,5 @@ modals.forEach(async modal => {
 
     document.body.appendChild(element);
 });
-// ---------------------------------------------------------------------------
+// -------------------------------------------------------------------------------
 setTimeout(async () => await loadplay(), modals.length * 150);

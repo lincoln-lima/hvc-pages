@@ -8,7 +8,7 @@ export default (gaveteiro: Element) => {
         const num = drawer.getElementsByClassName("num-drawer").item(0)!;
 
         num.textContent = i.toString().padStart(2, "0");
-        
+
         gaveteiro.appendChild(drawer);
     }
 }
