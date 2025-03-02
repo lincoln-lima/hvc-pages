@@ -152,29 +152,16 @@ const windowsizemenu = 710;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
-drawers(play.elements.scrollgaveteiro());
-// ------------------------------------------------------------------------------- 
 if(!play.elements.counter() || !play.elements.askrating()) {
-    localStorage.setItem("counter", "0");
-    localStorage.setItem("askrating", "true");
+    globals.actions.changeStorage("counter", "0");
+    globals.actions.changeStorage("askrating", "true");
 }
 // ------------------------------------------------------------------------------- 
-const modals = ["configs", "card", "error", "help", "rating"];
-
-modals.forEach(async modal => {
-    const element = await templates("modal/" + modal);
-    element.style["display"] = "none";
-
-    globals.actions.translateElement(element);
-
-    document.body.appendChild(element);
-});
-// ---------------------------------------------------------------------------
 const hideRating = () => globals.actions.undisplayElement(play.elements.ratingmodal());
 
 const neverAskAgain = () => {
     hideRating();
-    localStorage.setItem("askrating", "false");
+    globals.actions.changeStorage("askrating", "false");
 }
 
 const saveConfigs = () => {
@@ -204,6 +191,10 @@ const switchContracted = (i: number) => {
 Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
 Array.from(play.elements.contracted()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
 // ------------------------------------------------------------------------------- 
+window.addEventListener("beforeunload", e => {
+    if(localStorage.getItem("saved")! != "true" && play.actions.getCode() != localStorage.getItem("code")) e.preventDefault();
+});
+
 window.addEventListener("storage", e => {
     if(e.key === "theme") play.elements.theme().value = e.newValue!;
 });
@@ -215,8 +206,8 @@ document.addEventListener("click", e => {
     else if(element == play.elements.configmodal()) globals.actions.undisplayElement(play.elements.configmodal());
 
     const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
-                        !element.parentElement!.classList.contains("contracted") &&
-                        !element.classList.contains("expand");
+                     !element.parentElement!.classList.contains("contracted") &&
+                     !element.classList.contains("expand");
 
     if(isExpand) {
         Array.from(play.elements.contracted()).forEach((e, i) => {
@@ -253,29 +244,32 @@ const loadplay = async () => {
     play.elements.paused().checked = localStorage.getItem("paused-hvc")! != "false";
     // ---------------------------------------------------------------------------
     play.elements.share().addEventListener("click", async() => {
+        const shareurl = globals.actions.hvcode(play.actions.getCode());
+
         try {
             await navigator.share({
                 title: document.title,
                 text: globals.actions.retrieveLangText("menu-share-metaop") + "\n\n",
-                url: globals.actions.hvcode(play.actions.getCode())
+                url: shareurl
             });
         }
         catch {
-            play.elements.share().classList.add("copied");
-
             const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
-            label.textContent = globals.actions.retrieveLangText("menu-copied-title");
-
-            setTimeout(() => {
-                play.elements.share().classList.remove("copied");
-                label.textContent = globals.actions.retrieveLangText("menu-share-title");
-            }, 3000);
 
             try {
-                navigator.clipboard.writeText(globals.actions.hvcode(play.actions.getCode()));
+                navigator.clipboard.writeText(shareurl);
             }
             catch {
-                console.log(play.actions.getCode());
+                console.log(shareurl);
+            }
+            finally {
+                play.elements.share().classList.add("copied");
+                label.textContent = globals.actions.retrieveLangText("menu-copied-title");
+
+                setTimeout(() => {
+                    play.elements.share().classList.remove("copied");
+                    label.textContent = globals.actions.retrieveLangText("menu-share-title");
+                }, 3000);
             }
         }
     });
@@ -302,4 +296,17 @@ const loadplay = async () => {
     play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(table);
 }
 // ------------------------------------------------------------------------------- 
+drawers(play.elements.scrollgaveteiro());
+// ------------------------------------------------------------------------------- 
+const modals = ["configs", "card", "error", "help", "rating"];
+
+modals.forEach(async modal => {
+    const element = await templates("modal/" + modal);
+    element.style["display"] = "none";
+
+    globals.actions.translateElement(element);
+
+    document.body.appendChild(element);
+});
+// ---------------------------------------------------------------------------
 setTimeout(async () => await loadplay(), modals.length * 150);

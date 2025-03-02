@@ -104,6 +104,25 @@ main {
                 }
             }
 
+            &.unsaved {
+                #editor {
+                    outline-style: dashed;
+                    outline-color: play.$dark-red;
+                
+                    &::after {
+                        content: "*";
+                        position: absolute;
+
+                        line-height: 0;
+                        font-size: 0.8em;
+                        color: play.$dark-red;
+
+                        top: 2%;
+                        right: 1%;
+                    }
+                }
+            }
+
             #editor {
                 font-size: $font-size;
                 @include global.size(100%);

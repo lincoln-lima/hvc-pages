@@ -79,7 +79,13 @@ export const globals = {
             if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
         },
 
-        hvcode: (code: string) => { return globals.path.playground + "?code=" + code.replace(/\s*;.*/g, '').replace(/\n/g, "%0A") },
+        hvcode: (code: string) => { 
+            const shareurl = new URL(globals.path.playground);
+            
+            shareurl.searchParams.set("code", code.replace(/\s*;.*/g, ""));
+
+            return shareurl.toString();
+        },
 
         getLang: () => { return Transformer.getInstance().getCurrentLang() },
 
@@ -136,14 +142,15 @@ if(copies) {
         copy.addEventListener("click", () => {
             const text = commands[i].textContent!;
 
-            copy.classList.add("copied");
-            setTimeout(() => copy.classList.remove("copied"), 3000);
-
             try {
                 navigator.clipboard.writeText(text);
             }
             catch {
                 console.log(text);
+            }
+            finally {
+                copy.classList.add("copied");
+                setTimeout(() => copy.classList.remove("copied"), 3000);
             }
         })
     );
@@ -157,11 +164,7 @@ if(opens) {
     Array.from(opens).forEach((open, i) => {
         const code = globals.actions.hvcode(codes[i].textContent!);
 
-        open.addEventListener("click", () => {
-            localStorage.setItem("saved", "false");
-
-            window.open(code, "_blank");
-        })
+        open.addEventListener("click", () => window.open(code, "_blank"));
     })
 }
 // ------------------------------------------------------------------------------- 

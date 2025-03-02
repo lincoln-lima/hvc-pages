@@ -34,6 +34,7 @@ export default (lang: string) => {
 
     const editor = play.elements.editor();
     const debugmenu = play.elements.debugmenu();
+    const portacartoes = play.elements.portacartoes();
 
     const cards = play.elements.cards();
     const tablecards = play.elements.tablecards();
@@ -47,10 +48,11 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     const saveCode = () => {
         if(localStorage.getItem("saved") != "true") {
-            localStorage.setItem("saved", "true");
-            localStorage.setItem("code", play.actions.getCode());
+            globals.actions.changeStorage("saved", "true");
+            globals.actions.changeStorage("code", play.actions.getCode());
 
             savecode.classList.add("saved");
+            portacartoes.classList.remove("unsaved");
             setTimeout(() => savecode.classList.remove("saved"), 3000);
         }
     }
