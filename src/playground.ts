@@ -172,12 +172,7 @@ const saveConfigs = () => {
     globals.actions.undisplayElement(play.elements.configmodal());
 }
 
-const switchHelp = () => {
-    const modal = play.elements.helpmodal();
-    const modaldisplay = modal.style["display"] === "none";
-
-    globals.actions.switchDisplay(modal, modaldisplay);
-}
+const switchHelp = () => globals.actions.switchDisplay(play.elements.helpmodal());
 
 const switchContracted = (i: number) => {
     const expand = play.elements.expand().item(i)!;
@@ -222,9 +217,8 @@ document.addEventListener("keydown", e => {
     if(!e.ctrlKey) {
         if(key === "f2") {
             e.preventDefault();
-            const config = play.elements.configmodal();
-
-            globals.actions.switchDisplay(config, config.style["display"] === "none");
+            
+            globals.actions.switchDisplay(play.elements.configmodal());
         }
         else if(key === "f12") {
             e.preventDefault();
@@ -243,7 +237,8 @@ const loadplay = async () => {
     play.elements.skip().checked = localStorage.getItem("skip-hvc")! != "false";
     play.elements.paused().checked = localStorage.getItem("paused-hvc")! != "false";
     // -----------------------------------------------------------------------
-    play.elements.share().addEventListener("click", async() => {
+    play.elements.share().addEventListener("click", async(e) => {
+        const share = e.currentTarget as Element;
         const shareurl = globals.actions.hvcode(play.actions.getCode());
 
         try {
@@ -254,7 +249,7 @@ const loadplay = async () => {
             });
         }
         catch {
-            const label = play.elements.share().getElementsByClassName("label-tool").item(0)!;
+            const label = share.querySelector(".label-tool");
 
             try {
                 navigator.clipboard.writeText(shareurl);
@@ -263,13 +258,7 @@ const loadplay = async () => {
                 console.log(shareurl);
             }
             finally {
-                play.elements.share().classList.add("copied");
-                label.textContent = globals.actions.retrieveLangText("menu-copied-title");
-
-                setTimeout(() => {
-                    play.elements.share().classList.remove("copied");
-                    label.textContent = globals.actions.retrieveLangText("menu-share-title");
-                }, 3000);
+                globals.actions.temporaryClass(share, "copied", label!, "menu-share-title", "menu-copied-title");
             }
         }
     });
@@ -293,20 +282,20 @@ const loadplay = async () => {
     const table = await templates("table");
     globals.actions.translateElement(table);
 
-    play.elements.helpmodal().getElementsByClassName("modal-body").item(0)!.appendChild(table);
+    play.elements.helpmodal().querySelector(".modal-body")!.appendChild(table);
 }
 // -------------------------------------------------------------------------------
 drawers(play.elements.scrollgaveteiro());
 // -------------------------------------------------------------------------------
 const modals = ["configs", "card", "error", "help", "rating"];
 
-modals.forEach(async modal => {
+await Promise.all(modals.map(async modal => {
     const element = await templates("modal/" + modal);
-    element.style["display"] = "none";
+    element.classList.add("undisplayed");
 
     globals.actions.translateElement(element);
 
     document.body.appendChild(element);
-});
-// -------------------------------------------------------------------------------
-setTimeout(async () => await loadplay(), modals.length * 150);
+}));
+
+await loadplay();

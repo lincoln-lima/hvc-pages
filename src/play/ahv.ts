@@ -14,7 +14,7 @@ export default () => {
         inputelement.addEventListener("change", async () => {
             const [file] = inputelement.files!;
 
-            if (file) {
+            if(file) {
                 if (file.size <= 1024) play.actions.setCode(await file.text());
                 else alert("Os scripts deverão possuir no máximo 1KB");
             }
@@ -28,8 +28,8 @@ export default () => {
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
-        link.download = "main";
         link.href = url;
+        link.download = "main";
 
         document.body.appendChild(link);
         link.click();

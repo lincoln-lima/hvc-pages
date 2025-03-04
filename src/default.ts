@@ -10,22 +10,15 @@ export const globals = {
         playground: location.origin + "/pages/playground.html"
     },
     elements: {
-        menumodal: () => { return document.getElementsByClassName("primary-menu").item(0)! as HTMLElement },
-        menuburger: () => { return document.getElementsByClassName("burger-menu").item(0)! as HTMLElement }
+        menumodal: () => { return document.querySelector(".primary-menu")! as HTMLElement },
+        menuburger: () => { return document.querySelector(".burger-menu")! as HTMLElement }
     },
     actions: {
-        displayElement: (element: HTMLElement) => {
-            if(element.style["display"] != "revert-layer") element.style["display"] = "revert-layer";
-        },
+        displayElement: (element: Element) => element.classList.remove("undisplayed"),
 
-        undisplayElement: (element: HTMLElement) => {
-            if(element.style["display"] != "none") element.style.setProperty("display", "none", "important");
-        },
+        undisplayElement: (element: Element) => element.classList.add("undisplayed"),
 
-        switchDisplay: (element: HTMLElement, set: boolean) => {
-            if(set) globals.actions.displayElement(element);
-            else globals.actions.undisplayElement(element);
-        },
+        switchDisplay: (element: HTMLElement) => element.classList.toggle("undisplayed"),
 
         switchVisibility: (element: HTMLElement, set: boolean) => {
             if(set) {
@@ -38,16 +31,42 @@ export const globals = {
             }
         },
 
-        switchMenu: () => {
-            const menu = globals.elements.menumodal();
-            globals.actions.switchVisibility(menu, menu.style["visibility"] != "visible");
-        },
-
         switchTheme: () => {
             const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
 
             root.setAttribute("data-theme", theme);
             globals.actions.changeStorage("theme", theme);
+        },
+
+        switchMenu: () => {
+            const menu = globals.elements.menumodal();
+            globals.actions.switchVisibility(menu, menu.style["visibility"] != "visible");
+        },
+
+        clickEventMenu: (e: MouseEvent) => {
+            const element = e.target as Element;
+            const menu = globals.elements.menumodal();
+            const burger = globals.elements.menuburger();
+
+            const notTarget = !element.isSameNode(menu) && !element.isSameNode(burger) && !menu.contains(element);
+
+            if(notTarget) {
+                const areVisible = menu.style["visibility"] != "hidden" && !burger.classList.contains("undisplayed");
+
+                if(areVisible) globals.actions.switchMenu();
+            }
+        },
+
+        escEventMenu: (e: KeyboardEvent) => {
+            const key = e.key.toLowerCase();
+            const menu = globals.elements.menumodal();
+            const burger = globals.elements.menuburger();
+
+            if(key === "escape") {
+                const areVisible = menu.style["visibility"] != "hidden" && !burger.classList.contains("undisplayed");
+
+                if(areVisible) globals.actions.switchMenu();
+            }
         },
 
         monitoreMenu: (size: number) => {
@@ -56,10 +75,20 @@ export const globals = {
             if (window.innerWidth > size) {
                 globals.actions.switchVisibility(globals.elements.menumodal(), true);
                 globals.actions.undisplayElement(burger);
+                
+                document.removeEventListener("click", globals.actions.clickEventMenu);
+                document.removeEventListener("keydown", globals.actions.escEventMenu);
+                
+                globals.elements.menuburger().removeEventListener("click", globals.actions.switchMenu);
             }
             else {
                 globals.actions.displayElement(burger);
                 globals.actions.switchVisibility(globals.elements.menumodal(), false);
+
+                document.addEventListener("click", globals.actions.clickEventMenu);
+                document.addEventListener("keydown", globals.actions.escEventMenu);
+
+                globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
             }
         },
 
@@ -71,9 +100,14 @@ export const globals = {
             if(element.textContent != text) element.textContent = text;
         },
 
-        temporaryClass: (element: Element, className: string) => {
+        temporaryClass: (element: Element, className: string, elementsec?: Element, dlangmain?: string, dlangsec?: string) => {
             element.classList.add(className);
-            setTimeout(() => element.classList.remove(className), 3000);
+            if(elementsec) elementsec.textContent = globals.actions.retrieveLangText(dlangsec!);
+
+            setTimeout(() => {
+                element.classList.remove(className);
+                if(elementsec) elementsec.textContent = globals.actions.retrieveLangText(dlangmain!);
+            }, 3000);
         },
 
         changeStorage: (item: string, value: string) => {
@@ -104,8 +138,6 @@ Transformer.getInstance().init();
 // -------------------------------------------------------------------------------
 root.setAttribute("data-theme", globals.actions.getTheme());
 // -------------------------------------------------------------------------------
-globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
-// -------------------------------------------------------------------------------
 const homes = document.getElementsByClassName("home")!;
 const cometoplays = document.getElementsByClassName("come-to-play")!;
 
@@ -123,7 +155,7 @@ if(cometoplays) {
     });
 }
 // -------------------------------------------------------------------------------
-const switchtheme = document.getElementsByClassName("switch-theme").item(0)!;
+const switchtheme = document.querySelector(".switch-theme")!;
 
 if(switchtheme) {
     if(globals.actions.getTheme() != "light") switchtheme.classList.toggle("dark");
@@ -170,30 +202,4 @@ if(opens) {
 // -------------------------------------------------------------------------------
 window.addEventListener("storage", e => {
     if(e.key === "theme") root.setAttribute("data-theme", e.newValue!);
-});
-// -------------------------------------------------------------------------------
-document.addEventListener("click", e => {
-    const element = e.target as Element;
-    const menu = globals.elements.menumodal();
-    const burger = globals.elements.menuburger();
-
-    const notTarget = !element.isSameNode(menu) && !element.isSameNode(burger) && !menu.contains(element);
-
-    if(notTarget) {
-        const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
-
-        if(areVisible) globals.actions.switchMenu();
-    }
-});
-
-document.addEventListener("keydown", e => {
-    const key = e.key.toLowerCase();
-    const menu = globals.elements.menumodal();
-    const burger = globals.elements.menuburger();
-
-    if(key === "escape") {
-        const areVisible = menu.style["visibility"] != "hidden" && burger.style["display"] != "none";
-
-        if(areVisible) globals.actions.switchMenu();
-    }
 });

@@ -94,6 +94,14 @@ mark {
     background-color: global.$color-mark;
 }
 /* -------------------------------------------------------------------- */
+.undisplayed {
+    display: none !important;
+}
+
+.unvisible {
+    @include global.hidden;
+}
+/* -------------------------------------------------------------------- */
 .pre-code {
     background-color: global.$lightgray;
 

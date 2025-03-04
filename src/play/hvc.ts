@@ -87,6 +87,11 @@ export default (lang: string) => {
                 globals.actions.displayElement(tablecards);
                 globals.actions.switchVisibility(debugmenu, true);
 
+                back.addEventListener("click", backward);
+                forth.addEventListener("click", forward);
+                finish.addEventListener("click", terminate);
+                pausecontinue.addEventListener("click", toggling);
+
                 await hvc.debug(+delay.value, !skip.checked, paused.checked ? "PAUSADO" : "RODANDO");
             }
         }
@@ -165,6 +170,11 @@ export default (lang: string) => {
         globals.actions.undisplayElement(tablecards);
 
         globals.actions.switchVisibility(debugmenu, false);
+
+        back.removeEventListener("click", backward);
+        forth.removeEventListener("click", forward);
+        finish.removeEventListener("click", terminate);
+        pausecontinue.removeEventListener("click", toggling);
     }
 
     const toggling = async() => {
@@ -188,25 +198,21 @@ export default (lang: string) => {
         }
     }
 
-    const controlling = async(set: boolean) => {
+    const backward = async() => {
         const hvm = hvc.getHVM();
         const hvmstate = hvm.getState();
-        const debugstate = hvm.getDebugState();
 
-        if(hvmstate === "EXECUÇÃO" && debugstate === "PAUSADO") {
-            if(set) {
-                await hvc.back();
-                updateViewers(hvmstate);
-                globals.actions.undisplayElement(cardmodal);
-            }
-            else {
-                try {
-                    await hvc.next();
-                }
-                catch (e) {
-                    await detectError(e as Error);
-                }
-            }
+        await hvc.back();
+        updateViewers(hvmstate);
+        globals.actions.undisplayElement(cardmodal);
+    }
+
+    const forward = async() => {
+        try {
+            await hvc.next();
+        }
+        catch (e) {
+            await detectError(e as Error);
         }
     }
     // ------------------------------------------------------------------------------- 
@@ -221,15 +227,16 @@ export default (lang: string) => {
         readcard.focus();
 
         return new Promise(resolve => {
-            const submit = () => {
+            const submit = (e: SubmitEvent) => {
+                e.preventDefault();
+
                 globals.actions.undisplayElement(cardmodal);
                 setTimeout(resolve, +delay.value, readcard.value);
+
+                formcard.removeEventListener("submit", submit);
             }
 
-            formcard.addEventListener("submit", e => {
-                e.preventDefault();
-                submit();
-            });
+            formcard.addEventListener("submit", submit);
         });
     });
 
@@ -243,12 +250,6 @@ export default (lang: string) => {
     // ---------------------------------------------------------------------------
     debug.addEventListener("click", async() => await exec(false));
     runner.addEventListener("click", async() => await exec(true));
-
-    back.addEventListener("click", async() => await controlling(true));
-    forth.addEventListener("click", async() => await controlling(false));
-
-    finish.addEventListener("click", async() => await terminate());
-    pausecontinue.addEventListener("click", async() => await toggling());
 
     clear.addEventListener("click", clearView);
     savecode.addEventListener("click", saveCode);
