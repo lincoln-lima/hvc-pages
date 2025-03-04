@@ -34,7 +34,6 @@ export default (lang: string) => {
 
     const editor = play.elements.editor();
     const debugmenu = play.elements.debugmenu();
-    const portacartoes = play.elements.portacartoes();
 
     const cards = play.elements.cards();
     const tablecards = play.elements.tablecards();
@@ -51,7 +50,7 @@ export default (lang: string) => {
             globals.actions.changeStorage("saved", "true");
             globals.actions.changeStorage("code", play.actions.getCode());
 
-            portacartoes.classList.remove("unsaved");
+            editor.classList.remove("unsaved");
 
             globals.actions.temporaryClass(savecode, "saved");
         }

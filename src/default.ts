@@ -75,10 +75,10 @@ export const globals = {
             if (window.innerWidth > size) {
                 globals.actions.switchVisibility(globals.elements.menumodal(), true);
                 globals.actions.undisplayElement(burger);
-                
+
                 document.removeEventListener("click", globals.actions.clickEventMenu);
                 document.removeEventListener("keydown", globals.actions.escEventMenu);
-                
+
                 globals.elements.menuburger().removeEventListener("click", globals.actions.switchMenu);
             }
             else {

@@ -95,11 +95,11 @@ mark {
 }
 /* -------------------------------------------------------------------- */
 .undisplayed {
-    display: none !important;
+    @include global.undisplayed;
 }
 
 .unvisible {
-    @include global.hidden;
+    @include global.unvisible;
 }
 /* -------------------------------------------------------------------- */
 .pre-code {
@@ -269,8 +269,8 @@ div:has(> button.open) {
 
         border-radius: 0.5em;
 
-        @include global.hidden;
         @include global.middle;
+        @include global.unvisible;
 
         &::after {
             content: "";

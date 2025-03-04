@@ -7,10 +7,10 @@ import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
 let code;
 const params = new URLSearchParams(window.location.search);
 // -----------------------------------------------------------------------------------
-const portacartoes = document.getElementById("porta-cartoes")!;
+const container = document.querySelector(".container-editor")!;
 // -----------------------------------------------------------------------------------
 const unSaved = () => {
-    portacartoes.classList.add("unsaved");
+    container.classList.add("unsaved");
     globals.actions.changeStorage("saved", "false");
 }
 // -----------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ const startstate = EditorState.create({
 // -----------------------------------------------------------------------------------
 const view = new EditorView({
     state: startstate,
-    parent: portacartoes
+    parent: container
 });
 // -----------------------------------------------------------------------------------
 export const getDoc = () => {

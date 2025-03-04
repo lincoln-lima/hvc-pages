@@ -171,7 +171,11 @@ $fonts:
     border-radius: 50%;
 }
 
-@mixin hidden {
+@mixin undisplayed {
+    display: none !important;
+}
+
+@mixin unvisible {
     opacity: 0;
     visibility: hidden;
 }

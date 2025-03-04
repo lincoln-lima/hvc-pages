@@ -48,7 +48,7 @@
         backdrop-filter: blur(2px);
         background-color: #{global.$white}#{default.$transparency-menu};
 
-        @include global.hidden;
+        @include global.unvisible;
         @include global.size(fit-content, $height);
         @include global.shadow($type: inset, $blur: 5px, $transparency: 0.3);
         @include global.rounded-border($border-top: 0, $border-bottom: 0.25em);
@@ -402,7 +402,7 @@ header {
 
                         transition: 0.3s ease-in-out;
 
-                        @include global.hidden;
+                        @include global.unvisible;
                     }
                 }
 

@@ -28,8 +28,7 @@ export const play = {
         state: () => { return document.getElementById("states-view")! },
         debugmenu: () => { return document.getElementById("debug-menu")! },
 
-        editor: () => { return document.getElementById("editor")! },
-        portacartoes: () => { return document.getElementById("porta-cartoes")! },
+        editor: () => { return document.querySelector(".container-editor")! },
 
         back: () => { return document.getElementById("back")! },
         forth: () => { return document.getElementById("forth")! },
@@ -217,7 +216,7 @@ document.addEventListener("keydown", e => {
     if(!e.ctrlKey) {
         if(key === "f2") {
             e.preventDefault();
-            
+
             globals.actions.switchDisplay(play.elements.configmodal());
         }
         else if(key === "f12") {
