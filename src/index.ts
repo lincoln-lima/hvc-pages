@@ -11,17 +11,16 @@ const windowsizemenu = 860;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
-const scrolltable = document.getElementById("scroll-table")!;
+const scrolltable = document.querySelector(".scroll-table")!;
+// ------------------------------------------------------------------------------- 
+const dynamics: [string, Element][] = [
+    ["table", scrolltable],
+    ["footer", document.body]
+];
 
-const setTemplates = async () => {
-    const table = await templates("table");
-    const footer = await templates("footer");
+await Promise.all(dynamics.map(async ([key, element]) => {
+    const temp = await templates(key);
+    globals.actions.translateElement(temp);
 
-    globals.actions.translateElement(table);
-    globals.actions.translateElement(footer);
-
-    scrolltable.appendChild(table);
-    document.body.appendChild(footer); 
-}
-
-await setTemplates();
+    element.appendChild(temp);
+}));

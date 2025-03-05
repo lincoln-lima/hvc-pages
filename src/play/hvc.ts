@@ -1,6 +1,6 @@
-import { HVC, HVMState } from "hvcjs";
 import { play } from "../playground";
 import { globals } from "../default";
+import { HVC, HVMState } from "hvcjs";
 // -----------------------------------------------------------------------------------
 import ahv from "./ahv";
 // -----------------------------------------------------------------------------------
@@ -14,6 +14,7 @@ export default (lang: string) => {
     const debug = play.elements.debug();
 
     const clear = play.elements.clear();
+    const options = play.elements.options();
     const savecode = play.elements.savecode();
 
     const back = play.elements.back();
@@ -61,7 +62,7 @@ export default (lang: string) => {
         globals.actions.changeElementText(epiwrite, "");
         globals.actions.changeElementText(acumulator, "");
 
-        Array.from(drawers).forEach((gaveta, i) => {
+        drawers.forEach((gaveta, i) => {
             gaveta.classList.remove(gaveta.classList.item(1)!);
             globals.actions.changeElementText(drawerscontent.item(i)!, "");
         });
@@ -73,9 +74,11 @@ export default (lang: string) => {
         await terminate();
         // ---------------------------------------------------------------------------
         play.actions.hideModals();
-        globals.actions.undisplayElement(play.elements.help());
+        globals.actions.undisplayElement(options);
         // ---------------------------------------------------------------------------
-        Array.from(drawers).forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
+        drawers.forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
+        // ---------------------------------------------------------------------------
+        document.addEventListener("keydown", keyTerminate);
         // ---------------------------------------------------------------------------
         hvc.setCode(play.actions.getCode());
         // ---------------------------------------------------------------------------
@@ -102,7 +105,7 @@ export default (lang: string) => {
                 const counter = +play.elements.counter() + 1;
                 globals.actions.changeStorage("counter", counter.toString());
 
-                if(counter % 3 === 0) globals.actions.displayElement(ratingmodal);
+                if(counter % 5 === 0) globals.actions.displayElement(ratingmodal);
             }
         }
     }
@@ -136,9 +139,9 @@ export default (lang: string) => {
 
         if(state != "CARGA") globals.actions.scrollTo(pointed);
         // ---------------------------------------------------------------------------
-        Array.from(drawerscontent).forEach((cont, i) => {
-            const drawer = drawers[i];
+        drawerscontent.forEach((cont, i) => {
             let content;
+            const drawer = drawers[i];
 
             if(gavetas[i]) {
                 content = gavetas[i];
@@ -163,7 +166,7 @@ export default (lang: string) => {
         play.actions.switchPauseContinue(paused.checked);
 
         globals.actions.displayElement(editor);
-        globals.actions.displayElement(play.elements.help());
+        globals.actions.displayElement(options);
 
         globals.actions.undisplayElement(cardmodal);
         globals.actions.undisplayElement(tablecards);
@@ -174,25 +177,22 @@ export default (lang: string) => {
         forth.removeEventListener("click", forward);
         finish.removeEventListener("click", terminate);
         pausecontinue.removeEventListener("click", toggling);
+
+        document.removeEventListener("keydown", keyTerminate);
     }
 
     const toggling = async() => {
-        const hvm = hvc.getHVM();
-        const hvmstate = hvm.getState();
+        const topause = pausecontinue.classList.contains("pause");
 
-        if(hvmstate != "DESLIGADO") {
-            const topause = pausecontinue.classList.contains("pause");
+        play.actions.switchPauseContinue(topause);
 
-            play.actions.switchPauseContinue(topause);
-
-            if(topause) await hvc.stop();
-            else {
-                try {
-                    await hvc.continue();
-                }
-                catch (e) {
-                    await detectError(e as Error);
-                }
+        if(topause) await hvc.stop();
+        else {
+            try {
+                await hvc.continue();
+            }
+            catch (e) {
+                await detectError(e as Error);
             }
         }
     }
@@ -215,9 +215,7 @@ export default (lang: string) => {
         }
     }
     // ------------------------------------------------------------------------------- 
-    hvc.addEventOutput((out: string) => {
-        globals.actions.changeElementText(outwrite, out);
-    });
+    hvc.addEventOutput((out: string) => globals.actions.changeElementText(outwrite, out));
 
     hvc.addEventInput(async() => {
         globals.actions.displayElement(cardmodal);
@@ -253,16 +251,18 @@ export default (lang: string) => {
     clear.addEventListener("click", clearView);
     savecode.addEventListener("click", saveCode);
     // ---------------------------------------------------------------------------
+    const keyTerminate = async(e: KeyboardEvent) => {
+        if(e.ctrlKey && e.key.toLowerCase() === "c") {
+            e.preventDefault();
+            await terminate();
+        }
+    }
+    // ------------------------------------------------------------------------------- 
     document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();
-        const hvmstate = hvc.getHVM().getState();
 
         if(e.ctrlKey) {
-            if(key === "c" && hvmstate != "DESLIGADO") {
-                e.preventDefault();
-                await terminate();
-            }
-            else if(key === "s") {
+            if(key === "s") {
                 e.preventDefault();
                 saveCode();
             }

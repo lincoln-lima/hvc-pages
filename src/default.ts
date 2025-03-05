@@ -119,7 +119,7 @@ export const globals = {
 
             shareurl.searchParams.set("code", code.replace(/\s*;.*/g, ""));
 
-            return shareurl.toString();
+            return shareurl;
         },
 
         getLang: () => { return Transformer.getInstance().getCurrentLang() },
@@ -138,18 +138,18 @@ Transformer.getInstance().init();
 // -------------------------------------------------------------------------------
 root.setAttribute("data-theme", globals.actions.getTheme());
 // -------------------------------------------------------------------------------
-const homes = document.getElementsByClassName("home")!;
-const cometoplays = document.getElementsByClassName("come-to-play")!;
+const homes = document.querySelectorAll(".home")!;
+const cometoplays = document.querySelectorAll(".come-to-play")!;
 
 if(homes) {
-    Array.from(homes).forEach(home => {
+    homes.forEach(home => {
         home.setAttribute("href", globals.path.index);
         home.setAttribute("target", "_top");
     });
 }
 
 if(cometoplays) {
-    Array.from(cometoplays).forEach(come => {
+    cometoplays.forEach(come => {
         come.setAttribute("href", globals.path.playground);
         come.setAttribute("target", "_blank");
     });
@@ -166,12 +166,12 @@ if(switchtheme) {
     });
 }
 // -------------------------------------------------------------------------------
-const copies = document.getElementsByClassName("copy")!;
+const copies = document.querySelectorAll(".copy")!;
 
 if(copies) {
     const commands = document.getElementsByClassName("cmd")!;
 
-    Array.from(copies).forEach((copy, i) =>
+    copies.forEach((copy, i) =>
         copy.addEventListener("click", () => {
             const text = commands[i].textContent!;
 
@@ -188,12 +188,12 @@ if(copies) {
     );
 }
 // -------------------------------------------------------------------------------
-const opens = document.getElementsByClassName("open")!;
+const opens = document.querySelectorAll(".open")!;
 
 if(opens) {
     const codes = document.getElementsByClassName("ahv")!;
 
-    Array.from(opens).forEach((open, i) => {
+    opens.forEach((open, i) => {
         const code = globals.actions.hvcode(codes[i].textContent!);
 
         open.addEventListener("click", () => window.open(code, "_blank"));

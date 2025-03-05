@@ -76,7 +76,7 @@ main {
                 @include global.size(100%, play.$playground-responsive-height);
             }
 
-            #scroll-tablecards {
+            .scroll-tablecards {
                 width: 100%;
                 max-height: 100%;
 
@@ -330,7 +330,7 @@ main {
                     }
                 }
 
-                #scroll-gaveteiro {
+                .scroll-gaveteiro {
                     overflow: auto;
 
                     @include global.flex($wrap: nowrap);
@@ -598,7 +598,7 @@ main {
                 @include global.faded-button(info);
             }
 
-            &.expand {
+            &#options {
                 transition: 0.5s;
                 transform: rotate(-180deg);
 

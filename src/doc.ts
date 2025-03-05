@@ -47,5 +47,6 @@ const switchEvents = () => {
 }
 // -----------------------------------------------------------------------------------
 switchEvents();
-shownav.addEventListener("click", switchnav);
 window.addEventListener("resize", switchEvents);
+// -----------------------------------------------------------------------------------
+shownav.addEventListener("click", switchnav);

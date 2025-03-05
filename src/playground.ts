@@ -41,40 +41,38 @@ export const play = {
         configmodal: () => { return document.getElementById("config-modal")! },
         ratingmodal: () => { return document.getElementById("rating-modal")! },
 
-        modals: () => { return document.getElementsByClassName("mymodal")! },
+        modals: () => { return document.querySelectorAll(".mymodal")! },
+        closeablesmodals: () => { return document.querySelectorAll(".mymodal:has(.close)")! },
 
         configs: () => { return document.getElementById("config")! },
         formconfigs: () => { return document.getElementById("configs-form")! },
-        closeconfigs: () => { return document.getElementById("close-configs")! },
 
         formcard: () => { return document.getElementById("card-form")! },
 
         error: () => { return document.getElementById("error")! },
-        closeerrors: () => { return document.getElementById("close-error")! },
 
         savecode: () => { return document.getElementById("save-code")! },
         clear: () => { return document.getElementById("clear")! },
         help: () => { return document.getElementById("help")! },
+        options: () => { return document.getElementById("options")! },
 
         skip: () => { return document.getElementById("skip")! as HTMLInputElement },
         delay: () => { return document.getElementById("delay")! as HTMLInputElement },
         theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
         paused: () => { return document.getElementById("paused")! as HTMLInputElement },
 
-        gaveteiro: () => { return document.getElementById("gaveteiro")! },
-        scrollgaveteiro: () => { return document.getElementById("scroll-gaveteiro")! },
+        scrollgaveteiro: () => { return document.querySelector(".scroll-gaveteiro")! },
 
-        drawers: () => { return document.getElementsByClassName("drawer")! },
-        drawerscontent: () => { return document.getElementsByClassName("cont-drawer")! },
+        drawers: () => { return document.querySelectorAll(".drawer")! },
+        drawerscontent: () => { return document.querySelectorAll(".cont-drawer")! },
 
         cards: () => { return document.getElementById("cards")! },
-        tablecards: () => { return document.getElementById("scroll-tablecards")! },
+        tablecards: () => { return document.querySelector(".scroll-tablecards")! },
 
         counter: () => { return localStorage.getItem("counter")! },
         askrating: () => { return localStorage.getItem("askrating")! },
         dontask: () => { return document.getElementById("dont-ask")! },
         ratingstars: () => { return document.getElementById("rating")! },
-        closerating: () => { return document.getElementById("close-rating")! }
     },
     actions: {
         getCode: () => {
@@ -133,14 +131,8 @@ export const play = {
         },
 
         hideModals: () => {
-            Array.from(play.elements.modals()).forEach(modal => {
-                const element = modal as HTMLElement;
-
-                if(!element.isSameNode(play.elements.cardmodal())) {
-                    globals.actions.undisplayElement(element);
-
-                    if(element.isSameNode(play.elements.helpmodal())) globals.actions.displayElement(play.elements.help());
-                }
+            play.elements.modals().forEach(modal => {
+                if(!modal.isSameNode(play.elements.cardmodal())) globals.actions.undisplayElement(modal);
             });
         },
     }
@@ -156,11 +148,9 @@ if(!play.elements.counter() || !play.elements.askrating()) {
     globals.actions.changeStorage("askrating", "true");
 }
 // -------------------------------------------------------------------------------
-const hideRating = () => globals.actions.undisplayElement(play.elements.ratingmodal());
-
 const neverAskAgain = () => {
-    hideRating();
     globals.actions.changeStorage("askrating", "false");
+    globals.actions.undisplayElement(play.elements.ratingmodal());
 }
 
 const saveConfigs = () => {
@@ -238,7 +228,7 @@ const loadplay = async () => {
     // -----------------------------------------------------------------------
     play.elements.share().addEventListener("click", async(e) => {
         const share = e.currentTarget as Element;
-        const shareurl = globals.actions.hvcode(play.actions.getCode());
+        const shareurl = globals.actions.hvcode(play.actions.getCode()).toString();
 
         try {
             await navigator.share({
@@ -263,7 +253,6 @@ const loadplay = async () => {
     });
 
     play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
-    play.elements.closeconfigs().addEventListener("click", () => globals.actions.undisplayElement(play.elements.configmodal()));
     play.elements.formconfigs().addEventListener("submit", e => {
         e.preventDefault();
         saveConfigs();
@@ -272,11 +261,15 @@ const loadplay = async () => {
     play.elements.theme().addEventListener("change", globals.actions.switchTheme);
 
     play.elements.dontask().addEventListener("click", neverAskAgain);
-    play.elements.closerating().addEventListener("click", hideRating);
-    play.elements.ratingstars().addEventListener("click", hideRating);
+    play.elements.ratingstars().addEventListener("click", () => globals.actions.undisplayElement(play.elements.ratingmodal()));
 
     play.elements.help().addEventListener("click", switchHelp);
-    play.elements.closeerrors().addEventListener("click", () => globals.actions.undisplayElement(play.elements.errorsmodal()));
+
+    play.elements.closeablesmodals().forEach(modal => {
+        const close = modal.querySelector(".close")!;
+
+        close.addEventListener("click", () => globals.actions.undisplayElement(modal));
+    })
     // ---------------------------------------------------------------------------
     const table = await templates("table");
     globals.actions.translateElement(table);
