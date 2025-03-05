@@ -7,7 +7,7 @@ main {
     @include global.center;
     @include global.flex($align: flex-start);
 
-    #sticky-nav {
+    .sticky-nav {
         $max-percentual: 0.8;
         max-width: calc($max-percentual * 100%);
 
@@ -105,7 +105,7 @@ main {
             }
         }
 
-        #show-nav {
+        .show-nav {
             $size: 2.5em;
 
             top: 50%;

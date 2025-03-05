@@ -18,9 +18,9 @@ const dynamics: [string, Element][] = [
     ["footer", document.body]
 ];
 
-await Promise.all(dynamics.map(async ([key, element]) => {
-    const temp = await templates(key);
-    globals.actions.translateElement(temp);
+await Promise.all(dynamics.map(async ([key, parent]) => {
+    const element = await templates(key);
+    globals.actions.translateElement(element);
 
-    element.appendChild(temp);
+    parent.appendChild(element);
 }));

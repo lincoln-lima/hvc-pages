@@ -11,10 +11,11 @@ import "/src/styles/playground/playground.scss";
 // -------------------------------------------------------------------------------
 export const play = {
     elements: {
-        epi: () => { return document.getElementById("epi-value")! },
-        out: () => { return document.getElementById("saida-value")! },
-        acumulator: () => { return document.getElementById("acumulador-value")! },
-        readcard: () => { return document.getElementById("read-card")! as HTMLInputElement },
+        epi: () => { return document.getElementById("epi")!.querySelector(".viewers-values")! },
+        out: () => { return document.getElementById("folha-de-saida")!.querySelector(".viewers-values")! },
+        acumulator: () => { return document.getElementById("acumulador")!.querySelector(".viewers-values")! },
+
+        readcard: () => { return document.querySelector<HTMLInputElement>("#read-card")! },
 
         run: () => { return document.getElementById("run")! },
         debug: () => { return document.getElementById("debug")! },
@@ -22,11 +23,11 @@ export const play = {
         import: () => { return document.getElementById("import")! },
         export: () => { return document.getElementById("export")! },
 
-        expand: () => { return document.getElementsByClassName("expand")! },
-        contracted: () => { return document.getElementsByClassName("contracted")! },
+        expand: () => { return document.querySelectorAll(".expand")! },
+        contracted: () => { return document.querySelectorAll(".contracted")! },
 
-        state: () => { return document.getElementById("states-view")! },
-        debugmenu: () => { return document.getElementById("debug-menu")! },
+        state: () => { return document.querySelector(".states-view")! },
+        debugmenu: () => { return document.querySelector(".debug-menu")! },
 
         editor: () => { return document.querySelector(".container-editor")! },
 
@@ -49,24 +50,24 @@ export const play = {
 
         formcard: () => { return document.getElementById("card-form")! },
 
-        error: () => { return document.getElementById("error")! },
+        error: () => { return document.getElementById("error-message")! },
 
-        savecode: () => { return document.getElementById("save-code")! },
-        clear: () => { return document.getElementById("clear")! },
         help: () => { return document.getElementById("help")! },
+        clear: () => { return document.getElementById("clear")! },
         options: () => { return document.getElementById("options")! },
+        savecode: () => { return document.getElementById("save-code")! },
 
-        skip: () => { return document.getElementById("skip")! as HTMLInputElement },
-        delay: () => { return document.getElementById("delay")! as HTMLInputElement },
-        theme: () => { return document.getElementById("theme")! as HTMLSelectElement },
-        paused: () => { return document.getElementById("paused")! as HTMLInputElement },
+        skip: () => { return document.querySelector<HTMLInputElement>("#skip")! },
+        delay: () => { return document.querySelector<HTMLInputElement>("#delay")! },
+        theme: () => { return document.querySelector<HTMLSelectElement>("#theme")! },
+        paused: () => { return document.querySelector<HTMLInputElement>("#paused")! },
 
         scrollgaveteiro: () => { return document.querySelector(".scroll-gaveteiro")! },
 
         drawers: () => { return document.querySelectorAll(".drawer")! },
-        drawerscontent: () => { return document.querySelectorAll(".cont-drawer")! },
+        drawercontent: (drawer: Element) => { return drawer.querySelector(".content")! },
 
-        cards: () => { return document.getElementById("cards")! },
+        cards: () => { return document.querySelector(".cards")! },
         tablecards: () => { return document.querySelector(".scroll-tablecards")! },
 
         counter: () => { return localStorage.getItem("counter")! },
@@ -98,12 +99,12 @@ export const play = {
                     dotclass = "editing";
             }
 
-            stateview.className = dotclass;
+            stateview.classList.replace(stateview.classList.item(1)!, dotclass);
         },
 
         showError: (message: string) => {
             play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
-            globals.actions.displayElement(play.elements.errorsmodal());
+            globals.actions.switchDisplay(play.elements.errorsmodal(), true);
         },
 
         highlightDrawer: (drawer: Element, style: string) => {
@@ -132,7 +133,7 @@ export const play = {
 
         hideModals: () => {
             play.elements.modals().forEach(modal => {
-                if(!modal.isSameNode(play.elements.cardmodal())) globals.actions.undisplayElement(modal);
+                if(!modal.isSameNode(play.elements.cardmodal())) globals.actions.switchDisplay(modal, false);
             });
         },
     }
@@ -150,7 +151,7 @@ if(!play.elements.counter() || !play.elements.askrating()) {
 // -------------------------------------------------------------------------------
 const neverAskAgain = () => {
     globals.actions.changeStorage("askrating", "false");
-    globals.actions.undisplayElement(play.elements.ratingmodal());
+    globals.actions.switchDisplay(play.elements.ratingmodal(), false);
 }
 
 const saveConfigs = () => {
@@ -158,22 +159,26 @@ const saveConfigs = () => {
     globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
     globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
 
-    globals.actions.undisplayElement(play.elements.configmodal());
+    globals.actions.switchDisplay(play.elements.configmodal(), false);
 }
 
-const switchHelp = () => globals.actions.switchDisplay(play.elements.helpmodal());
+const switchHelp = () => {
+    const helpmodal = play.elements.helpmodal();
+
+    globals.actions.switchDisplay(helpmodal, helpmodal.classList.contains("undisplayed"));
+}
 
 const switchContracted = (i: number) => {
     const expand = play.elements.expand().item(i)!;
-    const contracted = play.elements.contracted().item(i)! as HTMLElement;
+    const contracted = play.elements.contracted().item(i)!;
 
     expand.classList.toggle("contract");
 
-    globals.actions.switchVisibility(contracted, contracted.style["visibility"] != "visible");
+    globals.actions.switchVisibility(contracted, contracted.classList.contains("unvisible"));
 }
 // -------------------------------------------------------------------------------
-Array.from(play.elements.expand()).forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
-Array.from(play.elements.contracted()).forEach(e => globals.actions.switchVisibility(e as HTMLElement, false));
+play.elements.expand().forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
+play.elements.contracted().forEach(e => globals.actions.switchVisibility(e, false));
 // -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
     if(localStorage.getItem("saved")! != "true" && play.actions.getCode() != localStorage.getItem("code")) e.preventDefault();
@@ -184,18 +189,18 @@ window.addEventListener("storage", e => {
 });
 // -------------------------------------------------------------------------------
 document.addEventListener("click", e => {
-    const element = e.target as HTMLElement;
+    const element = e.target as Element;
 
     if(element.isSameNode(play.elements.helpmodal())) switchHelp();
-    else if(element.isSameNode(play.elements.configmodal())) globals.actions.undisplayElement(play.elements.configmodal());
+    else if(element.isSameNode(play.elements.configmodal())) globals.actions.switchDisplay(play.elements.configmodal(), false);
 
     const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
                      !element.parentElement!.classList.contains("contracted") &&
                      !element.classList.contains("expand");
 
     if(isExpand) {
-        Array.from(play.elements.contracted()).forEach((e, i) => {
-            if((e as HTMLElement).style["visibility"] != "hidden") switchContracted(i);
+        play.elements.contracted().forEach((e, i) => {
+            if(!e.classList.contains("unvisible")) switchContracted(i);
         });
     }
 });
@@ -205,9 +210,10 @@ document.addEventListener("keydown", e => {
 
     if(!e.ctrlKey) {
         if(key === "f2") {
-            e.preventDefault();
+            const configmodal = play.elements.configmodal();
 
-            globals.actions.switchDisplay(play.elements.configmodal());
+            e.preventDefault();
+            globals.actions.switchDisplay(configmodal, configmodal.classList.contains("undisplayed"));
         }
         else if(key === "f12") {
             e.preventDefault();
@@ -252,7 +258,7 @@ const loadplay = async () => {
         }
     });
 
-    play.elements.configs().addEventListener("click", () => globals.actions.displayElement(play.elements.configmodal()));
+    play.elements.configs().addEventListener("click", () => globals.actions.switchDisplay(play.elements.configmodal(), true));
     play.elements.formconfigs().addEventListener("submit", e => {
         e.preventDefault();
         saveConfigs();
@@ -261,14 +267,14 @@ const loadplay = async () => {
     play.elements.theme().addEventListener("change", globals.actions.switchTheme);
 
     play.elements.dontask().addEventListener("click", neverAskAgain);
-    play.elements.ratingstars().addEventListener("click", () => globals.actions.undisplayElement(play.elements.ratingmodal()));
+    play.elements.ratingstars().addEventListener("click", () => globals.actions.switchDisplay(play.elements.ratingmodal(), false));
 
     play.elements.help().addEventListener("click", switchHelp);
 
     play.elements.closeablesmodals().forEach(modal => {
         const close = modal.querySelector(".close")!;
 
-        close.addEventListener("click", () => globals.actions.undisplayElement(modal));
+        close.addEventListener("click", () => globals.actions.switchDisplay(modal, false));
     })
     // ---------------------------------------------------------------------------
     const table = await templates("table");

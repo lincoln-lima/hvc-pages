@@ -27,7 +27,6 @@ export default (lang: string) => {
     const acumulator = play.elements.acumulator();
 
     const drawers = play.elements.drawers();
-    const drawerscontent = play.elements.drawerscontent();
 
     const skip = play.elements.skip();
     const delay = play.elements.delay();
@@ -62,9 +61,11 @@ export default (lang: string) => {
         globals.actions.changeElementText(epiwrite, "");
         globals.actions.changeElementText(acumulator, "");
 
-        drawers.forEach((gaveta, i) => {
-            gaveta.classList.remove(gaveta.classList.item(1)!);
-            globals.actions.changeElementText(drawerscontent.item(i)!, "");
+        drawers.forEach(drawer => {
+            const content = play.elements.drawercontent(drawer);
+
+            globals.actions.changeElementText(content, "");
+            drawer.classList.remove(drawer.classList.item(1)!);
         });
 
         globals.actions.temporaryClass(clear, "cleaned");
@@ -74,9 +75,11 @@ export default (lang: string) => {
         await terminate();
         // ---------------------------------------------------------------------------
         play.actions.hideModals();
-        globals.actions.undisplayElement(options);
+        globals.actions.switchDisplay(options, false);
         // ---------------------------------------------------------------------------
         drawers.forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
+
+        globals.actions.changeElementText(outwrite, "");
         // ---------------------------------------------------------------------------
         document.addEventListener("keydown", keyTerminate);
         // ---------------------------------------------------------------------------
@@ -85,8 +88,8 @@ export default (lang: string) => {
         try {
             if(set) await hvc.run();
             else {
-                globals.actions.undisplayElement(editor);
-                globals.actions.displayElement(tablecards);
+                globals.actions.switchDisplay(editor, false);
+                globals.actions.switchDisplay(tablecards, true);
                 globals.actions.switchVisibility(debugmenu, true);
 
                 back.addEventListener("click", backward);
@@ -105,7 +108,7 @@ export default (lang: string) => {
                 const counter = +play.elements.counter() + 1;
                 globals.actions.changeStorage("counter", counter.toString());
 
-                if(counter % 5 === 0) globals.actions.displayElement(ratingmodal);
+                if(counter % 5 === 0) globals.actions.switchDisplay(ratingmodal, true);
             }
         }
     }
@@ -139,21 +142,21 @@ export default (lang: string) => {
 
         if(state != "CARGA") globals.actions.scrollTo(pointed);
         // ---------------------------------------------------------------------------
-        drawerscontent.forEach((cont, i) => {
-            let content;
-            const drawer = drawers[i];
+        drawers.forEach((drawer, i) => {
+            let value;
+            const content = play.elements.drawercontent(drawer);
 
             if(gavetas[i]) {
-                content = gavetas[i];
+                value = gavetas[i];
 
                 if(epi != i) {
                     const style = (endindex === -1 || i <= endindex) ? "code" : "data";
                     play.actions.highlightDrawer(drawer, style);
                 }
             }
-            else content = "---";
+            else value = "---";
 
-            globals.actions.changeElementText(cont, content);
+            globals.actions.changeElementText(content, value);
         });
     }
 
@@ -165,11 +168,11 @@ export default (lang: string) => {
 
         play.actions.switchPauseContinue(paused.checked);
 
-        globals.actions.displayElement(editor);
-        globals.actions.displayElement(options);
+        globals.actions.switchDisplay(editor, true);
+        globals.actions.switchDisplay(options, true);
 
-        globals.actions.undisplayElement(cardmodal);
-        globals.actions.undisplayElement(tablecards);
+        globals.actions.switchDisplay(cardmodal, false);
+        globals.actions.switchDisplay(tablecards, false);
 
         globals.actions.switchVisibility(debugmenu, false);
 
@@ -203,7 +206,7 @@ export default (lang: string) => {
 
         await hvc.back();
         updateViewers(hvmstate);
-        globals.actions.undisplayElement(cardmodal);
+        globals.actions.switchDisplay(cardmodal, false);
     }
 
     const forward = async() => {
@@ -218,7 +221,7 @@ export default (lang: string) => {
     hvc.addEventOutput((out: string) => globals.actions.changeElementText(outwrite, out));
 
     hvc.addEventInput(async() => {
-        globals.actions.displayElement(cardmodal);
+        globals.actions.switchDisplay(cardmodal, true);
 
         readcard.value = "";
         readcard.focus();
@@ -227,7 +230,7 @@ export default (lang: string) => {
             const submit = (e: SubmitEvent) => {
                 e.preventDefault();
 
-                globals.actions.undisplayElement(cardmodal);
+                globals.actions.switchDisplay(cardmodal, false);
                 setTimeout(resolve, +delay.value, readcard.value);
 
                 formcard.removeEventListener("submit", submit);

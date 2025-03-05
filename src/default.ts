@@ -10,25 +10,18 @@ export const globals = {
         playground: location.origin + "/pages/playground.html"
     },
     elements: {
-        menumodal: () => { return document.querySelector(".primary-menu")! as HTMLElement },
-        menuburger: () => { return document.querySelector(".burger-menu")! as HTMLElement }
+        menumodal: () => { return document.querySelector(".primary-menu")! },
+        menuburger: () => { return document.querySelector(".burger-menu")! }
     },
     actions: {
-        displayElement: (element: Element) => element.classList.remove("undisplayed"),
+        switchDisplay: (element: Element, set: boolean) => {
+            if(set) element.classList.remove("undisplayed");
+            else element.classList.add("undisplayed")
+        },
 
-        undisplayElement: (element: Element) => element.classList.add("undisplayed"),
-
-        switchDisplay: (element: HTMLElement) => element.classList.toggle("undisplayed"),
-
-        switchVisibility: (element: HTMLElement, set: boolean) => {
-            if(set) {
-                element.style["visibility"] = "visible";
-                element.style["opacity"] = "1";
-            }
-            else {
-                element.style["opacity"] = "0";
-                element.style["visibility"] = "hidden";
-            }
+        switchVisibility: (element: Element, set: boolean) => {
+            if(set) element.classList.remove("unvisible");
+            else element.classList.add("unvisible")
         },
 
         switchTheme: () => {
@@ -40,7 +33,7 @@ export const globals = {
 
         switchMenu: () => {
             const menu = globals.elements.menumodal();
-            globals.actions.switchVisibility(menu, menu.style["visibility"] != "visible");
+            globals.actions.switchVisibility(menu, menu.classList.contains("unvisible"));
         },
 
         clickEventMenu: (e: MouseEvent) => {
@@ -51,7 +44,7 @@ export const globals = {
             const notTarget = !element.isSameNode(menu) && !element.isSameNode(burger) && !menu.contains(element);
 
             if(notTarget) {
-                const areVisible = menu.style["visibility"] != "hidden" && !burger.classList.contains("undisplayed");
+                const areVisible = !menu.classList.contains("unvisible") && !burger.classList.contains("undisplayed");
 
                 if(areVisible) globals.actions.switchMenu();
             }
@@ -63,7 +56,7 @@ export const globals = {
             const burger = globals.elements.menuburger();
 
             if(key === "escape") {
-                const areVisible = menu.style["visibility"] != "hidden" && !burger.classList.contains("undisplayed");
+                const areVisible = !menu.classList.contains("unvisible") && !burger.classList.contains("undisplayed");
 
                 if(areVisible) globals.actions.switchMenu();
             }
@@ -73,8 +66,8 @@ export const globals = {
             const burger = globals.elements.menuburger();
 
             if (window.innerWidth > size) {
+                globals.actions.switchDisplay(burger, false);
                 globals.actions.switchVisibility(globals.elements.menumodal(), true);
-                globals.actions.undisplayElement(burger);
 
                 document.removeEventListener("click", globals.actions.clickEventMenu);
                 document.removeEventListener("keydown", globals.actions.escEventMenu);
@@ -82,7 +75,7 @@ export const globals = {
                 globals.elements.menuburger().removeEventListener("click", globals.actions.switchMenu);
             }
             else {
-                globals.actions.displayElement(burger);
+                globals.actions.switchDisplay(burger, true);
                 globals.actions.switchVisibility(globals.elements.menumodal(), false);
 
                 document.addEventListener("click", globals.actions.clickEventMenu);
@@ -169,7 +162,7 @@ if(switchtheme) {
 const copies = document.querySelectorAll(".copy")!;
 
 if(copies) {
-    const commands = document.getElementsByClassName("cmd")!;
+    const commands = document.querySelectorAll(".cmd")!;
 
     copies.forEach((copy, i) =>
         copy.addEventListener("click", () => {
@@ -191,7 +184,7 @@ if(copies) {
 const opens = document.querySelectorAll(".open")!;
 
 if(opens) {
-    const codes = document.getElementsByClassName("ahv")!;
+    const codes = document.querySelectorAll(".ahv")!;
 
     opens.forEach((open, i) => {
         const code = globals.actions.hvcode(codes[i].textContent!);

@@ -82,7 +82,7 @@ main {
 
                 overflow-y: auto;
 
-                #cards {
+                .cards {
                     width: 100%;
                     border-spacing: 0.5em;
 
@@ -234,7 +234,7 @@ main {
                     }
                 }
 
-                #contorno-epi {
+                .container-epi {
                     border-radius: $radius;
                     background-color: play.$brown-wood;
 
@@ -245,7 +245,7 @@ main {
                         @include global.middle;
                         @include global.size(88%);
 
-                        #epi-value {
+                        .viewers-values {
                             scale: 1.1;
                             color: global.$white;
 
@@ -262,21 +262,21 @@ main {
                     border-radius: $radius;
                     border: $border-width ridge global.$black;
 
-                    #acumulador-value, #overlay {
+                    .viewers-values, .overlay {
                         @include global.absolute-middle;
                         @include global.setFont(segment);
+                    }
 
-                        &#overlay {
-                            user-select: none;
-                            color: #{global.$black}15;
-                        }
+                    .overlay {
+                        user-select: none;
+                        color: #{global.$black}15;
                     }
                 }
 
                 #folha-de-saida {
                     @include global.background($image: 'playground/notepad', $size: contain);
 
-                    #saida-value {
+                    .viewers-values {
                         scale: 1.5;
                         margin-top: 0.3em;
 
@@ -385,12 +385,12 @@ main {
 
                                 @include global.setFont(mono);
 
-                                &.num-drawer {
+                                &.num {
                                     font-size: 2em;
                                     font-weight: bold;
                                 }
 
-                                &.cont-drawer {
+                                &.content {
                                     font-size: 1.5em;
                                 }
                             }
@@ -448,7 +448,7 @@ main {
             }
         }
 
-        #debug-menu {
+        .debug-menu {
             width: 100%;
 
             left: 0;
@@ -457,8 +457,6 @@ main {
             position: fixed;
 
             transition: 0.5s;
-
-            @include global.unvisible;
 
             menu {
                 $width: 15em;

@@ -74,7 +74,7 @@ export class Transformer {
 
     public static getInstance(): Transformer {
         if(!this.instance) this.instance = new Transformer();
-        
+
         return this.instance;
     }
 }

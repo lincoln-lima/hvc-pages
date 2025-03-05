@@ -22,9 +22,9 @@
 </head>
 
 <body>
-    <header id="header-play">
+    <header class="play">
         <nav>
-            <div id="states-view" class="editing">
+            <div class="states-view editing">
                 <div id="editing-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
@@ -129,25 +129,25 @@
             <div id="porta-cartoes" class="tooltiper">
                 <div class="tooltip"><span data-lang="card-holder-tip" class="tooltip-text">Porta-Cartões</span></div>
                 <div class="scroll-tablecards">
-                    <table id="cards"></table>
+                    <table class="cards"></table>
                 </div>
                 <div class="container-editor"></div>
             </div>
             <div class="debuggers">
                 <div class="viewers">
-                    <div id="contorno-epi">
+                    <div class="container-epi">
                         <div id="epi" class="tooltiper">
-                            <span id="epi-value" class="viewers-values"></span>
+                            <span class="viewers-values"></span>
                             <div class="tooltip"><span data-lang="epi-tip" class="tooltip-text">EPI</span></div>
                         </div>
                     </div>
                     <div id="acumulador" class="tooltiper">
-                        <span id="overlay" class="viewers-values">000</span>
-                        <span id="acumulador-value" class="viewers-values"></span>
+                        <span class="viewers-values"></span>
+                        <span class="overlay viewers-values">000</span>
                         <div class="tooltip"><span data-lang="acumulator-tip" class="tooltip-text">Acumulador</span></div>
                     </div>
                     <div id="folha-de-saida" class="tooltiper">
-                        <span id="saida-value" class="viewers-values"></span>
+                        <span class="viewers-values"></span>
                         <div class="tooltip"><span data-lang="output-sheet-tip" class="tooltip-text">Folha de Saída</span></div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <div class="scroll-gaveteiro"></div>
                 </div>
             </div>
-            <div id="debug-menu">
+            <div class="debug-menu unvisible">
                 <menu>
                     <li id="back"></li>
                     <li id="pause-continue"></li>

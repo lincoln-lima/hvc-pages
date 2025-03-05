@@ -48,7 +48,6 @@
         backdrop-filter: blur(2px);
         background-color: #{global.$white}#{default.$transparency-menu};
 
-        @include global.unvisible;
         @include global.size(fit-content, $height);
         @include global.shadow($type: inset, $blur: 5px, $transparency: 0.3);
         @include global.rounded-border($border-top: 0, $border-bottom: 0.25em);
@@ -79,7 +78,7 @@ header {
                 text-decoration: underline global.$white 2px;
             }
 
-            &#home {
+            &.home {
                 $max-percentual: 0.85;
 
                 font-size: 1.5em;
@@ -139,7 +138,7 @@ header {
         }
     }
 
-    &#header-index {
+    &.index {
         padding: index.$header-padding 0;
 
         .primary-menu {
@@ -151,7 +150,7 @@ header {
         }
     }    
 
-    &#header-doc {
+    &.doc {
         padding: doc.$header-padding 0;
 
         .primary-menu {
@@ -163,7 +162,7 @@ header {
         }
     }
 
-    &#header-play {
+    &.play {
         padding: play.$header-padding 0;
 
         nav {
@@ -173,7 +172,7 @@ header {
                 max-width: play.$nav-responsive-width;
             }
 
-            #states-view {
+            .states-view {
                 max-width: calc(100% - default.$home-height - play.$spacing/2);
 
                 @include global.flex;
@@ -401,8 +400,6 @@ header {
                         position: absolute;
 
                         transition: 0.3s ease-in-out;
-
-                        @include global.unvisible;
                     }
                 }
 

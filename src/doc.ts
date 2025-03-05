@@ -8,8 +8,8 @@ const windowsizenav = 1050;
 globals.actions.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
 // -----------------------------------------------------------------------------------
-const shownav = document.getElementById("show-nav")!;
-const stickynav = document.getElementById("sticky-nav")!;
+const stickynav = document.querySelector(".sticky-nav")!;
+const shownav = stickynav.querySelector(".show-nav")!;
 // -----------------------------------------------------------------------------------
 const components = [shownav, stickynav];
 

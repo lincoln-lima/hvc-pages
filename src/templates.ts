@@ -7,5 +7,5 @@ export default async(tmpl: string) => {
 
     element.innerHTML = html.replace(/<script.*\/script>/, "");
 
-    return element.children.item(0)! as HTMLElement;
+    return element.firstElementChild!;
 }
