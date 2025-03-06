@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://hvcomp.io/img/gaveta-logo.png">
     <meta property="og:image:alt" content="drawer icon">
 
-    <title data-lang="page-documentation-title">HVC | Documentação</title>
+    <title>HVC | Docs</title>
 
     <link rel="icon" href="/img/gavetinha.svg" type="image/x-icon">
 </head>
@@ -53,8 +53,8 @@
                                 <li><a href="#chico"><em data-lang="chico-operator-title">Operador Chico</em></a></li>
                                 <li>
                                     <ul>
-                                        <li><a href="#carga" data-lang="loading-status-title">Estado de Carga</a></li>
-                                        <li><a href="#execucao" data-lang="running-status-title">Estado de Execução</a></li>
+                                        <li><a href="#carga" data-lang="loading-state-title">Estado de Carga</a></li>
+                                        <li><a href="#execucao" data-lang="running-state-title">Estado de Execução</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -228,14 +228,14 @@
                     <br>
                     <p data-lang="chico-operator-description3" class="prequel"></p>
                     <article id="carga">
-                        <h4 data-lang="loading-status-title">Estado de Carga</h4>
-                        <p data-lang="loading-status-description1">
+                        <h4 data-lang="loading-state-title">Estado de Carga</h4>
+                        <p data-lang="loading-state-description1">
                             O estado de carga se inicia assim que o usuário pede a execução do código. Nele o Chico retira
                             um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a
                             sequência das gavetas.
                         </p>
                         <br>
-                        <p data-lang="loading-status-description2">
+                        <p data-lang="loading-state-description2">
                             Esse processo é repetido até a instrução 000, que indica o fim do
                             programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.
                         </p>
@@ -245,8 +245,8 @@
                         </figure>
                     </article>
                     <article id="execucao">
-                        <h4 data-lang="running-status-title">Estado de Execução</h4>
-                        <p data-lang="running-status-description1">
+                        <h4 data-lang="running-state-title">Estado de Execução</h4>
+                        <p data-lang="running-state-description1">
                             O estado de execução é o no qual o operador do sistema executa as instruções que foram escritas
                             nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse
                             sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI,
@@ -255,12 +255,12 @@
                             programa.
                         </p>
                         <br>
-                        <p data-lang="running-status-description2">
+                        <p data-lang="running-state-description2">
                             Para demonstrar melhor como o estado de execução funciona vamos ilustrar com imagens
                             do CHICO executando um programa que imprime 50 na folha de saída.
                         </p>
                         <br>
-                        <p data-lang="running-status-description3">
+                        <p data-lang="running-state-description3">
                             Os detalhes sobre como
                             escrever um código para CHICO executar serão detalhados posteriomente.
                         </p>

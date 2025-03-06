@@ -30,12 +30,12 @@
     "table-description-title": "Descrição",
 
     "table-assembler-then": "então",
-    "table-assembler-read": "leia(EE)",
-    "table-assembler-write": "escreva(EE)",
-    "table-assembler-if": "se cAC > 0",
+    "table-assembler-read": "leia",
+    "table-assembler-write": "escreva",
+    "table-assembler-if": "se",
     "table-assembler-end": "fim",
 
-    "table-command-0ee-description": "copie valor da gaveta EE (cEE) para AC",  
+    "table-command-0ee-description": "copie valor da gaveta EE (cEE) para AC",
     "table-command-1ee-description": "copie valor do AC (cAC) para gaveta EE",
     "table-command-2ee-description": "some cEE ao AC",
     "table-command-3ee-description": "subtraia de AC o cEE",
@@ -80,9 +80,6 @@
     "playground-title": "Playground",
     "documentation-title": "Documentação",
     "repository-title": "Repositório",
-
-    "page-index-title": "HVC | Início",
-    "page-documentation-title": "HVC | Documentação",
 
     "drawer-computer-title": "Computador à Gaveta",
     "drawer-computer-description1": "Situada em meio ao cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. O aumento da semelhança entre linguagens de programação e linguagem humana contribui para esse fator, onde compreender como o código é interpretado pelo computador representa uma tarefa complexa e que muitos sentem dificuldade.",
@@ -167,17 +164,17 @@
     "chico-operator-description2": "Ele executa estritamente as ordens recebidas, não podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens podem ser quaisquer uma das instruções que serão detalhadas na seção",
     "chico-operator-description3": "O CHICO trabalha sempre em um de dois estados diferentes",
 
-    "loading-status-title": "Estado de Carga",
-    "loading-status-description1": "O estado de carga se inicia assim que o usuário pede a execução do código. Nele o CHICO retira um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a sequência das gavetas.",
-    "loading-status-description2": "Esse processo é repetido até a instrução 000, que indica o fim do programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.",
+    "loading-state-title": "Estado de Carga",
+    "loading-state-description1": "O estado de carga se inicia assim que o usuário pede a execução do código. Nele o CHICO retira um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a sequência das gavetas.",
+    "loading-state-description2": "Esse processo é repetido até a instrução 000, que indica o fim do programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.",
 
     "documentation-fig8-title": "Figura 8",
     "documentation-fig8-label": "Estado de Carga",
 
-    "running-status-title": "Estado de Execução",
-    "running-status-description1": "O estado de execução é aquele no qual o operador do sistema executa as instruções que foram escritas nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI, geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o programa.",
-    "running-status-description2": "À fim de melhor demonstrar como o estado de execução funciona, a seguir há ilustrações do CHICO executando um programa que imprime 50 na folha de saída.",
-    "running-status-description3": "Os detalhes sobre como escrever um código para CHICO executar serão detalhados posteriomente.",
+    "running-state-title": "Estado de Execução",
+    "running-state-description1": "O estado de execução é aquele no qual o operador do sistema executa as instruções que foram escritas nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI, geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o programa.",
+    "running-state-description2": "À fim de melhor demonstrar como o estado de execução funciona, a seguir há ilustrações do CHICO executando um programa que imprime 50 na folha de saída.",
+    "running-state-description3": "Os detalhes sobre como escrever um código para CHICO executar serão detalhados posteriomente.",
 
     "documentation-fig9-title": "Figura 9",
     "documentation-fig9-label": "Transição para o Estado de Execução",
@@ -195,7 +192,7 @@
     "documentation-fig13-label": "Quarta Instrução",
 
     "machine-language-title": "Linguagem de Máquina",
-    "machine-language-description": "Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina, o HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina que são os conjuntos de instruções que o CHICO conhece, o CHICO só conhece os números de base 10 então suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N.",
+    "machine-language-description": "Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina. O HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina, que são os conjuntos de instruções que o CHICO conhece. Ele só conhece os números de base 10 portanto suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N.",
 
     "instructions-title": "Instruções",
     "instructions-description": "A seguir vamos ver todas as instruções que o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas, entrada, saída e controle.",
@@ -221,7 +218,7 @@
 	"arithmetic-operations-list-item4-description": "Divide o conteúdo atual do acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
 
     "flow-control-title": "Controle de Fluxo",
-    
+
     "flow-control-list-item1-title": "6EE (Se cAC > 0, vá para EE)",
     "flow-control-list-item1-description": "Permite a execução condicional, desviando o fluxo do programa para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso é útil para tomar decisões com base em condições.",
     "flow-control-list-item2-title": "9EE (Vá para cEE)",
@@ -284,7 +281,7 @@
 
     "hvm-state-loading-title": "Carga",
     "hvm-state-loading-tip": "Leitura do porta-cartões",
-    
+
     "hvm-state-running-title": "Execução",
     "hvm-state-running-tip": "Executando instruções",
 
@@ -293,10 +290,10 @@
 
     "menu-run-title": "Executar",
     "menu-run-tip": "Imediato",
-    
+
     "menu-import-title": "Importar",
     "menu-import-tip": "Selecionar arquivo",
-    
+
     "menu-export-title": "Exportar",
     "menu-export-tip": "Download do código",
 
@@ -311,7 +308,7 @@
 
     "card-holder-tip": "Porta-Cartões",
     "epi-tip": "EPI",
-    "acumulator-tip": "Acumulador",
+    "accumulator-tip": "Acumulador",
     "output-sheet-tip": "Folha de Saída",
 
     "drawer-code-tip": "Código",
@@ -339,7 +336,7 @@
 
     "config-delay-title": "Atraso",
 
-    "config-loading-status-title": "Estado de carga",
+    "config-loading-state-title": "Estado de carga",
     "config-paused-debug-title": "Depuração pausada",
 
     "config-save-title": "Salvar"
