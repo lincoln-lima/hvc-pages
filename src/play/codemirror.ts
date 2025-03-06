@@ -11,7 +11,7 @@ const container = document.querySelector(".container-editor")!;
 // -----------------------------------------------------------------------------------
 const unSaved = () => {
     container.classList.add("unsaved");
-    globals.actions.changeStorage("saved", "false");
+    globals.changeStorage("saved", "false");
 }
 // -----------------------------------------------------------------------------------
 if(params.has("code")) {
@@ -24,7 +24,7 @@ if(params.has("code")) {
     window.history.pushState({}, "", url.toString());
 }
 else {
-    globals.actions.changeStorage("saved", "true");
+    globals.changeStorage("saved", "true");
     code = localStorage.getItem("code")! || "0-50\n105\n805\n000";
 }
 // -----------------------------------------------------------------------------------

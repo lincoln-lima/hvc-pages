@@ -5,149 +5,136 @@ import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
 // -------------------------------------------------------------------------------
 export const globals = {
-    path: {
-        index: location.origin,
-        playground: location.origin + "/pages/playground.html"
+    switchDisplay: (element: Element, set: boolean) => {
+        if(set) element.classList.remove("undisplayed");
+        else element.classList.add("undisplayed")
     },
-    elements: {
-        menumodal: () => { return document.querySelector(".primary-menu")! },
-        menuburger: () => { return document.querySelector(".burger-menu")! }
+
+    switchVisibility: (element: Element, set: boolean) => {
+        if(set) element.classList.remove("unvisible");
+        else element.classList.add("unvisible")
     },
-    actions: {
-        switchDisplay: (element: Element, set: boolean) => {
-            if(set) element.classList.remove("undisplayed");
-            else element.classList.add("undisplayed")
-        },
 
-        switchVisibility: (element: Element, set: boolean) => {
-            if(set) element.classList.remove("unvisible");
-            else element.classList.add("unvisible")
-        },
+    switchTheme: () => {
+        const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
 
-        switchTheme: () => {
-            const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        globals.changeStorage("theme", theme);
+    },
 
-            root.setAttribute("data-theme", theme);
-            globals.actions.changeStorage("theme", theme);
-        },
+    monitoreMenu: (size: number) => {
+        const isWider = window.innerWidth > size;
 
-        switchMenu: () => {
-            const menu = globals.elements.menumodal();
-            globals.actions.switchVisibility(menu, menu.classList.contains("unvisible"));
-        },
+        switchEventsMenu(false);
 
-        clickEventMenu: (e: MouseEvent) => {
-            const element = e.target as Element;
-            const menu = globals.elements.menumodal();
-            const burger = globals.elements.menuburger();
+        globals.switchDisplay(menuburger, !isWider);
+        globals.switchVisibility(primarymenu, isWider);
 
-            const notTarget = !element.isSameNode(menu) && !element.isSameNode(burger) && !menu.contains(element);
+        if(isWider) menuburger.removeEventListener("click", switchMenu);
+        else menuburger.addEventListener("click", switchMenu);
+    },
 
-            if(notTarget) {
-                const areVisible = !menu.classList.contains("unvisible") && !burger.classList.contains("undisplayed");
+    scrollTo: (element: Element) => {
+        element.scrollIntoView({ behavior: "smooth", inline: "center", block: "center" });
+    },
 
-                if(areVisible) globals.actions.switchMenu();
-            }
-        },
+    changeElementText: (element: Element, text: string) => {
+        if(element.textContent != text) element.textContent = text;
+    },
 
-        escEventMenu: (e: KeyboardEvent) => {
-            const key = e.key.toLowerCase();
-            const menu = globals.elements.menumodal();
-            const burger = globals.elements.menuburger();
+    temporaryClass: (element: Element, className: string, elementsec?: Element, dlangmain?: string, dlangsec?: string) => {
+        element.classList.add(className);
+        if(elementsec) elementsec.textContent = globals.retrieveLangText(dlangsec!);
 
-            if(key === "escape") {
-                const areVisible = !menu.classList.contains("unvisible") && !burger.classList.contains("undisplayed");
+        setTimeout(() => {
+            element.classList.remove(className);
+            if(elementsec) elementsec.textContent = globals.retrieveLangText(dlangmain!);
+        }, 3000);
+    },
 
-                if(areVisible) globals.actions.switchMenu();
-            }
-        },
+    changeStorage: (item: string, value: string) => {
+        if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
+    },
 
-        monitoreMenu: (size: number) => {
-            const burger = globals.elements.menuburger();
+    hvcode: (code: string) => {
+        const shareurl = new URL(path.playground);
 
-            if (window.innerWidth > size) {
-                globals.actions.switchDisplay(burger, false);
-                globals.actions.switchVisibility(globals.elements.menumodal(), true);
+        shareurl.searchParams.set("code", code.replace(/\s*;.*/g, ""));
 
-                document.removeEventListener("click", globals.actions.clickEventMenu);
-                document.removeEventListener("keydown", globals.actions.escEventMenu);
+        return shareurl;
+    },
 
-                globals.elements.menuburger().removeEventListener("click", globals.actions.switchMenu);
-            }
-            else {
-                globals.actions.switchDisplay(burger, true);
-                globals.actions.switchVisibility(globals.elements.menumodal(), false);
+    getLang: () => { return Transformer.getInstance().getCurrentLang() },
 
-                document.addEventListener("click", globals.actions.clickEventMenu);
-                document.addEventListener("keydown", globals.actions.escEventMenu);
+    getTheme: () => { return localStorage.getItem("theme")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
 
-                globals.elements.menuburger().addEventListener("click", globals.actions.switchMenu);
-            }
-        },
+    translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) },
 
-        scrollTo: (element: Element) => {
-            element.scrollIntoView({ behavior: "smooth", inline: "center", block: "center" });
-        },
-
-        changeElementText: (element: Element, text: string) => {
-            if(element.textContent != text) element.textContent = text;
-        },
-
-        temporaryClass: (element: Element, className: string, elementsec?: Element, dlangmain?: string, dlangsec?: string) => {
-            element.classList.add(className);
-            if(elementsec) elementsec.textContent = globals.actions.retrieveLangText(dlangsec!);
-
-            setTimeout(() => {
-                element.classList.remove(className);
-                if(elementsec) elementsec.textContent = globals.actions.retrieveLangText(dlangmain!);
-            }, 3000);
-        },
-
-        changeStorage: (item: string, value: string) => {
-            if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
-        },
-
-        hvcode: (code: string) => {
-            const shareurl = new URL(globals.path.playground);
-
-            shareurl.searchParams.set("code", code.replace(/\s*;.*/g, ""));
-
-            return shareurl;
-        },
-
-        getLang: () => { return Transformer.getInstance().getCurrentLang() },
-
-        getTheme: () => { return localStorage.getItem("theme")! || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") },
-
-        translateElement: (element: Element) => { Transformer.getInstance().updateSingle(element) },
-
-        retrieveLangText: (dlang: string) => { return Transformer.getInstance().getTranslation(dlang) }
-    }
+    retrieveLangText: (dlang: string) => { return Transformer.getInstance().getTranslation(dlang) }
 }
-// -------------------------------------------------------------------------------
-const root = document.documentElement;
 // -------------------------------------------------------------------------------
 Transformer.getInstance().init();
 // -------------------------------------------------------------------------------
-root.setAttribute("data-theme", globals.actions.getTheme());
-// -------------------------------------------------------------------------------
+const root = document.documentElement;
+root.setAttribute("data-theme", globals.getTheme());
+
 window.addEventListener("storage", e => {
     if(e.key === "theme") root.setAttribute("data-theme", e.newValue!);
 });
+// -------------------------------------------------------------------------------
+const menuburger = document.querySelector(".burger-menu")!;
+const primarymenu = document.querySelector(".primary-menu")!;
+// -------------------------------------------------------------------------------
+const switchMenu = () => {
+    const areVisible = primarymenu.classList.contains("unvisible");
+
+    switchEventsMenu(areVisible);
+
+    globals.switchVisibility(primarymenu, areVisible);
+}
+
+const switchEventsMenu = (set: boolean) => {
+    if(set) {
+        document.addEventListener("click", clickEventMenu);
+        document.addEventListener("keydown", escEventMenu);
+    }
+    else {
+        document.removeEventListener("click", clickEventMenu);
+        document.removeEventListener("keydown", escEventMenu);
+    }
+}
+
+const clickEventMenu = (e: MouseEvent) => {
+    const element = e.target as Element;
+    const notTarget = !menuburger.contains(element) && !primarymenu.contains(element);
+
+    if(notTarget) switchMenu();
+}
+
+const escEventMenu = (e: KeyboardEvent) => {
+    const key = e.key.toLowerCase();
+
+    if(key === "escape") switchMenu();
+}
+// -------------------------------------------------------------------------------
+const path = {
+    index: location.origin,
+    playground: location.origin + "/pages/playground.html"
+}
 // -------------------------------------------------------------------------------
 const homes = document.querySelectorAll(".home")!;
 const cometoplays = document.querySelectorAll(".come-to-play")!;
 
 if(homes) {
     homes.forEach(home => {
-        home.setAttribute("href", globals.path.index);
+        home.setAttribute("href", path.index);
         home.setAttribute("target", "_top");
     });
 }
 
 if(cometoplays) {
     cometoplays.forEach(come => {
-        come.setAttribute("href", globals.path.playground);
+        come.setAttribute("href", path.playground);
         come.setAttribute("target", "_blank");
     });
 }
@@ -155,10 +142,10 @@ if(cometoplays) {
 const switchtheme = document.querySelector(".switch-theme")!;
 
 if(switchtheme) {
-    if(globals.actions.getTheme() != "light") switchtheme.classList.toggle("dark");
+    if(globals.getTheme() != "light") switchtheme.classList.toggle("dark");
 
     switchtheme.addEventListener("click", () => {
-        globals.actions.switchTheme();
+        globals.switchTheme();
         switchtheme.classList.toggle("dark");
     });
 }
@@ -179,7 +166,7 @@ if(copies) {
                 console.log(text);
             }
             finally {
-                globals.actions.temporaryClass(copy, "copied");
+                globals.temporaryClass(copy, "copied");
             }
         })
     );
@@ -191,7 +178,7 @@ if(opens) {
     const codes = document.querySelectorAll(".ahv")!;
 
     opens.forEach((open, i) => {
-        const code = globals.actions.hvcode(codes[i].textContent!);
+        const code = globals.hvcode(codes[i].textContent!);
 
         open.addEventListener("click", () => window.open(code, "_blank"));
     })

@@ -104,7 +104,7 @@ export const play = {
 
         showError: (message: string) => {
             play.elements.error().innerText = message.replace(/\.(?!$)/, ".\n");
-            globals.actions.switchDisplay(play.elements.errorsmodal(), true);
+            globals.switchDisplay(play.elements.errorsmodal(), true);
         },
 
         highlightDrawer: (drawer: Element, style: string) => {
@@ -133,7 +133,7 @@ export const play = {
 
         hideModals: () => {
             play.elements.modals().forEach(modal => {
-                if(!modal.isSameNode(play.elements.cardmodal())) globals.actions.switchDisplay(modal, false);
+                if(!modal.isSameNode(play.elements.cardmodal())) globals.switchDisplay(modal, false);
             });
         },
     }
@@ -141,15 +141,15 @@ export const play = {
 // -------------------------------------------------------------------------------
 const windowsizemenu = 710;
 // -------------------------------------------------------------------------------
-globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
+globals.monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
 // -------------------------------------------------------------------------------
 if(!play.elements.counter() || !play.elements.askrating()) {
-    globals.actions.changeStorage("counter", "0");
-    globals.actions.changeStorage("askrating", "true");
+    globals.changeStorage("counter", "0");
+    globals.changeStorage("askrating", "true");
 }
 // -------------------------------------------------------------------------------
-play.elements.contracted().forEach(e => globals.actions.switchVisibility(e, false));
+play.elements.contracted().forEach(e => globals.switchVisibility(e, false));
 play.elements.expand().forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
 // -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
@@ -164,7 +164,7 @@ document.addEventListener("click", e => {
     const element = e.target as Element;
 
     if(element.isSameNode(play.elements.helpmodal())) switchHelp();
-    else if(element.isSameNode(play.elements.configmodal())) globals.actions.switchDisplay(play.elements.configmodal(), false);
+    else if(element.isSameNode(play.elements.configmodal())) globals.switchDisplay(play.elements.configmodal(), false);
 
     const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
                      !element.parentElement!.classList.contains("contracted") &&
@@ -185,7 +185,7 @@ document.addEventListener("keydown", e => {
             const configmodal = play.elements.configmodal();
 
             e.preventDefault();
-            globals.actions.switchDisplay(configmodal, configmodal.classList.contains("undisplayed"));
+            globals.switchDisplay(configmodal, configmodal.classList.contains("undisplayed"));
         }
         else if(key === "f12") {
             e.preventDefault();
@@ -196,22 +196,22 @@ document.addEventListener("keydown", e => {
 });
 // -------------------------------------------------------------------------------
 const neverAskAgain = () => {
-    globals.actions.changeStorage("askrating", "false");
-    globals.actions.switchDisplay(play.elements.ratingmodal(), false);
+    globals.changeStorage("askrating", "false");
+    globals.switchDisplay(play.elements.ratingmodal(), false);
 }
 
 const saveConfigs = () => {
-    globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
-    globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
-    globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
+    globals.changeStorage("delay-hvc", play.elements.delay().value!);
+    globals.changeStorage("skip-hvc", play.elements.skip().checked.toString());
+    globals.changeStorage("paused-hvc", play.elements.paused().checked.toString());
 
-    globals.actions.switchDisplay(play.elements.configmodal(), false);
+    globals.switchDisplay(play.elements.configmodal(), false);
 }
 
 const switchHelp = () => {
     const helpmodal = play.elements.helpmodal();
 
-    globals.actions.switchDisplay(helpmodal, helpmodal.classList.contains("undisplayed"));
+    globals.switchDisplay(helpmodal, helpmodal.classList.contains("undisplayed"));
 }
 
 const switchContracted = (i: number) => {
@@ -220,13 +220,13 @@ const switchContracted = (i: number) => {
 
     expand.classList.toggle("contract");
 
-    globals.actions.switchVisibility(contracted, contracted.classList.contains("unvisible"));
+    globals.switchVisibility(contracted, contracted.classList.contains("unvisible"));
 }
 // ---------------------------------------------------------------------------
 const loadplay = async () => {
-    hvc(globals.actions.getLang());
+    hvc(globals.getLang());
     // -----------------------------------------------------------------------
-    play.elements.theme().value = globals.actions.getTheme();
+    play.elements.theme().value = globals.getTheme();
     play.elements.delay().value = localStorage.getItem("delay-hvc") || "1000";
 
     play.elements.skip().checked = localStorage.getItem("skip-hvc")! != "false";
@@ -234,12 +234,12 @@ const loadplay = async () => {
     // -----------------------------------------------------------------------
     play.elements.share().addEventListener("click", async(e) => {
         const share = e.currentTarget as Element;
-        const shareurl = globals.actions.hvcode(play.actions.getCode()).toString();
+        const shareurl = globals.hvcode(play.actions.getCode()).toString();
 
         try {
             await navigator.share({
                 title: document.title,
-                text: globals.actions.retrieveLangText("menu-share-metaop") + "\n\n",
+                text: globals.retrieveLangText("menu-share-metaop") + "\n\n",
                 url: shareurl
             });
         }
@@ -253,32 +253,32 @@ const loadplay = async () => {
                 console.log(shareurl);
             }
             finally {
-                globals.actions.temporaryClass(share, "copied", label!, "menu-share-title", "menu-copied-title");
+                globals.temporaryClass(share, "copied", label!, "menu-share-title", "menu-copied-title");
             }
         }
     });
 
-    play.elements.configs().addEventListener("click", () => globals.actions.switchDisplay(play.elements.configmodal(), true));
+    play.elements.configs().addEventListener("click", () => globals.switchDisplay(play.elements.configmodal(), true));
     play.elements.formconfigs().addEventListener("submit", e => {
         e.preventDefault();
         saveConfigs();
     });
 
-    play.elements.theme().addEventListener("change", globals.actions.switchTheme);
+    play.elements.theme().addEventListener("change", globals.switchTheme);
 
     play.elements.dontask().addEventListener("click", neverAskAgain);
-    play.elements.ratingstars().addEventListener("click", () => globals.actions.switchDisplay(play.elements.ratingmodal(), false));
+    play.elements.ratingstars().addEventListener("click", () => globals.switchDisplay(play.elements.ratingmodal(), false));
 
     play.elements.help().addEventListener("click", switchHelp);
 
     play.elements.closeablesmodals().forEach(modal => {
         const close = modal.querySelector(".close")!;
 
-        close.addEventListener("click", () => globals.actions.switchDisplay(modal, false));
+        close.addEventListener("click", () => globals.switchDisplay(modal, false));
     })
     // ---------------------------------------------------------------------------
     const table = await templates("table");
-    globals.actions.translateElement(table);
+    globals.translateElement(table);
 
     play.elements.helpmodal().querySelector(".modal-body")!.appendChild(table);
 }
@@ -291,7 +291,7 @@ await Promise.all(modals.map(async modal => {
     const element = await templates("modal/" + modal);
     element.classList.add("undisplayed");
 
-    globals.actions.translateElement(element);
+    globals.translateElement(element);
 
     document.body.appendChild(element);
 }));

@@ -8,8 +8,8 @@ import "/src/styles/defaults/footer.scss";
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 860;
 // ------------------------------------------------------------------------------- 
-globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
+globals.monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 const scrolltable = document.querySelector(".scroll-table")!;
 // ------------------------------------------------------------------------------- 
@@ -20,7 +20,7 @@ const dynamics: [string, Element][] = [
 
 await Promise.all(dynamics.map(async ([key, parent]) => {
     const element = await templates(key);
-    globals.actions.translateElement(element);
+    globals.translateElement(element);
 
     parent.appendChild(element);
 }));

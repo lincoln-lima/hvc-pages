@@ -47,37 +47,37 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     const saveCode = () => {
         if(localStorage.getItem("saved") != "true") {
-            globals.actions.changeStorage("saved", "true");
-            globals.actions.changeStorage("code", play.actions.getCode());
+            globals.changeStorage("saved", "true");
+            globals.changeStorage("code", play.actions.getCode());
 
             editor.classList.remove("unsaved");
 
-            globals.actions.temporaryClass(savecode, "saved");
+            globals.temporaryClass(savecode, "saved");
         }
     }
 
     const clearView = () => {
-        globals.actions.changeElementText(outwrite, "");
-        globals.actions.changeElementText(epiwrite, "");
-        globals.actions.changeElementText(acumulator, "");
+        globals.changeElementText(outwrite, "");
+        globals.changeElementText(epiwrite, "");
+        globals.changeElementText(acumulator, "");
 
         drawers.forEach(drawer => {
             const content = play.elements.drawercontent(drawer);
 
-            globals.actions.changeElementText(content, "");
+            globals.changeElementText(content, "");
             drawer.classList.remove(drawer.classList.item(1)!);
         });
 
-        globals.actions.temporaryClass(clear, "cleaned");
+        globals.temporaryClass(clear, "cleaned");
     }
 
     const exec = async(set: boolean) => {
         await terminate();
         // ---------------------------------------------------------------------------
         play.actions.hideModals();
-        globals.actions.switchDisplay(options, false);
+        globals.switchDisplay(options, false);
         // ---------------------------------------------------------------------------
-        globals.actions.changeElementText(outwrite, "");
+        globals.changeElementText(outwrite, "");
         
         drawers.forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
@@ -88,9 +88,9 @@ export default (lang: string) => {
         try {
             if(set) await hvc.run();
             else {
-                globals.actions.switchDisplay(editor, false);
-                globals.actions.switchDisplay(tablecards, true);
-                globals.actions.switchVisibility(debugmenu, true);
+                globals.switchDisplay(editor, false);
+                globals.switchDisplay(tablecards, true);
+                globals.switchVisibility(debugmenu, true);
 
                 back.addEventListener("click", backward);
                 forth.addEventListener("click", forward);
@@ -106,9 +106,9 @@ export default (lang: string) => {
         finally {
             if(localStorage.getItem("askrating") != "false") {
                 const counter = +play.elements.counter() + 1;
-                globals.actions.changeStorage("counter", counter.toString());
+                globals.changeStorage("counter", counter.toString());
 
-                if(counter % 5 === 0) globals.actions.switchDisplay(ratingmodal, true);
+                if(counter % 5 === 0) globals.switchDisplay(ratingmodal, true);
             }
         }
     }
@@ -135,12 +135,12 @@ export default (lang: string) => {
 
         portaCartoes.forEach(cartao => play.actions.addCardToTable(cartao));
         // ---------------------------------------------------------------------------
-        globals.actions.changeElementText(epiwrite, epi.toString());
-        globals.actions.changeElementText(acumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
+        globals.changeElementText(epiwrite, epi.toString());
+        globals.changeElementText(acumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
         // ---------------------------------------------------------------------------
         play.actions.highlightDrawer(pointed, "pointed");
 
-        if(state != "CARGA") globals.actions.scrollTo(pointed);
+        if(state != "CARGA") globals.scrollTo(pointed);
         // ---------------------------------------------------------------------------
         drawers.forEach((drawer, i) => {
             let value;
@@ -156,7 +156,7 @@ export default (lang: string) => {
             }
             else value = "---";
 
-            globals.actions.changeElementText(content, value);
+            globals.changeElementText(content, value);
         });
     }
 
@@ -168,13 +168,13 @@ export default (lang: string) => {
 
         play.actions.switchPauseContinue(paused.checked);
 
-        globals.actions.switchDisplay(editor, true);
-        globals.actions.switchDisplay(options, true);
+        globals.switchDisplay(editor, true);
+        globals.switchDisplay(options, true);
 
-        globals.actions.switchDisplay(cardmodal, false);
-        globals.actions.switchDisplay(tablecards, false);
+        globals.switchDisplay(cardmodal, false);
+        globals.switchDisplay(tablecards, false);
 
-        globals.actions.switchVisibility(debugmenu, false);
+        globals.switchVisibility(debugmenu, false);
 
         back.removeEventListener("click", backward);
         forth.removeEventListener("click", forward);
@@ -206,7 +206,7 @@ export default (lang: string) => {
 
         await hvc.back();
         updateViewers(hvmstate);
-        globals.actions.switchDisplay(cardmodal, false);
+        globals.switchDisplay(cardmodal, false);
     }
 
     const forward = async() => {
@@ -218,10 +218,10 @@ export default (lang: string) => {
         }
     }
     // ------------------------------------------------------------------------------- 
-    hvc.addEventOutput((out: string) => globals.actions.changeElementText(outwrite, out));
+    hvc.addEventOutput((out: string) => globals.changeElementText(outwrite, out));
 
     hvc.addEventInput(async() => {
-        globals.actions.switchDisplay(cardmodal, true);
+        globals.switchDisplay(cardmodal, true);
 
         readcard.value = "";
         readcard.focus();
@@ -230,7 +230,7 @@ export default (lang: string) => {
             const submit = (e: SubmitEvent) => {
                 e.preventDefault();
 
-                globals.actions.switchDisplay(cardmodal, false);
+                globals.switchDisplay(cardmodal, false);
                 setTimeout(resolve, +delay.value, readcard.value);
 
                 formcard.removeEventListener("submit", submit);

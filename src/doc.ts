@@ -5,48 +5,59 @@ import "/src/styles/documentation/documentation.scss";
 const windowsizemenu = 860;
 const windowsizenav = 1050;
 // -----------------------------------------------------------------------------------
-globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
+globals.monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
 // -----------------------------------------------------------------------------------
 const stickynav = document.querySelector(".sticky-nav")!;
 const shownav = stickynav.querySelector(".show-nav")!;
 // -----------------------------------------------------------------------------------
 const components = [shownav, stickynav];
 
-const switchnav = () => components.forEach(element => element.classList.toggle("expanded"));
+const switchNav = () => {
+    switchExpanded(!areExpanded());
+    switchEventsNav(areExpanded());
+}
+
+const switchExpanded = (set: boolean) => {
+    if(set) components.forEach(element => element.classList.add("expanded"));
+    else components.forEach(element => element.classList.remove("expanded"));
+}
+
+const monitoreShowNav = () => {
+    switchExpanded(false);
+    switchEventsNav(false);
+
+    if(window.innerWidth > windowsizenav) shownav.removeEventListener("click", switchNav);
+    else shownav.addEventListener("click", switchNav);
+}
 
 const areExpanded = () => {
     return shownav.classList.contains("expanded") || stickynav.classList.contains("expanded");
 }
 // -----------------------------------------------------------------------------------
-const clickEvent = (e: MouseEvent) => {
+const clickEventNav = (e: MouseEvent) => {
     const element = e.target as Element;
+    const notTarget = !stickynav.contains(element) || stickynav.isSameNode(element);
 
-    if(areExpanded()) {
-        const notTarget = !stickynav.contains(element) || stickynav.isSameNode(element);
-
-        if(notTarget) switchnav();
-    }
+    if(notTarget) switchNav();
 }
 
-const escEvent = (e: KeyboardEvent) => {
+const escEventNav = (e: KeyboardEvent) => {
     const key = e.key.toLowerCase();
 
-    if(key === "escape" && areExpanded()) switchnav();
+    if(key === "escape") switchNav();
 }
 // -----------------------------------------------------------------------------------
-const switchEvents = () => {
-    if(window.innerWidth > windowsizenav) {
-        document.removeEventListener("click", clickEvent);
-        document.removeEventListener("keydown", escEvent);
+const switchEventsNav = (set: boolean) => {
+    if(set) {
+        document.addEventListener("click", clickEventNav);
+        document.addEventListener("keydown", escEventNav);
     }
     else {
-        document.addEventListener("click", clickEvent);
-        document.addEventListener("keydown", escEvent);
+        document.removeEventListener("click", clickEventNav);
+        document.removeEventListener("keydown", escEventNav);
     }
 }
 // -----------------------------------------------------------------------------------
-switchEvents();
-window.addEventListener("resize", switchEvents);
-// -----------------------------------------------------------------------------------
-shownav.addEventListener("click", switchnav);
+monitoreShowNav();
+window.addEventListener("resize", monitoreShowNav);
