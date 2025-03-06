@@ -577,7 +577,7 @@ main {
             }
 
             &#save-code {
-                @include global.faded-button(save);
+                @include global.faded-button(playground/save);
 
                 &.saved {
                     @include global.faded-button(check);
@@ -585,7 +585,7 @@ main {
             }
 
             &#clear {
-                @include global.faded-button(rubber);
+                @include global.faded-button(playground/rubber);
 
                 &.cleaned {
                     @include global.faded-button(check);
@@ -593,7 +593,7 @@ main {
             }
 
             &#help {
-                @include global.faded-button(info);
+                @include global.faded-button(playground/info);
             }
 
             &#options {

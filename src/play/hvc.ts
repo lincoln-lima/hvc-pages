@@ -77,9 +77,9 @@ export default (lang: string) => {
         play.actions.hideModals();
         globals.actions.switchDisplay(options, false);
         // ---------------------------------------------------------------------------
-        drawers.forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
-
         globals.actions.changeElementText(outwrite, "");
+        
+        drawers.forEach(gaveta => play.actions.highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
         document.addEventListener("keydown", keyTerminate);
         // ---------------------------------------------------------------------------

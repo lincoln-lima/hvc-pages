@@ -149,36 +149,8 @@ if(!play.elements.counter() || !play.elements.askrating()) {
     globals.actions.changeStorage("askrating", "true");
 }
 // -------------------------------------------------------------------------------
-const neverAskAgain = () => {
-    globals.actions.changeStorage("askrating", "false");
-    globals.actions.switchDisplay(play.elements.ratingmodal(), false);
-}
-
-const saveConfigs = () => {
-    globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
-    globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
-    globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
-
-    globals.actions.switchDisplay(play.elements.configmodal(), false);
-}
-
-const switchHelp = () => {
-    const helpmodal = play.elements.helpmodal();
-
-    globals.actions.switchDisplay(helpmodal, helpmodal.classList.contains("undisplayed"));
-}
-
-const switchContracted = (i: number) => {
-    const expand = play.elements.expand().item(i)!;
-    const contracted = play.elements.contracted().item(i)!;
-
-    expand.classList.toggle("contract");
-
-    globals.actions.switchVisibility(contracted, contracted.classList.contains("unvisible"));
-}
-// -------------------------------------------------------------------------------
-play.elements.expand().forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
 play.elements.contracted().forEach(e => globals.actions.switchVisibility(e, false));
+play.elements.expand().forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
 // -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
     if(localStorage.getItem("saved")! != "true" && play.actions.getCode() != localStorage.getItem("code")) e.preventDefault();
@@ -222,6 +194,34 @@ document.addEventListener("keydown", e => {
         else if(key === "escape") play.actions.hideModals();
     }
 });
+// -------------------------------------------------------------------------------
+const neverAskAgain = () => {
+    globals.actions.changeStorage("askrating", "false");
+    globals.actions.switchDisplay(play.elements.ratingmodal(), false);
+}
+
+const saveConfigs = () => {
+    globals.actions.changeStorage("delay-hvc", play.elements.delay().value!);
+    globals.actions.changeStorage("skip-hvc", play.elements.skip().checked.toString());
+    globals.actions.changeStorage("paused-hvc", play.elements.paused().checked.toString());
+
+    globals.actions.switchDisplay(play.elements.configmodal(), false);
+}
+
+const switchHelp = () => {
+    const helpmodal = play.elements.helpmodal();
+
+    globals.actions.switchDisplay(helpmodal, helpmodal.classList.contains("undisplayed"));
+}
+
+const switchContracted = (i: number) => {
+    const expand = play.elements.expand().item(i)!;
+    const contracted = play.elements.contracted().item(i)!;
+
+    expand.classList.toggle("contract");
+
+    globals.actions.switchVisibility(contracted, contracted.classList.contains("unvisible"));
+}
 // ---------------------------------------------------------------------------
 const loadplay = async () => {
     hvc(globals.actions.getLang());

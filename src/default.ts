@@ -131,6 +131,10 @@ Transformer.getInstance().init();
 // -------------------------------------------------------------------------------
 root.setAttribute("data-theme", globals.actions.getTheme());
 // -------------------------------------------------------------------------------
+window.addEventListener("storage", e => {
+    if(e.key === "theme") root.setAttribute("data-theme", e.newValue!);
+});
+// -------------------------------------------------------------------------------
 const homes = document.querySelectorAll(".home")!;
 const cometoplays = document.querySelectorAll(".come-to-play")!;
 
@@ -192,7 +196,3 @@ if(opens) {
         open.addEventListener("click", () => window.open(code, "_blank"));
     })
 }
-// -------------------------------------------------------------------------------
-window.addEventListener("storage", e => {
-    if(e.key === "theme") root.setAttribute("data-theme", e.newValue!);
-});
