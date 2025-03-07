@@ -50,8 +50,6 @@ main {
         }
 
         .tooltip {
-            z-index: 1;
-
             .tooltip-text {
                 font-size: 1.1em;
             }
@@ -453,7 +451,7 @@ main {
 
             left: 0;
             bottom: 0;
-            z-index: 999;
+            z-index: 10;
             position: fixed;
 
             transition: 0.5s;
@@ -549,7 +547,7 @@ main {
 }
 
 .fixed-container {
-    z-index: 99;
+    z-index: 9;
     position: fixed;
 
     right: default.$fixed-distance;

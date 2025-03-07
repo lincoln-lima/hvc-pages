@@ -1,8 +1,8 @@
-import { Transformer } from "./lang/Transformer";
-// -------------------------------------------------------------------------------
 import "/src/styles/fonts.scss";
 import "/src/styles/defaults/style.scss";
 import "/src/styles/defaults/header.scss";
+// -------------------------------------------------------------------------------
+import { Transformer } from "./lang/Transformer";
 // -------------------------------------------------------------------------------
 export const globals = {
     switchDisplay: (element: Element, set: boolean) => {

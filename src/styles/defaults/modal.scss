@@ -128,194 +128,203 @@
 			}
 		}
 	}
-}
 
-/* -------------------------------------------------------------------- */
-#config-modal {
-	.modal-body {
-		@include global.size(18em);
-		
-		.modal-header {
-			background: global.$fade-default;
-			
-			h2 {
-				@include global.setFont(text);
-			}
+	&#help-modal {
+		z-index: 90;
 
-			.close:hover {
-				color: global.$color1;
-			}
-		}
+		.modal-body {
+			font-size: 1em;
+			overflow: auto;
 
-		.modal-main {
-			height: 70%;
-
-			#delay {
-				width: 3.5em;
-				text-align: center;
-			}
-		}
-
-		.modal-footer {
-			height: 10%;
-			background: global.$fade-default;
-			
-			#save-configs {
-				border-radius: 0.6em;
-
-				@include global.size(5em, 80%);
-				@include global.faded-button($font: 1em);
+			table {
+				padding: 0;
 			}
 		}
 	}
-}
-/* -------------------------------------------------------------------- */
-#card-modal {
-	$submit-size: 2.2em;
 
-	.modal-body {
-		@include global.middle;
-		@include global.size(15em, 5em);
-		
-		.modal-main {
-			width: 100%;
+	&#rating-modal {
+		z-index: 91;
 
-			form {
-				@include global.flex;
+		.modal-body {
+			width: 25em;
+
+			.modal-header {
+				background-color: global.$color2-dark;
 				
-				input {
-					font-size: 3em;
+				h2 {
+					font-size: 1.6em;
+					@include global.setFont(subtitle);
+				}
+
+				.close:hover {
+					color: global.$color2;
+				}
+			}
+
+			.modal-main {
+				@include global.middle;
+
+				$padding: 1em;
+
+				padding-top: $padding;			
+				padding-bottom: $padding;
+
+				p {
+					font-size: 1.1em;
 					text-align: center;
+				}
+
+				#rating {
+					font-size: 1.6em;
+					color: global.$color2;
+
+					margin: 0.5rem 0;
+
+					padding: 0 0.4em;
+					border-radius: 1em;
+
+					transition: 0.5s;
+
+					&:hover {
+						color: global.$white;
+						background-color: global.$color2;
+					}
+				}
+			}
+
+			.modal-footer {
+				padding-top: 0.2em;
+				padding-bottom: 0.2em;
+				
+				justify-content: end;
+				background-color: global.$color2-dark;
+
+				#dont-ask {
+					padding: 0.1em 0.5em;
+					border-radius: 0.6em;
 					
-					width: calc(100% - $submit-size * 0.6);
+					@include global.faded-button($font: 0.7em);
+					
+					& {
+						background: global.$white;
+						color: global.$color2-dark;
+					}
 
-					border: 0.1rem solid global.$black;
-
-					@include global.setFont(dotted);
+					&:hover {
+						color: global.$white;
+						background: global.$color2;
+					}
 				}
-
-				#submit-card {
-					@include global.circle;
-					@include global.size($submit-size);
-					@include global.faded-button(check);
-				}
 			}
 		}
 	}
-}
-/* -------------------------------------------------------------------- */
-#error-modal {
-	background-color: #{play.$dark-red}88;
 
-	.modal-body {
-		width: 25em;
+	&#config-modal {
+		z-index: 92;
 
-		.modal-header {
-			background: play.$dark-red;
-
-			h2 {
-				font-size: 1.15em;
-				line-height: 1.8em;
-				@include global.setFont(code);
-			}
-
-			.close:hover {
-				color: play.$dark-red;
-			}
-		}
-
-		.modal-main {
-			text-align: center;
-
-			@include global.middle;
-
-			#error-message {
-				padding: 0.5em 0;
-			}
-		}
-	}
-}
-/* -------------------------------------------------------------------- */
-#help-modal {
-	.modal-body {
-		font-size: 1em;
-		overflow: auto;
-
-		table {
-			padding: 0;
-		}
-	}
-}
-/* -------------------------------------------------------------------- */
-#rating-modal {
-	.modal-body {
-		width: 25em;
-
-		.modal-header {
-			background-color: global.$color2-dark;
+		.modal-body {
+			@include global.size(18em);
 			
-			h2 {
-				font-size: 1.6em;
-				@include global.setFont(subtitle);
+			.modal-header {
+				background: global.$fade-default;
+				
+				h2 {
+					@include global.setFont(text);
+				}
+
+				.close:hover {
+					color: global.$color1;
+				}
 			}
 
-			.close:hover {
-				color: global.$color2;
+			.modal-main {
+				height: 70%;
+
+				#delay {
+					width: 3.5em;
+					text-align: center;
+				}
+			}
+
+			.modal-footer {
+				height: 10%;
+				background: global.$fade-default;
+				
+				#save-configs {
+					padding: 0 0.5em;
+					border-radius: 0.6em;
+
+					@include global.faded-button($font: 1em, $simple: yes, $color: global.$color1);
+				}
 			}
 		}
+	}
 
-		.modal-main {
-			@include global.middle;
+	&#error-modal {
+		z-index: 93;
 
-			$padding: 1em;
+		background-color: #{play.$dark-red}88;
 
-			padding-top: $padding;			
-			padding-bottom: $padding;
+		.modal-body {
+			width: 25em;
 
-			p {
-				font-size: 1.1em;
+			.modal-header {
+				background: play.$dark-red;
+
+				h2 {
+					font-size: 1.15em;
+					line-height: 1.8em;
+					@include global.setFont(code);
+				}
+
+				.close:hover {
+					color: play.$dark-red;
+				}
+			}
+
+			.modal-main {
 				text-align: center;
-			}
 
-			#rating {
-				font-size: 1.6em;
-				color: global.$color2;
+				@include global.middle;
 
-				margin: 0.5rem 0;
-
-				padding: 0 0.4em;
-				border-radius: 1em;
-
-				transition: 0.5s;
-
-				&:hover {
-					color: global.$white;
-					background-color: global.$color2;
+				#error-message {
+					padding: 0.5em 0;
 				}
 			}
 		}
+	}
 
-		.modal-footer {
-			padding-top: 0.2em;
-			padding-bottom: 0.2em;
+	&#card-modal {
+		$submit-size: 2.2em;
+
+		z-index: 94;
+
+		.modal-body {
+			@include global.middle;
+			@include global.size(15em, 5em);
 			
-			justify-content: end;
-			background-color: global.$color2-dark;
+			.modal-main {
+				width: 100%;
 
-			#dont-ask {
-				padding: 0.1em 0.5em;
-				border-radius: 0.6em;
-				
-				@include global.faded-button($font: 0.7em);
-				
-				& {
-					background: global.$white;
-					color: global.$color2-dark;
-				}
+				form {
+					@include global.flex;
+					
+					input {
+						font-size: 3em;
+						text-align: center;
+						
+						width: calc(100% - $submit-size * 0.6);
 
-				&:hover {
-					color: global.$white;
-					background: global.$color2;
+						border: 0.1rem solid global.$black;
+
+						@include global.setFont(dotted);
+					}
+
+					#submit-card {
+						@include global.circle;
+						@include global.size($submit-size);
+						@include global.faded-button(check);
+					}
 				}
 			}
 		}

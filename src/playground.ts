@@ -1,13 +1,13 @@
+import "/src/styles/playground/playground.scss";
+import "/src/styles/defaults/modal.scss";
+import "/src/styles/defaults/table.scss";
+// -------------------------------------------------------------------------------
 import { globals } from "./default";
 import { getDoc, setDoc } from "./play/codemirror";
 // -------------------------------------------------------------------------------
 import hvc from "./play/hvc";
 import templates from "./templates";
 import drawers from "./play/drawers";
-// -------------------------------------------------------------------------------
-import "/src/styles/defaults/table.scss";
-import "/src/styles/defaults/modal.scss";
-import "/src/styles/playground/playground.scss";
 // -------------------------------------------------------------------------------
 export const play = {
     elements: {

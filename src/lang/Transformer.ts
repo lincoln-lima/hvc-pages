@@ -13,7 +13,7 @@ export class Transformer {
 
         let langInUrl = urlParams.get("lang");
 
-        if(!langInUrl) {
+        if(!langInUrl && document.referrer) {
             const referrerUrl = new URL(document.referrer);
             langInUrl = referrerUrl.searchParams.get("lang")!;
         }
