@@ -1,8 +1,8 @@
 @use '../defaults/default' as default;
 /* -------------------------------------------------------------------- */
 $font-responsive-width: 505px;
-$header-responsive-width: 860px;
-$figures-responsive-width: 680px;
+$header-responsive-width: 840px;
+$figures-responsive-width: 850px;
 /* -------------------------------------------------------------------- */
 $header-padding: 1em;
 $header-height: calc($header-padding * 2 + default.$home-height);

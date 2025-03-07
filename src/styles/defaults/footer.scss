@@ -2,9 +2,8 @@
 @use '../globals' as global;
 /* -------------------------------------------------------------------- */
 footer {
-    background: global.$fade-default;
-
     padding: 1.5em 0;
+    background: global.$fade-default;
 
     * {
         color: global.$white;
@@ -15,12 +14,10 @@ footer {
         max-width: 95%;
         
         @include global.center;
-        @include global.flex($justify: space-around);
+        @include global.flex($justify: space-around, $gap: 1.5em);
         
         section {
-            min-height: 14em;
-            
-            @include global.flex($justify: space-evenly, $direction: column);
+            @include global.flex($justify: space-evenly, $direction: column, $gap: 1em);
 
             h2, h3 {
                 font-weight: 700;

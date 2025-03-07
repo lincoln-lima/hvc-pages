@@ -14,7 +14,6 @@
 
 @mixin navlinks {
     height: default.$menu-buttons-height;
-    line-height: default.$menu-buttons-height;
 
     padding: 0 0.7em;
     font-size: 1.5em;
@@ -32,9 +31,7 @@
     }
 }
 
-@mixin responsive-menu($top, $items, $window-size) {
-    $height: calc(($items + 1.5) * default.$menu-buttons-height);
-
+@mixin responsive-menu($top, $window-size) {
     @media screen and (max-width: $window-size) {
         position: absolute;
         top: $top;
@@ -48,7 +45,6 @@
         backdrop-filter: blur(2px);
         background-color: #{global.$white}#{default.$transparency-menu};
 
-        @include global.size(fit-content, $height);
         @include global.shadow($type: inset, $blur: 5px, $transparency: 0.3);
         @include global.rounded-border($border-top: 0, $border-bottom: 0.25em);
     }
@@ -82,13 +78,11 @@ header {
                 $max-percentual: 0.85;
 
                 font-size: 1.5em;
+                height: default.$home-height;
 
-                @include global.flex($wrap: nowrap);
-                @include global.size(default.$home-width, default.$home-height);
+                @include global.flex($wrap: nowrap, $gap: 0.1em);
 
                 @media screen and (max-width: default.$home-responsive-width) {
-                    width: fit-content;
-
                     h1 {
                         display: none;
                     }
@@ -106,15 +100,11 @@ header {
         }
 
         .primary-menu {
-            width: default.$menu-width;
-
             transition: opacity 0.5s;
 
-            @include global.flex;
+            @include global.flex($gap: 1em 2em);
             
             li {
-                @include global.flex;
-
                 .link-nav-1 {
                     @include navlinksbynum(global.$color1, global.$color1-dark);
                 }
@@ -128,7 +118,7 @@ header {
                 }
 
                 button, a {
-                    @include global.flex;
+                    @include global.flex($gap: 0.5em);
                 }
             }
         }
@@ -142,7 +132,7 @@ header {
         padding: index.$header-padding 0;
 
         .primary-menu {
-            @include responsive-menu(calc(index.$header-height - index.$header-padding), default.$menu-num-buttons, index.$header-responsive-width);
+            @include responsive-menu(calc(index.$header-height - index.$header-padding), index.$header-responsive-width);
         }
 
         .burger-menu {
@@ -154,7 +144,7 @@ header {
         padding: doc.$header-padding 0;
 
         .primary-menu {
-            @include responsive-menu(calc(doc.$header-height - doc.$header-padding), default.$menu-num-buttons, doc.$header-responsive-width);
+            @include responsive-menu(calc(doc.$header-height - doc.$header-padding), doc.$header-responsive-width);
         }
 
         .burger-menu {
@@ -173,30 +163,34 @@ header {
             }
 
             .states-view {
-                max-width: calc(100% - default.$home-height - play.$spacing/2);
+                height: default.$home-height;
+                max-width: calc(100% - default.$home-height - play.$spacing);
 
-                @include global.flex;
-                @include global.size(28em, default.$home-height);
-
-                @media screen and (max-width: play.$state-labels-responsive-width) {
-                    width: 15em;
-                }
+                @include global.flex($wrap: nowrap, $gap: 1em);
 
                 .state {
                     $dot-size: calc(default.$home-height * 0.55);
 
+                    height: 100%;
+                    max-width: 31%;
+
+                    padding: 0 1em;
+
                     border-radius: 1em;
                     filter: brightness(0.6);
-                    
+
                     @include global.middle;
-                    @include global.size(31%, 100%);
+
+                    @media screen and (max-width: play.$state-labels-responsive-width) {
+                        padding: 0 1.5em;
+                    }
 
                     &:hover {
                         cursor: help;
                     }
 
                     .state-data {
-                        @include global.flex;
+                        @include global.flex($wrap: nowrap, $gap: 0.5em);
 
                         span {
                             font-size: 1.2em;
@@ -212,10 +206,6 @@ header {
                                 transition: 0.5s;
     
                                 @include global.size($dot-size);
-
-                                @media screen and (max-width: play.$state-labels-responsive-width) {
-                                    @include global.center;
-                                }
                             }
 
                             &.hvm-state {
@@ -229,32 +219,20 @@ header {
                     &#running-state {
                         background-color: play.$nice-green;
 
-                        .state-data {
-                            width: 90%;
-                        
-                            .dot-state {
-                                @include global.circle;
-                            }
+                        .dot-state {
+                            @include global.circle;
                         }
                     }
 
                     &#loading-state {
                         background-color: play.$golden;
-
-                        .state-data {
-                            width: 70%;
-                        }
                     }
 
                     &#editing-state {
                         background-color: play.$live-blue;
 
-                        .state-data {
-                            width: 80%;
-
-                            .dot-state {
-                                @include global.background($image: 'playground/menu/pen', $size: contain, $repeat: no-repeat, $position: center);
-                            }
+                        .dot-state {
+                            @include global.background($image: 'playground/menu/pen', $size: contain, $repeat: no-repeat, $position: center);
                         }
                     }
 
@@ -295,38 +273,63 @@ header {
             }
 
             .primary-menu {
-                width: play.$menu-width;
-
-                @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
-                    width: calc(play.$menu-width * 0.4);
-
-                    .tooltip {
-                        padding: 0.1em 0.5em;
-                    }
-                }
-                    
-                @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$menu-num-buttons, play.$header-responsive-width);
+                gap: 0.5em 1em;
+                @include responsive-menu(calc(play.$header-height - play.$header-padding), play.$header-responsive-width);
 
                 li {
-                    position: relative;
+                    @include global.flex($gap: 0.2rem);
+
+                    &:has(.expand) {
+                        position: relative;
+
+                        @media screen and (max-width: play.$header-responsive-width) {
+                            flex-direction: row-reverse;
+                        }
+                    }
+
+                    &:not(:has(.contracted.unvisible)) {
+                        .tooltiper:has(button#share) {
+                            display: none;
+                        }
+
+                        .contracted {
+                            display: flex;
+                        }
+                    }
 
                     button, a {
                         padding: 0 0.5em;
 
-                        &#export {
-                            border-top-right-radius: 0;
-                            border-bottom-right-radius: 0;
+                        @media screen and (max-width: play.$header-responsive-width) {
+                            flex-direction: row-reverse;
+                        }
+
+                        &#export, &#share {
+                            @media screen and (min-width: (play.$header-responsive-width + 1)) {
+                                border-top-right-radius: 0;
+                                border-bottom-right-radius: 0;
+                            }
+
+                            @media screen and (max-width: play.$header-responsive-width) {
+                                border-top-left-radius: 0;
+                                border-bottom-left-radius: 0;
+                            }
                         }
                         
                         &.expand {
-                            margin-left: 0.2rem;
-
-                            border-top-left-radius: 0;
-                            border-bottom-left-radius: 0;
-
                             transition: none;
 
                             @include global.background(auto, caret, center, no-repeat);
+
+                            @media screen and (min-width: (play.$header-responsive-width + 1)) {
+                                border-top-left-radius: 0;
+                                border-bottom-left-radius: 0;
+                            }
+
+                            @media screen and (max-width: play.$header-responsive-width) {
+                                border-top-right-radius: 0;
+                                border-bottom-right-radius: 0;
+                            }
 
                             &.contract {
                                 transform: scaleY(-1);
@@ -334,8 +337,6 @@ header {
                         }
 
                         .icon-tool {
-                            transition: 0.1s;
-
                             @include global.size(1em);
                         }
 
@@ -369,21 +370,7 @@ header {
                             @include global.background($image: "playground/menu/config", $size: cover);
                         }
 
-                        &.home {
-                            .icon-tool {
-                                @include global.background($image: home, $size: cover);
-                            }
-
-                            .label-tool {
-                                @media screen and (min-width: (play.$header-responsive-width + 1)) {
-                                    display: none;
-                                }
-                            }
-                        }
-
                         .label-tool {
-                            margin-left: 0.5em;
-                            
                             @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
                                 display: none;
                             }
@@ -395,15 +382,15 @@ header {
                     @include global.middle;
 
                     &.contracted {
-                        top: 115%;
-                        z-index: 1;
-                        position: absolute;
+                        display: none;
 
                         transition: 0.3s ease-in-out;
                     }
                 }
 
                 .tooltip {
+                    padding: 0.1em 0.4em;
+
                     width: max-content;
                     top: calc(100% + default.$tooltip-size-arr + play.$header-padding);
 

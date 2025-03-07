@@ -10,10 +10,15 @@ export class Transformer {
 
     public init() {
         const urlParams = new URLSearchParams(window.location.search);
-        const langInUrl = urlParams.get("lang");
 
-        if(langInUrl) this.load(langInUrl);
-        else this.load(navigator.language);
+        let langInUrl = urlParams.get("lang");
+
+        if(!langInUrl) {
+            const referrerUrl = new URL(document.referrer);
+            langInUrl = referrerUrl.searchParams.get("lang")!;
+        }
+
+        this.load(langInUrl || navigator.language);
     }
 
     private async load(lang: string) {

@@ -2,7 +2,7 @@ import { globals } from "./default";
 // -----------------------------------------------------------------------------------
 import "/src/styles/documentation/documentation.scss";
 // -----------------------------------------------------------------------------------
-const windowsizemenu = 860;
+const windowsizemenu = 840;
 const windowsizenav = 1050;
 // -----------------------------------------------------------------------------------
 globals.monitoreMenu(windowsizemenu);

@@ -107,9 +107,8 @@ mark {
 
     padding: 1em;
     border-radius: 0.5em;
-
+    
     margin: 1.5em 0;
-
     overflow-x: auto;
     
     @include global.flex($align: flex-end, $wrap: nowrap);
@@ -264,7 +263,7 @@ div:has(> button.open) {
         text-align: center;
         color: global.$white;
 
-        z-index: 999;
+        z-index: 9;
         position: absolute;
 
         border-radius: 0.5em;

@@ -11,7 +11,7 @@ main {
         $max-percentual: 0.8;
         max-width: calc($max-percentual * 100%);
 
-        z-index: 999;
+        z-index: 9;
         position: sticky;
         top: doc.$header-height;
         right: - doc.$sticky-nav-width;
@@ -110,7 +110,7 @@ main {
             $size: 2.5em;
 
             top: 50%;
-            z-index: 999;
+            z-index: 9;
             position: fixed;
 
             border-radius: $size 0 0 $size;
@@ -148,7 +148,7 @@ main {
         width: doc.$content-width;
         
         @media screen and (max-width: doc.$content-responsive-width) {
-            width: doc.$main-width;
+            width: 100%;
             @include global.center;
         }
 

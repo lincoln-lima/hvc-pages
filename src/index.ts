@@ -6,7 +6,7 @@ import "/src/styles/index/index.scss";
 import "/src/styles/defaults/table.scss";
 import "/src/styles/defaults/footer.scss";
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 860;
+const windowsizemenu = 840;
 // ------------------------------------------------------------------------------- 
 globals.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));

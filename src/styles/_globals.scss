@@ -102,7 +102,7 @@ $fonts:
 }
 
 @mixin fixed-button($size: default.$fixed-size, $distance: default.$fixed-distance) {
-    z-index: 99;
+    z-index: 10;
     position: fixed;
 
     right: $distance;
@@ -141,7 +141,8 @@ $fonts:
     $justify: space-between,
     $align: center,
     $direction: row,
-    $wrap: wrap
+    $wrap: wrap,
+    $gap: 0
     ) {
 
     display: flex;
@@ -149,6 +150,7 @@ $fonts:
     align-items: $align;
     flex-direction: $direction;
     flex-wrap: $wrap;
+    gap: $gap;
 }
 /* -------------------------------------------------------------------- */
 @mixin middle {
