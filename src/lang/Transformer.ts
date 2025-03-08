@@ -62,7 +62,7 @@ export class Transformer {
         const url = new URL(window.location.href);
 
         url.searchParams.set("lang", lang);
-        window.history.pushState({}, "", url.toString());
+        window.history.pushState({}, "", url);
     }
 
     public getCurrentLang() {

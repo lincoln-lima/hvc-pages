@@ -162,7 +162,7 @@
 			}
 
 			.modal-main {
-				@include global.middle;
+				@include global.flex($direction: column, $gap: 0.25em);
 
 				$padding: 1em;
 
@@ -177,8 +177,6 @@
 				#rating {
 					font-size: 1.6em;
 					color: global.$color2;
-
-					margin: 0.5rem 0;
 
 					padding: 0 0.4em;
 					border-radius: 1em;
@@ -203,15 +201,9 @@
 					padding: 0.1em 0.5em;
 					border-radius: 0.6em;
 					
-					@include global.faded-button($font: 0.7em);
-					
-					& {
-						background: global.$white;
-						color: global.$color2-dark;
-					}
+					@include global.faded-button($font: 0.7em, $simple: yes, $color: global.$color2-dark);
 
 					&:hover {
-						color: global.$white;
 						background: global.$color2;
 					}
 				}
@@ -238,16 +230,18 @@
 			}
 
 			.modal-main {
-				height: 70%;
+				form {
+					gap: 0.8em;
 
-				#delay {
-					width: 3.5em;
-					text-align: center;
+					#delay {
+						width: 3.5em;
+						text-align: center;
+					}
 				}
 			}
 
 			.modal-footer {
-				height: 10%;
+				padding: 0.2em 0;
 				background: global.$fade-default;
 				
 				#save-configs {
@@ -307,7 +301,7 @@
 				width: 100%;
 
 				form {
-					@include global.flex;
+					flex-direction: row;
 					
 					input {
 						font-size: 3em;

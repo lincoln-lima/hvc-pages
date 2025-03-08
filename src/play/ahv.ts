@@ -1,6 +1,9 @@
 import { play } from "../playground";
 // ------------------------------------------------------------------------------- 
 export default () => {
+    const importbutton = document.getElementById("import")!;
+    const exportbutton = document.getElementById("export")!;
+
     const importahv = () => {
         const inputelement = document.createElement("input");
 
@@ -15,7 +18,7 @@ export default () => {
             const [file] = inputelement.files!;
 
             if(file) {
-                if (file.size <= 1024) play.actions.setCode(await file.text());
+                if (file.size <= 1024) play.setCode(await file.text());
                 else alert("Os scripts deverão possuir no máximo 1KB");
             }
         });
@@ -24,7 +27,7 @@ export default () => {
     }
 
     const exportahv = () => {
-        const blob = new Blob([play.actions.getCode()], { type: "text/plain" });
+        const blob = new Blob([play.getCode()], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
@@ -38,6 +41,6 @@ export default () => {
         URL.revokeObjectURL(url);
     }
     // ------------------------------------------------------------------------------- 
-    play.elements.import().addEventListener("click", importahv);
-    play.elements.export().addEventListener("click", exportahv);
+    importbutton.addEventListener("click", importahv);
+    exportbutton.addEventListener("click", exportahv);
 }

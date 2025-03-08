@@ -16,7 +16,7 @@ $modal-color: #333333;
             background-color: $header-color;
 
             .primary-menu {
-                background-color: $primary-menu-color !important;
+                background-color: $primary-menu-color;
             }
         }
 
@@ -32,8 +32,8 @@ $modal-color: #333333;
             }
         }
         
-        table td.operation {
-            color: global.$white !important;
+        table#commands td.operation {
+            color: global.$white;
         }
 
         .sticky-nav .content-menu {
