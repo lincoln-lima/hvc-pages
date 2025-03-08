@@ -8,7 +8,7 @@ export default async() => {
     // -------------------------------------------------------------------------------
     await Promise.all(modalsToAdd.map(async modal => {
         const element = await templates("modal/" + modal);
-        element.classList.add("undisplayed");
+        globals.switchDisplay(element, false)
 
         globals.translateElement(element);
 
@@ -52,11 +52,11 @@ export const modalsKeyEvents = (e: KeyboardEvent) => {
     if(!e.ctrlKey) {
         if(key === "f2") {
             e.preventDefault();
-            globals.switchDisplay(modal.config(), modal.config().classList.contains("undisplayed"));
+            globals.switchDisplay(modal.config());
         }
         else if(key === "f12") {
             e.preventDefault();
-            globals.switchDisplay(modal.help(), modal.help().classList.contains("undisplayed"));
+            globals.switchDisplay(modal.help());
         }
         else if(key === "escape") hideModals();
     }

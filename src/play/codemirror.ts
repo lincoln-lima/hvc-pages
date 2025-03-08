@@ -1,5 +1,3 @@
-import { globals } from "../default";
-// -----------------------------------------------------------------------------------
 import { EditorState, Extension } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
@@ -64,14 +62,14 @@ export class CodeEditor {
             window.history.pushState({}, "", url);
         }
         else if(localStorage.getItem("code")) {
-            globals.changeStorage("saved", "true");
+            localStorage.setItem("saved", "true");
             this.code = localStorage.getItem("code")!;
         }
         else this.unSaved();
     }
 
     private unSaved = () => {
-        globals.changeStorage("saved", "false");
+        localStorage.setItem("saved", "false");
         this.parentElement!.classList.add("unsaved");
     }
 

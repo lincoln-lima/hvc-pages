@@ -553,7 +553,7 @@ main {
     right: default.$fixed-distance;
     bottom: default.$fixed-distance;
 
-    .contracted {
+    .more-options {
         transition: 0.5s;
 
         .tooltiper {
@@ -594,7 +594,7 @@ main {
                 @include global.faded-button(playground/info);
             }
 
-            &#options {
+            &.show-options {
                 transition: 0.5s;
                 transform: rotate(-180deg);
 

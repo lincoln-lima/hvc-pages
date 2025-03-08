@@ -8,7 +8,7 @@
 /* -------------------------------------------------------------------- */
 @mixin responsive-burguer($window-size) {
     @media screen and (min-width: ($window-size + 1)) {
-        display: none; 
+        @include global.undisplayed;
     }
 }
 
@@ -84,7 +84,7 @@ header {
 
                 @media screen and (max-width: default.$home-responsive-width) {
                     h1 {
-                        display: none;
+                        @include global.undisplayed;
                     }
                 }
     
@@ -210,7 +210,7 @@ header {
 
                             &.hvm-state {
                                 @media screen and (max-width: play.$state-labels-responsive-width) {
-                                    display: none;
+                                    @include global.undisplayed;
                                 }
                             }
                         }
@@ -284,16 +284,6 @@ header {
 
                         @media screen and (max-width: play.$header-responsive-width) {
                             flex-direction: row-reverse;
-                        }
-                    }
-
-                    &:not(:has(.contracted.unvisible)) {
-                        .tooltiper:has(button#share) {
-                            display: none;
-                        }
-
-                        .contracted {
-                            display: flex;
                         }
                     }
 
@@ -372,19 +362,17 @@ header {
 
                         .label-tool {
                             @media screen and (min-width: (play.$header-responsive-width + 1)) and (max-width: play.$tools-buttons-responsive-width) {
-                                display: none;
+                                @include global.undisplayed;
                             }
                         }
                     }
-                }
-
-                .tooltiper {
-                    @include global.middle;
-
-                    &.contracted {
-                        display: none;
-
-                        transition: 0.3s ease-in-out;
+                
+                    .tooltiper {
+                        @include global.middle;
+    
+                        &.contracted {
+                            @include global.undisplayed;
+                        }
                     }
                 }
 

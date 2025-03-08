@@ -18,10 +18,7 @@ const switchNav = () => {
     switchEventsNav(areExpanded());
 }
 
-const switchExpanded = (set: boolean) => {
-    if(set) components.forEach(element => element.classList.add("expanded"));
-    else components.forEach(element => element.classList.remove("expanded"));
-}
+const switchExpanded = (set: boolean) => components.forEach(element => element.classList.toggle("expanded", set));
 
 const monitoreShowNav = () => {
     switchExpanded(false);

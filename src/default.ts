@@ -5,21 +5,19 @@ import "/src/styles/defaults/header.scss";
 import { Transformer } from "./lang/Transformer";
 // -------------------------------------------------------------------------------
 export const globals = {
-    switchDisplay: (element: Element, set: boolean) => {
-        if(set) element.classList.remove("undisplayed");
-        else element.classList.add("undisplayed")
+    switchDisplay: (element: Element, set?: boolean) => {
+        element.classList.toggle("undisplayed", !(set ?? element.classList.contains("undisplayed")));
     },
 
-    switchVisibility: (element: Element, set: boolean) => {
-        if(set) element.classList.remove("unvisible");
-        else element.classList.add("unvisible")
+    switchVisibility: (element: Element, set?: boolean) => {
+        element.classList.toggle("unvisible", !(set ?? element.classList.contains("unvisible")));
     },
 
     switchTheme: () => {
         const theme = root.getAttribute("data-theme") != "dark" ? "dark" : "light";
 
         root.setAttribute("data-theme", theme);
-        globals.changeStorage("theme", theme);
+        localStorage.setItem("theme", theme);
     },
 
     monitoreMenu: (size: number) => {
@@ -50,10 +48,6 @@ export const globals = {
             element.classList.remove(className);
             if(elementsec) elementsec.textContent = globals.retrieveLangText(dlangmain!);
         }, 3000);
-    },
-
-    changeStorage: (item: string, value: string) => {
-        if(localStorage.getItem(item)! != value) localStorage.setItem(item, value);
     },
 
     hvcode: (code: string) => {

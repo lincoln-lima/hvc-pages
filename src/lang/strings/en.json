@@ -319,7 +319,7 @@
     "clear-tip": "Clear display",
     "save-tip": "Save code",
     "help-tip": "Help",
-    "expand-tip": "Show more",
+    "show-options-tip": "Show more",
 
     "evaluate-now": "Evaluate now",
     "your-opinion": "Your opinion is fundamental to our project",

@@ -1,6 +1,6 @@
-import { play } from "../playground";
 import { globals } from "../default";
 import { HVC, HVMState } from "hvcjs";
+import { actions, elements } from "../playground";
 import { modal, hideModals, modalsKeyEvents } from "./modals";
 // -----------------------------------------------------------------------------------
 export default (lang: string) => {
@@ -36,11 +36,13 @@ export default (lang: string) => {
 
     const formcard = modal.card().querySelector<HTMLFormElement>("#card-form")!;
     const readcard = formcard.querySelector<HTMLInputElement>("#read-card")!;
+
+    const optionscontainer = document.querySelector(".fixed-container")!;
     // ------------------------------------------------------------------------------- 
     const exec = async(set: boolean) => {
         await terminate();
         // ---------------------------------------------------------------------------
-        globals.switchDisplay(play.options(), false);
+        globals.switchDisplay(optionscontainer, false);
         // ---------------------------------------------------------------------------
         globals.changeElementText(outwrite, "");
         
@@ -49,13 +51,13 @@ export default (lang: string) => {
         document.addEventListener("keydown", keyTerminate);
         document.removeEventListener("keydown", modalsKeyEvents);
         // ---------------------------------------------------------------------------
-        hvc.setCode(play.getCode());
+        hvc.setCode(actions.getCode());
         // ---------------------------------------------------------------------------
         try {
             if(set) await hvc.run();
             else {
                 globals.switchDisplay(tablecards, true);
-                globals.switchDisplay(play.editor(), false);
+                globals.switchDisplay(elements.editor, false);
 
                 globals.switchVisibility(debugmenu, true);
 
@@ -64,7 +66,7 @@ export default (lang: string) => {
                 finish.addEventListener("click", terminate);
                 pausecontinue.addEventListener("click", toggling);
 
-                await hvc.debug(+play.delay().value, !play.skip().checked, play.paused().checked ? "PAUSADO" : "RODANDO");
+                await hvc.debug(+elements.delay.value, !elements.skip.checked, elements.paused.checked ? "PAUSADO" : "RODANDO");
             }
         }
         catch (e) {
@@ -73,7 +75,7 @@ export default (lang: string) => {
         finally {
             if(localStorage.getItem("askrating") != "false") {
                 const counter = +localStorage.getItem("counter")! + 1;
-                globals.changeStorage("counter", counter.toString());
+                localStorage.setItem("counter", counter.toString());
 
                 if(counter % 5 === 0) globals.switchDisplay(modal.rating(), true);
             }
@@ -128,13 +130,13 @@ export default (lang: string) => {
         previous = "DESLIGADO";
         setState(previous);
 
-        switchPauseContinue(play.paused().checked);
+        switchPauseContinue(elements.paused.checked);
 
         hideModals();
 
         globals.switchDisplay(tablecards, false);
-        globals.switchDisplay(play.editor(), true);
-        globals.switchDisplay(play.options(), true);
+        globals.switchDisplay(elements.editor, true);
+        globals.switchDisplay(optionscontainer, true);
 
         globals.switchVisibility(debugmenu, false);
 
@@ -212,10 +214,10 @@ export default (lang: string) => {
     // ------------------------------------------------------------------------------- 
     const saveCode = () => {
         if(localStorage.getItem("saved") != "true") {
-            globals.changeStorage("saved", "true");
-            globals.changeStorage("code", play.getCode());
+            localStorage.setItem("saved", "true");
+            localStorage.setItem("code", actions.getCode());
 
-            play.editor().classList.remove("unsaved");
+            elements.editor.classList.remove("unsaved");
 
             globals.temporaryClass(savecode, "saved");
         }
@@ -268,7 +270,7 @@ export default (lang: string) => {
                 e.preventDefault();
 
                 globals.switchDisplay(modal.card(), false);
-                setTimeout(resolve, +play.delay().value, readcard.value);
+                setTimeout(resolve, +elements.delay.value, readcard.value);
 
                 formcard.removeEventListener("submit", submit);
             }

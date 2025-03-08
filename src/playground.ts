@@ -16,15 +16,7 @@ const windowsizemenu = 680;
 globals.monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
 // -------------------------------------------------------------------------------
-export const play = {
-    options: () => { return document.getElementById("options")! },
-    
-    editor: () => { return document.querySelector(".container-editor")! },
-
-    skip: () => { return modal.config().querySelector<HTMLInputElement>("#skip")! },
-    delay: () => { return modal.config().querySelector<HTMLInputElement>("#delay")! },
-    paused: () => { return modal.config().querySelector<HTMLInputElement>("#paused")! },
-
+export const actions = {
     getCode: () => { return CodeEditor.getInstance().getCode() },
     setCode: (code: string) => { CodeEditor.getInstance().setCode(code) }
 }
@@ -32,19 +24,25 @@ export const play = {
 const share = document.getElementById("share")!;
 const scrollgaveteiro = document.querySelector(".scroll-gaveteiro")!;
 
-const expand = document.querySelectorAll(".expand")!;
-const contracted = document.querySelectorAll(".contracted")!;
+const expand = document.querySelector(".expand")!;
+const ablecontract = document.querySelectorAll(":has(~ .expand)");
+
+const options = document.querySelector(".show-options")!;
+const moreoptions = document.querySelector(".more-options")!;
 // -------------------------------------------------------------------------------
-if(!localStorage.getItem("counter") || !localStorage.getItem("askrating")) {
-    globals.changeStorage("counter", "0");
-    globals.changeStorage("askrating", "true");
-}
-// -------------------------------------------------------------------------------
-contracted.forEach(e => globals.switchVisibility(e, false));
-expand.forEach((e, i) => e.addEventListener("click", () => switchContracted(i)));
+options.addEventListener("click", () => {
+    options.classList.toggle("contract");
+    globals.switchVisibility(moreoptions);
+});
+
+expand.addEventListener("click", () => {
+    expand.classList.toggle("contract");
+
+    ablecontract.forEach(e => e.classList.toggle("contracted"));
+});
 
 share.addEventListener("click", async() => {
-    const shareurl = globals.hvcode(play.getCode()).toString();
+    const shareurl = globals.hvcode(actions.getCode()).toString();
 
     try {
         await navigator.share({
@@ -68,42 +66,10 @@ share.addEventListener("click", async() => {
     }
 });
 // -------------------------------------------------------------------------------
-document.addEventListener("click", e => {
-    const element = e.target as Element;
-
-    const isExpand = !element.parentElement!.parentElement!.classList.contains("contracted") &&
-                     !element.parentElement!.classList.contains("contracted") &&
-                     !element.classList.contains("expand");
-
-    if(isExpand) {
-        contracted.forEach((e, i) => {
-            if(!e.classList.contains("unvisible")) switchContracted(i);
-        });
-    }
-});
-
-// -------------------------------------------------------------------------------
-const saveConfigs = () => {
-    globals.changeStorage("delay-hvc", play.delay().value!);
-    globals.changeStorage("skip-hvc", play.skip().checked.toString());
-    globals.changeStorage("paused-hvc", play.paused().checked.toString());
-
-    globals.switchDisplay(modal.config(), false);
-}
-
-const switchContracted = (i: number) => {
-    const itemexpand = expand.item(i)!;
-    const itemcontracted = contracted.item(i)!;
-
-    itemexpand.classList.toggle("contract");
-
-    globals.switchVisibility(itemcontracted, itemcontracted.classList.contains("unvisible"));
-}
-// -------------------------------------------------------------------------------
 drawers(scrollgaveteiro);
 // -------------------------------------------------------------------------------
 await modals();
-// -------------------------------------------------------------------------------
+
 const help = document.getElementById("help")!;
 const configs = document.getElementById("config")!;
 
@@ -114,38 +80,59 @@ const openmodals: [Element, Element][] = [
 
 openModals(openmodals);
 // -------------------------------------------------------------------------------
+export const elements = {
+    editor: document.querySelector(".container-editor")!,
+
+    skip: modal.config().querySelector<HTMLInputElement>("#skip")!,
+    delay: modal.config().querySelector<HTMLInputElement>("#delay")!,
+    paused: modal.config().querySelector<HTMLInputElement>("#paused")!
+}
+// -------------------------------------------------------------------------------
 const dontask = document.getElementById("dont-ask")!;
 const formconfigs = document.getElementById("configs-form")!;
 const theme = document.querySelector<HTMLSelectElement>("#theme")!;
 // -------------------------------------------------------------------------------
 theme.value = globals.getTheme();
 
-play.delay().value = localStorage.getItem("delay-hvc") || "1000";
-play.skip().checked = localStorage.getItem("skip-hvc")! != "false";
-play.paused().checked = localStorage.getItem("paused-hvc")! != "false";
+elements.delay.value = localStorage.getItem("delay-hvc") || "1000";
+elements.skip.checked = localStorage.getItem("skip-hvc")! != "false";
+elements.paused.checked = localStorage.getItem("paused-hvc")! != "false";
 // -------------------------------------------------------------------------------
-CodeEditor.getInstance().init(play.editor());
+CodeEditor.getInstance().init(elements.editor);
 // -------------------------------------------------------------------------------
 hvc(globals.getLang());
 // -------------------------------------------------------------------------------
 ahv();
 // -------------------------------------------------------------------------------
-dontask.addEventListener("click", () => {
-    globals.changeStorage("askrating", "false");
-    globals.switchDisplay(modal.rating(), false);
-});
+const saveConfigs = () => {
+    localStorage.setItem("delay-hvc", elements.delay.value!);
+    localStorage.setItem("skip-hvc", elements.skip.checked.toString());
+    localStorage.setItem("paused-hvc", elements.paused.checked.toString());
+
+    globals.switchDisplay(modal.config(), false);
+}
+// -------------------------------------------------------------------------------
+theme.addEventListener("change", globals.switchTheme);
 
 formconfigs.addEventListener("submit", e => {
     e.preventDefault();
     saveConfigs();
 });
 
-theme.addEventListener("change", globals.switchTheme);
+dontask.addEventListener("click", () => {
+    localStorage.setItem("askrating", "false");
+    globals.switchDisplay(modal.rating(), false);
+});
 // -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
-    if(localStorage.getItem("saved")! != "true" && play.getCode() != localStorage.getItem("code")) e.preventDefault();
+    if(localStorage.getItem("saved")! != "true" && actions.getCode() != localStorage.getItem("code")) e.preventDefault();
 });
 
 window.addEventListener("storage", e => {
     if(e.key === "theme") theme.value = e.newValue!;
 });
+// -------------------------------------------------------------------------------
+if(!localStorage.getItem("counter") || !localStorage.getItem("askrating")) {
+    localStorage.setItem("counter", "0");
+    localStorage.setItem("askrating", "true");
+}

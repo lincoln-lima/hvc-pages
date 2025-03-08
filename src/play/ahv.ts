@@ -1,4 +1,4 @@
-import { play } from "../playground";
+import { actions } from "../playground";
 // ------------------------------------------------------------------------------- 
 export default () => {
     const importbutton = document.getElementById("import")!;
@@ -18,7 +18,7 @@ export default () => {
             const [file] = inputelement.files!;
 
             if(file) {
-                if (file.size <= 1024) play.setCode(await file.text());
+                if (file.size <= 1024) actions.setCode(await file.text());
                 else alert("Os scripts deverão possuir no máximo 1KB");
             }
         });
@@ -27,7 +27,7 @@ export default () => {
     }
 
     const exportahv = () => {
-        const blob = new Blob([play.getCode()], { type: "text/plain" });
+        const blob = new Blob([actions.getCode()], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
 
