@@ -124,8 +124,8 @@ main {
                             font-size: 0.8em;
                             color: play.$dark-red;
 
-                            top: 2%;
-                            right: 1%;
+                            right: default.$scrollbar-width;
+                            top: calc(default.$scrollbar-width * 1.5);
                         }
                     }
                 }
@@ -562,7 +562,7 @@ main {
     }
 
     .tooltiper {
-        $size: default.$fixed-size * 1.5;
+        $size: default.$fixed-size;
 
         @include global.size($size);
 

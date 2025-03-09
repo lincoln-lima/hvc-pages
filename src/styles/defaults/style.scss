@@ -55,7 +55,7 @@ h4 {
 	font-size: 2em;
 }
 
-ul, p {
+ul, ol, p {
     @include global.defaultText;
 }
 
@@ -77,8 +77,45 @@ menu {
     list-style-type: none;
 }
 
-ul, ol {
+ul {
     padding-left: 1.1em;
+}
+
+ol {
+    padding-left: 4em;
+
+    > li {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 0.6rem;
+        }
+
+        &::marker {
+            color: global.$white;
+            content: counter(list-item) "\0020""\0020";
+            
+            @include global.setFont(code);
+        }
+
+        &::before {
+            content: "";
+
+            z-index: -1;
+            position: absolute;
+
+            right: calc(100% + default.$font-size/1.25);
+
+            background-color: global.$color3;
+
+            @include global.circle;
+            @include global.size(2rem);
+        }
+
+        ul {
+            padding-left: 2em;
+        }
+    }
 }
 /* -------------------------------------------------------------------- */
 hr {

@@ -118,10 +118,15 @@ main {
 
         &#practice {
             article {
-                &#hvcjs {
-                    .pre-code {
-                        max-width: 35em;
+                &#algoritmos {
+                    ol {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
                     }
+                }
+
+                .pre-code:first-of-type {
+                    max-width: 35em;
                 }
             }
         }

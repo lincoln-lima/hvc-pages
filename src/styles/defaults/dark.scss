@@ -20,7 +20,7 @@ $modal-color: #333333;
             }
         }
 
-        ul, p, figcaption {
+        ul, ol, p, figcaption {
             color: global.$white;
 
             :not(mark, mark > *) {
@@ -29,6 +29,12 @@ $modal-color: #333333;
                 &.marked {
                     text-decoration-color: global.$white;
                 }
+            }
+        }
+
+        ol {
+            > li::before {
+                background-color: global.$color1;
             }
         }
         

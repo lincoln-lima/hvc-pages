@@ -69,7 +69,7 @@ $fonts:
     font-family: findFont($type);
 }
 /* -------------------------------------------------------------------- */
-@mixin faded-button($img: null, $shadow: yes, $font: 1.5em, $simple: no, $color: $white) {
+@mixin faded-button($img: null, $shadow: yes, $font: 1.5rem, $simple: no, $color: $white) {
     font-size: $font;
     font-weight: 700;
     text-transform: uppercase;

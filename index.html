@@ -99,6 +99,95 @@
                 <br>
                 <p data-lang="playground-description2"></p>
             </article>
+            <article id="algoritmos">
+                <h3 data-lang="building-algorithms-title">Construindo algoritmos</h3>
+                <p data-lang="building-algorithms-description1">Este algoritmo calcula o enésimo termo da sequência de Fibonacci usando um método iterativo, seguindo a lógica do pseudocódigo de referência.</p>
+                <div class="pre-code"><pre>
+<code class="cmd"><span data-lang="function-code-reserved" class="reserved">função</span> fib(<var>n</var>)
+    <var>j</var> &larr; <span class="value">1</span>
+    <var>i</var> &larr; <span class="value">0</span>
+    <span data-lang="for-code-reserved" class="reserved">para</span> <var>k</var> &larr; <span class="value">1</span> <span data-lang="to-code-reserved" class="reserved">até</span> <var>n</var> <span data-lang="do-code-reserved" class="reserved">faça</span>
+        <var>t</var> &larr; <var>i</var> + <var>j</var>
+        <var>i</var> &larr; <var>j</var>
+        <var>j</var> &larr; <var>t</var>
+    <span data-lang="return-code-reserved" class="reserved">retorne</span> <var>i</var></code>
+</pre>
+                <button class="code copy"></button>
+                </div>
+                <p>
+                    <span data-lang="building-algorithms-description2-begin">Diferente de linguagens de alto nível, onde podemos simplesmente utilizar laços de repetição e variáveis auxiliares, na linguagem HV precisamos</span>
+                    <mark data-lang="building-algorithms-description2-mark">gerenciar manualmente as operações e o controle de fluxo</mark>
+                    <span data-lang="building-algorithms-description2-end">para atualizar os valores da sequência.</span>
+                </p>
+                <br>
+                <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                <ol>
+                    <li>
+                        <span data-lang="fibonacci-steps-1-begin">Lemos o valor de</span> <var>n</var>,
+                        <span data-lang="fibonacci-steps-1-end">que representa o termo da sequência desejado.</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-2-begin">Inicializamos</span> <var>i</var> <span data-lang="fibonacci-steps-2-middle">= 0 (Fibonacci de 0) e</span>
+                        <var>j</var> <span data-lang="fibonacci-steps-2-end">= 1 (Fibonacci de 1).</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-3-begin">Se</span> <var>n</var> == 0,
+                        <span data-lang="fibonacci-steps-3-end">o resultado é 0.</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-4-begin">Caso contrário, iteramos</span>
+                        <var>n</var>
+                        <span data-lang="fibonacci-steps-4-end">vezes:</span>
+                        <ul>
+                            <li>
+                                <span data-lang="fibonacci-steps-4-subtopic-1">Calculamos</span>
+                                <var>t</var> = <var>i</var> + <var>j</var>
+                            </li>
+                            <li>
+                                <span data-lang="fibonacci-steps-4-subtopic-2">Atribuímos</span>
+                                <var>i</var> = <var>j</var>, <var>j</var> = <var>t</var>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-lang="fibonacci-steps-5">
+                        Ao final do loop, conterá o enésimo termo da sequência, que é impresso na saída.
+                    </li>
+                </ol>
+                <p data-lang="building-algorithms-description3">Esse método segue o princípio matemático da definição da sequência de Fibonacci, onde cada termo é a soma dos dois anteriores:</p>
+                <br>
+                <p>F(<var>n</var>) = F(<var>n</var> - 1) + F(<var>n</var> - 2), F(1) = 1, F(2) = 1.</p>
+                <div class="pre-code"><pre>
+<code class="ahv cmd">725    ; <span data-lang="fibonacci-code-comment1" class="comment">Leia o valor de n e armazene na gaveta 25</span>
+0-0    ; <span data-lang="fibonacci-code-comment2" class="comment">Carregue 0 no acumulador</span>
+126    ; <span data-lang="fibonacci-code-comment3" class="comment">Armazene 0 na gaveta 26 (i = 0)</span>
+127    ; <span data-lang="fibonacci-code-comment4" class="comment">Armazene 0 na gaveta 27 (auxiliar do contador)</span>
+0-1    ; <span data-lang="fibonacci-code-comment5" class="comment">Carregue 1 no acumulador</span>
+128    ; <span data-lang="fibonacci-code-comment6" class="comment">Armazene 1 na gaveta 28 (j = 1)</span>
+129    ; <span data-lang="fibonacci-code-comment7" class="comment">Armazene 1 na gaveta 29 (auxiliar número 1)</span>
+025    ; <span data-lang="fibonacci-code-comment8" class="comment">Carregue n no acumulador</span>
+327    ; <span data-lang="fibonacci-code-comment9" class="comment">Subtraia (auxiliar do contador)</span>
+611    ; <span data-lang="fibonacci-code-comment10" class="comment">Se n - (auxiliar do contador) == 0, vá para a gaveta 11 (corpo loop)</span>
+922    ; <span data-lang="fibonacci-code-comment11" class="comment">Vá para a gaveta 22 (final loop)</span>
+026    ; <span data-lang="fibonacci-code-comment12" class="comment">Carregue i</span>
+228    ; <span data-lang="fibonacci-code-comment13" class="comment">Some j (t = i + j)</span>
+130    ; <span data-lang="fibonacci-code-comment14" class="comment">Armazene na gaveta 30 (t = i + j)</span>
+028    ; <span data-lang="fibonacci-code-comment15" class="comment">Carregue j</span>
+126    ; <span data-lang="fibonacci-code-comment16" class="comment">Armazene em i (i = j)</span>
+030    ; <span data-lang="fibonacci-code-comment17" class="comment">Carregue t</span>
+128    ; <span data-lang="fibonacci-code-comment18" class="comment">Armazene em j (j = t)</span>
+027    ; <span data-lang="fibonacci-code-comment19" class="comment">Carregue o (auxiliar do contador)</span>
+229    ; <span data-lang="fibonacci-code-comment20" class="comment">Some 1 ao (auxiliar do contador)</span>
+127    ; <span data-lang="fibonacci-code-comment21" class="comment">Armazene o novo valor na (auxiliar do contador)</span>
+907    ; <span data-lang="fibonacci-code-comment22" class="comment">Volte para a verificação do loop</span>
+826    ; <span data-lang="fibonacci-code-comment23" class="comment">Escreva o resultado final (i)</span>
+000    ; <span data-lang="fibonacci-code-comment24" class="comment">Fim do programa</span></code>
+</pre>
+                <div>
+                    <button class="code copy"></button>
+                    <a class="code open"></a>
+                </div>
+            </div>
+            </article>
             <article id="hvcjs">
                 <h3>HVCJS</h3>
                 <p>

@@ -289,7 +289,7 @@
 	}
 
 	&#card-modal {
-		$submit-size: 2.2em;
+		$submit-size: 4.5rem;
 
 		z-index: 94;
 
@@ -309,7 +309,7 @@
 
 						padding: 0.2rem 0;
 						
-						width: calc(100% - $submit-size * 0.6);
+						width: calc(100% - $submit-size * 1.2);
 
 						border: 0.1rem solid global.$black;
 
