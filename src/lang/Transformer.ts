@@ -13,7 +13,7 @@ export class Transformer {
 
         let langInUrl = urlParams.get("lang");
 
-        if(!langInUrl && document.referrer) {
+        if (!langInUrl && document.referrer) {
             const referrerUrl = new URL(document.referrer);
             langInUrl = referrerUrl.searchParams.get("lang")!;
         }
@@ -23,15 +23,15 @@ export class Transformer {
 
     private async load(lang: string) {
         try {
-            if(lang.includes("en")) {
+            if (lang.includes("en")) {
                 this.translations = en;
                 this.currentLang = "en";
             }
-            else if(lang.includes("es")) {
+            else if (lang.includes("es")) {
                 this.translations = es;
                 this.currentLang = "es";
             }
-            else if(lang.includes("pt")) {
+            else if (lang.includes("pt")) {
                 this.translations = pt;
                 this.currentLang = "pt";
             }
@@ -55,7 +55,7 @@ export class Transformer {
     private updateTextElement(element: Element) {
         const key = element.getAttribute("data-lang");
 
-        if(key) element.textContent = this.getTranslation(key);
+        if (key) element.textContent = this.getTranslation(key);
     }
 
     private updateUrl(lang: string) {
@@ -78,7 +78,7 @@ export class Transformer {
     }
 
     public static getInstance(): Transformer {
-        if(!this.instance) this.instance = new Transformer();
+        if (!this.instance) this.instance = new Transformer();
 
         return this.instance;
     }

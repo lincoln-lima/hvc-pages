@@ -2,9 +2,9 @@ import "/src/styles/playground/playground.scss";
 import "/src/styles/defaults/modal.scss";
 import "/src/styles/defaults/table.scss";
 // -------------------------------------------------------------------------------
-import { globals } from "./default";
 import { CodeEditor } from "./play/codemirror";
 import { modal, openModals } from "./play/modals";
+import { monitoreMenu, switchDisplay, switchTheme, switchVisibility, hvcode, retrieveLangText, temporaryClass, getTheme } from "./globals";
 // -------------------------------------------------------------------------------
 import ahv from "./play/ahv";
 import hvc from "./play/hvc";
@@ -13,13 +13,8 @@ import drawers from "./play/drawers";
 // -------------------------------------------------------------------------------
 const windowsizemenu = 680;
 // -------------------------------------------------------------------------------
-globals.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
-// -------------------------------------------------------------------------------
-export const actions = {
-    getCode: () => { return CodeEditor.getInstance().getCode() },
-    setCode: (code: string) => { CodeEditor.getInstance().setCode(code) }
-}
+monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => monitoreMenu(windowsizemenu));
 // -------------------------------------------------------------------------------
 const share = document.getElementById("share")!;
 const scrollgaveteiro = document.querySelector(".scroll-gaveteiro")!;
@@ -32,7 +27,7 @@ const moreoptions = document.querySelector(".more-options")!;
 // -------------------------------------------------------------------------------
 options.addEventListener("click", () => {
     options.classList.toggle("contract");
-    globals.switchVisibility(moreoptions);
+    switchVisibility(moreoptions);
 });
 
 expand.addEventListener("click", () => {
@@ -42,12 +37,12 @@ expand.addEventListener("click", () => {
 });
 
 share.addEventListener("click", async() => {
-    const shareurl = globals.hvcode(actions.getCode()).toString();
+    const shareurl = hvcode(getCode()).toString();
 
     try {
         await navigator.share({
             title: document.title,
-            text: globals.retrieveLangText("menu-share-metaop") + "\n\n",
+            text: retrieveLangText("menu-share-metaop") + "\n\n",
             url: shareurl
         });
     }
@@ -61,7 +56,7 @@ share.addEventListener("click", async() => {
             console.log(shareurl);
         }
         finally {
-            globals.temporaryClass(share, "copied", label!, "menu-share-title", "menu-copied-title");
+            temporaryClass(share, "copied", label!, "menu-share-title", "menu-copied-title");
         }
     }
 });
@@ -70,49 +65,52 @@ drawers(scrollgaveteiro);
 // -------------------------------------------------------------------------------
 await modals();
 
+const helpmodal = modal.help();
+const configmodal = modal.config();
+const ratingmodal = modal.rating();
+// -------------------------------------------------------------------------------
 const help = document.getElementById("help")!;
 const configs = document.getElementById("config")!;
 
 const openmodals: [Element, Element][] = [
-    [help, modal.help()],
-    [configs, modal.config()]
+    [help, helpmodal],
+    [configs, configmodal]
 ];
 
 openModals(openmodals);
 // -------------------------------------------------------------------------------
-export const elements = {
-    editor: document.querySelector(".container-editor")!,
-
-    skip: modal.config().querySelector<HTMLInputElement>("#skip")!,
-    delay: modal.config().querySelector<HTMLInputElement>("#delay")!,
-    paused: modal.config().querySelector<HTMLInputElement>("#paused")!
-}
+export const editor = document.querySelector(".container-editor")!;
+export const skip = configmodal.querySelector<HTMLInputElement>("#skip")!;
+export const delay = configmodal.querySelector<HTMLInputElement>("#delay")!;
+export const paused = configmodal.querySelector<HTMLInputElement>("#paused")!;
 // -------------------------------------------------------------------------------
 const dontask = document.getElementById("dont-ask")!;
 const formconfigs = document.getElementById("configs-form")!;
 const theme = document.querySelector<HTMLSelectElement>("#theme")!;
 // -------------------------------------------------------------------------------
-theme.value = globals.getTheme();
+theme.value = getTheme();
 
-elements.delay.value = localStorage.getItem("delay-hvc") || "1000";
-elements.skip.checked = localStorage.getItem("skip-hvc")! != "false";
-elements.paused.checked = localStorage.getItem("paused-hvc")! != "false";
+delay.value = localStorage.getItem("delay-hvc") || "1000";
+skip.checked = localStorage.getItem("skip-hvc")! != "false";
+paused.checked = localStorage.getItem("paused-hvc")! != "false";
 // -------------------------------------------------------------------------------
-CodeEditor.getInstance().init(elements.editor);
+CodeEditor.getInstance().init(editor);
+
+export const getCode =  () => { return CodeEditor.getInstance().getCode() };
+export const setCode =  (code: string) => CodeEditor.getInstance().setCode(code);
 // -------------------------------------------------------------------------------
-hvc(globals.getLang());
-// -------------------------------------------------------------------------------
+hvc();
 ahv();
 // -------------------------------------------------------------------------------
 const saveConfigs = () => {
-    localStorage.setItem("delay-hvc", elements.delay.value!);
-    localStorage.setItem("skip-hvc", elements.skip.checked.toString());
-    localStorage.setItem("paused-hvc", elements.paused.checked.toString());
+    localStorage.setItem("delay-hvc", delay.value!);
+    localStorage.setItem("skip-hvc", skip.checked.toString());
+    localStorage.setItem("paused-hvc", paused.checked.toString());
 
-    globals.switchDisplay(modal.config(), false);
+    switchDisplay(configmodal, false);
 }
 // -------------------------------------------------------------------------------
-theme.addEventListener("change", globals.switchTheme);
+theme.addEventListener("change", switchTheme);
 
 formconfigs.addEventListener("submit", e => {
     e.preventDefault();
@@ -121,18 +119,18 @@ formconfigs.addEventListener("submit", e => {
 
 dontask.addEventListener("click", () => {
     localStorage.setItem("askrating", "false");
-    globals.switchDisplay(modal.rating(), false);
+    switchDisplay(ratingmodal, false);
 });
 // -------------------------------------------------------------------------------
 window.addEventListener("beforeunload", e => {
-    if(localStorage.getItem("saved")! != "true" && actions.getCode() != localStorage.getItem("code")) e.preventDefault();
+    if (localStorage.getItem("saved")! != "true" && getCode() != localStorage.getItem("code")) e.preventDefault();
 });
 
 window.addEventListener("storage", e => {
-    if(e.key === "theme") theme.value = e.newValue!;
+    if (e.key === "theme") theme.value = e.newValue!;
 });
 // -------------------------------------------------------------------------------
-if(!localStorage.getItem("counter") || !localStorage.getItem("askrating")) {
+if (!localStorage.getItem("counter") || !localStorage.getItem("askrating")) {
     localStorage.setItem("counter", "0");
     localStorage.setItem("askrating", "true");
 }

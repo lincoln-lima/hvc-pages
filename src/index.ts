@@ -2,14 +2,14 @@ import "/src/styles/index/index.scss";
 import "/src/styles/defaults/table.scss";
 import "/src/styles/defaults/footer.scss";
 // ------------------------------------------------------------------------------- 
-import { globals } from "./default";
+import { monitoreMenu, translateElement } from "./globals";
 // ------------------------------------------------------------------------------- 
 import templates from "./templates";
 // ------------------------------------------------------------------------------- 
 const windowsizemenu = 840;
 // ------------------------------------------------------------------------------- 
-globals.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.monitoreMenu(windowsizemenu));
+monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => monitoreMenu(windowsizemenu));
 // ------------------------------------------------------------------------------- 
 const scrolltable = document.querySelector(".scroll-table")!;
 // ------------------------------------------------------------------------------- 
@@ -20,7 +20,7 @@ const dynamics: [string, Element][] = [
 
 await Promise.all(dynamics.map(async ([key, parent]) => {
     const element = await templates(key);
-    globals.translateElement(element);
+    translateElement(element);
 
     parent.appendChild(element);
 }));

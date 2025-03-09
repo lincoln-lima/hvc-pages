@@ -1,21 +1,25 @@
-import { globals } from "../default";
 import { HVC, HVMState } from "hvcjs";
-import { actions, elements } from "../playground";
 import { modal, hideModals, modalsKeyEvents } from "./modals";
+import { getCode, editor, skip, delay, paused } from "../playground";
+import { switchDisplay, switchVisibility, changeElementText, scrollTo, temporaryClass, getLang, primarymenu } from "../globals";
 // -----------------------------------------------------------------------------------
-export default (lang: string) => {
+export default () => {
     const hvc = new HVC();
-    HVC.setLanguageMessages(lang);
+    HVC.setLanguageMessages(getLang());
     // ------------------------------------------------------------------------------- 
     let previous : HVMState = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
-    const runner = document.getElementById("run")!;
-    const debug = document.getElementById("debug")!;
+    const cardmodal = modal.card();
+    const errorsmodal = modal.errors();
+    const ratingmodal = modal.rating();
+    // ------------------------------------------------------------------------------- 
+    const runner = primarymenu.querySelector("#run")!;
+    const debug = primarymenu.querySelector("#debug")!;
 
     const clear = document.getElementById("clear")!;
     const savecode = document.getElementById("save-code")!;
     
-    const errormessage = document.getElementById("error-message")!;
+    const errormessage = errorsmodal.querySelector<HTMLElement>("#error-message")!;
     
     const debugmenu = document.querySelector(".debug-menu")!;
     const stateview = document.querySelector(".states-view")!;
@@ -32,9 +36,9 @@ export default (lang: string) => {
     const drawers = document.querySelectorAll(".drawer")!;
 
     const tablecards = document.querySelector(".scroll-tablecards")!;
-    const cards = tablecards.querySelector(".cards")!;
+    const cards = tablecards.querySelector<HTMLTableElement>(".cards")!;
 
-    const formcard = modal.card().querySelector<HTMLFormElement>("#card-form")!;
+    const formcard = cardmodal.querySelector<HTMLFormElement>("#card-form")!;
     const readcard = formcard.querySelector<HTMLInputElement>("#read-card")!;
 
     const optionscontainer = document.querySelector(".fixed-container")!;
@@ -42,42 +46,42 @@ export default (lang: string) => {
     const exec = async(set: boolean) => {
         await terminate();
         // ---------------------------------------------------------------------------
-        globals.switchDisplay(optionscontainer, false);
+        switchDisplay(optionscontainer, false);
         // ---------------------------------------------------------------------------
-        globals.changeElementText(outwrite, "");
+        changeElementText(outwrite, "");
         
         drawers.forEach(gaveta => highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
         document.addEventListener("keydown", keyTerminate);
         document.removeEventListener("keydown", modalsKeyEvents);
         // ---------------------------------------------------------------------------
-        hvc.setCode(actions.getCode());
+        hvc.setCode(getCode());
         // ---------------------------------------------------------------------------
         try {
-            if(set) await hvc.run();
+            if (set) await hvc.run();
             else {
-                globals.switchDisplay(tablecards, true);
-                globals.switchDisplay(elements.editor, false);
+                switchDisplay(editor, false);
+                switchDisplay(tablecards, true);
 
-                globals.switchVisibility(debugmenu, true);
+                switchVisibility(debugmenu, true);
 
                 back.addEventListener("click", backward);
                 forth.addEventListener("click", forward);
                 finish.addEventListener("click", terminate);
                 pausecontinue.addEventListener("click", toggling);
 
-                await hvc.debug(+elements.delay.value, !elements.skip.checked, elements.paused.checked ? "PAUSADO" : "RODANDO");
+                await hvc.debug(+delay.value, !skip.checked, paused.checked ? "PAUSADO" : "RODANDO");
             }
         }
         catch (e) {
             await detectError(e as Error);
         }
         finally {
-            if(localStorage.getItem("askrating") != "false") {
+            if (localStorage.getItem("askrating") != "false") {
                 const counter = +localStorage.getItem("counter")! + 1;
                 localStorage.setItem("counter", counter.toString());
 
-                if(counter % 5 === 0) globals.switchDisplay(modal.rating(), true);
+                if (counter % 5 === 0) switchDisplay(ratingmodal, true);
             }
         }
     }
@@ -99,28 +103,28 @@ export default (lang: string) => {
 
         portaCartoes.forEach(addCardToTable);
         // ---------------------------------------------------------------------------
-        globals.changeElementText(epiwrite, epi.toString());
-        globals.changeElementText(accumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
+        changeElementText(epiwrite, epi.toString());
+        changeElementText(accumulator, acumulador >= 0 ? acumulador.toString().padStart(3, "0") : "-" + (acumulador * -1).toString().padStart(2, "0"));
         // ---------------------------------------------------------------------------
         highlightDrawer(pointed, "pointed");
 
-        if(state != "CARGA") globals.scrollTo(pointed);
+        if (state != "CARGA") scrollTo(pointed);
         // ---------------------------------------------------------------------------
         drawers.forEach((drawer, i) => {
             let value;
             const content = drawerContent(drawer);
 
-            if(gavetas[i]) {
+            if (gavetas[i]) {
                 value = gavetas[i];
 
-                if(epi != i) {
+                if (epi != i) {
                     const style = (endindex === -1 || i <= endindex) ? "code" : "data";
                     highlightDrawer(drawer, style);
                 }
             }
             else value = "---";
 
-            globals.changeElementText(content, value);
+            changeElementText(content, value);
         });
     }
 
@@ -130,15 +134,15 @@ export default (lang: string) => {
         previous = "DESLIGADO";
         setState(previous);
 
-        switchPauseContinue(elements.paused.checked);
+        switchPauseContinue(paused.checked);
 
         hideModals();
 
-        globals.switchDisplay(tablecards, false);
-        globals.switchDisplay(elements.editor, true);
-        globals.switchDisplay(optionscontainer, true);
+        switchDisplay(editor, true);
+        switchDisplay(tablecards, false);
+        switchDisplay(optionscontainer, true);
 
-        globals.switchVisibility(debugmenu, false);
+        switchVisibility(debugmenu, false);
 
         back.removeEventListener("click", backward);
         forth.removeEventListener("click", forward);
@@ -153,20 +157,17 @@ export default (lang: string) => {
         await terminate();
         errormessage.innerText = e.message.replace(/\.(?!$)/, ".\n");
 
-        globals.switchDisplay(modal.errors(), true);
+        switchDisplay(errorsmodal, true);
     }
     // ------------------------------------------------------------------------------- 
-    const switchPauseContinue = (set: boolean) => {
-        if(set) pausecontinue.classList.remove("pause");
-        else pausecontinue.classList.add("pause");
-    }
+    const switchPauseContinue = (set: boolean) => pausecontinue.classList.toggle("pause", !set);
     // ------------------------------------------------------------------------------- 
     const toggling = async() => {
         const topause = pausecontinue.classList.contains("pause");
 
         switchPauseContinue(topause);
 
-        if(topause) await hvc.stop();
+        if (topause) await hvc.stop();
         else {
             try {
                 await hvc.continue();
@@ -183,7 +184,7 @@ export default (lang: string) => {
 
         await hvc.back();
         updateViewers(hvmstate);
-        globals.switchDisplay(modal.card(), false);
+        switchDisplay(cardmodal, false);
     }
 
     const forward = async() => {
@@ -213,20 +214,18 @@ export default (lang: string) => {
     }
     // ------------------------------------------------------------------------------- 
     const saveCode = () => {
-        if(localStorage.getItem("saved") != "true") {
+        if (localStorage.getItem("saved") != "true") {
             localStorage.setItem("saved", "true");
-            localStorage.setItem("code", actions.getCode());
+            localStorage.setItem("code", getCode());
 
-            elements.editor.classList.remove("unsaved");
-
-            globals.temporaryClass(savecode, "saved");
+            editor.classList.remove("unsaved");
         }
     }
     // ------------------------------------------------------------------------------- 
     const drawerContent = (drawer: Element) => { return drawer.querySelector(".content")! };
 
     const highlightDrawer = (drawer: Element, style: string) => {
-        if(!drawer.classList.contains(style)) {
+        if (!drawer.classList.contains(style)) {
             drawer.classList.remove(drawer.classList.item(1)!);
             drawer.classList.add(style);
         }
@@ -243,25 +242,25 @@ export default (lang: string) => {
     };
     // ------------------------------------------------------------------------------- 
     const clearView = () => {
-        globals.changeElementText(outwrite, "");
-        globals.changeElementText(epiwrite, "");
-        globals.changeElementText(accumulator, "");
+        changeElementText(outwrite, "");
+        changeElementText(epiwrite, "");
+        changeElementText(accumulator, "");
 
         drawers.forEach(drawer => {
             const content = drawerContent(drawer);
 
-            globals.changeElementText(content, "");
+            changeElementText(content, "");
             drawer.classList.remove(drawer.classList.item(1)!);
         });
 
-        globals.temporaryClass(clear, "cleaned");
+        temporaryClass(clear, "cleaned");
     }
 
     // ------------------------------------------------------------------------------- 
-    hvc.addEventOutput((out: string) => globals.changeElementText(outwrite, out));
+    hvc.addEventOutput((out: string) => changeElementText(outwrite, out));
 
     hvc.addEventInput(async() => {
-        globals.switchDisplay(modal.card(), true);
+        switchDisplay(cardmodal, true);
 
         readcard.focus();
 
@@ -269,8 +268,8 @@ export default (lang: string) => {
             const submit = (e: SubmitEvent) => {
                 e.preventDefault();
 
-                globals.switchDisplay(modal.card(), false);
-                setTimeout(resolve, +elements.delay.value, readcard.value);
+                switchDisplay(cardmodal, false);
+                setTimeout(resolve, +delay.value, readcard.value);
 
                 formcard.removeEventListener("submit", submit);
             }
@@ -282,7 +281,7 @@ export default (lang: string) => {
     hvc.addEventClock(async HVMState => {
         updateViewers(HVMState);
 
-        if(previous != HVMState && HVMState === "DESLIGADO") await terminate();
+        if (previous != HVMState && HVMState === "DESLIGADO") await terminate();
 
         previous = HVMState;
     });
@@ -291,10 +290,13 @@ export default (lang: string) => {
     runner.addEventListener("click", async() => await exec(true));
 
     clear.addEventListener("click", clearView);
-    savecode.addEventListener("click", saveCode);
+    savecode.addEventListener("click", () => {
+        saveCode();
+        temporaryClass(savecode, "saved");
+    });
     // ---------------------------------------------------------------------------
     const keyTerminate = async(e: KeyboardEvent) => {
-        if(e.ctrlKey && e.key.toLowerCase() === "c") {
+        if (e.ctrlKey && e.key.toLowerCase() === "c") {
             e.preventDefault();
             await terminate();
         }
@@ -303,15 +305,15 @@ export default (lang: string) => {
     document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();
 
-        if(e.ctrlKey) {
-            if(key === "s") {
+        if (e.ctrlKey) {
+            if (key === "s") {
                 e.preventDefault();
                 saveCode();
             }
         }
         else {
-            if(key === "f9") await exec(true);
-            else if(key === "f8") await exec(false);
+            if (key === "f9") await exec(true);
+            else if (key === "f8") await exec(false);
         }
     });
 }

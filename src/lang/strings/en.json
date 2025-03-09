@@ -265,7 +265,7 @@
     "variables-code-comment8": "Value 5 in the card holder to be read from drawer 30",
     "variables-code-comment9": "Value 5 in the card holder to be read from drawer 31",
 
-    "detour-title": "Desvio",
+    "detour-title": "Detour",
     "detour-description1": "Among the basic functions that the system operator is able to perform, the flow control instructions are undoubtedly one of the ones that open up the most possibilities for the programmer to develop more complex programs.",
     "detour-description2": "The 6EE instruction, for example, can be used to build a program where a certain part of the code is only executed if a specific condition is met.",
     "detour-description3": "Making decisions based solely on checking whether the value of the accumulator is greater than zero seems limited at first glance, but remember that it can be manipulated in a variety of ways, making it possible to carry out practically any desired comparison.",

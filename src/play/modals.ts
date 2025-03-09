@@ -1,4 +1,4 @@
-import { globals } from "../default";
+import { switchDisplay, translateElement } from "../globals";
 // -------------------------------------------------------------------------------
 import templates from "../templates";
 // -------------------------------------------------------------------------------
@@ -8,9 +8,9 @@ export default async() => {
     // -------------------------------------------------------------------------------
     await Promise.all(modalsToAdd.map(async modal => {
         const element = await templates("modal/" + modal);
-        globals.switchDisplay(element, false)
+        switchDisplay(element, false)
 
-        globals.translateElement(element);
+        translateElement(element);
 
         document.body.appendChild(element);
     }));
@@ -20,14 +20,14 @@ export default async() => {
     closeablesModals().forEach(modal => {
         const close = modal.querySelector(".close")!;
 
-        close.addEventListener("click", () => globals.switchDisplay(modal, false));
+        close.addEventListener("click", () => switchDisplay(modal, false));
     })
     // -------------------------------------------------------------------------------
     modalsClickClose().forEach(modal => {
         modal.addEventListener("click", (e) => {
             const element = e.target as Element;
 
-            if(modal.isSameNode(element)) globals.switchDisplay(modal, false);
+            if (modal.isSameNode(element)) switchDisplay(modal, false);
         })
     })
     // -------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ const modalsClickClose = () => { return [modal.config(), modal.help()] }
 // -------------------------------------------------------------------------------
 const addHelpTable = async(parent: Element) => {
     const table = await templates("table");
-    globals.translateElement(table);
+    translateElement(table);
 
     parent.querySelector(".modal-body")!.appendChild(table);
 }
@@ -49,26 +49,26 @@ const addHelpTable = async(parent: Element) => {
 export const modalsKeyEvents = (e: KeyboardEvent) => {
     const key = e.key.toLowerCase();
 
-    if(!e.ctrlKey) {
-        if(key === "f2") {
+    if (!e.ctrlKey) {
+        if (key === "f2") {
             e.preventDefault();
-            globals.switchDisplay(modal.config());
+            switchDisplay(modal.config());
         }
-        else if(key === "f12") {
+        else if (key === "f12") {
             e.preventDefault();
-            globals.switchDisplay(modal.help());
+            switchDisplay(modal.help());
         }
-        else if(key === "escape") hideModals();
+        else if (key === "escape") hideModals();
     }
 }
 // -------------------------------------------------------------------------------
 export const hideModals = () => {
-    allModals().forEach(modal => globals.switchDisplay(modal, false));
+    allModals().forEach(modal => switchDisplay(modal, false));
 }
 // -------------------------------------------------------------------------------
 export const openModals = (openmodals: [Element, Element][]) => {
     openmodals.forEach(([open, modal]) => {
-        open.addEventListener("click", () => globals.switchDisplay(modal, true));
+        open.addEventListener("click", () => switchDisplay(modal, true));
     })
 }
 // -------------------------------------------------------------------------------
