@@ -280,17 +280,17 @@ a {
     }
 }
 /* -------------------------------------------------------------------- */
+body:not(.dont-show-tips) .tooltiper:hover .tooltip {
+    visibility: visible;
+
+    transition-delay: 1s;
+    transition-property: visibility;
+
+    @include global.animation(reveal, 3s, 1);
+}
+
 .tooltiper {
     position: relative;
-
-    &:hover .tooltip {
-        visibility: visible;
-
-        transition-delay: 1s;
-        transition-property: visibility;
-
-        @include global.animation(reveal, 3s, 1);
-    }
 
     .tooltip {
         padding: 0.1em 0.8em;

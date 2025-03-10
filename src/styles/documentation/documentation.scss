@@ -39,7 +39,7 @@ main {
             $font-size: 1.35rem;
 
             padding-left: 0;
-            padding-right: default.$scrollbar-width/2;
+            padding-right: calc(default.$scrollbar-width/2);
 
             overflow-y: auto;
             max-height: calc($max-percentual * 100%);

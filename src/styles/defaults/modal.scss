@@ -2,7 +2,7 @@
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
 .mymodal {
-	$modal-border: 1em;
+	$modal-border: 1rem;
 
 	background-color: #{global.$black}70;
 
@@ -22,7 +22,6 @@
 		max-height: 85%;
 
 		@include global.defaultText;
-		@include global.flex($direction: column, $align: normal);
 
 		> * {
 			padding: 0 0.5em;
@@ -215,7 +214,7 @@
 		z-index: 92;
 
 		.modal-body {
-			@include global.size(18em);
+			width: 18em;
 			
 			.modal-header {
 				background: global.$fade-default;
@@ -230,6 +229,8 @@
 			}
 
 			.modal-main {
+				margin: 0.5em 0;
+
 				form {
 					gap: 0.8em;
 
@@ -241,7 +242,9 @@
 			}
 
 			.modal-footer {
-				padding: 0.2em 0;
+				padding-top: 0.2em;
+				padding-bottom: 0.2em;
+
 				background: global.$fade-default;
 				
 				#save-configs {

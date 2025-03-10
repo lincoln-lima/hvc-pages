@@ -23,15 +23,15 @@ export class Transformer {
 
     private async load(lang: string) {
         try {
-            if (lang.includes("en")) {
+            if (lang.match(/^en/)) {
                 this.translations = en;
                 this.currentLang = "en";
             }
-            else if (lang.includes("es")) {
+            else if (lang.match(/^es/)) {
                 this.translations = es;
                 this.currentLang = "es";
             }
-            else if (lang.includes("pt")) {
+            else if (lang.match(/^pt/)) {
                 this.translations = pt;
                 this.currentLang = "pt";
             }
@@ -45,17 +45,17 @@ export class Transformer {
     }
 
     private updateDOM() {
-        document.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+        if (this.currentLang != "pt") document.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
     }
 
     public updateSingle(element: Element) {
-        element.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+        if (this.currentLang != "pt") element.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
     }
 
     private updateTextElement(element: Element) {
         const key = element.getAttribute("data-lang");
 
-        if (key) element.textContent = this.getTranslation(key);
+        element.textContent = key ? this.getTranslation(key) : "not-informed";
     }
 
     private updateUrl(lang: string) {

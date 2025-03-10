@@ -1,29 +1,29 @@
 <table id="commands">
     <thead>
         <tr>
-            <th data-lang="table-command-title" scope="col"></th>
-            <th data-lang="table-description-title" scope="col"></th>
+            <th data-lang="table-command-title" scope="col">Comandos</th>
+            <th data-lang="table-description-title" scope="col">Descrição</th>
             <th scope="colgroup" colspan="5">Assembler</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>0EE</td>
-            <td data-lang="table-command-0ee-description" class="description"></td>
+            <td data-lang="table-command-0ee-description" class="description">copie valor da gaveta EE (cEE) para AC</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td colspan="3">cEE</td>
         </tr>
         <tr>
             <td>1EE</td>
-            <td data-lang="table-command-1ee-description" class="description"></td>
+            <td data-lang="table-command-1ee-description" class="description">copie valor do AC (cAC) para gaveta EE</td>
             <td>EE</td>
             <td class="operation arrow">&#8592;</td>
             <td colspan="3">cAC</td>
         </tr>
         <tr>
             <td>2EE</td>
-            <td data-lang="table-command-2ee-description" class="description"></td>
+            <td data-lang="table-command-2ee-description" class="description">some cEE ao AC</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td>cAC</td>
@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td>3EE</td>
-            <td data-lang="table-command-3ee-description" class="description"></td>
+            <td data-lang="table-command-3ee-description" class="description">subtraia de AC o cEE</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td>cAC</td>
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td>4EE</td>
-            <td data-lang="table-command-4ee-description" class="description"></td>
+            <td data-lang="table-command-4ee-description" class="description">multiplique o cAC por cEE</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td>cAC</td>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td>5EE</td>
-            <td data-lang="table-command-5ee-description" class="description"></td>
+            <td data-lang="table-command-5ee-description" class="description">divida o cAC por cEE</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td>cAC</td>
@@ -59,50 +59,50 @@
         </tr>
         <tr>
             <td>6EE</td>
-            <td data-lang="table-command-6ee-description" class="description"></td>
+            <td data-lang="table-command-6ee-description" class="description">se cAC > 0, vá para EE</td>
             <td>
-                <span data-lang="table-assembler-if"></span>
+                <span data-lang="table-assembler-if">se</span>
                 cAC > 0
             </td>
-            <td data-lang="table-assembler-then" class="operation"></td>
+            <td data-lang="table-assembler-then" class="operation">então</td>
             <td>EPI</td>
             <td class="operation arrow">&#8592;</td>
             <td>EE</td>
         </tr>
         <tr>
             <td>7EE</td>
-            <td data-lang="table-command-7ee-description" class="description"></td>
+            <td data-lang="table-command-7ee-description" class="description">leia um valor e guarda na gaveta EE</td>
             <td colspan="5">
-                <span data-lang="table-assembler-read"></span>
+                <span data-lang="table-assembler-read">leia</span>
                 (EE)
             </td>
         </tr>
         <tr>
             <td>8EE</td>
-            <td data-lang="table-command-8ee-description" class="description"></td>
+            <td data-lang="table-command-8ee-description" class="description">escreva cEE no dispositivo de saída</td>
             <td colspan="5">
-                <span data-lang="table-assembler-write"></span>
+                <span data-lang="table-assembler-write">escreva</span>
                 (EE)
             </td>
         </tr>
         <tr>
             <td>9EE</td>
-            <td data-lang="table-command-9ee-description" class="description"></td>
+            <td data-lang="table-command-9ee-description" class="description">vá para cEE</td>
             <td>EPI</td>
             <td class="operation arrow">&#8592;</td>
             <td colspan="3">cEE</td>
         </tr>
         <tr>
             <td>0-N</td>
-            <td data-lang="table-command-0-N-description" class="description"></td>
+            <td data-lang="table-command-0-N-description" class="description">AC recebe uma constante (truque)</td>
             <td>AC</td>
             <td class="operation arrow">&#8592;</td>
             <td colspan="3">N</td>
         </tr>
         <tr>
             <td>000</td>
-            <td data-lang="table-command-000-description" class="description"></td>
-            <td data-lang="table-assembler-end" colspan="5"></td>
+            <td data-lang="table-command-000-description" class="description">encerra execução</td>
+            <td data-lang="table-assembler-end" colspan="5">fim</td>
         </tr>
     </tbody>
 </table>

@@ -203,7 +203,7 @@
     "card-holder-list-item4": "A inserção de um cartão só pode ser feita por um usuário;",
     "card-holder-list-item5": "Quando o CHICO executa uma instrução de leitura do porta-cartões que se encontra vazio, é solicitado ao usuário que insira um novo cartão para que a execução do programa continue.",
 
-    "documentation-fig6-title": "Figura 5",
+    "documentation-fig6-title": "Figura 6",
     "documentation-fig6-label": "Porta-Cigarros (demonstrativo)",
 
     "output-sheet-title": "Folha de Saída",
@@ -360,8 +360,8 @@
     "remainder-division-code-comment13": "Fim do programa",
 
     "max-numbers-title": "Máximo entre dois números",
-    "max-numbers-descriptions1": "Neste algoritmo, queremos encontrar o maior entre dois números informados pelo usuário.",
-    "max-numbers-descriptions2": "Em linguagens de alto nível, podemos usar funções como max(a, b), mas na linguagem de máquina do HV precisamos implementar essa lógica manualmente.",
+    "max-numbers-description1": "Neste algoritmo, queremos encontrar o maior entre dois números informados pelo usuário.",
+    "max-numbers-description2": "Em linguagens de alto nível, podemos usar funções como max(a, b), mas na linguagem de máquina do HV precisamos implementar essa lógica manualmente.",
 
     "max-numbers-steps-1": "Ler os dois números do usuário e armazená-los nas gavetas 10 e 11.",
     "max-numbers-steps-2": "Carregar o primeiro número no acumulador.",
@@ -417,6 +417,7 @@
     "comparison-operations-title": "Operações de comparação",
     "comparison-operations-description1": "Neste conjunto de algoritmos, queremos verificar relações entre dois números informados pelo usuário, como igualdade, diferença e comparações de maior ou menor.",
     "comparison-operations-description2": "Em linguagens de alto nível, podemos usar operadores como",
+    "comparison-operations-description3": "No HV, precisamos implementar essa lógica manualmente usando operações de subtração e desvios condicionais.",
 
 	"comparison-operations-list-item1": "igualdade",
 	"comparison-operations-list-item2": "diferente",
@@ -535,8 +536,6 @@
     "lower-equal-code-comment16": "Escreva o resultado",
     "lower-equal-code-comment17": "Fim do programa",
 
-    "comparison-operations-description3": "No HV, precisamos implementar essa lógica manualmente usando operações de subtração e desvios condicionais.",
-
     "hvm-state-editing-title": "Edição",
     "hvm-state-editing-tip": "Modo de programação",
 
@@ -599,6 +598,7 @@
 
     "config-loading-state-title": "Estado de carga",
     "config-paused-debug-title": "Depuração pausada",
+    "config-show-tips-title": "Mostrar dicas",
 
     "config-save-title": "Salvar"
 }

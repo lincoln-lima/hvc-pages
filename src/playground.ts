@@ -87,12 +87,14 @@ export const paused = configmodal.querySelector<HTMLInputElement>("#paused")!;
 const dontask = document.getElementById("dont-ask")!;
 const formconfigs = document.getElementById("configs-form")!;
 const theme = document.querySelector<HTMLSelectElement>("#theme")!;
+const showtips = configmodal.querySelector<HTMLInputElement>("#show-tips")!;
 // -------------------------------------------------------------------------------
 theme.value = getTheme();
 
 delay.value = localStorage.getItem("delay-hvc") || "1000";
 skip.checked = localStorage.getItem("skip-hvc")! != "false";
 paused.checked = localStorage.getItem("paused-hvc")! != "false";
+showtips.checked = localStorage.getItem("show-tips")! != "false";
 // -------------------------------------------------------------------------------
 CodeEditor.getInstance().init(editor);
 
@@ -102,13 +104,24 @@ export const setCode =  (code: string) => CodeEditor.getInstance().setCode(code)
 hvc();
 ahv();
 // -------------------------------------------------------------------------------
+const showTips = (set: boolean) => document.body.classList.toggle("dont-show-tips", !set);
+
 const saveConfigs = () => {
     localStorage.setItem("delay-hvc", delay.value!);
     localStorage.setItem("skip-hvc", skip.checked.toString());
     localStorage.setItem("paused-hvc", paused.checked.toString());
+    
+    if(localStorage.getItem("show-tips") != showtips.checked.toString()) {
+        const isCheck = showtips.checked;
+
+        showTips(isCheck);
+        localStorage.setItem("show-tips", isCheck.toString());
+    }
 
     switchDisplay(configmodal, false);
 }
+// -------------------------------------------------------------------------------
+if(localStorage.getItem("show-tips") != "true") showTips(false);
 // -------------------------------------------------------------------------------
 theme.addEventListener("change", switchTheme);
 
