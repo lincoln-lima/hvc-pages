@@ -77,12 +77,12 @@ menu {
     list-style-type: none;
 }
 
-ul {
+ul, ol {
     padding-left: 1.1em;
 }
 
 ol {
-    padding-left: 4em;
+    margin-left: 2em;
 
     > li {
         position: relative;

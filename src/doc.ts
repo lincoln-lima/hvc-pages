@@ -3,7 +3,7 @@ import "/src/styles/documentation/documentation.scss";
 import { monitoreMenu } from "./globals";
 // -----------------------------------------------------------------------------------
 const windowsizemenu = 840;
-const windowsizenav = 1050;
+const windowsizenav = 1100;
 // -----------------------------------------------------------------------------------
 monitoreMenu(windowsizemenu);
 window.addEventListener("resize", () => monitoreMenu(windowsizemenu));

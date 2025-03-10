@@ -93,6 +93,34 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <ul>
+                        <li><a href="#exemplos"><strong>Exemplos práticos</strong></a></li>
+                        <li>
+                            <ul>
+                                <li><a href="#matematica"><em>Operações matemáticas</em></a></li>
+                                <ul>
+                                    <li><a href="#resto-divisao">Resto da divisão</a></li>
+                                    <li><a href="#max-numeros">Máximo entre dois números</a></li>
+                                    <li><a href="#raiz-quadrada">Raíz quadrada</a></li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#comparacao"><em>Operações de comparação</em></a></li>
+                                <ul>
+                                    <li><a href="#igualdade">Igualdade</a></li>
+                                    <li><a href="#diferente">Diferente</a></li>
+                                    <li><a href="#maior">Maior que</a></li>
+                                    <li><a href="#menor">Menor que</a></li>
+                                    <li><a href="#maior-igual">Maior ou igual</a></li>
+                                    <li><a href="#menor-igual">Menor ou igual</a></li>
+                                </ul>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <button class="show-nav"></button>
         </nav>
@@ -504,6 +532,320 @@
                         <p data-lang="repetition-loops-description3">O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações.</p>
                         <br>
                         <p data-lang="repetition-loops-description4">Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV e criam novos desafios para os seus programadores.</p>
+                    </article>
+                </article>
+            </section>
+            <section id="exemplos">
+                <h2>Exemplos práticos</h2>
+                <hr>
+                <p>
+                    A seguir serão demonstradas operações comuns na elaboração de algoritmos,
+                    sendo representadas como seu equivalente para o HV. Os exemplos seguem as limitações da linguagem, e incentivam o seu raciocínio.
+                </p>
+                <article id="matematica">
+                    <h3>Operações matemáticas</h3>
+                    <p>Diferente das operações aritméticas primordias que a linguagem dispõe de instruções para realizá-las, neste tópico estamos interessados em realizar cálculos que usam destas operações para nos fornecer outros resultados.</p>
+                    <article id="resto-divisao">
+                        <h4>Resto da divisão</h4>
+                        <p>Neste algoritmo, queremos calcular o resto da divisão entre dois números fornecidos pelo usuário. Chamaremos esses números de A e B, armazenando-os nas gavetas 30 e 31, respectivamente.</p>
+                        <br>
+                        <p>O resultado do resto da divisão será guardado na gaveta 32.</p>
+                        <br>
+                        <p>Uma coisa importante a se notar é que numa linguagem de alto nível teríamos um operador "%" para fazer cálculo do resto da divisão, operador esse que não temos na linguagem de máquina do HV.</p>
+                        <br>
+                        <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                        <ol>
+                            <li>Pegamos dois números do usuário, armazenamos A na gaveta 30 e B na gaveta 31.</li>
+                            <li>Se B for 0, o resto será 0.</li>
+                            <li>Enquanto o resto for maior ou igual a B, subtraímos B repetidamente.</li>
+                            <li>Quando não for mais possível subtrair, o valor restante será o resto da divisão, armazenado na gaveta 32.</li>
+                        </ol>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">730    ; <span class="comment">Leia o valor de A e armazene na gaveta 30</span>
+731    ; <span class="comment">Leia o valor de B e armazene na gaveta 31</span>
+030    ; <span class="comment">Carregue o valor de A no acumulador</span>
+132    ; <span class="comment">Armazene o valor de A na gaveta 32 (resto)</span>
+031    ; <span class="comment">Carregue o valor de B no acumulador</span>
+332    ; <span class="comment">Subtraia o valor de resto (gaveta 32)</span>
+611    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 11 (continua o loop)</span>
+032    ; <span class="comment">Carregue o valor de resto</span>
+331    ; <span class="comment">Subtraia B do resto</span>
+132    ; <span class="comment">Armazene o novo valor do resto</span>
+904    ; <span class="comment">Volte para a gaveta 04 (repete a verificação)</span>
+832    ; <span class="comment">Escreva o valor final do resto na saída</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="max-numeros">
+                        <h4>Máximo entre dois números</h4>
+                        <p>Neste algoritmo, queremos encontrar o maior entre dois números informados pelo usuário.</p>
+                        <br>
+                        <p>Em linguagens de alto nível, podemos usar funções como max(a, b), mas na linguagem de máquina do HV precisamos implementar essa lógica manualmente.</p>
+                        <br>
+                        <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                        <ol>
+                            <li>Ler os dois números do usuário e armazená-los nas gavetas 10 e 11.</li>
+                            <li>Carregar o primeiro número no acumulador.</li>
+                            <li>Subtrair o segundo número.</li>
+                            <li>Se o resultado for maior que zero, significa que o primeiro número é maior, então o imprimimos.</li>
+                            <li>Caso contrário, imprimimos o segundo número.</li>
+                        </ol>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">710    ; <span class="comment">Leia o primeiro número e armazene na gaveta 10</span>
+711    ; <span class="comment">Leia o segundo número e armazene na gaveta 11</span>
+010    ; <span class="comment">Carregue o valor da gaveta 10 no acumulador</span>
+311    ; <span class="comment">Subtraia o valor da gaveta 11 do acumulador</span>
+607    ; <span class="comment">Se o acumulador for maior que 0, vá para a gaveta 07 (imprime A)</span>
+811    ; <span class="comment">Escreva o valor da gaveta 11 (B, pois A não era maior)</span>
+908    ; <span class="comment">Vá para a gaveta 08 (fim do programa)</span>
+810    ; <span class="comment">Escreva o valor da gaveta 10 (A, pois era maior)</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="raiz-quadrada">
+                        <h4>Raíz quadrada</h4>
+                        <p>Este algoritmo calcula a raiz quadrada inteira de um número fornecido pelo usuário.</p>
+                        <br>
+                        <p>Em linguagens de alto nível, podemos usar a função math.sqrt(A), mas na linguagem HV não temos essa operação. Em vez disso, precisamos implementá-la manualmente usando somas sucessivas.</p>
+                        <br>
+                        <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                        <ol>
+                            <li>O usuário fornece um número, armazenado na gaveta 30.</li>
+                            <li>Inicializamos um contador na gaveta 51 e um acumulador de somas na gaveta 50.</li>
+                            <li>Somamos valores ímpares sucessivos ao acumulador até que ele atinja ou ultrapasse o número fornecido.</li>
+                            <li>O número de somas realizadas será a raiz quadrada inteira do valor.</li>
+                            <li>O resultado final é armazenado na gaveta 53 e impresso na saída.</li>
+                        </ol>
+                        <p>Este método se baseia no fato matemático de que a soma dos primeiros N números ímpares é igual a N². Assim, ao contar quantas somas são necessárias para atingir o número, encontramos sua raiz quadrada inteira.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">730    ; <span class="comment">Leia o número e armazene na gaveta 30</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+151    ; <span class="comment">Armazene 1 na gaveta 51 (contador, que representa a raiz aproximada)</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+150    ; <span class="comment">Armazene 0 na gaveta 50 (acumulador da soma)</span>
+050    ; <span class="comment">Carregue o acumulador da soma</span>
+450    ; <span class="comment">Multiplique o acumulador por ele mesmo (calcula quadrado)</span>
+152    ; <span class="comment">Armazene o resultado na gaveta 52</span>
+050    ; <span class="comment">Carregue o acumulador da soma</span>
+251    ; <span class="comment">Some o contador ao acumulador da soma (adiciona o próximo número ímpar)</span>
+150    ; <span class="comment">Armazene o novo valor na gaveta 50</span>
+052    ; <span class="comment">Carregue o quadrado atual</span>
+330    ; <span class="comment">Subtraia o número original (gaveta 30)</span>
+605    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 05 (termina o cálculo)</span>
+030    ; <span class="comment">Carregue o número original</span>
+352    ; <span class="comment">Subtraia o quadrado da raiz encontrada (gaveta 52)</span>
+605    ; <span class="comment">Se ainda for maior que 0, continua iterando</span>
+050    ; <span class="comment">Carregue o acumulador da soma</span>
+351    ; <span class="comment">Subtraia o contador atual</span>
+153    ; <span class="comment">Armazene o resultado na gaveta 53 (resultado final da raiz quadrada)</span>
+853    ; <span class="comment">Escreva o valor da raiz quadrada na saída</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                </article>
+                <article id="comparacao">
+                    <h3>Operações de comparação</h3>
+                    <p>Neste conjunto de algoritmos, queremos verificar relações entre dois números informados pelo usuário, como igualdade, diferença e comparações de maior ou menor.</p>
+                    <br>
+                    <p class="prequel">Em linguagens de alto nível, podemos usar operadores como</p>
+                    <ul>
+                        <li>
+                            ==
+                            <span>(igualdade);</span>
+                        </li>
+                        <li>
+                            !=
+                            <span>(diferente);</span>
+                        </li>
+                        <li>
+                            &gt;
+                            <span>(maior que);</span>
+                        </li>
+                        <li>
+                            &lt;
+                            <span>(menor que);</span>
+                        </li>
+                        <li>
+                            &gt;=
+                            <span>(maior ou igual a);</span>
+                        </li>
+                        <li>
+                            &lt;=
+                            <span>(menor ou igual a).</span>
+                        </li>
+                    </ul>
+                    <br>
+                    <p>No HV, precisamos implementar essa lógica manualmente usando operações de subtração e desvios condicionais.</p>
+                    <article id="igualdade">
+                        <h4>Igualdade</h4>
+                        <p>
+                            Este algoritmo verifica se dois números são iguais.
+                            Ele lê os valores do usuário, subtrai um do outro e verifica se a diferença é zero.
+                            Se for, imprime 1, indicando que os números são iguais. Caso contrário, imprime 0.
+                        </p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22 (resultado inicial)</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+612    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 12 (A != B)</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+612    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 12 (A != B)</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador (A == B)</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado (1 se A == B, 0 caso contrário)</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="diferente">
+                        <h4>Diferente</h4>
+                        <p>Aqui verificamos se dois números são diferentes. O processo é semelhante ao da igualdade, mas invertemos a lógica: se a subtração resultar em zero, significa que os números são iguais, então imprimimos 0; caso contrário, imprimimos 1.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22 (resultado inicial)</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+612    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 12 (A != B)</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+612    ; <span class="comment">Se o resultado for maior que 0, vá para a gaveta 12 (A != B)</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador (A == B)</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado (1 se A != B, 0 caso contrário)</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="maior">
+                        <h4>Maior que</h4>
+                        <p>Este algoritmo determina se um número é maior que o outro. Ele subtrai B de A e verifica se o resultado é positivo. Se for, significa que A é maior, então imprimimos 1. Caso contrário, imprimimos 0.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22 (resultado inicial)</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+608    ; <span class="comment">Se A > B, vá para a gaveta 08</span>
+910    ; <span class="comment">Vá para o final do programa</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="menor">
+                        <h4>Menor que</h4>
+                        <p>Aqui verificamos se A é menor que B. O processo é semelhante ao de "maior que", mas subtraímos A de B. Se o resultado for positivo, significa que A é menor, então imprimimos 1. Caso contrário, imprimimos 0.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22 (resultado inicial)</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+608    ; <span class="comment">Se B > A, vá para a gaveta 08</span>
+910    ; <span class="comment">Vá para o final do programa</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="maior-igual">
+                        <h4>Maior ou igual</h4>
+                        <p>Este algoritmo verifica se A é maior ou igual a B. Ele combina as lógicas de "maior que" e "igualdade". Se A for maior que B ou se os dois números forem iguais, imprimimos 1; caso contrário, imprimimos 0.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22 (resultado inicial)</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+613    ; <span class="comment">Se A >= B, vá para a gaveta 13</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+615    ; <span class="comment">Se A == B, vá para a gaveta 15</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+615    ; <span class="comment">Se B == A, vá para a gaveta 15</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="menor-igual">
+                        <h4>Menor ou igual</h4>
+                        <p>Semelhante ao caso anterior, mas verificamos se A é menor ou igual a B. Se A for menor que B ou se forem iguais, imprimimos 1; caso contrário, imprimimos 0.</p>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">720    ; <span class="comment">Leia o primeiro número e armazene na gaveta 20</span>
+721    ; <span class="comment">Leia o segundo número e armazene na gaveta 21</span>
+0-0    ; <span class="comment">Carregue 0 no acumulador</span>
+122    ; <span class="comment">Armazene 0 na gaveta 22 (resultado inicial)</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+613    ; <span class="comment">Se B >= A, vá para a gaveta 13</span>
+020    ; <span class="comment">Carregue A no acumulador</span>
+321    ; <span class="comment">Subtraia B do acumulador</span>
+615    ; <span class="comment">Se A == B, vá para a gaveta 15</span>
+021    ; <span class="comment">Carregue B no acumulador</span>
+320    ; <span class="comment">Subtraia A do acumulador</span>
+615    ; <span class="comment">Se B == A, vá para a gaveta 15</span>
+0-1    ; <span class="comment">Carregue 1 no acumulador</span>
+122    ; <span class="comment">Armazene 1 na gaveta 22</span>
+822    ; <span class="comment">Escreva o resultado</span>
+000    ; <span class="comment">Fim do programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
                     </article>
                 </article>
             </section>
