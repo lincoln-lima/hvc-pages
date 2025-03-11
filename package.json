@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^22.13.0",
-    "sass": "^1.83.4",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11"
+    "@types/node": "^22.13.10",
+    "sass": "^1.85.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1"
   },
   "dependencies": {
     "codemirror": "^6.0.1",
-    "hvcjs": "^2.0.7"
+    "hvcjs": "^2.0.8"
   }
 }

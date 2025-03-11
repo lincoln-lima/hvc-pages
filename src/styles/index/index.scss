@@ -7,28 +7,20 @@ main {
 
     @include global.center;
 
-    div:has(h2) {
-        text-align: center;
-    }
-
     .tooltiper {
+        width: fit-content;
+        @include global.center;
         @include global.middle;
 
         .come-to-play {
-            width: fit-content;
+            border-radius: 0.6em;
+            padding: 0.2em 0.6em;
 
-            @include global.middle;
-            @include global.center;
-            
-            button {
-                border-radius: 0.6em;
-                padding: 0.2em 0.6em;
-
-                @include global.faded-button;
-            }
+            @include global.faded-button;
         }
 
         .tooltip {
+            width: max-content;
             top: calc(100% + default.$tooltip-size-arr * 2);
 
             &::after {
@@ -40,8 +32,30 @@ main {
             }
         }
     }
+
+    .container:has(#descricao-hv) {
+        min-height: 90vh;
+        margin-bottom: 15vh;
+
+        @include global.flex($justify: space-evenly, $wrap: wrap-reverse, $gap: 1em);
+
+        section#descricao-hv {
+            max-width: 28em;
+
+            @include global.flex($direction: column, $gap: 0.75em);
+
+            h1 {
+                margin-bottom: 0;
+            }
+        }
+
+        img {
+            max-width: 90%;
+            padding: 1em 0;
+        }
+    }
     
-    section {
+    section:not(#descricao-hv) {
         max-width: 75em;
         margin-bottom: 10vh;
 
@@ -50,141 +64,45 @@ main {
         article {
             padding-top: index.$header-height;
             padding-bottom: calc(index.$header-height * 0.5);
-        }
 
-        &#descricao-hv {
-            min-height: 90vh;
-            margin-bottom: 15vh;
+            h3 {
+                text-transform: uppercase;
 
-            @include global.flex($justify: space-around, $wrap: wrap-reverse);
-
-            article {
-                max-width: 30em;
-                min-height: 30em;
-
-                padding: 1em 0.5em;
-
-                @include global.flex($direction: column);
-
-                hr {
-                    margin: 1em 0;
-                }
+                margin-bottom: 0.5em;
+                @include global.setFont(title);
             }
 
-            img {
-                max-width: 100%;
-            }
-        }
-
-        &#instale {
-            article {
-                $margin-side: 0.5em;
-
-                .icones-so {
-                    float: left;
-                    margin-right: $margin-side;
-                }
-
+            &:nth-child(even) {
                 h3 {
-                    line-height: index.$icon-so-height;
+                    color: global.$color3;
                 }
+            }
 
-                ol {
-                    margin-top: 3em;
-                    margin-left: calc($margin-side * 2.5);
-
-                    li {
-                        $margin-side: calc($margin-side * 1.5);
-                        
-                        position: relative;
-                        margin-bottom: 2.5em;
-
-                        &::marker {
-                            content: counter(list-item);
-                            color: global.$white;
-                            font-size: 1.1em;
-
-                            @include global.setFont(title);
-                        }
-
-                        &::before {
-                            content: "";
-                            
-                            position: absolute;
-                            z-index: -1;
-
-                            top: 6px;
-                            left: -1.3em;
-
-                            background-color: global.$color1;
-
-                            @include global.circle;
-                            @include global.size(1.8em);
-                        }
-
-                        > span {
-                            display: block;
-                            color: global.$color1;
-
-                            font-size: 1.6em;
-                            font-weight: 600;
-
-                            margin-left: $margin-side;
-
-                            @include global.setFont(subtitle);
-                        }
-                        
-                        p {
-                            margin-left: calc($margin-side * 1.15);
-                        }
-
-                        .pre-code {
-                            margin-top: 1.5em;
-                            margin-left: calc($margin-side * 1.8);
-
-                            align-items: center;
-
-                            code {
-                                margin-right: $margin-side;
-                            }
-                        }
-                    }
+            &:nth-child(odd) {
+                h3 {
+                    color: global.$color1;
                 }
+            }
+        }
+
+        img {
+            float: right;
+            margin-left: 2em;
+
+            max-width: 100%;
+            
+            @media screen and (max-width: index.$figures-responsive-width) {
+                float: none;
+                display: block;
+
+                margin-bottom: 1em;
+
+                @include global.center;
             }
         }
 
         &#aprenda {
             article {
-                h3 {
-                    text-transform: uppercase;
-
-                    margin-bottom: 0.5em;
-                    @include global.setFont(title);
-                }
-
-                &:nth-child(even) h3 {
-                    color: global.$color3;
-                }
-
-                &:nth-child(odd) h3 {
-                    color: global.$color1;
-                }
-
-                img {
-                    float: right;
-                    display: block;
-
-                    padding: 1em;
-                    max-width: 100%;
-
-                    @include global.center;
-
-                    @media screen and (max-width: index.$content-responsive-width) {
-                        float: none;
-                        padding: 1em 0;
-                    }
-                }
-
                 &#hv {
                     ul {
                         margin: 1em 0;
@@ -192,32 +110,42 @@ main {
                 }
 
                 &#assembly {
-                    #table {
+                    .scroll-table {
                         overflow-x: auto;
                     }
                 }
+            }
+        }
 
-                &#como {
-                    pre {
-                        max-width: 40em;
-
-                        padding: 1em;
+        &#practice {
+            article {
+                &#algoritmos {
+                    ol {
                         margin-top: 1em;
+                        margin-bottom: 1em;
                     }
                 }
 
-                &#playground {
-                    .come-to-play {
-                        margin-top: 2em;
-                    }
+                .pre-code:first-of-type {
+                    max-width: 35em;
                 }
+            }
+        }
+
+        &#about {
+            h2 {
+                margin-bottom: 0.5em;
             }
         }
     }
 
     @media screen and (max-width: index.$font-responsive-width) {
-        h1, h2, h3 {
+        h1, h2 {
             font-size: 12vw;
+        }
+
+        h3 {
+            font-size: 9vw;
         }
 
         .come-to-play {

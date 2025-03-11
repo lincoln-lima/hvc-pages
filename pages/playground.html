@@ -4,97 +4,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HVC - Playground</title>
 
-    <link rel="icon" href="/img/gavetinha.ico" type="image/x-icon">
+    <meta name="description" content="O HVC é uma ferramenta on-line para o aprendizado de programação com base no modelo didático Computador à Gaveta">
+    <meta name="keywords" content="HV, HVC, computador, gaveta, aprender, programação, algoritmos, computação, linguagem de máquina, UFMS, playground">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HV Compiler | Playground">
+    <meta property="og:url" content="https://hvcomp.io/pages/playground.html">
+    <meta property="og:description" content="O HVC é uma ferramenta on-line para o aprendizado de programação com base no modelo didático Computador à Gaveta">
+
+    <meta property="og:image" content="https://hvcomp.io/img/gaveta-logo.png">
+    <meta property="og:image:alt" content="drawer icon">
+
+    <title>HVC | Playground</title>
+
+    <link rel="icon" href="/img/gavetinha.svg" type="image/x-icon">
 </head>
 
 <body>
-    <header id="header-play">
+    <header class="play">
         <nav>
-            <section id="states-view" class="editing">
-                <article id="editing-state" class="state tooltiper">
+            <div class="states-view editing">
+                <div id="editing-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Edição</span>
+                        <span data-lang="hvm-state-editing-title" class="hvm-state">Edição</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Modo de programação</span></div>
-                </article>
-                <article id="charging-state" class="state tooltiper">
+                    <div class="tooltip"><span data-lang="hvm-state-editing-tip" class="tooltip-text">Modo de programação</span></div>
+                </div>
+                <div id="loading-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Carga</span>
+                        <span data-lang="hvm-state-loading-title" class="hvm-state">Carga</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Leitura do porta-cartões</span></div>
-                </article>
-                <article id="running-state" class="state tooltiper">
+                    <div class="tooltip"><span data-lang="hvm-state-loading-tip" class="tooltip-text">Leitura do porta-cartões</span></div>
+                </div>
+                <div id="running-state" class="state tooltiper">
                     <div class="state-data">
                         <span class="dot-state"></span>
-                        <span class="hvm-state">Execução</span>
+                        <span data-lang="hvm-state-running-title" class="hvm-state">Execução</span>
                     </div>
-                    <div class="tooltip"><span class="tooltip-text">Executando instruções</span></div>
-                </article>
-            </section>
+                    <div class="tooltip"><span data-lang="hvm-state-running-tip" class="tooltip-text">Executando instruções</span></div>
+                </div>
+            </div>
             <menu class="primary-menu">
                 <li>
                     <div class="tooltiper">
                         <button id="debug" class="link-nav-1">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Depurar</span>
+                            <span data-lang="menu-debug-title" class="label-tool">Depurar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Passo a passo (F8)</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-debug-tip">Passo a passo</span>
+                                <kbd>(F8)</kbd>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="run" class="link-nav-1">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Executar</span>
+                            <span data-lang="menu-run-title" class="label-tool">Executar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Imediato (F9)</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-run-tip">Imediato</span>
+                                <kbd>(F9)</kbd>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="import" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Importar</span>
+                            <span data-lang="menu-import-title" class="label-tool">Importar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Selecionar arquivo...</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <samp data-lang="menu-import-tip">Selecionar arquivo</samp><span>...</span>
+                            </span>
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <div class="tooltiper">
+                    <div class="tooltiper contracted">
                         <button id="export" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Exportar</span>
+                            <span data-lang="menu-export-title" class="label-tool">Exportar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Download de código</span></div>
+                        <div class="tooltip"><span data-lang="menu-export-tip" class="tooltip-text">Download do código</span></div>
                     </div>
-                    <button class="expand link-nav-2"></button>
-                    <div class="tooltiper contract">
+                    <div class="tooltiper">
                         <button id="share" class="link-nav-2">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Partilhar</span>
+                            <span data-lang="menu-share-title" class="label-tool">Partilhar</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Copiar e enviar código</span></div>
+                        <div class="tooltip"><span data-lang="menu-share-tip" class="tooltip-text">Copiar e enviar código</span></div>
                     </div>
+                    <button class="expand link-nav-2"></button>
                 </li>
                 <li>
                     <div class="tooltiper">
                         <button id="config" class="link-nav-3">
                             <span class="icon-tool"></span>
-                            <span class="label-tool">Configurar</span>
+                            <span data-lang="menu-configuration-title" class="label-tool">Configurações</span>
                         </button>
-                        <div class="tooltip"><span class="tooltip-text">Opções (F2)</span></div>
-                    </div>
-                    <button class="expand link-nav-3"></button>
-                    <div class="tooltiper contract">
-                        <a class="home link-nav-3">
-                            <span class="icon-tool"></span>
-                            <span class="label-tool">Início</span>
-                        </a>
-                        <div class="tooltip"><span class="tooltip-text">Página inicial</span></div>
+                        <div class="tooltip">
+                            <span class="tooltip-text">
+                                <span data-lang="menu-configuration-tip">Opções</span>
+                                <kbd>(F2)</kbd>
+                            </span>
+                        </div>
                     </div>
                 </li>
             </menu>
@@ -102,81 +125,106 @@
         </nav>
     </header>
     <main>
-        <section id="playground">
-            <article id="porta-cartoes" class="tooltiper">
-                <div class="tooltip"><span class="tooltip-text">Porta-Cartões</span></div>
-                <div id="scroll-tablecards">
-                    <table id="cards"></table>
+        <div id="playground">
+            <div id="porta-cartoes" class="tooltiper">
+                <div class="tooltip"><span data-lang="card-holder-tip" class="tooltip-text">Porta-Cartões</span></div>
+                <div class="scroll-tablecards">
+                    <table class="cards"></table>
                 </div>
-            </article>
+                <div class="container-editor"></div>
+            </div>
             <div class="debuggers">
                 <div class="viewers">
-                    <div id="contorno-epi">
-                        <article id="epi" class="tooltiper">
-                            <span id="epi-value" class="viewers-values"></span>
-                            <div class="tooltip"><span class="tooltip-text">EPI</span></div>
-                        </article>
+                    <div class="container-epi">
+                        <div id="epi" class="tooltiper">
+                            <span class="viewers-values"></span>
+                            <div class="tooltip"><span data-lang="epi-tip" class="tooltip-text">EPI</span></div>
+                        </div>
                     </div>
-                    <article id="acumulador" class="tooltiper">
-                        <span id="overlay" class="viewers-values">000</span>
-                        <span id="acumulador-value" class="viewers-values"></span>
-                        <div class="tooltip"><span class="tooltip-text">Acumulador</span></div>
-                    </article>
-                    <article id="folha-de-saida" class="tooltiper">
-                        <span id="saida-value" class="viewers-values"></span>
-                        <div class="tooltip"><span class="tooltip-text">Folha de Saída</span></div>
-                    </article>
+                    <div id="acumulador" class="tooltiper">
+                        <span class="viewers-values"></span>
+                        <span class="overlay viewers-values">000</span>
+                        <div class="tooltip"><span data-lang="accumulator-tip" class="tooltip-text">Acumulador</span></div>
+                    </div>
+                    <div id="folha-de-saida" class="tooltiper">
+                        <span class="viewers-values"></span>
+                        <div class="tooltip"><span data-lang="output-sheet-tip" class="tooltip-text">Folha de Saída</span></div>
+                    </div>
                 </div>
-                <article id="gaveteiro" class="tooltiper">
+                <div id="gaveteiro" class="tooltiper">
                     <div class="tooltip">
                         <div>
-                            <article class="little-drawer code"></article>
-                            <span>Código</span>
+                            <div class="little-drawer code"></div>
+                            <span data-lang="drawer-code-tip">Código</span>
                         </div>
                         <div>
-                            <article class="little-drawer data"></article>
-                            <span>Dado</span>
+                            <div class="little-drawer data"></div>
+                            <span data-lang="drawer-data-tip">Dado</span>
                         </div>
                         <div>
-                            <article class="little-drawer pointed"></article>
-                            <span>EPI</span>
+                            <div class="little-drawer pointed"></div>
+                            <span data-lang="drawer-epi-tip">EPI</span>
                         </div>
                     </div>
-                    <div id="scroll-gaveteiro"></div>
-                </article>
+                    <div class="scroll-gaveteiro"></div>
+                </div>
             </div>
-            <section id="debug-menu">
+            <div class="debug-menu unvisible">
                 <menu>
-                    <li id="back" class="tooltiper">
-                        <div class="tooltip">
-                            <span class="tooltip-text">Ctrl + &#8678;</span>
-                        </div>
-                    </li>
-                    <li id="pause-continue" class="pause tooltiper">
-                        <div class="tooltip">
-                            <span class="tooltip-text">Ctrl+Espaço</span>
-                        </div>
-                    </li>
-                    <li id="finish" class="tooltiper">
-                        <div class="tooltip">
-                            <span class="tooltip-text">Ctrl+C</span>
-                        </div>
-                    </li>
-                    <li id="forth" class="tooltiper">
-                        <div class="tooltip">
-                            <span class="tooltip-text">Ctrl + &#8680;</span>
-                        </div>
-
-                    </li>
+                    <li id="back"></li>
+                    <li id="pause-continue"></li>
+                    <li id="finish"></li>
+                    <li id="forth"></li>
                 </menu>
-            </section>
-        </section>
+            </div>
+        </div>
     </main>
-    <button id="help" class="tooltiper">
-        <div class="tooltip"><span class="tooltip-text">Ajuda (F12)</span></div>
-    </button>
+    <div class="fixed-container">
+        <div class="more-options unvisible">
+            <div class="tooltiper">
+                <a class="home"></a>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="home-tip">Página inicial</span>
+                    </span>
+                </div>
+            </div>
+            <div class="tooltiper">
+                <button id="clear"></button>
+                <div class="tooltip">
+                    <span data-lang="clear-tip" class="tooltip-text">Limpar exibição</span>
+                </div>
+            </div>
+            <div class="tooltiper">
+                <button id="help"></button>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="help-tip">Ajuda</span>
+                        <kbd>(F12)</kbd>
+                    </span>
+                </div>
+            </div>
+            <div class="tooltiper">
+                <button id="save-code"></button>
+                <div class="tooltip">
+                    <span class="tooltip-text">
+                        <span data-lang="save-tip">Salvar código</span>
+                        <kbd>(Ctrl+S)</kbd>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="tooltiper">
+            <button class="show-options"></button>
+            <div class="tooltip">
+                <span class="tooltip-text">
+                    <span data-lang="show-options-tip">Exibir mais</span>
+                </span>
+            </div>
+        </div>
+    </div>
 
-    <script src="/src/default.ts" type="module"></script>
+    <script src="/src/main.ts" type="module"></script>
     <script src="/src/playground.ts" type="module"></script>
 </body>
 

@@ -1,4 +1,5 @@
 @use '../globals' as global;
+@use '../defaults/default' as default;
 @use './doc' as doc;
 // ------------------------------------------------------------------------------- 
 main {
@@ -7,94 +8,96 @@ main {
     @include global.center;
     @include global.flex($align: flex-start);
 
-    #sticky-nav {
+    .sticky-nav {
         $max-percentual: 0.8;
-
-        position: sticky;
         max-width: calc($max-percentual * 100%);
-        top: doc.$header-height;
 
-        z-index: 999;
+        z-index: 9;
+        position: sticky;
+        top: doc.$header-height;
+        right: - doc.$sticky-nav-width;
 
         transition: 0.5s;
-        
+
         @include global.middle;
         @include global.size(doc.$sticky-nav-width, doc.$sticky-nav-height);
+
+        @media screen and (max-width: calc(doc.$sticky-nav-width / $max-percentual)) {
+            right: - calc($max-percentual * 100%);
+        }
 
         @media screen and (max-width: doc.$content-responsive-width) {
             position: fixed;
         }
 
-        &.retracted {
-            right: - doc.$sticky-nav-width;
-                
-            @media screen and (max-width: calc(doc.$sticky-nav-width / $max-percentual)) {
-                right: - calc($max-percentual * 100%);
-            }
-        }
-
         &.expanded {
             right: 0;
         }
-        
-        menu {
-            $font-size: 1.35rem;
-            $radius: 1em;
 
-            max-height: calc($max-percentual * 100%);
+        .content-menu {
+            $radius: 1em;
+            $font-size: 1.35rem;
+
+            padding-left: 0;
+            padding-right: calc(default.$scrollbar-width/2);
+
             overflow-y: auto;
-            
+            max-height: calc($max-percentual * 100%);
+
             background-color: doc.$color-menu;
-            
-            border-top-left-radius: calc($radius * 1.6);
-            border-bottom-left-radius: calc($radius * 1.6);
+
+            border-top-left-radius: $radius;
+            border-bottom-left-radius: $radius;
 
             * {
-                font-size: $font-size;
                 text-align: left;
+                font-size: $font-size;
+            }
+
+            &, ul {
+                list-style-type: none;
             }
 
             ul {
-                padding-left: 1em;
-                list-style-type: none;
-
                 border-left: 0.25em solid transparent;
 
                 @media screen and (max-width: calc(doc.$sticky-nav-width / $max-percentual)) {
                     padding-left: 0.5em;
                 }
             }
-            
-            li {
-                padding: 0 0.5em;
 
+            li {
                 border-top-left-radius: $radius;
                 border-bottom-left-radius: $radius;
-                
-                &:has(+ul) {
+
+                &:has(+li > ul) {
                     border-bottom-left-radius: 0;
                 }
 
-                & + ul {
+                & + li > ul {
                     padding-top: 0.1em;
                     padding-bottom: 0.1em;
                 }
-                
-                &:hover {
-                    background-color: global.$color1;
-                    font-weight: bold;
-                    
-                    & + ul {
-                        background-color: #{global.$black}15;
-                        border-left-color: global.$color1;
-                    }
-                }
 
-                &:active {
-                    background-color: global.$color2;
-                    
-                    & + ul {
-                        border-left-color: global.$color2;
+                &:not(:has(> ul)) {
+                    padding-left: 0.5em;
+
+                    &:hover {
+                        font-weight: bold;
+                        background-color: global.$color1;
+
+                        &:has(+li > ul) ~ li > ul {
+                            border-left-color: global.$color1;
+                            background-color: #{global.$black}15;
+                        }
+                    }
+
+                    &:active {
+                        background-color: global.$color2;
+
+                        &:has(+li > ul) ~ li > ul {
+                            border-left-color: global.$color2;
+                        }
                     }
                 }
 
@@ -104,28 +107,26 @@ main {
             }
         }
 
-        #show-nav {
+        .show-nav {
             $size: 2.5em;
 
-            position: fixed;
-            z-index: 999;
             top: 50%;
+            z-index: 9;
+            position: fixed;
 
             border-radius: $size 0 0 $size;
+
+            right: 0;
+
+            &::before {
+                content: "\25c0";
+            }
 
             @include global.faded-button;
             @include global.size(calc($size/2), $size);
 
             @media screen and (min-width: (doc.$content-responsive-width + 1)) {
                 display: none;
-            }
-            
-            &.retracted {
-                right: 0;
-                
-                &::before {
-                    content: "\25c0";
-                }
             }
 
             &.expanded {
@@ -135,7 +136,7 @@ main {
                 @media screen and (max-width: calc(doc.$sticky-nav-width / $max-percentual)) {
                     right: calc($max-percentual * 100%);
                 }
-                
+
                 &::before {
                     content: "\25b6";
                 }
@@ -144,21 +145,28 @@ main {
     }
 
     .content {
-        width: doc.$content-width;
         margin-bottom: 1em;
-        
+        width: doc.$content-width;
+
         @media screen and (max-width: doc.$content-responsive-width) {
-            width: doc.$main-width;
+            width: 100%;
             @include global.center;
         }
 
         section {
             padding-top: doc.$header-height;
 
+            &#exemplos {
+                ol {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
             ul {
                 margin-top: 1em;
             }
-            
+
             figure {
                 padding: 2.5em 0;
                 text-align: center;
@@ -166,7 +174,7 @@ main {
                 figcaption {
                     margin-bottom: 0.5em;
                 }
-                
+
                 img {
                     max-width: 100%;
 
@@ -174,16 +182,23 @@ main {
                 }
             }
 
-            .pre-code {
-                margin: 1.5em 0;
-            }
-            
             article {
                 padding-top: doc.$header-height;
 
                 &#instrucoes {
                     ul {
                         list-style-type: disclosure-closed;
+
+                        li:not(:last-child) {
+                            margin-bottom: 1em;
+                        }
+                    }
+                }
+
+                &#comparacao {
+                    ul {
+                        margin-top: 0;
+                        list-style-type: square;
                     }
                 }
             }
@@ -191,8 +206,13 @@ main {
     }
 
     @media screen and (max-width: doc.$font-responsive-width) {
-        h1, h2, h3, h4 {
+        h1 {
+            font-size: 12vw;
+        }
+
+        h2 {
             font-size: 10vw;
         }
+
     }
 }

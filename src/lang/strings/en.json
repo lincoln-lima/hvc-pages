@@ -1,3 +1,604 @@
 {
-    "main-description": "HV Script is a language that allows you to program an assembly language, with the HV-2 computer. It was created to serve as a compiler for the HV-2 computer language."
+    "main-description1-article": "The",
+    "main-description1-definition": "is an interpreter that allows you to execute code written in the HV machine language, used in the HV-2 hypothetical computer.",
+    "main-description2": "Designed as a teaching tool, it aims to facilitate the assimilation of basic computer concepts, giving an introduction to the development of algorithms and programming languages.",
+
+    "learn-title": "Learn",
+
+    "hv-computer-title": "HV Computer",
+
+    "hv-computer-description1": "Imagine a hypothetical computer created entirely for didactic purposes, dedicated to making it possible to teach programming by means of a basic demonstration of how it works... that's HV.",
+    "hv-computer-description2": "Its language has simple but ingenious instructions, capable of building complex and refined algorithms.",
+    "hv-computer-description3": "In its construction, the HV computer has",
+
+    "hv-computer-list-item1": "A chest of drawers with 100 drawers",
+    "hv-computer-list-item2": "Calculator, display and keyboard",
+    "hv-computer-list-item3": "Blackboard (EPI)",
+    "hv-computer-list-item4": "Card holder",
+    "hv-computer-list-item5": "Output sheet",
+    "hv-computer-list-item6": "System operator (CHICO)",
+
+    "hv-computer-description4": "By abstracting sophisticated concepts, the student will be able to assimilate the basics of programming, while also acquiring intuitive notions of computer architecture.",
+    "hv-computer-description5": "The complete material on its structure and operation is available in the file",
+
+    "hv-machine-language-title": "HV Machine Language",
+
+    "hv-machine-language-description1": "It is a low-level programming language, with a flexible syntax that makes it easy to understand how to solve problems and create algorithms.",
+    "hv-machine-language-description2": "Its instructions are succinct. In short, they specify an operating code and the address of a drawer.",
+
+    "table-command-title": "Commands",
+    "table-description-title": "Description",
+
+    "table-assembler-then": "then",
+    "table-assembler-read": "read",
+    "table-assembler-write": "write",
+    "table-assembler-if": "if",
+    "table-assembler-end": "end",
+
+    "table-command-0ee-description": "copy value from EE drawer (cEE) to AC",
+    "table-command-1ee-description": "copy value from AC (cAC) to EE drawer",
+    "table-command-2ee-description": "sum cEE to AC",
+    "table-command-3ee-description": "subtract cEE from AC",
+    "table-command-4ee-description": "multiply cAC by cEE",
+    "table-command-5ee-description": "divide cAC by cEE",
+    "table-command-6ee-description": "if cAC > 0, go to EE",
+    "table-command-7ee-description": "read a value and put it in the EE drawer",
+    "table-command-8ee-description": "write cEE to the output device",
+    "table-command-9ee-description": "go to cEE",
+    "table-command-0-N-description": "AC receives a constant (trick)",
+    "table-command-000-description": "terminates execution",
+
+    "practice-title": "Practice",
+
+    "building-algorithms-title": "Building algorithms",
+    "building-algorithms-description1": "This algorithm calculates the nth term of the Fibonacci sequence using an iterative method, following the logic of the reference pseudocode.",
+    "building-algorithms-description2-begin": "In contrast to high-level languages, where we can simply use repetition loops and auxiliary variables, in the HV language we need to",
+    "building-algorithms-description2-mark": "manually manage operations and flow control",
+    "building-algorithms-description2-end": "to update the sequence values.",
+
+    "algorithms-steps": "Algorithm steps",
+    "function-code-reserved": "function",
+    "for-code-reserved": "for",
+    "to-code-reserved": "to",
+    "do-code-reserved": "do",
+    "return-code-reserved": "return",
+    
+    "fibonacci-steps-1-begin": "Read the value of",
+    "fibonacci-steps-1-end": "which represents the desired term of the sequence.",
+    "fibonacci-steps-2-begin": "Initialize",
+    "fibonacci-steps-2-middle": "= 0 (Fibonacci of 0) and",
+    "fibonacci-steps-2-end": "= 1 (Fibonacci of 1).",
+    "fibonacci-steps-3-begin": "If",
+    "fibonacci-steps-3-end": "the result is 0.",
+    "fibonacci-steps-4-begin": "Otherwise, iterate",
+    "fibonacci-steps-4-end": "times:",
+    "fibonacci-steps-4-subtopic-1": "Calculate",
+    "fibonacci-steps-4-subtopic-2": "Assign",
+    "fibonacci-steps-5": "At the end of the loop, it will contain the nth term of the sequence, which is printed on the output.",
+
+	"fibonacci-code-comment1": "Read the value of n and store it in drawer 25",
+	"fibonacci-code-comment2": "Load 0 into the accumulator",
+	"fibonacci-code-comment3": "Store 0 in drawer 26 (i = 0)",
+	"fibonacci-code-comment4": "Store 0 in drawer 27 (counter auxiliary)",
+	"fibonacci-code-comment5": "Load 1 into the accumulator",
+	"fibonacci-code-comment6": "Store 1 in drawer 28 (j = 1)",
+	"fibonacci-code-comment7": "Store 1 in drawer 29 (auxiliary number 1)",
+	"fibonacci-code-comment8": "Load n into the accumulator",
+	"fibonacci-code-comment9": "Subtract (counter auxiliary)",
+	"fibonacci-code-comment10": "If n - (counter auxiliary) == 0, go to drawer 11 (loop body)",
+	"fibonacci-code-comment11": "Go to drawer 22 (end loop)",
+	"fibonacci-code-comment12": "Load i",
+	"fibonacci-code-comment13": "Sum j (t = i + j)",
+	"fibonacci-code-comment14": "Store in the drawer 30 (t = i + j)",
+	"fibonacci-code-comment15": "Load j",
+	"fibonacci-code-comment16": "Store in i (i = j)",
+	"fibonacci-code-comment17": "Load t",
+	"fibonacci-code-comment18": "Store in j (j = t)",
+	"fibonacci-code-comment19": "Load the (auxiliary counter)",
+	"fibonacci-code-comment20": "Add 1 to the (counter auxiliary)",
+	"fibonacci-code-comment21": "Store the new value in the (auxiliary counter)",
+	"fibonacci-code-comment22": "Back to the loop check",
+	"fibonacci-code-comment23": "Write the final result (i)",
+	"fibonacci-code-comment24": "End of program",
+
+    "building-algorithms-description3": "This method follows the mathematical principle of the definition of the Fibonacci sequence, where each term is the sum of the previous two:",
+
+    "hvcjs-description1": "This is a modularized version of the compiler",
+    "original-hvc": "original HVC",
+    "hvcjs-description2": "designed to be made available as an npm module.",
+    "hvcjs-description3": "This approach allows for the efficient distribution and maintenance of the tools developed by our team.",
+    "hvcjs-description4": "The module aims to facilitate the creation of new teaching applications that use the Drawer Computer, through a simple and intuitive interface.",
+
+    "developers-title": "Developers",
+    "colaborators-title": "Colaborators",
+    "supervisor-title": "Supervisor",
+    "designer-title": "Designer",
+
+    "playground-description1": "This online environment acts as a powerful learning tool, given its interactive features for developing algorithms and writing code in the HV language, allowing it to be tested in real time.",
+    "playground-description2": "It works in accordance with the limitations imposed by the structure of the hypothetical computer, but has features that help the developer, such as error detection and a step-by-step debugging mode.",
+
+    "about-project-title": "About the project",
+
+    "about-project-description1": "The HV hypothetical computer was a model proposed by professors Routo Terada and Waldemar W. Setze in the book",
+    "book-title": "“Introduction to Computing and the Construction of Algorithms”.",
+
+    "about-project-description2": "The software implementation of these concepts is part of a Guided Teaching Activity developed by us undergraduates at the",
+    "facom": "Faculty of Computing (FACOM)",
+    "ufms": "Federal University of Mato Grosso do Sul (UFMS)",
+    "about-project-description3": "The source code for the HV machine language interpreter, as well as the instructions for deploying it in other environments, is available in its repository on GitHub.",
+
+    "come-to-play-title": "come to play",
+    "come-to-play-tip": "but only if you can play",
+
+    "playground-title": "Playground",
+    "documentation-title": "Documentation",
+    "repository-title": "Repository",
+
+    "drawer-computer-title": "Drawer Computer",
+    "drawer-computer-description1": "Situated in the midst of the current programming scenario, the relationship between the programmer and the machine, once more evident, has become challenging for new developers. The increased similarity between programming languages and human language contributes to this factor, where understanding how code is interpreted by the computer is a complex task that many find difficult.",
+    "drawer-computer-description2": "This question can be aggravated by convenient syntaxes and miracle functions, in a context where high-level programming languages such as JavaScript and Python predominate. To face this challenge, a valuable pedagogical tool stands out: the",
+    "drawer-computer-description2-emphasis": "Drawer Computer",
+
+    "drawer-computer-description3-begin": "It's a hypothetical computer that adheres to the",
+    "von-neumann-architecture": "Von Neumann's architecture",
+    "drawer-computer-description3-end": "similar to modern computers.",
+
+    "drawer-computer-description4": "However, their features are simplified, preserving functionalities analogous to the ones found in real components. The distinction lies in the accessibility of the machine language, specially designed to be understood by programming beginners.",
+    "drawer-computer-description5": "The purpose of this project is to recover the understanding of the interaction between code and machine, offering a clearer and more educational approach for those who are taking their first steps in programming. This will provide a better understanding of the relationship between the written code and the operations performed by the computer, promoting a solid basis for learning programming.",
+
+    "documentation-fig1-title": "Figure 1",
+    "documentation-fig1-label": "Von Neumann's architecture",
+
+    "components-title": "Components",
+    "components-description": "Through analogies, their components are succinct, distinct and intuitive in order to make their association feasible. They are listed below",
+
+    "components-list-item1": "A chest of drawers with 100 drawers;",
+    "components-list-item2": "A calculator with display and keyboard;",
+    "components-list-item3": "A small blackboard called EPI;",
+    "components-list-item4": "A card holder;",
+    "components-list-item5": "A paper sheet;",
+    "components-list-item6": "A system operator called CHICO, with a pencil, a blackboard eraser and a chalk.",
+
+    "documentation-fig2-title": "Figure 2",
+    "documentation-fig2-label": "HV's architecture",
+
+    "chest-of-drawers-title": "Chest of drawers",
+    "chest-of-drawers-description1": "The Chest of Drawers is like a series of drawers numbered from 00 to 99, this number being called its address. Inside each drawer there is an empty sheet, but it can contain an instruction, a number of up to three digits (for example: 102, 50, 3, etc.) or additional information which will be covered in the course of the text.",
+    "chest-of-drawers-description2": "Now, let's understand how this drawer system works",
+
+    "chest-of-drawers-list-item1": "At any moment, we can only open one drawer.",
+    "chest-of-drawers-list-item2": "When we read what's written in a drawer, it doesn't change what's written there.",
+    "chest-of-drawers-list-item3": "Before writing anything in a drawer, we need to erase what's already there.",
+    "chest-of-drawers-list-item4": "The value that will be written to a drawer cannot be less than -99 and higher than 999.",
+    "chest-of-drawers-list-item5": "Only the system operator can touch the drawer.",
+    "chest-of-drawers-list-item6": "During the load state, the instructions in the card holder are stored in the chest of drawers, until the card containing instruction 000, which indicates the end of the load state, is stored.",
+
+    "documentation-fig3-title": "Figure 3",
+    "documentation-fig3-label": "Chest of drawers",
+
+    "calculator-title": "Calculator",
+    "calculator-description1": "The calculator used in the HV is similar to any other, featuring a keyboard with digits from 0 to 9 and a display where the results of the operations are shown. These results are stored in the accumulator. However, unlike conventional calculators, it operates exclusively with integer values and offers only four operations: addition, subtraction, division and multiplication.",
+    "calculator-description2": "With the calculator operation being performed like this",
+
+    "calculator-list-item1": "To load a number into the accumulator, the “=” key must be pressed to ensure that any previous operation is completed. The digits of the desired number are then entered. This number is then displayed in the accumulator.",
+    "calculator-list-item2": "An arithmetic operation is always performed between the number stored in the accumulator and a second number. To perform this operation, press the desired operation key, enter the second number and then press the “=” key. The result of the operation will be displayed in the accumulator.",
+    "calculator-list-item3": "Like the chest of drawers, the calculator can only be used by CHICO.",
+
+    "documentation-fig4-title": "Figure 4",
+    "documentation-fig4-label": "HV calculator",
+
+    "epi-title": "EPI (Blackboard)",
+    "epi-description": "EPI is a blackboard that CHICO uses to write the address of the next instruction it should execute during the execution state. Only CHICO can change and read the contents of the EPI.",
+
+    "documentation-fig5-title": "Figure 5",
+    "documentation-fig5-label": "Blackboard with EPI (Next Instruction Address)",
+
+    "card-holder-title": "Card Holder",
+    "card-holder-description1": "It is a component that resembles a cigarette holder, with the cards being inserted at the top and removed for reading at the bottom. The cards that make up the code to be executed are removed in the loading state and then stored in the drawers until this state ends.",
+    "card-holder-description2": "Differently from the other components, this one can be manipulated by the user and works as follows",
+
+    "card-holder-list-item1": "Cards are inserted only from the top, one at a time. Only instructions and numbers of up to 3 digits should be written on the cards;",
+    "card-holder-list-item2": "Cards are removed from the bottom edge, one at a time, appearing in the same order in which they were placed in the device;",
+    "card-holder-list-item3": "Only the CHICO can remove a card;",
+    "card-holder-list-item4": "A card can only be inserted by one user;",
+    "card-holder-list-item5": "When CHICO executes an instruction to read the empty card holder, the user is asked to insert a new card so that program execution can continue.",
+
+    "documentation-fig6-title": "Figure 6",
+    "documentation-fig6-label": "Cigarette Holder (demo)",
+
+    "output-sheet-title": "Output Sheet",
+    "output-sheet-description": "It is a paper sheet on which a number can be written on each line, always using consecutive lines. Only CHICO can write on this sheet and only the user can read what has already been written.",
+
+    "documentation-fig7-title": "Figure 7",
+    "documentation-fig7-label": "Output Sheet",
+
+    "chico-operator-title": "CHICO Operator",
+    "chico-operator-description1": "Summarizing the various characteristics described, we see that the CHICO operator is the only person who has access to the chest of drawers, the calculator and the EPI, as well as being the only one who can remove cards from the card holder and write on the output sheet.",
+    "chico-operator-description2": "He strictly executes the orders received, and cannot take any initiative of his own or carry out any action outside their specification. These orders can be any of the instructions detailed in section",
+    "chico-operator-description3": "CHICO always works in one of two different states",
+
+    "loading-state-title": "Loading State",
+    "loading-state-description1": "The loading state starts as soon as the user asks for the code to be executed. In this state, CHICO removes a card from the card holder, reads its contents and copies it to a drawer in the drawer, following the sequence of the drawers.",
+    "loading-state-description2": "This process is repeated until instruction 000, which indicates the end of the program, is read, ending the loading state and starting the execution state.",
+
+    "documentation-fig8-title": "Figure 8",
+    "documentation-fig8-label": "Loading State",
+
+    "running-state-title": "Running State",
+    "running-state-description1": "The execution state is the state in which the system operator executes the instructions that have been written in the drawers. The EPI tells the operator which drawer to open to read the instruction, always starting with the value 0. After carrying out an instruction, CHICO updates the EPI value, usually by incrementing the current value by +1. Once again, it checks the value on the blackboard and opens the indicated drawer, until it finally executes instruction 000, ending the program.",
+    "running-state-description2": "To better demonstrate how the execution state works, below are illustrations of CHICO executing a program that prints 50 on the output sheet.",
+    "running-state-description3": "The details of how to write code for CHICO to execute will be detailed later.",
+
+    "documentation-fig9-title": "Figure 9",
+    "documentation-fig9-label": "Transition to the Execution State",
+
+    "documentation-fig10-title": "Figure 10",
+    "documentation-fig10-label": "First Instruction",
+
+    "documentation-fig11-title": "Figure 11",
+    "documentation-fig11-label": "Second Instruction",
+
+    "documentation-fig12-title": "Figure 12",
+    "documentation-fig12-label": "Third Instruction",
+
+    "documentation-fig13-title": "Figure 13",
+    "documentation-fig13-label": "Fourth Instruction",
+
+    "machine-language-title": "Machine Language",
+    "machine-language-description": "In real computers, their instruction sets are known as machine language. Even though HV is a hypothetical computer, it does have its own machine language, which are the sets of instructions that CHICO knows. He only knows base 10 numbers, so his instructions are decimal numbers, usually consisting of 3 digits, with the exception of 0-N.",
+
+    "instructions-title": "Instructions",
+    "instructions-description": "Next, we'll look at all the instructions that CHICO knows, remembering that we're dealing with a low-level language, so its instructions are very simple and restricted, and can be divided into load, arithmetic, input, output and control instructions.",
+
+    "loading-instructions-title": "Loading",
+
+    "loading-instructions-list-item1-title": "0EE (Copy value from EE drawer to AC)",
+	"loading-instructions-list-item1-description": "This instruction allows you to transfer data stored in a drawer (temporary register) called EE to the accumulator (AC). This is essential for moving information between temporary storage locations and the main register, where subsequent operations can be performed.",
+    "loading-instructions-list-item2-title": "1EE (Copy value from AC to EE drawer)",
+	"loading-instructions-list-item2-description": "Conversely to the previous instruction, this allows data to be transferred from the accumulator to a specific drawer. It is useful when you want to temporarily preserve the contents of the accumulator before performing other operations.",
+    "loading-instructions-list-item3-title": "0-N (AC receives a constant)",
+	"loading-instructions-list-item3-description": "Allows you to load a constant (represented by N) directly into the accumulator. This is useful for initializing variables or performing operations with fixed values.",
+
+    "arithmetic-operations-title": "Arithmetic Operations",
+
+    "arithmetic-operations-list-item1-title": "2EE (Sum cEE to AC)",
+	"arithmetic-operations-list-item1-description": "Sums the value stored in a drawer (cEE) to the current contents of the accumulator.",
+    "arithmetic-operations-list-item2-title": "3EE (Subtract cEE from AC)",
+	"arithmetic-operations-list-item2-description": "Subtracts the value stored in a drawer (cEE) from the current contents of the accumulator.",
+    "arithmetic-operations-list-item3-title": "4EE (Multiply cAC by cEE)",
+	"arithmetic-operations-list-item3-description": "Multiplies the current contents of the accumulator (cAC) by the value stored in a drawer (cEE).",
+    "arithmetic-operations-list-item4-title": "5EE (Divide cAC by cEE)",
+	"arithmetic-operations-list-item4-description": "Divides the current contents of the accumulator (cAC) by the value stored in a drawer (cEE).",
+
+    "flow-control-title": "Flow Control",
+
+    "flow-control-list-item1-title": "6EE (If cAC > 0, go to EE)",
+    "flow-control-list-item1-description": "Allows conditional execution, diverting the program flow to a specific address (EE) only if the contents of the accumulator are greater than zero. This is useful for making decisions based on conditions.",
+    "flow-control-list-item2-title": "9EE (Go to cEE)",
+    "flow-control-list-item2-description": "Unconditional detour instruction that directs program flow to a specific address (EE). It is used to implement loops and subroutines.",
+
+    "input-output-title": "Input/Output",
+
+    "input-out-list-item1-title": "7EE (Read a value and store it in the EE drawer)",
+    "input-out-list-item1-description": "Allows data to be entered from the card holder, storing the value read in the specified drawer (EE). This is essential for user interactions or data initialization.",
+    "input-out-list-item2-title": "8EE (Write cEE to output device)",
+    "input-out-list-item2-description": "Outputs data to the output sheet, using the value stored in a specific drawer (cEE). This allows the data to be displayed.",
+
+    "program-control-title": "Program Control",
+
+    "program-control-list-item1-title": "000 (End of program)",
+    "program-control-list-item1-description": "Indicates the end of the LOADING state and the beginning of the RUNNING state and when executed terminates the program, signaling that execution should be stopped. This instruction is essential for marking the end of executable code.",
+
+    "essential-concepts-title": "Essential Concepts",
+
+    "input-and-output-title": "Input and Output",
+    "input-and-output-description1": "On the HV hypothetical computer, input operations are carried out through one of its components: the card holder.",
+    "input-and-output-description2": "When executing a read instruction (7EE), the system operator will check to see if there is a card in it containing information, in order to store it in the indicated drawer. If CHICO doesn't find a card in its search, code execution will be interrupted and will only continue when the user enters new data into the card holder.",
+    "input-and-output-description3": "As it is also the component in which the code to be executed is stored, it is possible to insert cards containing data to be used in the program before its execution by placing numbers after the end of program instruction (000). In this scenario, the read instruction would not ask the user to insert data, since the system operator would already find a card to store.",
+    "input-and-output-description4": "Meanwhile, the Output Sheet, another HV component, is responsible for printing the data stored in a specific drawer, indicated by the write instruction (8EE).",
+
+    "input-and-output-code-comment1": "Card reading for drawer 30",
+    "input-and-output-code-comment2": "Write from drawer 30 to output sheet",
+    "input-and-output-code-comment3": "End of program",
+    "input-and-output-code-comment4": "Data to be read by the instruction",
+
+    "variables-title": "Variables",
+    "variables-description1": "In HV machine language, the concept of variables is approached differently from what we are used to in high-level languages. In this language, there is no direct representation of variables, and data is stored in drawers identified by specific addresses. To assign values to the “variables” in your program, you need to choose a drawer address and use appropriate instructions.",
+    "variables-description2": "Consider the following Python code with three variables",
+    "variables-description3": "To obtain the same result in HV machine language, we choose three drawers, represented by addresses 30, 31 and 32, respectively, for x, y and result. We will start the \"variables\" during the reading of the card holder, placing values after the 000 instruction.",
+    "variables-description4": "In this way, during the loading state, these values will not be loaded into the drawer, ensuring that reading with the 7EE instruction correctly assigns the values to the \"variables\".",
+
+    "variables-code-comment1": "Reading from card holder to drawer 30 (x)",
+    "variables-code-comment2": "Reading from card holder to drawer 31 (y)",
+    "variables-code-comment3": "Places the value from drawer 30 (x) in the accumulator",
+    "variables-code-comment4": "Adds the value from drawer 31 (y) to the accumulator",
+    "variables-code-comment5": "Copies the value from the accumulator to drawer 32 (result)",
+    "variables-code-comment6": "Prints the value of drawer 32 (result) on the output sheet",
+    "variables-code-comment7": "End of program",
+    "variables-code-comment8": "Value 5 in the card holder to be read from drawer 30",
+    "variables-code-comment9": "Value 5 in the card holder to be read from drawer 31",
+
+    "detour-title": "Detour",
+    "detour-description1": "Among the basic functions that the system operator is able to perform, the flow control instructions are undoubtedly one of the ones that open up the most possibilities for the programmer to develop more complex programs.",
+    "detour-description2": "The 6EE instruction, for example, can be used to build a program where a certain part of the code is only executed if a specific condition is met.",
+    "detour-description3": "Making decisions based solely on checking whether the value of the accumulator is greater than zero seems limited at first glance, but remember that it can be manipulated in a variety of ways, making it possible to carry out practically any desired comparison.",
+
+    "repetition-loops-title": "Repetition Loops",
+    "repetition-loops-description1": "By diverting to a previous drawer, it is possible to create a repeat loop, in other words, a piece of code that is executed several times.",
+    "repetition-loops-description2": "Detour statements can also be used to construct repeat loops. The same piece of code can be executed several times by setting a drawer address earlier than the current one marked by the EPI as the target of the detour, assigning a new value to it in line with the structure of the loop.",
+    "repetition-loops-description3": "The use of the conditional detour instruction guarantees a range of options for the programmer, making it possible to create blocks of code that will execute until a certain condition is met or even for a predetermined number of times, among other applications.",
+    "repetition-loops-description4": "These possibilities greatly increase the scope of programs that can be developed in the HV language, and create new challenges for programmers.",
+
+    "examples-title": "Practical examples",
+    "examples-description": "The following will be demonstrated common operations in the elaboration of algorithms, being represented as its equivalent to the HV. The examples follow the limitations of the language and encourage your thinking.",
+
+    "math-operations-title": "Math operations",
+    "math-operations-description": "Unlike primordial arithmetic operations that language has instructions to perform them, in this topic we are interested in performing calculations that use these operations to provide us with other results.",
+
+    "remainder-division-title": "Remainder of the division",
+    "remainder-division-description1": "In this algorithm, we want to calculate the remainder of the division between two numbers provided by the user. We'll call these numbers A and B and store them in drawers 30 and 31 respectively.",
+    "remainder-division-description2": "The result of the remainder of the division will be stored in drawer 32.",
+    "remainder-division-description3": "An important thing to note is that in a high level language we would have a \"%\" operator to calculate the remainder of the division, which we do not have in HV machine language.",
+
+    "remainder-division-steps-1": "We took two user numbers, stored the 30 and B drawer in drawer 31.",
+    "remainder-division-steps-2": "If B is 0, the remainder will be 0.",
+    "remainder-division-steps-3": "While the remainder is greater or equal to B, we subtract B repeatedly.",
+    "remainder-division-steps-4": "When it is no longer possible to subtract, the remaining value will be the remainder of the division, stored in drawer 32.",
+
+    "remainder-division-code-comment1": "Read the value of A and store in the drawer 30",
+    "remainder-division-code-comment2": "Read the value of B and store in drawer 31",
+    "remainder-division-code-comment3": "Load the value of A in the accumulator",
+    "remainder-division-code-comment4": "Store the value of A in drawer 32 (remainder)",
+    "remainder-division-code-comment5": "Load the value of B in the accumulator",
+    "remainder-division-code-comment6": "Subtrays the value of the remainder (drawer 32)",
+    "remainder-division-code-comment7": "If the result is greater than 0, go to drawer 11 (the loop continues)",
+    "remainder-division-code-comment8": "Load the value",
+    "remainder-division-code-comment9": "Subtract B of the remainder",
+    "remainder-division-code-comment10": "Store the new value of the remainder",
+    "remainder-division-code-comment11": "Return to drawer 04 (repeats check)",
+    "remainder-division-code-comment12": "Write the final value of the remainder on the way out",
+    "remainder-division-code-comment13": "End of the program",
+
+    "max-numbers-title": "Maximum between two numbers",
+    "max-numbers-description1": "In this algorithm, we want to find the largest between two numbers informed by the user.",
+    "max-numbers-description2": "In high level languages, we can use functions like Max (A, B), but in HV machine language we need to implement this logic manually.",
+
+    "max-numbers-steps-1": "Read the user's two numbers and store them in drawers 10 and 11.",
+    "max-numbers-steps-2": "Load the first number in the accumulator.",
+    "max-numbers-steps-3": "Subtract the second number.",
+    "max-numbers-steps-4": "If the result is greater than zero, it means that the first number is higher, then we print it.",
+    "max-numbers-steps-5": "Otherwise we print the second number.",
+
+    "max-numbers-code-comment1": "Read the first number and store in drawer 10",
+    "max-numbers-code-comment2": "Read the second number and store in drawer 11",
+    "max-numbers-code-comment3": "Load the value of drawer 10 in the accumulator",
+    "max-numbers-code-comment4": "Subtract the value of the accumulator drawer 11",
+    "max-numbers-code-comment5": "If the accumulator is greater than 0, go to drawer 07 (print a)",
+    "max-numbers-code-comment6": "Write the value of drawer 11 (B, because A was not bigger)",
+    "max-numbers-code-comment7": "Go to drawer 08 (end of the program)",
+    "max-numbers-code-comment8": "Write the value of drawer 10 (a, because it was bigger)",
+    "max-numbers-code-comment9": "End of the program",
+
+    "square-root-title": "Square root",
+    "square-root-description1": "This algorithm calculates the integer square root of a number provided by the user.",
+    "square-root-description2": "In high level languages, we can use the math.sqrt(A) function, but in HV language we do not have this operation. Instead, we need to implement it manually using successive sums.",
+
+    "square-root-steps-1": "The user provides a number, stored in drawer 30.",
+    "square-root-steps-2": "We booted an accountant in the 51 drawer and a summer in drawer 50.",
+    "square-root-steps-3": "We add unique values ​​successive to the accumulator until it reaches or exceeds the number provided.",
+    "square-root-steps-4": "The number of sums made will be the integer square root of the value.",
+    "square-root-steps-5": "The end result is stored in drawer 53 and printed on the output.",
+
+    "square-root-description3": "This method is based on the mathematical fact that the sum of the first n odd numbers is equal to N². So, by counting how many sums are needed to reach the number, we find its integer square root.",
+
+    "square-root-code-comment1": "Read the number and store in the drawer 30",
+    "square-root-code-comment2": "Load 1 in the accumulator",
+    "square-root-code-comment3": "Store 1 in drawer 51 (accountant, which represents the approximate root)",
+    "square-root-code-comment4": "Load 0 in the accumulator",
+    "square-root-code-comment5": "Store 0 in drawer 50 (sum accumulator)",
+    "square-root-code-comment6": "Load the sum of the sum",
+    "square-root-code-comment7": "Multiply the accumulator for himself (calculate square)",
+    "square-root-code-comment8": "Store the result in drawer 52",
+    "square-root-code-comment9": "Load the sum of the sum",
+    "square-root-code-comment10": "Add the accountant to the sum of the sum (add the next odd number)",
+    "square-root-code-comment11": "Store the new value in drawer 50",
+    "square-root-code-comment12": "Carry the current square",
+    "square-root-code-comment13": "Subtract the original number (drawer 30)",
+    "square-root-code-comment14": "If the result is greater than 0, go to drawer 05 (the calculation ends)",
+    "square-root-code-comment15": "Load the original number",
+    "square-root-code-comment16": "Subtract the square of the root found (drawer 52)",
+    "square-root-code-comment17": "If it is even larger than 0, it continues to it",
+    "square-root-code-comment18": "Load the sum of the sum",
+    "square-root-code-comment19": "Subtract the current accountant",
+    "square-root-code-comment20": "Store the result in drawer 53 (final result of the square root)",
+    "square-root-code-comment21": "Write the value of the square root on the exit",
+    "square-root-code-comment22": "End of the program",
+
+    "comparison-operations-title": "Comparison operations",
+    "comparison-operations-description1": "In this set of algorithms, we want to verify relationships between two user -informed numbers, such as equality, difference and comparisons of greater or lesser.",
+    "comparison-operations-description2": "In high level languages, we can use operators as",
+    "comparison-operations-description3": "In HV, we need to implement this logic manually using subtraction operations and conditional deviations.",
+
+    "comparison-operations-list-item1": "equality",
+    "comparison-operations-list-item2": "different",
+    "comparison-operations-list-item3": "more than",
+    "comparison-operations-list-item4": "less than",
+    "comparison-operations-list-item5": "greater than or equal to",
+    "comparison-operations-list-item6": "less than or equal to",
+
+    "equality-title": "Equality",
+    "equality-description": "This algorithm verifies if two numbers are the same. It reads the user's values, subtracts one from the other and checks if the difference is zero. If it is, it prints 1, indicating that the numbers are equal. Otherwise, it prints 0.",
+
+    "equality-code-comment1": "Read the first number and store in drawer 20",
+    "equality-code-comment2": "Read the second number and store in drawer 21",
+    "equality-code-comment3": "Load 0 in the accumulator",
+    "equality-code-comment4": "Store 0 in drawer 22 (initial result)",
+    "equality-code-comment5": "Carry the accumulator",
+    "equality-code-comment6": "Subtract B of the accumulator",
+    "equality-code-comment7": "If the result is greater than 0, go to drawer 12 (A != B)",
+    "equality-code-comment8": "Load B in the accumulator",
+    "equality-code-comment9": "Subtract that of the accumulator",
+    "equality-code-comment10": "If the result is greater than 0, go to drawer 12 (A != B)",
+    "equality-code-comment11": "Load 1 in the accumulator (A == B)",
+    "equality-code-comment12": "Store 1 in drawer 22",
+    "equality-code-comment13": "Write the result (1 if A == B, the otherwise)",
+    "equality-code-comment14": "End of the program",
+
+    "not-equal-title": "Different",
+    "not-equal-description": "Here we find if two numbers are different. The process is similar to that of equality, but we invert the logic: if the subtraction results in zero, it means that the numbers are equal, so we print 0; otherwise, we print 1.",
+
+    "not-equal-code-comment1": "Read the first number and store in drawer 20",
+    "not-equal-code-comment2": "Read the second number and store in drawer 21",
+    "not-equal-code-comment3": "Load 1 in the accumulator",
+    "not-equal-code-comment4": "Store 1 in drawer 22 (initial result)",
+    "not-equal-code-comment5": "Carry the accumulator",
+    "not-equal-code-comment6": "Subtract B of the accumulator",
+    "not-equal-code-comment7": "If the result is greater than 0, go to drawer 12 (A != B)",
+    "not-equal-code-comment8": "Load B in the accumulator",
+    "not-equal-code-comment9": "Subtract that of the accumulator",
+    "not-equal-code-comment10": "If the result is greater than 0, go to drawer 12 (A != B)",
+    "not-equal-code-comment11": "Load 0 in the accumulator (A == B)",
+    "not-equal-code-comment12": "Store 0 in drawer 22",
+    "not-equal-code-comment13": "Write the result (1 if A != B, the otherwise)",
+    "not-equal-code-comment14": "End of the program",
+
+    "greater-than-title": "More than",
+    "greater-than-description": "This algorithm determines if one number is larger than the other. It subtracts B from A and checks if the result is positive. If it is, it means that A is bigger, so we print 1. Otherwise, we print 0.",
+
+    "greater-than-code-comment1": "Read the first number and store in drawer 20",
+    "greater-than-code-comment2": "Read the second number and store in drawer 21",
+    "greater-than-code-comment3": "Load 0 in the accumulator",
+    "greater-than-code-comment4": "Store 0 in drawer 22 (initial result)",
+    "greater-than-code-comment5": "Carry the accumulator",
+    "greater-than-code-comment6": "Subtract B of the accumulator",
+    "greater-than-code-comment7": "If A > B, go to drawer 08",
+    "greater-than-code-comment8": "Go to the end of the program",
+    "greater-than-code-comment9": "Load 1 in the accumulator",
+    "greater-than-code-comment10": "Store 1 in drawer 22",
+    "greater-than-code-comment11": "Write the result",
+    "greater-than-code-comment12": "End of the program",
+
+    "lower-than-title": "Less than",
+    "lower-than-description": "Here we find if A is smaller than B. The process is similar to \"greater than\", but we subtract that of B. If the result is positive, it means that A is smaller, then we print 1. Otherwise, we print 0.",
+
+    "lower-than-code-comment1": "Read the first number and store in drawer 20",
+    "lower-than-code-comment2": "Read the second number and store in drawer 21",
+    "lower-than-code-comment3": "Load 0 in the accumulator",
+    "lower-than-code-comment4": "Store 0 in drawer 22 (initial result)",
+    "lower-than-code-comment5": "Load B in the accumulator",
+    "lower-than-code-comment6": "Subtract that of the accumulator",
+    "lower-than-code-comment7": "If B > A, go to drawer 08",
+    "lower-than-code-comment8": "Go to the end of the program",
+    "lower-than-code-comment9": "Load 1 in the accumulator",
+    "lower-than-code-comment10": "Store 1 in drawer 22",
+    "lower-than-code-comment11": "Write the result",
+    "lower-than-code-comment12": "End of the program",
+
+    "greater-equal-title": "More or equal",
+    "greater-equal-description": "This algorithm verifies whether A is greater than or equal to B. It combines the logic of \"greater than\" and \"equality\". If A is greater than B or if the two numbers are equal, we print 1; otherwise, we print 0.",
+
+    "greater-equal-code-comment1": "Read the first number and store in drawer 20",
+    "greater-equal-code-comment2": "Read the second number and store in drawer 21",
+    "greater-equal-code-comment3": "Load 0 in the accumulator",
+    "greater-equal-code-comment4": "Store 0 in drawer 22 (initial result)",
+    "greater-equal-code-comment5": "Carry the accumulator",
+    "greater-equal-code-comment6": "Subtract B of the accumulator",
+    "greater-equal-code-comment7": "If A >= B, go to drawer 13",
+    "greater-equal-code-comment8": "Carry the accumulator",
+    "greater-equal-code-comment9": "Subtract B of the accumulator",
+    "greater-equal-code-comment10": "If A == B, go to drawer 15",
+    "greater-equal-code-comment11": "Load B in the accumulator",
+    "greater-equal-code-comment12": "Subtract that of the accumulator",
+    "greater-equal-code-comment13": "If B == A, go to drawer 15",
+    "greater-equal-code-comment14": "Load 1 in the accumulator",
+    "greater-equal-code-comment15": "Store 1 in drawer 22",
+    "greater-equal-code-comment16": "Write the result",
+    "greater-equal-code-comment17": "End of the program",
+
+    "lower-equal-title": "Smaller or equal",
+    "lower-equal-description": "Similar to the previous case, but we find if A is less than or equal to B. If A is less than B or if they are equal, we print 1; otherwise, print 0.",
+    
+    "lower-equal-code-comment1": "Read the first number and store in drawer 20",
+    "lower-equal-code-comment2": "Read the second number and store in drawer 21",
+    "lower-equal-code-comment3": "Load 0 in the accumulator",
+    "lower-equal-code-comment4": "Store 0 in drawer 22 (initial result)",
+    "lower-equal-code-comment5": "Load B in the accumulator",
+    "lower-equal-code-comment6": "Subtract that of the accumulator",
+    "lower-equal-code-comment7": "If B >= A, go to drawer 13",
+    "lower-equal-code-comment8": "Carry the accumulator",
+    "lower-equal-code-comment9": "Subtract B of the accumulator",
+    "lower-equal-code-comment10": "If A == B, go to drawer 15",
+    "lower-equal-code-comment11": "Load B in the accumulator",
+    "lower-equal-code-comment12": "Subtract that of the accumulator",
+    "lower-equal-code-comment13": "If B == A, go to drawer 15",
+    "lower-equal-code-comment14": "Load 1 in the accumulator",
+    "lower-equal-code-comment15": "Store 1 in drawer 22",
+    "lower-equal-code-comment16": "Write the result",
+    "lower-equal-code-comment17": "End of the program",
+
+    "hvm-state-editing-title": "Editing",
+    "hvm-state-editing-tip": "Programming mode",
+
+    "hvm-state-loading-title": "Loading",
+    "hvm-state-loading-tip": "Reading the card holder",
+
+    "hvm-state-running-title": "Running",
+    "hvm-state-running-tip": "Executing instructions",
+
+    "menu-debug-title": "Debug",
+    "menu-debug-tip": "Step by step",
+
+    "menu-run-title": "Run",
+    "menu-run-tip": "Immediately",
+
+    "menu-import-title": "Import",
+    "menu-import-tip": "Select file",
+
+    "menu-export-title": "Export",
+    "menu-export-tip": "Download code",
+
+    "menu-share-title": "Share",
+    "menu-share-tip": "Copy and send code",
+    "menu-share-metaop": "See my code on HVC!",
+
+    "menu-copied-title": "Copied!",
+
+    "menu-configuration-title": "Settings",
+    "menu-configuration-tip": "Options",
+
+    "card-holder-tip": "Card Holder",
+    "epi-tip": "EPI",
+    "accumulator-tip": "Accumulator",
+    "output-sheet-tip": "Output Sheet",
+
+    "drawer-code-tip": "Code",
+    "drawer-data-tip": "Data",
+    "drawer-epi-tip": "EPI",
+
+    "home-tip": "Home page",
+    "clear-tip": "Clear display",
+    "save-tip": "Save code",
+    "help-tip": "Help",
+    "show-options-tip": "Show more",
+
+    "evaluate-now": "Evaluate now",
+    "your-opinion": "Your opinion is fundamental to our project",
+    "click-on-stars": "Click on the stars and answer the form!",
+    "dont-ask": "Don't ask again",
+
+    "error-detected": "Error detected",
+
+    "config-title": "Settings",
+
+    "config-theme-title": "Theme",
+    "config-lightmode-title": "Light",
+    "config-darkmode-title": "Dark",
+
+    "config-delay-title": "Delay",
+
+    "config-loading-state-title": "Loading state",
+    "config-paused-debug-title": "Paused debugging",
+    "config-show-tips-title": "Show tips",
+
+    "config-save-title": "Save"
 }

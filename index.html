@@ -4,216 +4,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HVC - Inicial</title>
 
-    <link rel="icon" href="/img/gavetinha.ico" type="image/x-icon">
+    <meta name="description" content="O HVC é uma ferramenta on-line para o aprendizado de programação com base no modelo didático Computador à Gaveta">
+    <meta name="keywords" content="HV, HVC, computador, gaveta, aprender, programação, algoritmos, computação, linguagem de máquina, UFMS">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HV Compiler">
+    <meta property="og:url" content="https://hvcomp.io">
+    <meta property="og:description" content="O HVC é uma ferramenta on-line para o aprendizado de programação com base no modelo didático Computador à Gaveta">
+
+    <meta property="og:image" content="https://hvcomp.io/img/gaveta-logo.png">
+    <meta property="og:image:alt" content="drawer icon">
+
+    <title>HVC | Home</title>
+
+    <link rel="icon" href="/img/gavetinha.svg" type="image/x-icon">
 </head>
 
 <body>
-    <header id="header-index">
+    <header class="index">
         <nav>
-            <a id="home" class="home">
+            <a class="home">
                 <img src="/img/gaveta-logo.svg" alt="ícone de gaveta">
-                <h1>
-                    <span>HV</span><span>C</span>
-                </h1>
+                <h1>HVC</h1>
             </a>
             <menu class="primary-menu">
-                <li><a class="link-nav-1" href="#playground" target="_self">Playground</a></li>
-                <li><a class="link-nav-2 external" href="/pages/documentation.html" target="_blank">Documentação</a></li>
-                <li><a class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank">GitHub</a></li>
+                <li><a data-lang="playground-title" class="link-nav-1 come-to-play">Playground</a></li>
+                <li><a data-lang="documentation-title" class="link-nav-2 external" href="/pages/documentation.html" target="_blank">Documentação</a></li>
+                <li><a data-lang="repository-title" class="link-nav-3 external" href="https://github.com/WilkerSebastian/hvcjs" target="_blank">Repositório</a></li>
             </menu>
             <button class="burger-menu"></button>
         </nav>
     </header>
     <main>
-        <section id="descricao-hv">
-            <article>
-                <div><h1>HV Compiler</h1></div>
+        <div class="container">
+            <section id="descricao-hv">
+                <h1>HV Compiler</h1>
                 <hr>
-                <p data-lang="main-description">
-                    O HVC é um interpretador que permite a compilação e execução de código em duas linguagens,
-                    HV Script e Assembly HV, voltadas para um computador hipotético.
-                    <br>
-                    Ele foi pensado para servir como compilador para linguagem hipotética do computador hipotético HV-2.
+                <p>
+                    <span data-lang="main-description1-article">O</span>
+                    <dfn><abbr title="HV Compiler">HVC</abbr></dfn>
+                    <span data-lang="main-description1-definition">é um interpretador que permite a execução de código escrito na linguagem de máquina HV, utilizada no computador hipotético HV-2.</span>
                 </p>
+                <p data-lang="main-description2">Pensado como ferramenta didática, sua idealização busca facilitar a assimilação de conceitos computacionais básicos, dando introdução à elaboração de algoritmos e às linguagens de programação.</p>
                 <hr>
                 <div class="tooltiper">
-                    <a class="come-to-play">
-                        <button>descer para o play</button>
-                    </a>
-                    <div class="tooltip"><span class="tooltip-text">mas só se souber brincar</span></div>
+                    <a data-lang="come-to-play-title" class="come-to-play">descer para o play</a>
+                    <div class="tooltip"><span data-lang="come-to-play-tip" class="tooltip-text">mas só se souber brincar</span></div>
                 </div>
-            </article>
-            <img src="/img/index/mlk-do-grau.png" alt="menino que programa">
-        </section>
-        <section id="instale">
-            <div><h2>Instale</h2></div>
-            <article>
-                <img class="icones-so" src="/img/index/windows.png" alt="">
-                <h3>Windows</h3>
-                <ol>
-                    <li>
-                        <span>Baixar instalador do compilador</span>
-                        <p>
-                            Faça download e execute o arquivo 
-                            <mark>
-                                <a class="marked" rel="author" href="https://github.com/WilkerSebastian/HV-compiler/releases/download/v1.0.0-hvc-win-x64/HVC.exe" title="baixar executável" download>
-                                    hvc.exe
-                                </a>
-                            </mark>
-                        </p>
-                    </li>
-                    <li>
-                        <span>Teste o compilador no terminal</span>
-                        <p>
-                            Faça um teste para conferir se o HVC foi instalado corretamente
-                        </p>
-                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="code copy"></button></pre>
-                    </li>
-                </ol>
-            </article>
-            <article>
-                <img class="icones-so" src="/img/index/linux-mac.png" alt="">
-                <h3>Linux e Mac</h3>
-                <ol>
-                    <li>
-                        <span>Instale ferramentas de compilação</span>
-                        <p>
-                            Para realizar a compilação do projeto é necessário ter instalado um compilador
-                            de <mark>C++</mark>, o <mark>Clang++</mark> e o <mark>make</mark> para executar a rotina de
-                            compilação.
-                        </p>
-                    </li>
-                    <li>
-                        <span>Clone o repositório</span>
-                        <p>
-                            Com o terminal aberto, execute o seguinte comando:
-                        </p>
-                        <pre class="pre-code"><code class="cmd">git clone https://github.com/Wilker-Sebastian/HV-Compiler.git</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Acesse o diretório do projeto</span>
-                        <p>
-                            Mude para pasta gerada
-                        </p>
-                        <pre class="pre-code"><code class="cmd">cd ./HV-Compiler</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Compile o código</span>
-                        <p>
-                            Execute o comando <mark><em>make</em></mark> para compilar o código usando clang++
-                        </p>
-                        <pre class="pre-code"><code class="cmd">make</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Adicione o HVC ao PATH do sistema</span>
-                        <p>
-                            Este comando adicionará o diretório <mark><em>./bin</em></mark> ao PATH do seu sistema. Isso permitirá
-                            que você execute o compilador de qualquer diretório do seu sistema
-                        </p>
-                        <pre class="pre-code"><code class="cmd">echo 'export PATH="$PATH:'$(realpath ./bin)'"' >> ~/.bashrc && source ~/.bashrc</code><button class="code copy"></button></pre>
-                    </li>
-                    <li>
-                        <span>Teste o compilador no terminal</span>
-                        <p>
-                            Faça um teste para conferir se o HVC foi instalado corretamente
-                        </p>
-                        <pre class="pre-code"><code class="cmd">hvc --help</code><button class="code copy"></button></pre>
-                    </li>
-                </ol>
-            </article>
-        </section>
+            </section>
+            <img src="/img/index/mlkote-do-grau.svg" alt="menino que programa">
+        </div>
         <section id="aprenda">
-            <div><h2>Aprenda</h2></div>
+            <h2 data-lang="learn-title">Aprenda</h2>
             <article id="hv">
-                <h3>O que é HV?</h3>
+                <h3 data-lang="hv-computer-title">Computador HV</h3>
                 <div>
-                    <img src="/img/index/compiuter.png" alt="computador">
-                    <p>
-                        Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o
-                        ensino
-                        de programação por meio da demonstração básica de seu funcionamento... esse é o HV. Sua linguagem
-                        conta com instruções simples
-                        mas engenhosas, capazes de construir algoritmos complexos e refinados.
-                        <br>
-                        Em sua construção, um computador HV possui:
-                    </p>
-                    <ul>
-                        <li>100 gavetas</li>
-                        <li>Calculadora, mostrador e teclado</li>
-                        <li>Quadro Negro (EPI)</li>
-                        <li>Porta-cartões</li>
-                        <li>Folha de saída</li>
-                        <li>Operador de sistema (CHICO)</li>
-                    </ul>
-                </div>
-                <p>
-                    A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de
-                    programação, e ainda adquirir noções
-                    intuitivas de arquitetura de computadores.
+                    <img src="/img/index/compiuter.svg" alt="computador">
+                    <p data-lang="hv-computer-description1">Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV.</p>
+                    <p data-lang="hv-computer-description2">Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.</p>
                     <br>
-                    O material completo acerca está disponível no link 
-                    <mark><a class="marked" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">AQUI</a></mark>.
-                </p>
+                    <p data-lang="hv-computer-description3" class="prequel">Em sua construção, o computador HV possui</p>
+                    <ul>
+                        <li data-lang="hv-computer-list-item1">Um gaveteiro com 100 gavetas</li>
+                        <li data-lang="hv-computer-list-item2">Calculadora, mostrador e teclado</li>
+                        <li data-lang="hv-computer-list-item3">Quadro Negro (EPI)</li>
+                        <li data-lang="hv-computer-list-item4">Porta-cartões</li>
+                        <li data-lang="hv-computer-list-item5">Folha de saída</li>
+                        <li data-lang="hv-computer-list-item6">Operador de sistema (CHICO)</li>
+                    </ul>
+                    <p data-lang="hv-computer-description4">A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.</p>
+                    <br>
+                    <p>
+                        <span data-lang="hv-computer-description5">O material completo acerca de sua estrutura e funcionamento está disponível no arquivo</span>
+                        <mark><a class="marked" rel="help" href="/files/computador_hv1_hv2_.pdf" target="_blank" title="documento pdf">computador_hv.pdf</a></mark>.
+                    </p>
+                </div>
             </article>
             <article id="assembly">
-                <h3>Assembly HV</h3>
+                <h3 data-lang="hv-machine-language-title">Linguagem de Máquina HV</h3>
+                <p data-lang="hv-machine-language-description1">Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que facilita o entendimento introdutório à resolução de problemas e criação de algoritmos.</p>
+                <br>
+                <p data-lang="hv-machine-language-description2">Suas instruções são sucintas. Elas explicitam, em suma, um código de operação e o endereço de uma gaveta.</p>
+                <br>
+                <div class="scroll-table"></div>
+            </article>
+        </section>
+        <section id="practice">
+            <h2 data-lang="practice-title">Pratique</h2>
+            <article id="playground">
+                <h3 data-lang="playground-title">Playground</h3>
+                <img src="/img/index/brincante.svg" alt="brincar é bom">
+                <p data-lang="playground-description1">Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código na linguagem HV, permitindo sua testagem em tempo real.</p>
+                <br>
+                <p data-lang="playground-description2">Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.</p>
+            </article>
+            <article id="algoritmos">
+                <h3 data-lang="building-algorithms-title">Construindo algoritmos</h3>
+                <p data-lang="building-algorithms-description1">Este algoritmo calcula o enésimo termo da sequência de Fibonacci usando um método iterativo, seguindo a lógica do pseudocódigo de referência.</p>
+                <div class="pre-code"><pre>
+<code class="cmd"><span data-lang="function-code-reserved" class="reserved">função</span> fib(<var>n</var>)
+    <var>j</var> &larr; <span class="value">1</span>
+    <var>i</var> &larr; <span class="value">0</span>
+    <span data-lang="for-code-reserved" class="reserved">para</span> <var>k</var> &larr; <span class="value">1</span> <span data-lang="to-code-reserved" class="reserved">até</span> <var>n</var> <span data-lang="do-code-reserved" class="reserved">faça</span>
+        <var>t</var> &larr; <var>i</var> + <var>j</var>
+        <var>i</var> &larr; <var>j</var>
+        <var>j</var> &larr; <var>t</var>
+    <span data-lang="return-code-reserved" class="reserved">retorne</span> <var>i</var></code>
+</pre>
+                    <button class="code copy"></button>
+                </div>
                 <p>
-                    Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que permite fácil
-                    entendimento na introdução ao
-                    universo de resolução de problemas e criação de algoritmos.
-                    <br>
-                    Suas instruções são sucintas, elas explicitam em suma um código de operação e o endereço de uma
-                    gaveta.
+                    <span data-lang="building-algorithms-description2-begin">Diferente de linguagens de alto nível, onde podemos simplesmente utilizar laços de repetição e variáveis auxiliares, na linguagem HV precisamos</span>
+                    <mark data-lang="building-algorithms-description2-mark">gerenciar manualmente as operações e o controle de fluxo</mark>
+                    <span data-lang="building-algorithms-description2-end">para atualizar os valores da sequência.</span>
                 </p>
                 <br>
-                <div id="table"></div>
-            </article>
-            <article id="como">
-                <h3>Como usar o compilador</h3>
-                <p>
-                    Crie um arquivo de extensão <mark title="formato de arquivo">.ahv</mark>, nele ficará seu código.
-                    <br>
-                    O exemplo abaixo demonstra um código calcula a soma de dois números.
-                </p>
-                <pre class="pre-code"><code class="cmd ahv">750
-751
-050
-251
-160
-860
-000</code><div><button class="code copy"></button><button class="code open"></button></div></pre>
-            </article>
-            <article id="playground">
-                <h3>Playground</h3>
+                <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                <ol>
+                    <li>
+                        <span data-lang="fibonacci-steps-1-begin">Lemos o valor de</span> <var>n</var>,
+                        <span data-lang="fibonacci-steps-1-end">que representa o termo da sequência desejado.</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-2-begin">Inicializamos</span> <var>i</var> <span data-lang="fibonacci-steps-2-middle">= 0 (Fibonacci de 0) e</span>
+                        <var>j</var> <span data-lang="fibonacci-steps-2-end">= 1 (Fibonacci de 1).</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-3-begin">Se</span> <var>n</var> == 0,
+                        <span data-lang="fibonacci-steps-3-end">o resultado é 0.</span>
+                    </li>
+                    <li>
+                        <span data-lang="fibonacci-steps-4-begin">Caso contrário, iteramos</span>
+                        <var>n</var>
+                        <span data-lang="fibonacci-steps-4-end">vezes:</span>
+                        <ul>
+                            <li>
+                                <span data-lang="fibonacci-steps-4-subtopic-1">Calculamos</span>
+                                <var>t</var> = <var>i</var> + <var>j</var>
+                            </li>
+                            <li>
+                                <span data-lang="fibonacci-steps-4-subtopic-2">Atribuímos</span>
+                                <var>i</var> = <var>j</var>, <var>j</var> = <var>t</var>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-lang="fibonacci-steps-5">Ao final do loop, conterá o enésimo termo da sequência, que é impresso na saída.</li>
+                </ol>
+                <p data-lang="building-algorithms-description3">Esse método segue o princípio matemático da definição da sequência de Fibonacci, onde cada termo é a soma dos dois anteriores:</p>
+                <br>
+                <p>F(<var>n</var>) = F(<var>n</var> - 1) + F(<var>n</var> - 2), F(1) = 1, F(2) = 1.</p>
+                <div class="pre-code"><pre>
+<code class="ahv cmd">725    ; <span data-lang="fibonacci-code-comment1" class="comment">Leia o valor de n e armazene na gaveta 25</span>
+0-0    ; <span data-lang="fibonacci-code-comment2" class="comment">Carregue 0 no acumulador</span>
+126    ; <span data-lang="fibonacci-code-comment3" class="comment">Armazene 0 na gaveta 26 (i = 0)</span>
+127    ; <span data-lang="fibonacci-code-comment4" class="comment">Armazene 0 na gaveta 27 (auxiliar do contador)</span>
+0-1    ; <span data-lang="fibonacci-code-comment5" class="comment">Carregue 1 no acumulador</span>
+128    ; <span data-lang="fibonacci-code-comment6" class="comment">Armazene 1 na gaveta 28 (j = 1)</span>
+129    ; <span data-lang="fibonacci-code-comment7" class="comment">Armazene 1 na gaveta 29 (auxiliar número 1)</span>
+025    ; <span data-lang="fibonacci-code-comment8" class="comment">Carregue n no acumulador</span>
+327    ; <span data-lang="fibonacci-code-comment9" class="comment">Subtraia (auxiliar do contador)</span>
+611    ; <span data-lang="fibonacci-code-comment10" class="comment">Se n - (auxiliar do contador) == 0, vá para a gaveta 11 (corpo loop)</span>
+922    ; <span data-lang="fibonacci-code-comment11" class="comment">Vá para a gaveta 22 (final loop)</span>
+026    ; <span data-lang="fibonacci-code-comment12" class="comment">Carregue i</span>
+228    ; <span data-lang="fibonacci-code-comment13" class="comment">Some j (t = i + j)</span>
+130    ; <span data-lang="fibonacci-code-comment14" class="comment">Armazene na gaveta 30 (t = i + j)</span>
+028    ; <span data-lang="fibonacci-code-comment15" class="comment">Carregue j</span>
+126    ; <span data-lang="fibonacci-code-comment16" class="comment">Armazene em i (i = j)</span>
+030    ; <span data-lang="fibonacci-code-comment17" class="comment">Carregue t</span>
+128    ; <span data-lang="fibonacci-code-comment18" class="comment">Armazene em j (j = t)</span>
+027    ; <span data-lang="fibonacci-code-comment19" class="comment">Carregue o (auxiliar do contador)</span>
+229    ; <span data-lang="fibonacci-code-comment20" class="comment">Some 1 ao (auxiliar do contador)</span>
+127    ; <span data-lang="fibonacci-code-comment21" class="comment">Armazene o novo valor na (auxiliar do contador)</span>
+907    ; <span data-lang="fibonacci-code-comment22" class="comment">Volte para a verificação do loop</span>
+826    ; <span data-lang="fibonacci-code-comment23" class="comment">Escreva o resultado final (i)</span>
+000    ; <span data-lang="fibonacci-code-comment24" class="comment">Fim do programa</span></code>
+</pre>
                 <div>
-                    <img src="/img/index/brinks.png" alt="peça de montar">
-                    <p>
-                        Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas
-                        funcionalidades interativas para desenvolvimento de algoritmos e escritas de código com a linguagem
-                        HV,
-                        permitindo sua testagem em tempo real.
-                        <br>
-                        Seus recursos com realce de sintaxe, sugestões de código e um modo depurador facilitado que auxilie
-                        a compreensão
-                        do desenvolvedor.
-                    </p>
+                    <button class="code copy"></button>
+                    <a class="code open"></a>
                 </div>
-                <div class="tooltiper">
-                    <a class="come-to-play">
-                        <button>descer para o play</button>
-                    </a>
-                    <div class="tooltip"><span class="tooltip-text">mas só se souber brincar</span></div>
+            </div>
+            </article>
+            <article id="hvcjs">
+                <h3>HVCJS</h3>
+                <p>
+                    <span data-lang="hvcjs-description1">Trata-se de uma versão modularizada do compilador</span>
+                    <mark><a data-lang="original-hvc" class="external marked" href="https://github.com/WilkerSebastian/HV-Compiler" target="_blank">HVC original</a></mark>,
+                    <span data-lang="hvcjs-description2">projetada para ser disponibilizada como um módulo npm.</span>
+                    <span data-lang="hvcjs-description3">Tal abordagem permite a eficiente distribuição e manutenção das ferramentas desenvolvidas por nossa equipe.</span>
+                </p>
+                <br>
+                <p data-lang="hvcjs-description4">O módulo tem por objetivo facilitar a criação de novas aplicações de ensino que utilizam o Computador à Gaveta, por meio de uma interface simples e intuitiva.</p>
+                <div class="pre-code"><pre>
+<code class="cmd"><span class="reserved">import</span> { <span class="value">HVC</span> } <span class="reserved">from</span> "<span class="value">hvcjs</span>";
+
+<span class="reserved">const</span> <var>hvc</var> = <span class="reserved">new</span> HVC();
+
+<var>hvc</var>.<span class="reserved">setCode</span>("0-5 020 820 000");
+
+<var>hvc</var>.<span class="reserved">run</span>();</code>
+</pre>
+                    <button class="code copy"></button>
                 </div>
             </article>
         </section>
+        <section id="about">
+            <h2 data-lang="about-project-title">Sobre o projeto</h2>
+            <img src="/img/index/sou-ufms.svg" alt="sou ufms">
+            <p>
+                <span data-lang="about-project-description1">O computador hipotético HV foi um modelo proposto pelos professores Routo Terada e Waldemar W. Setze na obra</span>
+                <mark class="marked" data-lang="book-title">“Introdução à Computação e à Construção de Algoritmos”.</mark>
+            </p>
+            <br>
+            <p>
+                <span data-lang="about-project-description2">A implementação em software desses conceitos faz parte de uma Atividade Orientada de Ensino desenvolvida por nós graduandos da</span>
+                <a data-lang="facom" class="marked external" href="https://www.facom.ufms.br" target="_blank">Faculdade de Computação (FACOM)</a>,
+                <span data-lang="ufms">Universidade Federal de Mato Grosso do Sul (UFMS)</span>
+                <a class="location external" href="https://maps.app.goo.gl/ks6ZGJrk7JrEqH5e7" target="_blank"></a>.
+            </p>
+            <br>
+            <p data-lang="about-project-description3">O código fonte do interpretador da linguagem de máquina HV, bem como as instruções para sua implantação em outros ambientes está disponível em seu repositório no GitHub.</p>
+        </section>
     </main>
-    <button class="switch-theme tooltiper light">
-        <div class="tooltip"><span class="tooltip-text">Alternar tema</span></div>
-    </button>
+    <button class="switch-theme"></button>
 
-    <script src="/src/default.ts" type="module"></script>
+    <script src="/src/main.ts" type="module"></script>
     <script src="/src/index.ts" type="module"></script>
 </body>
 

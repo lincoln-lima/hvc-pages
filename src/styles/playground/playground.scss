@@ -25,7 +25,7 @@ main {
     @include global.middle;
     @include global.center;
     @include global.size(100%, play.$main-initial-height);
-    
+
     @media screen and (min-width: ($width3 + 1)) and (max-width: $width2) {
         height: calc(play.$playground-responsive-height * 2 + play.$spacing * 3);
     }
@@ -33,7 +33,7 @@ main {
     @media screen and (max-width: $width3) {
         height: calc(play.$playground-responsive-height * 3 + play.$spacing * 3);
     }
-    
+
     #playground {
         @include global.flex;
         @include global.size(play.$nav-initial-width, play.$playground-percentual * 100%);
@@ -48,10 +48,8 @@ main {
         @media screen and (max-width: $width3) {
             height: 98%;
         }
-        
-        .tooltip {
-            z-index: 1;
 
+        .tooltip {
             .tooltip-text {
                 font-size: 1.1em;
             }
@@ -62,10 +60,10 @@ main {
 
             text-align: center;
             background-color: play.$old-paper;
-            
+
             @include global.flex($justify: center);
             @include global.size(play.$porta-cartoes-initial-width, 100%);
-            
+
             @include portacartoes-viewers;
 
             @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
@@ -75,14 +73,14 @@ main {
             @media screen and (max-width: $width2) {
                 @include global.size(100%, play.$playground-responsive-height);
             }
-            
-            #scroll-tablecards {
+
+            .scroll-tablecards {
                 width: 100%;
                 max-height: 100%;
 
                 overflow-y: auto;
 
-                #cards {
+                .cards {
                     width: 100%;
                     border-spacing: 0.5em;
 
@@ -92,11 +90,11 @@ main {
                         &:hover {
                             background-color: global.$lightgray;
                         }
-                        
+
                         td {
                             padding: 0.25em 0;
                             border: 0.05em solid global.$black;
-                            
+
                             font-size: $font-size;
                             @include global.setFont(dotted);
                         }
@@ -104,7 +102,7 @@ main {
                 }
             }
 
-            #editor {
+            .container-editor {
                 font-size: $font-size;
                 @include global.size(100%);
 
@@ -114,17 +112,39 @@ main {
                     @include global.setFont(code);
                 }
 
-                .cm-scroller {
-                    overflow-x: hidden;
+                &.unsaved {
+                    #editor {
+                        outline: 1px dashed play.$dark-red;
+
+                        &::after {
+                            content: "*";
+                            position: absolute;
+
+                            line-height: 0;
+                            font-size: 0.8em;
+                            color: play.$dark-red;
+
+                            right: default.$scrollbar-width;
+                            top: calc(default.$scrollbar-width * 1.5);
+                        }
+                    }
                 }
 
-                .cm-lineNumbers > * {
-                    font-size: 0.9em;
-                    user-select: none;
-                }
-                
-                br {
-                    content: inherit;
+                #editor {
+                    @include global.size(100%);
+
+                    .cm-scroller {
+                        overflow-x: hidden;
+                    }
+
+                    .cm-lineNumbers > * {
+                        font-size: 0.9em;
+                        user-select: none;
+                    }
+
+                    br {
+                        content: inherit;
+                    }
                 }
             }
 
@@ -137,11 +157,11 @@ main {
                 }
             }
         }
-        
+
         .debuggers {
             @include global.flex;
             @include global.size(play.$debuggers-initial-width, 100%);
-            
+
             @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
                 width: play.$debuggers-responsive-width;
             }
@@ -153,7 +173,7 @@ main {
             @media screen and (max-width: $width2) {
                 width: 100%; 
             }
-            
+
             @media screen and (max-width: $width3) {
                 flex-direction: column;
                 height: calc(play.$playground-responsive-height * 2 + play.$spacing);
@@ -185,7 +205,7 @@ main {
 
                     @include global.middle;
                     @include global.size(play.$viewers-initial-size, auto);
-                    
+
                     @include portacartoes-viewers;
 
                     @media screen and (min-width: ($width1 + 1)) {
@@ -196,7 +216,7 @@ main {
                         }
                     }
                     @media screen and (min-width: ($width2 + 1)) and (max-width: $width1) {
-                        @include global.size(play.$viewers-responsive-size);
+                        width: play.$viewers-responsive-size;
 
                         .viewers-values {
                             font-size: play.$viewers-responsive-font-size;
@@ -204,26 +224,26 @@ main {
                     }
 
                     @media screen and (max-width: $width2) {
-                        @include global.size(play.$viewers-responsive-size2);
+                        width: play.$viewers-responsive-size2;
 
                         .viewers-values {
                             font-size: play.$viewers-responsive-font-size2;
                         }
                     }
                 }
-        
-                #contorno-epi {
+
+                .container-epi {
                     border-radius: $radius;
                     background-color: play.$brown-wood;
-        
+
                     #epi {
                         border-radius: $radius;
                         background-color: play.$green-board;
 
                         @include global.middle;
                         @include global.size(88%);
-        
-                        #epi-value {
+
+                        .viewers-values {
                             scale: 1.1;
                             color: global.$white;
 
@@ -231,33 +251,33 @@ main {
                         }
                     }
                 }
-        
+
                 #acumulador {
                     $border-width: 0.5em;
-                    
+
                     background-color: play.$lightgreen-display;
-                    
+
                     border-radius: $radius;
                     border: $border-width ridge global.$black;
-        
-                    #acumulador-value, #overlay {
+
+                    .viewers-values, .overlay {
                         @include global.absolute-middle;
                         @include global.setFont(segment);
-        
-                        &#overlay {
-                            user-select: none;
-                            color: #{global.$black}15;
-                        }
+                    }
+
+                    .overlay {
+                        user-select: none;
+                        color: #{global.$black}15;
                     }
                 }
 
                 #folha-de-saida {
                     @include global.background($image: 'playground/notepad', $size: contain);
-        
-                    #saida-value {
+
+                    .viewers-values {
                         scale: 1.5;
                         margin-top: 0.3em;
-    
+
                         @include global.setFont(cursive);
                     }
                 }
@@ -298,7 +318,7 @@ main {
                     &.code {
                         filter: hue-rotate(300deg);
                     }
-                    
+
                     &.data {
                         filter: hue-rotate(210deg);
                     }
@@ -308,9 +328,9 @@ main {
                     }
                 }
 
-                #scroll-gaveteiro {
+                .scroll-gaveteiro {
                     overflow: auto;
-                    
+
                     @include global.flex($wrap: nowrap);
 
                     @media screen and (max-width: $width1) {
@@ -336,7 +356,7 @@ main {
                         &:not(:first-child, :last-child) {
                             margin: 0 play.$gaveta-margin;
                         }
-                        
+
                         &:first-child {
                             margin-right: play.$gaveta-margin;
                         }
@@ -363,12 +383,12 @@ main {
 
                                 @include global.setFont(mono);
 
-                                &.num-drawer {
+                                &.num {
                                     font-size: 2em;
                                     font-weight: bold;
                                 }
 
-                                &.cont-drawer {
+                                &.content {
                                     font-size: 1.5em;
                                 }
                             }
@@ -426,17 +446,15 @@ main {
             }
         }
 
-        #debug-menu {
+        .debug-menu {
             width: 100%;
 
             left: 0;
             bottom: 0;
-            z-index: 999;
+            z-index: 10;
             position: fixed;
 
             transition: 0.5s;
-
-            @include global.hidden;
 
             menu {
                 $width: 15em;
@@ -465,7 +483,7 @@ main {
 
                     cursor: pointer;
                     filter: brightness(0.5);
-                    
+
                     border: $size-border solid transparent;
 
                     @include global.middle;
@@ -476,68 +494,42 @@ main {
 
                         border-radius: $radius;
                         border-right-color: $color;
-                        
+
                         &:hover {
                             border-right-color: play.$live-blue;
-                        }
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr, 75%);
                         }
                     }
 
                     &#forth {
                         border-right-width: 0;
                         border-left-width: calc($size-icon);
-                        
+
                         border-radius: $radius;
                         border-left-color: $color;
-                        
+
                         &:hover {
                             border-left-color: play.$live-blue;
-                        }
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr, 25%);
                         }
                     }
 
                     &#pause-continue {
                         @include global.size($size-icon);
 
+                        border-right-width: 0;
+
+                        border-left-width: calc($size-icon);
+                        border-left-color: play.$nice-green;
+
                         &.pause {
                             border-style: double;
                             border-color: play.$nice-green;
-                            
+
                             border-width: 0 0 0 $size-icon;
-                            
-                            .tooltip {
-                                bottom: 125%;
-                            }
-                        }
-
-                        &.continue {
-                            border-right-width: 0;
-
-                            border-left-width: calc($size-icon);
-                            border-left-color: play.$nice-green;
-                        }
-
-                        .tooltip {
-                            margin-right: $size-icon;
-
-                            &::after {
-                                @include global.tooltip-bottom(default.$tooltip-size-arr);
-                            }
                         }
                     }
 
                     &#finish {
                         border-color: play.$dark-red;
-
-                        .tooltip::after {
-                            @include global.tooltip-bottom(default.$tooltip-size-arr);
-                        }
                     }
 
                     &:hover {
@@ -548,19 +540,85 @@ main {
                     &:active {
                         filter: contrast(0.5);
                     }
-
-                    .tooltip {
-                        width: max-content;
-                        bottom: calc($size-border * 1.5);
-                    }
                 }
             }
         }
     }
 }
 
-#help {
-    @include global.circle;
-    @include global.fixed-button;
-    @include global.faded-button(info);
+.fixed-container {
+    z-index: 9;
+    position: fixed;
+
+    right: default.$fixed-distance;
+    bottom: default.$fixed-distance;
+
+    .more-options {
+        transition: 0.5s;
+
+        .tooltiper {
+            margin-bottom: default.$fixed-distance;
+        }
+    }
+
+    .tooltiper {
+        $size: default.$fixed-size;
+
+        @include global.size($size);
+
+        > *:not(.tooltip) {
+            @include global.circle;
+            @include global.size(100%);
+
+            &.home {
+                @include global.faded-button(home);
+            }
+
+            &#save-code {
+                @include global.faded-button(playground/save);
+
+                &.saved {
+                    @include global.faded-button(check);
+                }
+            }
+
+            &#clear {
+                @include global.faded-button(playground/rubber);
+
+                &.cleaned {
+                    @include global.faded-button(check);
+                }
+            }
+
+            &#help {
+                @include global.faded-button(playground/info);
+            }
+
+            &.show-options {
+                transition: 0.5s;
+                transform: rotate(-180deg);
+
+                @include global.faded-button(caret, no);
+
+                &.contract {
+                    transform: none;
+                }
+            }
+        }
+
+        .tooltip {
+            top: calc($size/4);
+            right: calc(100% + default.$tooltip-size-arr + 0.2em);
+
+            height: 1.6em;
+
+            &::after {
+                @include global.tooltip-right(default.$tooltip-size-arr);
+            }
+
+            .tooltip-text {
+                width: max-content;
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
 @use '../playground/play' as play;
 /* -------------------------------------------------------------------- */
 .mymodal {
-	$modal-border: 1em;
+	$modal-border: 1rem;
 
 	background-color: #{global.$black}70;
 
@@ -22,7 +22,6 @@
 		max-height: 85%;
 
 		@include global.defaultText;
-		@include global.flex($direction: column, $align: normal);
 
 		> * {
 			padding: 0 0.5em;
@@ -33,15 +32,24 @@
 			@include global.rounded-border($modal-border, 0);
 
 			h2 {
-				font-size: 1.4em;
+				font-size: 1.35em;
 				color: global.$white;
 			}
 
 			.close {
+				font-size: 1.5em;
+				font-weight: bold;
+
+				color: global.$white;
+				background-color: transparent;
+
 				@include global.circle;
 				@include global.size(1.1em);
 				@include global.setFont(default);
-				@include global.faded-button($font: 1.4em);
+
+				&:hover {
+					background-color: global.$white;
+				}
 			}
 		}
 
@@ -84,6 +92,8 @@
 						position: relative;
 						border-radius: 1em;
 
+						background-color: global.$gray;
+
 						@include global.size(100%);
 						
 						&:hover {
@@ -117,196 +127,203 @@
 			}
 		}
 	}
-}
 
-/* -------------------------------------------------------------------- */
-#config-modal {
-	.modal-body {
-		@include global.size(18em, 20em);
-		
-		.modal-header {
-			height: 12%;
-			background: global.$fade-default;
-			
-			h2 {
-				@include global.setFont(text);
-			}
-		}
+	&#help-modal {
+		z-index: 90;
 
-		.modal-main {
-			height: 70%;
+		.modal-body {
+			font-size: 1em;
+			overflow: auto;
 
-			#delay {
-				width: 3.5em;
-				text-align: center;
-			}
-		}
-
-		.modal-footer {
-			height: 12%;
-			background: global.$fade-default;
-			
-			#save-configs {
-				border-radius: 0.6em;
-
-				@include global.size(5em, 80%);
-				@include global.faded-button($font: 1em);
+			table {
+				padding: 0;
 			}
 		}
 	}
-}
-/* -------------------------------------------------------------------- */
-#card-modal {
-	$submit-size: 2.2em;
 
-	.modal-body {
-		@include global.middle;
-		@include global.size(15em, 5em);
-		
-		.modal-main {
-			width: 100%;
+	&#rating-modal {
+		z-index: 91;
 
-			form {
-				@include global.flex;
+		.modal-body {
+			width: 25em;
+
+			.modal-header {
+				background-color: global.$color2-dark;
 				
-				input {
-					font-size: 3em;
-					text-align: center;
-					
-					width: calc(100% - $submit-size * 0.6);
-
-					border: 0.1rem solid global.$black;
-
-					@include global.setFont(dotted);
+				h2 {
+					font-size: 1.6em;
+					@include global.setFont(subtitle);
 				}
 
-				#submit-card {
-					@include global.circle;
-					@include global.size($submit-size);
-					@include global.faded-button(check);
-				}
-			}
-		}
-	}
-}
-/* -------------------------------------------------------------------- */
-#error-modal {
-	background-color: #{play.$dark-red}88;
-
-	.modal-body {
-		width: 25em;
-
-		.modal-header {
-			background: play.$dark-red;
-
-			h2 {
-				font-size: 1.15em;
-				line-height: 1.8em;
-				@include global.setFont(code);
-			}
-
-			.close {
-				background: transparent;
-
-				&:hover {
-					background: global.$white;
-					color: play.$dark-red;
-				}
-			}
-		}
-
-		.modal-main {
-			text-align: center;
-
-			@include global.middle;
-
-			#error {
-				padding: 0.5em 0;
-			}
-		}
-	}
-}
-/* -------------------------------------------------------------------- */
-#help-modal {
-	.modal-body {
-		font-size: 1em;
-		overflow: auto;
-
-		table {
-			padding: 0;
-		}
-	}
-}
-/* -------------------------------------------------------------------- */
-#rating-modal {
-	.modal-body {
-		width: 23em;
-
-		.modal-header {
-			background-color: global.$color2-dark;
-			
-			h2 {
-				font-size: 1.6em;
-				@include global.setFont(subtitle);
-			}
-
-			#close-rating {
-				font-size: 1.5em;
-				background: transparent;
-
-				&:hover {
-					background: global.$white;
+				.close:hover {
 					color: global.$color2;
 				}
 			}
-		}
 
-		.modal-main {
-			$padding: 0.5em;
+			.modal-main {
+				@include global.flex($direction: column, $gap: 0.25em);
 
-			font-size: 1.1em;
-			text-align: center;
+				$padding: 1em;
 
-			padding-top: $padding;			
-			padding-bottom: $padding;
+				padding-top: $padding;			
+				padding-bottom: $padding;
 
-			#rating {
-				font-size: 1.5em;
-				color: global.$color2;
+				p {
+					font-size: 1.1em;
+					text-align: center;
+				}
 
-				padding: 0 0.4em;
-				border-radius: 1em;
+				#rating {
+					font-size: 1.6em;
+					color: global.$color2;
 
-				transition: 0.5s;
+					padding: 0 0.4em;
+					border-radius: 1em;
 
-				&:hover {
-					color: global.$white;
-					background-color: global.$color2;
+					transition: 0.5s;
+
+					&:hover {
+						color: global.$white;
+						background-color: global.$color2;
+					}
+				}
+			}
+
+			.modal-footer {
+				padding-top: 0.2em;
+				padding-bottom: 0.2em;
+				
+				justify-content: end;
+				background-color: global.$color2-dark;
+
+				#dont-ask {
+					padding: 0.1em 0.5em;
+					border-radius: 0.6em;
+					
+					@include global.faded-button($font: 0.7em, $simple: yes, $color: global.$color2-dark);
+
+					&:hover {
+						background: global.$color2;
+					}
 				}
 			}
 		}
+	}
 
-		.modal-footer {
-			padding-top: 0.2em;
-			padding-bottom: 0.2em;
+	&#config-modal {
+		z-index: 92;
+
+		.modal-body {
+			width: 18em;
 			
-			justify-content: end;
-			background-color: global.$color2-dark;
-
-			#dont-ask {
-				padding: 0.1em 0.5em;
-				border-radius: 0.6em;
+			.modal-header {
+				background: global.$fade-default;
 				
-				@include global.faded-button($font: 0.7em);
-				
-				& {
-					background: global.$white;
-					color: global.$color2-dark;
+				h2 {
+					@include global.setFont(text);
 				}
 
-				&:hover {
-					color: global.$white;
-					background: global.$color2;
+				.close:hover {
+					color: global.$color1;
+				}
+			}
+
+			.modal-main {
+				margin: 0.5em 0;
+
+				form {
+					gap: 0.8em;
+
+					#delay {
+						width: 3.5em;
+						text-align: center;
+					}
+				}
+			}
+
+			.modal-footer {
+				padding-top: 0.2em;
+				padding-bottom: 0.2em;
+
+				background: global.$fade-default;
+				
+				#save-configs {
+					padding: 0 0.5em;
+					border-radius: 0.6em;
+
+					@include global.faded-button($font: 1em, $simple: yes, $color: global.$color1);
+				}
+			}
+		}
+	}
+
+	&#error-modal {
+		z-index: 93;
+
+		background-color: #{play.$dark-red}88;
+
+		.modal-body {
+			width: 25em;
+
+			.modal-header {
+				background: play.$dark-red;
+
+				h2 {
+					font-size: 1.15em;
+					line-height: 1.8em;
+					@include global.setFont(code);
+				}
+
+				.close:hover {
+					color: play.$dark-red;
+				}
+			}
+
+			.modal-main {
+				text-align: center;
+
+				@include global.middle;
+
+				#error-message {
+					padding: 0.5em 0;
+				}
+			}
+		}
+	}
+
+	&#card-modal {
+		$submit-size: 4.5rem;
+
+		z-index: 94;
+
+		.modal-body {
+			@include global.middle;
+			@include global.size(15em, 5em);
+			
+			.modal-main {
+				width: 100%;
+
+				form {
+					flex-direction: row;
+					
+					input {
+						font-size: 3em;
+						text-align: center;
+
+						padding: 0.2rem 0;
+						
+						width: calc(100% - $submit-size * 1.2);
+
+						border: 0.1rem solid global.$black;
+
+						@include global.setFont(dotted);
+					}
+
+					#submit-card {
+						@include global.circle;
+						@include global.size($submit-size);
+						@include global.faded-button(check);
+					}
 				}
 			}
 		}

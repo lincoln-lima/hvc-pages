@@ -1,49 +1,89 @@
-import { EditorState } from "@codemirror/state";
-import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
+import { EditorState, Extension } from "@codemirror/state";
 import { EditorView, keymap, lineNumbers } from "@codemirror/view";
+import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
 // -----------------------------------------------------------------------------------
-const params = new URLSearchParams(window.location.search);
-const initial = localStorage.getItem("code") ? localStorage.getItem("code") : "0-50\n105\n805\n000";
+export class CodeEditor {
+    private static instance: CodeEditor | null = null;
 
-const code = localStorage.getItem("saved") != "true" && params.has("code") ? params.get("code") : initial;
+    private code: string = "0-50\n105\n805\n000";
 
-const editorid = EditorView.editorAttributes.of({ id: "editor" });
+    private state: EditorState | undefined = undefined;
+    private parentElement: Element | undefined = undefined;
 
-const codechange = EditorView.updateListener.of(update => {
-    if(update.docChanged) {
-        localStorage.setItem("code", getDoc());
+    private id: Extension | undefined = undefined;
+    private view: EditorView | undefined = undefined;
+    private changeEvent: Extension | undefined = undefined;
 
-        if(localStorage.getItem("saved") != "true") localStorage.setItem("saved", "true");
+    public static getInstance(): CodeEditor {
+        if(!this.instance) this.instance = new CodeEditor();
+
+        return this.instance;
     }
-});
-// -----------------------------------------------------------------------------------
-const startstate = EditorState.create({
-    doc: code!,
-    extensions: [
-        keymap.of(defaultKeymap),
-        keymap.of(historyKeymap),
-        history(),
-        lineNumbers(),
-        codechange,
-        editorid,
-    ]
-});
-// -----------------------------------------------------------------------------------
-const view = new EditorView({
-    state: startstate,
-    parent: document.getElementById("porta-cartoes")!
-});
-// -----------------------------------------------------------------------------------
-export const getDoc = () => {
-    return view.state.doc.toString();
-}
 
-export const setDoc = (text: string) => {
-    view.dispatch({
-        changes: {
-            from: 0,
-            to: view.state.doc.length,
-            insert: text
+    public init(parentElement: Element) {
+        this.parentElement = parentElement;
+
+        this.id = EditorView.editorAttributes.of({ id: "editor" });
+
+        this.changeEvent = EditorView.updateListener.of(update => {
+            if(localStorage.getItem("saved")! != "false" && update.docChanged) this.unSaved();
+        });
+
+        this.defineCode();
+
+        this.state = EditorState.create({
+            doc: this.code,
+            extensions: [
+                this.id,
+                history(),
+                lineNumbers(),
+                this.changeEvent,
+                keymap.of(defaultKeymap),
+                keymap.of(historyKeymap),
+            ]
+        });
+
+        this.view = new EditorView({
+            state: this.state,
+            parent: this.parentElement!
+        });
+    }
+
+    private defineCode() {
+        const params = new URLSearchParams(window.location.search);
+
+        if(params.has("code")) {
+            const url = new URL(window.location.href);
+
+            this.unSaved();
+            this.code = params.get("code")!;
+
+            url.searchParams.delete("code");
+            window.history.pushState({}, "", url);
         }
-    });
+        else if(localStorage.getItem("code")) {
+            localStorage.setItem("saved", "true");
+            this.code = localStorage.getItem("code")!;
+        }
+        else this.unSaved();
+    }
+
+    private unSaved = () => {
+        localStorage.setItem("saved", "false");
+        this.parentElement!.classList.add("unsaved");
+    }
+
+    public getCode = () => {
+        return this.view!.state.doc.toString();
+    }
+
+    public setCode = (text: string) => {
+        this.view!.dispatch({
+            changes: {
+                from: 0,
+                to: this.view!.state.doc.length,
+                insert: text
+            }
+        });
+    }
 }

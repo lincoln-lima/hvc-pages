@@ -5,7 +5,7 @@ $spacing: 3em;
 $header-padding: 0.3em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 // ------------------------------------------------------------------------------- 
-$nav-initial-width: 94vw;
+$nav-initial-width: 93vw;
 // ------------------------------------------------------------------------------- 
 $menu-num-buttons: 5;
 $menu-width: calc(($menu-num-buttons + 1.5) * default.$menu-buttons-width);
@@ -37,11 +37,11 @@ $dark-red: #8b0000;
 $live-blue: #0000F6;
 $nice-green: #008000;
 // ------------------------------------------------------------------------------- 
-$screen-responsive: (width1: 1250px, width2: 850px, width3: 500px);
+$screen-responsive: (width1: 1320px, width2: 850px, width3: 450px);
 // ------------------------------------------------------------------------------- 
-$header-responsive-width: 700px;
+$header-responsive-width: 680px;
 $tools-buttons-responsive-width: 1480px;
-$state-labels-responsive-width: 880px;
+$state-labels-responsive-width: 870px;
 // ------------------------------------------------------------------------------- 
 $nav-responsive-width: 88vw;
 

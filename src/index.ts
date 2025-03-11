@@ -1,24 +1,26 @@
-import { globals } from "./default";
-// ------------------------------------------------------------------------------- 
-import templates from "./templates";
-// ------------------------------------------------------------------------------- 
 import "/src/styles/index/index.scss";
 import "/src/styles/defaults/table.scss";
 import "/src/styles/defaults/footer.scss";
-import { Transformer } from "./lang/Transformer";
 // ------------------------------------------------------------------------------- 
-const windowsizemenu = 860;
+import { monitoreMenu, translateElement } from "./globals";
 // ------------------------------------------------------------------------------- 
-globals.actions.monitoreMenu(windowsizemenu);
-window.addEventListener("resize", () => globals.actions.monitoreMenu(windowsizemenu));
+import templates from "./templates";
 // ------------------------------------------------------------------------------- 
-const table = document.getElementById("table")!;
+const windowsizemenu = 840;
+// ------------------------------------------------------------------------------- 
+monitoreMenu(windowsizemenu);
+window.addEventListener("resize", () => monitoreMenu(windowsizemenu));
+// ------------------------------------------------------------------------------- 
+const scrolltable = document.querySelector(".scroll-table")!;
+// ------------------------------------------------------------------------------- 
+const dynamics: [string, Element][] = [
+    ["table", scrolltable],
+    ["footer", document.body]
+];
 
-const setTemplates = async () => {
-    table.appendChild(await templates("table"));
-    document.body.appendChild(await templates("footer")); 
-}
+await Promise.all(dynamics.map(async ([key, parent]) => {
+    const element = await templates(key);
+    translateElement(element);
 
-await setTemplates();
-
-Transformer.getInstance().init();
+    parent.appendChild(element);
+}));

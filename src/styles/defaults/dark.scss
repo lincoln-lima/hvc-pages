@@ -1,0 +1,90 @@
+@use '../globals' as global;
+@use './default' as default;
+// ------------------------------------------------------------------------------- 
+$body-color: #1d1d1d;
+$header-color: #131313;
+$primary-menu-color: $header-color + default.$transparency-menu;
+$tooltip-color: #464646;
+$sticky-nav-color: #313131;
+$modal-color: #333333;
+/* -------------------------------------------------------------------- */
+@mixin mode {
+    body {
+        background-color: $body-color;
+
+        header {
+            background-color: $header-color;
+
+            .primary-menu {
+                background-color: $primary-menu-color;
+            }
+        }
+
+        ul, ol, p, figcaption {
+            color: global.$white;
+
+            :not(mark, mark > *) {
+                color: global.$white;
+                
+                &.marked {
+                    text-decoration-color: global.$white;
+                }
+            }
+        }
+
+        ol {
+            > li::before {
+                background-color: global.$color1;
+            }
+        }
+        
+        table#commands td.operation {
+            color: global.$white;
+        }
+
+        .sticky-nav .content-menu {
+            background-color: $sticky-nav-color;
+            
+            * {
+                color: global.$white;
+            }
+        }
+
+        .tooltip {
+            background-color: $tooltip-color;
+
+            &::after {
+                border-color: $tooltip-color;
+            }
+        }
+
+        .modal-body {
+            background-color: $modal-color;
+
+            .modal-main {
+                color: global.$white;
+
+                form {
+                    * {
+                        color: global.$white;
+                    }
+                    
+                    input:not([type="checkbox"]), select {
+                        border-color: global.$white;
+                        background-color: $modal-color;
+                    }
+
+                    input[type="checkbox"] {
+                        &:not(:checked):after {
+                            background-color: global.$lightgray;
+                        }
+
+                        &:checked {
+                            background-color: global.$color1 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

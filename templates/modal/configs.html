@@ -1,36 +1,40 @@
-<section id="config-modal" class="mymodal">
-    <article class="modal-body">
+<div id="config-modal" class="mymodal">
+    <div class="modal-body">
         <div class="modal-header">
-            <h2>Configurações</h2>
-            <button id="close-configs" class="close">&times;</button>
+            <h2 data-lang="config-title">Configurações</h2>
+            <button class="close">&times;</button>
         </div>
         <div class="modal-main">
             <form id="configs-form" name="configs-form">
                 <div class="field">
-                    <label for="theme">Tema</label>
+                    <label data-lang="config-theme-title" for="theme">Tema</label>
                     <select name="theme" id="theme">
-                        <option value="darkmode">Escuro</option>
-                        <option value="lightmode">Claro</option>
+                        <option data-lang="config-darkmode-title" value="dark">Escuro</option>
+                        <option data-lang="config-lightmode-title" value="light">Claro</option>
                     </select>
                 </div>
                 <hr>
                 <div class="field">
-                    <label for="delay">Delay (ms)</label>
+                    <label for="delay"><span data-lang="config-delay-title">Atraso</span> (ms)</label>
                     <input type="number" name="delay" id="delay" min="100">
                 </div>
                 <hr>
                 <div class="field">
-                    <label for="skip">Estado de carga</label>
+                    <label data-lang="config-show-tips-title" for="show-tips">Mostrar dicas</label>
+                    <div class="switcher"><input type="checkbox" name="show-tips" id="show-tips"></div>
+                </div>
+                <div class="field">
+                    <label data-lang="config-loading-state-title" for="skip">Estado de carga</label>
                     <div class="switcher"><input type="checkbox" name="skip" id="skip"></div>
                 </div>
                 <div class="field">
-                    <label for="paused">Depuração pausada</label>
+                    <label data-lang="config-paused-debug-title" for="paused">Depuração pausada</label>
                     <div class="switcher"><input type="checkbox" name="paused" id="paused"></div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button id="save-configs" type="submit" form="configs-form">Salvar</button>
+            <button data-lang="config-save-title" id="save-configs" type="submit" form="configs-form">Salvar</button>
         </div>
-    </article>
-</section>
+    </div>
+</div>

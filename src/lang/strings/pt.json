@@ -1,0 +1,604 @@
+{
+    "main-description1-article": "O",
+    "main-description1-definition": "é um interpretador que permite a execução de código escrito na linguagem de máquina HV, utilizada no computador hipotético HV-2.",
+    "main-description2": "Pensado como ferramenta didática, sua idealização busca facilitar a assimilação de conceitos computacionais básicos, dando introdução à elaboração de algoritmos e às linguagens de programação.",
+
+    "learn-title": "Aprenda",
+
+    "hv-computer-title": "Computador HV",
+
+    "hv-computer-description1": "Imagine um computador hipotético criado com intuito inteiramente didático, dedicado a viabilizar o ensino de programação por meio da demonstração básica de seu funcionamento... esse é o HV.",
+    "hv-computer-description2": "Sua linguagem conta com instruções simples mas engenhosas, capazes de construir algoritmos complexos e refinados.",
+    "hv-computer-description3": "Em sua construção, o computador HV possui",
+
+    "hv-computer-list-item1": "Um gaveteiro com 100 gavetas",
+    "hv-computer-list-item2": "Calculadora, mostrador e teclado",
+    "hv-computer-list-item3": "Quadro Negro (EPI)",
+    "hv-computer-list-item4": "Porta-cartões",
+    "hv-computer-list-item5": "Folha de saída",
+    "hv-computer-list-item6": "Operador de sistema (CHICO)",
+
+    "hv-computer-description4": "A partir da abstração de conceitos sofisticados, o estudante será capaz de assimilar a base de programação, e ainda adquirir noções intuitivas de arquitetura de computadores.",
+    "hv-computer-description5": "O material completo acerca de sua estrutura e funcionamento está disponível no arquivo",
+
+    "hv-machine-language-title": "Linguagem de Máquina HV",
+
+    "hv-machine-language-description1": "Trata-se de uma linguagem de programação de baixo nível, com uma sintaxe flexível que facilita o entendimento introdutório à resolução de problemas e criação de algoritmos.",
+    "hv-machine-language-description2": "Suas instruções são sucintas. Elas explicitam, em suma, um código de operação e o endereço de uma gaveta.",
+
+    "table-command-title": "Comandos",
+    "table-description-title": "Descrição",
+
+    "table-assembler-then": "então",
+    "table-assembler-read": "leia",
+    "table-assembler-write": "escreva",
+    "table-assembler-if": "se",
+    "table-assembler-end": "fim",
+
+    "table-command-0ee-description": "copie valor da gaveta EE (cEE) para AC",
+    "table-command-1ee-description": "copie valor do AC (cAC) para gaveta EE",
+    "table-command-2ee-description": "some cEE ao AC",
+    "table-command-3ee-description": "subtraia de AC o cEE",
+    "table-command-4ee-description": "multiplique o cAC por cEE",
+    "table-command-5ee-description": "divida o cAC por cEE",
+    "table-command-6ee-description": "se cAC > 0, vá para EE",
+    "table-command-7ee-description": "leia um valor e guarda na gaveta EE",
+    "table-command-8ee-description": "escreva cEE no dispositivo de saída",
+    "table-command-9ee-description": "vá para cEE",
+    "table-command-0-N-description": "AC recebe uma constante (truque)",
+    "table-command-000-description": "encerra execução",
+
+    "practice-title": "Pratique",
+
+    "building-algorithms-title": "Construindo algoritmos",
+    "building-algorithms-description1": "Este algoritmo calcula o enésimo termo da sequência de Fibonacci usando um método iterativo, seguindo a lógica do pseudocódigo de referência.",
+    "building-algorithms-description2-begin": "Diferente de linguagens de alto nível, onde podemos simplesmente utilizar laços de repetição e variáveis auxiliares, na linguagem HV precisamos",
+    "building-algorithms-description2-mark": "gerenciar manualmente as operações e o controle de fluxo",
+    "building-algorithms-description2-end": "para atualizar os valores da sequência.",
+
+    "algorithms-steps": "Passos do algoritmo",
+    "function-code-reserved": "função",
+    "for-code-reserved": "para",
+    "to-code-reserved": "até",
+    "do-code-reserved": "faça",
+    "return-code-reserved": "retorne",
+    
+    "fibonacci-steps-1-begin": "Lemos o valor de",
+    "fibonacci-steps-1-end": "que representa o termo da sequência desejado.",
+    "fibonacci-steps-2-begin": "Inicializamos",
+    "fibonacci-steps-2-middle": "= 0 (Fibonacci de 0) e",
+    "fibonacci-steps-2-end": "= 1 (Fibonacci de 1).",
+    "fibonacci-steps-3-begin": "Se",
+    "fibonacci-steps-3-end": "o resultado é 0.",
+    "fibonacci-steps-4-begin": "Caso contrário, iteramos",
+    "fibonacci-steps-4-end": "vezes:",
+    "fibonacci-steps-4-subtopic-1": "Calculamos",
+    "fibonacci-steps-4-subtopic-2": "Atribuímos",
+    "fibonacci-steps-5": "Ao final do loop, conterá o enésimo termo da sequência, que é impresso na saída.",
+
+	"fibonacci-code-comment1": "Leia o valor de n e armazene na gaveta 25",
+	"fibonacci-code-comment2": "Carregue 0 no acumulador",
+	"fibonacci-code-comment3": "Armazene 0 na gaveta 26 (i = 0)",
+	"fibonacci-code-comment4": "Armazene 0 na gaveta 27 (auxiliar do contador)",
+	"fibonacci-code-comment5": "Carregue 1 no acumulador",
+	"fibonacci-code-comment6": "Armazene 1 na gaveta 28 (j = 1)",
+	"fibonacci-code-comment7": "Armazene 1 na gaveta 29 (auxiliar número 1)",
+	"fibonacci-code-comment8": "Carregue n no acumulador",
+	"fibonacci-code-comment9": "Subtraia (auxiliar do contador)",
+	"fibonacci-code-comment10": "Se n - (auxiliar do contador) == 0, vá para a gaveta 11 (corpo loop)",
+	"fibonacci-code-comment11": "Vá para a gaveta 22 (final loop)",
+	"fibonacci-code-comment12": "Carregue i",
+	"fibonacci-code-comment13": "Some j (t = i + j)",
+	"fibonacci-code-comment14": "Armazene na gaveta 30 (t = i + j)",
+	"fibonacci-code-comment15": "Carregue j",
+	"fibonacci-code-comment16": "Armazene em i (i = j)",
+	"fibonacci-code-comment17": "Carregue t",
+	"fibonacci-code-comment18": "Armazene em j (j = t)",
+	"fibonacci-code-comment19": "Carregue o (auxiliar do contador)",
+	"fibonacci-code-comment20": "Some 1 ao (auxiliar do contador)",
+	"fibonacci-code-comment21": "Armazene o novo valor na (auxiliar do contador)",
+	"fibonacci-code-comment22": "Volte para a verificação do loop",
+	"fibonacci-code-comment23": "Escreva o resultado final (i)",
+	"fibonacci-code-comment24": "Fim do programa",
+
+    "building-algorithms-description3": "Esse método segue o princípio matemático da definição da sequência de Fibonacci, onde cada termo é a soma dos dois anteriores:",
+
+    "hvcjs-description1": "Trata-se de uma versão modularizada do compilador",
+    "original-hvc": "HVC original",
+    "hvcjs-description2": "projetada para ser disponibilizada como um módulo npm.",
+    "hvcjs-description3": "Tal abordagem permite a eficiente distribuição e manutenção das ferramentas desenvolvidas por nossa equipe.",
+    "hvcjs-description4": "O módulo tem por objetivo facilitar a criação de novas aplicações de ensino que utilizam o Computador à Gaveta, por meio de uma interface simples e intuitiva.",
+
+    "developers-title": "Desenvolvedores",
+    "colaborators-title": "Colaboradores",
+    "supervisor-title": "Orientador",
+    "designer-title": "Designer",
+
+    "playground-description1": "Este ambiente online atua como uma poderosa ferramenta de apredizagem, tendo em vista suas funcionalidades interativas para desenvolvimento de algoritmos e escritas de código na linguagem HV, permitindo sua testagem em tempo real.",
+    "playground-description2": "Seu funcionamento respeita as limitações impostas pela estrutura do computador hipotético, mas traz recursos que auxiliam o desenvolvedor, como a detecção de erros e o modo de depuração passo a passo.",
+
+    "about-project-title": "Sobre o projeto",
+
+    "about-project-description1": "O computador hipotético HV foi um modelo proposto pelos professores Routo Terada e Waldemar W. Setze na obra",
+    "book-title": "“Introdução à Computação e à Construção de Algoritmos”.",
+
+    "about-project-description2": "A implementação em software desses conceitos faz parte de uma Atividade Orientada de Ensino desenvolvida por nós graduandos da",
+    "facom": "Faculdade de Computação (FACOM)",
+    "ufms": "Universidade Federal de Mato Grosso do Sul (UFMS)",
+    "about-project-description3": "O código fonte do interpretador da linguagem de máquina HV, bem como as instruções para sua implantação em outros ambientes está disponível em seu repositório no GitHub.",
+
+    "come-to-play-title": "descer para o play",
+    "come-to-play-tip": "mas só se souber brincar",
+
+    "playground-title": "Playground",
+    "documentation-title": "Documentação",
+    "repository-title": "Repositório",
+
+    "drawer-computer-title": "Computador à Gaveta",
+    "drawer-computer-description1": "Situada em meio ao cenário atual da programação, a relação entre o programador e a máquina, outrora mais evidente, tornou-se desafiadora para novos desenvolvedores. O aumento da semelhança entre linguagens de programação e linguagem humana contribui para esse fator, onde compreender como o código é interpretado pelo computador representa uma tarefa complexa e que muitos sentem dificuldade.",
+    "drawer-computer-description2": "Essa questão pode ser agravada por sintaxes convenientes e funções milagrosas, sob um contexto o qual linguagens de programação de alto nível como JavaScript e Python predominam. Para enfrentar esse desafio, destaca-se uma ferramenta pedagógica valiosa: o",
+    "drawer-computer-description2-emphasis": "Computador à Gaveta",
+
+    "drawer-computer-description3-begin": "Trata-se de um computador hipotético que adere à",
+    "von-neumann-architecture": "arquitetura de Von Neumann",
+    "drawer-computer-description3-end": "semelhante aos computadores contemporâneos.",
+
+    "drawer-computer-description4": "Entretanto, suas características são simplificadas, preservando funcionalidades análogas às encontradas em componentes reais. A distinção reside na acessibilidade da linguagem de máquina, especialmente projetada para ser compreendida por iniciantes na programação.",
+    "drawer-computer-description5": "O propósito deste projeto é resgatar a compreensão da interação entre o código e a máquina, oferecendo uma abordagem mais clara e educativa para aqueles que estão dando os primeiros passos na programação. Para que com isso proporcione-se um melhor entendimento da relação entre o código escrito e as operações realizadas pelo computador, promovendo uma base sólida para o aprendizado da programação.",
+
+    "documentation-fig1-title": "Figura 1",
+    "documentation-fig1-label": "Arquitetura de Von Neumann",
+
+    "components-title": "Componentes",
+    "components-description": "Por meio de analogias, seus componentes são sucintos, distintos e intuitivos com intuito de viabilizar sua associação. Estão listados a seguir",
+
+    "components-list-item1": "Um gaveteiro com 100 gavetas;",
+    "components-list-item2": "Uma calculadora com mostrador e teclado;",
+    "components-list-item3": "Um pequeno quadro-negro denominado EPI;",
+    "components-list-item4": "Um porta-cartões;",
+    "components-list-item5": "Uma folha de papel;",
+    "components-list-item6": "Um operador de sistema chamado CHICO, com um lápis, um apagador de quadro-negro e um giz.",
+
+    "documentation-fig2-title": "Figura 2",
+    "documentation-fig2-label": "Arquitetura do HV",
+
+    "chest-of-drawers-title": "Gaveteiro",
+    "chest-of-drawers-description1": "O gaveteiro é como uma série de gavetas numeradas de 00 a 99, sendo este número chamado de seu endereço. Dentro de cada gaveta há uma folha vazia, mas que pode conter uma instrução, um número de até três algarismos (por exemplo: 102, 50, 3, etc.) ou informações adicionais que serão abordadas ao decorrer do texto.",
+    "chest-of-drawers-description2": "Agora, vamos entender o funcionamento desse sistema de gavetas",
+
+    "chest-of-drawers-list-item1": "Em qualquer momento, só podemos abrir uma gaveta.",
+    "chest-of-drawers-list-item2": "Quando lemos o que está escrito em uma gaveta, isso não muda o que está escrito lá.",
+    "chest-of-drawers-list-item3": "Antes de escrever algo numa gaveta, precisamos apagar o que já está lá.",
+    "chest-of-drawers-list-item4": "O valor que será escrito numa gaveta não pode ser inferior a -99 e superior a 999.",
+    "chest-of-drawers-list-item5": "Somente o operador do sistema pode mexer no gaveteiro.",
+    "chest-of-drawers-list-item6": "Durante o estado de carga as instruções que estão no porta-cartões são guardadas no gaveteiro, até que seja armazenado o cartão contendo a instrução 000, que indica o fim do estado de carga.",
+
+    "documentation-fig3-title": "Figura 3",
+    "documentation-fig3-label": "Gaveteiro",
+
+    "calculator-title": "Calculadora",
+    "calculator-description1": "A calculadora utilizada no HV é semelhante a qualquer outra, apresentando um teclado com dígitos de 0 a 9 e um visor onde são exibidos os resultados das operações. Estes resultados são armazenados no acumulador. No entanto, ao contrário das calculadoras convencionais, esta opera exclusivamente com valores inteiros e oferece apenas quatro operações: soma, subtração, divisão e multiplicação.",
+    "calculator-description2": "Com a operação da calculadora sendo realizada desta forma",
+
+    "calculator-list-item1": "Para carregar um número no acumulador, é necessário pressionar a tecla “=” para garantir o encerramento de qualquer operação anterior. Em seguida, os algarismos do número desejado são digitados. Este número é então exibido no acumulador.",
+    "calculator-list-item2": "Uma operação aritmética é sempre realizada entre o número armazenado no acumulador e um segundo número. Para executá-la, é necessário pressionar a tecla da operação desejada, inserir o segundo número e em seguida pressionar a tecla “=”. O resultado da operação será exibido no acumulador.",
+    "calculator-list-item3": "Assim como o gaveteiro, a calculadora só pode ser utilizada pelo CHICO.",
+
+    "documentation-fig4-title": "Figura 4",
+    "documentation-fig4-label": "Calculadora do HV",
+
+    "epi-title": "EPI (Quadro Negro)",
+    "epi-description": "O EPI é um quadro negro que o CHICO usa para deixar anotado o endereço da proxima instrução que ele deve executar durante o estado de execução. Somente o CHICO pode alterar e ler o conteúdo do EPI.",
+
+    "documentation-fig5-title": "Figura 5",
+    "documentation-fig5-label": "Quadro Negro com EPI (Endereço da Próxima Instrução)",
+
+    "card-holder-title": "Porta-Cartões",
+    "card-holder-description1": "É um componente que se assemelha a um porta-cigarros, com os cartões sendo inseridos na parte superior e sendo retirados para leitura na parte inferior. Os cartões que formam o código a ser executado são retirados no estado de carga e então armazenados nas gavetas até se encerrar esse estado.",
+    "card-holder-description2": "Diferente dos outros componentes, esse pode ser manipulado pelo usuário, e seu funcionamento ocorre da seguinte forma",
+
+    "card-holder-list-item1": "Cartões são inseridos exclusivamente pela parte superior, um por vez. Nos cartões devem estar escritos apenas instruções e números de até 3 algarismos;",
+    "card-holder-list-item2": "Cartões são retirados da extremidade inferior, um de cada vez, aparecendo na mesma ordem em que foram colocados no dispositivo;",
+    "card-holder-list-item3": "Somente o CHICO pode retirar um cartão;",
+    "card-holder-list-item4": "A inserção de um cartão só pode ser feita por um usuário;",
+    "card-holder-list-item5": "Quando o CHICO executa uma instrução de leitura do porta-cartões que se encontra vazio, é solicitado ao usuário que insira um novo cartão para que a execução do programa continue.",
+
+    "documentation-fig6-title": "Figura 6",
+    "documentation-fig6-label": "Porta-Cigarros (demonstrativo)",
+
+    "output-sheet-title": "Folha de Saída",
+    "output-sheet-description": "Trata-se de uma folha de papel onde pode ser escrito um número em cada linha, utilizando-se sempre linhas consecutivas. Somente o CHICO pode escrever nesta folha e somente o usuário pode ler o que já foi escrito.",
+
+    "documentation-fig7-title": "Figura 7",
+    "documentation-fig7-label": "Folha de Saída",
+
+    "chico-operator-title": "Operador CHICO",
+    "chico-operator-description1": "Resumindo as diversas características descritas, vemos que o operador CHICO é a única pessoa que tem acesso ao gaveteiro, à calculadora e ao EPI, além de ser o único que pode retirar cartões do porta-cartões e escrever na folha de saída.",
+    "chico-operator-description2": "Ele executa estritamente as ordens recebidas, não podendo tomar nenhuma iniciativa própria ou realizar ação fora da especificação destas. Essas ordens podem ser quaisquer uma das instruções que serão detalhadas na seção",
+    "chico-operator-description3": "O CHICO trabalha sempre em um de dois estados diferentes",
+
+    "loading-state-title": "Estado de Carga",
+    "loading-state-description1": "O estado de carga se inicia assim que o usuário pede a execução do código. Nele o CHICO retira um cartão do porta-cartões, lê seu conteúdo e o copia para uma gaveta do gaveteiro, seguindo a sequência das gavetas.",
+    "loading-state-description2": "Esse processo é repetido até a instrução 000, que indica o fim do programa, ser lida, encerrando o estado de carga e dando início ao estado de execução.",
+
+    "documentation-fig8-title": "Figura 8",
+    "documentation-fig8-label": "Estado de Carga",
+
+    "running-state-title": "Estado de Execução",
+    "running-state-description1": "O estado de execução é aquele no qual o operador do sistema executa as instruções que foram escritas nas gavetas. O EPI indica ao operador qual gaveta ele deve abrir para ler a instrução, esse sempre se iniciando com o valor 0. Após realizar uma instrução, CHICO atualiza o valor do EPI, geralmente fazendo o incremento de +1 ao valor atual. Novamente ele checará o valor no quadro negro e abrirá a gaveta indicada, até, por fim, executar a instrução 000, finalizando o programa.",
+    "running-state-description2": "À fim de melhor demonstrar como o estado de execução funciona, a seguir há ilustrações do CHICO executando um programa que imprime 50 na folha de saída.",
+    "running-state-description3": "Os detalhes sobre como escrever um código para CHICO executar serão detalhados posteriomente.",
+
+    "documentation-fig9-title": "Figura 9",
+    "documentation-fig9-label": "Transição para o Estado de Execução",
+
+    "documentation-fig10-title": "Figura 10",
+    "documentation-fig10-label": "Primeira Instrução",
+
+    "documentation-fig11-title": "Figura 11",
+    "documentation-fig11-label": "Segunda Instrução",
+
+    "documentation-fig12-title": "Figura 12",
+    "documentation-fig12-label": "Terceira Instrução",
+
+    "documentation-fig13-title": "Figura 13",
+    "documentation-fig13-label": "Quarta Instrução",
+
+    "machine-language-title": "Linguagem de Máquina",
+    "machine-language-description": "Em computadores reais, os seus conjuntos de instruções é conhecida como linguagem de máquina. O HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina, que são os conjuntos de instruções que o CHICO conhece. Ele só conhece os números de base 10 portanto suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N.",
+
+    "instructions-title": "Instruções",
+    "instructions-description": "A seguir vamos ver todas as instruções que o CHICO conhece, lembrando que estamos tratando de uma linguagem de baixo nível, então suas instruções são bem simples e restritas, com elas podendo ser divididas em instruções de carga, aritméticas, entrada, saída e controle.",
+
+    "loading-instructions-title": "Carregamento",
+
+    "loading-instructions-list-item1-title": "0EE (Copie valor da gaveta EE para AC)",
+	"loading-instructions-list-item1-description": "Esta instrução permite transferir dados armazenados em uma gaveta (registrador temporário) denominada EE para o acumulador (AC). Isso é fundamental para mover informações entre locais de armazenamento temporário e o registrador principal, onde operações subsequentes podem ser realizadas.",
+    "loading-instructions-list-item2-title": "1EE (Copie valor do AC para gaveta EE)",
+	"loading-instructions-list-item2-description": "Inversamente à instrução anterior, esta permite a transferência de dados do acumulador para uma gaveta específica. É útil quando se deseja preservar temporariamente o conteúdo do acumulador antes de realizar outras operações.",
+    "loading-instructions-list-item3-title": "0-N (AC recebe uma constante)",
+	"loading-instructions-list-item3-description": "Permite carregar uma constante (representada por N) diretamente no acumulador. Isso é útil para inicializar variáveis ou realizar operações com valores fixos.",
+
+    "arithmetic-operations-title": "Operações Aritméticas",
+
+    "arithmetic-operations-list-item1-title": "2EE (Some cEE ao AC)",
+	"arithmetic-operations-list-item1-description": "Adiciona o valor armazenado em uma gaveta (cEE) ao conteúdo atual do acumulador.",
+    "arithmetic-operations-list-item2-title": "3EE (Subtraia de AC o cEE)",
+	"arithmetic-operations-list-item2-description": "Subtrai o valor armazenado em uma gaveta (cEE) do conteúdo atual do acumulador.",
+    "arithmetic-operations-list-item3-title": "4EE (Multiplique o cAC por cEE)",
+	"arithmetic-operations-list-item3-description": "Multiplica o conteúdo atual do acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
+    "arithmetic-operations-list-item4-title": "5EE (Divida o cAC por cEE)",
+	"arithmetic-operations-list-item4-description": "Divide o conteúdo atual do acumulador (cAC) pelo valor armazenado em uma gaveta (cEE).",
+
+    "flow-control-title": "Controle de Fluxo",
+
+    "flow-control-list-item1-title": "6EE (Se cAC > 0, vá para EE)",
+    "flow-control-list-item1-description": "Permite a execução condicional, desviando o fluxo do programa para um endereço específico (EE) apenas se o conteúdo do acumulador for maior que zero. Isso é útil para tomar decisões com base em condições.",
+    "flow-control-list-item2-title": "9EE (Vá para cEE)",
+    "flow-control-list-item2-description": "Instrução de desvio incondicional que direciona o fluxo do programa para um endereço específico (EE). É utilizado para implementar loops e sub-rotinas.",
+
+    "input-output-title": "Entrada/Saída",
+
+    "input-out-list-item1-title": "7EE (Leia um valor e guarde na gaveta EE)",
+    "input-out-list-item1-description": "Permite a entrada de dados a partir do porta-cartões, armazenando o valor lido na gaveta especificada (EE). Isso é fundamental para interações com o usuário ou inicialização de dados.",
+    "input-out-list-item2-title": "8EE (Escreva cEE no dispositivo de saída)",
+    "input-out-list-item2-description": "Realiza a saída de dados para a folha de saída, utilizando o valor armazenado em uma gaveta específica (cEE). Isso permite a exibição dos dados.",
+
+    "program-control-title": "Controle de Programa",
+
+    "program-control-list-item1-title": "000 (Fim do programa)",
+    "program-control-list-item1-description": "Indica o encerramento do estado de CARGA e início do estado de EXECUÇÃO e quando executado encerra o programa, sinalizando que a execução deve ser interrompida. Essa instrução é essencial para marcar o término do código executável.",
+
+    "essential-concepts-title": "Conceitos Essenciais",
+
+    "input-and-output-title": "Entrada e Saída",
+    "input-and-output-description1": "No computador hipotético HV as operações de entrada são realizadas através de um de seus componentes: o porta-cartões.",
+    "input-and-output-description2": "Ao executar uma instrução de leitura (7EE), o operador do sistema irá verificar se há nele algum cartão contendo informação, a fim de armazená-lo na gaveta indicada. Caso o CHICO não encontre um cartão em sua busca, a execução do código será interrompida e prosseguirá apenas quando o usuário inserir um novo dado no porta-cartões.",
+    "input-and-output-description3": "Por também ser o componente no qual o código a ser executado é armazenado, é possível inserir cartões contendo dados a serem utilizados no programa antes de sua execução ao se colocar números após a instrução de final de programa (000). Neste cenário, a instrução de leitura não pediria a inserção de dado pelo usuário, visto que o operador do sistema encontraria já um cartão para guardar.",
+    "input-and-output-description4": "Enquanto isso, a Folha de Saída, outro componente do HV, é responsável por imprimir os dados armazenados em uma gaveta específica, esta indicada pela instrução de escrita (8EE).",
+
+    "input-and-output-code-comment1": "Leitura de cartão para gaveta 30",
+    "input-and-output-code-comment2": "Escrita da gaveta 30 para folha de saída",
+    "input-and-output-code-comment3": "Fim do programa",
+    "input-and-output-code-comment4": "Dado a ser lido pela instrução",
+
+    "variables-title": "Variáveis",
+    "variables-description1": "Na linguagem de máquina do HV, o conceito de variáveis é abordado de forma diferente do que estamos acostumados em linguagens de alto nível. Nessa linguagem, não há uma representação direta de variáveis, e os dados são armazenados em gavetas identificadas por endereços específicos. Para atribuir valores às \"variáveis\" do seu programa, é necessário escolher um endereço de gaveta e utilizar instruções apropriadas.",
+    "variables-description2": "Considere o seguinte código em Python com três variáveis",
+    "variables-description3": "Para obter o mesmo resultado na linguagem de máquina do HV, escolhemos três gavetas, representadas por endereços 30, 31 e 32, respectivamente, para x, y e result. Iniciaremos as \"variáveis\" durante a leitura do porta-cartões, colocando valores após a instrução 000.",
+    "variables-description4": "Desta forma, durante o estado de carga, esses valores não serão carregados no gaveteiro, garantindo que a leitura com a instrução 7EE atribua corretamente os valores às \"variáveis\".",
+
+    "variables-code-comment1": "Leitura do porta-cartões para gaveta 30 (x)",
+    "variables-code-comment2": "Leitura do porta-cartões para gaveta 31 (y)",
+    "variables-code-comment3": "Coloca o valor da gaveta 30 (x) no acumulador",
+    "variables-code-comment4": "Realiza a adição do valor da gaveta 31 (y) ao acumulador",
+    "variables-code-comment5": "Copia o valor do acumulador para gaveta 32 (result)",
+    "variables-code-comment6": "Imprime na folha de saída o valor da gaveta 32 (result)",
+    "variables-code-comment7": "Fim do programa",
+    "variables-code-comment8": "Valor 5 no porta-cartões para leitura na gaveta 30",
+    "variables-code-comment9": "Valor 5 no porta-cartões para leitura na gaveta 31",
+
+    "detour-title": "Desvio",
+    "detour-description1": "Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o desenvolvimento de programas mais complexos.",
+    "detour-description2": "A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada parte do código só é executada caso alguma condição específica seja atendida.",
+    "detour-description3": "A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.",
+
+    "repetition-loops-title": "Laços de repetição",
+    "repetition-loops-description1": "Ao fazer o desvio para uma gaveta anterior, é possível a criação de um laço de repetição, ou seja, um pedaço do código que é executado diversas vezes.",
+    "repetition-loops-description2": "As instruções de desvio podem também ser utilizadas para a construção de laços de repetição. Um mesmo pedaço de código pode ser executado diversas vezes ao colocarmos como alvo do desvio um endereço de gaveta anterior ao atual marcado pelo EPI, atribuindo um novo valor a este condizente com a estrutura do laço montado.",
+    "repetition-loops-description3": "O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações.",
+    "repetition-loops-description4": "Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV, e criam novos desafios para os seus programadores.",
+
+    "examples-title": "Exemplos práticos",
+    "examples-description": "A seguir serão demonstradas operações comuns na elaboração de algoritmos, sendo representadas como seu equivalente para o HV. Os exemplos seguem as limitações da linguagem, e incentivam o seu raciocínio.",
+
+    "math-operations-title": "Operações matemáticas",
+    "math-operations-description": "Diferente das operações aritméticas primordias que a linguagem dispõe de instruções para realizá-las, neste tópico estamos interessados em realizar cálculos que usam destas operações para nos fornecer outros resultados.",
+
+    "remainder-division-title": "Resto da divisão",
+    "remainder-division-description1": "Neste algoritmo, queremos calcular o resto da divisão entre dois números fornecidos pelo usuário. Chamaremos esses números de A e B, armazenando-os nas gavetas 30 e 31, respectivamente.",
+    "remainder-division-description2": "O resultado do resto da divisão será guardado na gaveta 32.",
+    "remainder-division-description3": "Uma coisa importante a se notar é que numa linguagem de alto nível teríamos um operador \"%\" para fazer cálculo do resto da divisão, operador esse que não temos na linguagem de máquina do HV.",
+
+    "remainder-division-steps-1": "Pegamos dois números do usuário, armazenamos A na gaveta 30 e B na gaveta 31.",
+    "remainder-division-steps-2": "Se B for 0, o resto será 0.",
+    "remainder-division-steps-3": "Enquanto o resto for maior ou igual a B, subtraímos B repetidamente.",
+    "remainder-division-steps-4": "Quando não for mais possível subtrair, o valor restante será o resto da divisão, armazenado na gaveta 32.",
+
+    "remainder-division-code-comment1": "Leia o valor de A e armazene na gaveta 30",
+    "remainder-division-code-comment2": "Leia o valor de B e armazene na gaveta 31",
+    "remainder-division-code-comment3": "Carregue o valor de A no acumulador",
+    "remainder-division-code-comment4": "Armazene o valor de A na gaveta 32 (resto)",
+    "remainder-division-code-comment5": "Carregue o valor de B no acumulador",
+    "remainder-division-code-comment6": "Subtraia o valor de resto (gaveta 32)",
+    "remainder-division-code-comment7": "Se o resultado for maior que 0, vá para a gaveta 11 (continua o loop)",
+    "remainder-division-code-comment8": "Carregue o valor de resto",
+    "remainder-division-code-comment9": "Subtraia B do resto",
+    "remainder-division-code-comment10": "Armazene o novo valor do resto",
+    "remainder-division-code-comment11": "Volte para a gaveta 04 (repete a verificação)",
+    "remainder-division-code-comment12": "Escreva o valor final do resto na saída",
+    "remainder-division-code-comment13": "Fim do programa",
+
+    "max-numbers-title": "Máximo entre dois números",
+    "max-numbers-description1": "Neste algoritmo, queremos encontrar o maior entre dois números informados pelo usuário.",
+    "max-numbers-description2": "Em linguagens de alto nível, podemos usar funções como max(a, b), mas na linguagem de máquina do HV precisamos implementar essa lógica manualmente.",
+
+    "max-numbers-steps-1": "Ler os dois números do usuário e armazená-los nas gavetas 10 e 11.",
+    "max-numbers-steps-2": "Carregar o primeiro número no acumulador.",
+    "max-numbers-steps-3": "Subtrair o segundo número.",
+    "max-numbers-steps-4": "Se o resultado for maior que zero, significa que o primeiro número é maior, então o imprimimos.",
+    "max-numbers-steps-5": "Caso contrário, imprimimos o segundo número.",
+
+    "max-numbers-code-comment1": "Leia o primeiro número e armazene na gaveta 10",
+    "max-numbers-code-comment2": "Leia o segundo número e armazene na gaveta 11",
+    "max-numbers-code-comment3": "Carregue o valor da gaveta 10 no acumulador",
+    "max-numbers-code-comment4": "Subtraia o valor da gaveta 11 do acumulador",
+    "max-numbers-code-comment5": "Se o acumulador for maior que 0, vá para a gaveta 07 (imprime A)",
+    "max-numbers-code-comment6": "Escreva o valor da gaveta 11 (B, pois A não era maior)",
+    "max-numbers-code-comment7": "Vá para a gaveta 08 (fim do programa)",
+    "max-numbers-code-comment8": "Escreva o valor da gaveta 10 (A, pois era maior)",
+    "max-numbers-code-comment9": "Fim do programa",
+
+    "square-root-title": "Raíz quadrada",
+    "square-root-description1": "Este algoritmo calcula a raiz quadrada inteira de um número fornecido pelo usuário.",
+    "square-root-description2": "Em linguagens de alto nível, podemos usar a função math.sqrt(A), mas na linguagem HV não temos essa operação. Em vez disso, precisamos implementá-la manualmente usando somas sucessivas.",
+
+    "square-root-steps-1": "O usuário fornece um número, armazenado na gaveta 30.",
+    "square-root-steps-2": "Inicializamos um contador na gaveta 51 e um acumulador de somas na gaveta 50.",
+    "square-root-steps-3": "Somamos valores ímpares sucessivos ao acumulador até que ele atinja ou ultrapasse o número fornecido.",
+    "square-root-steps-4": "O número de somas realizadas será a raiz quadrada inteira do valor.",
+    "square-root-steps-5": "O resultado final é armazenado na gaveta 53 e impresso na saída.",
+
+    "square-root-description3": "Este método se baseia no fato matemático de que a soma dos primeiros N números ímpares é igual a N². Assim, ao contar quantas somas são necessárias para atingir o número, encontramos sua raiz quadrada inteira.",
+
+    "square-root-code-comment1": "Leia o número e armazene na gaveta 30",
+    "square-root-code-comment2": "Carregue 1 no acumulador",
+    "square-root-code-comment3": "Armazene 1 na gaveta 51 (contador, que representa a raiz aproximada)",
+    "square-root-code-comment4": "Carregue 0 no acumulador",
+    "square-root-code-comment5": "Armazene 0 na gaveta 50 (acumulador da soma)",
+    "square-root-code-comment6": "Carregue o acumulador da soma",
+    "square-root-code-comment7": "Multiplique o acumulador por ele mesmo (calcula quadrado)",
+    "square-root-code-comment8": "Armazene o resultado na gaveta 52",
+    "square-root-code-comment9": "Carregue o acumulador da soma",
+    "square-root-code-comment10": "Some o contador ao acumulador da soma (adiciona o próximo número ímpar)",
+    "square-root-code-comment11": "Armazene o novo valor na gaveta 50",
+    "square-root-code-comment12": "Carregue o quadrado atual",
+    "square-root-code-comment13": "Subtraia o número original (gaveta 30)",
+    "square-root-code-comment14": "Se o resultado for maior que 0, vá para a gaveta 05 (termina o cálculo)",
+    "square-root-code-comment15": "Carregue o número original",
+    "square-root-code-comment16": "Subtraia o quadrado da raiz encontrada (gaveta 52)",
+    "square-root-code-comment17": "Se ainda for maior que 0, continua iterando",
+    "square-root-code-comment18": "Carregue o acumulador da soma",
+    "square-root-code-comment19": "Subtraia o contador atual",
+    "square-root-code-comment20": "Armazene o resultado na gaveta 53 (resultado final da raiz quadrada)",
+    "square-root-code-comment21": "Escreva o valor da raiz quadrada na saída",
+    "square-root-code-comment22": "Fim do programa",
+
+    "comparison-operations-title": "Operações de comparação",
+    "comparison-operations-description1": "Neste conjunto de algoritmos, queremos verificar relações entre dois números informados pelo usuário, como igualdade, diferença e comparações de maior ou menor.",
+    "comparison-operations-description2": "Em linguagens de alto nível, podemos usar operadores como",
+    "comparison-operations-description3": "No HV, precisamos implementar essa lógica manualmente usando operações de subtração e desvios condicionais.",
+
+	"comparison-operations-list-item1": "igualdade",
+	"comparison-operations-list-item2": "diferente",
+	"comparison-operations-list-item3": "maior que",
+	"comparison-operations-list-item4": "menor que",
+	"comparison-operations-list-item5": "maior ou igual a",
+	"comparison-operations-list-item6": "menor ou igual a",
+
+    "equality-title": "Igualdade",
+    "equality-description": "Este algoritmo verifica se dois números são iguais. Ele lê os valores do usuário, subtrai um do outro e verifica se a diferença é zero. Se for, imprime 1, indicando que os números são iguais. Caso contrário, imprime 0.",
+
+    "equality-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "equality-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "equality-code-comment3": "Carregue 0 no acumulador",
+    "equality-code-comment4": "Armazene 0 na gaveta 22 (resultado inicial)",
+    "equality-code-comment5": "Carregue A no acumulador",
+    "equality-code-comment6": "Subtraia B do acumulador",
+    "equality-code-comment7": "Se o resultado for maior que 0, vá para a gaveta 12 (A != B)",
+    "equality-code-comment8": "Carregue B no acumulador",
+    "equality-code-comment9": "Subtraia A do acumulador",
+    "equality-code-comment10": "Se o resultado for maior que 0, vá para a gaveta 12 (A != B)",
+    "equality-code-comment11": "Carregue 1 no acumulador (A == B)",
+    "equality-code-comment12": "Armazene 1 na gaveta 22",
+    "equality-code-comment13": "Escreva o resultado (1 se A == B, 0 caso contrário)",
+    "equality-code-comment14": "Fim do programa",
+
+    "not-equal-title": "Diferente",
+    "not-equal-description": "Aqui verificamos se dois números são diferentes. O processo é semelhante ao da igualdade, mas invertemos a lógica: se a subtração resultar em zero, significa que os números são iguais, então imprimimos 0; caso contrário, imprimimos 1.",
+
+    "not-equal-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "not-equal-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "not-equal-code-comment3": "Carregue 1 no acumulador",
+    "not-equal-code-comment4": "Armazene 1 na gaveta 22 (resultado inicial)",
+    "not-equal-code-comment5": "Carregue A no acumulador",
+    "not-equal-code-comment6": "Subtraia B do acumulador",
+    "not-equal-code-comment7": "Se o resultado for maior que 0, vá para a gaveta 12 (A != B)",
+    "not-equal-code-comment8": "Carregue B no acumulador",
+    "not-equal-code-comment9": "Subtraia A do acumulador",
+    "not-equal-code-comment10": "Se o resultado for maior que 0, vá para a gaveta 12 (A != B)",
+    "not-equal-code-comment11": "Carregue 0 no acumulador (A == B)",
+    "not-equal-code-comment12": "Armazene 0 na gaveta 22",
+    "not-equal-code-comment13": "Escreva o resultado (1 se A != B, 0 caso contrário)",
+    "not-equal-code-comment14": "Fim do programa",
+
+    "greater-than-title": "Maior que",
+    "greater-than-description": "Este algoritmo determina se um número é maior que o outro. Ele subtrai B de A e verifica se o resultado é positivo. Se for, significa que A é maior, então imprimimos 1. Caso contrário, imprimimos 0.",
+
+    "greater-than-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "greater-than-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "greater-than-code-comment3": "Carregue 0 no acumulador",
+    "greater-than-code-comment4": "Armazene 0 na gaveta 22 (resultado inicial)",
+    "greater-than-code-comment5": "Carregue A no acumulador",
+    "greater-than-code-comment6": "Subtraia B do acumulador",
+    "greater-than-code-comment7": "Se A > B, vá para a gaveta 08",
+    "greater-than-code-comment8": "Vá para o final do programa",
+    "greater-than-code-comment9": "Carregue 1 no acumulador",
+    "greater-than-code-comment10": "Armazene 1 na gaveta 22",
+    "greater-than-code-comment11": "Escreva o resultado",
+    "greater-than-code-comment12": "Fim do programa",
+
+    "lower-than-title": "Menor que",
+    "lower-than-description": "Aqui verificamos se A é menor que B. O processo é semelhante ao de \"maior que\", mas subtraímos A de B. Se o resultado for positivo, significa que A é menor, então imprimimos 1. Caso contrário, imprimimos 0.",
+
+    "lower-than-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "lower-than-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "lower-than-code-comment3": "Carregue 0 no acumulador",
+    "lower-than-code-comment4": "Armazene 0 na gaveta 22 (resultado inicial)",
+    "lower-than-code-comment5": "Carregue B no acumulador",
+    "lower-than-code-comment6": "Subtraia A do acumulador",
+    "lower-than-code-comment7": "Se B > A, vá para a gaveta 08",
+    "lower-than-code-comment8": "Vá para o final do programa",
+    "lower-than-code-comment9": "Carregue 1 no acumulador",
+    "lower-than-code-comment10": "Armazene 1 na gaveta 22",
+    "lower-than-code-comment11": "Escreva o resultado",
+    "lower-than-code-comment12": "Fim do programa",
+
+    "greater-equal-title": "Maior ou igual",
+    "greater-equal-description": "Este algoritmo verifica se A é maior ou igual a B. Ele combina as lógicas de \"maior que\" e \"igualdade\". Se A for maior que B ou se os dois números forem iguais, imprimimos 1; caso contrário, imprimimos 0.",
+
+    "greater-equal-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "greater-equal-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "greater-equal-code-comment3": "Carregue 0 no acumulador",
+    "greater-equal-code-comment4": "Armazene 0 na gaveta 22 (resultado inicial)",
+    "greater-equal-code-comment5": "Carregue A no acumulador",
+    "greater-equal-code-comment6": "Subtraia B do acumulador",
+    "greater-equal-code-comment7": "Se A >= B, vá para a gaveta 13",
+    "greater-equal-code-comment8": "Carregue A no acumulador",
+    "greater-equal-code-comment9": "Subtraia B do acumulador",
+    "greater-equal-code-comment10": "Se A == B, vá para a gaveta 15",
+    "greater-equal-code-comment11": "Carregue B no acumulador",
+    "greater-equal-code-comment12": "Subtraia A do acumulador",
+    "greater-equal-code-comment13": "Se B == A, vá para a gaveta 15",
+    "greater-equal-code-comment14": "Carregue 1 no acumulador",
+    "greater-equal-code-comment15": "Armazene 1 na gaveta 22",
+    "greater-equal-code-comment16": "Escreva o resultado",
+    "greater-equal-code-comment17": "Fim do programa",
+
+    "lower-equal-title": "Menor ou igual",
+    "lower-equal-description": "Semelhante ao caso anterior, mas verificamos se A é menor ou igual a B. Se A for menor que B ou se forem iguais, imprimimos 1; caso contrário, imprimimos 0.",
+
+    "lower-equal-code-comment1": "Leia o primeiro número e armazene na gaveta 20",
+    "lower-equal-code-comment2": "Leia o segundo número e armazene na gaveta 21",
+    "lower-equal-code-comment3": "Carregue 0 no acumulador",
+    "lower-equal-code-comment4": "Armazene 0 na gaveta 22 (resultado inicial)",
+    "lower-equal-code-comment5": "Carregue B no acumulador",
+    "lower-equal-code-comment6": "Subtraia A do acumulador",
+    "lower-equal-code-comment7": "Se B >= A, vá para a gaveta 13",
+    "lower-equal-code-comment8": "Carregue A no acumulador",
+    "lower-equal-code-comment9": "Subtraia B do acumulador",
+    "lower-equal-code-comment10": "Se A == B, vá para a gaveta 15",
+    "lower-equal-code-comment11": "Carregue B no acumulador",
+    "lower-equal-code-comment12": "Subtraia A do acumulador",
+    "lower-equal-code-comment13": "Se B == A, vá para a gaveta 15",
+    "lower-equal-code-comment14": "Carregue 1 no acumulador",
+    "lower-equal-code-comment15": "Armazene 1 na gaveta 22",
+    "lower-equal-code-comment16": "Escreva o resultado",
+    "lower-equal-code-comment17": "Fim do programa",
+
+    "hvm-state-editing-title": "Edição",
+    "hvm-state-editing-tip": "Modo de programação",
+
+    "hvm-state-loading-title": "Carga",
+    "hvm-state-loading-tip": "Leitura do porta-cartões",
+
+    "hvm-state-running-title": "Execução",
+    "hvm-state-running-tip": "Executando instruções",
+
+    "menu-debug-title": "Depurar",
+    "menu-debug-tip": "Passo a passo",
+
+    "menu-run-title": "Executar",
+    "menu-run-tip": "Imediato",
+
+    "menu-import-title": "Importar",
+    "menu-import-tip": "Selecionar arquivo",
+
+    "menu-export-title": "Exportar",
+    "menu-export-tip": "Download do código",
+
+    "menu-share-title": "Partilhar",
+    "menu-share-tip": "Copiar e enviar código",
+    "menu-share-metaop": "Veja meu código no HVC!",
+
+    "menu-copied-title": "Copiado!",
+
+    "menu-configuration-title": "Configurações",
+    "menu-configuration-tip": "Opções",
+
+    "card-holder-tip": "Porta-Cartões",
+    "epi-tip": "EPI",
+    "accumulator-tip": "Acumulador",
+    "output-sheet-tip": "Folha de Saída",
+
+    "drawer-code-tip": "Código",
+    "drawer-data-tip": "Dado",
+    "drawer-epi-tip": "EPI",
+
+    "home-tip": "Página inicial",
+    "clear-tip": "Limpar exibição",
+    "save-tip": "Salvar código",
+    "help-tip": "Ajuda",
+    "show-options-tip": "Exibir mais",
+
+    "evaluate-now": "Avalie já",
+    "your-opinion": "Sua opinião é fundamental para nosso projeto",
+    "click-on-stars": "Clique nas estrelas e responda o formulário!",
+    "dont-ask": "Não perguntar novamente",
+
+    "error-detected": "Erro detectado!",
+
+    "config-title": "Configurações",
+
+    "config-theme-title": "Tema",
+    "config-lightmode-title": "Claro",
+    "config-darkmode-title": "Escuro",
+
+    "config-delay-title": "Atraso",
+
+    "config-loading-state-title": "Estado de carga",
+    "config-paused-debug-title": "Depuração pausada",
+    "config-show-tips-title": "Mostrar dicas",
+
+    "config-save-title": "Salvar"
+}

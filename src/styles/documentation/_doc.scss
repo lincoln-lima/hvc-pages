@@ -1,15 +1,15 @@
 @use '../defaults/default' as default;
 // ------------------------------------------------------------------------------- 
 $font-responsive-width: 500px;
-$header-responsive-width: 860px;
-$content-responsive-width: 1050px;
+$header-responsive-width: 840px;
+$content-responsive-width: 1100px;
 // ------------------------------------------------------------------------------- 
 $header-padding: 0.5em;
 $header-height: calc($header-padding * 2 + default.$home-height);
 // ------------------------------------------------------------------------------- 
 $main-width: default.$nav-width;
 // ------------------------------------------------------------------------------- 
-$sticky-nav-width: 19rem;
+$sticky-nav-width: 22rem;
 $sticky-nav-height: calc(100vh - $header-height);
 // ------------------------------------------------------------------------------- 
 $spacement-content-nav: 4em; 

@@ -1,105 +1,90 @@
-import br from "./strings/br.json"
-import en from "./strings/en.json"
-import es from "./strings/es.json"
-
+import pt from "./strings/pt.json";
+import en from "./strings/en.json";
+import es from "./strings/es.json";
+// ---------------------------------------------------------------------------
 export class Transformer {
+    private static instance: Transformer | null = null;
 
-  private static instance: Transformer | null = null;
+    private translations: Record<string, string> = {};
+    private currentLang: "en" | "es" | "pt" = "en";
 
-  private translations: Record<string, string> = {};
-  private currentLang: "en" | "es" | "br" = "en";
+    public init() {
+        const urlParams = new URLSearchParams(window.location.search);
 
-  public init() {
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const langInUrl = urlParams.get("lang");
+        let langInUrl = urlParams.get("lang");
 
-    if (langInUrl) 
-      this.load(langInUrl);
-    
-    else 
-      this.load(navigator.language);
+        if (!langInUrl && document.referrer) {
+            const referrerUrl = new URL(document.referrer);
+            langInUrl = referrerUrl.searchParams.get("lang")!;
+        }
 
-  }
-
-  private async load(lang: string) {
-
-    try {
-
-      if (lang.includes("en")) {
-
-        this.translations = en;
-        this.currentLang = "en";
-
-      } else if (lang.includes("es")) {
-
-        this.translations = es;
-        this.currentLang = "es";
-
-      } else if (lang.includes("pt")) {
-
-        this.translations = br;
-        this.currentLang = "br";
-
-      }
-
-      this.updateDOM();
-      this.updateUrl(lang);
-
-    } catch (error) {
-
-      console.error(`Erro ao carregar o idioma: ${lang}`, error);
-
+        this.load(langInUrl || navigator.language);
     }
 
-  }
+    private async load(lang: string) {
+        try {
+            if (lang.match(/^en/)) {
+                this.translations = en;
+                this.currentLang = "en";
+            }
+            else if (lang.match(/^es/)) {
+                this.translations = es;
+                this.currentLang = "es";
+            }
+            else if (lang.match(/^pt/)) {
+                this.translations = pt;
+                this.currentLang = "pt";
+            }
 
-  private updateDOM() {
+            this.updateDOM();
+            this.updateRoot(lang);
+            this.updateUrl(lang);
+        }
+        catch (error) {
+            console.error(`Erro ao carregar o idioma: ${lang}`, error);
+        }
+    }
 
-    document.querySelectorAll("[data-lang]").forEach(dlang => {
+    private updateDOM() {
+        if (this.currentLang != "pt") document.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+    }
 
-      const key = dlang.getAttribute("data-lang");
-      
-      if (key) 
-        dlang.textContent = this.getTranslation(key);
+    public updateSingle(element: Element) {
+        if (this.currentLang != "pt") element.querySelectorAll("[data-lang]").forEach(dlang => this.updateTextElement(dlang));
+    }
 
-    });
-  
-  }
+    private updateTextElement(element: Element) {
+        const key = element.getAttribute("data-lang");
 
-  private updateUrl(lang: string) {
+        element.textContent = key ? this.getTranslation(key) : "not-informed";
+    }
 
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", lang); 
-    window.history.pushState({}, "", url.toString()); 
+    private updateRoot(lang: string) {
+       if (this.currentLang != "pt") document.documentElement.setAttribute("lang", lang);
+    }
 
-  }
+    private updateUrl(lang: string) {
+        const url = new URL(window.location.href);
 
-  public getCurrentLang() {
-    return this.currentLang;  
-  }
+        url.searchParams.set("lang", lang);
+        window.history.pushState({}, "", url);
+    }
 
-  private getTranslation(key: string, vars: Record<string, string> = {}) {
+    public getCurrentLang() {
+        return this.currentLang;
+    }
 
-    let text = this.translations[key] || key;
+    public getTranslation(key: string, vars: Record<string, string> = {}) {
+        let text = this.translations[key] || "lang-" + key;
 
-    for (const [varName, value] of Object.entries(vars)) 
-      text = text.replace(`{${varName}}`, value);
-    
-    return text;
+        for (const [varName, value] of Object.entries(vars)) text = text.replace(`{${varName}}`, value);
 
-  }
+        return text;
+    }
 
-  public static getInstance(): Transformer {
+    public static getInstance(): Transformer {
+        if (!this.instance) this.instance = new Transformer();
 
-    if (!this.instance) {
-
-      this.instance = new Transformer();
-      return this.instance;
-
-    } else 
-      return this.instance;
-    
-  }
-
+        return this.instance;
+    }
 }
