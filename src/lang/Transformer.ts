@@ -37,6 +37,7 @@ export class Transformer {
             }
 
             this.updateDOM();
+            this.updateRoot(lang);
             this.updateUrl(lang);
         }
         catch (error) {
@@ -56,6 +57,10 @@ export class Transformer {
         const key = element.getAttribute("data-lang");
 
         element.textContent = key ? this.getTranslation(key) : "not-informed";
+    }
+
+    private updateRoot(lang: string) {
+       if (this.currentLang != "pt") document.documentElement.setAttribute("lang", lang);
     }
 
     private updateUrl(lang: string) {

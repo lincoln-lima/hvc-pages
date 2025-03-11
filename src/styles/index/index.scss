@@ -20,6 +20,7 @@ main {
         }
 
         .tooltip {
+            width: max-content;
             top: calc(100% + default.$tooltip-size-arr * 2);
 
             &::after {
