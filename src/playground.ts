@@ -121,7 +121,7 @@ const saveConfigs = () => {
     switchDisplay(configmodal, false);
 }
 // -------------------------------------------------------------------------------
-if(localStorage.getItem("show-tips") != "true") showTips(false);
+if(localStorage.getItem("show-tips") === "false") showTips(false);
 // -------------------------------------------------------------------------------
 theme.addEventListener("change", switchTheme);
 

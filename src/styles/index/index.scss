@@ -119,6 +119,12 @@ main {
 
         &#practice {
             article {
+                &#playground {
+                    .tooltiper:has(.come-to-play) {
+                        margin-top: 2em;
+                    }
+                }
+
                 &#algoritmos {
                     ol {
                         margin-top: 1em;
