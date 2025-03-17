@@ -135,9 +135,7 @@ dontask.addEventListener("click", () => {
     switchDisplay(ratingmodal, false);
 });
 // -------------------------------------------------------------------------------
-window.addEventListener("beforeunload", e => {
-    if (localStorage.getItem("saved")! != "true" && getCode() != localStorage.getItem("code")) e.preventDefault();
-});
+window.addEventListener("beforeunload", () => localStorage.setItem("code", getCode()));
 
 window.addEventListener("storage", e => {
     if (e.key === "theme") theme.value = e.newValue!;

@@ -17,10 +17,9 @@ export default () => {
     const debug = primarymenu.querySelector("#debug")!;
 
     const clear = document.getElementById("clear")!;
-    const savecode = document.getElementById("save-code")!;
-    
+
     const errormessage = errorsmodal.querySelector<HTMLElement>("#error-message")!;
-    
+
     const debugmenu = document.querySelector(".debug-menu")!;
     const stateview = document.querySelector(".states-view")!;
 
@@ -49,7 +48,7 @@ export default () => {
         switchDisplay(optionscontainer, false);
         // ---------------------------------------------------------------------------
         changeElementText(outwrite, "");
-        
+
         drawers.forEach(gaveta => highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
         document.addEventListener("keydown", keyTerminate);
@@ -213,15 +212,6 @@ export default () => {
         stateview.classList.replace(stateview.classList.item(1)!, dotclass);
     }
     // ------------------------------------------------------------------------------- 
-    const saveCode = () => {
-        if (localStorage.getItem("saved") != "true") {
-            localStorage.setItem("saved", "true");
-            localStorage.setItem("code", getCode());
-
-            editor.classList.remove("unsaved");
-        }
-    }
-    // ------------------------------------------------------------------------------- 
     const drawerContent = (drawer: Element) => { return drawer.querySelector(".content")! };
 
     const highlightDrawer = (drawer: Element, style: string) => {
@@ -290,10 +280,6 @@ export default () => {
     runner.addEventListener("click", async() => await exec(true));
 
     clear.addEventListener("click", clearView);
-    savecode.addEventListener("click", () => {
-        saveCode();
-        temporaryClass(savecode, "saved");
-    });
     // ---------------------------------------------------------------------------
     const keyTerminate = async(e: KeyboardEvent) => {
         if (e.ctrlKey && e.key.toLowerCase() === "c") {
@@ -306,12 +292,6 @@ export default () => {
         const key = e.key.toLowerCase();
 
         if (e.ctrlKey) {
-            if (key === "s") {
-                e.preventDefault();
-                saveCode();
-            }
-        }
-        else {
             if (key === "f9") await exec(true);
             else if (key === "f8") await exec(false);
         }

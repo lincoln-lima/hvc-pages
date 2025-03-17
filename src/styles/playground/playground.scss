@@ -112,24 +112,6 @@ main {
                     @include global.setFont(code);
                 }
 
-                &.unsaved {
-                    #editor {
-                        outline: 1px dashed play.$dark-red;
-
-                        &::after {
-                            content: "*";
-                            position: absolute;
-
-                            line-height: 0;
-                            font-size: 0.8em;
-                            color: play.$dark-red;
-
-                            right: default.$scrollbar-width;
-                            top: calc(default.$scrollbar-width * 1.5);
-                        }
-                    }
-                }
-
                 #editor {
                     @include global.size(100%);
 
@@ -572,14 +554,6 @@ main {
 
             &.home {
                 @include global.faded-button(home);
-            }
-
-            &#save-code {
-                @include global.faded-button(playground/save);
-
-                &.saved {
-                    @include global.faded-button(check);
-                }
             }
 
             &#clear {

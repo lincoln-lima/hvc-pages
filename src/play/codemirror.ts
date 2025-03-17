@@ -12,7 +12,6 @@ export class CodeEditor {
 
     private id: Extension | undefined = undefined;
     private view: EditorView | undefined = undefined;
-    private changeEvent: Extension | undefined = undefined;
 
     public static getInstance(): CodeEditor {
         if(!this.instance) this.instance = new CodeEditor();
@@ -25,10 +24,6 @@ export class CodeEditor {
 
         this.id = EditorView.editorAttributes.of({ id: "editor" });
 
-        this.changeEvent = EditorView.updateListener.of(update => {
-            if(localStorage.getItem("saved")! != "false" && update.docChanged) this.unSaved();
-        });
-
         this.defineCode();
 
         this.state = EditorState.create({
@@ -37,7 +32,6 @@ export class CodeEditor {
                 this.id,
                 history(),
                 lineNumbers(),
-                this.changeEvent,
                 keymap.of(defaultKeymap),
                 keymap.of(historyKeymap),
             ]
@@ -55,22 +49,12 @@ export class CodeEditor {
         if(params.has("code")) {
             const url = new URL(window.location.href);
 
-            this.unSaved();
             this.code = params.get("code")!;
 
             url.searchParams.delete("code");
             window.history.pushState({}, "", url);
         }
-        else if(localStorage.getItem("code")) {
-            localStorage.setItem("saved", "true");
-            this.code = localStorage.getItem("code")!;
-        }
-        else this.unSaved();
-    }
-
-    private unSaved = () => {
-        localStorage.setItem("saved", "false");
-        this.parentElement!.classList.add("unsaved");
+        else if(localStorage.getItem("code")) this.code = localStorage.getItem("code")!;
     }
 
     public getCode = () => {
