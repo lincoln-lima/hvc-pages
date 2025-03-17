@@ -24,7 +24,7 @@
     "hv-machine-language-title": "Lenguaje de máquina HV",
 
     "hv-machine-language-description1": "Es un lenguaje de programación de bajo nivel, con una sintaxis flexible que facilita la comprensión introductoria de la resolución de problemas y la creación de algoritmos.",
-    "hv-machine-language-description2": "Tus instrucciones son sucintas. ",
+    "hv-machine-language-description2": "Tus instrucciones son sucintas. En resumen, especifican un código de funcionamiento y la dirección de un cajón.",
 
     "table-command-title": "Comandos",
     "table-description-title": "Descripción",
@@ -79,14 +79,14 @@
     "fibonacci-code-comment1": "Lea el valor de n y almacene en el cajón 25",
     "fibonacci-code-comment2": "Cargar 0 en el acumulador",
     "fibonacci-code-comment3": "Almacenar 0 en el cajón 26 (i = 0)",
-    "fibonacci-code-comment4": "Almacena 0 en el cajón 27 (asistente del contador)",
+    "fibonacci-code-comment4": "Almacena 0 en el cajón 27 (contador asistente)",
     "fibonacci-code-comment5": "Cargar 1 en el acumulador",
     "fibonacci-code-comment6": "Almacenar 1 en el cajón 28 (j = 1)",
     "fibonacci-code-comment7": "Almacene 1 en el cajón 29 (número auxiliar 1)",
     "fibonacci-code-comment8": "Cargar N en el acumulador",
-    "fibonacci-code-comment9": "Restar (Asistente del Contador)",
-    "fibonacci-code-comment10": "Si N - (asistente del contador) == 0, vaya al cajón 11 (cuerpo de bucle)",
-    "fibonacci-code-comment11": "Ir al Drawer 22 (Final Loop)",
+    "fibonacci-code-comment9": "Restar (contador asistente)",
+    "fibonacci-code-comment10": "Si N - (contador asistente) == 0, vaya al cajón 11 (cuerpo del bucle)",
+    "fibonacci-code-comment11": "Ir al cajón 22 (final del bucle)",
     "fibonacci-code-comment12": "Cargar yo",
     "fibonacci-code-comment13": "Desaparecer j (t = i + j)",
     "fibonacci-code-comment14": "Almacene en el cajón 30 (t = i + j)",
@@ -94,9 +94,9 @@
     "fibonacci-code-comment16": "Almacenar en i (i = j)",
     "fibonacci-code-comment17": "Carga",
     "fibonacci-code-comment18": "Almacenar en j (j = t)",
-    "fibonacci-code-comment19": "Cargue el (Asistente de Contador)",
-    "fibonacci-code-comment20": "Añadir 1 a (Asistente de Contador)",
-    "fibonacci-code-comment21": "Almacene el nuevo valor en el (Asistente del Contador)",
+    "fibonacci-code-comment19": "Cargue el (contador asistente)",
+    "fibonacci-code-comment20": "Añadir 1 a (contador asistente)",
+    "fibonacci-code-comment21": "Almacene el nuevo valor en el (contador asistente)",
     "fibonacci-code-comment22": "Volver a la verificación de bucle",
     "fibonacci-code-comment23": "Escribe el resultado final (i)",
     "fibonacci-code-comment24": "Final del programa",
@@ -135,7 +135,7 @@
     "repository-title": "Repositorio",
 
     "drawer-computer-title": "Computadora Cajón",
-    "drawer-computer-description1": "Situado en medio del escenario actual de la programación, la relación entre el programador y la máquina, una vez más evidente, se ha convertido en un desafío para los nuevos desarrolladores. ",
+    "drawer-computer-description1": "Situado en medio del escenario actual de la programación, la relación entre el programador y la máquina, una vez más evidente, se ha convertido en un desafío para los nuevos desarrolladores. A este factor contribuye la creciente similitud entre los lenguajes de programación y el lenguaje humano, donde entender cómo interpreta el ordenador el código es una tarea compleja que a muchos les resulta difícil.",
     "drawer-computer-description2": "Esta pregunta puede verse agravada por sintaxis convenientes y funciones milagrosas, bajo un contexto que predominan los lenguajes de programación de alto nivel como JavaScript y Python. Para hacer frente a este reto, destaca una valiosa herramienta pedagógica: el",
     "drawer-computer-description2-emphasis": "Computadora Cajón",
 
@@ -143,14 +143,14 @@
     "von-neumann-architecture": "Arquitectura Von Neumann",
     "drawer-computer-description3-end": "similar a las computadoras contemporáneas.",
 
-    "drawer-computer-description4": "Sin embargo, sus características se simplifican, preservando características análogas a las que se encuentran en componentes reales. ",
-    "drawer-computer-description5": "El propósito de este proyecto es rescatar la comprensión de la interacción entre el código y la máquina, ofreciendo un enfoque más claro y más educativo para aquellos que están tomando los primeros pasos en la programación. ",
+    "drawer-computer-description4": "Sin embargo, sus características se simplifican, preservando características análogas a las que se encuentran en componentes reales. La distinción radica en la accesibilidad del lenguaje máquina, especialmente diseñado para que lo entiendan los principiantes en programación.",
+    "drawer-computer-description5": "El propósito de este proyecto es rescatar la comprensión de la interacción entre el código y la máquina, ofreciendo un enfoque más claro y más educativo para aquellos que están tomando los primeros pasos en la programación. De este modo, se comprende mejor la relación entre el código escrito y las operaciones que realiza el ordenador, lo que favorece una base sólida para el aprendizaje de la programación.",
 
     "documentation-fig1-title": "Figura 1",
     "documentation-fig1-label": "Arquitectura Von Neumann",
 
     "components-title": "Componentes",
-    "components-description": "A través de las analogías, sus componentes son sucintos, distintos e intuitivos para hacer posible su asociación. ",
+    "components-description": "A través de las analogías, sus componentes son sucintos, distintos e intuitivos para hacer posible su asociación. Se enumeran a continuación",
 
     "components-list-item1": "Un cajón con 100 cajones;",
     "components-list-item2": "Una calculadora con dial y teclado;",
@@ -163,7 +163,7 @@
     "documentation-fig2-label": "Arquitectura de HV",
 
     "chest-of-drawers-title": "Cajón",
-    "chest-of-drawers-description1": "El cajón es como una serie de cajones numerados de 00 a 99, este número llamó su dirección. ",
+    "chest-of-drawers-description1": "El cajón es como una serie de cajones numerados de 00 a 99, este número llamó su dirección. Dentro de cada cajón hay una hoja vacía, pero puede contener una instrucción, un número de hasta tres cifras (por ejemplo: 102, 50, 3, etc.) o información adicional que se tratará a lo largo del texto.",
     "chest-of-drawers-description2": "Ahora, comprendamos el funcionamiento de este sistema de cajones",
 
     "chest-of-drawers-list-item1": "En cualquier momento, solo podemos abrir un cajón.",
@@ -177,27 +177,27 @@
     "documentation-fig3-label": "Cajón",
 
     "calculator-title": "Calculadora",
-    "calculator-description1": "La calculadora utilizada en el HV es similar a cualquier otra, presentando un teclado con dígitos de 0 a 9 y una pantalla donde se muestran los resultados de las operaciones. ",
+    "calculator-description1": "La calculadora utilizada en el HV es similar a cualquier otra, presentando un teclado con dígitos de 0 a 9 y una pantalla donde se muestran los resultados de las operaciones. Estos resultados se almacenan en el acumulador. Sin embargo, a diferencia de las calculadoras convencionales, ésta opera exclusivamente con valores enteros y sólo ofrece cuatro operaciones: suma, resta, división y multiplicación.",
     "calculator-description2": "Con el funcionamiento de la calculadora que se realiza en este",
 
-    "calculator-list-item1": "Para cargar un número en el acumulador, es necesario presionar la tecla \"=\" para garantizar el cierre de cualquier operación anterior. ",
-    "calculator-list-item2": "Siempre se realiza una operación aritmética entre el número almacenado en el acumulador y un segundo número. ",
+    "calculator-list-item1": "Para cargar un número en el acumulador, es necesario presionar la tecla \"=\" para garantizar el cierre de cualquier operación anterior. A continuación se introducen las cifras del número deseado. Este número aparece en el acumulador.",
+    "calculator-list-item2": "Siempre se realiza una operación aritmética entre el número almacenado en el acumulador y un segundo número. Para realizar la operación, pulse la tecla de la operación deseada, introduzca el segundo número y pulse la tecla \"=\". El resultado de la operación se mostrará en el acumulador.",
     "calculator-list-item3": "Al igual que el cajón, la calculadora solo puede ser utilizada por CHICO.",
 
     "documentation-fig4-title": "Figura 4",
     "documentation-fig4-label": "Calculadora de HV",
 
     "epi-title": "EPI (Pizarra)",
-    "epi-description": "El EPI es una pizarra que CHICO usa para hacer anotado la dirección de la próxima instrucción que debe ejecutar durante el estado de ejecución. ",
+    "epi-description": "El EPI es una pizarra que CHICO usa para hacer anotado la dirección de la próxima instrucción que debe ejecutar durante el estado de ejecución. Sólo CHICO puede modificar y leer el contenido del EPI.",
 
     "documentation-fig5-title": "Figura 5",
     "documentation-fig5-label": "Blackboard con EPI (dirección de la siguiente instrucción)",
 
     "card-holder-title": "Titular de cartería",
-    "card-holder-description1": "Es un componente que se asemeja a un soporte para el cigarrillo, con las tarjetas insertadas en la parte superior y retiradas para leer en la parte inferior. ",
+    "card-holder-description1": "Es un componente que se asemeja a un soporte para el cigarrillo, con las tarjetas insertadas en la parte superior y retiradas para leer en la parte inferior. Las tarjetas que forman el código que se va a ejecutar se extraen en el estado de carga y luego se almacenan en los cajones hasta que finaliza el estado de carga.",
     "card-holder-description2": "A diferencia de otros componentes, el usuario puede manipular esto, y su funcionamiento ocurre de la siguiente manera",
 
-    "card-holder-list-item1": "Las tarjetas se insertan exclusivamente desde la parte superior a la vez. ",
+    "card-holder-list-item1": "Las tarjetas se insertan exclusivamente desde la parte superior a la vez. En las tarjetas sólo deben escribirse instrucciones y números de hasta 3 cifras;",
     "card-holder-list-item2": "Las tarjetas se eliminan del extremo inferior, una a la vez, apareciendo en el mismo orden que se colocaron en el dispositivo;",
     "card-holder-list-item3": "Solo CHICO puede eliminar una tarjeta;",
     "card-holder-list-item4": "La inserción de una tarjeta solo puede ser realizada por un usuario;",
@@ -207,25 +207,25 @@
     "documentation-fig6-label": "Soporte de cigarrillo (demostrativo)",
 
     "output-sheet-title": "Hoja de salida",
-    "output-sheet-description": "Es una hoja de papel donde se puede escribir un número en cada línea, siempre utilizando líneas consecutivas. ",
+    "output-sheet-description": "Es una hoja de papel donde se puede escribir un número en cada línea, siempre utilizando líneas consecutivas. Sólo CHICO puede escribir en esta hoja y sólo el usuario puede leer lo que ya se ha escrito.",
 
     "documentation-fig7-title": "Figura 7",
     "documentation-fig7-label": "Hoja de salida",
 
     "chico-operator-title": "Operador CHICO",
     "chico-operator-description1": "Resumiendo las diversas características descritas, vemos que el operador de CHICO es la única persona que tiene acceso al cajón, la calculadora y el EPI, y es la única que puede eliminar tarjetas de las cadenas y escribir en la hoja de salida.",
-    "chico-operator-description2": "Él realiza estrictamente las órdenes recibidas, y no puede tomar ninguna de sus propias iniciativas o realizar acciones fuera de su especificación. ",
+    "chico-operator-description2": "Él realiza estrictamente las órdenes recibidas, y no puede tomar ninguna de sus propias iniciativas o realizar acciones fuera de su especificación. Estas órdenes pueden ser cualquiera de las instrucciones que se detallarán en la sección",
     "chico-operator-description3": "CHICO siempre funciona en uno de los dos estados diferentes",
 
-    "loading-state-title": "Carga",
-    "loading-state-description1": "El estado de carga comienza tan pronto como el usuario solicite la ejecución del código. ",
+    "loading-state-title": "Estado de Carga",
+    "loading-state-description1": "El estado de carga comienza tan pronto como el usuario solicite la ejecución del código. En él, CHICO coge una tarjeta del títular de cartería, lee su contenido y la copia en un cajón del cajón, siguiendo la secuencia de los cajones.",
     "loading-state-description2": "Este proceso se repite hasta la instrucción 000, lo que indica el final del programa, que se lee, finaliza el estado de carga y comienza el estado de ejecución.",
 
     "documentation-fig8-title": "Figura 8",
     "documentation-fig8-label": "Carga",
 
-    "running-state-title": "Ejecución",
-    "running-state-description1": "El estado de ejecución es uno en el que el operador del sistema realiza las instrucciones que se escribieron en los cajones. ",
+    "running-state-title": "Estado de Ejecución",
+    "running-state-description1": "El estado de ejecución es uno en el que el operador del sistema realiza las instrucciones que se escribieron en los cajones. EPI indica al operador qué cajón debe abrir para leer la instrucción, empezando siempre por el valor 0. Tras ejecutar una instrucción, CHICO actualiza el valor del EPI, normalmente incrementando el valor actual en +1. De nuevo comprueba el valor en la pizarra y abre el cajón indicado, hasta finalmente ejecutar la instrucción 000, finalizando el programa.",
     "running-state-description2": "Para demostrar mejor cómo funciona el estado de ejecución, entonces hay ilustraciones de CHICO que ejecutan un programa que imprime 50 en la hoja de salida.",
     "running-state-description3": "Se detallarán los detalles sobre cómo escribir un código para que CHICO ejecute.",
 
@@ -245,56 +245,56 @@
     "documentation-fig13-label": "Cuarta instrucción",
 
     "machine-language-title": "Lenguaje de Máquina",
-    "machine-language-description": "En computadoras reales, sus conjuntos de instrucciones se conocen como lenguaje de máquina. ",
+    "machine-language-description": "En computadoras reales, sus conjuntos de instrucciones se conocen como lenguaje de máquina. O HV mesmo sendo um computador hipotético tem sim sua linguagem de máquina, que são os conjuntos de instruções que o CHICO conhece. Ele só conhece os números de base 10 portanto suas instruções são números decimais, sendo composto geralmente por 3 dígitos, com exceção da 0-N.",
 
     "instructions-title": "Instrucciones",
     "instructions-description": "Luego veremos todas las instrucciones que CHICO sabe, recordando que estamos tratando con un lenguaje de bajo nivel, por lo que sus instrucciones son muy simples y restringidas, con ellas y pueden dividirse en la carga, la aritmética, la entrada, la salida y las instrucciones de control.",
 
     "loading-instructions-title": "Cargando",
 
-    "loading-instructions-list-item1-title": "0EE (valor copie del cajón EE a AC)",
-    "loading-instructions-list-item1-description": "Esta instrucción le permite transferir datos almacenados en un cajón (grabador temporal) llamado EE al acumulador (AC). ",
-    "loading-instructions-list-item2-title": "1EE (Copiar valor AC para el cajón EE)",
-    "loading-instructions-list-item2-description": "Por el contrario a la instrucción anterior, permite la transferencia de datos del acumulador a un cajón específico. ",
+    "loading-instructions-list-item1-title": "0EE (Copiar valor del cajón EE a AC)",
+    "loading-instructions-list-item1-description": "Esta instrucción le permite transferir datos almacenados en un cajón (grabador temporal) llamado EE al acumulador (AC). Esto es esencial para mover la información entre las ubicaciones de almacenamiento temporal y la grabadora principal, donde se pueden llevar a cabo las operaciones posteriores.",
+    "loading-instructions-list-item2-title": "1EE (Copiar valor de AC para el cajón EE)",
+    "loading-instructions-list-item2-description": "Por el contrario a la instrucción anterior, permite la transferencia de datos del acumulador a un cajón específico. Es útil cuando se desea conservar temporalmente el contenido del acumulador antes de realizar otras operaciones.",
     "loading-instructions-list-item3-title": "0-N (AC recibe una constante)",
-    "loading-instructions-list-item3-description": "Le permite cargar una constante (representada por n) directamente en el acumulador. ",
+    "loading-instructions-list-item3-description": "Le permite cargar una constante (representada por n) directamente en el acumulador. Esto es útil para inicializar variables o realizar operaciones con valores fijos.",
 
     "arithmetic-operations-title": "Operaciones aritméticas",
 
-    "arithmetic-operations-list-item1-title": "2EE (algunos cee a AC)",
-    "arithmetic-operations-list-item1-description": "Agrega el valor almacenado a un cajón (CEE) al contenido actual del acumulador.",
-    "arithmetic-operations-list-item2-title": "3EE (RESTRA DE AC EL EEC)",
-    "arithmetic-operations-list-item2-description": "Resta el valor almacenado en un cajón (CEE) del contenido actual del acumulador.",
-    "arithmetic-operations-list-item3-title": "4EE (multiplicar CAC por EEC)",
-    "arithmetic-operations-list-item3-description": "Multiplica el contenido actual del acumulador (CAC) para el valor almacenado en un cajón (EEC).",
-    "arithmetic-operations-list-item4-title": "5EE (Divide CAC por EEC)",
-    "arithmetic-operations-list-item4-description": "Divida el contenido actual del acumulador (CAC) por el valor almacenado en un cajón (CEE).",
+    "arithmetic-operations-list-item1-title": "2EE (Añade cEE a AC)",
+    "arithmetic-operations-list-item1-description": "Agrega el valor almacenado a un cajón (cEE) al contenido actual del acumulador.",
+    "arithmetic-operations-list-item2-title": "3EE (Resta de AC el cEE)",
+    "arithmetic-operations-list-item2-description": "Resta el valor almacenado en un cajón (cEE) del contenido actual del acumulador.",
+    "arithmetic-operations-list-item3-title": "4EE (Multiplicar cAC por cEE)",
+    "arithmetic-operations-list-item3-description": "Multiplica el contenido actual del acumulador (cAC) para el valor almacenado en un cajón (cEE).",
+    "arithmetic-operations-list-item4-title": "5EE (Divide CAC por cEE)",
+    "arithmetic-operations-list-item4-description": "Divida el contenido actual del acumulador (cAC) por el valor almacenado en un cajón (cEE).",
 
-    "flow-control-title": "Control de flujo",
+    "flow-control-title": "Control de Flujo",
 
     "flow-control-list-item1-title": "6EE (si cAC > 0, vaya a EE)",
-    "flow-control-list-item1-description": "Permite la ejecución condicional al desviar el flujo del programa a una dirección específica (EE) solo si el contenido del acumulador es mayor que cero. ",
+    "flow-control-list-item1-description": "Permite la ejecución condicional al desviar el flujo del programa a una dirección específica (EE) solo si el contenido del acumulador es mayor que cero. Esto es útil para tomar decisiones en función de las condiciones.",
     "flow-control-list-item2-title": "9EE (ir a la CEE)",
-    "flow-control-list-item2-description": "Instrucción de desviación incondicional que dirige el flujo del programa a una dirección específica (EE). ",
+    "flow-control-list-item2-description": "Instrucción de desviación incondicional que dirige el flujo del programa a una dirección específica (EE). Se utiliza para implementar bucles y subrutinas.",
 
     "input-output-title": "Entrada/Salida",
 
     "input-out-list-item1-title": "7EE (lea un valor y almacena en el cajón EE)",
-    "input-out-list-item1-description": "Permite la entrada de datos desde el soporte de cartón, almacenando el valor leído en el cajón especificado (EE). ",
-    "input-out-list-item2-title": "8EE (escriba EEC en el dispositivo de salida)",
-    "input-out-list-item2-description": "Realice la salida de datos en la hoja de salida utilizando el valor almacenado en un cajón específico (CEE). ",
+    "input-out-list-item1-description": "Permite la entrada de datos desde el soporte de cartón, almacenando el valor leído en el cajón especificado (EE). Esto es esencial para las interacciones del usuario o la inicialización de datos.",
+    "input-out-list-item2-title": "8EE (escriba cEE en el dispositivo de salida)",
+    "input-out-list-item2-description": "Realice la salida de datos en la hoja de salida utilizando el valor almacenado en un cajón específico (CEE). Esto permite visualizar los datos.",
 
     "program-control-title": "Control de programas",
 
     "program-control-list-item1-title": "000 (final del programa)",
-    "program-control-list-item1-description": "Indica el cierre del estado de carga y el comienzo del estado de ejecución y cuando se ejecuta finaliza el programa, lo que indica que la ejecución debe interrumpirse. ",
+    "program-control-list-item1-description": "Indica el cierre del estado de carga y el comienzo del estado de ejecución y cuando se ejecuta finaliza el programa, lo que indica que la ejecución debe interrumpirse. Esta instrucción es esencial para marcar el final del código ejecutable.",
 
-    "essential-concepts-title": "Conceptos esenciales",
+    "essential-concepts-title": "Conceptos Esenciales",
 
     "input-and-output-title": "Entrada y Salida",
-    "input-and-output-description1": "En el hipotético, las operaciones de entrada de la computadora HV se realizan a través de uno de sus componentes: el soporte del gráfico.",
-    "input-and-output-description2": "Al ejecutar una instrucción de lectura (7EE), el operador del sistema verificará si hay alguna tarjeta que contenga información para almacenarla en el cajón indicado. ",
-    "input-and-output-description3": "Como también es el componente en el que se almacena el código que se ejecutará, es posible ingresar tarjetas que contengan datos que se utilizarán en el programa antes de su ejecución cuando se coloca los números después del programa del programa (000). ",
+    "input-and-output-description1": "En el hipotético, las operaciones de entrada de la computadora HV se realizan a través de uno de sus componentes: el títular de cartería.",
+    "input-and-output-description2": "Al ejecutar una instrucción de lectura (7EE), el operador del sistema verificará si hay alguna tarjeta que contenga información para almacenarla en el cajón indicado. Si CHICO no encuentra una tarjeta en su búsqueda, la ejecución del código se interrumpirá y sólo continuará cuando el usuario introduzca nuevos datos en el títular de cartería.",
+    "input-and-output-description3": "Como también es el componente en el que se almacena el código que se ejecutará, es posible ingresar tarjetas que contengan datos que se utilizarán en el programa antes de su ejecución cuando se coloca los números después del programa del programa (000). En este escenario, la instrucción de lectura no pediría al usuario que introdujera ningún dato, puesto que el operador del sistema ya encontraría una tarjeta para almacenar.",
     "input-and-output-description4": "Mientras tanto, la hoja de salida, otro componente de HV, es responsable de imprimir datos almacenados en un cajón específico, que se indica mediante la instrucción de escritura (8EE).",
 
     "input-and-output-code-comment1": "Lectura de cartas para el cajón 30",
@@ -303,9 +303,9 @@
     "input-and-output-code-comment4": "Dado para ser leído por la instrucción",
 
     "variables-title": "Variables",
-    "variables-description1": "En el lenguaje de máquina HV, el concepto de variables se aborda de manera diferente a lo que estamos acostumbrados en lenguajes de alto nivel. ",
+    "variables-description1": "En el lenguaje de máquina HV, el concepto de variables se aborda de manera diferente a lo que estamos acostumbrados en lenguajes de alto nivel. En este lenguaje, no hay representación directa de variables, y los datos se almacenan en cajones identificados por direcciones específicas. Para asignar valores a las «variables» de su programa, debe elegir una dirección de cajón y utilizar las instrucciones adecuadas.",
     "variables-description2": "Considere el siguiente código de Python con tres variables",
-    "variables-description3": "Para obtener el mismo resultado en el lenguaje de máquina HV, elegimos tres cajones, representados por las direcciones 30, 31 y 32, respectivamente, a X, Y y resultado. ",
+    "variables-description3": "Para obtener el mismo resultado en el lenguaje de máquina HV, elegimos tres cajones, representados por las direcciones 30, 31 y 32, respectivamente, a X, Y y resultado. Iniciaremos las \"variables\" durante la lectura del títular de carteria, colocando los valores después de la instrucción 000",
     "variables-description4": "Por lo tanto, durante el estado de carga, estos valores no se cargarán en el cajón, asegurando que la lectura con instrucción 7EE asigne correctamente los valores a las \"variables\".",
 
     "variables-code-comment1": "Leer el soporte del cajón para el cajón 30 (x)",
@@ -325,19 +325,19 @@
 
     "repetition-loops-title": "Lazos de repetición",
     "repetition-loops-description1": "Al desviación a un cajón anterior, es posible crear un bono de repetición, es decir, un código que se ejecuta varias veces.",
-    "repetition-loops-description2": "Las instrucciones de desviación también se pueden utilizar para la construcción de lazos de repetición. ",
+    "repetition-loops-description2": "Las instrucciones de desviación también se pueden utilizar para la construcción de lazos de repetición. El mismo trozo de código puede ejecutarse varias veces haciendo que una dirección de cajón anterior a la actual marcada por el EPI sea el objetivo de la desviación, asignándole un nuevo valor acorde con la estructura del bucle.",
     "repetition-loops-description3": "El uso de la instrucción de desviación condicional garantiza una variedad de opciones para aquellos que programan, lo que lo hace capaz de crear bloques de código que funcionen hasta que se alcance una condición particular o incluso por un número predeterminado de veces, entre otras aplicaciones.",
     "repetition-loops-description4": "Estas posibilidades aumentan en gran medida el alcance de los programas que se pueden desarrollar en lenguaje HV y crean nuevos desafíos para sus programadores.",
 
     "examples-title": "Ejemplos prácticos",
-    "examples-description": "Las siguientes serán demostradas operaciones comunes en la elaboración de algoritmos, representadas como su equivalente al HV. ",
+    "examples-description": "Las siguientes serán demostradas operaciones comunes en la elaboración de algoritmos, representadas como su equivalente al HV. Los ejemplos se ajustan a las limitaciones de la lengua y animan a pensar.",
 
     "math-operations-title": "Operaciones matemáticas",
     "math-operations-description": "A diferencia de las operaciones aritméticas primordiales, ese lenguaje tiene instrucciones para realizarlas, en este tema estamos interesados ​​en realizar cálculos que usen estas operaciones para proporcionarnos otros resultados.",
 
     "remainder-division-title": "Resto de la división",
-    "remainder-division-description1": "En este algoritmo, queremos calcular el resto de la división entre dos números proporcionados por el usuario. ",
-    "remainder-division-description2": "El resultado del resto de la división se almacenará en el Drawer 32.",
+    "remainder-division-description1": "En este algoritmo, queremos calcular el resto de la división entre dos números proporcionados por el usuario. Llamaremos a estos números A y B y los almacenaremos en los cajones 30 y 31 respectivamente.",
+    "remainder-division-description2": "El resultado del resto de la división se almacenará en el cajón 32.",
     "remainder-division-description3": "Una cosa importante a tener en cuenta es que en un lenguaje de alto nivel tendríamos un operador \"%\" para calcular el resto de la división, que no tenemos en el lenguaje de máquina HV.",
 
     "remainder-division-steps-1": "Tomamos dos números de usuario, almacenamos el cajón 30 y B en el cajón 31.",
@@ -376,7 +376,7 @@
     "max-numbers-code-comment5": "Si el acumulador es mayor que 0, vaya al cajón 07 (imprima a)",
     "max-numbers-code-comment6": "Escribe el valor del cajón 11 (b, porque A no era más grande)",
     "max-numbers-code-comment7": "Vaya al Cajón 08 (final del programa)",
-    "max-numbers-code-comment8": "Escribe el valor del Drawer 10 (A, porque era más grande)",
+    "max-numbers-code-comment8": "Escribe el valor del cajón 10 (A, porque era más grande)",
     "max-numbers-code-comment9": "Final del programa",
 
     "square-root-title": "Raíz cuadrada",
@@ -427,7 +427,7 @@
     "comparison-operations-list-item6": "menos o igual a",
 
     "equality-title": "Igualdad",
-    "equality-description": "Este algoritmo verifica si dos números son los mismos. ",
+    "equality-description": "Este algoritmo verifica si dos números son los mismos. Lee los valores del usuario, resta uno del otro y comprueba si la diferencia es cero. Si lo es, imprime 1, indicando que los números son iguales. En caso contrario, imprime 0.",
 
     "equality-code-comment1": "Lea el primer número y la tienda en el cajón 20",
     "equality-code-comment2": "Lea el segundo número y almacene en el cajón 21",
@@ -445,7 +445,7 @@
     "equality-code-comment14": "Final del programa",
 
     "not-equal-title": "Diferente",
-    "not-equal-description": "Aquí encontramos si dos números son diferentes. ",
+    "not-equal-description": "Aquí encontramos si dos números son diferentes. El proceso es similar al de la igualdad, pero invertimos la lógica: si la resta da cero, significa que los números son iguales, por lo que imprimimos 0; en caso contrario, imprimimos 1.",
 
     "not-equal-code-comment1": "Lea el primer número y la tienda en el cajón 20",
     "not-equal-code-comment2": "Lea el segundo número y almacene en el cajón 21",
@@ -463,7 +463,7 @@
     "not-equal-code-comment14": "Final del programa",
 
     "greater-than-title": "Más que",
-    "greater-than-description": "Este algoritmo determina si un número es más grande que el otro. ",
+    "greater-than-description": "Este algoritmo determina si un número es más grande que el otro. Resta B de A y comprueba si el resultado es positivo. Si lo es, significa que A es mayor, por lo que imprimimos 1. En caso contrario, imprimimos 0.",
 
     "greater-than-code-comment1": "Lea el primer número y la tienda en el cajón 20",
     "greater-than-code-comment2": "Lea el segundo número y almacene en el cajón 21",
@@ -495,7 +495,7 @@
     "lower-than-code-comment12": "Final del programa",
 
     "greater-equal-title": "Más o igual",
-    "greater-equal-description": "Este algoritmo verifica si A es mayor o igual a B. Combina la lógica de \"mayor que\" y \"igualdad\". ",
+    "greater-equal-description": "Este algoritmo verifica si A es mayor o igual a B. Combina la lógica de \"mayor que\" y \"igualdad\". Combina la lógica de \"mayor que\" e \"igualdad\". Si A es mayor que B o si los dos números son iguales, imprimimos 1; en caso contrario, imprimimos 0.",
 
     "greater-equal-code-comment1": "Lea el primer número y la tienda en el cajón 20",
     "greater-equal-code-comment2": "Lea el segundo número y almacene en el cajón 21",
@@ -575,7 +575,7 @@
     "drawer-data-tip": "Dado",
     "drawer-epi-tip": "EPI",
 
-    "home-tip": "Inicio",
+    "home-tip": "Página de inicio",
     "clear-tip": "Limpiar visualización",
     "save-tip": "Guardar código",
     "help-tip": "Ayuda",
@@ -584,7 +584,7 @@
     "evaluate-now": "Evaluar",
     "your-opinion": "Su opinión es crítica para nuestro proyecto",
     "click-on-stars": "¡Haga clic en las estrellas y responda el formulario!",
-    "dont-ask": "No preguntes",
+    "dont-ask": "No vuelvas a preguntar",
 
     "error-detected": "¡Error detectado!",
 
@@ -594,10 +594,10 @@
     "config-lightmode-title": "Claro",
     "config-darkmode-title": "Oscuro",
 
-    "config-delay-title": "Demora",
+    "config-delay-title": "Retraso",
 
-    "config-loading-state-title": "Carga",
-    "config-paused-debug-title": "Detenido",
+    "config-loading-state-title": "Estado de carga",
+    "config-paused-debug-title": "Depuración en pausa",
     "config-show-tips-title": "Consejos de exhibición",
 
     "config-save-title": "Guardar"

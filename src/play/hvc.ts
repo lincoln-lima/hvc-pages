@@ -291,7 +291,7 @@ export default () => {
     document.addEventListener("keydown", async(e) => {
         const key = e.key.toLowerCase();
 
-        if (e.ctrlKey) {
+        if (!e.ctrlKey) {
             if (key === "f9") await exec(true);
             else if (key === "f8") await exec(false);
         }

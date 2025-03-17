@@ -106,17 +106,19 @@ main {
                 font-size: $font-size;
                 @include global.size(100%);
 
-                &, * {
-                    background-color: play.$old-paper;
-
-                    @include global.setFont(code);
-                }
-
                 #editor {
                     @include global.size(100%);
 
                     .cm-scroller {
                         overflow-x: hidden;
+
+                        .cm-line {
+                            @include global.setFont(code);
+                        }
+                    
+                        .cm-gutters {
+                            background-color: play.$old-paper;
+                        }
                     }
 
                     .cm-lineNumbers > * {
@@ -127,6 +129,14 @@ main {
                     br {
                         content: inherit;
                     }
+                }
+            }
+
+            &.drag {
+                background-color: play.$old-paper-dark;
+
+                .cm-gutters {
+                    background-color: play.$old-paper-dark;
                 }
             }
 
