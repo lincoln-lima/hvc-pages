@@ -571,6 +571,45 @@
                                 <a class="code open"></a>
                             </div>
                         </div>
+                        <p data-lang="square-root-description4">Outra alternativa é calcular a raiz quadrada de um número através de uma abordagem de “força bruta”, testando todos os resultados possíveis até encontrar o correto.</p>
+                        <br>
+                        <p data-lang="square-root-description5">Devido às limitações do HV, só é possível obter o resultado para números menores que 1000 e que possuam raiz inteira. Para números que não seguem esses critérios o código gerará valores imprecisos ou mensagens de erro.</p>
+                        <br>
+                        <p data-lang="algorithms-steps" class="prequel">Passos do algoritmo</p>
+                        <ol>
+                            <li data-lang="square-root-steps-6">Leitura de um valor de entrada;</li>
+                            <li data-lang="square-root-steps-7">Inicialização de um contador que será incrementado em 1 a cada repetição;</li>
+                            <li data-lang="square-root-steps-8">Cálculo do quadrado do valor atual do contador;</li>
+                            <li data-lang="square-root-steps-9">Comparação entre o quadrado do contador e o valor de entrada fornecido;</li>
+                            <li data-lang="square-root-steps-10">Caso sejam iguais, o programa imprime o valor do contador e encerra;</li>
+                            <li data-lang="square-root-steps-11">Caso sejam diferentes, o contador é incrementado e voltamos ao passo 3.</li>
+                        </ol>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">730	; <span data-lang="square-root-code-comment23" class="comment">Armazenamento do número fornecido na gaveta 30</span>
+0-1	; <span data-lang="square-root-code-comment24" class="comment">Carrega número 1 no acumulador</span>
+151	; <span data-lang="square-root-code-comment25" class="comment">Salva o número 1 na gaveta 51, para ser utilizado como incrementador</span>
+0-0	; <span data-lang="square-root-code-comment26" class="comment">Carrega número 0 no acumulador</span>
+150	; <span data-lang="square-root-code-comment27" class="comment">Salva o número 0 na gaveta 50, que será utilizada como um contador</span>
+050	; <span data-lang="square-root-code-comment28" class="comment">Carrega o valor do nosso contador no acumulador</span>
+450	; <span data-lang="square-root-code-comment29" class="comment">Multiplica o valor do nosso contador com ele mesmo, obtendo seu quadrado</span>
+152	; <span data-lang="square-root-code-comment30" class="comment">Salva o resultado da multiplicação na gaveta 52</span>
+050	; <span data-lang="square-root-code-comment31" class="comment">Carrega o valor da gaveta 50 para o acumulador novamente</span>
+251	; <span data-lang="square-root-code-comment32" class="comment">Soma o acumulador com o valor 1, que estava armazenado na gaveta 51</span>
+150	; <span data-lang="square-root-code-comment33" class="comment">Salva o valor calculado na gaveta 50</span>
+030	; <span data-lang="square-root-code-comment34" class="comment">Carrega o valor anteriormente fornecido pelo usuário no acumulador</span>
+352	; <span data-lang="square-root-code-comment35" class="comment">Subtrai do acumulador o conteúdo da gaveta 52</span>
+605	; <span data-lang="square-root-code-comment36" class="comment">Se o resultado for menor que 0, a execução volta para a gaveta 05</span>
+050	; <span data-lang="square-root-code-comment37" class="comment">Carrega o valor da gaveta 50 para o acumulador</span>
+351	; <span data-lang="square-root-code-comment38" class="comment">Subtrai 1 do valor do acumulador, para ajustar o resultado final</span>
+153	; <span data-lang="square-root-code-comment39" class="comment">Carrega o valor do acumulador para a gaveta 53</span>
+853	; <span data-lang="square-root-code-comment40" class="comment">Imprime na folha de saída o resultado final obtido</span>
+000	; <span data-lang="square-root-code-comment41" class="comment">Encerra o programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
                     </article>
                 </article>
                 <article id="comparacao">
