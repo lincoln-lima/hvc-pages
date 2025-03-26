@@ -358,16 +358,16 @@ main {
                         }
 
                         div {
-                            position: absolute;
+                            position: relative;
 
                             @include global.middle;
 
                             &:first-child {
-                                @include numbers(40px, initial, 13, 88px, 86px);
+                                @include numbers(48px, initial, 13, 88px, 86px);
                             }
 
                             &:last-child {
-                                @include numbers(42px, 0, -28, 50px, 75px);
+                                @include numbers(-38px, -97px, -28, 50px, 75px);
                             }
 
                             span {
