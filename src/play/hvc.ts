@@ -7,6 +7,7 @@ export default () => {
     const hvc = new HVC();
     HVC.setLanguageMessages(getLang());
     // ------------------------------------------------------------------------------- 
+    let indexOut : number = -1;
     let previous : HVMState = "DESLIGADO";
     // ------------------------------------------------------------------------------- 
     const cardmodal = modal.card();
@@ -30,7 +31,12 @@ export default () => {
 
     const epiwrite = document.querySelector("#epi .viewers-values")!;
     const accumulator = document.querySelector("#acumulador .viewers-values")!;
-    const outwrite = document.querySelector("#folha-de-saida .viewers-values")!;
+
+    const outputsheet = document.getElementById("folha-de-saida")!;
+    const outwrite = outputsheet.querySelector(".viewers-values")!;
+
+    const backout = outputsheet.querySelector(".backout")!;
+    const forthout = outputsheet.querySelector(".forthout")!;
 
     const drawers = document.querySelectorAll(".drawer")!;
 
@@ -51,6 +57,9 @@ export default () => {
 
         drawers.forEach(gaveta => highlightDrawer(gaveta, "default"));
         // ---------------------------------------------------------------------------
+        clear.addEventListener("click", clearView);
+        
+        removeIterateOuts();
         document.addEventListener("keydown", keyTerminate);
         document.removeEventListener("keydown", modalsKeyEvents);
         // ---------------------------------------------------------------------------
@@ -182,6 +191,7 @@ export default () => {
         const hvmstate = hvm.getState();
 
         await hvc.back();
+
         updateViewers(hvmstate);
         switchDisplay(cardmodal, false);
     }
@@ -232,6 +242,8 @@ export default () => {
     };
     // ------------------------------------------------------------------------------- 
     const clearView = () => {
+        indexOut = -1;
+
         changeElementText(outwrite, "");
         changeElementText(epiwrite, "");
         changeElementText(accumulator, "");
@@ -244,10 +256,46 @@ export default () => {
         });
 
         temporaryClass(clear, "cleaned");
+        
+        removeIterateOuts();
+        clear.removeEventListener("click", clearView);
+    }
+    // ------------------------------------------------------------------------------- 
+    const removeIterateOuts = () => {
+        backout.removeEventListener("click", backwardOut);
+        forthout.removeEventListener("click", forwardOut);
     }
 
+    const backwardOut = () => {
+        const hvm = hvc.getHVM();
+        const folha = hvm.folhaDeSaida.getText();
+
+        if(indexOut > 0) changeElementText(outwrite, folha[--indexOut]);
+        else backout.removeEventListener("click", backwardOut);
+
+        forthout.addEventListener("click", forwardOut);
+    }
+
+    const forwardOut = () => {
+        const hvm = hvc.getHVM();
+        const folha = hvm.folhaDeSaida.getText();
+
+        if(indexOut < folha.length - 1) changeElementText(outwrite, folha[++indexOut]);
+        else forthout.removeEventListener("click", forwardOut);
+
+        backout.addEventListener("click", backwardOut);
+    }
     // ------------------------------------------------------------------------------- 
-    hvc.addEventOutput((out: string) => changeElementText(outwrite, out));
+    hvc.addEventOutput((out: string) => {
+        const hvm = hvc.getHVM();
+        const folha = hvm.folhaDeSaida.getText();
+
+        if(folha.length > 1) backout.addEventListener("click", backwardOut);
+        else removeIterateOuts();
+
+        indexOut = folha.length - 1;
+        changeElementText(outwrite, out)
+    });
 
     hvc.addEventInput(async() => {
         switchDisplay(cardmodal, true);
@@ -278,8 +326,6 @@ export default () => {
     // ---------------------------------------------------------------------------
     debug.addEventListener("click", async() => await exec(false));
     runner.addEventListener("click", async() => await exec(true));
-
-    clear.addEventListener("click", clearView);
     // ---------------------------------------------------------------------------
     const keyTerminate = async(e: KeyboardEvent) => {
         if (e.ctrlKey && e.key.toLowerCase() === "c") {
