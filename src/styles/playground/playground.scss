@@ -264,7 +264,35 @@ main {
                 }
 
                 #folha-de-saida {
+                    position: relative;
                     @include global.background($image: 'playground/notepad', $size: contain);
+
+                    .iterate-outs {
+                        $button-size: 1.5rem;
+
+                        right: 0.3rem;
+                        bottom: 0.3rem;
+
+                        z-index: 11;
+                        position: absolute;
+
+                        @include global.flex($gap: calc($button-size/3));
+
+                        button {
+                            transition: 0s;
+
+                            @include global.size($button-size);
+                            @include global.background($image: caret, $size: cover, $color: global.$gray);
+
+                            &.backout {
+                                transform: rotate(90deg);
+                            }
+
+                            &.forthout {
+                                transform: rotate(-90deg);
+                            }
+                        }
+                    }
 
                     .viewers-values {
                         scale: 1.5;
@@ -334,40 +362,39 @@ main {
                     }
 
                     .drawer {
+                        position: relative;
                         min-width: play.$gaveta-width;
                         min-height: play.$gaveta-height;
 
-                        @media screen and (max-width: $width1) {
-                            margin: 0 !important;
+                        @media screen and (min-width: ($width1 + 1)) {
+                            &:not(:first-child, :last-child) {
+                                margin: 0 play.$gaveta-margin;
+                            }
+
+                            &:first-child {
+                                margin-right: play.$gaveta-margin;
+                            }
+
+                            &:last-child {
+                                margin-left: play.$gaveta-margin;
+                            }
                         }
 
                         &:hover {
                             filter: hue-rotate(45deg);
                         }
 
-                        &:not(:first-child, :last-child) {
-                            margin: 0 play.$gaveta-margin;
-                        }
-
-                        &:first-child {
-                            margin-right: play.$gaveta-margin;
-                        }
-
-                        &:last-child {
-                            margin-left: play.$gaveta-margin;
-                        }
-
                         div {
-                            position: relative;
+                            position: absolute;
 
                             @include global.middle;
 
                             &:first-child {
-                                @include numbers(48px, initial, 13, 88px, 86px);
+                                @include numbers(40px, initial, 13, 88px, 86px);
                             }
 
                             &:last-child {
-                                @include numbers(-38px, -97px, -28, 50px, 75px);
+                                @include numbers(42px, 0, -28, 50px, 75px);
                             }
 
                             span {
