@@ -303,10 +303,10 @@ main {
                 }
 
                 .tooltip {
-                    bottom: default.$tooltip-size-arr;
+                    top: default.$tooltip-size-arr;
 
                     &::after {
-                        @include global.tooltip-top(default.$tooltip-size-arr);
+                        @include global.tooltip-bottom(default.$tooltip-size-arr);
                     }
                 }
             }
