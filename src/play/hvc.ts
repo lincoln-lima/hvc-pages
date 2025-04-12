@@ -261,9 +261,16 @@ export default () => {
         clear.removeEventListener("click", clearView);
     }
     // ------------------------------------------------------------------------------- 
+    const iterateEvent = (element: Element, callback: EventListener, set: boolean) => {
+        if(element.classList.contains("blocked") === set) element.classList.toggle("blocked", !set);
+
+        if(set) element.addEventListener("click", callback);
+        else element.removeEventListener("click", callback);
+    }
+
     const removeIterateOuts = () => {
-        backout.removeEventListener("click", backwardOut);
-        forthout.removeEventListener("click", forwardOut);
+        iterateEvent(backout, backwardOut, false);
+        iterateEvent(forthout, forwardOut, false);
     }
 
     const backwardOut = () => {
@@ -271,9 +278,10 @@ export default () => {
         const folha = hvm.folhaDeSaida.getText();
 
         if(indexOut > 0) changeElementText(outwrite, folha[--indexOut]);
-        else backout.removeEventListener("click", backwardOut);
 
-        forthout.addEventListener("click", forwardOut);
+        if(!(indexOut > 0)) iterateEvent(backout, backwardOut, false);
+
+        iterateEvent(forthout, forwardOut, true);
     }
 
     const forwardOut = () => {
@@ -281,16 +289,20 @@ export default () => {
         const folha = hvm.folhaDeSaida.getText();
 
         if(indexOut < folha.length - 1) changeElementText(outwrite, folha[++indexOut]);
-        else forthout.removeEventListener("click", forwardOut);
 
-        backout.addEventListener("click", backwardOut);
+        if(!(indexOut < folha.length - 1)) iterateEvent(forthout, forwardOut, false);
+
+        iterateEvent(backout, backwardOut, true);
     }
     // ------------------------------------------------------------------------------- 
     hvc.addEventOutput((out: string) => {
         const hvm = hvc.getHVM();
         const folha = hvm.folhaDeSaida.getText();
 
-        if(folha.length > 1) backout.addEventListener("click", backwardOut);
+        if(folha.length > 1) {
+            iterateEvent(backout, backwardOut, true);
+            iterateEvent(forthout, forwardOut, false);
+        }
         else removeIterateOuts();
 
         indexOut = folha.length - 1;

@@ -291,6 +291,11 @@ main {
                             &.forthout {
                                 transform: rotate(-90deg);
                             }
+
+                            &.blocked {
+                                opacity: 0.4;
+                                cursor: not-allowed;
+                            }
                         }
                     }
 
