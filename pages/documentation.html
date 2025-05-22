@@ -437,9 +437,44 @@
                         <h4 data-lang="detour-title">Desvio</h4>
                         <p data-lang="detour-description1">Dentre as funções básicas que o operador do sistema é capaz de realizar, sem dúvidas as instruções de controle de fluxo são umas das que mais abrem possibilidades ao programador para o desenvolvimento de programas mais complexos.</p>
                         <br>
-                        <p data-lang="detour-description2">A instrução 6EE, por exemplo, pode ser utilizada para construir um programa onde determinada parte do código só é executada caso alguma condição específica seja atendida.</p>
+                        <p data-lang="detour-description2">A instrução 6EE, por exemplo, pode ser utilizada para construir um programa em que determinada parte do código só é executada caso uma condição seja atendida (valor do acumulador maior que zero). Já a instrução 9EE (desvio incondicional) permite redirecionar o fluxo do programa sem verificação prévia, sendo essencial para criar loops, funções ou pular trechos de código.</p>
                         <br>
-                        <p data-lang="detour-description3">A tomada de decisões com base apenas em verificar se o valor do acumulador é maior que zero parece limitada à primeira vista, mas lembre-se que esse pode ser manipulado de diversas maneiras, se tornando possível, desse modo, realizar praticamente qualquer comparação desejada.</p>
+                        <p data-lang="detour-description3">A tomada de decisões com base apenas na verificação de se o valor do acumulador é maior que zero pode parecer limitada à primeira vista, mas lembre-se de que ele pode ser manipulado de diversas maneiras, tornando-se possível, assim, realizar comparações e estruturas de repetição avançadas.</p>
+                        <br>
+                        <p data-lang="detour-description4">Para exemplificar, iremos realizar uma operação de divisão cujo valor do divisor será informado pelo usuário, e o dividendo será fixo, no caso 100. Segue o código abaixo:</p>
+                        <div class="pre-code"><pre>
+<code class="cmd ahv">720    ; <span data-lang="detour-wrong-code-comment1" class="comment">Lendo o valor do divisor na gaveta 20</span>
+0-100  ; <span data-lang="detour-wrong-code-comment2" class="comment">Colocando 100 no acumulador</span>
+520    ; <span data-lang="detour-wrong-code-comment3" class="comment">Dividindo o valor do acumulador pelo divisor</span>
+121    ; <span data-lang="detour-wrong-code-comment4" class="comment">Carregando o resultado da divisão na gaveta 21</span>
+821    ; <span data-lang="detour-wrong-code-comment5" class="comment">Imprimindo o resultado na folha de saída</span>
+000    ; <span data-lang="detour-wrong-code-comment6" class="comment">Fim programa</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
+                        <br>
+                        <p data-lang="detour-description5">Percebeu o problema? Se o usuário informar 0, ocorrerá um erro de valor inválido na calculadora. Para evitar isso, vamos validar se o valor do divisor é maior que zero. Nessa validação: se o divisor for maior que zero, realizamos a divisão; caso contrário, simplesmente imprimimos o valor -1, indicando que o usuário informou um valor inválido. Veja o código abaixo:</p>
+                        <div class="pre-code"><pre>
+<code class="cmd ahv">721    ; <span data-lang="detour-correct-code-comment1" class="comment">Lendo o valor pré inserido na gaveta 21</span>
+720    ; <span data-lang="detour-correct-code-comment2" class="comment">Lendo o valor do divisor na gaveta 20</span>
+020    ; <span data-lang="detour-correct-code-comment3" class="comment">Carregando o valor no divisor no acumulador </span>
+605    ; <span data-lang="detour-correct-code-comment4" class="comment">Se o divisor maior que zero o programa segue para gaveta 5</span>
+908    ; <span data-lang="detour-correct-code-comment5" class="comment">Caso o divisor não seja maior que zero o programa segue para gaveta 8</span>
+0-100  ; <span data-lang="detour-correct-code-comment6" class="comment">Colocando 100 no acumulador [Gaveta 5]</span>
+520    ; <span data-lang="detour-correct-code-comment7" class="comment">Dividindo o valor do acumulador pelo divisor</span>
+121    ; <span data-lang="detour-correct-code-comment8" class="comment">Carregando o resultado da divisão na gaveta 21</span>
+821    ; <span data-lang="detour-correct-code-comment9" class="comment">Imprimindo o resultado na folha de saída [Gaveta 8]</span>
+000    ; <span data-lang="detour-correct-code-comment10" class="comment">Fim programa</span>
+-1     ; <span data-lang="detour-correct-code-comment11" class="comment">Colocando valor -1 como dado a ser carregado</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
                     </article>
                     <article id="lacos">
                         <h4 data-lang="repetition-loops-title">Laços de repetição</h4>
@@ -450,6 +485,41 @@
                         <p data-lang="repetition-loops-description3">O uso da instrução de desvio condicional garante uma gama de opções para quem programa, tornando-o capaz de criar blocos de código que executarão até que determinada condição seja atingida ou mesmo por um número pré-determinado de vezes, entre outras aplicações.</p>
                         <br>
                         <p data-lang="repetition-loops-description4">Essas possibilidades aumentam muito o escopo de programas que podem ser desenvolvidos na linguagem HV, e criam novos desafios para os seus programadores.</p>
+                        <br>
+                        <p data-lang="repetition-loops-description5" class="prequel">A fim de exemplificar, criaremos um programa que receba como entrada um valor N e exiba na saída a operação 2ⁿ. Assim, siga o seguinte passo a passo</p>
+                        <ol>
+                            <li data-lang="repetition-loops-steps-1">Implementaremos um laço de modo semelhante à instrução "for" de linguagens de alto nível: inicializamos uma variável (gaveta) i como 0, e à medida das iterações verificamos se i &lt; N.</li>
+                            <li data-lang="repetition-loops-steps-2">Dentre as instruções do HV não existe uma comparação direta, portanto realizamos a equivalência dessa comparação para N - i &gt; 0.</li>
+                            <li data-lang="repetition-loops-steps-3">Caso a sentença seja verdadeira, multiplicamos o valor acumulado por 2 e incrementamos em 1 o iterador i, voltando a avaliar a condição.</li>
+                            <li data-lang="repetition-loops-steps-4">Do contrário, avançamos para exibição do resultado final, equivalente a 2ⁿ.</li>
+                        </ol>
+                        <div class="pre-code"><pre>
+<code class="ahv cmd">719    ; <span data-lang="repetition-loops-code-comment1" class="comment">Lendo o valor pré inserido na gaveta 19, usada como constante 1</span>
+721    ; <span data-lang="repetition-loops-code-comment2" class="comment">Lendo o valor pré inserido na gaveta 21, servirá como resultado iniciado com 1</span>
+720    ; <span data-lang="repetition-loops-code-comment3" class="comment">Lendo o valor de N na gaveta 20</span>
+0-0    ; <span data-lang="repetition-loops-code-comment4" class="comment">Colocando 0 no acumulador</span>
+118    ; <span data-lang="repetition-loops-code-comment5" class="comment">Carregando valor do AC na gaveta 18 que será usado para contar as iterações (i)</span>
+020    ; <span data-lang="repetition-loops-code-comment6" class="comment">Carregando N no acumulador [Gaveta 5]</span>
+318    ; <span data-lang="repetition-loops-code-comment7" class="comment">Subtraindo N por i </span>
+609    ; <span data-lang="repetition-loops-code-comment8" class="comment">Verificando se N - i > 0, se verdadeiro desvia para Gaveta 9</span>
+916    ; <span data-lang="repetition-loops-code-comment9" class="comment">Caso contrário, desvia para Gaveta 16</span>
+0-2    ; <span data-lang="repetition-loops-code-comment10" class="comment">Colocando 2 no acumulador [Gaveta 9]</span>
+421    ; <span data-lang="repetition-loops-code-comment11" class="comment">Multiplicação de 2 pelo resultado</span>
+121    ; <span data-lang="repetition-loops-code-comment12" class="comment">Carrega o resultado da nova multiplicação no resultado</span>
+018    ; <span data-lang="repetition-loops-code-comment13" class="comment">Carregando o valor de i no acumulador</span>
+219    ; <span data-lang="repetition-loops-code-comment14" class="comment">Soma valor da Gaveta 19 (1) a i</span>
+118    ; <span data-lang="repetition-loops-code-comment15" class="comment">Carregando o valor de i + i na gaveta de i</span>
+905    ; <span data-lang="repetition-loops-code-comment16" class="comment">Voltando para o início do laço na Gaveta 5</span>
+821    ; <span data-lang="repetition-loops-code-comment17" class="comment">Imprimindo o valor do resultado na folha de saída [Gaveta 16]</span>
+000    ; <span data-lang="repetition-loops-code-comment18" class="comment">Fim programa</span>
+1      ; <span data-lang="repetition-loops-code-comment19" class="comment">Colocando valor 1 como dado a ser carregado</span>
+1      ; <span data-lang="repetition-loops-code-comment20" class="comment">Colocando valor 1 como dado a ser carregado</span></code>
+</pre>
+                            <div>
+                                <button class="code copy"></button>
+                                <a class="code open"></a>
+                            </div>
+                        </div>
                     </article>
                 </article>
             </section>

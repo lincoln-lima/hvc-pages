@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1",
-    "sass": "^1.86.3",
+    "@types/node": "^22.15.21",
+    "sass": "^1.89.0",
     "typescript": "^5.8.3",
-    "vite": "^6.2.6"
+    "vite": "^6.3.5"
   },
   "dependencies": {
     "codemirror": "^6.0.1",
